@@ -25,7 +25,7 @@
             android:textStyle="bold"
             android:text="Enter your batch code "/>
         <TextView
-            android:id="@+id/tv_otp_info"
+            android:id="@+id/tv_batchcode_info"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="15dp"
@@ -44,53 +44,83 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="15dp"
                 android:orientation="horizontal"
-                android:weightSum="100">
+                android:weightSum="120">
 
                 <android.support.v7.widget.AppCompatEditText
-                    android:id="@+id/apet_login_email"
-                    android:layout_weight="25"
+                    android:id="@+id/apet_bachcode_input1"
+                    android:layout_weight="20"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_margin="10dp"
+                    android:layout_margin="5dp"
                     android:background="@drawable/input_shape"
+                    android:maxLength="1"
                     android:textCursorDrawable="@null"
                     android:textColorHint="@color/hint_color"
                     android:inputType="textEmailAddress"/>
 
                 <android.support.v7.widget.AppCompatEditText
-                    android:id="@+id/apet_login_password"
-                    android:layout_weight="25"
+                    android:id="@+id/apet_bachcode_input2"
+                    android:layout_weight="20"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_margin="10dp"
+                    android:layout_margin="5dp"
                     android:background="@drawable/input_shape"
+                    android:maxLength="1"
                     android:textCursorDrawable="@null"
                     android:textColorHint="@color/hint_color"
                     android:inputType="textPassword" />
+
                 <android.support.v7.widget.AppCompatEditText
-                    android:id="@+id/apet_login_password2"
-                    android:layout_weight="25"
+                    android:id="@+id/apet_bachcode_input3"
+                    android:layout_weight="20"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_margin="10dp"
+                    android:layout_margin="5dp"
                     android:background="@drawable/input_shape"
+                    android:maxLength="1"
                     android:textCursorDrawable="@null"
                     android:textColorHint="@color/hint_color"
                     android:inputType="textPassword" />
+
                 <android.support.v7.widget.AppCompatEditText
-                    android:id="@+id/apet_login_password1"
-                    android:layout_weight="25"
+                    android:id="@+id/apet_bachcode_input4"
+                    android:layout_weight="20"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_margin="10dp"
+                    android:layout_margin="5dp"
                     android:background="@drawable/input_shape"
+                    android:maxLength="1"
+                    android:textCursorDrawable="@null"
+                    android:textColorHint="@color/hint_color"
+                    android:inputType="textPassword" />
+
+                <android.support.v7.widget.AppCompatEditText
+                    android:id="@+id/apet_bachcode_input5"
+                    android:layout_weight="20"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:background="@drawable/input_shape"
+                    android:maxLength="1"
+                    android:textCursorDrawable="@null"
+                    android:textColorHint="@color/hint_color"
+                    android:inputType="textPassword" />
+
+                <android.support.v7.widget.AppCompatEditText
+                    android:id="@+id/apet_bachcode_input6"
+                    android:layout_weight="20"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:background="@drawable/input_shape"
+                    android:maxLength="1"
                     android:textCursorDrawable="@null"
                     android:textColorHint="@color/hint_color"
                     android:inputType="textPassword" />
             </LinearLayout>
 
             <Button
-                android:id="@+id/btn_login"
+                android:id="@+id/btn_batchcode_submit"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
@@ -110,7 +140,7 @@
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:layout_alignParentBottom="true"
-        android:textColor="@color/register_instead_color"
+        android:textColor="@color/otp_info_color"
         android:text="Sign in with a different account"/>
 
 </RelativeLayout>
