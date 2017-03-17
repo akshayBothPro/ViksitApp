@@ -8,6 +8,7 @@ import android.support.design.internal.BottomNavigationMenuView;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.view.Menu;
 import android.view.MenuItem;
 
 import java.lang.reflect.Field;
@@ -23,6 +24,8 @@ public class RoleActivity extends AppCompatActivity {
         BottomNavigationView bottomNavigationView = (BottomNavigationView)
                 findViewById(R.id.bottom_navigation);
         removeShiftMode(bottomNavigationView);
+        Menu menu = bottomNavigationView.getMenu();
+        bottomNavigationView.setSelectedItemId(R.id.role);
         bottomNavigationView.setOnNavigationItemSelectedListener(
                 new BottomNavigationView.OnNavigationItemSelectedListener() {
                     @Override

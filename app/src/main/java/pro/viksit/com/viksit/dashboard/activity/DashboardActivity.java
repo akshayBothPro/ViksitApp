@@ -21,18 +21,19 @@ public class DashboardActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dashboard);
-        BottomNavigationView bottomNavigationView = (BottomNavigationView)
+        final BottomNavigationView bottomNavigationView = (BottomNavigationView)
                 findViewById(R.id.bottom_navigation);
         removeShiftMode(bottomNavigationView);
         bottomNavigationView.setOnNavigationItemSelectedListener(
                 new BottomNavigationView.OnNavigationItemSelectedListener() {
                     @Override
-                    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                    public boolean onNavigationItemSelected(final @NonNull MenuItem item) {
+
                         switch (item.getItemId()) {
                             case R.id.role:
                                 Intent i = new Intent(DashboardActivity.this, RoleActivity.class);
                                 startActivity(i);
-                                overridePendingTransition(R.anim.slide_in, R.anim.slide_out);
+                                //overridePendingTransition(R.anim.zoom_out, R.anim.zoom_in);
 
                                 break;
                             case R.id.job:
