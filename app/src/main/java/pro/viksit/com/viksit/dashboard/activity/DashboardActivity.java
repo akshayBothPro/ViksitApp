@@ -1,19 +1,11 @@
 package pro.viksit.com.viksit.dashboard.activity;
 
-import android.content.Intent;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.design.internal.BottomNavigationItemView;
-import android.support.design.internal.BottomNavigationMenuView;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
-import android.view.MenuItem;
-
-import java.lang.reflect.Field;
 
 import pro.viksit.com.viksit.R;
-import pro.viksit.com.viksit.role.activity.RoleActivity;
+import pro.viksit.com.viksit.dashboard.util.BottomBarUtil;
 
 public class DashboardActivity extends AppCompatActivity {
 
@@ -21,49 +13,10 @@ public class DashboardActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dashboard);
-        final BottomNavigationView bottomNavigationView = (BottomNavigationView)
+        BottomNavigationView bottomNavigationView = (BottomNavigationView)
                 findViewById(R.id.bottom_navigation);
-        removeShiftMode(bottomNavigationView);
-        bottomNavigationView.setOnNavigationItemSelectedListener(
-                new BottomNavigationView.OnNavigationItemSelectedListener() {
-                    @Override
-                    public boolean onNavigationItemSelected(final @NonNull MenuItem item) {
-
-                        switch (item.getItemId()) {
-                            case R.id.role:
-                                Intent i = new Intent(DashboardActivity.this, RoleActivity.class);
-                                startActivity(i);
-                                //overridePendingTransition(R.anim.zoom_out, R.anim.zoom_in);
-                                overridePendingTransition(R.anim.zoom_enter, R.anim.zoom_exit);
-
-                                break;
-                            case R.id.job:
-
-                            case R.id.challenge:
-
-                        }
-                        return true;
-                    }
-                });
+        new BottomBarUtil().setupBottomBar(bottomNavigationView,DashboardActivity.this,R.id.task);
     }
 
-    static void removeShiftMode(BottomNavigationView view) {
-        BottomNavigationMenuView menuView = (BottomNavigationMenuView) view.getChildAt(0);
-        try {
-            Field shiftingMode = menuView.getClass().getDeclaredField("mShiftingMode");
-            shiftingMode.setAccessible(true);
-            shiftingMode.setBoolean(menuView, false);
-            shiftingMode.setAccessible(false);
-            for (int i = 0; i < menuView.getChildCount(); i++) {
-                BottomNavigationItemView item = (BottomNavigationItemView) menuView.getChildAt(i);
-                item.setShiftingMode(false);
-                // set once again checked value, so view will be updated
-                item.setChecked(item.getItemData().isChecked());
-            }
-        } catch (NoSuchFieldException e) {
-            Log.e("ERROR NO SUCH FIELD", "Unable to get shift mode field");
-        } catch (IllegalAccessException e) {
-            Log.e("ERROR ILLEGAL ALG", "Unable to change value of shift mode");
-        }
-    }
+
 }
