@@ -44,14 +44,19 @@
             android:background="@color/button_get_started"
             android:textColor="@android:color/white"
             android:layout_marginBottom="5dp"
-            android:text="get started"/>
+            android:text="get started"
+            android:textAllCaps="true"
+
+            />
         <Button
             android:id="@+id/btn_member"
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:background="@drawable/member_btn"
             android:textColor="@color/button_get_started"
-            android:text="Already a memeber ?"/>
+            android:text="Already a memeber ?"
+            android:textAllCaps="true"
+            />
     </LinearLayout>
 
 </LinearLayout>
