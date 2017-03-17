@@ -13,6 +13,8 @@
     <color name="white_color">#ffffff</color>
     <color name="welcome_text_color">#bdbdbd</color>
     <color name="otp_info_color">#767676</color>
+    <color name="role_item_subtitle">#4a4a4a</color>
+    <color name="role_item_status">#c3c3c3</color>
 
     <color name="bottombarinactive">#989EA2</color>
     <color name="bottombarbackground">#F3F3F3</color>
