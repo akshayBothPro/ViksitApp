@@ -34,6 +34,7 @@ public class DashboardActivity extends AppCompatActivity {
                                 Intent i = new Intent(DashboardActivity.this, RoleActivity.class);
                                 startActivity(i);
                                 //overridePendingTransition(R.anim.zoom_out, R.anim.zoom_in);
+                                overridePendingTransition(R.anim.zoom_enter, R.anim.zoom_exit);
 
                                 break;
                             case R.id.job:
