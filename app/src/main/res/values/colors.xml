@@ -3,4 +3,10 @@
     <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
+
+    <color name="splash_backgroundscreen">#eb384f</color>
+    <color name="button_get_started">#eb384f</color>
+    <color name="input_border">#dedede</color>
+
+
 </resources>
