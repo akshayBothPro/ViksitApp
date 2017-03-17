@@ -16,6 +16,20 @@ android {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
+        sourceSets {
+            main {
+                assets.srcDirs = ['src/main/assets', 'src/main/res/values/assets/']
+
+                res.srcDirs =
+                        [
+                                'src/main/res/layouts/dashboard/',
+                                'src/main/res/layouts',
+                                'src/main/res',
+
+                        ]
+            }
+        }
+
     }
 }
 
