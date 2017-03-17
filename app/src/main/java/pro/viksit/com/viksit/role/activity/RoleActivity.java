@@ -34,7 +34,7 @@ public class RoleActivity extends AppCompatActivity {
                             case R.id.task:
                                 Intent i = new Intent(RoleActivity.this, DashboardActivity.class);
                                 startActivity(i);
-                                overridePendingTransition(R.anim.zoom_enter, R.anim.zoom_exit);
+                                overridePendingTransition(R.anim.zoom_enter, R.anim.zoom_enter);
 
                                 break;
                             case R.id.job:
