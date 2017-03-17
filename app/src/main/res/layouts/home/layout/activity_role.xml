@@ -5,14 +5,20 @@
     android:layout_height="match_parent">
 
     <!-- Content Container -->
-
-  <TextView
-      android:layout_width="match_parent"
-      android:layout_height="wrap_content"
-      android:text="Hello ROles"
-      android:textSize="23sp"
-      android:layout_centerInParent="true"
-      android:textColor="@color/bottombaractive"
-      />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        android:text="This is ROles "
+        android:textColor="@color/colorPrimary"
+        />
+    <android.support.design.widget.BottomNavigationView
+        android:id="@+id/bottom_navigation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        app:itemBackground="@color/bottombarbackground"
+        app:itemIconTint="@drawable/nav_item_color_state"
+        app:itemTextColor="@drawable/nav_item_color_state"
+        app:menu="@menu/dashboard_menu" />
 
 </RelativeLayout>

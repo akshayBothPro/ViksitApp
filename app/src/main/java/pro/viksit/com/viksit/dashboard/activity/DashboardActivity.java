@@ -1,5 +1,6 @@
 package pro.viksit.com.viksit.dashboard.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.internal.BottomNavigationItemView;
@@ -12,6 +13,7 @@ import android.view.MenuItem;
 import java.lang.reflect.Field;
 
 import pro.viksit.com.viksit.R;
+import pro.viksit.com.viksit.role.activity.RoleActivity;
 
 public class DashboardActivity extends AppCompatActivity {
 
@@ -27,11 +29,15 @@ public class DashboardActivity extends AppCompatActivity {
                     @Override
                     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                         switch (item.getItemId()) {
-                            case R.id.action_favorites:
+                            case R.id.role:
+                                Intent i = new Intent(DashboardActivity.this, RoleActivity.class);
+                                startActivity(i);
+                                overridePendingTransition(R.anim.slide_in, R.anim.slide_out);
 
-                            case R.id.action_schedules:
+                                break;
+                            case R.id.job:
 
-                            case R.id.action_music:
+                            case R.id.challenge:
 
                         }
                         return true;
