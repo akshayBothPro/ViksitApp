@@ -4,9 +4,15 @@
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
 
-    <color name="splash_backgroundscreen">#eb384f</color>
-    <color name="button_get_started">#eb384f</color>
+    <color name="theme_color">#eb384f</color>
     <color name="input_border">#dedede</color>
+    <color name="title_color">#595959</color>
+    <color name="hint_color">#c4c4c4</color>
+    <color name="forgot_password_color">#d6d6d6</color>
+    <color name="register_instead_color">#6e6e6e</color>
+    <color name="white_color">#ffffff</color>
+    <color name="welcome_text_color">#bdbdbd</color>
+    <color name="otp_info_color">#767676</color>
 
 
 </resources>

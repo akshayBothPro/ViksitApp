@@ -3,6 +3,7 @@ package pro.viksit.com.viksit.home;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.AppCompatEditText;
 import android.text.Html;
 import android.util.Log;
 import android.view.View;
@@ -17,10 +18,10 @@ public class SignupActivity extends AppCompatActivity {
 
     private TextView welcome;
     private TextView subtitle;
-    private EditText email;
-    private EditText phoneNumber;
-    private EditText password;
-    private EditText confirmPassword;
+    private AppCompatEditText email;
+    private AppCompatEditText phoneNumber;
+    private AppCompatEditText password;
+    private AppCompatEditText confirmPassword;
     private Button signup;
     private TextView loginInstead;
 
@@ -31,10 +32,10 @@ public class SignupActivity extends AppCompatActivity {
 
         welcome = (TextView) findViewById(R.id.tv_welcome);
         subtitle = (TextView) findViewById(R.id.tv_journey_begins);
-        email = (EditText) findViewById(R.id.et_email);
-        phoneNumber = (EditText) findViewById(R.id.et_phone_number);
-        password = (EditText) findViewById(R.id.et_password);
-        confirmPassword = (EditText) findViewById(R.id.et_confirm_passsword);
+        email = (AppCompatEditText) findViewById(R.id.apet_email);
+        phoneNumber = (AppCompatEditText) findViewById(R.id.apet_phone_number);
+        password = (AppCompatEditText) findViewById(R.id.apet_password);
+        confirmPassword = (AppCompatEditText) findViewById(R.id.et_confirm_passsword);
         signup = (Button) findViewById(R.id.btn_signup);
         loginInstead = (TextView) findViewById(R.id.tv_login_instead);
 

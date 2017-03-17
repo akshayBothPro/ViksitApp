@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.telecom.TelecomManager;
 import android.util.Log;
 import android.view.View;
@@ -13,7 +14,7 @@ import android.widget.TextView;
 
 import pro.viksit.com.viksit.R;
 
-public class HomeActivity extends Activity {
+public class HomeActivity extends AppCompatActivity {
     private static final String TAG = HomeActivity.class.getSimpleName();
 
     private ImageView icon;
