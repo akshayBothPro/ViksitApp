@@ -23,6 +23,8 @@
         <activity android:name=".home.SignupActivity" />
         <activity android:name=".home.LoginActivity" />
         <activity android:name=".home.OTPActivity"></activity>
+        <activity android:name=".dashboard.activity.DashboardActivity"></activity>
+
     </application>
 
 </manifest>
