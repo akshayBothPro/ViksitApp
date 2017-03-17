@@ -4,31 +4,31 @@
     <item
         android:id="@+id/action_favorites"
         android:enabled="true"
-        android:icon="@mipmap/ic_launcher"
-        android:title="@string/app_name"
+        android:icon="@mipmap/ic_assignment_black_24dp"
+        android:title="@string/task"
         app:showAsAction="ifRoom" />
     <item
         android:id="@+id/action_schedules"
         android:enabled="true"
-        android:icon="@mipmap/ic_launcher"
-        android:title="@string/app_name"
+        android:icon="@mipmap/ic_tag_faces_black_24dp"
+        android:title="@string/role"
         app:showAsAction="ifRoom" />
     <item
         android:id="@+id/action_music"
         android:enabled="true"
-        android:icon="@mipmap/ic_launcher"
-        android:title="@string/app_name"
+        android:icon="@mipmap/ic_adjust_black_24dp"
+        android:title="@string/challenge"
         app:showAsAction="ifRoom" />
     <item
         android:id="@+id/action_music1"
         android:enabled="true"
-        android:icon="@mipmap/ic_launcher"
-        android:title="@string/app_name"
+        android:icon="@mipmap/ic_work_black_24dp"
+        android:title="@string/job"
         app:showAsAction="ifRoom" />
     <item
         android:id="@+id/action_music2"
         android:enabled="true"
-        android:icon="@mipmap/ic_launcher"
-        android:title="@string/app_name"
+        android:icon="@mipmap/ic_event_note_black_24dp"
+        android:title="@string/calendar"
         app:showAsAction="ifRoom" />
 </menu>
