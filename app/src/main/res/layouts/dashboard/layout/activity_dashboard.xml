@@ -16,9 +16,9 @@
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="80dp"
+            android:layout_height="65dp"
             android:layout_centerVertical="true"
-            android:background="@color/colorAccent">
+            android:background="@color/theme_color">
 
             <pro.viksit.com.viksit.dashboard.util.HexagonImageView
                 android:id="@+id/profile_pic"
@@ -28,64 +28,82 @@
                 android:layout_marginLeft="10dp"
                 android:src="@drawable/profile_default"></pro.viksit.com.viksit.dashboard.util.HexagonImageView>
 
-            <TextView
-                android:id="@+id/points"
-                android:layout_width="wrap_content"
+            <RelativeLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="2400"
-
-                android:textColor="@android:color/white"
-                android:textSize="23sp"
-                android:layout_alignParentTop="true"
-                android:layout_alignLeft="@+id/exppoints"
-                android:layout_marginTop="20dp"
-                android:layout_marginBottom="3dp"
-                />
-
-            <TextView
-                android:id="@+id/exppoints"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/points"
                 android:layout_toRightOf="@+id/profile_pic"
-                android:text="Experience Points"
-                android:textColor="@android:color/white"
-                android:textSize="14sp" />
+                android:padding="8dp"
+                >
+
+                <TextView
+                    android:id="@+id/points"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentTop="true"
+                    android:text="2400"
+                    android:textColor="@android:color/white"
+                    android:textSize="24sp" />
+
+                <TextView
+                    android:id="@+id/exppoints"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/points"
+                    android:text="Experience Points"
+                    android:textColor="@android:color/white"
+                    android:textSize="12sp" />
+            </RelativeLayout>
 
             <ImageView
                 android:id="@+id/notfication"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
                 android:layout_alignParentRight="true"
                 android:layout_centerVertical="true"
-                android:tint="@android:color/white"
-                android:src="@mipmap/ic_tag_faces_black_24dp"
-                android:layout_marginRight="10dp"/>
+                android:layout_marginRight="10dp"
+                android:src="@mipmap/ic_notifications_active_black_24dp"
+                android:tint="@android:color/white" />
 
             <TextView
                 android:id="@+id/coins"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
+                android:layout_marginRight="5dp"
                 android:layout_toLeftOf="@+id/notfication"
                 android:text="260 "
                 android:textColor="@android:color/white"
-                android:textSize="30sp"
-                android:layout_marginRight="5dp"
+                android:textSize="24dp"
 
                 />
 
             <ImageView
-                android:layout_width="30dp"
-                android:layout_height="30dp"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
                 android:layout_centerVertical="true"
-                android:layout_toLeftOf="@+id/coins"
-                android:tint="@android:color/white"
-                android:src="@mipmap/ic_monetization_on_black_24dp"
                 android:layout_marginRight="5dp"
-                />
+                android:layout_toLeftOf="@+id/coins"
+                android:src="@mipmap/ic_monetization_on_black_24dp"
+                android:tint="@android:color/white" />
         </RelativeLayout>
     </android.support.v7.widget.Toolbar>
+
+
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/viewpager"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:clipToPadding="false"
+        android:padding="10dp"
+        android:overScrollMode="never"
+        android:paddingEnd="@dimen/card_padding"
+        android:paddingLeft="@dimen/card_padding"
+        android:paddingRight="@dimen/card_padding"
+        android:paddingStart="@dimen/card_padding"
+        android:layout_below="@+id/toolbar"
+        android:layout_above="@+id/bottom_navigation"/>
+
 
 
     <android.support.design.widget.BottomNavigationView

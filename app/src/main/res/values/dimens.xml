@@ -5,5 +5,18 @@
     <dimen name="text_margin">16dp</dimen>
     <dimen name="action_bar_size">60dp</dimen>
     <dimen name="imagewidth">60dp</dimen>
+    <dimen name="h1">24sp</dimen>
+    <dimen name="h2">23sp</dimen>
+    <dimen name="h3">22sp</dimen>
+    <dimen name="h4">21sp</dimen>
+    <dimen name="h5">20sp</dimen>
+    <dimen name="h6">19sp</dimen>
+    <dimen name="h7">18sp</dimen>
+    <dimen name="p1">17sp</dimen>
+    <dimen name="p2">16sp</dimen>
+    <dimen name="p3">15sp</dimen>
+    <dimen name="p4">14sp</dimen>
+    <dimen name="p5">13sp</dimen>
+    <dimen name="card_padding">35dp</dimen>
 
 </resources>
