@@ -20,13 +20,15 @@
             android:layout_centerVertical="true"
             android:background="@color/theme_color">
 
-            <pro.viksit.com.viksit.dashboard.util.HexagonImageView
+            <!--<pro.viksit.com.viksit.dashboard.util.HexagonImageView
                 android:id="@+id/profile_pic"
                 android:layout_width="60dp"
                 android:layout_height="60dp"
                 android:layout_centerVertical="true"
                 android:layout_marginLeft="10dp"
-                android:src="@drawable/profile_default"></pro.viksit.com.viksit.dashboard.util.HexagonImageView>
+                android:src="@drawable/profile_default">
+
+            </pro.viksit.com.viksit.dashboard.util.HexagonImageView>-->
 
             <RelativeLayout
                 android:layout_width="match_parent"

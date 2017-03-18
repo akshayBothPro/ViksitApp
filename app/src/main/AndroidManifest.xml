@@ -18,16 +18,17 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:name=".home.activity.HomeActivity" />
+        <activity android:name=".home.activity.HomeActivity" />
         <activity android:name=".home.activity.SignupActivity" />
         <activity android:name=".home.activity.LoginActivity" />
         <activity android:name=".home.activity.OTPActivity" />
         <activity android:name=".dashboard.activity.DashboardActivity" />
         <activity android:name=".role.activity.RoleActivity" />
         <activity android:name=".MainActivity" /> <!-- not used yet -->
-        <activity android:name=".role.activity.ModuleViewActivity"
-            android:theme="@style/WithActionBar"/>
+        <activity
+            android:name=".role.activity.ModuleViewActivity"
+            android:label="@string/title_activity_module_view"
+            android:theme="@style/AppTheme"/>
     </application>
 
 </manifest>
