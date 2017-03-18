@@ -1,11 +1,14 @@
 package pro.viksit.com.viksit.role.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.LinearSnapHelper;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.SnapHelper;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.TextView;
@@ -66,8 +69,12 @@ public class RoleActivity extends AppCompatActivity {
         verticalRecycler.addOnItemTouchListener(
                 new RecyclerItemClickListener (getBaseContext(), verticalRecycler ,new RecyclerItemClickListener.OnItemClickListener() {
                     @Override public void onItemClick(View view, int position) {
-                        // do whatever
                         System.out.println("Vposition: " + position);
+                        Intent intent = new Intent(RoleActivity.this, ModuleViewActivity.class);
+                        Bundle bundle = new Bundle();
+                        bundle.putSerializable("role", roles.get(position));
+                        intent.putExtras(bundle);
+                        startActivity(intent);
                     }
 
                     @Override public void onLongItemClick(View view, int position) {
@@ -84,6 +91,7 @@ public class RoleActivity extends AppCompatActivity {
         });
 
         //setting up horizontal recycler view
+
         roleHorizontalRecyclerViewAdapter = new RoleHorizontalRecyclerViewAdapter(recommendedRoles);
         RecyclerView.LayoutManager hLayoutManager = new LinearLayoutManager(getBaseContext(), LinearLayoutManager.HORIZONTAL, true);
         horizontalRecycler.setLayoutManager(hLayoutManager);
@@ -107,17 +115,17 @@ public class RoleActivity extends AppCompatActivity {
         roles = new ArrayList<>();
 
         //role constructor => (int imageResID, String title, String subtitle, int totalItems, int completedItems)
-        Role role = new Role(R.drawable.ic_accessible_black_36dp,"Game Designer","User Interface Developer",247,31);
+        Role role = new Role(R.drawable.app_store,"Game Designer","User Interface Developer",247,131);
         roles.add(role);
-        role = new Role(R.drawable.ic_accessible_black_36dp,"Game Designer","User Interface Developer",247,31);
+        role = new Role(R.drawable.app_store,"Game Designer","User Interface Developer",247,231);
         roles.add(role);
-        role = new Role(R.drawable.ic_accessible_black_36dp,"Game Designer","User Interface Developer",247,31);
+        role = new Role(R.drawable.app_store,"Business Analyst","Mutual Fund Planner",247,91);
         roles.add(role);
-        role = new Role(R.drawable.ic_accessible_black_36dp,"Game Designer","User Interface Developer",247,31);
+        role = new Role(R.drawable.app_store,"Game Designer","User Interface Developer",247,31);
         roles.add(role);
-        role = new Role(R.drawable.ic_accessible_black_36dp,"Game Designer","User Interface Developer",247,31);
+        role = new Role(R.drawable.app_store,"Game Designer","User Interface Developer",247,39);
         roles.add(role);
-        role = new Role(R.drawable.ic_accessible_black_36dp,"Game Designer","User Interface Developer",247,31);
+        role = new Role(R.drawable.app_store,"Business Analyst","Mutual Fund Planner",247,51);
         roles.add(role);
 
     }
@@ -126,17 +134,17 @@ public class RoleActivity extends AppCompatActivity {
         recommendedRoles = new ArrayList<>();
 
         //recommendedRole constructor => (int resID)
-        RecommendedRole recommendedRole = new RecommendedRole(R.drawable.ic_accessible_black_36dp);
+        RecommendedRole recommendedRole = new RecommendedRole(R.drawable.app_store);
         recommendedRoles.add(recommendedRole);
-        recommendedRole = new RecommendedRole(R.drawable.ic_accessible_black_36dp);
+        recommendedRole = new RecommendedRole(R.drawable.app_store);
         recommendedRoles.add(recommendedRole);
-        recommendedRole = new RecommendedRole(R.drawable.ic_accessible_black_36dp);
+        recommendedRole = new RecommendedRole(R.drawable.app_store);
         recommendedRoles.add(recommendedRole);
-        recommendedRole = new RecommendedRole(R.drawable.ic_accessible_black_36dp);
+        recommendedRole = new RecommendedRole(R.drawable.app_store);
         recommendedRoles.add(recommendedRole);
-        recommendedRole = new RecommendedRole(R.drawable.ic_accessible_black_36dp);
+        recommendedRole = new RecommendedRole(R.drawable.app_store);
         recommendedRoles.add(recommendedRole);
-        recommendedRole = new RecommendedRole(R.drawable.ic_accessible_black_36dp);
+        recommendedRole = new RecommendedRole(R.drawable.app_store);
         recommendedRoles.add(recommendedRole);
     }
 }

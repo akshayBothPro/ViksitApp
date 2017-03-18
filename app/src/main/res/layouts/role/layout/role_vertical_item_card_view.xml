@@ -8,7 +8,6 @@
         android:id="@+id/cv_role_vertical_card"
         android:layout_width="match_parent"
         android:layout_height="120dp"
-        card_view:cardUseCompatPadding="true"
         card_view:cardElevation="4dp"
         card_view:cardCornerRadius="3dp">
 
@@ -21,29 +20,27 @@
                 android:layout_height="match_parent"
                 android:orientation="vertical"
                 android:gravity="center"
-                android:padding="2dp"
                 android:layout_weight="3">
                 <ImageView
                     android:id="@+id/iv_role_vertical_item_image"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:background="@drawable/ic_accessible_black_36dp"/>
+                    android:layout_height="match_parent"/>
             </LinearLayout>
 
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:padding="5dp"
                 android:orientation="vertical"
+                android:layout_margin="5dp"
                 android:layout_weight="1">
 
                 <TextView
                     android:id="@+id/tv_role_vertical_item_title"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="2dp"
+                    android:layout_marginBottom="1dp"
                     android:textColor="@color/welcome_text_color"
-                    android:textSize="14sp"
+                    android:textSize="12sp"
                     android:textAllCaps="true"
                     android:text="Game Designer"/>
                 <TextView
@@ -52,7 +49,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textColor="@color/role_item_subtitle"
-                    android:textSize="20sp"
+                    android:textSize="17sp"
                     android:text="User Interface Developer" />
                 <TextView
                     android:id="@+id/tv_role_vertical_item_status"
@@ -60,7 +57,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textColor="@color/role_item_status"
-                    android:textSize="15sp"
+                    android:textSize="13sp"
                     android:text="31 of 247 items completed"/>
                 <ProgressBar
                     android:id="@+id/pb_role_vertical_item_progress"

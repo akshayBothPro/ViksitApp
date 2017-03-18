@@ -29,39 +29,47 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:padding="5dp"
+            android:layout_margin="4dp"
             android:layout_weight="75">
-            <TextView
-                android:id="@+id/tv_recommended_roles"
-                android:layout_alignParentLeft="true"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textColor="@color/recommended_roles_color"
-                android:textStyle="bold"
-                android:textSize="14sp"
-                android:text="Recommended Roles"/>
-            <TextView
-                android:id="@+id/tv_see_more"
-                android:layout_alignParentRight="true"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textColor="@color/see_more_color"
-                android:textStyle="bold"
-                android:textSize="14sp"
-                android:textAllCaps="true"
-                android:text="see more" />
+            <RelativeLayout
+                android:id="@+id/rl_txt_con"
+                android:layout_margin="5dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:id="@+id/tv_recommended_roles"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/recommended_roles_color"
+                    android:textStyle="bold"
+                    android:textSize="14sp"
+                    android:text="Recommended Roles"/>
+                <TextView
+                    android:id="@+id/tv_see_more"
+                    android:layout_alignParentRight="true"
+                    android:layout_alignParentEnd="true"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/see_more_color"
+                    android:textStyle="bold"
+                    android:textSize="14sp"
+                    android:textAllCaps="true"
+                    android:text="see more" />
+            </RelativeLayout>
+
             <android.support.v7.widget.RecyclerView
                 android:id="@+id/rv_role_horizontal"
-                android:layout_below="@+id/tv_recommended_roles"
+                android:layout_marginTop="5dp"
+                android:layout_below="@id/rl_txt_con"
+                android:orientation="horizontal"
+                android:layout_alignParentBottom="true"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:scrollbars="horizontal"
-                android:fadeScrollbars="false"
-                android:scrollbarStyle="insideOverlay"/>
+                android:layout_height="wrap_content"/>
+
         </RelativeLayout>
-
     </LinearLayout>
-
 
     <android.support.design.widget.BottomNavigationView
         android:id="@+id/bottom_navigation"
@@ -72,7 +80,5 @@
         app:itemIconTint="@drawable/nav_item_color_state"
         app:itemTextColor="@drawable/nav_item_color_state"
         app:menu="@menu/dashboard_menu" />
-
-
 
 </RelativeLayout>

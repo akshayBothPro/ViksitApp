@@ -1,5 +1,7 @@
 package pro.viksit.com.viksit.role.adapter;
 
+import android.graphics.Color;
+import android.graphics.PorterDuff;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -19,7 +21,6 @@ import pro.viksit.com.viksit.role.pojo.Role;
  */
 
 public class RoleVerticalRecyclerViewAdapter extends RecyclerView.Adapter<RoleVerticalRecyclerViewAdapter.MyViewHolder>  {
-
     private List<Role> roles;
 
     public RoleVerticalRecyclerViewAdapter(List<Role> roles) {
@@ -71,6 +72,8 @@ public class RoleVerticalRecyclerViewAdapter extends RecyclerView.Adapter<RoleVe
             image = (ImageView)view.findViewById(R.id.iv_role_vertical_item_image);
             progressBar = (ProgressBar) view.findViewById(R.id.pb_role_vertical_item_progress);
             cardview = (CardView)view.findViewById(R.id.cv_role_vertical_card);
+
+            progressBar.getProgressDrawable().setColorFilter(Color.parseColor("#5bc6f6"), PorterDuff.Mode.MULTIPLY);
             cardview.setOnClickListener(this);
         }
 
