@@ -1,4 +1,4 @@
-package pro.viksit.com.viksit.home;
+package pro.viksit.com.viksit.home.activity;
 
 import android.app.ProgressDialog;
 import android.content.Intent;

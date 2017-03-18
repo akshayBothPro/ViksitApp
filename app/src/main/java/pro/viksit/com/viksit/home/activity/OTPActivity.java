@@ -1,4 +1,4 @@
-package pro.viksit.com.viksit.home;
+package pro.viksit.com.viksit.home.activity;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
