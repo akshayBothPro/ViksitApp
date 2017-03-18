@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="20dp"
-    tools:context="pro.viksit.com.viksit.home.LoginActivity"
+    tools:context="pro.viksit.com.viksit.home.activity.LoginActivity"
     android:background="@android:color/white">
     <LinearLayout
         android:layout_width="match_parent"

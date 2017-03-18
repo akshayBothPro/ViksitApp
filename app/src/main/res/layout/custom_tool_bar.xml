@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/theme_color"
+        android:minHeight="?attr/actionBarSize"
+        app:contentInsetLeft="0dp"
+        app:contentInsetStart="0dp">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:layout_centerVertical="true"
+            android:background="@color/colorAccent">
+
+            <!--<pro.viksit.com.viksit.dashboard.util.HexagonImageView
+                android:id="@+id/profile_pic"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="10dp"
+                android:src="@drawable/profile_default"></pro.viksit.com.viksit.dashboard.util.HexagonImageView>-->
+
+            <TextView
+                android:id="@+id/points"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="2400"
+
+                android:textColor="@android:color/white"
+                android:textSize="23sp"
+                android:layout_alignParentTop="true"
+                android:layout_alignLeft="@+id/exppoints"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="3dp"
+                />
+
+            <TextView
+                android:id="@+id/exppoints"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/points"
+                android:layout_toRightOf="@+id/profile_pic"
+                android:text="Experience Points"
+                android:textColor="@android:color/white"
+                android:textSize="14sp" />
+
+            <ImageView
+                android:id="@+id/notfication"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:tint="@android:color/white"
+                android:src="@mipmap/ic_notifications_white_36dp"
+                android:layout_marginRight="10dp"/>
+
+            <TextView
+                android:id="@+id/coins"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_toLeftOf="@+id/notfication"
+                android:text="260 "
+                android:textColor="@android:color/white"
+                android:textSize="30sp"
+                android:layout_marginRight="5dp"
+
+                />
+
+            <ImageView
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_centerVertical="true"
+                android:layout_toLeftOf="@+id/coins"
+                android:tint="@android:color/white"
+                android:src="@mipmap/ic_monetization_on_black_24dp"
+                android:layout_marginRight="5dp"
+                />
+        </RelativeLayout>
+    </android.support.v7.widget.Toolbar>
+</RelativeLayout>

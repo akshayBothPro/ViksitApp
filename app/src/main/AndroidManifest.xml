@@ -9,22 +9,25 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity" />
+
         <activity
-            android:name=".home.SplashScreenActivity"
-            android:theme="@style/SplashTheme" />
-        <activity android:name=".home.HomeActivity">
+            android:name=".home.activity.SplashScreenActivity"
+            android:theme="@style/SplashTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".home.SignupActivity" />
-        <activity android:name=".home.LoginActivity" />
-        <activity android:name=".home.OTPActivity" />
+        <activity android:name=".home.activity.HomeActivity"/>
+        <activity android:name=".home.activity.SignupActivity" />
+        <activity android:name=".home.activity.LoginActivity" />
+        <activity android:name=".home.activity.OTPActivity" />
         <activity android:name=".dashboard.activity.DashboardActivity" />
-        <activity android:name=".role.activity.RoleActivity"></activity>
+        <activity android:name=".role.activity.RoleActivity"/>
+
+        <activity android:name=".MainActivity" /><!--not used yet-->
+
+
     </application>
 
 </manifest>

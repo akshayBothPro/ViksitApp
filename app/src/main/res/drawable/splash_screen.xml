@@ -4,14 +4,11 @@
     <item
         android:drawable="@color/theme_color"/>
 
-    <item
-        android:width="50dp"
-        android:height="50dp">
+    <!--<item>
         <bitmap
-
             android:gravity="center"
             android:src="@drawable/app_store"
             />
-    </item>
+    </item>-->
 
 </layer-list>
