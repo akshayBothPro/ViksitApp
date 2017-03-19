@@ -6,9 +6,7 @@ import android.support.design.widget.BottomNavigationView;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.LinearSnapHelper;
 import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.SnapHelper;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.TextView;
@@ -90,7 +88,7 @@ public class RoleActivity extends AppCompatActivity {
 
         //setting up horizontal recycler view
         roleHorizontalRecyclerViewAdapter = new RoleHorizontalRecyclerViewAdapter(recommendedRoles);
-        RecyclerView.LayoutManager hLayoutManager = new LinearLayoutManager(getBaseContext(), LinearLayoutManager.HORIZONTAL, true);
+        RecyclerView.LayoutManager hLayoutManager = new LinearLayoutManager(getBaseContext(), LinearLayoutManager.HORIZONTAL, false);
         horizontalRecycler.setLayoutManager(hLayoutManager);
         horizontalRecycler.setItemAnimator(new DefaultItemAnimator());
         horizontalRecycler.setAdapter(roleHorizontalRecyclerViewAdapter);
@@ -99,6 +97,8 @@ public class RoleActivity extends AppCompatActivity {
                     @Override public void onItemClick(View view, int position) {
                         // do something
                         System.out.println("Hposition: " + position);
+                        Intent j = new Intent(RoleActivity.this,RoleDetailActivity.class);
+                        startActivity(j);
                     }
                     @Override public void onLongItemClick(View view, int position) {
                         // do something
