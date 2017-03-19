@@ -5,6 +5,9 @@ import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.DefaultItemAnimator;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.text.Html;
 import android.view.Menu;
@@ -13,8 +16,15 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import pro.viksit.com.viksit.R;
+import pro.viksit.com.viksit.dashboard.util.HexagonImageView;
+import pro.viksit.com.viksit.role.adapter.ModuleViewRecyclerAdapter;
+import pro.viksit.com.viksit.role.pojo.Module;
 import pro.viksit.com.viksit.role.pojo.Role;
+import pro.viksit.com.viksit.role.util.RecyclerItemClickListener;
 
 public class ModuleViewActivity extends AppCompatActivity {
     private static final String TAG = ModuleViewActivity.class.getSimpleName();
@@ -25,6 +35,10 @@ public class ModuleViewActivity extends AppCompatActivity {
     private TextView currentXP;
     private TextView totalXP;
     private TextView percent;
+    private HexagonImageView hexagonImageView;
+    private RecyclerView recyclerView;
+    private ModuleViewRecyclerAdapter adapter;
+    private List<Module> modules;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,9 +53,12 @@ public class ModuleViewActivity extends AppCompatActivity {
         currentXP = (TextView) findViewById(R.id.tv_moduleview_currentXP);
         totalXP = (TextView) findViewById(R.id.tv_moduleview_totalXP);
         percent = (TextView) findViewById(R.id.tv_moduleview_percent);
+        hexagonImageView = (HexagonImageView) findViewById(R.id.profile_pic);
+        recyclerView = (RecyclerView) findViewById(R.id.rv_moduleview_recycler);
 
         setSupportActionBar(toolbar);
-        implmentActions();
+        setModuleViewData();
+        implementActionsListeners();
     }
 
     @Override
@@ -55,7 +72,7 @@ public class ModuleViewActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    private void implmentActions(){
+    private void implementActionsListeners(){
         subtitle.setText(role.getSubtitle());
         info.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -64,12 +81,79 @@ public class ModuleViewActivity extends AppCompatActivity {
                 System.out.println("info clciked");
             }
         });
-        currentXP.setText(Html.fromHtml("<b>" + Integer.toString(role.getCompletedItems()) +"</b> XP"));
-        totalXP.setText("of " + Integer.toString(role.getTotalItems()) + "XP earned");
+        currentXP.setText(Html.fromHtml("<b>" + Integer.toString(role.getCompletedItems()) +" <small>XP</small></b>"));
+        totalXP.setText(Html.fromHtml("of <b>" + Integer.toString(role.getTotalItems()) + " <small>XP</small></b> earned"));
         int n = (role.getCompletedItems()*100)/role.getTotalItems();
-        percent.setText(Html.fromHtml("<b>" + Integer.toString(n) +"</b> %"));
+        percent.setText(Html.fromHtml("<b>" + Integer.toString(n) +" <small>%</small></b>"));
 
+        // setting up vertical recycler view
+        adapter = new ModuleViewRecyclerAdapter(modules,getBaseContext());
+        RecyclerView.LayoutManager vLayoutManager = new LinearLayoutManager(getBaseContext(), LinearLayoutManager.VERTICAL, true);
+        recyclerView.setLayoutManager(vLayoutManager);
+        recyclerView.setItemAnimator(new DefaultItemAnimator());
+        recyclerView.setAdapter(adapter);
+        recyclerView.addOnItemTouchListener(
+                new RecyclerItemClickListener(getBaseContext(), recyclerView ,new RecyclerItemClickListener.OnItemClickListener() {
+                    @Override public void onItemClick(View view, int position) {
+                        System.out.println("Module position: " + position);
+                        /*Intent intent = new Intent(RoleActivity.this, ModuleViewActivity.class);
+                        Bundle bundle = new Bundle();
+                        bundle.putSerializable("role", roles.get(position));
+                        intent.putExtras(bundle);
+                        startActivity(intent);*/
+                    }
 
+                    @Override public void onLongItemClick(View view, int position) {
+                        // do whatever
+                    }
+                })
+        );
     }
 
+    private void setModuleViewData(){
+        modules = new ArrayList<>();
+
+        //1st data entry
+        ArrayList<String> labels = new ArrayList<>();
+        labels.add("Risk Analysis");
+        labels.add("Risk Management");
+        //Module constructor => (int imageResID, String moduleTitle, ArrayList<String> labels)
+        Module module = new Module(R.drawable.ic_ac, "Selling Circus Funds", labels);
+        modules.add(module);
+
+        //2nd data entry
+        labels = new ArrayList<>();
+        labels.add("Risk Analysis Profiling");
+        labels.add("Risk Management");
+        module = new Module(R.drawable.ic_ah, "Buying Mutual circus", labels);
+        modules.add(module);
+
+        //3rd data entry
+        labels = new ArrayList<>();
+        labels.add("Customer Profiling");
+        labels.add("Risk Management");
+        module = new Module(R.drawable.ic_ai, "Selling Mutual Funds", labels);
+        modules.add(module);
+
+        //4th data entry
+        labels = new ArrayList<>();
+        labels.add("Risk Analysis");
+        labels.add("Risk Management Profiling");
+        module = new Module(R.drawable.ic_ap, "Buying Circus Funds", labels);
+        modules.add(module);
+
+        //5th data entry
+        labels = new ArrayList<>();
+        labels.add("Customer Profiling");
+        labels.add("Risk Management");
+        module = new Module(R.drawable.ic_ag, "Selling Mutual Circus", labels);
+        modules.add(module);
+
+        //6th data entry
+        labels = new ArrayList<>();
+        labels.add("Risk Analysis");
+        labels.add("Risk Management Profiling");
+        module = new Module(R.drawable.ic_af, "Buying Mutual Funds", labels);
+        modules.add(module);
+    }
 }

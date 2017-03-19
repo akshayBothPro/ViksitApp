@@ -23,7 +23,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="5dp"
-                android:textSize="20sp"
+                android:textSize="22sp"
                 android:textStyle="bold"
                 android:text="Welcome!"
                 android:textColor="#595959"/>
@@ -32,7 +32,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="15dp"
-                android:textSize="16sp"
+                android:textSize="17sp"
                 android:text="Your Journey begins here"
                 android:textColor="#595959"/>
 
@@ -43,6 +43,7 @@
                 android:background="@drawable/input_shape"
                 android:layout_marginBottom="5dp"
                 android:padding="5dp"
+                android:paddingRight="10dp"
                 android:singleLine="true"
                 android:textCursorDrawable="@null"
                 android:textColorHint="#c4c4c4"
@@ -55,6 +56,7 @@
                 android:background="@drawable/input_shape"
                 android:layout_marginBottom="5dp"
                 android:padding="5dp"
+                android:paddingRight="10dp"
                 android:singleLine="true"
                 android:textCursorDrawable="@null"
                 android:textColorHint="#c4c4c4"
@@ -67,6 +69,7 @@
                 android:background="@drawable/input_shape"
                 android:layout_marginBottom="5dp"
                 android:padding="5dp"
+                android:paddingRight="10dp"
                 android:singleLine="true"
                 android:textCursorDrawable="@null"
                 android:textColorHint="#c4c4c4"
@@ -79,6 +82,7 @@
                 android:background="@drawable/input_shape"
                 android:layout_marginBottom="15dp"
                 android:padding="5dp"
+                android:paddingRight="10dp"
                 android:singleLine="true"
                 android:textCursorDrawable="@null"
                 android:textColorHint="#c4c4c4"
@@ -102,7 +106,8 @@
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:layout_alignParentBottom="true"
+        android:layout_marginBottom="5dp"
         android:text="Already a member? Login instead"
-        android:textColor="#6b6b6b"/>
-
+        android:textSize="15sp"
+        android:textColor="@color/register_instead_color"/>
 </RelativeLayout>

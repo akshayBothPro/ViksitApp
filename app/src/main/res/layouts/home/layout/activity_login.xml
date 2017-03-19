@@ -24,7 +24,7 @@
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 android:layout_margin="10dp"
-                android:textSize="20sp"
+                android:textSize="22sp"
                 android:textStyle="bold"
                 android:text="Welcome back! Ready to get some work done "
                 android:textColor="@color/title_color"/>
@@ -33,6 +33,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:padding="5dp"
+                android:paddingRight="10dp"
                 android:layout_marginTop="5dp"
                 android:layout_marginBottom="5dp"
                 android:background="@drawable/input_shape"
@@ -48,6 +49,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="15dp"
                 android:padding="5dp"
+                android:paddingRight="10dp"
                 android:background="@drawable/input_shape"
                 android:singleLine="true"
                 android:textCursorDrawable="@null"
@@ -69,7 +71,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textColor="@color/forgot_password_color"
-                android:textSize="15sp"/>
+                android:textSize="16sp"/>
 
         </LinearLayout>
 
@@ -81,6 +83,9 @@
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:layout_alignParentBottom="true"
+        android:layout_marginBottom="5dp"
+        android:textSize="15sp"
+        android:text="TALEJDJKDKJHFJJKD"
         android:textColor="@color/register_instead_color"/>
 
 </RelativeLayout>

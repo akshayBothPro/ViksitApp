@@ -31,7 +31,7 @@
                 android:layout_margin="8dp"
                 android:layout_alignParentLeft="true"
                 android:layout_centerVertical="true"
-                android:src="@drawable/app_store"
+                android:src="@drawable/ic_as"
                 app:siBorderWidth="3dp"
                 app:siBorderColor="@color/white_color"/>
 
