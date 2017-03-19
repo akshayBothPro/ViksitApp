@@ -17,21 +17,21 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_margin="5dp"
             android:layout_centerVertical="true">
-
-
 
             <com.github.siyamed.shapeimageview.HexagonImageView
                 android:id="@+id/profile_pic"
-                android:layout_width="60dp"
-                android:layout_height="55dp"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
                 android:layout_marginLeft="5dp"
+                android:layout_marginStart="5dp"
                 android:layout_marginRight="10dp"
+                android:layout_marginEnd="5dp"
                 android:layout_margin="8dp"
                 android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
                 android:layout_centerVertical="true"
-                android:src="@drawable/ic_as"
+                android:src="@drawable/app_store"
                 app:siBorderWidth="3dp"
                 app:siBorderColor="@color/white_color"/>
 
@@ -55,7 +55,6 @@
                 android:layout_toRightOf="@+id/profile_pic"
                 android:layout_marginBottom="2dp"
                 android:text="Experience Points"
-                android:textStyle="bold"
                 android:textColor="@android:color/white"
                 android:textSize="14sp" />
 
@@ -67,6 +66,7 @@
                 android:layout_centerVertical="true"
                 android:tint="@android:color/white"
                 android:src="@mipmap/ic_notifications_white_36dp"
+                android:layout_marginLeft="10dp"
                 android:layout_marginRight="8dp"/>
 
             <TextView

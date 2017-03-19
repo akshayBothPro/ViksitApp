@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context="pro.viksit.com.viksit.job.activity.JobActivity">
+    <include
+        android:id="@+id/tl_common_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        layout="@layout/custom_tool_bar" />
+    <LinearLayout
+        android:id="@+id/ll_job_tab_fragment_container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/tl_common_toolbar"
+        android:layout_above="@+id/bottom_navigation"
+        android:gravity="center"
+        android:orientation="vertical">
+        <android.support.v4.view.ViewPager
+            android:id="@+id/vp_job_pager"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <android.support.design.widget.TabLayout
+                android:id="@+id/tl_job_tabs"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                app:tabTextColor="#000"
+                app:tabBackground="@color/theme_color"
+                app:tabSelectedTextColor="@android:color/white"
+                android:layout_gravity="top"
+                app:tabTextAppearance="@style/TabLayoutTextStyle"/>
+
+        </android.support.v4.view.ViewPager>
+
+    </LinearLayout>
+
+    <android.support.design.widget.BottomNavigationView
+        android:id="@+id/bottom_navigation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        app:itemBackground="@color/bottombarbackground"
+        app:itemIconTint="@drawable/nav_item_color_state"
+        app:itemTextColor="@drawable/nav_item_color_state"
+        app:menu="@menu/dashboard_menu" />
+</RelativeLayout>

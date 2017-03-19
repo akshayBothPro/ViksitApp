@@ -14,6 +14,7 @@ import java.lang.reflect.Field;
 
 import pro.viksit.com.viksit.R;
 import pro.viksit.com.viksit.dashboard.activity.DashboardActivity;
+import pro.viksit.com.viksit.job.activity.JobActivity;
 import pro.viksit.com.viksit.role.activity.RoleActivity;
 
 /**
@@ -21,7 +22,6 @@ import pro.viksit.com.viksit.role.activity.RoleActivity;
  */
 
 public class BottomBarUtil {
-
 
     public void setupBottomBar(BottomNavigationView bottomNavigationView,final Context context,int i){
         removeShiftMode(bottomNavigationView);
@@ -51,6 +51,16 @@ public class BottomBarUtil {
                                 }
                                 break;
                             case R.id.challenge:
+                                break;
+                            case R.id.job:
+                                if(((Activity)context) instanceof JobActivity) {
+                                    System.out.println("Dont call Job in Job ... ... .... ");
+
+                                }else {
+                                    Intent ii = new Intent(context, JobActivity.class);
+                                    context.startActivity(ii);
+                                    ((Activity) context).overridePendingTransition(R.anim.zoom_enter, R.anim.zoom_exit);
+                                }
                                 break;
                         }
                         return true;

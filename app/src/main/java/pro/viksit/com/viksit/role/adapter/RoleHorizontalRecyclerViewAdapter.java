@@ -40,7 +40,7 @@ public class RoleHorizontalRecyclerViewAdapter extends RecyclerView.Adapter<Role
 
         // if we have image URL instead of resID use it
         /*URL url = recommendedRole.getImageURL();
-        Bitmap bmp = BitmapFactory.decodeStream(url.openConnection().getInputStream());
+        Bitmap b/opolp;'///'00 = BitmapFactory.decodeStream(url.openConnection().getInputStream());
         holder.image.setImageBitmap(bmp);*/
     }
 

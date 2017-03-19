@@ -41,7 +41,7 @@ public class RoleVerticalRecyclerViewAdapter extends RecyclerView.Adapter<RoleVe
         Role role = roles.get(position);
         holder.title.setText(role.getTitle());
         holder.subtitle.setText(role.getSubtitle());
-        holder.status.setText(Integer.toString(role.getCompletedItems()) + " of " + Integer.toString(role.getTotalItems()) + "items completed");
+        holder.status.setText(Integer.toString(role.getCompletedItems()) + " of " + Integer.toString(role.getTotalItems()) + " items completed");
         holder.image.setImageResource(role.getImageResID());
         holder.progressBar.setMax(role.getTotalItems());
         holder.progressBar.setProgress(role.getCompletedItems());

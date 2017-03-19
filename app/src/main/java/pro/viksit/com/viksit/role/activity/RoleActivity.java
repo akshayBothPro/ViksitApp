@@ -45,16 +45,16 @@ public class RoleActivity extends AppCompatActivity {
         setContentView(R.layout.activity_role);
 
         toolbar = (Toolbar) findViewById(R.id.toolbar);
+        bottomNavigationView = (BottomNavigationView) findViewById(R.id.bottom_navigation);
         verticalRecycler = (RecyclerView) findViewById(R.id.rv_role_vertical);
         seeMore = (TextView) findViewById(R.id.tv_see_more);
         horizontalRecycler = (RecyclerView) findViewById(R.id.rv_role_horizontal);
-        bottomNavigationView = (BottomNavigationView) findViewById(R.id.bottom_navigation);
 
         setSupportActionBar(toolbar);
+        new BottomBarUtil().setupBottomBar(bottomNavigationView,RoleActivity.this,R.id.role);//setting bottom navigation bar
         setRoleData();
         setRecommendedRoleData();
         implementActions();
-        new BottomBarUtil().setupBottomBar(bottomNavigationView,RoleActivity.this,R.id.role);//setting bottom navigation bar
     }
 
     private void implementActions(){
@@ -76,7 +76,7 @@ public class RoleActivity extends AppCompatActivity {
                         startActivity(intent);
                     }
                     @Override public void onLongItemClick(View view, int position) {
-                        // do whatever
+                        // do something
                     }
                 })
         );
@@ -110,17 +110,17 @@ public class RoleActivity extends AppCompatActivity {
         roles = new ArrayList<>();
 
         //role constructor => (int imageResID, String title, String subtitle, int totalItems, int completedItems)
-        Role role = new Role(R.drawable.ic_ab,"Game Designer","User Interface Developer",247,131);
+        Role role = new Role(R.mipmap.ic_adjust_black_24dp,"Game Designer","User Interface Developer",247,131);
         roles.add(role);
-        role = new Role(R.drawable.ic_ac,"Game Designer","User Interface Developer",247,231);
+        role = new Role(R.mipmap.ic_tag_faces_black_24dp,"Game Designer","User Interface Developer",247,231);
         roles.add(role);
-        role = new Role(R.drawable.ic_af,"Business Analyst","Mutual Fund Planner",247,91);
+        role = new Role(R.mipmap.ic_monetization_on_black_24dp,"Business Analyst","Mutual Fund Planner",247,91);
         roles.add(role);
-        role = new Role(R.drawable.ic_ad,"Game Designer","User Interface Developer",247,31);
+        role = new Role(R.mipmap.ic_event_note_black_24dp,"Game Designer","User Interface Developer",247,31);
         roles.add(role);
-        role = new Role(R.drawable.ic_ae,"Game Designer","User Interface Developer",247,39);
+        role = new Role(R.mipmap.ic_assignment_black_24dp,"Game Designer","User Interface Developer",247,39);
         roles.add(role);
-        role = new Role(R.drawable.ic_ag,"Business Analyst","Mutual Fund Planner",247,51);
+        role = new Role(R.mipmap.ic_notifications_active_black_24dp,"Business Analyst","Mutual Fund Planner",247,51);
         roles.add(role);
 
     }
@@ -129,17 +129,17 @@ public class RoleActivity extends AppCompatActivity {
         recommendedRoles = new ArrayList<>();
 
         //recommendedRole constructor => (int resID)
-        RecommendedRole recommendedRole = new RecommendedRole(R.drawable.ic_ag);
+        RecommendedRole recommendedRole = new RecommendedRole(R.mipmap.ic_adjust_black_24dp);
         recommendedRoles.add(recommendedRole);
-        recommendedRole = new RecommendedRole(R.drawable.ic_ai);
+        recommendedRole = new RecommendedRole(R.mipmap.ic_assignment_black_24dp);
         recommendedRoles.add(recommendedRole);
-        recommendedRole = new RecommendedRole(R.drawable.ic_aj);
+        recommendedRole = new RecommendedRole(R.mipmap.ic_event_note_black_24dp);
         recommendedRoles.add(recommendedRole);
-        recommendedRole = new RecommendedRole(R.drawable.ic_ak);
+        recommendedRole = new RecommendedRole(R.mipmap.ic_monetization_on_black_24dp);
         recommendedRoles.add(recommendedRole);
-        recommendedRole = new RecommendedRole(R.drawable.ic_an);
+        recommendedRole = new RecommendedRole(R.mipmap.ic_notifications_active_black_24dp);
         recommendedRoles.add(recommendedRole);
-        recommendedRole = new RecommendedRole(R.drawable.ic_ap);
+        recommendedRole = new RecommendedRole(R.mipmap.ic_work_black_24dp);
         recommendedRoles.add(recommendedRole);
     }
 }

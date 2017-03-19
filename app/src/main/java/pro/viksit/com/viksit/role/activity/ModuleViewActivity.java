@@ -10,6 +10,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.text.Html;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -65,6 +66,7 @@ public class ModuleViewActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
         if (id == android.R.id.home) {
+            //Log.i("Akshay", "back1 button clicked");
             System.out.println("back1 button clicked");
             onBackPressed();
             return true;
@@ -104,7 +106,7 @@ public class ModuleViewActivity extends AppCompatActivity {
                     }
 
                     @Override public void onLongItemClick(View view, int position) {
-                        // do whatever
+                        // do something
                     }
                 })
         );
@@ -118,42 +120,42 @@ public class ModuleViewActivity extends AppCompatActivity {
         labels.add("Risk Analysis");
         labels.add("Risk Management");
         //Module constructor => (int imageResID, String moduleTitle, ArrayList<String> labels)
-        Module module = new Module(R.drawable.ic_ac, "Selling Circus Funds", labels);
+        Module module = new Module(R.mipmap.ic_adjust_black_24dp, "Selling Circus Funds", labels);
         modules.add(module);
 
         //2nd data entry
         labels = new ArrayList<>();
         labels.add("Risk Analysis Profiling");
         labels.add("Risk Management");
-        module = new Module(R.drawable.ic_ah, "Buying Mutual circus", labels);
+        module = new Module(R.mipmap.ic_tag_faces_black_24dp, "Buying Mutual circus", labels);
         modules.add(module);
 
         //3rd data entry
         labels = new ArrayList<>();
         labels.add("Customer Profiling");
         labels.add("Risk Management");
-        module = new Module(R.drawable.ic_ai, "Selling Mutual Funds", labels);
+        module = new Module(R.mipmap.ic_monetization_on_black_24dp, "Selling Mutual Funds", labels);
         modules.add(module);
 
         //4th data entry
         labels = new ArrayList<>();
         labels.add("Risk Analysis");
         labels.add("Risk Management Profiling");
-        module = new Module(R.drawable.ic_ap, "Buying Circus Funds", labels);
+        module = new Module(R.mipmap.ic_assignment_black_24dp, "Buying Circus Funds", labels);
         modules.add(module);
 
         //5th data entry
         labels = new ArrayList<>();
         labels.add("Customer Profiling");
         labels.add("Risk Management");
-        module = new Module(R.drawable.ic_ag, "Selling Mutual Circus", labels);
+        module = new Module(R.mipmap.ic_adjust_black_24dp, "Selling Mutual Circus", labels);
         modules.add(module);
 
         //6th data entry
         labels = new ArrayList<>();
         labels.add("Risk Analysis");
         labels.add("Risk Management Profiling");
-        module = new Module(R.drawable.ic_af, "Buying Mutual Funds", labels);
+        module = new Module(R.mipmap.ic_event_note_black_24dp, "Buying Mutual Funds", labels);
         modules.add(module);
     }
 }
