@@ -17,7 +17,9 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_centerVertical="true">
+            android:layout_centerVertical="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true">
 
             <com.github.siyamed.shapeimageview.HexagonImageView
                 android:id="@+id/profile_pic"
@@ -65,7 +67,7 @@
                 android:layout_alignParentRight="true"
                 android:layout_centerVertical="true"
                 android:tint="@android:color/white"
-                android:src="@mipmap/ic_notifications_white_36dp"
+                android:src="@mipmap/ic_assignment_black_24dp"
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="8dp"/>
 
