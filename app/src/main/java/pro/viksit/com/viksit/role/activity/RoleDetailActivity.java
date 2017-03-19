@@ -1,5 +1,6 @@
 package pro.viksit.com.viksit.role.activity;
 
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.v7.app.AppCompatActivity;
@@ -35,6 +36,7 @@ public class RoleDetailActivity extends AppCompatActivity {
 
         TextView toolbar_title = (TextView) findViewById(R.id.toolbar_title);
         toolbar_title.setText("Mutual Fund Planner");
+        toolbar_title.setTypeface(null, Typeface.BOLD);
         ImageView info = (ImageView) findViewById(R.id.info);
         ImageView back = (ImageView) findViewById(R.id.back);
 
@@ -63,7 +65,7 @@ public class RoleDetailActivity extends AppCompatActivity {
         });*/
         collapsingToolbarLayout = (CollapsingToolbarLayout) findViewById(R.id.collapsing_toolbar);
         collapsingToolbarLayout.setTitle(getResources().getString(R.string.app_name));
-        collapsingToolbarLayout.setContentScrimColor(getResources().getColor(R.color.colorAccent));
+        collapsingToolbarLayout.setContentScrimColor(getResources().getColor(R.color.theme_color));
         collapsingToolbarLayout.setStatusBarScrimColor(getResources().getColor(R.color.black));
         toolbarTextAppernce();
         verticalRecycler = (RecyclerView) findViewById(R.id.rv_role_vertical);
