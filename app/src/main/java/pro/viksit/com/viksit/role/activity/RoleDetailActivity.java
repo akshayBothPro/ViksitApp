@@ -8,6 +8,8 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -29,6 +31,36 @@ public class RoleDetailActivity extends AppCompatActivity {
         setContentView(R.layout.activity_role_detail);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+
+        TextView toolbar_title = (TextView) findViewById(R.id.toolbar_title);
+        toolbar_title.setText("Mutual Fund Planner");
+        ImageView info = (ImageView) findViewById(R.id.info);
+        ImageView back = (ImageView) findViewById(R.id.back);
+
+        info.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                System.out.println("Info is clicked");
+            }
+        });
+
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                System.out.println("back is clicked");
+            }
+        });
+
+        /*final Drawable upArrow = getResources().getDrawable(R.mipmap.ic_arrow_back_black_24dp);
+        upArrow.setColorFilter(Color.parseColor("#FFFFFF"), PorterDuff.Mode.SRC_ATOP);
+        toolbar.setNavigationIcon(upArrow);
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                System.out.println("Clicked Toolbar icon");
+            }
+        });*/
         collapsingToolbarLayout = (CollapsingToolbarLayout) findViewById(R.id.collapsing_toolbar);
         collapsingToolbarLayout.setTitle(getResources().getString(R.string.app_name));
         collapsingToolbarLayout.setContentScrimColor(getResources().getColor(R.color.colorAccent));
