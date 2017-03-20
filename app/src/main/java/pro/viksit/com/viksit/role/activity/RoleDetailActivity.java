@@ -78,7 +78,7 @@ public class RoleDetailActivity extends AppCompatActivity {
             roles.add(role);
 
         }
-        roleVerticalRecyclerViewAdapter = new RoleDetailAdapter(roles);
+        roleVerticalRecyclerViewAdapter = new RoleDetailAdapter(roles,RoleDetailActivity.this);
 
         verticalRecycler.setHasFixedSize(true);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);

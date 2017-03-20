@@ -22,4 +22,5 @@
     <color name="white">#ffffff</color>
     <color name="black">#000000</color>
     <color name="gray_mdb">#4B515D</color>
+    <color name="gray_pill">#888888</color>
 </resources>
