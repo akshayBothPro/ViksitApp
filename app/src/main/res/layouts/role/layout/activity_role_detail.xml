@@ -26,7 +26,6 @@
             app:layout_scrollFlags="scroll|exitUntilCollapsed|snap"
             app:titleEnabled="false"
             >
-            <include layout="@layout/role_detail_toolbar"/>
 
             <android.support.v7.widget.Toolbar
                 android:id="@+id/toolbar"
@@ -67,6 +66,8 @@
                         android:id="@+id/back"/>
                 </RelativeLayout>
 </android.support.v7.widget.Toolbar>
+
+            <include layout="@layout/role_detail_toolbar" />
 
         </android.support.design.widget.CollapsingToolbarLayout>
 

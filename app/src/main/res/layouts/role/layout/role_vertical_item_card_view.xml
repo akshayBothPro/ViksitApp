@@ -3,11 +3,11 @@
     xmlns:card_view="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="110dp">
     <android.support.v7.widget.CardView
         android:id="@+id/cv_role_vertical_card"
         android:layout_width="match_parent"
-        android:layout_height="110dp"
+        android:layout_height="wrap_content"
         card_view:cardElevation="4dp"
         card_view:cardCornerRadius="3dp">
 
@@ -37,7 +37,7 @@
                     android:id="@+id/tv_role_vertical_item_title"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="1dp"
+                    android:layout_marginBottom="3dp"
                     android:textColor="@color/welcome_text_color"
                     android:textSize="11sp"
                     android:textAllCaps="true"
@@ -47,6 +47,7 @@
                     android:layout_below="@+id/tv_role_vertical_item_title"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginBottom="4dp"
                     android:textColor="@color/role_item_subtitle"
                     android:textSize="15sp"
                     android:text="User Interface Developer" />
@@ -63,6 +64,7 @@
                     android:layout_above="@+id/tv_role_vertical_item_status"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginBottom="3dp"
                     style="?android:attr/progressBarStyleHorizontal"
                     android:max="100"
                     android:progress="60"/>

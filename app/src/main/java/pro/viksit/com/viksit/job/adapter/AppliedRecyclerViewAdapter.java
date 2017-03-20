@@ -1,5 +1,6 @@
 package pro.viksit.com.viksit.job.adapter;
 
+import android.content.Context;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -19,13 +20,16 @@ import pro.viksit.com.viksit.job.pojo.Applied;
 
 public class AppliedRecyclerViewAdapter extends  RecyclerView.Adapter<AppliedRecyclerViewAdapter.MyJobViewHolder>{
 
-    private ArrayList<Applied> appliedJobs;
+    private ArrayList<Applied> appliedJobs = new ArrayList<>();
+    private Context context;
 
     public AppliedRecyclerViewAdapter(){
 
     }
 
-    public AppliedRecyclerViewAdapter(ArrayList<Applied> appliedJobs) {
+    public AppliedRecyclerViewAdapter(Context context, ArrayList<Applied> appliedJobs) {
+        this.context = context;
+
         this.appliedJobs = appliedJobs;
     }
 
@@ -33,7 +37,6 @@ public class AppliedRecyclerViewAdapter extends  RecyclerView.Adapter<AppliedRec
     public MyJobViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View itemView = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.applied_job_card_item, parent, false);
-
 
         return new MyJobViewHolder(itemView);
     }

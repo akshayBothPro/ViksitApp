@@ -20,6 +20,7 @@ import pro.viksit.com.viksit.role.pojo.RoleParent;
 public class RoleDepthActivity extends AppCompatActivity {
     private ArrayList<RoleParent> roleParents;
     private RoleDepthAdapter roleDepthAdapter;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -47,7 +48,6 @@ public class RoleDepthActivity extends AppCompatActivity {
             @Override
             public void onParentExpanded(int parentPosition) {
                 RoleParent expandedRecipe = roleParents.get(parentPosition);
-
 
                 String toastMsg = "ee "+expandedRecipe.getTitle();
                 Toast.makeText(RoleDepthActivity.this,

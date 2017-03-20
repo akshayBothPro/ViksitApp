@@ -50,7 +50,7 @@ public class AppliedJobFragment extends Fragment {
     }
 
     private void implementActionsListeners(){
-        mAdapter = new AppliedRecyclerViewAdapter(appliedJobs);
+        mAdapter = new AppliedRecyclerViewAdapter(context, appliedJobs);
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(context, LinearLayoutManager.VERTICAL, true);
         recyclerView.setLayoutManager(mLayoutManager);
         recyclerView.setItemAnimator(new DefaultItemAnimator());

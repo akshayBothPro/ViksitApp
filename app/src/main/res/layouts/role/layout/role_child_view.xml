@@ -1,27 +1,59 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:padding="20dp">
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Identification of risk"
-        android:layout_toRightOf="@+id/expanded"
-        android:textSize="@dimen/h3"
-        android:id="@+id/title1"
-        android:textColor="@color/theme_color"
-        />
 
-    <ProgressBar
-        android:id="@+id/progress1"
-        android:layout_above="@+id/tv_role_vertical_item_status"
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white_color"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="horizontal">
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        style="?android:attr/progressBarStyleHorizontal"
-        android:max="100"
-        android:progress="60"
-        android:layout_below="@+id/title1"
-        android:layout_toRightOf="@+id/expanded"
-        />
-</RelativeLayout>
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:layout_weight="5">
+
+            <View
+                android:id="@+id/rl_hor_line"
+                android:layout_width="1dp"
+                android:layout_height="match_parent"
+                android:background="#e0e0e0"
+                android:layout_centerInParent="true"
+                />
+        <RelativeLayout
+            android:layout_toRightOf="@id/rl_hor_line"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#e0e0e0"
+                android:layout_centerInParent="true"
+                />
+        </RelativeLayout>
+    </RelativeLayout>
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center_vertical"
+        android:padding="10dp"
+        android:layout_weight="1">
+        <TextView
+            android:id="@+id/title1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Identification of risk"
+            android:textSize="@dimen/h3"
+            android:textColor="@color/theme_color"/>
+
+        <ProgressBar
+            android:id="@+id/progress1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            style="?android:attr/progressBarStyleHorizontal"
+            android:max="100"
+            android:progress="60"
+            />
+    </LinearLayout>
+</LinearLayout>

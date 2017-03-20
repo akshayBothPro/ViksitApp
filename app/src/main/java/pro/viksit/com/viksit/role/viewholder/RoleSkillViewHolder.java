@@ -27,6 +27,7 @@ public class RoleSkillViewHolder extends ParentViewHolder {
     private TextView title;
     private TextView desc;
     private ProgressBar pb;
+    private View vLine;
 
 
     public RoleSkillViewHolder(@NonNull View itemView) {
@@ -36,6 +37,7 @@ public class RoleSkillViewHolder extends ParentViewHolder {
         pb = (ProgressBar) itemView.findViewById(R.id.progress);
         mArrowExpandImageView = (ImageView) itemView.findViewById(R.id.expanded);
         mArrowExpandImageView.setImageResource(R.mipmap.ic_add_black_24dp);
+        vLine =  itemView.findViewById(R.id.tv_role_parent_line);
     }
 
     public void bind(@NonNull RoleParent roleParent) {
@@ -55,14 +57,13 @@ public class RoleSkillViewHolder extends ParentViewHolder {
                 mArrowExpandImageView.setRotation(ROTATED_POSITION);
 */
                 mArrowExpandImageView.setImageResource(R.mipmap.ic_indeterminate_check_box_black_24dp);
-
+                vLine.setVisibility(View.VISIBLE);
             } else {
 /*
                 mArrowExpandImageView.setRotation(INITIAL_POSITION);
 */
                 mArrowExpandImageView.setImageResource(R.mipmap.ic_add_black_24dp);
-
-
+                vLine.setVisibility(View.GONE);
             }
         }
     }
