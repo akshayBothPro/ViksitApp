@@ -11,7 +11,7 @@
         android:layout_height="match_parent"
         android:layout_gravity="center"
         android:layout_margin="5dp"
-        card_view:cardBackgroundColor="@color/bottombaractive"
+        card_view:cardBackgroundColor="@color/white"
         card_view:cardCornerRadius="2dp"
         card_view:contentPadding="10dp">
 
@@ -26,7 +26,7 @@
                 android:id="@+id/imageView"
                 android:layout_width="0dp"
                 android:layout_height="100dp"
-                android:layout_weight="50"
+                android:layout_weight="30"
                 android:maxHeight="100dp"
                 android:src="@drawable/clock"
                 android:scaleType="fitStart"/>
@@ -34,14 +34,16 @@
             <RelativeLayout
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_weight="50"
+                android:layout_weight="70"
                 android:maxHeight="100dp">
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Selling Mutaul Fund"
-                    android:id="@+id/title"/>
+                    android:text="Selling Mutual Fund"
+                    android:id="@+id/title"
+                    android:textSize="@dimen/h4"/>
+
 
 
             </RelativeLayout>
