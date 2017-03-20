@@ -3,6 +3,7 @@ package pro.viksit.com.viksit.role.adapter;
 import android.content.Context;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
+import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -58,23 +59,27 @@ public class RoleDetailAdapter extends RecyclerView.Adapter<RoleDetailAdapter.My
             super(view);
             title = (TextView) view.findViewById(R.id.title);
             image = (ImageView) view.findViewById(R.id.image);
-             relativeLayout = (RelativeLayout) itemView.findViewById(R.id.main_layout);
-            for(int i=0;i<3;i++) {
+            relativeLayout = (RelativeLayout) itemView.findViewById(R.id.label_layout);
+            for(int i=1;i<10;i++) {
                 TextView tx = new TextView(context);
-                tx.setId(i+1);
+                tx.setId(i);
                 RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.WRAP_CONTENT, RelativeLayout.LayoutParams.WRAP_CONTENT);
-
                 tx.setBackground(context.getResources().getDrawable(R.drawable.pill_bg));
                 tx.setText("Laurnjhh"+i);
-                tx.setTextSize(context.getResources().getDimension(R.dimen.p5));
-                params.addRule(RelativeLayout.RIGHT_OF, image.getId());
-                if(i==0)
-                params.addRule(RelativeLayout.BELOW, title.getId());
-                else
-                    params.addRule(RelativeLayout.RIGHT_OF, (i-2));
+                tx.setTextSize(TypedValue.COMPLEX_UNIT_SP,14f);
+                if(i!=1) {
+                    if(i% 2 ==0) {
+                        params.addRule(RelativeLayout.RIGHT_OF, (i - 1));
+                        params.addRule(RelativeLayout.BELOW, (i - 2));
+                    }
+                    else
+                        params.addRule(RelativeLayout.BELOW, (i - 2));
 
+                }else{
+                    params.addRule(RelativeLayout.ALIGN_PARENT_TOP);
+                    params.addRule(RelativeLayout.ALIGN_PARENT_START);
 
-
+                }
                 tx.setPadding(10, 10, 10, 10);
                 tx.setLayoutParams(params);
                 relativeLayout.addView(tx);
