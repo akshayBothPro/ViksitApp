@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="20dp">
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Identification of risk"
+        android:layout_toRightOf="@+id/expanded"
+        android:textSize="@dimen/h3"
+        android:id="@+id/title1"
+        android:textColor="@color/theme_color"
+        />
+
+    <ProgressBar
+        android:id="@+id/progress1"
+        android:layout_above="@+id/tv_role_vertical_item_status"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:max="100"
+        android:progress="60"
+        android:layout_below="@+id/title1"
+        android:layout_toRightOf="@+id/expanded"
+        />
+</RelativeLayout>

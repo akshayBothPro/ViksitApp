@@ -1,5 +1,6 @@
 package pro.viksit.com.viksit.role.activity;
 
+import android.content.Intent;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.design.widget.CollapsingToolbarLayout;
@@ -92,6 +93,8 @@ public class RoleDetailActivity extends AppCompatActivity {
                     public void onItemClick(View view, int position) {
                         // do whatever
                         System.out.println("Vposition: " + position);
+                        Intent k = new Intent(RoleDetailActivity.this,RoleDepthActivity.class);
+                        startActivity(k);
                     }
 
                     @Override

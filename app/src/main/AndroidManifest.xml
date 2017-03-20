@@ -29,9 +29,9 @@
             android:name=".role.activity.ModuleViewActivity"
             android:label="@string/title_activity_module_view"
             android:theme="@style/AppTheme" />
-        <activity android:name=".job.activity.JobActivity"></activity>
-        <activity android:name=".role.activity.RoleDetailActivity"></activity>
-
+        <activity android:name=".job.activity.JobActivity" />
+        <activity android:name=".role.activity.RoleDetailActivity" />
+        <activity android:name=".role.activity.RoleDepthActivity"></activity>
     </application>
 
 </manifest>

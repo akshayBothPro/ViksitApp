@@ -49,5 +49,7 @@ dependencies {
     compile 'com.github.siyamed:android-shape-imageview:0.9.+@aar'
     compile 'com.android.support:support-v4:25.3.0'
     compile 'com.afollestad:sectioned-recyclerview:0.2.3'
+    compile 'com.bignerdranch.android:expandablerecyclerview:3.0.0-RC1'
+
     testCompile 'junit:junit:4.12'
 }

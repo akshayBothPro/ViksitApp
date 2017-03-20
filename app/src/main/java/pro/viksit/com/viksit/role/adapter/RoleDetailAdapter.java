@@ -68,10 +68,10 @@ public class RoleDetailAdapter extends RecyclerView.Adapter<RoleDetailAdapter.My
                 tx.setText("Laurnjhh"+i);
                 tx.setTextSize(context.getResources().getDimension(R.dimen.p5));
                 params.addRule(RelativeLayout.RIGHT_OF, image.getId());
-                if(i==1)
+                if(i==0)
                 params.addRule(RelativeLayout.BELOW, title.getId());
                 else
-                    params.addRule(RelativeLayout.BELOW, (i-2));
+                    params.addRule(RelativeLayout.RIGHT_OF, (i-2));
 
 
 
