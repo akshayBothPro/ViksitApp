@@ -31,7 +31,8 @@
             android:theme="@style/AppTheme" />
         <activity android:name=".job.activity.JobActivity" />
         <activity android:name=".role.activity.RoleDetailActivity" />
-        <activity android:name=".role.activity.RoleDepthActivity"></activity>
+        <activity android:name=".role.activity.RoleDepthActivity" />
+        <activity android:name=".assessment.activity.AssessmentActivity"></activity>
     </application>
 
 </manifest>

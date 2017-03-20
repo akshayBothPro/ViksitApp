@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#ffffff">
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:minHeight="?attr/actionBarSize"
+        app:contentInsetLeft="0dp"
+        app:contentInsetStart="0dp">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+           >
+            <ImageButton
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:src="@mipmap/ic_arrow_back_black_24dp"
+                android:background="#00000000"
+                android:layout_alignParentLeft="true"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:id="@+id/back"
+                />
+            <ProgressBar
+                android:id="@+id/pb_role_vertical_item_progress"
+                android:layout_above="@+id/tv_role_vertical_item_status"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="3dp"
+                style="?android:attr/progressBarStyleHorizontal"
+                android:background="@color/white"
+                android:max="100"
+                android:progress="60"
+                android:layout_toRightOf="@+id/back"
+                android:layout_toLeftOf="@+id/smiley"
+                android:layout_centerVertical="true"
+                />
+            <ImageButton
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:src="@mipmap/ic_menu_black_24dp"
+                android:background="#00000000"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="10dp"
+                android:layout_marginLeft="10dp"
+                android:id="@+id/smiley"
+                />
+        </RelativeLayout>
+    </android.support.v7.widget.Toolbar>
+    <pro.viksit.com.viksit.Util.LockableViewPager
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/viewpager"
+        android:layout_below="@+id/toolbar"
+        android:layout_above="@+id/check_answer"
+        >
+
+
+
+    </pro.viksit.com.viksit.Util.LockableViewPager>
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/check_answer"
+        android:background="@drawable/pill_bg"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="7dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:textColor="#858585"
+        android:text="Check Answer"
+        android:textSize="@dimen/h3"
+        />
+    </RelativeLayout>

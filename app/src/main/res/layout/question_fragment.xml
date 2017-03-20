@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp">
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="question 7 of 20"
+        android:textAllCaps="true"
+        android:textColor="@color/black"
+        android:id="@+id/header"
+        />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Question text is "
+            android:layout_below="@+id/header"
+            android:id="@+id/question_title"/>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/button_layout"
+            android:layout_below="@+id/question_title"
+            >
+          <!--  <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:text="Taxation rules"
+                android:background="@drawable/button_bg"
+                android:textColor="#767676"
+                />-->
+
+
+        </RelativeLayout>
+
+
+    </RelativeLayout>
+
+</ScrollView>
