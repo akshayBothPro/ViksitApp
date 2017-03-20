@@ -25,13 +25,13 @@ public class RoleDepthActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_role_depth);
         roleParents = new ArrayList<>();
-        for(int i=0;i<2;i++){
+        for(int i=0;i<400;i++){
             RoleParent roleParent = new RoleParent();
             roleParent.setProgress(40+i);
             roleParent.setText("Risk Management "+i);
             roleParent.setTitle("Risk "+i);
             ArrayList<RoleChild> roleChildren = new ArrayList<>();
-            for(int j=0;j<2;j++){
+            for(int j=0;j<200;j++){
                 RoleChild roleChild = new RoleChild();
                 roleChild.setText("identification of risk "+j);
                 roleChild.setProgress(30+j);
@@ -41,12 +41,13 @@ public class RoleDepthActivity extends AppCompatActivity {
             roleParents.add(roleParent);
         }
         roleDepthAdapter = new RoleDepthAdapter(this,roleParents);
-        RecyclerView recyclerView = (RecyclerView) findViewById(R.id.rv_role_vertical);
+        final RecyclerView recyclerView = (RecyclerView) findViewById(R.id.rv_role_vertical);
         roleDepthAdapter.setExpandCollapseListener(new ExpandableRecyclerAdapter.ExpandCollapseListener() {
             @UiThread
             @Override
             public void onParentExpanded(int parentPosition) {
                 RoleParent expandedRecipe = roleParents.get(parentPosition);
+
 
                 String toastMsg = "ee "+expandedRecipe.getTitle();
                 Toast.makeText(RoleDepthActivity.this,

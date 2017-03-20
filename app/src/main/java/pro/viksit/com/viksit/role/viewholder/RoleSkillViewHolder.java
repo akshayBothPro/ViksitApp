@@ -54,6 +54,7 @@ public class RoleSkillViewHolder extends ParentViewHolder {
                 mArrowExpandImageView.setRotation(ROTATED_POSITION);
             } else {
                 mArrowExpandImageView.setRotation(INITIAL_POSITION);
+
             }
         }
     }
