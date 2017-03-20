@@ -4,7 +4,6 @@ import android.annotation.SuppressLint;
 import android.os.Build;
 import android.support.annotation.NonNull;
 import android.view.View;
-import android.view.animation.RotateAnimation;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
@@ -36,6 +35,7 @@ public class RoleSkillViewHolder extends ParentViewHolder {
         desc = (TextView) itemView.findViewById(R.id.description);
         pb = (ProgressBar) itemView.findViewById(R.id.progress);
         mArrowExpandImageView = (ImageView) itemView.findViewById(R.id.expanded);
+        mArrowExpandImageView.setImageResource(R.mipmap.ic_add_black_24dp);
     }
 
     public void bind(@NonNull RoleParent roleParent) {
@@ -51,9 +51,17 @@ public class RoleSkillViewHolder extends ParentViewHolder {
         super.setExpanded(expanded);
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB) {
             if (expanded) {
+/*
                 mArrowExpandImageView.setRotation(ROTATED_POSITION);
+*/
+                mArrowExpandImageView.setImageResource(R.mipmap.ic_indeterminate_check_box_black_24dp);
+
             } else {
+/*
                 mArrowExpandImageView.setRotation(INITIAL_POSITION);
+*/
+                mArrowExpandImageView.setImageResource(R.mipmap.ic_add_black_24dp);
+
 
             }
         }
@@ -62,7 +70,7 @@ public class RoleSkillViewHolder extends ParentViewHolder {
     @Override
     public void onExpansionToggled(boolean expanded) {
         super.onExpansionToggled(expanded);
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB) {
+       /* if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB) {
             RotateAnimation rotateAnimation;
             if (expanded) { // rotate clockwise
                 rotateAnimation = new RotateAnimation(ROTATED_POSITION,
@@ -79,7 +87,7 @@ public class RoleSkillViewHolder extends ParentViewHolder {
             rotateAnimation.setDuration(200);
             rotateAnimation.setFillAfter(true);
             mArrowExpandImageView.startAnimation(rotateAnimation);
-        }
+        }*/
     }
 
 }
