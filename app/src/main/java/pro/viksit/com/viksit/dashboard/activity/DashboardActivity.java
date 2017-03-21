@@ -39,11 +39,11 @@ public class DashboardActivity extends AppCompatActivity {
 
         DisplayMetrics metrics = new DisplayMetrics();
         getWindowManager().getDefaultDisplay().getMetrics(metrics);
-        int pageMargin = ((metrics.widthPixels / 10)*2 );
-
+        int pageMargin = ((metrics.widthPixels / 12) );
+        System.out.println("pageMargin "+pageMargin);
         int pagerPadding = 40;
         pager.setClipToPadding(false);
-        pager.setPadding(pagerPadding, 20, pagerPadding, 0);
+        pager.setPadding(pageMargin, pageMargin/2, pageMargin, 0);
         // pager.setPageMargin(-pageMargin);
       /*  viewPagerAdapter = new ViewPagerAdapter(getSupportFragmentManager(),list,dpToPixels(5, this));
         ShadowTransformer fragmentCardShadowTransformer = new ShadowTransformer(viewPager, viewPagerAdapter);

@@ -51,7 +51,6 @@
                 android:padding="5dp"
                 android:paddingRight="10dp"
                 android:background="@drawable/input_shape"
-                android:drawableRight=""
                 android:drawableEnd="@mipmap/ic_indeterminate_check_box_black_24dp"
                 android:textCursorDrawable="@null"
                 android:textColorHint="@color/hint_color"
