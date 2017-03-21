@@ -12,6 +12,7 @@ import android.view.MenuItem;
 
 import java.lang.reflect.Field;
 
+import pro.viksit.com.viksit.MainActivity;
 import pro.viksit.com.viksit.R;
 import pro.viksit.com.viksit.assessment.activity.AssessmentActivity;
 import pro.viksit.com.viksit.dashboard.activity.DashboardActivity;
@@ -36,7 +37,7 @@ public class BottomBarUtil {
                                 if(((Activity)context) instanceof  RoleActivity){
                                     System.out.println("Dont call role in role ... ... .... ");
                                 }else {
-                                    Intent i = new Intent(context, RoleActivity.class);
+                                    Intent i = new Intent(context, MainActivity.class);
                                     context.startActivity(i);
                                     ((Activity) context).overridePendingTransition(R.anim.zoom_enter, R.anim.zoom_exit);
                                 }

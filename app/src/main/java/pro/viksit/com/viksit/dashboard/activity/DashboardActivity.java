@@ -6,24 +6,26 @@ import android.support.design.widget.BottomNavigationView;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.DisplayMetrics;
 
 import java.util.ArrayList;
 
 import pro.viksit.com.viksit.R;
-import pro.viksit.com.viksit.dashboard.adapter.ShadowTransformer;
+import pro.viksit.com.viksit.dashboard.adapter.CardAdapter.CarouselPagerAdapter;
 import pro.viksit.com.viksit.dashboard.adapter.ViewPagerAdapter;
 import pro.viksit.com.viksit.dashboard.util.BottomBarUtil;
 
 public class DashboardActivity extends AppCompatActivity {
     private Toolbar toolbar;
     private ViewPagerAdapter viewPagerAdapter;
-    private ViewPager viewPager;
+    private CarouselPagerAdapter carouselPagerAdapter;
+    public ViewPager pager;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dashboard);
         toolbar = (Toolbar) findViewById(R.id.toolbar);
-        viewPager = (ViewPager) findViewById(R.id.viewpager);
+        pager = (ViewPager) findViewById(R.id.viewpager);
         setSupportActionBar(toolbar);
         BottomNavigationView bottomNavigationView = (BottomNavigationView)
                 findViewById(R.id.bottom_navigation);
@@ -32,12 +34,31 @@ public class DashboardActivity extends AppCompatActivity {
         for(int i=0 ; i<30 ; i++){
             list.add("champu"+i);
         }
-        viewPagerAdapter = new ViewPagerAdapter(getSupportFragmentManager(),list,dpToPixels(5, this));
+        carouselPagerAdapter = new CarouselPagerAdapter(this,getSupportFragmentManager(),list);
+
+
+        DisplayMetrics metrics = new DisplayMetrics();
+        getWindowManager().getDefaultDisplay().getMetrics(metrics);
+        int pageMargin = ((metrics.widthPixels / 10)*2 );
+
+        int pagerPadding = 40;
+        pager.setClipToPadding(false);
+        pager.setPadding(pagerPadding, 20, pagerPadding, 0);
+        // pager.setPageMargin(-pageMargin);
+      /*  viewPagerAdapter = new ViewPagerAdapter(getSupportFragmentManager(),list,dpToPixels(5, this));
         ShadowTransformer fragmentCardShadowTransformer = new ShadowTransformer(viewPager, viewPagerAdapter);
         fragmentCardShadowTransformer.enableScaling(true);
         viewPager.setAdapter(viewPagerAdapter);
-        viewPager.setPageTransformer(false, fragmentCardShadowTransformer);
-        viewPager.setOffscreenPageLimit(3);
+        viewPager.setPageTransformer(false, fragmentCardShadowTransformer);*/
+        pager.setAdapter(carouselPagerAdapter);
+        carouselPagerAdapter.notifyDataSetChanged();
+
+        pager.addOnPageChangeListener(carouselPagerAdapter);
+
+        // Set current item to the middle page so we can fling to both
+        // directions left and right
+        pager.setCurrentItem(1);
+        pager.setOffscreenPageLimit(3);
 
 
     }
