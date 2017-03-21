@@ -75,19 +75,7 @@
                 android:textColorHint="#c4c4c4"
                 android:inputType="textPassword"
                 android:hint="Password"/>
-            <android.support.v7.widget.AppCompatEditText
-                android:id="@+id/et_confirm_passsword"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@drawable/input_shape"
-                android:layout_marginBottom="15dp"
-                android:padding="5dp"
-                android:paddingRight="10dp"
-                android:singleLine="true"
-                android:textCursorDrawable="@null"
-                android:textColorHint="#c4c4c4"
-                android:inputType="textPassword"
-                android:hint="Confirm Password"/>
+
             <Button
                 android:id="@+id/btn_signup"
                 android:layout_width="match_parent"
@@ -97,7 +85,11 @@
                 android:background="@drawable/signup_btn_shape"/>
 
         </LinearLayout>
-
+        <include
+            android:id="@+id/signup_options"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            layout="@layout/signup_options" />
     </LinearLayout>
 
     <TextView

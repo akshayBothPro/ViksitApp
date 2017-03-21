@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="10dp">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <View
+            android:layout_width="match_parent"
+            android:layout_alignLeft="@+id/or"
+            android:layout_height="1dp"
+            android:layout_marginLeft="20dp"
+            android:background="@color/hint_color"
+            android:layout_centerVertical="true"/>
+
+        <Button
+            android:id="@+id/or"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_margin="10dp"
+            android:layout_centerInParent="true"
+            android:text="OR"
+            android:textStyle="bold"
+            android:background="@drawable/circle_border"/>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginEnd="30dp"
+            android:layout_alignRight="@+id/or"
+
+            android:background="@color/hint_color"
+            android:layout_centerVertical="true"/>
+    </RelativeLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+        <Button
+            android:id="@+id/btn_signup_linkedIn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp"
+            android:layout_gravity="center_horizontal"
+            android:drawableLeft="@android:drawable/ic_menu_search"
+            android:text="Sign Up with LinkedIn"
+            android:textAllCaps="false"
+            android:textStyle="bold"
+            android:textColor="@android:color/white"
+            android:background="@drawable/signup_btn_shape"/>
+
+        <Button
+            android:id="@+id/btn_signup_google"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp"
+            android:layout_marginBottom="5dp"
+            android:layout_gravity="center_horizontal"
+            android:drawableLeft="@android:drawable/ic_menu_search"
+            android:text="Sign Up with Google"
+            android:textStyle="bold"
+            android:textAllCaps="false"
+            android:textColor="@android:color/white"
+            android:background="@drawable/signup_btn_shape"/>
+
+    </LinearLayout>
+</LinearLayout>

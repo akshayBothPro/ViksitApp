@@ -1,10 +1,13 @@
 package pro.viksit.com.viksit.role.pojo;
 
+import java.io.Serializable;
+
 /**
  * Created by Feroz on 20-03-2017.
  */
 
-public class RoleChild {
+@SuppressWarnings("serial") //With this annotation we are going to hide compiler warnings
+public class RoleChild implements Serializable{
     String text;
     int progress;
 

@@ -23,9 +23,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="5dp"
-            android:textColor="@color/theme_color"
-            android:textSize="20sp"
-            android:textStyle="bold"
+            android:textColor="@color/black"
+            android:textSize="@dimen/h1"
             android:text="Verify your phone number"/>
 
         <TextView
@@ -36,52 +35,59 @@
             android:gravity="center"
             android:text="An OTP has been sent to your phone number ending with xxxxx72858"
             android:textColor="@color/otp_info_color"
-            android:textSize="15sp" />
+            android:textSize="@dimen/p1" />
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="15dp"
-            android:paddingLeft="10dp"
-            android:paddingRight="10dp"
+            android:paddingLeft="25dp"
+            android:paddingRight="25dp"
             android:orientation="vertical">
             <android.support.v7.widget.AppCompatEditText
                 android:id="@+id/apet_otp_input"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:padding="5dp"
+                android:paddingLeft="10dp"
+                android:paddingStart="10dp"
                 android:layout_marginBottom="10dp"
+                android:layout_gravity="center_horizontal"
                 android:background="@drawable/input_shape"
-                android:singleLine="true"
                 android:textCursorDrawable="@null"
                 android:textColorHint="@color/hint_color"
-                android:inputType="textEmailAddress"
+                android:inputType="text"
                 android:hint="OTP"/>
             <Button
                 android:id="@+id/btn_enter_otp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Enter OTP"
+                android:layout_gravity="center_horizontal"
+                android:text="Verify"
                 android:textStyle="bold"
                 android:textColor="@android:color/white"
-                android:background="@drawable/login_btn_shape"/>
+                android:background="@drawable/signup_btn_shape"/>
         </LinearLayout>
 
-        <TextView
+        <Button
             android:id="@+id/tv_resend_otp"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
+            android:background="@color/white"
+            android:textAllCaps="false"
             android:textColor="@color/forgot_password_color"
             android:textSize="15sp"
             android:text="Resend OTP"/>
     </LinearLayout>
-    <TextView
+    <Button
         android:id="@+id/tv_not_number"
         android:layout_alignParentBottom="true"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="center_horizontal"
-        android:textColor="@color/otp_info_color"
+        android:background="@color/white"
+        android:gravity="center"
+        android:text="Not Your Number?"
+        android:textAllCaps="false"
+        android:textColor="@color/forgot_password_color"
         android:textSize="15sp"/>
 </RelativeLayout>

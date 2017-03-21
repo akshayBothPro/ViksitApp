@@ -25,9 +25,10 @@ public class RoleDepthAdapter extends ExpandableRecyclerAdapter<RoleParent,RoleC
     List<RoleParent> roleParents;
     private LayoutInflater mInflater;
     private Context context;
+
     public RoleDepthAdapter(Context context, @NonNull List<RoleParent> roleParents) {
         super(roleParents);
-        roleParents = roleParents;
+        this.roleParents = roleParents;
         mInflater = LayoutInflater.from(context);
         context = context;
     }
@@ -59,7 +60,7 @@ public class RoleDepthAdapter extends ExpandableRecyclerAdapter<RoleParent,RoleC
 
     @Override
     public void onBindChildViewHolder(@NonNull RoleNameViewHolder childViewHolder, int parentPosition, int childPosition, @NonNull RoleChild child) {
-        childViewHolder.bind(child);
+        childViewHolder.bind(child,parentPosition, childPosition, roleParents);
     }
 
 

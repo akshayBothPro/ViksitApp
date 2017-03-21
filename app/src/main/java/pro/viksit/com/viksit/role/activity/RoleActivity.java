@@ -16,6 +16,7 @@ import java.util.List;
 
 import pro.viksit.com.viksit.R;
 import pro.viksit.com.viksit.dashboard.util.BottomBarUtil;
+import pro.viksit.com.viksit.home.activity.OTPActivity;
 import pro.viksit.com.viksit.role.adapter.RoleHorizontalRecyclerViewAdapter;
 import pro.viksit.com.viksit.role.adapter.RoleVerticalRecyclerViewAdapter;
 import pro.viksit.com.viksit.role.pojo.RecommendedRole;
@@ -59,18 +60,18 @@ public class RoleActivity extends AppCompatActivity {
 
         // setting up vertical recycler view
         roleVerticalRecyclerViewAdapter = new RoleVerticalRecyclerViewAdapter(roles);
-        RecyclerView.LayoutManager vLayoutManager = new LinearLayoutManager(getBaseContext(), LinearLayoutManager.VERTICAL, true);
-        verticalRecycler.setLayoutManager(vLayoutManager);
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
+        verticalRecycler.setLayoutManager(linearLayoutManager);
         verticalRecycler.setItemAnimator(new DefaultItemAnimator());
         verticalRecycler.setAdapter(roleVerticalRecyclerViewAdapter);
         verticalRecycler.addOnItemTouchListener(
                 new RecyclerItemClickListener (getBaseContext(), verticalRecycler ,new RecyclerItemClickListener.OnItemClickListener() {
                     @Override public void onItemClick(View view, int position) {
                         System.out.println("Vposition: " + position);
-                        Intent intent = new Intent(RoleActivity.this, ModuleViewActivity.class);
-                        Bundle bundle = new Bundle();
+                        Intent intent = new Intent(RoleActivity.this, OTPActivity.class);
+                       /* Bundle bundle = new Bundle();
                         bundle.putSerializable("role", roles.get(position));
-                        intent.putExtras(bundle);
+                        intent.putExtras(bundle);*/
                         startActivity(intent);
                     }
                     @Override public void onLongItemClick(View view, int position) {
@@ -108,9 +109,10 @@ public class RoleActivity extends AppCompatActivity {
     }
     private void setRoleData(){
         roles = new ArrayList<>();
+        Role role;
 
         //role constructor => (int imageResID, String title, String subtitle, int totalItems, int completedItems)
-        Role role = new Role(R.mipmap.ic_adjust_black_24dp,"Game Designer","User Interface Developer",247,131);
+        role = new Role(R.mipmap.ic_adjust_black_24dp,"Game Designer","User Interface Developer",247,131);
         roles.add(role);
         role = new Role(R.mipmap.ic_tag_faces_black_24dp,"Game Designer","User Interface Developer",247,231);
         roles.add(role);
@@ -127,9 +129,9 @@ public class RoleActivity extends AppCompatActivity {
 
     private void setRecommendedRoleData(){
         recommendedRoles = new ArrayList<>();
-
+        RecommendedRole recommendedRole;
         //recommendedRole constructor => (int resID)
-        RecommendedRole recommendedRole = new RecommendedRole(R.mipmap.ic_adjust_black_24dp);
+        recommendedRole = new RecommendedRole(R.mipmap.ic_adjust_black_24dp);
         recommendedRoles.add(recommendedRole);
         recommendedRole = new RecommendedRole(R.mipmap.ic_assignment_black_24dp);
         recommendedRoles.add(recommendedRole);

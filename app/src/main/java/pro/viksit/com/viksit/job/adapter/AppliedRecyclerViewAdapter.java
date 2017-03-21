@@ -1,11 +1,13 @@
 package pro.viksit.com.viksit.job.adapter;
 
 import android.content.Context;
+import android.graphics.drawable.GradientDrawable;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -29,7 +31,6 @@ public class AppliedRecyclerViewAdapter extends  RecyclerView.Adapter<AppliedRec
 
     public AppliedRecyclerViewAdapter(Context context, ArrayList<Applied> appliedJobs) {
         this.context = context;
-
         this.appliedJobs = appliedJobs;
     }
 
@@ -44,6 +45,27 @@ public class AppliedRecyclerViewAdapter extends  RecyclerView.Adapter<AppliedRec
     @Override
     public void onBindViewHolder(MyJobViewHolder holder, int position) {
         Applied appliedJob = appliedJobs.get(position);
+        if(appliedJob.getStatus().toLowerCase().toString().equalsIgnoreCase("pending")){
+            holder.status.setTextColor(context.getResources().getColor(R.color.pending_color));
+            holder.rectangle.setStroke(3, context.getResources().getColor(R.color.pending_color));
+            holder.rectangle.setColor(context.getResources().getColor(R.color.white_color));
+            holder.status.setBackground(holder.rectangle); // set stroke width and stroke color
+        } else if(appliedJob.getStatus().toLowerCase().toString().equalsIgnoreCase("rejected")){
+            holder.status.setTextColor(context.getResources().getColor(R.color.rejected_color));
+            holder.rectangle.setStroke(3, context.getResources().getColor(R.color.rejected_color));
+            holder.rectangle.setColor(context.getResources().getColor(R.color.white_color));
+            holder.status.setBackground(holder.rectangle); // set stroke width and stroke color
+        } else if(appliedJob.getStatus().toLowerCase().toString().equalsIgnoreCase("interview")){
+            holder.status.setTextColor(context.getResources().getColor(R.color.interview_color));
+            holder.rectangle.setStroke(3, context.getResources().getColor(R.color.interview_color));
+            holder.rectangle.setColor(context.getResources().getColor(R.color.white_color));
+            holder.status.setBackground(holder.rectangle); // set stroke width and stroke color
+        } else if(appliedJob.getStatus().toLowerCase().toString().equalsIgnoreCase("t")){
+            holder.status.setTextColor(context.getResources().getColor(R.color.t_color));
+            holder.rectangle.setStroke(3, context.getResources().getColor(R.color.t_color));
+            holder.rectangle.setColor(context.getResources().getColor(R.color.white_color));
+            holder.status.setBackground(holder.rectangle); // set stroke width and stroke color
+        }
         holder.jobProfile.setText(appliedJob.getTitle());
         holder.company.setText(appliedJob.getSubtitle());
         holder.status.setText(appliedJob.getStatus());
@@ -53,27 +75,29 @@ public class AppliedRecyclerViewAdapter extends  RecyclerView.Adapter<AppliedRec
     @Override
     public int getItemCount() {
         if (appliedJobs == null)
-        return 0;
+            return 0;
         else
-        return  appliedJobs.size();
+            return  appliedJobs.size();
     }
 
     public class MyJobViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
 
-        public TextView jobProfile, company, status;
+        public TextView jobProfile, company;
+        public Button status;
         public CardView cardView;
         public ImageView image;
+        public GradientDrawable rectangle;
 
 
         public MyJobViewHolder(View view) {
             super(view);
             jobProfile = (TextView) view.findViewById(R.id.tv_applied_item_title);
             company = (TextView) view.findViewById(R.id.tv_applied_item_subtitle);
-            status = (TextView) view.findViewById(R.id.tv_applied_item_status);
+            status = (Button) view.findViewById(R.id.btn_applied_item_status);
             image = (ImageView)view.findViewById(R.id.iv_applied_item_image);
             cardView = (CardView)view.findViewById(R.id.cv_applied_card);
             cardView.setOnClickListener(this);
-
+            rectangle = (GradientDrawable)context.getResources().getDrawable(R.drawable.status_border);
         }
 
         @Override

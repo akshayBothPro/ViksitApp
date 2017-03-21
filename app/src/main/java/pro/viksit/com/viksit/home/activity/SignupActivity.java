@@ -35,7 +35,6 @@ public class SignupActivity extends AppCompatActivity {
         email = (AppCompatEditText) findViewById(R.id.apet_email);
         phoneNumber = (AppCompatEditText) findViewById(R.id.apet_phone_number);
         password = (AppCompatEditText) findViewById(R.id.apet_password);
-        confirmPassword = (AppCompatEditText) findViewById(R.id.et_confirm_passsword);
         signup = (Button) findViewById(R.id.btn_signup);
         loginInstead = (TextView) findViewById(R.id.tv_login_instead);
 

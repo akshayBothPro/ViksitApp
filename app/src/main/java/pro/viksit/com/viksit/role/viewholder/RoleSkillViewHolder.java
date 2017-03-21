@@ -28,6 +28,7 @@ public class RoleSkillViewHolder extends ParentViewHolder {
     private TextView desc;
     private ProgressBar pb;
     private View vLine;
+    private View lastLine;
 
 
     public RoleSkillViewHolder(@NonNull View itemView) {
@@ -38,6 +39,7 @@ public class RoleSkillViewHolder extends ParentViewHolder {
         mArrowExpandImageView = (ImageView) itemView.findViewById(R.id.expanded);
         mArrowExpandImageView.setImageResource(R.mipmap.ic_add_black_24dp);
         vLine =  itemView.findViewById(R.id.tv_role_parent_line);
+        lastLine = itemView.findViewById(R.id.line_for_last);
     }
 
     public void bind(@NonNull RoleParent roleParent) {
@@ -53,42 +55,15 @@ public class RoleSkillViewHolder extends ParentViewHolder {
         super.setExpanded(expanded);
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB) {
             if (expanded) {
-/*
-                mArrowExpandImageView.setRotation(ROTATED_POSITION);
-*/
                 mArrowExpandImageView.setImageResource(R.mipmap.ic_indeterminate_check_box_black_24dp);
                 vLine.setVisibility(View.VISIBLE);
+
             } else {
-/*
-                mArrowExpandImageView.setRotation(INITIAL_POSITION);
-*/
                 mArrowExpandImageView.setImageResource(R.mipmap.ic_add_black_24dp);
                 vLine.setVisibility(View.GONE);
             }
         }
     }
 
-    @Override
-    public void onExpansionToggled(boolean expanded) {
-        super.onExpansionToggled(expanded);
-       /* if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB) {
-            RotateAnimation rotateAnimation;
-            if (expanded) { // rotate clockwise
-                rotateAnimation = new RotateAnimation(ROTATED_POSITION,
-                        INITIAL_POSITION,
-                        RotateAnimation.RELATIVE_TO_SELF, 0.5f,
-                        RotateAnimation.RELATIVE_TO_SELF, 0.5f);
-            } else { // rotate counterclockwise
-                rotateAnimation = new RotateAnimation(-1 * ROTATED_POSITION,
-                        INITIAL_POSITION,
-                        RotateAnimation.RELATIVE_TO_SELF, 0.5f,
-                        RotateAnimation.RELATIVE_TO_SELF, 0.5f);
-            }
-
-            rotateAnimation.setDuration(200);
-            rotateAnimation.setFillAfter(true);
-            mArrowExpandImageView.startAnimation(rotateAnimation);
-        }*/
-    }
 
 }

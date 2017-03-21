@@ -33,7 +33,7 @@ public class JobActivity extends AppCompatActivity {
         tabLayout = (TabLayout) findViewById(R.id.tl_job_tabs);
 
         setSupportActionBar(toolbar);
-        new BottomBarUtil().setupBottomBar(bottomNavigationView,JobActivity.this,R.id.role);//setting bottom navigation bar
+        new BottomBarUtil().setupBottomBar(bottomNavigationView,JobActivity.this,R.id.job);//setting bottom navigation bar
         setTabs();
     }
 

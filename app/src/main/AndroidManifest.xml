@@ -25,10 +25,6 @@
         <activity android:name=".dashboard.activity.DashboardActivity" />
         <activity android:name=".role.activity.RoleActivity" />
         <activity android:name=".MainActivity" /> <!-- not used yet -->
-        <activity
-            android:name=".role.activity.ModuleViewActivity"
-            android:label="@string/title_activity_module_view"
-            android:theme="@style/AppTheme" />
         <activity android:name=".job.activity.JobActivity" />
         <activity android:name=".role.activity.RoleDetailActivity" />
         <activity android:name=".role.activity.RoleDepthActivity" />

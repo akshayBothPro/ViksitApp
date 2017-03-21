@@ -19,6 +19,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textColor="@color/welcome_text_color"
+        android:layout_marginTop="10dp"
         android:typeface="sans"
         android:textStyle="bold"
         android:textSize="21sp"
@@ -32,8 +33,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="5dp"
-        android:background="@drawable/member_btn"
-        android:textColor="@color/theme_color"
+        android:background="@drawable/signup_btn_shape"
+        android:textColor="@color/white_color"
         android:textStyle="bold"
         android:textAllCaps="true"
         android:text="get started"/>
@@ -42,9 +43,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:background="@drawable/member_btn"
-        android:textColor="@color/theme_color"
+        android:background="@color/white_color"
+        android:textColor="@color/hint_color"
         android:textStyle="bold"
-        android:textAllCaps="true"
-        android:text="Already a member ?"/>
+        android:text="Already a Member ?"/>
 </RelativeLayout>

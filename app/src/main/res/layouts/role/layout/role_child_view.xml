@@ -17,7 +17,6 @@
                 android:id="@+id/rl_hor_line"
                 android:layout_width="1dp"
                 android:layout_height="match_parent"
-                android:background="#e0e0e0"
                 android:layout_centerInParent="true"
                 />
         <RelativeLayout
@@ -25,10 +24,24 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
             <View
+                android:id="@+id/hor_line"
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
                 android:background="#e0e0e0"
                 android:layout_centerInParent="true"
+                />
+            <View
+                android:layout_above="@id/hor_line"
+                android:layout_width="1dp"
+                android:layout_height="match_parent"
+                android:background="#e0e0e0"
+                />
+            <View
+                android:id="@+id/line_for_last"
+                android:layout_below="@id/hor_line"
+                android:layout_width="1dp"
+                android:layout_height="match_parent"
+                android:background="#e0e0e0"
                 />
         </RelativeLayout>
     </RelativeLayout>

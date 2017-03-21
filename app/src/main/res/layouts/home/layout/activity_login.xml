@@ -51,7 +51,8 @@
                 android:padding="5dp"
                 android:paddingRight="10dp"
                 android:background="@drawable/input_shape"
-                android:singleLine="true"
+                android:drawableRight=""
+                android:drawableEnd="@mipmap/ic_indeterminate_check_box_black_24dp"
                 android:textCursorDrawable="@null"
                 android:textColorHint="@color/hint_color"
                 android:inputType="textPassword"
@@ -64,7 +65,7 @@
                 android:layout_marginBottom="15dp"
                 android:text="LOGIN"
                 android:textColor="@android:color/white"
-                android:background="@drawable/login_btn_shape"/>
+                android:background="@drawable/signup_btn_shape"/>
 
             <TextView
                 android:id="@+id/tv_forgot_password"
@@ -74,7 +75,11 @@
                 android:textSize="16sp"/>
 
         </LinearLayout>
-
+        <include
+            android:id="@+id/signup_options"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            layout="@layout/signup_options" />
     </LinearLayout>
 
     <TextView

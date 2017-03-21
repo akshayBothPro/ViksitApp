@@ -2,6 +2,7 @@ package pro.viksit.com.viksit.role.pojo;
 
 import com.bignerdranch.expandablerecyclerview.model.Parent;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -9,7 +10,8 @@ import java.util.List;
  * Created by Feroz on 20-03-2017.
  */
 
-public class RoleParent implements Parent<RoleChild> {
+@SuppressWarnings("serial") //With this annotation we are going to hide compiler warnings
+public class RoleParent implements Parent<RoleChild>,Serializable {
 
     String title;
     String text;
