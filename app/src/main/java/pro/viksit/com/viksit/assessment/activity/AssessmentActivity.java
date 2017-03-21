@@ -75,7 +75,7 @@ public class AssessmentActivity extends AppCompatActivity {
                 .build();
         result.getStickyHeader().setBackgroundColor(getResources().getColor(R.color.theme_color));
         TextView vv = (TextView) result.getStickyHeader().findViewById(R.id.question_title);
-        vv.setText("Champa ka ram ram");
+        vv.setText("20 Questions ");
         imageButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -126,7 +126,7 @@ public class AssessmentActivity extends AppCompatActivity {
         optionArrayList1.add(option6);
         optionArrayList1.add(option7);
         optionArrayList1.add(option8);
-        Question question1 = new Question("\t\n" +
+        Question question1 = new Question(
                 "Applying for Seasonal Employment occurs when a person requests to be considered for a job that is dependent on a particular season or time of year. Which situation below is the best example of Applying for Seasonal Employment?", optionArrayList1);
 
 

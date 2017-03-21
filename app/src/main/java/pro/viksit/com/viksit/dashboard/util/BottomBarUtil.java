@@ -13,6 +13,7 @@ import android.view.MenuItem;
 import java.lang.reflect.Field;
 
 import pro.viksit.com.viksit.R;
+import pro.viksit.com.viksit.assessment.activity.AssessmentActivity;
 import pro.viksit.com.viksit.dashboard.activity.DashboardActivity;
 import pro.viksit.com.viksit.job.activity.JobActivity;
 import pro.viksit.com.viksit.role.activity.RoleActivity;
@@ -58,6 +59,16 @@ public class BottomBarUtil {
 
                                 }else {
                                     Intent ii = new Intent(context, JobActivity.class);
+                                    context.startActivity(ii);
+                                    ((Activity) context).overridePendingTransition(R.anim.zoom_enter, R.anim.zoom_exit);
+                                }
+                                break;
+                            case R.id.calendar:
+                                if(((Activity)context) instanceof AssessmentActivity) {
+                                    System.out.println("Dont call Job in Job ... ... .... ");
+
+                                }else {
+                                    Intent ii = new Intent(context, AssessmentActivity.class);
                                     context.startActivity(ii);
                                     ((Activity) context).overridePendingTransition(R.anim.zoom_enter, R.anim.zoom_exit);
                                 }

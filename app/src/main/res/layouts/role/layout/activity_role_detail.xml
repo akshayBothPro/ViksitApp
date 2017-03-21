@@ -2,10 +2,9 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:background="#E7E7E7"
+    android:background="@color/white"
     android:layout_height="match_parent"
-    android:fitsSystemWindows="true"
-    >
+    android:fitsSystemWindows="true">
 
     <android.support.design.widget.AppBarLayout
         android:id="@+id/appbar"
@@ -26,6 +25,7 @@
             app:layout_scrollFlags="scroll|exitUntilCollapsed|snap"
             app:titleEnabled="false"
             >
+            <include layout="@layout/role_detail_toolbar"/>
 
             <android.support.v7.widget.Toolbar
                 android:id="@+id/toolbar"
@@ -54,8 +54,7 @@
                         android:text=""
                         android:textSize="@dimen/h2"
                         android:textStyle="bold"
-                        android:id="@+id/toolbar_title"
-                        android:textColor="@color/white"/>
+                        android:id="@+id/toolbar_title"/>
                     <ImageView
                         android:layout_width="24dp"
                         android:layout_height="24dp"
@@ -65,9 +64,7 @@
                         android:tint="@color/white"
                         android:id="@+id/back"/>
                 </RelativeLayout>
-</android.support.v7.widget.Toolbar>
-
-            <include layout="@layout/role_detail_toolbar" />
+            </android.support.v7.widget.Toolbar>
 
         </android.support.design.widget.CollapsingToolbarLayout>
 
