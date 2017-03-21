@@ -31,4 +31,7 @@
     <color name="t_color">#9ccf64</color>
     <color name="interview_color">#5790d3</color>
     <color name="rejected_color">#eb4b5f</color>
+
+    <color name="linkedIn_color">#0288d1</color>
+    <color name="google_color">#f4511e</color>
 </resources>

@@ -51,6 +51,7 @@
                 android:padding="5dp"
                 android:paddingRight="10dp"
                 android:background="@drawable/input_shape"
+                android:drawableRight="@mipmap/ic_indeterminate_check_box_black_24dp"
                 android:drawableEnd="@mipmap/ic_indeterminate_check_box_black_24dp"
                 android:textCursorDrawable="@null"
                 android:textColorHint="@color/hint_color"
@@ -66,10 +67,12 @@
                 android:textColor="@android:color/white"
                 android:background="@drawable/signup_btn_shape"/>
 
-            <TextView
-                android:id="@+id/tv_forgot_password"
+            <Button
+                android:id="@+id/btn_forgot_password"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:background="@color/white_color"
+                android:textAllCaps="false"
                 android:textColor="@color/forgot_password_color"
                 android:textSize="16sp"/>
 
@@ -81,14 +84,16 @@
             layout="@layout/signup_options" />
     </LinearLayout>
 
-    <TextView
-        android:id="@+id/tv_register_instead"
+    <Button
+        android:id="@+id/btn_register_instead"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:layout_alignParentBottom="true"
         android:layout_marginBottom="5dp"
+        android:background="@color/white_color"
         android:textSize="15sp"
+        android:textAllCaps="false"
         android:text="TALEJDJKDKJHFJJKD"
         android:textColor="@color/register_instead_color"/>
 

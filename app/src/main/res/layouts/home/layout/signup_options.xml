@@ -50,7 +50,7 @@
             android:textAllCaps="false"
             android:textStyle="bold"
             android:textColor="@android:color/white"
-            android:background="@drawable/signup_btn_shape"/>
+            android:background="@drawable/linkedin_btn_shape"/>
 
         <Button
             android:id="@+id/btn_signup_google"
@@ -65,7 +65,7 @@
             android:textStyle="bold"
             android:textAllCaps="false"
             android:textColor="@android:color/white"
-            android:background="@drawable/signup_btn_shape"/>
+            android:background="@drawable/google_btn_shape"/>
 
     </LinearLayout>
 </LinearLayout>

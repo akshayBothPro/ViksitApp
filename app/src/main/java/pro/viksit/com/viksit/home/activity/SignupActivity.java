@@ -13,17 +13,18 @@ import android.widget.TextView;
 import pro.viksit.com.viksit.R;
 import pro.viksit.com.viksit.dashboard.activity.DashboardActivity;
 
-public class SignupActivity extends AppCompatActivity {
+public class SignupActivity extends AppCompatActivity implements View.OnClickListener{
     private static final String TAG = SignupActivity.class.getSimpleName();
 
     private TextView welcome;
-    private TextView subtitle;
     private AppCompatEditText email;
     private AppCompatEditText phoneNumber;
     private AppCompatEditText password;
     private AppCompatEditText confirmPassword;
     private Button signup;
-    private TextView loginInstead;
+    private Button linkedBtn;
+    private Button googleBtn;
+    private Button loginInstead;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,12 +32,13 @@ public class SignupActivity extends AppCompatActivity {
         setContentView(R.layout.activity_signup);
 
         welcome = (TextView) findViewById(R.id.tv_welcome);
-        subtitle = (TextView) findViewById(R.id.tv_journey_begins);
         email = (AppCompatEditText) findViewById(R.id.apet_email);
         phoneNumber = (AppCompatEditText) findViewById(R.id.apet_phone_number);
         password = (AppCompatEditText) findViewById(R.id.apet_password);
         signup = (Button) findViewById(R.id.btn_signup);
-        loginInstead = (TextView) findViewById(R.id.tv_login_instead);
+        loginInstead = (Button) findViewById(R.id.btn_login_instead);
+        linkedBtn = (Button) findViewById(R.id.btn_signup_linkedIn);
+        googleBtn = (Button) findViewById(R.id.btn_signup_google);
 
         implementListeners();
     }
@@ -59,5 +61,10 @@ public class SignupActivity extends AppCompatActivity {
                 startActivity(new Intent(SignupActivity.this, LoginActivity.class));
             }
         });
+    }
+
+    @Override
+    public void onClick(View v) {
+
     }
 }

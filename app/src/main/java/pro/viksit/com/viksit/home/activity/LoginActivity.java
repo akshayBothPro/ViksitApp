@@ -2,6 +2,7 @@ package pro.viksit.com.viksit.home.activity;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.graphics.drawable.GradientDrawable;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -16,15 +17,18 @@ import android.widget.Toast;
 
 import pro.viksit.com.viksit.R;
 
-public class LoginActivity extends AppCompatActivity {
+public class LoginActivity extends AppCompatActivity implements View.OnClickListener{
     private static final String TAG = LoginActivity.class.getSimpleName();
 
     private TextView welcome;
     private AppCompatEditText email;
     private AppCompatEditText password;
     private Button loginButton;
-    private TextView forgotPassword;
-    private TextView registerInstead;
+    private Button googleBtn;
+    private Button linkedInBtn;
+    private Button forgotPassword;
+    private Button registerInstead;
+    private GradientDrawable drawable;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,39 +39,22 @@ public class LoginActivity extends AppCompatActivity {
         email = (AppCompatEditText) findViewById(R.id.apet_login_email);
         password = (AppCompatEditText) findViewById(R.id.apet_login_password);
         loginButton = (Button) findViewById(R.id.btn_login);
-        forgotPassword = (TextView) findViewById(R.id.tv_forgot_password);
-        registerInstead = (TextView) findViewById(R.id.tv_register_instead);
+        googleBtn = (Button) findViewById(R.id.btn_signup_google);
+        linkedInBtn = (Button) findViewById(R.id.btn_signup_linkedIn);
+        forgotPassword = (Button) findViewById(R.id.btn_forgot_password);
+        registerInstead = (Button) findViewById(R.id.btn_register_instead);
 
-        implementListeners();
+        implementActionsListeners();
 
     }
 
-    private void implementListeners(){
-        loginButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Log.i(TAG,"login button clicked");
-                loginButton.setBackgroundColor(getResources().getColor(R.color.theme_color));
-                loginButton.setTextColor(getResources().getColor(R.color.white_color));
-                login();
-            }
-        });
+    private void implementActionsListeners(){
+        loginButton.setOnClickListener(this);
         forgotPassword.setText(Html.fromHtml("<u>Forgot Password</u>"));
-        forgotPassword.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Log.i(TAG,"forgot password clicked");
-            }
-        });
-
+        forgotPassword.setOnClickListener(this);
         registerInstead.setText(Html.fromHtml("<u>Not a member yet? Register instead</u>"));
-        registerInstead.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Log.i(TAG,"register instead clicked");
-                startActivity(new Intent(LoginActivity.this, SignupActivity.class));
-            }
-        });
+        registerInstead.setOnClickListener(this);
+
     }
 
     public void login() {
@@ -126,5 +113,20 @@ public class LoginActivity extends AppCompatActivity {
         }
 
         return valid;
+    }
+
+    @Override
+    public void onClick(View v) {
+        int id = v.getId();
+        if(id == R.id.btn_login) {
+
+            System.out.println("loign clicked");
+            login();
+        }else if(id == R.id.btn_register_instead) {
+            System.out.println("register instead clicked");
+            startActivity(new Intent(LoginActivity.this, SignupActivity.class));
+        } else if(id == R.id.btn_forgot_password) {
+            System.out.println("forgot password clicked");
+        }
     }
 }

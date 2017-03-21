@@ -22,19 +22,12 @@
                 android:id="@+id/tv_welcome"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
                 android:layout_marginBottom="5dp"
-                android:textSize="22sp"
-                android:textStyle="bold"
-                android:text="Welcome!"
+                android:textSize="@dimen/h2"
+                android:text="Welcome! Your Talentify journey begins here"
                 android:textColor="#595959"/>
-            <TextView
-                android:id="@+id/tv_journey_begins"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="15dp"
-                android:textSize="17sp"
-                android:text="Your Journey begins here"
-                android:textColor="#595959"/>
+
 
             <android.support.v7.widget.AppCompatEditText
                 android:id="@+id/apet_email"
@@ -92,13 +85,15 @@
             layout="@layout/signup_options" />
     </LinearLayout>
 
-    <TextView
-        android:id="@+id/tv_login_instead"
+    <Button
+        android:id="@+id/btn_login_instead"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:layout_alignParentBottom="true"
         android:layout_marginBottom="5dp"
+        android:background="@color/white_color"
+        android:textAllCaps="false"
         android:text="Already a member? Login instead"
         android:textSize="15sp"
         android:textColor="@color/register_instead_color"/>
