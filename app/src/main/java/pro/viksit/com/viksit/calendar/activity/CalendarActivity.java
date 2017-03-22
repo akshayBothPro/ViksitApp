@@ -83,7 +83,7 @@ public class CalendarActivity extends AppCompatActivity {
         CalendarData cal2 = new CalendarData(previousday,"Business Management at 9 Pm","NOWHERE","");
         calendarDataList.add(cal2);
 
-        CalendarData cal = new CalendarData(new Date(),"Sales Class is at 3 Pm","INACTIVE","");
+        CalendarData cal = new CalendarData(previousday,"Sales Class is at 3 Pm","INACTIVE","");
         calendarDataList.add(cal);
 
         Calendar cals = Calendar.getInstance();
@@ -94,7 +94,8 @@ public class CalendarActivity extends AppCompatActivity {
         CalendarData cal1 = new CalendarData(oneHourBack,"Sales Assessment at 6 Pm","ACTIVE","");
         calendarDataList.add(cal1);
 
-
+        CalendarData cal12 = new CalendarData(oneHourBack,"Current Assessment at 6 Pm","ACTIVE","");
+        calendarDataList.add(cal12);
 
         Calendar minusday = Calendar.getInstance();
         minusday.setTime(new Date());
@@ -109,6 +110,8 @@ public class CalendarActivity extends AppCompatActivity {
 
         CalendarData cal3 = new CalendarData(nextday,"Business Sales at 11 Am","INACTIVE","");
         calendarDataList.add(cal3);
+        CalendarData cal9 = new CalendarData(nextday,"Business Sales at 11 Am","INACTIVE","");
+        calendarDataList.add(cal9);
         timeLineAdapter = new TimeLineAdapter(calendarDataList,CalendarActivity.this);
         mRecyclerView.setAdapter(timeLineAdapter);
     }
