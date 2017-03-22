@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import java.net.URL;
 import java.util.List;
@@ -37,6 +38,7 @@ public class RoleHorizontalRecyclerViewAdapter extends RecyclerView.Adapter<Role
     public void onBindViewHolder(MyViewHolder holder, int position) {
         RecommendedRole recommendedRole = recommendedRoles.get(position);
         holder.image.setImageResource(recommendedRole.getResID());
+        holder.description.setText(recommendedRole.getDescription());
 
         // if we have image URL instead of resID use it
         /*URL url = recommendedRole.getImageURL();
@@ -51,10 +53,12 @@ public class RoleHorizontalRecyclerViewAdapter extends RecyclerView.Adapter<Role
 
     public class MyViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
         public ImageView image;
+        public TextView description;
 
         public MyViewHolder(View view) {
             super(view);
             image = (ImageView)view.findViewById(R.id.iv_recommended_role_item_image);
+            description = (TextView)view.findViewById(R.id.tv_role_description);
             image.setOnClickListener(this);
         }
 

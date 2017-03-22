@@ -1,6 +1,9 @@
 package pro.viksit.com.viksit.home.activity;
 
 import android.content.Intent;
+import android.graphics.PorterDuff;
+import android.graphics.drawable.Drawable;
+import android.graphics.drawable.GradientDrawable;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -34,6 +37,7 @@ public class HomeActivity extends AppCompatActivity {
     }
 
     private void implementListeners(){
+
         getStarted.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

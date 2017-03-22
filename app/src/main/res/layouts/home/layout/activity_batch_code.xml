@@ -128,7 +128,7 @@
                 android:textStyle="bold"
                 android:textAllCaps="true"
                 android:textColor="@android:color/white"
-                android:background="@drawable/login_btn_shape"/>
+                android:background="@drawable/signup_btn_shape"/>
         </LinearLayout>
 
 

@@ -2,6 +2,9 @@ package pro.viksit.com.viksit.home.activity;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.PorterDuff;
+import android.graphics.drawable.Drawable;
 import android.graphics.drawable.GradientDrawable;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
@@ -44,6 +47,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         forgotPassword = (Button) findViewById(R.id.btn_forgot_password);
         registerInstead = (Button) findViewById(R.id.btn_register_instead);
 
+
         implementActionsListeners();
 
     }
@@ -54,6 +58,8 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         forgotPassword.setOnClickListener(this);
         registerInstead.setText(Html.fromHtml("<u>Not a member yet? Register instead</u>"));
         registerInstead.setOnClickListener(this);
+        Drawable sourceDrawable = getResources().getDrawable(R.mipmap.ic_remove_red_eye_black_36dp);
+        sourceDrawable.setColorFilter(getResources().getColor(R.color.input_border), PorterDuff.Mode.SRC_IN);
 
     }
 

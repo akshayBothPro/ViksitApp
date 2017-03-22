@@ -42,24 +42,24 @@
                 android:id="@+id/points"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignTop="@+id/profile_pic"
                 android:layout_toRightOf="@+id/profile_pic"
+                android:layout_centerVertical="true"
                 android:layout_marginTop="2dp"
                 android:text="2400"
                 android:textStyle="bold"
                 android:textColor="@android:color/white"
-                android:textSize="19sp"/>
-
+                android:textSize="@dimen/h6"/>
             <TextView
-                android:id="@+id/exppoints"
+                android:id="@+id/xp_unit"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignBottom="@+id/profile_pic"
-                android:layout_toRightOf="@+id/profile_pic"
-                android:layout_marginBottom="2dp"
-                android:text="Experience Points"
-                android:textColor="@android:color/white"
-                android:textSize="14sp" />
+                android:layout_toRightOf="@+id/points"
+                android:layout_centerVertical="true"
+                android:layout_marginTop="2dp"
+                android:text=" XP"
+                android:textStyle="bold"
+                android:textColor="@color/input_border"
+                android:textSize="@dimen/p3"/>
 
             <ImageView
                 android:id="@+id/notfication"

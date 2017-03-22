@@ -9,10 +9,12 @@ import java.net.URL;
 public class RecommendedRole {
     private String id;
     private int resID;
+    private String description;
     /*private URL imageURL;*/
 
-    public RecommendedRole(int resID) {
+    public RecommendedRole(int resID, String description) {
         this.resID = resID;
+        this.description = description;
     }
 
     public String getId() {
@@ -29,6 +31,14 @@ public class RecommendedRole {
 
     public void setResID(int resID) {
         this.resID = resID;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     /*public URL getImageURL() {

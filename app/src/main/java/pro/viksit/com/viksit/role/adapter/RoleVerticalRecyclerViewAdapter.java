@@ -29,8 +29,7 @@ public class RoleVerticalRecyclerViewAdapter extends RecyclerView.Adapter<RoleVe
 
     @Override
     public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View itemView = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.role_vertical_item_card_view, parent, false);
+        View itemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.role_vertical_item_card_view, parent, false);
 
         //
         return new MyViewHolder(itemView);

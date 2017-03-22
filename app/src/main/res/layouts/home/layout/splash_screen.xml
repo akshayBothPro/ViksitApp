@@ -17,9 +17,10 @@
     android:layout_height="wrap_content"
     android:text="Talentify"
     android:textSize="@dimen/h1"
+    android:textAllCaps="true"
     android:layout_below="@+id/logo"
     android:layout_centerHorizontal="true"
-    android:textColor="@color/gray_pill"
+    android:textColor="@color/white_color"
     android:textStyle="bold"
     />
 

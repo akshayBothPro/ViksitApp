@@ -1,100 +1,94 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    tools:context="pro.viksit.com.viksit.home.activity.SignupActivity"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="20dp"
-    android:background="@android:color/white"
-    tools:context="pro.viksit.com.viksit.home.activity.SignupActivity">
+    android:gravity="center"
+    android:background="@color/white_color"
+    android:orientation="vertical">
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_margin="10dp"
-        android:gravity="center"
-        android:orientation="vertical">
-        <LinearLayout
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="5dp"
+        android:orientation="vertical"
+        android:gravity="center_horizontal">
+        <TextView
+            android:id="@+id/tv_welcome"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:layout_marginBottom="10dp"
+            android:textSize="@dimen/h2"
+            android:text="Welcome! Your Talentify journey begins here"
+            android:textColor="#595959"/>
+
+
+        <android.support.v7.widget.AppCompatEditText
+            android:id="@+id/apet_email"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:gravity="center_horizontal">
-            <TextView
-                android:id="@+id/tv_welcome"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:gravity="center_horizontal"
-                android:layout_marginBottom="5dp"
-                android:textSize="@dimen/h2"
-                android:text="Welcome! Your Talentify journey begins here"
-                android:textColor="#595959"/>
-
-
-            <android.support.v7.widget.AppCompatEditText
-                android:id="@+id/apet_email"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@drawable/input_shape"
-                android:layout_marginBottom="5dp"
-                android:padding="5dp"
-                android:paddingRight="10dp"
-                android:singleLine="true"
-                android:textCursorDrawable="@null"
-                android:textColorHint="#c4c4c4"
-                android:inputType="textEmailAddress"
-                android:hint="Email ID"/>
-            <android.support.v7.widget.AppCompatEditText
-                android:id="@+id/apet_phone_number"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@drawable/input_shape"
-                android:layout_marginBottom="5dp"
-                android:padding="5dp"
-                android:paddingRight="10dp"
-                android:singleLine="true"
-                android:textCursorDrawable="@null"
-                android:textColorHint="#c4c4c4"
-                android:inputType="phone"
-                android:hint="Phone Number"/>
-            <android.support.v7.widget.AppCompatEditText
-                android:id="@+id/apet_password"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@drawable/input_shape"
-                android:layout_marginBottom="5dp"
-                android:padding="5dp"
-                android:paddingRight="10dp"
-                android:singleLine="true"
-                android:textCursorDrawable="@null"
-                android:textColorHint="#c4c4c4"
-                android:inputType="textPassword"
-                android:hint="Password"/>
-
-            <Button
-                android:id="@+id/btn_signup"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="sign up"
-                android:textColor="@android:color/white"
-                android:background="@drawable/signup_btn_shape"/>
-
-        </LinearLayout>
-        <include
-            android:id="@+id/signup_options"
+            android:background="@drawable/input_shape"
+            android:layout_marginBottom="5dp"
+            android:padding="5dp"
+            android:paddingLeft="10dp"
+            android:paddingStart="10dp"
+            android:textCursorDrawable="@null"
+            android:textColorHint="#c4c4c4"
+            android:inputType="textEmailAddress"
+            android:hint="Email ID"/>
+        <android.support.v7.widget.AppCompatEditText
+            android:id="@+id/apet_phone_number"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            layout="@layout/signup_options" />
+            android:background="@drawable/input_shape"
+            android:layout_marginBottom="5dp"
+            android:padding="5dp"
+            android:paddingLeft="10dp"
+            android:paddingStart="10dp"
+            android:textCursorDrawable="@null"
+            android:textColorHint="#c4c4c4"
+            android:inputType="phone"
+            android:hint="Phone Number"/>
+        <android.support.v7.widget.AppCompatEditText
+            android:id="@+id/apet_password"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/input_shape"
+            android:layout_marginBottom="10dp"
+            android:padding="5dp"
+            android:paddingLeft="10dp"
+            android:paddingStart="10dp"
+            android:textCursorDrawable="@null"
+            android:textColorHint="#c4c4c4"
+            android:inputType="textPassword"
+            android:hint="Password"/>
+
+        <Button
+            android:id="@+id/btn_signup"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="sign up"
+            android:textColor="@android:color/white"
+            android:background="@drawable/signup_btn_shape"/>
+
     </LinearLayout>
-
+    <include
+        android:id="@+id/signup_options"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        layout="@layout/signup_options" />
     <Button
         android:id="@+id/btn_login_instead"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_alignParentBottom="true"
         android:layout_marginBottom="5dp"
         android:background="@color/white_color"
         android:textAllCaps="false"
         android:text="Already a member? Login instead"
         android:textSize="15sp"
         android:textColor="@color/register_instead_color"/>
-</RelativeLayout>
+</LinearLayout>

@@ -1,103 +1,96 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    tools:context="pro.viksit.com.viksit.home.activity.LoginActivity"
+    android:id="@+id/login_container"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="20dp"
-    tools:context="pro.viksit.com.viksit.home.activity.LoginActivity"
-    android:background="@android:color/white">
+    android:gravity="center"
+    android:background="@color/white_color"
+    android:orientation="vertical">
     <LinearLayout
-        android:id="@+id/login_container"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_margin="10dp"
-        android:gravity="center"
-        android:orientation="vertical">
-        <LinearLayout
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center_horizontal">
+        <TextView
+            android:id="@+id/tv_login_welcome"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:layout_margin="10dp"
+            android:textSize="@dimen/h4"
+            android:text="Welcome back! Ready to get some work done? "
+            android:textColor="@color/title_color"/>
+        <android.support.v7.widget.AppCompatEditText
+            android:id="@+id/apet_login_email"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:gravity="center_horizontal">
-            <TextView
-                android:id="@+id/tv_login_welcome"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:layout_margin="10dp"
-                android:textSize="22sp"
-                android:textStyle="bold"
-                android:text="Welcome back! Ready to get some work done "
-                android:textColor="@color/title_color"/>
-            <android.support.v7.widget.AppCompatEditText
-                android:id="@+id/apet_login_email"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:padding="5dp"
-                android:paddingRight="10dp"
-                android:layout_marginTop="5dp"
-                android:layout_marginBottom="5dp"
-                android:background="@drawable/input_shape"
-                android:singleLine="true"
-                android:textCursorDrawable="@null"
-                android:textColorHint="@color/hint_color"
-                android:inputType="textEmailAddress"
-                android:hint="Email ID"/>
+            android:padding="5dp"
+            android:paddingLeft="10dp"
+            android:paddingStart="10dp"
+            android:layout_marginBottom="5dp"
+            android:background="@drawable/input_shape"
+            android:textCursorDrawable="@null"
+            android:textColorHint="@color/hint_color"
+            android:inputType="textEmailAddress"
+            android:hint="Email ID"/>
 
-            <android.support.v7.widget.AppCompatEditText
-                android:id="@+id/apet_login_password"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="15dp"
-                android:padding="5dp"
-                android:paddingRight="10dp"
-                android:background="@drawable/input_shape"
-                android:drawableRight="@mipmap/ic_indeterminate_check_box_black_24dp"
-                android:drawableEnd="@mipmap/ic_indeterminate_check_box_black_24dp"
-                android:textCursorDrawable="@null"
-                android:textColorHint="@color/hint_color"
-                android:inputType="textPassword"
-                android:hint="Password" />
-
-            <Button
-                android:id="@+id/btn_login"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="10dp"
-                android:text="LOG IN"
-                android:textStyle="bold"
-                android:textColor="@android:color/white"
-                android:background="@drawable/signup_btn_shape"/>
-
-            <Button
-                android:id="@+id/btn_forgot_password"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="@color/white_color"
-                android:textAllCaps="false"
-                android:textColor="@color/forgot_password_color"
-                android:textSize="16sp"/>
-
-        </LinearLayout>
-        <include
-            android:id="@+id/signup_options"
+        <android.support.v7.widget.AppCompatEditText
+            android:id="@+id/apet_login_password"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            layout="@layout/signup_options" />
+            android:layout_marginBottom="10dp"
+            android:padding="5dp"
+            android:paddingLeft="10dp"
+            android:paddingStart="10dp"
+            android:background="@drawable/input_shape"
+            android:drawableRight="@mipmap/ic_remove_red_eye_black_36dp"
+            android:drawableEnd="@mipmap/ic_remove_red_eye_black_36dp"
+            android:drawableTint="@color/input_border"
+            android:textCursorDrawable="@null"
+            android:textColorHint="@color/hint_color"
+            android:inputType="textPassword"
+            android:hint="Password" />
+
+        <Button
+            android:id="@+id/btn_login"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:text="LOG IN"
+            android:textStyle="bold"
+            android:textColor="@android:color/white"
+            android:background="@drawable/signup_btn_shape"/>
+
+        <Button
+            android:id="@+id/btn_forgot_password"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@color/white_color"
+            android:textAllCaps="false"
+            android:textColor="@color/forgot_password_color"
+            android:textSize="@dimen/p4"/>
+
     </LinearLayout>
-
+    <include
+        android:id="@+id/signup_options"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        layout="@layout/signup_options" />
     <Button
         android:id="@+id/btn_register_instead"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_below="@+id/login_container"
-        android:layout_alignParentBottom="true"
-        android:layout_marginBottom="5dp"
+        android:layout_marginBottom="4dp"
         android:background="@color/white_color"
-        android:textSize="15sp"
+        android:textSize="@dimen/p4"
         android:textAllCaps="false"
         android:text="TALEJDJKDKJHFJJKD"
         android:textColor="@color/register_instead_color"/>
+</LinearLayout>
 
-</RelativeLayout>
