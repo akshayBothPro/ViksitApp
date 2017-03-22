@@ -2,6 +2,7 @@ package pro.viksit.com.viksit.calendar.activity;
 
 import android.app.DatePickerDialog;
 import android.os.Bundle;
+import android.support.design.widget.BottomNavigationView;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
@@ -20,6 +21,7 @@ import java.util.List;
 import pro.viksit.com.viksit.R;
 import pro.viksit.com.viksit.calendar.adapter.TimeLineAdapter;
 import pro.viksit.com.viksit.calendar.pojo.CalendarData;
+import pro.viksit.com.viksit.dashboard.util.BottomBarUtil;
 
 public class CalendarActivity extends AppCompatActivity {
     private RecyclerView mRecyclerView;
@@ -34,7 +36,9 @@ public class CalendarActivity extends AppCompatActivity {
         setContentView(R.layout.activity_calendar);
         mRecyclerView = (RecyclerView) findViewById(R.id.recyclerView);
         imageButton = (ImageButton) findViewById(R.id.calendar);
-
+        BottomNavigationView bottomNavigationView = (BottomNavigationView)
+                findViewById(R.id.bottom_navigation);
+        new BottomBarUtil().setupBottomBar(bottomNavigationView,CalendarActivity.this,R.id.calendar);
         mRecyclerView.setLayoutManager( new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
         mRecyclerView.setHasFixedSize(true);
         initView();
