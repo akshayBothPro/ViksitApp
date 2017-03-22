@@ -17,6 +17,7 @@
     <dimen name="p4">14sp</dimen>
     <dimen name="p5">13sp</dimen>
     <dimen name="p6">12sp</dimen>
+    <dimen name="p7">11sp</dimen>
 
     <dimen name="card_padding">35dp</dimen>
 

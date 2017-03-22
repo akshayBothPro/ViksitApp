@@ -15,6 +15,10 @@ public class Question implements Serializable {
     public Question() {
     }
 
+    public Question(String text){
+        this.text = text;
+    }
+
     public Question(String text, ArrayList<Option> optionArrayList) {
         this.text = text;
         this.optionArrayList = optionArrayList;

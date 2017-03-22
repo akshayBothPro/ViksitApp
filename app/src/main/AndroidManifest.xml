@@ -29,7 +29,8 @@
         <activity android:name=".role.activity.RoleDetailActivity" />
         <activity android:name=".role.activity.RoleDepthActivity" />
         <activity android:name=".assessment.activity.AssessmentActivity" />
-        <activity android:name=".calendar.activity.CalendarActivity"></activity>
+        <activity android:name=".calendar.activity.CalendarActivity" />
+        <activity android:name=".assessment.activity.QuestionsActivity"></activity>
     </application>
 
 </manifest>

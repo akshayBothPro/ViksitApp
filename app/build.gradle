@@ -23,7 +23,7 @@ android {
                 assets.srcDirs = ['src/main/assets', 'src/main/res/values/assets/']
 
                 res.srcDirs =
-                        [
+                        [       'src/main/res/layouts/assessment',
                                 'src/main/res/layouts/calendar',
                                 'src/main/res/layouts/job',
                                 'src/main/res/layouts/role',

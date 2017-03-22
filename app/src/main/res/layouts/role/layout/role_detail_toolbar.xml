@@ -3,23 +3,23 @@
     android:orientation="horizontal" android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/theme_color"
-    android:weightSum="100"
     >
 
-    <RelativeLayout
+    <LinearLayout
         android:layout_width="0dp"
         android:layout_height="match_parent"
-        android:layout_weight="50"
+        android:gravity="center"
+        android:layout_weight="1"
         android:orientation="vertical"
         >
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="   350 XP"
-            android:textSize="@dimen/h2"
+            android:textSize="@dimen/h4"
             android:textColor="@color/white"
             android:id="@+id/total_points"
-            android:layout_marginBottom="2dp"
+            android:layout_marginTop="30dp"
             android:layout_centerVertical="true"
             android:layout_centerHorizontal="true"
             android:textStyle="bold"
@@ -28,27 +28,25 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="      of 500 XP earmed"
-            android:textSize="@dimen/p3"
+            android:text="of 500 XP earmed"
+            android:textSize="@dimen/p6"
             android:textColor="@color/white"
-            android:layout_below="@+id/total_points"
-            android:layout_centerVertical="true"
-            android:layout_centerHorizontal="true"
             />
-    </RelativeLayout>
+    </LinearLayout>
 
-    <RelativeLayout
+    <LinearLayout
         android:layout_width="0dp"
         android:layout_height="match_parent"
-        android:layout_weight="50"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:orientation="vertical"
         >
-
-
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="76 %"
-            android:textSize="@dimen/h2"
+            android:layout_marginTop="30dp"
+            android:textSize="@dimen/h4"
             android:textColor="@color/white"
             android:id="@+id/total_percentage"
             android:layout_centerVertical="true"
@@ -61,11 +59,43 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Progress"
-            android:textSize="@dimen/p3"
+            android:textSize="@dimen/p6"
             android:textColor="@color/white"
             android:layout_below="@+id/total_percentage"
             android:layout_centerVertical="true"
             android:layout_centerHorizontal="true"
             />
-    </RelativeLayout>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:orientation="vertical"
+        >
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="12th"
+            android:textSize="@dimen/h4"
+            android:textColor="@color/white"
+            android:layout_marginTop="30dp"
+            android:id="@+id/tv_rank"
+            android:layout_centerVertical="true"
+            android:layout_centerHorizontal="true"
+            android:textStyle="bold"
+
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Rank"
+            android:textSize="@dimen/p6"
+            android:textColor="@color/white"
+            android:layout_below="@+id/total_percentage"
+            android:layout_centerVertical="true"
+            android:layout_centerHorizontal="true"
+            />
+    </LinearLayout>
 </LinearLayout>

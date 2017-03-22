@@ -60,7 +60,7 @@ public class RoleDetailAdapter extends RecyclerView.Adapter<RoleDetailAdapter.My
             title = (TextView) view.findViewById(R.id.title);
             image = (ImageView) view.findViewById(R.id.image);
             relativeLayout = (RelativeLayout) itemView.findViewById(R.id.label_layout);
-            for(int i=1;i<10;i++) {
+            for(int i=1;i<3;i++) {
                 TextView tx = new TextView(context);
                 tx.setId(i);
                 RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.WRAP_CONTENT, RelativeLayout.LayoutParams.WRAP_CONTENT);

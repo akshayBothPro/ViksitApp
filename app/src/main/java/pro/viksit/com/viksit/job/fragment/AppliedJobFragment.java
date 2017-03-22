@@ -16,6 +16,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.Switch;
+import android.widget.TextView;
 
 
 import java.util.ArrayList;
@@ -36,11 +37,10 @@ public class AppliedJobFragment extends Fragment implements View.OnClickListener
     private RecyclerView recyclerView;
     private ArrayList<Applied> appliedJobs;
     private AppliedRecyclerViewAdapter mAdapter;
-    private Button all;
-    private Button p;
-    private Button t;
-    private Button i;
-    private Button r;
+    private TextView all;
+    private TextView pending;
+    private TextView test;
+    private TextView interview;
     private GradientDrawable circle;
     //
     public AppliedJobFragment() {
@@ -54,11 +54,10 @@ public class AppliedJobFragment extends Fragment implements View.OnClickListener
         view = inflater.inflate(R.layout.fragment_applied_job, container, false);
         context=getContext();
         recyclerView = (RecyclerView)view.findViewById(R.id.rv_applied_job);
-        all = (Button)view.findViewById(R.id.btn_all);
-        p = (Button)view.findViewById(R.id.btn_p);
-        t = (Button)view.findViewById(R.id.btn_t);
-        i = (Button)view.findViewById(R.id.btn_i);
-        r = (Button)view.findViewById(R.id.btn_r);
+        all = (TextView)view.findViewById(R.id.tv_all);
+        pending = (TextView)view.findViewById(R.id.tv_p);
+        test = (TextView)view.findViewById(R.id.tv_t);
+        interview = (TextView)view.findViewById(R.id.tv_i);
         /*ShapeDrawable drawable = (ShapeDrawable) getResources().getDrawable(R.drawable.circle_border);
         drawable.setColorFilter(Color.parseColor("#eb4b5f"), PorterDuff.Mode.SRC_IN);
         p.setBackground(drawable);*/
@@ -70,14 +69,13 @@ public class AppliedJobFragment extends Fragment implements View.OnClickListener
     }
 
     private void implementActionsListeners(){
-        setFilterButtonColors(R.color.pending_color,p);
-        setFilterButtonColors(R.color.t_color,t);
-        setFilterButtonColors(R.color.interview_color,i);
-        setFilterButtonColors(R.color.rejected_color,r);
+        setFilterButtonColors(R.color.pending_color,pending);
+        setFilterButtonColors(R.color.t_color,test);
+        setFilterButtonColors(R.color.interview_color,interview);
 
         circle = (GradientDrawable)getResources().getDrawable(R.drawable.status_border);
-        circle.setColor(getResources().getColor(R.color.black));
-        circle.setStroke(3,getResources().getColor(R.color.black));
+        circle.setColor(getResources().getColor(R.color.all_background));
+        circle.setStroke(3,getResources().getColor(R.color.all_background));
         all.setBackground(circle);
         //
         mAdapter = new AppliedRecyclerViewAdapter(context, appliedJobs);
@@ -104,16 +102,17 @@ public class AppliedJobFragment extends Fragment implements View.OnClickListener
         );
 
         all.setOnClickListener(this);
-        p.setOnClickListener(this);
-        t.setOnClickListener(this);
-        i.setOnClickListener(this);
-        r.setOnClickListener(this);
+        pending.setOnClickListener(this);
+        test.setOnClickListener(this);
+        interview.setOnClickListener(this);
+        /*r.setOnClickListener(this);*/
     }
 
-    private void setFilterButtonColors(int color, Button button){
+    private void setFilterButtonColors(int color, TextView button){
 
-        circle = (GradientDrawable)getResources().getDrawable(R.drawable.circle_border);
+        circle = (GradientDrawable)getResources().getDrawable(R.drawable.status_border);
         circle.setStroke(3, getResources().getColor(color));
+        circle.setColor(getResources().getColor(R.color.white_color));
 
         button.setBackground(circle); // set stroke width and stroke color
         button.setTextColor(getResources().getColor(color));
@@ -148,17 +147,17 @@ public class AppliedJobFragment extends Fragment implements View.OnClickListener
     public void onClick(View v) {
         String search = "";
 
-        if(v.getId() == R.id.btn_all){
+        if(v.getId() == R.id.tv_all){
             search = "all";
-        } else if(v.getId() == R.id.btn_p){
+        } else if(v.getId() == R.id.tv_p){
             search = "pending";
-        } else if(v.getId() == R.id.btn_t){
+        } else if(v.getId() == R.id.tv_t){
             search = "t";
-        } else if(v.getId() == R.id.btn_i){
+        } else if(v.getId() == R.id.tv_i){
             search = "interview";
-        } else if(v.getId() == R.id.btn_r){
+        }/* else if(v.getId() == R.id.btn_r){
             search = "rejected";
-        }
+        }*/
 
         if(search.equalsIgnoreCase("all")){
             mAdapter = new AppliedRecyclerViewAdapter(context, appliedJobs);

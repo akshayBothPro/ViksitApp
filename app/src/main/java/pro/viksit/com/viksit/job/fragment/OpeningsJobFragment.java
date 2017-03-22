@@ -4,19 +4,15 @@ package pro.viksit.com.viksit.job.fragment;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.support.v7.widget.DefaultItemAnimator;
-import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.LinearLayout;
 
 
 import java.util.ArrayList;
 
 import pro.viksit.com.viksit.R;
-import pro.viksit.com.viksit.job.adapter.MainAdapter;
 import pro.viksit.com.viksit.job.pojo.Opening;
 
 /**

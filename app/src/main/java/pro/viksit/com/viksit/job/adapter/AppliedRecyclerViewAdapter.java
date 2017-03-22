@@ -46,29 +46,20 @@ public class AppliedRecyclerViewAdapter extends  RecyclerView.Adapter<AppliedRec
     public void onBindViewHolder(MyJobViewHolder holder, int position) {
         Applied appliedJob = appliedJobs.get(position);
         if(appliedJob.getStatus().toLowerCase().toString().equalsIgnoreCase("pending")){
-            holder.status.setTextColor(context.getResources().getColor(R.color.pending_color));
-            holder.rectangle.setStroke(3, context.getResources().getColor(R.color.pending_color));
-            holder.rectangle.setColor(context.getResources().getColor(R.color.white_color));
-            holder.status.setBackground(holder.rectangle); // set stroke width and stroke color
+            holder.status.setBackgroundColor(context.getResources().getColor(R.color.pending_color));
+
         } else if(appliedJob.getStatus().toLowerCase().toString().equalsIgnoreCase("rejected")){
-            holder.status.setTextColor(context.getResources().getColor(R.color.rejected_color));
-            holder.rectangle.setStroke(3, context.getResources().getColor(R.color.rejected_color));
-            holder.rectangle.setColor(context.getResources().getColor(R.color.white_color));
-            holder.status.setBackground(holder.rectangle); // set stroke width and stroke color
+            holder.status.setBackgroundColor(context.getResources().getColor(R.color.rejected_color));
+
         } else if(appliedJob.getStatus().toLowerCase().toString().equalsIgnoreCase("interview")){
-            holder.status.setTextColor(context.getResources().getColor(R.color.interview_color));
-            holder.rectangle.setStroke(3, context.getResources().getColor(R.color.interview_color));
-            holder.rectangle.setColor(context.getResources().getColor(R.color.white_color));
-            holder.status.setBackground(holder.rectangle); // set stroke width and stroke color
+            holder.status.setBackgroundColor(context.getResources().getColor(R.color.interview_color));
+
         } else if(appliedJob.getStatus().toLowerCase().toString().equalsIgnoreCase("t")){
-            holder.status.setTextColor(context.getResources().getColor(R.color.t_color));
-            holder.rectangle.setStroke(3, context.getResources().getColor(R.color.t_color));
-            holder.rectangle.setColor(context.getResources().getColor(R.color.white_color));
-            holder.status.setBackground(holder.rectangle); // set stroke width and stroke color
+            holder.status.setBackgroundColor(context.getResources().getColor(R.color.t_color));
+
         }
         holder.jobProfile.setText(appliedJob.getTitle());
         holder.company.setText(appliedJob.getSubtitle());
-        holder.status.setText(appliedJob.getStatus());
         holder.image.setImageResource(appliedJob.getImageResID());
     }
 
@@ -83,7 +74,7 @@ public class AppliedRecyclerViewAdapter extends  RecyclerView.Adapter<AppliedRec
     public class MyJobViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
 
         public TextView jobProfile, company;
-        public Button status;
+        public View status;
         public CardView cardView;
         public ImageView image;
         public GradientDrawable rectangle;
@@ -93,7 +84,7 @@ public class AppliedRecyclerViewAdapter extends  RecyclerView.Adapter<AppliedRec
             super(view);
             jobProfile = (TextView) view.findViewById(R.id.tv_applied_item_title);
             company = (TextView) view.findViewById(R.id.tv_applied_item_subtitle);
-            status = (Button) view.findViewById(R.id.btn_applied_item_status);
+            status =  view.findViewById(R.id.v_status_color);
             image = (ImageView)view.findViewById(R.id.iv_applied_item_image);
             cardView = (CardView)view.findViewById(R.id.cv_applied_card);
             cardView.setOnClickListener(this);
