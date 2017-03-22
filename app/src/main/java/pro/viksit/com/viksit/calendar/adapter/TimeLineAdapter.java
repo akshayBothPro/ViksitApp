@@ -64,8 +64,8 @@ public class TimeLineAdapter extends RecyclerView.Adapter<TimeLineViewHolder>  {
         holder.mMessage.setText(calendarData.getEvent_name());
         if(historyDate.contains(sdf.format(calendarData.getEvent_date()))) {
 
+            holder.mTimelineView.setMarker(ContextCompat.getDrawable(mContext, R.drawable.ic_marker), ContextCompat.getColor(mContext, R.color.gray_pill));
 
-            holder.mTimelineView.setMarker(ContextCompat.getDrawable(mContext, R.drawable.ic_marker), ContextCompat.getColor(mContext, R.color.linkedIn_color));
             if(isToday(calendarData.getEvent_date())){
                 holder.main_layout.setBackgroundColor(mContext.getResources().getColor(R.color.white));
                 holder.date.setTextColor(mContext.getResources().getColor(R.color.white));
@@ -76,6 +76,8 @@ public class TimeLineAdapter extends RecyclerView.Adapter<TimeLineViewHolder>  {
                 if(ft.parse(ft.format(new Date())).compareTo(ft.parse(ft.format(calendarData.getEvent_date()))) == 0){
                     holder.cardView.setCardBackgroundColor(mContext.getResources().getColor(R.color.linkedIn_color));
                     holder.line.setVisibility(View.INVISIBLE);
+                    holder.mTimelineView.setMarker(ContextCompat.getDrawable(mContext, R.drawable.ic_marker), ContextCompat.getColor(mContext, R.color.linkedIn_color));
+
                 }
             } catch (ParseException e) {
                 e.printStackTrace();
