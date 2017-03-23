@@ -1,6 +1,5 @@
 package pro.viksit.com.viksit.dashboard.activity;
 
-import android.content.Context;
 import android.os.Bundle;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v4.view.ViewPager;
@@ -27,7 +26,6 @@ public class DashboardActivity extends AppCompatActivity {
         setContentView(R.layout.activity_dashboard);
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         pager = (ViewPager) findViewById(R.id.viewpager);
-
         setSupportActionBar(toolbar);
         BottomNavigationView bottomNavigationView = (BottomNavigationView)
                 findViewById(R.id.bottom_navigation);
@@ -37,36 +35,18 @@ public class DashboardActivity extends AppCompatActivity {
             list.add("champu"+i);
         }
         carouselPagerAdapter = new CarouselPagerAdapter(this,getSupportFragmentManager(),list);
-
-
         DisplayMetrics metrics = new DisplayMetrics();
         getWindowManager().getDefaultDisplay().getMetrics(metrics);
         int pageMargin = ((metrics.widthPixels / 12) );
         System.out.println("pageMargin "+pageMargin);
-        int pagerPadding = 40;
         pager.setClipToPadding(false);
-
         pager.setPadding(pageMargin, pageMargin/2, pageMargin, 0);
-        // pager.setPageMargin(-pageMargin);
-      /*  viewPagerAdapter = new ViewPagerAdapter(getSupportFragmentManager(),list,dpToPixels(5, this));
-        ShadowTransformer fragmentCardShadowTransformer = new ShadowTransformer(viewPager, viewPagerAdapter);
-        fragmentCardShadowTransformer.enableScaling(true);
-        viewPager.setAdapter(viewPagerAdapter);
-        viewPager.setPageTransformer(false, fragmentCardShadowTransformer);*/
-
         pager.setAdapter(carouselPagerAdapter);
         carouselPagerAdapter.notifyDataSetChanged();
-
         pager.addOnPageChangeListener(carouselPagerAdapter);
-        // Set current item to the middle page so we can fling to both
-        // directions left and right
         pager.setCurrentItem(1);
         pager.setOffscreenPageLimit(3);
 
 
-    }
-
-    public static float dpToPixels(int dp, Context context) {
-        return dp * (context.getResources().getDisplayMetrics().density);
     }
 }

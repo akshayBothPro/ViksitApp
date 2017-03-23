@@ -84,6 +84,7 @@
             android:minWidth="200dp"
             android:text="Start Game"
             android:layout_below="@+id/card_view"
+            android:id="@+id/start_game"
             android:layout_centerHorizontal="true"
             android:textAlignment="center"
             android:drawableLeft="@mipmap/ic_event_note_black_24dp"

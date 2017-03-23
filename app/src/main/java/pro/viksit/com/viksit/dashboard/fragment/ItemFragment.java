@@ -10,8 +10,10 @@ import android.util.DisplayMetrics;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
+import android.widget.Toast;
 
 import pro.viksit.com.viksit.R;
 import pro.viksit.com.viksit.dashboard.util.CarouselLinearLayout;
@@ -65,9 +67,19 @@ public class ItemFragment extends Fragment {
         RelativeLayout.LayoutParams layoutParams = new RelativeLayout.LayoutParams(screenwidth, screenheitght);
         LinearLayout linearLayout = (LinearLayout) inflater.inflate(R.layout.fragment_image, container, false);
         CardView cardView = (CardView) linearLayout.findViewById(R.id.card_view);
+        Button start_game = (Button) linearLayout.findViewById(R.id.start_game);
         cardView.setLayoutParams(layoutParams);
         CarouselLinearLayout root = (CarouselLinearLayout) linearLayout.findViewById(R.id.root_container);
         root.setScaleBoth(scale);
+
+
+        start_game.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(getActivity(), "Start game clicked",
+                        Toast.LENGTH_LONG).show();
+            }
+        });
 
         return linearLayout;
     }
