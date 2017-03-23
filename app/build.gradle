@@ -23,14 +23,14 @@ android {
                 assets.srcDirs = ['src/main/assets', 'src/main/res/values/assets/']
 
                 res.srcDirs =
-                        [       'src/main/res/layouts/assessment',
-                                'src/main/res/layouts/calendar',
-                                'src/main/res/layouts/job',
-                                'src/main/res/layouts/role',
-                                'src/main/res/layouts/home',
-                                'src/main/res/layouts/dashboard/',
-                                'src/main/res/layouts',
-                                'src/main/res',
+                        ['src/main/res/layouts/assessment',
+                         'src/main/res/layouts/calendar',
+                         'src/main/res/layouts/job',
+                         'src/main/res/layouts/role',
+                         'src/main/res/layouts/home',
+                         'src/main/res/layouts/dashboard/',
+                         'src/main/res/layouts',
+                         'src/main/res',
 
                         ]
             }
