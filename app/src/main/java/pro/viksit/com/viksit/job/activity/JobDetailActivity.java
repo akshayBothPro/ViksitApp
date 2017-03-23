@@ -69,13 +69,13 @@ public class JobDetailActivity extends AppCompatActivity {
 
     private void setPoints(){
         TextView htext;
-        /*for(int i = 0 ; i < 5 ; i++ ) {*/
+        for(int i = 0 ; i < 5 ; i++ ) {
             htext =new TextView(this);
-        htext.setText(Html.fromHtml(getResources().getString(R.string.k)));
-            /*htext.setText("\u2022 iusto odio dignissimos ducimus qui blanditiis praesentium");*/
+            /* htext.setText(Html.fromHtml(getResources().getString(R.string.k)));*/
+            htext.setText("\u2022 iusto odio dignissimos ducimus qui blanditiis praesentium");
             htext.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT));
             pointContainer.addView(htext);
-        /*}*/
+        }
     }
 
     private void setHorizontalRecyclers(RecyclerView horizontalRecycle){

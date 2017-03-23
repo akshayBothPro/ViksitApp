@@ -39,4 +39,7 @@
     <color name="unselected_circle_color">#e0e0e0</color>
     <color name="bg">#f3f3f3</color>
     <color name="all_background">#626262</color>
+    <color name="salary_color">#7e7e7e</color>
+    <color name="desc_color">#3f3f3f</color>
+    <color name="light_blue">#5cc7f7</color>
 </resources>

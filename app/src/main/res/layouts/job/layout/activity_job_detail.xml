@@ -18,8 +18,10 @@
         android:id="@+id/cl_container"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_marginBottom="5dp"
         android:background="@color/white"
         android:fitsSystemWindows="true"
+        android:layout_above="@+id/btn_attempt22"
         android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true">
@@ -46,7 +48,7 @@
                     android:layout_height="match_parent"
                     app:layout_collapseMode="parallax"
                     android:scaleType="centerCrop"
-                    android:background="@color/hint_color"/>
+                    android:background="@drawable/ic_7"/>
                 <android.support.v7.widget.Toolbar
                     android:id="@+id/toolbar"
                     android:layout_width="match_parent"
@@ -97,11 +99,15 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="4dp"
+                        android:textColor="@color/welcome_text_color"
+                        android:textSize="@dimen/p6"
                         android:text="by parallel labs"/>
                     <TextView
                         android:id="@+id/tv_job_detail_description"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:textColor="@color/salary_color"
+                        android:textSize="@dimen/p2"
                         android:text="@string/job_detail_info"/>
                     <LinearLayout
                         android:id="@+id/ll_points_container"
@@ -119,12 +125,15 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textSize="@dimen/p7"
+                        android:textColor="@color/role_item_status"
                         android:layout_marginBottom="5dp"
-                        android:text=" ♦ APPLICATION DEADLINE"/>
+                        android:text="APPLICATION DEADLINE"/>
                     <TextView
                         android:id="@+id/tv_job_detail_expiry_date"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:textColor="@color/salary_color"
+                        android:textSize="@dimen/p3"
                         android:text="28 February 2017"/>
                     <View
                         android:layout_width="match_parent"
@@ -136,12 +145,15 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textSize="@dimen/p7"
+                        android:textColor="@color/role_item_status"
                         android:layout_marginBottom="5dp"
                         android:text="SALARY RANGE"/>
                     <TextView
                         android:id="@+id/tv_job_detail_salary"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:textColor="@color/salary_color"
+                        android:textSize="@dimen/p3"
                         android:layout_marginBottom="5dp"
                         android:text="5 - 6 lakhs per annum"/>
                 </LinearLayout>
@@ -151,14 +163,15 @@
                     android:layout_height="wrap_content"
                     android:paddingLeft="10dp"
                     android:paddingRight="10dp"
-                    android:background="@color/input_border">
+                    android:background="@color/tab_unselected_color">
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_alignParentLeft="true"
                         android:layout_marginTop="5dp"
                         android:layout_marginBottom="5dp"
-                        android:textSize="@dimen/p5"
+                        android:textColor="@color/desc_color"
+                        android:textSize="@dimen/p4"
                         android:text="Recommended Roles"/>
                     <TextView
                         android:id="@+id/tv_job_detail_seemore"
@@ -167,7 +180,8 @@
                         android:layout_marginTop="5dp"
                         android:layout_marginBottom="5dp"
                         android:layout_alignParentRight="true"
-                        android:textSize="@dimen/p5"
+                        android:textColor="@color/light_blue"
+                        android:textSize="@dimen/p4"
                         android:text="SEE MORE"/>
 
                 </RelativeLayout>
@@ -175,7 +189,8 @@
                     android:id="@+id/rv_job_detail_horizontal"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="@color/input_border" />
+                    android:paddingBottom="5dp"
+                    android:background="@color/tab_unselected_color" />
 
             </LinearLayout>
         </android.support.v4.widget.NestedScrollView>
