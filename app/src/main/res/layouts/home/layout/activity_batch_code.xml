@@ -125,7 +125,6 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
                 android:text="Submit"
-                android:textStyle="bold"
                 android:textAllCaps="true"
                 android:textColor="@android:color/white"
                 android:background="@drawable/signup_btn_shape"/>

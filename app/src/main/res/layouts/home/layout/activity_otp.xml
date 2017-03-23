@@ -63,7 +63,6 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
                 android:text="Verify"
-                android:textStyle="bold"
                 android:textColor="@android:color/white"
                 android:background="@drawable/signup_btn_shape"/>
         </LinearLayout>

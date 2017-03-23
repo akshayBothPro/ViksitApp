@@ -1,7 +1,9 @@
 package pro.viksit.com.viksit.role.adapter;
 
+import android.content.Context;
 import android.graphics.Color;
 import android.graphics.PorterDuff;
+import android.graphics.drawable.Drawable;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -22,9 +24,11 @@ import pro.viksit.com.viksit.role.pojo.Role;
 
 public class RoleVerticalRecyclerViewAdapter extends RecyclerView.Adapter<RoleVerticalRecyclerViewAdapter.MyViewHolder>  {
     private List<Role> roles;
+    private Context context;
 
-    public RoleVerticalRecyclerViewAdapter(List<Role> roles) {
+    public RoleVerticalRecyclerViewAdapter(List<Role> roles,Context context) {
         this.roles = roles;
+        this.context = context;
     }
 
     @Override
@@ -44,6 +48,8 @@ public class RoleVerticalRecyclerViewAdapter extends RecyclerView.Adapter<RoleVe
         holder.image.setImageResource(role.getImageResID());
         holder.progressBar.setMax(role.getTotalItems());
         holder.progressBar.setProgress(role.getCompletedItems());
+        holder.progressBar.setProgressDrawable(context.getResources().getDrawable(R.drawable.progress_bar_drawable));
+        /*holder.progressBar.getdeterminateDrawable().setColorFilter(context.getResources().getColor(R.color.linkedIn_color), PorterDuff.Mode.MULTIPLY);*/
 
         // if we have image URL instead of resID use it
         /*URL url = role.getImageURL();

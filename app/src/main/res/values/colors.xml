@@ -37,5 +37,6 @@
 
     <color name="selected_circle_color">#24b6f8</color>
     <color name="unselected_circle_color">#e0e0e0</color>
+    <color name="bg">#f3f3f3</color>
     <color name="all_background">#626262</color>
 </resources>

@@ -2,6 +2,7 @@ package pro.viksit.com.viksit.job.fragment;
 
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.PorterDuff;
 import android.graphics.drawable.GradientDrawable;
@@ -22,6 +23,7 @@ import android.widget.TextView;
 import java.util.ArrayList;
 
 import pro.viksit.com.viksit.R;
+import pro.viksit.com.viksit.job.activity.JobDetailActivity;
 import pro.viksit.com.viksit.job.adapter.AppliedRecyclerViewAdapter;
 import pro.viksit.com.viksit.job.pojo.Applied;
 import pro.viksit.com.viksit.role.util.RecyclerItemClickListener;
@@ -93,6 +95,8 @@ public class AppliedJobFragment extends Fragment implements View.OnClickListener
                         bundle.putSerializable("role", roles.get(position));
                         intent.putExtras(bundle);
                         startActivity(intent);*/
+                        Intent j = new Intent(getActivity(),JobDetailActivity.class);
+                        startActivity(j);
                     }
 
                     @Override public void onLongItemClick(View view, int position) {
@@ -121,25 +125,25 @@ public class AppliedJobFragment extends Fragment implements View.OnClickListener
     private void prepareAppliedData(){
         appliedJobs = new ArrayList<>();
         // AppliedJob constructor => (int imageRes, String jobProfile, String companyName, String status)
-        Applied appliedJob = new Applied(R.mipmap.ic_assignment_black_24dp,"Front-end Developer", "by Parallel Labs","PENDING");
+        Applied appliedJob = new Applied(R.drawable.ic_1,"Front-end Developer", "by Parallel Labs","PENDING");
         appliedJobs.add(appliedJob);
 
-        appliedJob = new Applied(R.mipmap.ic_notifications_active_black_24dp,"Junior software engineer", "by Wipro","REJECTED");
+        appliedJob = new Applied(R.drawable.ic_1,"Junior software engineer", "by Wipro","REJECTED");
         appliedJobs.add(appliedJob);
 
-        appliedJob = new Applied(R.mipmap.ic_event_note_black_24dp,"Front-end Developer", "by Parallel Labs","INTERVIEW");
+        appliedJob = new Applied(R.drawable.ic_2,"Front-end Developer", "by Parallel Labs","INTERVIEW");
         appliedJobs.add(appliedJob);
 
-        appliedJob = new Applied(R.mipmap.ic_monetization_on_black_24dp,"Junior software engineer", "by Wipro","PENDING");
+        appliedJob = new Applied(R.drawable.ic_3,"Junior software engineer", "by Wipro","PENDING");
         appliedJobs.add(appliedJob);
 
-        appliedJob = new Applied(R.mipmap.ic_tag_faces_black_24dp,"Front-end Developer", "by Parallel Labs","INTERVIEW");
+        appliedJob = new Applied(R.drawable.ic_4,"Front-end Developer", "by Parallel Labs","INTERVIEW");
         appliedJobs.add(appliedJob);
 
-        appliedJob = new Applied(R.mipmap.ic_adjust_black_24dp,"Junior software engineer", "by Wipro","REJECTED");
+        appliedJob = new Applied(R.drawable.ic_5,"Junior software engineer", "by Wipro","REJECTED");
         appliedJobs.add(appliedJob);
 
-        appliedJob = new Applied(R.mipmap.ic_work_black_24dp,"Front-end Developer", "by Parallel Labs","INTERVIEW");
+        appliedJob = new Applied(R.drawable.ic_6,"Front-end Developer", "by Parallel Labs","INTERVIEW");
         appliedJobs.add(appliedJob);
     }
 

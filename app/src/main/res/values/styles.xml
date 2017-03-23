@@ -42,4 +42,8 @@
 
     </style>
 
+    <style name="AppTheme.BlueColor">
+        <item name="colorAccent">@color/linkedIn_color</item> <!-- Whatever color you want-->
+    </style>
+
 </resources>

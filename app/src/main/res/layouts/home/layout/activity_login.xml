@@ -63,7 +63,6 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
             android:text="LOG IN"
-            android:textStyle="bold"
             android:textColor="@android:color/white"
             android:background="@drawable/signup_btn_shape"/>
 

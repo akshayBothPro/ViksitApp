@@ -37,20 +37,20 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
+
         <Button
             android:id="@+id/btn_signup_linkedIn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
             android:layout_marginBottom="5dp"
+            android:background="@drawable/linkedin_btn_shape"
+            android:drawableLeft="@android:drawable/ic_menu_search"
             android:paddingLeft="20dp"
             android:paddingRight="20dp"
-            android:layout_gravity="center_horizontal"
-            android:drawableLeft="@android:drawable/ic_menu_search"
             android:text="Sign Up with LinkedIn"
             android:textAllCaps="false"
-            android:textStyle="bold"
-            android:textColor="@android:color/white"
-            android:background="@drawable/linkedin_btn_shape"/>
+            android:textColor="@android:color/white" />
 
         <Button
             android:id="@+id/btn_signup_google"
@@ -62,7 +62,6 @@
             android:layout_gravity="center_horizontal"
             android:drawableLeft="@android:drawable/ic_menu_search"
             android:text="Sign Up with Google"
-            android:textStyle="bold"
             android:textAllCaps="false"
             android:textColor="@android:color/white"
             android:background="@drawable/google_btn_shape"/>

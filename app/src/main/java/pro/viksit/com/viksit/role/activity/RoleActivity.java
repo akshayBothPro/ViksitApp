@@ -61,7 +61,7 @@ public class RoleActivity extends AppCompatActivity implements View.OnClickListe
     private void implementActions(){
 
         // setting up vertical recycler view
-        roleVerticalRecyclerViewAdapter = new RoleVerticalRecyclerViewAdapter(roles);
+        roleVerticalRecyclerViewAdapter = new RoleVerticalRecyclerViewAdapter(roles,getBaseContext());
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
         linearLayoutManager.setAutoMeasureEnabled(true);
         verticalRecycler.setLayoutManager(linearLayoutManager);
@@ -136,17 +136,17 @@ public class RoleActivity extends AppCompatActivity implements View.OnClickListe
         Role role;
 
         //role constructor => (int imageResID, String title, String subtitle, int totalItems, int completedItems)
-        role = new Role(R.mipmap.ic_adjust_black_24dp,"Game Designer","User Interface Developer",247,131);
+        role = new Role(R.drawable.ic_7,"Game Designer","User Interface Developer",247,131);
         roles.add(role);
-        role = new Role(R.mipmap.ic_tag_faces_black_24dp,"Game Designer","User Interface Developer",247,231);
+        role = new Role(R.drawable.ic_8,"Game Designer","User Interface Developer",247,231);
         roles.add(role);
-        role = new Role(R.mipmap.ic_monetization_on_black_24dp,"Business Analyst","Mutual Fund Planner",247,91);
+        role = new Role(R.drawable.ic_9,"Business Analyst","Mutual Fund Planner",247,91);
         roles.add(role);
-        role = new Role(R.mipmap.ic_event_note_black_24dp,"Game Designer","User Interface Developer",247,31);
+        role = new Role(R.drawable.ic_10,"Game Designer","User Interface Developer",247,31);
         roles.add(role);
-        role = new Role(R.mipmap.ic_assignment_black_24dp,"Game Designer","User Interface Developer",247,39);
+        role = new Role(R.drawable.ic_11,"Game Designer","User Interface Developer",247,39);
         roles.add(role);
-        role = new Role(R.mipmap.ic_notifications_active_black_24dp,"Business Analyst","Mutual Fund Planner",247,51);
+        role = new Role(R.drawable.ic_12,"Business Analyst","Mutual Fund Planner",247,51);
         roles.add(role);
     }
 
@@ -154,17 +154,17 @@ public class RoleActivity extends AppCompatActivity implements View.OnClickListe
         recommendedRoles = new ArrayList<>();
         RecommendedRole recommendedRole;
         //recommendedRole constructor => (int resID)
-        recommendedRole = new RecommendedRole(R.mipmap.ic_adjust_black_24dp, "Stock Broker");
+        recommendedRole = new RecommendedRole(R.drawable.ic_1, "Stock Broker");
         recommendedRoles.add(recommendedRole);
-        recommendedRole = new RecommendedRole(R.mipmap.ic_assignment_black_24dp, "Financial Analyst");
+        recommendedRole = new RecommendedRole(R.drawable.ic_2, "Financial Analyst");
         recommendedRoles.add(recommendedRole);
-        recommendedRole = new RecommendedRole(R.mipmap.ic_event_note_black_24dp, "Investment Banker");
+        recommendedRole = new RecommendedRole(R.drawable.ic_3, "Investment Banker");
         recommendedRoles.add(recommendedRole);
-        recommendedRole = new RecommendedRole(R.mipmap.ic_monetization_on_black_24dp, "Financial Analyst");
+        recommendedRole = new RecommendedRole(R.drawable.ic_4, "Financial Analyst");
         recommendedRoles.add(recommendedRole);
-        recommendedRole = new RecommendedRole(R.mipmap.ic_notifications_active_black_24dp, "Stock Broker");
+        recommendedRole = new RecommendedRole(R.drawable.ic_5, "Stock Broker");
         recommendedRoles.add(recommendedRole);
-        recommendedRole = new RecommendedRole(R.mipmap.ic_work_black_24dp, "Financial Banker");
+        recommendedRole = new RecommendedRole(R.drawable.ic_6, "Financial Banker");
         recommendedRoles.add(recommendedRole);
     }
 

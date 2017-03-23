@@ -14,9 +14,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="3dp"
-            android:textSize="@dimen/p1"
+            android:textSize="@dimen/p3"
             android:textColor="@color/black"
-            android:text="Showing : "/>
+            android:text="Showing :"/>
         <TextView
             android:id="@+id/tv_all"
             android:layout_width="wrap_content"
@@ -25,7 +25,7 @@
             android:layout_margin="3dp"
             android:text="ALL"
             android:textColor="@color/white_color"
-            android:textSize="@dimen/p5"
+            android:textSize="@dimen/p7"
             android:textStyle="bold"
             android:textAllCaps="true"
             android:background="@drawable/status_border"/>
@@ -38,7 +38,7 @@
             android:layout_margin="3dp"
             android:text="pending"
             android:textColor="@color/pending_color"
-            android:textSize="@dimen/p5"
+            android:textSize="@dimen/p7"
             android:textStyle="bold"
             android:textAllCaps="true"
             android:background="@drawable/status_border" />
@@ -50,7 +50,7 @@
             android:layout_margin="3dp"
             android:text="test"
             android:textColor="@color/t_color"
-            android:textSize="@dimen/p5"
+            android:textSize="@dimen/p7"
             android:textStyle="bold"
             android:textAllCaps="true"
             android:background="@drawable/status_border" />
@@ -63,7 +63,7 @@
             android:layout_margin="3dp"
             android:text="interview"
             android:textColor="@color/interview_color"
-            android:textSize="@dimen/p5"
+            android:textSize="@dimen/p7"
             android:textStyle="bold"
             android:textAllCaps="true"
             android:background="@drawable/status_border"/>
