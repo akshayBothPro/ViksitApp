@@ -32,6 +32,8 @@
         <activity android:name=".calendar.activity.CalendarActivity" />
         <activity android:name=".assessment.activity.QuestionsActivity" />
         <activity android:name=".job.activity.JobDetailActivity"></activity>
+        <activity android:name=".role.activity.SessionActivity"></activity>
+
     </application>
 
 </manifest>
