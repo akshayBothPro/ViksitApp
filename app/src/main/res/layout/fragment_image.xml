@@ -71,14 +71,16 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@drawable/signup_btn_shape"
+            android:minWidth="200dp"
             android:text="Start game"
-            android:translationZ="1dp"
+            android:translationZ="6dp"
             android:layout_below="@+id/card_view"
             android:layout_centerHorizontal="true"
             android:drawableLeft="@mipmap/ic_menu_black_24dp"
             android:textColor="@color/white"
             android:layout_marginTop="-20dp"
             android:padding="15dp"
+
             />
     </RelativeLayout>
 

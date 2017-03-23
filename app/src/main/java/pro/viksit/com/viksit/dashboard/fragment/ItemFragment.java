@@ -66,22 +66,7 @@ public class ItemFragment extends Fragment {
         LinearLayout linearLayout = (LinearLayout) inflater.inflate(R.layout.fragment_image, container, false);
         CardView cardView = (CardView) linearLayout.findViewById(R.id.card_view);
         cardView.setLayoutParams(layoutParams);
-        //TextView textView = (TextView) linearLayout.findViewById(R.id.text);
         CarouselLinearLayout root = (CarouselLinearLayout) linearLayout.findViewById(R.id.root_container);
-        //ImageView imageView = (ImageView) linearLayout.findViewById(R.id.pagerImg);
-
-        /*textView.setText("Carousel item: " + postion);
-        imageView.setLayoutParams(layoutParams);
-        imageView.setImageResource(imageArray[postion]);
-
-        //handling click event
-        imageView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-            }
-        });*/
-
         root.setScaleBoth(scale);
 
         return linearLayout;

@@ -3,24 +3,9 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#ffffff">
+    android:background="#F3F3F3">
 
   <include layout="@layout/custom_tool_bar"></include>
-
-
-    <!--<android.support.v4.view.ViewPager
-        android:id="@+id/viewpager"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:clipToPadding="false"
-        android:padding="10dp"
-        android:overScrollMode="never"
-        android:paddingEnd="@dimen/card_padding"
-        android:paddingLeft="@dimen/card_padding"
-        android:paddingRight="@dimen/card_padding"
-        android:paddingStart="@dimen/card_padding"
-        android:layout_below="@+id/toolbar_layout"
-        android:layout_above="@+id/bottom_navigation"/>-->
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -34,13 +19,6 @@
           android:layout_width="match_parent"
           android:layout_height="match_parent"
           />
-      <!--<com.viewpagerindicator.TitlePageIndicator
-          android:id="@+id/vp_circle_indicator"
-          android:layout_width="match_parent"
-          android:layout_alignParentBottom="true"
-          android:layout_height="50dp"/>-->
-
-
     </RelativeLayout>
 
 
