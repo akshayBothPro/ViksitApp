@@ -4,6 +4,8 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
 
 import java.util.ArrayList;
 
@@ -26,6 +28,7 @@ public class CarouselPagerAdapter extends FragmentPagerAdapter implements ViewPa
     private FragmentManager fragmentManager;
     private float scale;
     ArrayList<String> values;
+    private int lastposition;
     public CarouselPagerAdapter(DashboardActivity context, FragmentManager fm, ArrayList<String> values) {
         super(fm);
         this.fragmentManager = fm;
@@ -61,10 +64,11 @@ public class CarouselPagerAdapter extends FragmentPagerAdapter implements ViewPa
         try {
             if (positionOffset >= 0f && positionOffset <= 1f) {
                 CarouselLinearLayout cur = getRootView(position);
-                CarouselLinearLayout next = getRootView(position + 1);
-
+                if(position != context.pager.getAdapter().getCount()-1) {
+                    CarouselLinearLayout next = getRootView(position + 1);
+                    next.setScaleBoth(SMALL_SCALE + DIFF_SCALE * positionOffset);
+                }
                 cur.setScaleBoth(BIG_SCALE - DIFF_SCALE * positionOffset);
-                next.setScaleBoth(SMALL_SCALE + DIFF_SCALE * positionOffset);
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -72,8 +76,38 @@ public class CarouselPagerAdapter extends FragmentPagerAdapter implements ViewPa
     }
 
     @Override
-    public void onPageSelected(int position) {
+    public void onPageSelected(final int position) {
 
+        LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(
+                LinearLayout.LayoutParams.WRAP_CONTENT,
+                LinearLayout.LayoutParams.WRAP_CONTENT
+        );
+        params.setMargins(4, 0, 4, 0);
+
+        if(context.lastposition == position || position> context.lastposition  ){
+            context.dots = new ImageView[context.pager.getAdapter().getCount()-context.lastposition];
+            context.pager_indicator.removeAllViews();
+
+            for (int i = 0; i < context.pager.getAdapter().getCount()-context.lastposition; i++) {
+                context.dots[i] = new ImageView(context);
+                context.dots[i].setImageDrawable(context.getResources().getDrawable(R.drawable.nonselecteditem_dot));
+
+
+                context.pager_indicator.addView(context.dots[i], params);
+            }
+        }else {
+            context.dots = new ImageView[context.loop];
+            context.pager_indicator.removeAllViews();
+
+            for (int i = 0; i < context.loop; i++) {
+                context.dots[i] = new ImageView(context);
+                context.dots[i].setImageDrawable(context.getResources().getDrawable(R.drawable.nonselecteditem_dot));
+
+                context.pager_indicator.addView(context.dots[i], params);
+            }
+        }
+
+        context.dots[position %context.loop ].setImageDrawable(context.getResources().getDrawable(R.drawable.selecteditem_dot));
     }
 
     @Override
