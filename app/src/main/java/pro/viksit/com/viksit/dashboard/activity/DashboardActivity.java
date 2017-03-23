@@ -6,6 +6,7 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.DisplayMetrics;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -46,7 +47,30 @@ public class DashboardActivity extends AppCompatActivity {
         pager.addOnPageChangeListener(carouselPagerAdapter);
         pager.setCurrentItem(1);
         pager.setOffscreenPageLimit(3);
+        switch (getResources().getDisplayMetrics().densityDpi) {
+            case DisplayMetrics.DENSITY_LOW:
+                Toast.makeText(DashboardActivity.this, "LDPI", Toast.LENGTH_LONG).show();
+                break;
+            case DisplayMetrics.DENSITY_MEDIUM:
+                Toast.makeText(DashboardActivity.this, "MDPI", Toast.LENGTH_LONG).show();
+                break;
+            case DisplayMetrics.DENSITY_HIGH:
+                Toast.makeText(DashboardActivity.this, "HDPI", Toast.LENGTH_LONG).show();
 
+                break;
+            case DisplayMetrics.DENSITY_XHIGH:
+                Toast.makeText(DashboardActivity.this, "XHDPI", Toast.LENGTH_LONG).show();
+
+                break;
+            case DisplayMetrics.DENSITY_XXHIGH:
+                Toast.makeText(DashboardActivity.this, "XXHDPI", Toast.LENGTH_LONG).show();
+
+                break;
+            case DisplayMetrics.DENSITY_XXXHIGH:
+                Toast.makeText(DashboardActivity.this, "XXXHDPI", Toast.LENGTH_LONG).show();
+
+                break;
+        }
 
     }
 }

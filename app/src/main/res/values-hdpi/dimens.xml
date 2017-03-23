@@ -20,11 +20,11 @@
     <dimen name="p7">11sp</dimen>
 
     <dimen name="card_padding">35dp</dimen>
-    <dimen name="paddingtop">15dp</dimen>
-    <dimen name="paddingright">30dp</dimen>
-    <dimen name="paddingleft">30dp</dimen>
-    <dimen name="paddingbottom">15dp</dimen>
-    <dimen name="btn_start_game">200dp</dimen>
-    <dimen name="btn_start_height">50dp</dimen>
+    <dimen name="btn_start_game">100dp</dimen>
+    <dimen name="paddingtop">5dp</dimen>
+    <dimen name="paddingright">10dp</dimen>
+    <dimen name="paddingleft">10dp</dimen>
+    <dimen name="paddingbottom">5dp</dimen>
+    <dimen name="btn_start_height">40dp</dimen>
 
 </resources>

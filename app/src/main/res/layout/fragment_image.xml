@@ -80,8 +80,8 @@
     </android.support.v7.widget.CardView>
         <Button
             android:layout_width="wrap_content"
-            android:layout_height="50dp"
-            android:minWidth="200dp"
+            android:layout_height="@dimen/btn_start_height"
+            android:minWidth="@dimen/btn_start_game"
             android:text="Start Game"
             android:layout_below="@+id/card_view"
             android:id="@+id/start_game"
@@ -92,10 +92,10 @@
             android:textColor="@color/white"
             android:drawableTint="@color/white"
             android:textSize="@dimen/p3"
-            android:paddingTop="15dp"
-            android:paddingRight="30dp"
-            android:paddingBottom="15dp"
-            android:paddingLeft="30dp"
+            android:paddingTop="@dimen/paddingtop"
+            android:paddingRight="@dimen/paddingright"
+            android:paddingBottom="@dimen/paddingbottom"
+            android:paddingLeft="@dimen/paddingleft"
             android:layout_marginTop="-20dp"
             android:translationZ="6dp"
             />
