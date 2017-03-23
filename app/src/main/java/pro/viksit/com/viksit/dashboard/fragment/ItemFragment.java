@@ -58,7 +58,7 @@ public class ItemFragment extends Fragment {
         final int postion = this.getArguments().getInt(POSITON);
         float scale = this.getArguments().getFloat(SCALE);
         Double d = new Double(screenWidth / 1.2);
-        Double d1= new Double(screenHeight/1.7);
+        Double d1= new Double(screenHeight/1.6);
         int screenwidth = d.intValue();;
         int screenheitght = d1.intValue();
 
