@@ -28,8 +28,19 @@ public class SessionActivity extends AppCompatActivity {
         SessionAdapter sessionAdapter = new SessionAdapter(getSupportFragmentManager(),count);
         viewPager.setAdapter(sessionAdapter);
         viewPager.setCurrentItem(0);
+        viewPager.setPageTransformer(false, new ViewPager.PageTransformer() {
 
-        viewPager.setPageTransformer(true, new ViewPager.PageTransformer() {
+            @Override
+            public void transformPage(View view, float position) {
+                int pageWidth = view.getWidth();
+                int pageHeight = view.getHeight();
+
+                if (position >= 0) {
+                    view.setTranslationY(position < 0 ? 0f : -pageHeight * position);
+                }
+            }
+        });
+       viewPager.setPageTransformer(true, new ViewPager.PageTransformer() {
             @Override
             public void transformPage(View view, float position) {
                 int pageWidth = view.getWidth();
@@ -67,7 +78,7 @@ public class SessionActivity extends AppCompatActivity {
         });
         DisplayMetrics metrics = new DisplayMetrics();
         getWindowManager().getDefaultDisplay().getMetrics(metrics);
-        double pageMargin = ((metrics.widthPixels / 1.4) );
+        double pageMargin = ((metrics.widthPixels / 1.6) );
         Double widthpage = new Double(pageMargin);
         viewPager.setOffscreenPageLimit(3);
         viewPager.setPageMargin(-widthpage.intValue());
