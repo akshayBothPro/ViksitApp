@@ -22,7 +22,7 @@
             android:layout_height="wrap_content"
             android:gravity="center_horizontal"
             android:layout_marginBottom="10dp"
-            android:textSize="@dimen/h2"
+            android:textSize="@dimen/h3"
             android:text="Welcome! Your Talentify journey begins here"
             android:textColor="#595959"/>
 
@@ -37,7 +37,7 @@
             android:paddingLeft="10dp"
             android:paddingStart="10dp"
             android:textCursorDrawable="@null"
-            android:textColorHint="#c4c4c4"
+            android:textColorHint="@color/hint_color"
             android:inputType="textEmailAddress"
             android:hint="Email ID"/>
         <android.support.v7.widget.AppCompatEditText
@@ -50,7 +50,7 @@
             android:paddingLeft="10dp"
             android:paddingStart="10dp"
             android:textCursorDrawable="@null"
-            android:textColorHint="#c4c4c4"
+            android:textColorHint="@color/hint_color"
             android:inputType="phone"
             android:hint="Phone Number"/>
         <android.support.v7.widget.AppCompatEditText
@@ -63,7 +63,7 @@
             android:paddingLeft="10dp"
             android:paddingStart="10dp"
             android:textCursorDrawable="@null"
-            android:textColorHint="#c4c4c4"
+            android:textColorHint="@color/hint_color"
             android:inputType="textPassword"
             android:hint="Password"/>
 
@@ -88,7 +88,8 @@
         android:layout_marginBottom="5dp"
         android:background="@color/white_color"
         android:textAllCaps="false"
+        android:stateListAnimator="@null"
         android:text="Already a member? Login instead"
         android:textSize="15sp"
-        android:textColor="@color/register_instead_color"/>
+        android:textColor="@color/hint_color"/>
 </LinearLayout>

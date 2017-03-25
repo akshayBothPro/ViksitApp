@@ -34,6 +34,7 @@
 
     <color name="linkedIn_color">#0288d1</color>
     <color name="google_color">#f4511e</color>
+    <color name="fb_color">#3b5998</color>
 
     <color name="selected_circle_color">#24b6f8</color>
     <color name="unselected_circle_color">#e0e0e0</color>

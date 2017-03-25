@@ -124,27 +124,31 @@ public class AppliedJobFragment extends Fragment implements View.OnClickListener
 
     private void prepareAppliedData(){
         appliedJobs = new ArrayList<>();
-        // AppliedJob constructor => (int imageRes, String jobProfile, String companyName, String status)
-        Applied appliedJob = new Applied(R.drawable.ic_1,"Front-end Developer", "by Parallel Labs","PENDING");
-        appliedJobs.add(appliedJob);
+        Applied appliedJob;
 
-        appliedJob = new Applied(R.drawable.ic_1,"Junior software engineer", "by Wipro","REJECTED");
-        appliedJobs.add(appliedJob);
+        for(int i = 0 ; i < 9 ; i++) {
+            // AppliedJob constructor => (int imageRes, String jobProfile, String companyName, String status)
+            appliedJob = new Applied(R.drawable.ic_1, "Front-end Developer", "by Parallel Labs", "PENDING");
+            appliedJobs.add(appliedJob);
 
-        appliedJob = new Applied(R.drawable.ic_2,"Front-end Developer", "by Parallel Labs","INTERVIEW");
-        appliedJobs.add(appliedJob);
+            appliedJob = new Applied(R.drawable.ic_1, "Junior software engineer", "by Wipro", "REJECTED");
+            appliedJobs.add(appliedJob);
 
-        appliedJob = new Applied(R.drawable.ic_3,"Junior software engineer", "by Wipro","PENDING");
-        appliedJobs.add(appliedJob);
+            appliedJob = new Applied(R.drawable.ic_2, "Front-end Developer", "by Parallel Labs", "INTERVIEW");
+            appliedJobs.add(appliedJob);
 
-        appliedJob = new Applied(R.drawable.ic_4,"Front-end Developer", "by Parallel Labs","INTERVIEW");
-        appliedJobs.add(appliedJob);
+            appliedJob = new Applied(R.drawable.ic_3, "Junior software engineer", "by Wipro", "PENDING");
+            appliedJobs.add(appliedJob);
 
-        appliedJob = new Applied(R.drawable.ic_5,"Junior software engineer", "by Wipro","REJECTED");
-        appliedJobs.add(appliedJob);
+            appliedJob = new Applied(R.drawable.ic_4, "Front-end Developer", "by Parallel Labs", "INTERVIEW");
+            appliedJobs.add(appliedJob);
 
-        appliedJob = new Applied(R.drawable.ic_6,"Front-end Developer", "by Parallel Labs","INTERVIEW");
-        appliedJobs.add(appliedJob);
+            appliedJob = new Applied(R.drawable.ic_5, "Junior software engineer", "by Wipro", "REJECTED");
+            appliedJobs.add(appliedJob);
+
+            appliedJob = new Applied(R.drawable.ic_6, "Front-end Developer", "by Parallel Labs", "INTERVIEW");
+            appliedJobs.add(appliedJob);
+        }
     }
 
     @Override

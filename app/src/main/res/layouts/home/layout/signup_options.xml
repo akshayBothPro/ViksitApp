@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_margin="10dp">
     <RelativeLayout
@@ -20,8 +22,8 @@
             android:layout_height="30dp"
             android:layout_margin="10dp"
             android:layout_centerInParent="true"
-            android:text="OR"
-            android:textStyle="bold"
+            android:text="or"
+            android:textAllCaps="false"
             android:background="@drawable/or_shape"/>
         <View
             android:layout_width="match_parent"
@@ -32,39 +34,58 @@
 
             android:background="@color/hint_color"
             android:layout_centerVertical="true"/>
+        <TextView
+            android:id="@+id/tv_via_social"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@+id/or"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:textColor="@color/title_color"
+            android:textSize="@dimen/p3"
+            android:text="Log in via social media"/>
     </RelativeLayout>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:gravity="center"
+        android:padding="5dp"
+        android:orientation="horizontal">
 
-        <Button
+        <android.support.design.widget.FloatingActionButton
             android:id="@+id/btn_signup_linkedIn"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginBottom="5dp"
-            android:background="@drawable/linkedin_btn_shape"
-            android:drawableLeft="@android:drawable/ic_menu_search"
-            android:paddingLeft="20dp"
-            android:paddingRight="20dp"
-            android:text="Sign Up with LinkedIn"
-            android:textAllCaps="false"
-            android:textColor="@android:color/white" />
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_margin="5dp"
+            app:borderWidth="0dp"
+            app:elevation="6dp"
+            app:backgroundTint="@color/linkedIn_color"
+            android:src="@drawable/ic_accessible_black_36dp" />
 
-        <Button
+        <android.support.design.widget.FloatingActionButton
             android:id="@+id/btn_signup_google"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:paddingLeft="20dp"
-            android:paddingRight="20dp"
-            android:layout_marginBottom="5dp"
-            android:layout_gravity="center_horizontal"
-            android:drawableLeft="@android:drawable/ic_menu_search"
-            android:text="Sign Up with Google"
-            android:textAllCaps="false"
-            android:textColor="@android:color/white"
-            android:background="@drawable/google_btn_shape"/>
+            android:layout_width="100dp"
+            android:layout_height="50dp"
+            android:layout_margin="5dp"
+            app:borderWidth="0dp"
+            app:elevation="6dp"
+            app:backgroundTint="@color/google_color"
+            android:src="@drawable/ic_accessible_black_36dp"/>
+        <android.support.design.widget.FloatingActionButton
+            android:id="@+id/btn_signup_fb"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            app:borderWidth="0dp"
+            app:elevation="6dp"
+            android:layout_margin="5dp"
+            app:backgroundTint="@color/fb_color"
+            android:src="@drawable/ic_accessible_black_36dp"/>
+        <!--<ImageButton
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:src="@drawable/ic_accessible_black_36dp"
+            android:background="@drawable/circle_border"/>-->
 
     </LinearLayout>
 </LinearLayout>

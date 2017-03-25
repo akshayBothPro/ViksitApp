@@ -7,6 +7,7 @@ import android.graphics.PorterDuff;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.GradientDrawable;
 import android.os.Handler;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.AppCompatEditText;
@@ -27,8 +28,10 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     private AppCompatEditText email;
     private AppCompatEditText password;
     private Button loginButton;
-    private Button googleBtn;
-    private Button linkedInBtn;
+    private TextView viaSocial;
+    private FloatingActionButton linkedInBtn;
+    private FloatingActionButton googleBtn;
+    private FloatingActionButton fbBtn;
     private Button forgotPassword;
     private Button registerInstead;
     private GradientDrawable drawable;
@@ -42,8 +45,10 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         email = (AppCompatEditText) findViewById(R.id.apet_login_email);
         password = (AppCompatEditText) findViewById(R.id.apet_login_password);
         loginButton = (Button) findViewById(R.id.btn_login);
-        googleBtn = (Button) findViewById(R.id.btn_signup_google);
-        linkedInBtn = (Button) findViewById(R.id.btn_signup_linkedIn);
+        viaSocial = (TextView) findViewById(R.id.tv_via_social);
+        googleBtn = (FloatingActionButton) findViewById(R.id.btn_signup_google);
+        linkedInBtn = (FloatingActionButton) findViewById(R.id.btn_signup_linkedIn);
+        fbBtn = (FloatingActionButton) findViewById(R.id.btn_signup_fb);
         forgotPassword = (Button) findViewById(R.id.btn_forgot_password);
         registerInstead = (Button) findViewById(R.id.btn_register_instead);
 
@@ -54,6 +59,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
     private void implementActionsListeners(){
         loginButton.setOnClickListener(this);
+        viaSocial.setText("Log In via social media");
         forgotPassword.setText(Html.fromHtml("<u>Forgot Password</u>"));
         forgotPassword.setOnClickListener(this);
         registerInstead.setText(Html.fromHtml("<u>Not a member yet? Register instead</u>"));

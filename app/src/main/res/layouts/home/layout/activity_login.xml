@@ -23,7 +23,7 @@
             android:layout_height="wrap_content"
             android:gravity="center"
             android:layout_margin="10dp"
-            android:textSize="@dimen/h4"
+            android:textSize="@dimen/h5"
             android:text="Welcome back! Ready to get some work done? "
             android:textColor="@color/title_color"/>
         <android.support.v7.widget.AppCompatEditText
@@ -71,6 +71,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@color/white_color"
+            android:stateListAnimator="@null"
             android:textAllCaps="false"
             android:textColor="@color/forgot_password_color"
             android:textSize="@dimen/p4"/>
@@ -89,6 +90,7 @@
         android:background="@color/white_color"
         android:textSize="@dimen/p4"
         android:textAllCaps="false"
+        android:stateListAnimator="@null"
         android:text="TALEJDJKDKJHFJJKD"
         android:textColor="@color/register_instead_color"/>
 </LinearLayout>

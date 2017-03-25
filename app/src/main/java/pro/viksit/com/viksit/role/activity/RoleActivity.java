@@ -134,38 +134,41 @@ public class RoleActivity extends AppCompatActivity implements View.OnClickListe
     private void setRoleData(){
         roles = new ArrayList<>();
         Role role;
-
-        //role constructor => (int imageResID, String title, String subtitle, int totalItems, int completedItems)
-        role = new Role(R.drawable.ic_7,"Game Designer","User Interface Developer",247,131);
-        roles.add(role);
-        role = new Role(R.drawable.ic_8,"Game Designer","User Interface Developer",247,231);
-        roles.add(role);
-        role = new Role(R.drawable.ic_9,"Business Analyst","Mutual Fund Planner",247,91);
-        roles.add(role);
-        role = new Role(R.drawable.ic_10,"Game Designer","User Interface Developer",247,31);
-        roles.add(role);
-        role = new Role(R.drawable.ic_11,"Game Designer","User Interface Developer",247,39);
-        roles.add(role);
-        role = new Role(R.drawable.ic_12,"Business Analyst","Mutual Fund Planner",247,51);
-        roles.add(role);
+        for(int i = 0 ; i < 8 ; i++) {
+            //role constructor => (int imageResID, String title, String subtitle, int totalItems, int completedItems)
+            role = new Role(R.drawable.ic_7, "Game Designer", "User Interface Developer", 247, 131);
+            roles.add(role);
+            role = new Role(R.drawable.ic_8, "Game Designer", "User Interface Developer", 247, 231);
+            roles.add(role);
+            role = new Role(R.drawable.ic_9, "Business Analyst", "Mutual Fund Planner", 247, 91);
+            roles.add(role);
+            role = new Role(R.drawable.ic_10, "Game Designer", "User Interface Developer", 247, 31);
+            roles.add(role);
+            role = new Role(R.drawable.ic_11, "Game Designer", "User Interface Developer", 247, 39);
+            roles.add(role);
+            role = new Role(R.drawable.ic_12, "Business Analyst", "Mutual Fund Planner", 247, 51);
+            roles.add(role);
+        }
     }
 
     private void setRecommendedRoleData(){
         recommendedRoles = new ArrayList<>();
         RecommendedRole recommendedRole;
         //recommendedRole constructor => (int resID)
-        recommendedRole = new RecommendedRole(R.drawable.ic_1, "Stock Broker");
-        recommendedRoles.add(recommendedRole);
-        recommendedRole = new RecommendedRole(R.drawable.ic_2, "Financial Analyst");
-        recommendedRoles.add(recommendedRole);
-        recommendedRole = new RecommendedRole(R.drawable.ic_3, "Investment Banker");
-        recommendedRoles.add(recommendedRole);
-        recommendedRole = new RecommendedRole(R.drawable.ic_4, "Financial Analyst");
-        recommendedRoles.add(recommendedRole);
-        recommendedRole = new RecommendedRole(R.drawable.ic_5, "Stock Broker");
-        recommendedRoles.add(recommendedRole);
-        recommendedRole = new RecommendedRole(R.drawable.ic_6, "Financial Banker");
-        recommendedRoles.add(recommendedRole);
+        for(int i = 0 ; i < 8 ; i++) {
+            recommendedRole = new RecommendedRole(R.drawable.ic_1, "Stock Broker");
+            recommendedRoles.add(recommendedRole);
+            recommendedRole = new RecommendedRole(R.drawable.ic_2, "Financial Analyst");
+            recommendedRoles.add(recommendedRole);
+            recommendedRole = new RecommendedRole(R.drawable.ic_3, "Investment Banker");
+            recommendedRoles.add(recommendedRole);
+            recommendedRole = new RecommendedRole(R.drawable.ic_4, "Financial Analyst");
+            recommendedRoles.add(recommendedRole);
+            recommendedRole = new RecommendedRole(R.drawable.ic_5, "Stock Broker");
+            recommendedRoles.add(recommendedRole);
+            recommendedRole = new RecommendedRole(R.drawable.ic_6, "Financial Banker");
+            recommendedRoles.add(recommendedRole);
+        }
     }
 
     @Override

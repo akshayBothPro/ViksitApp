@@ -2,6 +2,7 @@ package pro.viksit.com.viksit.home.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.AppCompatEditText;
 import android.text.Html;
@@ -22,8 +23,10 @@ public class SignupActivity extends AppCompatActivity implements View.OnClickLis
     private AppCompatEditText password;
     private AppCompatEditText confirmPassword;
     private Button signup;
-    private Button linkedBtn;
-    private Button googleBtn;
+    private TextView viaSocial;
+    private FloatingActionButton linkedBtn;
+    private FloatingActionButton googleBtn;
+    private FloatingActionButton fbBtn;
     private Button loginInstead;
 
     @Override
@@ -36,14 +39,18 @@ public class SignupActivity extends AppCompatActivity implements View.OnClickLis
         phoneNumber = (AppCompatEditText) findViewById(R.id.apet_phone_number);
         password = (AppCompatEditText) findViewById(R.id.apet_password);
         signup = (Button) findViewById(R.id.btn_signup);
+        viaSocial = (TextView) findViewById(R.id.tv_via_social);
         loginInstead = (Button) findViewById(R.id.btn_login_instead);
-        linkedBtn = (Button) findViewById(R.id.btn_signup_linkedIn);
-        googleBtn = (Button) findViewById(R.id.btn_signup_google);
+        linkedBtn = (FloatingActionButton) findViewById(R.id.btn_signup_linkedIn);
+        googleBtn = (FloatingActionButton) findViewById(R.id.btn_signup_google);
+        fbBtn = (FloatingActionButton) findViewById(R.id.btn_signup_fb);
 
         implementListeners();
     }
 
     private void implementListeners(){
+
+        viaSocial.setText("Sign Up via social media");
         signup.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

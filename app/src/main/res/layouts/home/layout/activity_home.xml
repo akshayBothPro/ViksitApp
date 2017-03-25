@@ -15,9 +15,9 @@
         android:layout_weight="80">
         <ImageView
             android:id="@+id/iv_app_icon"
-            android:layout_width="150dp"
-            android:layout_height="150dp"
-            android:background="@drawable/app_store"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:background="@drawable/app_store_inverted_cropped"
             android:layout_centerInParent="true"
             android:layout_marginBottom="8dp"/>
         <TextView
@@ -56,9 +56,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
+            android:stateListAnimator="@null"
             android:background="@color/white_color"
-            android:textColor="@color/hint_color"
-            android:textStyle="bold"
+            android:textColor="@color/theme_color"
             android:text="Already a Member ?"/>
     </LinearLayout>
 
