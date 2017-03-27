@@ -1,5 +1,6 @@
 package pro.viksit.com.viksit.assessment.activity;
 
+import android.content.Intent;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -49,7 +50,7 @@ public class QuestionsActivity extends AppCompatActivity {
         recyclerView.addOnItemTouchListener(
                 new RecyclerItemClickListener(getBaseContext(), recyclerView ,new RecyclerItemClickListener.OnItemClickListener() {
                     @Override public void onItemClick(View view, int position) {
-                        System.out.println("Module position: " + position);
+                        System.out .println("Module position: " + position);
                         /*Intent intent = new Intent(RoleActivity.this, ModuleViewActivity.class);
                         Bundle bundle = new Bundle();
                         bundle.putSerializable("role", roles.get(position));
@@ -62,13 +63,21 @@ public class QuestionsActivity extends AppCompatActivity {
                     }
                 })
         );
+
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent j = new Intent(QuestionsActivity.this,NewQuestionActivity.class);
+                startActivity(j);
+            }
+        });
     }
 
     private void prepareQuestionData(){
         questions = new ArrayList<>();
         Question question;
         // AppliedJob constructor => (int imageRes, String jobProfile, String companyName, String status)
-        for(int i = 1 ; i < 5; i++) {
+        for(int i = 1 ; i < 9; i++) {
             question = new Question("Can we ban politicians from the world?");
             questions.add(question);
 

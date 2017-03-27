@@ -49,4 +49,6 @@
     <color name="commentor_name_color">#464646</color>
     <color name="comment_reply_color">#838383</color>
     <color name="comment_time_color">#c9c9ca</color>
+    <color name="bottom_color">#b3b3b3</color>
+    <color name="edit_text_color">#4e4e4e</color>
 </resources>
