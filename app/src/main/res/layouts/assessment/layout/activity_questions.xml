@@ -35,7 +35,6 @@
                 android:layout_centerInParent="true"
                 android:textSize="@dimen/h6"
                 android:textColor="@color/white_color"
-                android:textStyle="bold"
                 android:text="Q  A Selling Mutual Funds"/>
         </RelativeLayout>
 
