@@ -63,6 +63,5 @@ dependencies {
     compile 'com.jaredrummler:material-spinner:1.1.0'
     compile 'com.github.castorflex.verticalviewpager:library:19.0.1'
     compile 'com.eftimoff:android-viewpager-transformers:1.0.1@aar'
-    compile 'me.relex:circleindicator:1.2.2@aar'
     testCompile 'junit:junit:4.12'
 }

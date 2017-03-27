@@ -15,6 +15,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import pro.viksit.com.viksit.R;
+import pro.viksit.com.viksit.assessment.activity.QuestionsActivity;
 import pro.viksit.com.viksit.dashboard.util.BottomBarUtil;
 import pro.viksit.com.viksit.home.activity.OTPActivity;
 import pro.viksit.com.viksit.role.adapter.RoleHorizontalRecyclerViewAdapter;
@@ -71,7 +72,7 @@ public class RoleActivity extends AppCompatActivity implements View.OnClickListe
                 new RecyclerItemClickListener (getBaseContext(), verticalRecycler ,new RecyclerItemClickListener.OnItemClickListener() {
                     @Override public void onItemClick(View view, int position) {
                         System.out.println("Vposition: " + position);
-                        Intent intent = new Intent(RoleActivity.this, OTPActivity.class);
+                        Intent intent = new Intent(RoleActivity.this, QuestionsActivity.class);
                        /* Bundle bundle = new Bundle();
                         bundle.putSerializable("role", roles.get(position));
                         intent.putExtras(bundle);*/

@@ -60,12 +60,11 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     private void implementActionsListeners(){
         loginButton.setOnClickListener(this);
         viaSocial.setText("Log In via social media");
-        forgotPassword.setText(Html.fromHtml("<u>Forgot Password</u>"));
+        forgotPassword.setText("Forgot Password?");
         forgotPassword.setOnClickListener(this);
-        registerInstead.setText(Html.fromHtml("<u>Not a member yet? Register instead</u>"));
+        registerInstead.setText("Not a member? Register instead");
         registerInstead.setOnClickListener(this);
-        Drawable sourceDrawable = getResources().getDrawable(R.mipmap.ic_remove_red_eye_black_36dp);
-        sourceDrawable.setColorFilter(getResources().getColor(R.color.input_border), PorterDuff.Mode.SRC_IN);
+
 
     }
 

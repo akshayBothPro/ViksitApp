@@ -58,8 +58,9 @@
             android:layout_alignParentBottom="true"
             android:stateListAnimator="@null"
             android:background="@color/white_color"
+            android:textAllCaps="false"
             android:textColor="@color/theme_color"
-            android:text="Already a Member ?"/>
+            android:text="Already a member ?"/>
     </LinearLayout>
 
 </LinearLayout>

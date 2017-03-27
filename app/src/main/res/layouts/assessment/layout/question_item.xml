@@ -6,8 +6,12 @@
         android:id="@+id/tv_question_text"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="10dp"
-        android:layout_centerInParent="true"/>
+        android:layout_margin="15dp"
+        android:textColor="@color/question_text_color"
+        android:textSize="@dimen/p3"
+        android:textStyle="bold"
+        android:text="fgfvhfvbjrfndjvbfdjvnfvnfdjvnjfdnvjfdvnfdvhbfdhvbdvjhfvbhfvbfvndfvhnj"
+        />
     <View
         android:layout_width="match_parent"
         android:layout_alignParentBottom="true"

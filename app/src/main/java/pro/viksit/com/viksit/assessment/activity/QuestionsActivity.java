@@ -36,6 +36,7 @@ public class QuestionsActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
 
         prepareQuestionData();
+        implementActions();
     }
 
     private void implementActions(){

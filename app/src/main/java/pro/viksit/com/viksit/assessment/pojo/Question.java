@@ -1,5 +1,6 @@
 package pro.viksit.com.viksit.assessment.pojo;
 
+
 import java.io.Serializable;
 import java.util.ArrayList;
 
@@ -11,6 +12,7 @@ public class Question implements Serializable {
 
     private String text;
     private ArrayList<Option> optionArrayList;
+    private ArrayList<Comment> comments;
 
     public Question() {
     }
@@ -38,5 +40,13 @@ public class Question implements Serializable {
 
     public void setOptionArrayList(ArrayList<Option> optionArrayList) {
         this.optionArrayList = optionArrayList;
+    }
+
+    public ArrayList<Comment> getComments() {
+        return comments;
+    }
+
+    public void setComments(ArrayList<Comment> comments) {
+        this.comments = comments;
     }
 }

@@ -43,4 +43,10 @@
     <color name="salary_color">#7e7e7e</color>
     <color name="desc_color">#3f3f3f</color>
     <color name="light_blue">#5cc7f7</color>
+    <color name="eye_icon_color">#b2b2b2</color>
+    <color name="question_text_color">#535353</color>
+    <color name="comment_text_color">#404040</color>
+    <color name="commentor_name_color">#464646</color>
+    <color name="comment_reply_color">#838383</color>
+    <color name="comment_time_color">#c9c9ca</color>
 </resources>

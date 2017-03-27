@@ -4,7 +4,10 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_margin="10dp">
+    android:layout_marginRight="10dp"
+    android:layout_marginLeft="10dp"
+    android:layout_marginTop="2dp"
+    android:layout_marginBottom="5dp">
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
@@ -12,7 +15,8 @@
             android:layout_width="match_parent"
             android:layout_alignLeft="@+id/or"
             android:layout_height="1dp"
-            android:layout_marginLeft="20dp"
+            android:layout_marginLeft="40dp"
+            android:layout_marginStart="40dp"
             android:background="@color/hint_color"
             android:layout_centerVertical="true"/>
 
@@ -20,16 +24,17 @@
             android:id="@+id/or"
             android:layout_width="30dp"
             android:layout_height="30dp"
-            android:layout_margin="10dp"
+            android:layout_margin="5dp"
             android:layout_centerInParent="true"
+            android:textColor="@color/register_instead_color"
             android:text="or"
             android:textAllCaps="false"
             android:background="@drawable/or_shape"/>
         <View
             android:layout_width="match_parent"
             android:layout_height="1dp"
-            android:layout_marginRight="20dp"
-            android:layout_marginEnd="30dp"
+            android:layout_marginRight="40dp"
+            android:layout_marginEnd="40dp"
             android:layout_alignRight="@+id/or"
 
             android:background="@color/hint_color"
@@ -40,7 +45,7 @@
             android:layout_below="@+id/or"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="30dp"
             android:textColor="@color/title_color"
             android:textSize="@dimen/p3"
             android:text="Log in via social media"/>
@@ -50,7 +55,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:padding="5dp"
+        android:padding="2dp"
         android:orientation="horizontal">
 
         <android.support.design.widget.FloatingActionButton

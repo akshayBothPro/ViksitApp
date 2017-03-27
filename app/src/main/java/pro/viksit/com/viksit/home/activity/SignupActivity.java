@@ -1,6 +1,8 @@
 package pro.viksit.com.viksit.home.activity;
 
 import android.content.Intent;
+import android.graphics.PorterDuff;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
@@ -60,14 +62,18 @@ public class SignupActivity extends AppCompatActivity implements View.OnClickLis
             }
         });
 
-        loginInstead.setText(Html.fromHtml("<u>Already a member? Login instead</u>"));
+        loginInstead.setText("Already a member? Login instead");
         loginInstead.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Log.i(TAG,"login instead clicked");
                 startActivity(new Intent(SignupActivity.this, LoginActivity.class));
+
             }
         });
+
+        Drawable sourceDrawable = getResources().getDrawable(R.mipmap.ic_remove_red_eye_black_36dp);
+        sourceDrawable.setColorFilter(getResources().getColor(R.color.eye_icon_color), PorterDuff.Mode.SRC_IN);
     }
 
     @Override

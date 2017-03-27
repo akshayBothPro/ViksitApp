@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/bold"
+        android:enabled="true"
+        android:icon="@mipmap/ic_assignment_black_24dp"
+        android:title="@string/bold"
+        app:showAsAction="ifRoom" />
+    <item
+        android:id="@+id/italic"
+        android:enabled="true"
+        android:icon="@mipmap/ic_tag_faces_black_24dp"
+        android:title="@string/italic"
+        app:showAsAction="ifRoom" />
+    <item
+        android:id="@+id/underline"
+        android:enabled="true"
+        android:icon="@mipmap/ic_adjust_black_24dp"
+        android:title="@string/underline"
+        app:showAsAction="ifRoom" />
+    <item
+        android:id="@+id/quotes"
+        android:enabled="true"
+        android:icon="@mipmap/ic_work_black_24dp"
+        android:title="@string/quotes"
+        app:showAsAction="ifRoom" />
+    <item
+        android:id="@+id/html"
+        android:enabled="true"
+        android:icon="@mipmap/ic_event_note_black_24dp"
+        android:title="@string/html"
+        app:showAsAction="ifRoom" />
+    <item
+        android:id="@+id/attach"
+        android:enabled="true"
+        android:icon="@mipmap/ic_event_note_black_24dp"
+        android:title="@string/attach"
+        app:showAsAction="ifRoom" />
+</menu>
