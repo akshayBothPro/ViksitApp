@@ -16,6 +16,7 @@ import com.mikepenz.materialdrawer.model.interfaces.IDrawerItem;
 
 import java.util.ArrayList;
 
+import me.itangqi.waveloadingview.WaveLoadingView;
 import pro.viksit.com.viksit.R;
 import pro.viksit.com.viksit.Util.LockableViewPager;
 import pro.viksit.com.viksit.assessment.adapter.AssessmentAdapter;
@@ -39,7 +40,9 @@ public class AssessmentActivity extends AppCompatActivity {
         ImageButton imageButton = (ImageButton) findViewById(R.id.smiley);
         questionArrayList = new ArrayList<>();
         setupData();
-
+        WaveLoadingView mWaveLoadingView = (WaveLoadingView) findViewById(R.id.waveLoadingView);
+        mWaveLoadingView.setAnimDuration(10000);
+        mWaveLoadingView.startAnimation();
         assessmentAdapter = new AssessmentAdapter(getSupportFragmentManager(), questionArrayList);
         lockableViewPager.setAdapter(assessmentAdapter);
         lockableViewPager.setSwipeLocked(true);

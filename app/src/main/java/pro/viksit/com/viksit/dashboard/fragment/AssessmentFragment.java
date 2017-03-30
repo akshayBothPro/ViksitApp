@@ -1,6 +1,5 @@
 package pro.viksit.com.viksit.dashboard.fragment;
 
-import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -21,11 +20,10 @@ import pro.viksit.com.viksit.dashboard.pojo.DashboardCard;
 import pro.viksit.com.viksit.dashboard.util.CarouselLinearLayout;
 
 /**
- * Created by Feroz on 21-03-2017.
+ * Created by Feroz on 28-03-2017.
  */
 
-public class ItemFragment extends Fragment {
-
+public class AssessmentFragment extends Fragment {
     private static final String SCALE = "scale";
     private int screenWidth;
     private int screenHeight;
@@ -34,24 +32,20 @@ public class ItemFragment extends Fragment {
         Bundle b = new Bundle();
         b.putSerializable("card",dashboardCard);
         b.putFloat(SCALE, scale);
-        return Fragment.instantiate(context, ItemFragment.class.getName(), b);
+        return Fragment.instantiate(context, AssessmentFragment.class.getName(), b);
     }
-
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         getWidthAndHeight();
     }
 
-    @SuppressLint("SetTextI18n")
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        if (container == null ) {
+        if (container == null) {
             return null;
         }
-        LinearLayout linearLayout = (LinearLayout) inflater.inflate(R.layout.fragment_image, container, false);
-
-       //final int postion = this.getArguments().getInt(POSITON);
+        LinearLayout linearLayout = (LinearLayout) inflater.inflate(R.layout.assessment_card, container, false);
         if(getArguments() != null){
             DashboardCard dashboardCard = (DashboardCard) getArguments().getSerializable("card");
             float scale = this.getArguments().getFloat(SCALE);
@@ -65,8 +59,16 @@ public class ItemFragment extends Fragment {
             Button start_game = (Button) linearLayout.findViewById(R.id.start_game);
             TextView header = (TextView) linearLayout.findViewById(R.id.header);
             TextView title = (TextView) linearLayout.findViewById(R.id.title);
+            TextView questions = (TextView) linearLayout.findViewById(R.id.questions);
+            TextView experience = (TextView) linearLayout.findViewById(R.id.experience);
+            TextView timelimit = (TextView) linearLayout.findViewById(R.id.timelimit);
+
+            //experience timelimit
             header.setText(dashboardCard.getHeader());
             title.setText(dashboardCard.getTitle());
+            questions.setText(dashboardCard.getNosofQuestion()+"");
+            experience.setText(dashboardCard.getExperience()+"");
+            timelimit.setText(dashboardCard.getCoins()+"");
             cardView.setLayoutParams(layoutParams);
             CarouselLinearLayout root = (CarouselLinearLayout) linearLayout.findViewById(R.id.root_container);
             root.setScaleBoth(scale);
@@ -80,12 +82,9 @@ public class ItemFragment extends Fragment {
                 }
             });
         }
-        return linearLayout;
+    return linearLayout;
     }
 
-    /**
-     * Get device screen width and height
-     */
     private void getWidthAndHeight() {
         DisplayMetrics displaymetrics = new DisplayMetrics();
         getActivity().getWindowManager().getDefaultDisplay().getMetrics(displaymetrics);

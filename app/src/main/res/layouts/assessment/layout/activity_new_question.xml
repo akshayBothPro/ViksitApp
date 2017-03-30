@@ -86,7 +86,7 @@
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
         android:layout_below="@+id/tv_select_module"
-        android:prompt="@string/spinner_title"/>
+        android:prompt="@string/app_name"/>
     <View
         android:id="@+id/v_hline1"
         android:layout_width="match_parent"

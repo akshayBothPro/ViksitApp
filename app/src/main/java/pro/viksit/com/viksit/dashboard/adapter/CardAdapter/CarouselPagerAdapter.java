@@ -12,7 +12,9 @@ import java.util.ArrayList;
 import pro.viksit.com.viksit.MainActivity;
 import pro.viksit.com.viksit.R;
 import pro.viksit.com.viksit.dashboard.activity.DashboardActivity;
+import pro.viksit.com.viksit.dashboard.fragment.AssessmentFragment;
 import pro.viksit.com.viksit.dashboard.fragment.ItemFragment;
+import pro.viksit.com.viksit.dashboard.pojo.DashboardCard;
 import pro.viksit.com.viksit.dashboard.util.CarouselLinearLayout;
 
 /**
@@ -27,20 +29,20 @@ public class CarouselPagerAdapter extends FragmentPagerAdapter implements ViewPa
     private DashboardActivity context;
     private FragmentManager fragmentManager;
     private float scale;
-    ArrayList<String> values;
+    private ArrayList<DashboardCard> dashboardCards;
     private int lastposition;
-    public CarouselPagerAdapter(DashboardActivity context, FragmentManager fm, ArrayList<String> values) {
+    public CarouselPagerAdapter(DashboardActivity context, FragmentManager fm,ArrayList<DashboardCard> dashboardCards) {
         super(fm);
         this.fragmentManager = fm;
         this.context = context;
-        this.values = values;
+        this.dashboardCards = dashboardCards;
     }
 
     @Override
     public Fragment getItem(int position) {
         // make the first pager bigger than others
         try {
-            if (position == values.size())
+            if (position == dashboardCards.size())
                 scale = BIG_SCALE;
             else
                 scale = SMALL_SCALE;
@@ -50,13 +52,20 @@ public class CarouselPagerAdapter extends FragmentPagerAdapter implements ViewPa
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return ItemFragment.newInstance(context, position, scale);
+        if(dashboardCards.get(position).getType().equalsIgnoreCase("Assesment")){
+            return AssessmentFragment.newInstance(context, dashboardCards.get(position), scale);
+
+        }else{
+            return ItemFragment.newInstance(context, dashboardCards.get(position), scale);
+
+        }
+
     }
 
     @Override
     public int getCount() {
 
-        return values.size();
+        return dashboardCards.size();
     }
 
     @Override

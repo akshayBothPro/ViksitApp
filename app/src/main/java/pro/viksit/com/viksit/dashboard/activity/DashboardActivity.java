@@ -15,12 +15,11 @@ import java.util.ArrayList;
 
 import pro.viksit.com.viksit.R;
 import pro.viksit.com.viksit.dashboard.adapter.CardAdapter.CarouselPagerAdapter;
-import pro.viksit.com.viksit.dashboard.adapter.ViewPagerAdapter;
+import pro.viksit.com.viksit.dashboard.pojo.DashboardCard;
 import pro.viksit.com.viksit.dashboard.util.BottomBarUtil;
 
 public class DashboardActivity extends AppCompatActivity {
     private Toolbar toolbar;
-    private ViewPagerAdapter viewPagerAdapter;
     private CarouselPagerAdapter carouselPagerAdapter;
     public ViewPager pager;
     public LinearLayout pager_indicator;
@@ -28,6 +27,8 @@ public class DashboardActivity extends AppCompatActivity {
     public HorizontalScrollView horizontalScrollView;
     public int loop=0;
     public int lastposition;
+    public ArrayList<DashboardCard> dashboardCards = new ArrayList<>();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -37,20 +38,17 @@ public class DashboardActivity extends AppCompatActivity {
         pager_indicator = (LinearLayout) findViewById(R.id.viewPagerCountDots);
         horizontalScrollView = (HorizontalScrollView) findViewById(R.id.dots);
         setSupportActionBar(toolbar);
-        BottomNavigationView bottomNavigationView = (BottomNavigationView)
-                findViewById(R.id.bottom_navigation);
+        dashboardCards = getData();
+        BottomNavigationView bottomNavigationView = (BottomNavigationView) findViewById(R.id.bottom_navigation);
         new BottomBarUtil().setupBottomBar(bottomNavigationView,DashboardActivity.this,R.id.task);
-        ArrayList<String> list = new ArrayList<>();
-        for(int i=0 ; i<10 ; i++){
-            list.add("champu"+i);
-        }
-        if(list.size() <7){
-            loop = list.size();
+
+        if(dashboardCards.size() <7){
+            loop = dashboardCards.size();
         }else{
             loop=7;
-            lastposition =(7*(list.size()/7)) ;
+            lastposition =(7*(dashboardCards.size()/7)) ;
         }
-        dots = new ImageView[list.size()];
+        dots = new ImageView[dashboardCards.size()];
         for (int i = 0; i < loop; i++) {
             dots[i] = new ImageView(this);
             dots[i].setImageDrawable(getResources().getDrawable(R.drawable.nonselecteditem_dot));
@@ -62,7 +60,7 @@ public class DashboardActivity extends AppCompatActivity {
             pager_indicator.addView(dots[i], params);
         }
         dots[0].setImageDrawable(getResources().getDrawable(R.drawable.selecteditem_dot));
-        carouselPagerAdapter = new CarouselPagerAdapter(this,getSupportFragmentManager(),list);
+        carouselPagerAdapter = new CarouselPagerAdapter(this,getSupportFragmentManager(),dashboardCards);
         DisplayMetrics metrics = new DisplayMetrics();
         getWindowManager().getDefaultDisplay().getMetrics(metrics);
         int pageMargin = ((metrics.widthPixels / 12) );
@@ -74,6 +72,25 @@ public class DashboardActivity extends AppCompatActivity {
         pager.addOnPageChangeListener(carouselPagerAdapter);
         pager.setCurrentItem(1);
         pager.setOffscreenPageLimit(3);
+        displayscreen();
+
+    }
+
+    private ArrayList<DashboardCard> getData() {
+        ArrayList<DashboardCard> dashboardCards = new ArrayList<>();
+        DashboardCard dashboardCard = new DashboardCard("Mutual Fund Planner","The Concept of Risk","Risk management is the identification, assessment, and prioritization of risks (defined in ISO 31000 as the effect of uncertainty on objectives) followed by coordinated and economical application of resources to minimize, monitor, and control the probability and/or impact of unfortunate events","https://static1.squarespace.com/static/53c6abe9e4b050924635b68f/t/5525af73e4b0964bcc72c023/1428533108432/","Course");
+        dashboardCards.add(dashboardCard);
+        DashboardCard dashboardCard1 = new DashboardCard("Mutual Fund Planner","Mid Term Assement","Life is full of risks, and so is a software project. Anything can go wrong anytime. We are always on our toes to make things right – but what about making sure that nothing goes wrong and that when it does we know exactly what to do","https://sites.google.com/site/petercromptonuk/_/rsrc/1443886923312/software-testing/risk-based-testing/risk%20based%20testing.png",16,50,30,"Assesment");
+        dashboardCards.add(dashboardCard1);
+        DashboardCard dashboardCard2 = new DashboardCard("Mutual Fund Planner","New Challenge","Siddharth has challenged you Do you have what it takes?","https://sites.google.com/site/petercromptonuk/_/rsrc/1443886923312/software-testing/risk-based-testing/risk%20based%20testing.png",20,40,20,"Assesment");
+        dashboardCards.add(dashboardCard2);
+
+        return  dashboardCards;
+
+    }
+
+
+    public void displayscreen(){
         switch (getResources().getDisplayMetrics().densityDpi) {
             case DisplayMetrics.DENSITY_LOW:
                 Toast.makeText(DashboardActivity.this, "LDPI", Toast.LENGTH_LONG).show();

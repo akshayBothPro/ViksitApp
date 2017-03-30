@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="utf-8"?>
+<pro.viksit.com.viksit.dashboard.util.CarouselLinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/root_container"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/transparent"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+
+        >
+
+        <android.support.v7.widget.CardView
+            android:id="@+id/card_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            card_view:cardBackgroundColor="@color/white"
+            card_view:cardCornerRadius="2dp"
+            card_view:cardUseCompatPadding="true">
+
+
+            <RelativeLayout
+                android:id="@+id/gg"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/header"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="5dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="5dp"
+                    android:layout_marginTop="5dp"
+                    android:text="Risk vs Uncertainity"
+                    android:textSize="@dimen/p5"
+                    android:textStyle="italic" />
+
+                <TextView
+                    android:id="@+id/title"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/header"
+                    android:layout_marginBottom="10dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="5dp"
+                    android:text="The Concept of Risk"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/h4"
+                    android:textStyle="bold" />
+
+                <ImageView
+                    android:id="@+id/image"
+                    android:layout_width="match_parent"
+                    android:layout_height="150dp"
+                    android:layout_below="@+id/title"
+                    android:layout_marginBottom="5dp"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/backgroundimg" />
+
+                <TextView
+                    android:id="@+id/description"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/image"
+                    android:layout_marginBottom="20dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="5dp"
+                    android:text="Lorem Ipsum is simply dummy text of the printing and typesetting industry."
+                    android:textSize="@dimen/p5" />
+
+                <RelativeLayout
+                    android:id="@+id/rr"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/description"
+                    android:paddingLeft="30dp"
+                    android:paddingRight="20dp">
+
+                    <TextView
+                        android:id="@+id/questions"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="16"
+                        android:textColor="@android:color/black"
+                        android:textSize="@dimen/p2"
+                        android:textStyle="bold"/>
+
+                    <TextView
+                        android:id="@+id/experience"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
+                        android:text="50 XP"
+                        android:textColor="@android:color/black"
+                        android:textSize="@dimen/p2"
+                        android:textStyle="bold"
+                        />
+
+                    <TextView
+                        android:id="@+id/timelimit"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:paddingRight="10dp"
+                        android:text="30"
+                        android:textColor="@android:color/black"
+                        android:textSize="@dimen/p2"
+                        android:textStyle="bold"/>
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/rr"
+                    android:layout_marginBottom="20dp"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Questions"
+                        android:textSize="@dimen/p6"
+                        />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
+                        android:text="Experiene"
+                        android:textSize="@dimen/p6"
+                        />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:text="Time limit"
+                        android:textSize="@dimen/p6"
+                        />
+
+
+                </RelativeLayout>
+
+
+            </RelativeLayout>
+
+
+        </android.support.v7.widget.CardView>
+
+        <Button
+            android:id="@+id/start_game"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/btn_start_height"
+            android:layout_below="@+id/card_view"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="-20dp"
+            android:background="@drawable/signup_btn_shape"
+            android:drawableLeft="@mipmap/ic_event_note_black_24dp"
+            android:drawableTint="@color/white"
+            android:minWidth="@dimen/btn_start_game"
+            android:paddingBottom="@dimen/paddingbottom"
+            android:paddingLeft="@dimen/paddingleft"
+            android:paddingRight="@dimen/paddingright"
+            android:paddingTop="@dimen/paddingtop"
+            android:text="Start Game"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            android:textSize="@dimen/p3"
+            android:translationZ="6dp" />
+    </RelativeLayout>
+
+</pro.viksit.com.viksit.dashboard.util.CarouselLinearLayout>

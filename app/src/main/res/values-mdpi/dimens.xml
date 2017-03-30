@@ -20,5 +20,7 @@
     <dimen name="p7">11sp</dimen>
 
     <dimen name="card_padding">35dp</dimen>
+    <dimen name="btn_start_game">150dp</dimen>
+    <dimen name="btn_start_height">40dp</dimen>
 
 </resources>

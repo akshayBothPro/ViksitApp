@@ -12,6 +12,7 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
+import me.itangqi.waveloadingview.WaveLoadingView;
 import pro.viksit.com.viksit.R;
 import pro.viksit.com.viksit.assessment.activity.AssessmentActivity;
 import pro.viksit.com.viksit.assessment.pojo.Option;
@@ -35,6 +36,7 @@ public class QuestionFragment extends Fragment {
         header = (TextView) view.findViewById(R.id.header);
         question_title = (TextView) view.findViewById(R.id.question_title);
         button_layout = (RelativeLayout) view.findViewById(R.id.button_layout);
+
         count = 1;
         Question question = (Question) getArguments().getSerializable(GET_QUESTION);
         question_title.setText(question.getText());

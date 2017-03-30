@@ -56,14 +56,11 @@
     </android.support.v7.widget.Toolbar>
     <pro.viksit.com.viksit.Util.LockableViewPager
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:id="@+id/viewpager"
         android:layout_below="@+id/toolbar"
         android:layout_above="@+id/check_answer"
         >
-
-
-
     </pro.viksit.com.viksit.Util.LockableViewPager>
     <Button
         android:layout_width="match_parent"
@@ -78,4 +75,25 @@
         android:text="Check Answer"
         android:textSize="@dimen/h3"
         />
+
+    <me.itangqi.waveloadingview.WaveLoadingView
+        android:id="@+id/waveLoadingView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:wlv_borderColor="#ffffff"
+        app:wlv_borderWidth="0dp"
+        app:wlv_progressValue="0"
+        app:wlv_round_rectangle="false"
+        app:wlv_shapeType="rectangle"
+        app:wlv_titleCenter=""
+        app:wlv_titleCenterColor="@android:color/white"
+        app:wlv_titleCenterSize="24sp"
+        app:wlv_titleCenterStrokeColor="@android:color/holo_blue_dark"
+        app:wlv_titleCenterStrokeWidth="3dp"
+        app:wlv_triangle_direction="north"
+        app:wlv_waveAmplitude="9"
+        app:wlv_waveColor="#2ccaf0f4"
+        app:wlv_wave_background_Color="#0097a7"
+        android:translationZ="-1dp"/>
+
     </RelativeLayout>
