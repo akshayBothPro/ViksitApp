@@ -90,6 +90,18 @@ public class ChallengeFragment extends Fragment {
             CarouselLinearLayout root = (CarouselLinearLayout) linearLayout.findViewById(R.id.root_container);
             root.setScaleBoth(scale);
 
+            int rank = 2999;//for testing
+
+            if(rank >= 100 && rank <= 999) {
+                myrank.setTextSize(10);
+                myrank.setText("#" + Integer.toString(rank));
+            } else if(rank >= 1000 && rank <= 1999){
+                myrank.setText("#1k+");
+                myrank.setTextSize(10);
+            } else if(rank >= 2000 && rank <= 2999){
+                myrank.setText("#2k+");
+                myrank.setTextSize(10);
+            }
 
             start_game.setOnClickListener(new View.OnClickListener() {
                 @Override

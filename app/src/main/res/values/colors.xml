@@ -53,4 +53,7 @@
     <color name="edit_text_color">#4e4e4e</color>
 
     <color name="section_heading">#adaeb1</color>
+    ><color name="challenger_color">#24b6f8</color>
+    <color name="title_challenge">#9d9d9f</color>
+    <color name="challenge_xp_color">#f9b9c1</color>
 </resources>

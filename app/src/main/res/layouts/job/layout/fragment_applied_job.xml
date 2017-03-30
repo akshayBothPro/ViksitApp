@@ -4,12 +4,15 @@
     android:layout_height="match_parent"
     android:background="@color/lightgrey_for_bg"
     android:orientation="vertical">
-
+    <HorizontalScrollView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" >
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:padding="6dp">
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -67,8 +70,21 @@
             android:textStyle="bold"
             android:textAllCaps="true"
             android:background="@drawable/status_border"/>
+        <TextView
+            android:id="@+id/tv_r"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="6dp"
+            android:layout_margin="3dp"
+            android:text="rejected"
+            android:textColor="@color/rejected_color"
+            android:textSize="@dimen/p7"
+            android:textStyle="bold"
+            android:textAllCaps="true"
+            android:background="@drawable/status_border"/>
 
     </LinearLayout>
+    </HorizontalScrollView>
     <android.support.v7.widget.RecyclerView
         android:id="@+id/rv_applied_job"
         android:layout_width="match_parent"

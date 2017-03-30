@@ -35,7 +35,6 @@ public class DashboardCard implements Serializable{
         this.description = description;
         this.image_url = image_url;
         this.type = type;
-
     }
 
     public String getHeader() {
@@ -101,4 +100,5 @@ public class DashboardCard implements Serializable{
     public void setImage_url(String image_url) {
         this.image_url = image_url;
     }
+
 }

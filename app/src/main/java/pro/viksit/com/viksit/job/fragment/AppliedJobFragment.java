@@ -43,6 +43,7 @@ public class AppliedJobFragment extends Fragment implements View.OnClickListener
     private TextView pending;
     private TextView test;
     private TextView interview;
+    private TextView rejected;
     private GradientDrawable circle;
     //
     public AppliedJobFragment() {
@@ -60,6 +61,7 @@ public class AppliedJobFragment extends Fragment implements View.OnClickListener
         pending = (TextView)view.findViewById(R.id.tv_p);
         test = (TextView)view.findViewById(R.id.tv_t);
         interview = (TextView)view.findViewById(R.id.tv_i);
+        rejected = (TextView)view.findViewById(R.id.tv_r);
         /*ShapeDrawable drawable = (ShapeDrawable) getResources().getDrawable(R.drawable.circle_border);
         drawable.setColorFilter(Color.parseColor("#eb4b5f"), PorterDuff.Mode.SRC_IN);
         p.setBackground(drawable);*/
@@ -74,6 +76,7 @@ public class AppliedJobFragment extends Fragment implements View.OnClickListener
         setFilterButtonColors(R.color.pending_color,pending);
         setFilterButtonColors(R.color.t_color,test);
         setFilterButtonColors(R.color.interview_color,interview);
+        setFilterButtonColors(R.color.rejected_color,rejected);
 
         circle = (GradientDrawable)getResources().getDrawable(R.drawable.status_border);
         circle.setColor(getResources().getColor(R.color.all_background));
@@ -109,7 +112,7 @@ public class AppliedJobFragment extends Fragment implements View.OnClickListener
         pending.setOnClickListener(this);
         test.setOnClickListener(this);
         interview.setOnClickListener(this);
-        /*r.setOnClickListener(this);*/
+        rejected.setOnClickListener(this);
     }
 
     private void setFilterButtonColors(int color, TextView button){
@@ -163,9 +166,9 @@ public class AppliedJobFragment extends Fragment implements View.OnClickListener
             search = "t";
         } else if(v.getId() == R.id.tv_i){
             search = "interview";
-        }/* else if(v.getId() == R.id.btn_r){
+        } else if(v.getId() == R.id.tv_r){
             search = "rejected";
-        }*/
+        }
 
         if(search.equalsIgnoreCase("all")){
             mAdapter = new AppliedRecyclerViewAdapter(context, appliedJobs);
