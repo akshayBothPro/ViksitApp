@@ -63,6 +63,7 @@
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/title"
                     android:orientation="horizontal"
+                    android:layout_marginBottom="2dp"
                     android:weightSum="100">
 
                     <LinearLayout
@@ -185,11 +186,9 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/lll"
-                    android:layout_marginTop="20dp"
-                    android:layout_marginBottom="20dp"
+                    android:layout_marginBottom="5dp"
                     android:layout_marginLeft="10dp"
                     android:layout_marginRight="5dp"
-                    android:textColor="@color/commentor_name_color"
                     android:text="Lorem Ipsum is simply dummy text of the printing and typesetting industry."
                     android:textSize="@dimen/p2" />
 

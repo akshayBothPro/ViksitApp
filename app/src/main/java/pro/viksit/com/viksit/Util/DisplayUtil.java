@@ -24,4 +24,9 @@ public class DisplayUtil {
         display.getSize(size);
         return size.x;
     }
+
+    public String getFileNameReplaced(String filename){
+        return filename.replaceAll(".jpg",".aaa").replaceAll(".png",".aaa").replaceAll(".jpeg",".aaa");
+    }
+
 }

@@ -1,6 +1,7 @@
 package pro.viksit.com.viksit.dashboard.fragment;
 
 import android.app.Activity;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -19,6 +20,9 @@ import android.widget.Toast;
 import com.squareup.picasso.Picasso;
 
 import pro.viksit.com.viksit.R;
+import pro.viksit.com.viksit.Util.DisplayUtil;
+import pro.viksit.com.viksit.Util.ImageSaver;
+import pro.viksit.com.viksit.Util.SaveImageAsync;
 import pro.viksit.com.viksit.dashboard.pojo.DashboardCard;
 import pro.viksit.com.viksit.dashboard.util.CarouselLinearLayout;
 
@@ -67,10 +71,27 @@ public class AssessmentFragment extends Fragment {
             TextView timelimit = (TextView) linearLayout.findViewById(R.id.timelimit);
             ImageView image =(ImageView) linearLayout.findViewById(R.id.image);
             System.out.println("Image url "+dashboardCard.getImage_url());
-            Picasso.with(getContext())
-                    .load(dashboardCard.getImage_url()).resize(150,150)
-                    .into(image);
-            //experience timelimit
+
+            int index = dashboardCard.getImage_url().lastIndexOf("/");
+            ImageSaver imageSaver = new ImageSaver(getContext()).
+                    setParentDirectoryName("dashboard").
+                    setFileName(new DisplayUtil().getFileNameReplaced(dashboardCard.getImage_url().substring(index+1,dashboardCard.getImage_url().length()))).
+                    setExternal(ImageSaver.isExternalStorageReadable());
+            if(imageSaver.checkFile()){
+                Uri uri = Uri.fromFile(imageSaver.pathFile());
+                Picasso.with(getContext())
+                        .load(uri).resize(150,150)
+                        .into(image);
+                System.out.println("FILE  EXITS >>>>>> ");
+
+            }else {
+                System.out.println("FILE NOT EXITS >>>>>> ");
+                Picasso.with(getContext())
+                        .load(dashboardCard.getImage_url()).resize(150, 150)
+                        .into(image);
+                new SaveImageAsync(imageSaver).execute(dashboardCard.getImage_url());
+
+            }//experience timelimit
             header.setText(dashboardCard.getHeader());
             title.setText(dashboardCard.getTitle());
             questions.setText(dashboardCard.getNosofQuestion()+"");
@@ -91,6 +112,10 @@ public class AssessmentFragment extends Fragment {
         }
     return linearLayout;
     }
+
+
+
+
 
     private void getWidthAndHeight() {
         DisplayMetrics displaymetrics = new DisplayMetrics();
