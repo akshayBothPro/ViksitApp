@@ -63,9 +63,9 @@ public class OpeningsJobFragment extends Fragment {
 
         CountSectionAdapter adapter = new CountSectionAdapter(this.context,invites,openings,openingJobs);
         recyclerView.setAdapter(adapter);
-        GridLayoutManager layoutManager = new GridLayoutManager(getContext(), 2);
+       /* GridLayoutManager layoutManager = new GridLayoutManager(getContext(), 2);
         SectionedSpanSizeLookup lookup = new SectionedSpanSizeLookup(adapter, layoutManager);
-        layoutManager.setSpanSizeLookup(lookup);
+        layoutManager.setSpanSizeLookup(lookup);*/
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(this.context);
 
         recyclerView.setLayoutManager(mLayoutManager);

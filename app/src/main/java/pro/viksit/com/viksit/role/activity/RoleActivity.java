@@ -5,11 +5,14 @@ import android.os.Bundle;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.DefaultItemAnimator;
+import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.TextView;
+
+import com.truizlop.sectionedrecyclerview.SectionedSpanSizeLookup;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -18,6 +21,7 @@ import pro.viksit.com.viksit.R;
 import pro.viksit.com.viksit.assessment.activity.QuestionsActivity;
 import pro.viksit.com.viksit.dashboard.util.BottomBarUtil;
 import pro.viksit.com.viksit.home.activity.OTPActivity;
+import pro.viksit.com.viksit.role.adapter.HorizontalSectionedRecyclerViewAdapter;
 import pro.viksit.com.viksit.role.adapter.RoleHorizontalRecyclerViewAdapter;
 import pro.viksit.com.viksit.role.adapter.RoleVerticalRecyclerViewAdapter;
 import pro.viksit.com.viksit.role.pojo.RecommendedRole;
@@ -29,14 +33,12 @@ public class RoleActivity extends AppCompatActivity implements View.OnClickListe
 
     private Toolbar toolbar;
     private RecyclerView horizontalRecycler;
-    private RecyclerView horizontalRecycler2;
-    private RecyclerView horizontalRecycler3;
     private RoleHorizontalRecyclerViewAdapter roleHorizontalRecyclerViewAdapter;
     private RecyclerView verticalRecycler;
     private RoleVerticalRecyclerViewAdapter roleVerticalRecyclerViewAdapter;
     private BottomNavigationView bottomNavigationView;
 
-    private List<Role> roles;
+    private ArrayList<Role> roles;
     private List<RecommendedRole> recommendedRoles;
 
 
@@ -49,13 +51,10 @@ public class RoleActivity extends AppCompatActivity implements View.OnClickListe
         bottomNavigationView = (BottomNavigationView) findViewById(R.id.bottom_navigation);
         verticalRecycler = (RecyclerView) findViewById(R.id.rv_role_vertical);
         horizontalRecycler = (RecyclerView) findViewById(R.id.rv_role_horizontal);
-        horizontalRecycler2 = (RecyclerView) findViewById(R.id.rv_role_horizontal2);
-        horizontalRecycler3 = (RecyclerView) findViewById(R.id.rv_role_horizontal3);
 
         setSupportActionBar(toolbar);
         new BottomBarUtil().setupBottomBar(bottomNavigationView,RoleActivity.this,R.id.role);//setting bottom navigation bar
         setRoleData();
-        setRecommendedRoleData();
         implementActions();
     }
 
@@ -85,29 +84,22 @@ public class RoleActivity extends AppCompatActivity implements View.OnClickListe
         );
 
 
-        //setting up horizontal recycler view
-        roleHorizontalRecyclerViewAdapter = new RoleHorizontalRecyclerViewAdapter(recommendedRoles);
-        RecyclerView.LayoutManager hLayoutManager = new LinearLayoutManager(getBaseContext(), LinearLayoutManager.HORIZONTAL, false);
-        horizontalRecycler.setLayoutManager(hLayoutManager);
-        horizontalRecycler.setItemAnimator(new DefaultItemAnimator());
-        horizontalRecycler.setAdapter(roleHorizontalRecyclerViewAdapter);
-        horizontalRecycler.addOnItemTouchListener(
-                new RecyclerItemClickListener (getBaseContext(), horizontalRecycler ,new RecyclerItemClickListener.OnItemClickListener() {
-                    @Override public void onItemClick(View view, int position) {
-                        // do something
-                        System.out.println("Hposition: " + position);
-                        Intent j = new Intent(RoleActivity.this,RoleDetailActivity.class);
-                        startActivity(j);
-                    }
-                    @Override public void onLongItemClick(View view, int position) {
-                        // do something
-                    }
-                })
-        );
-
         //
-        setHorizontalRecyclers(horizontalRecycler2);
-        setHorizontalRecyclers(horizontalRecycler3);
+        ArrayList<Role> recommendedList = new Role().getParticularSectionItems(roles,"Recommended");
+        ArrayList<Role> financeList = new Role().getParticularSectionItems(roles,"Finance");
+        ArrayList<Role> salesList = new Role().getParticularSectionItems(roles,"Sales and Marketing");
+
+        HorizontalSectionedRecyclerViewAdapter adapter = new HorizontalSectionedRecyclerViewAdapter(getBaseContext(),recommendedList, financeList, salesList, roles);
+        horizontalRecycler.setAdapter(adapter);
+
+
+        //to be done ...
+        //RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getBaseContext(), LinearLayoutManager.HORIZONTAL, false);
+        RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getBaseContext());
+
+        horizontalRecycler.setLayoutManager(mLayoutManager);
+
+
     }
 
     private void setHorizontalRecyclers(RecyclerView horizontalRecycle){
@@ -137,40 +129,21 @@ public class RoleActivity extends AppCompatActivity implements View.OnClickListe
         Role role;
         for(int i = 0 ; i < 8 ; i++) {
             //role constructor => (int imageResID, String title, String subtitle, int totalItems, int completedItems)
-            role = new Role(R.drawable.ic_7, "Game Designer", "User Interface Developer", 247, 131);
+            role = new Role(R.drawable.ic_7, "Game Designer", "User Interface Developer", 247, 131,"Recommended");
             roles.add(role);
-            role = new Role(R.drawable.ic_8, "Game Designer", "User Interface Developer", 247, 231);
+            role = new Role(R.drawable.ic_8, "Game Designer", "User Interface Developer", 247, 231,"Finance");
             roles.add(role);
-            role = new Role(R.drawable.ic_9, "Business Analyst", "Mutual Fund Planner", 247, 91);
+            role = new Role(R.drawable.ic_9, "Business Analyst", "Mutual Fund Planner", 247, 91,"Sales and Marketing");
             roles.add(role);
-            role = new Role(R.drawable.ic_10, "Game Designer", "User Interface Developer", 247, 31);
+            role = new Role(R.drawable.ic_10, "Game Designer", "User Interface Developer", 247, 31,"Recommended");
             roles.add(role);
-            role = new Role(R.drawable.ic_11, "Game Designer", "User Interface Developer", 247, 39);
+            role = new Role(R.drawable.ic_11, "Game Designer", "User Interface Developer", 247, 39,"Finance");
             roles.add(role);
-            role = new Role(R.drawable.ic_12, "Business Analyst", "Mutual Fund Planner", 247, 51);
+            role = new Role(R.drawable.ic_12, "Business Analyst", "Mutual Fund Planner", 247, 51,"Sales and Marketing");
             roles.add(role);
         }
     }
 
-    private void setRecommendedRoleData(){
-        recommendedRoles = new ArrayList<>();
-        RecommendedRole recommendedRole;
-        //recommendedRole constructor => (int resID)
-        for(int i = 0 ; i < 8 ; i++) {
-            recommendedRole = new RecommendedRole(R.drawable.ic_1, "Stock Broker");
-            recommendedRoles.add(recommendedRole);
-            recommendedRole = new RecommendedRole(R.drawable.ic_2, "Financial Analyst");
-            recommendedRoles.add(recommendedRole);
-            recommendedRole = new RecommendedRole(R.drawable.ic_3, "Investment Banker");
-            recommendedRoles.add(recommendedRole);
-            recommendedRole = new RecommendedRole(R.drawable.ic_4, "Financial Analyst");
-            recommendedRoles.add(recommendedRole);
-            recommendedRole = new RecommendedRole(R.drawable.ic_5, "Stock Broker");
-            recommendedRoles.add(recommendedRole);
-            recommendedRole = new RecommendedRole(R.drawable.ic_6, "Financial Banker");
-            recommendedRoles.add(recommendedRole);
-        }
-    }
 
     @Override
     public void onClick(View v) {

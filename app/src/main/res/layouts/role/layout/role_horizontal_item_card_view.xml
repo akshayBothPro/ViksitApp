@@ -2,11 +2,21 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="70dp"
     android:layout_height="wrap_content"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
     android:background="@color/white_color"
     android:layout_marginBottom="10dp"
     android:layout_marginTop="10dp"
     android:layout_marginLeft="5dp">
 
+    <android.support.v7.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        card_view:cardBackgroundColor="@color/white"
+        card_view:cardCornerRadius="2dp"
+        card_view:contentPadding="1dp">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
     <ImageView
         android:id="@+id/iv_recommended_role_item_image"
         android:layout_alignParentTop="true"
@@ -15,7 +25,6 @@
         android:layout_height="60dp" />
     <TextView
         android:id="@+id/tv_role_description"
-        android:layout_alignLeft="@+id/iv_recommended_role_item_image"
         android:layout_below="@+id/iv_recommended_role_item_image"
         android:layout_centerHorizontal="true"
         android:textAlignment="center"
@@ -24,5 +33,7 @@
         android:layout_marginTop="2dp"
         android:layout_marginBottom="1dp"
         android:textColor="@color/black"
-        android:textSize="11sp"/>
+        android:textSize="@dimen/p7"/>
+        </RelativeLayout>
+    </android.support.v7.widget.CardView>
 </RelativeLayout>

@@ -55,7 +55,6 @@ dependencies {
     compile 'com.android.support:recyclerview-v7:25.3.0'
     compile 'com.github.siyamed:android-shape-imageview:0.9.+@aar'
     compile 'com.android.support:support-v4:25.3.0'
-    compile 'com.afollestad:sectioned-recyclerview:0.2.3'
     compile 'com.bignerdranch.android:expandablerecyclerview:3.0.0-RC1'
     compile 'com.mikepenz:google-material-typeface:2.2.0.1@aar'
     compile 'com.mikepenz:fontawesome-typeface:4.4.0.1@aar'

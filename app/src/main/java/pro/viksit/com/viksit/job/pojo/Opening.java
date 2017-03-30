@@ -17,7 +17,7 @@ public class Opening implements Serializable{
     private String jobProfile;
     private String companyName;
     private String expiryDate;
-    private ArrayList<String> sectionTypeList;
+    private ArrayList<String> sectionTypes;
     /*private URL imageURL;*/
 
     public Opening(){}
@@ -83,19 +83,19 @@ public class Opening implements Serializable{
 
     public ArrayList<String> getSectionCount(ArrayList<Opening> list){
         int count = 0;
-        ArrayList<String> sectionTypeList = new ArrayList<>();
+        ArrayList<String> sectionTypes = new ArrayList<>();
         String type = "";
-        sectionTypeList.add(type);
+        sectionTypes.add(type);
         for(Opening item : list){
-            for(String section : sectionTypeList){
+            for(String section : sectionTypes){
                 if(!item.getType().equalsIgnoreCase(section) && section.equalsIgnoreCase("")){
-                    sectionTypeList.set(0,item.getType());
+                    sectionTypes.set(0,item.getType());
                 } else if(!item.getType().equalsIgnoreCase(section)){
-                    sectionTypeList.add(item.getType());
+                    sectionTypes.add(item.getType());
                 }
             }
         }
-        return sectionTypeList;
+        return sectionTypes;
     }
 
     /*public URL getImageURL() {
