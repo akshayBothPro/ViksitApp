@@ -11,15 +11,15 @@ import android.widget.TextView;
 
 import com.afollestad.sectionedrecyclerview.SectionedRecyclerViewAdapter;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import pro.viksit.com.viksit.R;
 import pro.viksit.com.viksit.job.pojo.Opening;
 
-*/
-/**
- * Created by Akshay on 22/03/2017.
- *//*
+ Created by Akshay on 22/03/2017.
+
+
 
 
 
@@ -48,7 +48,7 @@ public class RecyclerViewSectionAdapter extends SectionedRecyclerViewAdapter<Rec
     @Override
     public void onBindHeaderViewHolder(RecyclerView.ViewHolder holder, int section) {
 
-        String sectionName = allData.get(section).getHeaderTitle();
+        String sectionName = allData.get(section).getType();
         SectionViewHolder sectionViewHolder = (SectionViewHolder) holder;
         sectionViewHolder.sectionTitle.setText(sectionName);
     }
@@ -127,12 +127,12 @@ public class RecyclerViewSectionAdapter extends SectionedRecyclerViewAdapter<Rec
                 @Override
                 public void onClick(View v) {
 
-                    */
-/*Toast.makeText(v.getContext(), itemTitle.getText(), Toast.LENGTH_SHORT).show();*//*
+Toast.makeText(v.getContext(), itemTitle.getText(), Toast.LENGTH_SHORT).show();
 
 
                 }
             });
         }
     }
-}*/
+}
+*/

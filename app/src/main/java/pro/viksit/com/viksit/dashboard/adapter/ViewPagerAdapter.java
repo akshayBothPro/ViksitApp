@@ -60,13 +60,13 @@ public class ViewPagerAdapter extends FragmentStatePagerAdapter implements CardA
         return null;
     }
 
-
     @Override
     public void destroyItem(View collection, int position, Object o) {
         View view = (View)o;
         ((ViewPager) collection).removeView(view);
         view = null;
     }
+
     @Override
     public Object instantiateItem(ViewGroup container, int position) {
         Object fragment = super.instantiateItem(container, position);

@@ -51,4 +51,6 @@
     <color name="comment_time_color">#c9c9ca</color>
     <color name="bottom_color">#b3b3b3</color>
     <color name="edit_text_color">#4e4e4e</color>
+
+    <color name="section_heading">#adaeb1</color>
 </resources>

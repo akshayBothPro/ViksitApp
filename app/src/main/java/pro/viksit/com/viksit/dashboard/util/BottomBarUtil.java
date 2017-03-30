@@ -68,7 +68,7 @@ public class BottomBarUtil {
                                     System.out.println("Dont call Job in Job ... ... .... ");
 
                                 }else {
-                                    Intent ii = new Intent(context, AssessmentActivity.class);
+                                    Intent ii = new Intent(context, JobActivity.class);
                                     context.startActivity(ii);
                                     ((Activity) context).overridePendingTransition(R.anim.zoom_enter, R.anim.zoom_exit);
                                 }

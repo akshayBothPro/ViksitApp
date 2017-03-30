@@ -8,9 +8,7 @@
         android:layout_height="wrap_content"
         android:layout_margin="15dp"
         android:textColor="@color/question_text_color"
-        android:textSize="@dimen/p3"
-        android:text="fgfvhfvbjrfndjvbfdjvnfvnfdjvnjfdnvjfdvnfdvhbfdhvbdvjhfvbhfvbfvndfvhnj"
-        />
+        android:textSize="@dimen/p3"/>
     <View
         android:layout_width="match_parent"
         android:layout_alignParentBottom="true"
