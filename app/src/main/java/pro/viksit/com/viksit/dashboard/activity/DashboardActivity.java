@@ -82,7 +82,7 @@ public class DashboardActivity extends AppCompatActivity {
         dashboardCards.add(dashboardCard);
         DashboardCard dashboardCard1 = new DashboardCard("Mutual Fund Planner","Mid Term Assement","Life is full of risks, and so is a software project. Anything can go wrong anytime. We are always on our toes to make things right – but what about making sure that nothing goes wrong and that when it does we know exactly what to do","https://sites.google.com/site/petercromptonuk/_/rsrc/1443886923312/software-testing/risk-based-testing/risk%20based%20testing.png",16,50,30,"Assesment");
         dashboardCards.add(dashboardCard1);
-        DashboardCard dashboardCard2 = new DashboardCard("Mutual Fund Planner","New Challenge","Siddharth has challenged you Do you have what it takes?","https://sites.google.com/site/petercromptonuk/_/rsrc/1443886923312/software-testing/risk-based-testing/risk%20based%20testing.png",20,40,20,"Assesment");
+        DashboardCard dashboardCard2 = new DashboardCard("Mutual Fund Planner","New Challenge","Siddharth has challenged you Do you have what it takes?","http://3.bp.blogspot.com/_1fayrmhTf24/TR101EgZ-pI/AAAAAAAAAWQ/owExremngg0/s1600/priyamani-hot9-773160.jpg",20,40,20,"Challenge");
         dashboardCards.add(dashboardCard2);
 
         return  dashboardCards;
