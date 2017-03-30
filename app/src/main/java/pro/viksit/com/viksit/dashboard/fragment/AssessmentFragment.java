@@ -10,10 +10,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.squareup.picasso.Picasso;
 
 import pro.viksit.com.viksit.R;
 import pro.viksit.com.viksit.dashboard.pojo.DashboardCard;
@@ -62,12 +65,16 @@ public class AssessmentFragment extends Fragment {
             TextView questions = (TextView) linearLayout.findViewById(R.id.questions);
             TextView experience = (TextView) linearLayout.findViewById(R.id.experience);
             TextView timelimit = (TextView) linearLayout.findViewById(R.id.timelimit);
-
+            ImageView image =(ImageView) linearLayout.findViewById(R.id.image);
+            System.out.println("Image url "+dashboardCard.getImage_url());
+            Picasso.with(getContext())
+                    .load(dashboardCard.getImage_url()).resize(150,150)
+                    .into(image);
             //experience timelimit
             header.setText(dashboardCard.getHeader());
             title.setText(dashboardCard.getTitle());
             questions.setText(dashboardCard.getNosofQuestion()+"");
-            experience.setText(dashboardCard.getExperience()+"");
+            experience.setText(dashboardCard.getExperience()+" XP");
             timelimit.setText(dashboardCard.getCoins()+"");
             cardView.setLayoutParams(layoutParams);
             CarouselLinearLayout root = (CarouselLinearLayout) linearLayout.findViewById(R.id.root_container);
