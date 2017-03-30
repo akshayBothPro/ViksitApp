@@ -94,7 +94,7 @@
                 android:layout_centerVertical="true"
                 android:layout_toLeftOf="@+id/coins"
                 android:tint="@android:color/white"
-                android:src="@mipmap/ic_monetization_on_black_24dp"
+                android:src="@mipmap/coins"
                 android:layout_marginRight="3dp"/>
         </RelativeLayout>
     </android.support.v7.widget.Toolbar>

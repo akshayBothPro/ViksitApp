@@ -10,13 +10,13 @@
     <item
         android:id="@+id/role"
         android:enabled="true"
-        android:icon="@mipmap/ic_tag_faces_black_24dp"
+        android:icon="@mipmap/roles"
         android:title="@string/role"
         app:showAsAction="ifRoom" />
     <item
         android:id="@+id/challenge"
         android:enabled="true"
-        android:icon="@mipmap/ic_adjust_black_24dp"
+        android:icon="@mipmap/challenge"
         android:title="@string/challenge"
         app:showAsAction="ifRoom" />
     <item
