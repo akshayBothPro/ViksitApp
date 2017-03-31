@@ -5,27 +5,22 @@ import android.os.Bundle;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.DefaultItemAnimator;
-import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
-import android.widget.TextView;
-
-import com.truizlop.sectionedrecyclerview.SectionedSpanSizeLookup;
 
 import java.util.ArrayList;
-import java.util.List;
 
 import pro.viksit.com.viksit.R;
 import pro.viksit.com.viksit.assessment.activity.QuestionsActivity;
 import pro.viksit.com.viksit.dashboard.util.BottomBarUtil;
-import pro.viksit.com.viksit.home.activity.OTPActivity;
-import pro.viksit.com.viksit.role.adapter.HorizontalSectionedRecyclerViewAdapter;
+import pro.viksit.com.viksit.role.adapter.RecyclerViewDataAdapter;
 import pro.viksit.com.viksit.role.adapter.RoleHorizontalRecyclerViewAdapter;
 import pro.viksit.com.viksit.role.adapter.RoleVerticalRecyclerViewAdapter;
 import pro.viksit.com.viksit.role.pojo.RecommendedRole;
 import pro.viksit.com.viksit.role.pojo.Role;
+import pro.viksit.com.viksit.role.pojo.SectionedRole;
 import pro.viksit.com.viksit.role.util.RecyclerItemClickListener;
 
 public class RoleActivity extends AppCompatActivity implements View.OnClickListener{
@@ -33,13 +28,14 @@ public class RoleActivity extends AppCompatActivity implements View.OnClickListe
 
     private Toolbar toolbar;
     private RecyclerView horizontalRecycler;
-    private RoleHorizontalRecyclerViewAdapter roleHorizontalRecyclerViewAdapter;
     private RecyclerView verticalRecycler;
     private RoleVerticalRecyclerViewAdapter roleVerticalRecyclerViewAdapter;
+    private RoleHorizontalRecyclerViewAdapter roleHorizontalRecyclerViewAdapter;
     private BottomNavigationView bottomNavigationView;
 
     private ArrayList<Role> roles;
-    private List<RecommendedRole> recommendedRoles;
+    private ArrayList<RecommendedRole> recommendedRoles;
+    private ArrayList <SectionedRole> allSampleData;
 
 
     @Override
@@ -55,6 +51,8 @@ public class RoleActivity extends AppCompatActivity implements View.OnClickListe
         setSupportActionBar(toolbar);
         new BottomBarUtil().setupBottomBar(bottomNavigationView,RoleActivity.this,R.id.role);//setting bottom navigation bar
         setRoleData();
+        createDummyData();
+
         implementActions();
     }
 
@@ -85,20 +83,32 @@ public class RoleActivity extends AppCompatActivity implements View.OnClickListe
 
 
         //
-        ArrayList<Role> recommendedList = new Role().getParticularSectionItems(roles,"Recommended");
+        /*ArrayList<Role> recommendedList = new Role().getParticularSectionItems(roles,"Recommended");
         ArrayList<Role> financeList = new Role().getParticularSectionItems(roles,"Finance");
-        ArrayList<Role> salesList = new Role().getParticularSectionItems(roles,"Sales and Marketing");
+        ArrayList<Role> salesList = new Role().getParticularSectionItems(roles,"Sales and Marketing");*/
 
-        HorizontalSectionedRecyclerViewAdapter adapter = new HorizontalSectionedRecyclerViewAdapter(getBaseContext(),recommendedList, financeList, salesList, roles);
-        horizontalRecycler.setAdapter(adapter);
+        /*HorizontalSectionedRecyclerViewAdapter adapter = new HorizontalSectionedRecyclerViewAdapter(getBaseContext(),recommendedList, financeList, salesList, roles);
+        horizontalRecycler.setAdapter(adapter);*/
 
 
         //to be done ...
         //RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getBaseContext(), LinearLayoutManager.HORIZONTAL, false);
-        RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getBaseContext());
+        /*RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getBaseContext());
 
-        horizontalRecycler.setLayoutManager(mLayoutManager);
+        horizontalRecycler.setLayoutManager(mLayoutManager);*/
 
+
+        //
+
+
+
+        horizontalRecycler.setHasFixedSize(true);
+
+        RecyclerViewDataAdapter adapter = new RecyclerViewDataAdapter(this, allSampleData);
+
+        horizontalRecycler.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
+
+        horizontalRecycler.setAdapter(adapter);
 
     }
 
@@ -144,6 +154,22 @@ public class RoleActivity extends AppCompatActivity implements View.OnClickListe
         }
     }
 
+    public void createDummyData() {
+        ArrayList<Role> recommendedList = new Role().getParticularSectionItems(roles,"Recommended");
+        ArrayList<Role> financeList = new Role().getParticularSectionItems(roles,"Finance");
+        ArrayList<Role> salesList = new Role().getParticularSectionItems(roles,"Sales and Marketing");
+        allSampleData = new ArrayList<>();
+
+        SectionedRole dm = new SectionedRole("Recommended",recommendedList);
+        allSampleData.add(dm);
+
+        dm = new SectionedRole("Finance",financeList);
+        allSampleData.add(dm);
+
+        dm = new SectionedRole("Sales and Marketing",salesList);
+        allSampleData.add(dm);
+
+    }
 
     @Override
     public void onClick(View v) {

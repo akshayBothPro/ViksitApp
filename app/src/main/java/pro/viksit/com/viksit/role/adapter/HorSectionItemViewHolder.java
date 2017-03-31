@@ -21,7 +21,7 @@ public class HorSectionItemViewHolder extends RecyclerView.ViewHolder {
     public HorSectionItemViewHolder(View itemView) {
         super(itemView);
         title = (TextView) itemView.findViewById(R.id.tv_role_description);
-        imageView = (ImageView) itemView.findViewById(R.id.iv_recommended_role_item_image);
+        /*imageView = (ImageView) itemView.findViewById(R.id.iv_recommended_role_item_image);*/
     }
     public void render(String titles, int imageResID){
         title.setText(titles);

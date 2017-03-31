@@ -29,7 +29,7 @@ public class RoleHorizontalRecyclerViewAdapter extends RecyclerView.Adapter<Role
     @Override
     public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View itemView = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.role_horizontal_item_card_view, parent, false);
+                .inflate(R.layout.job_detail_hor_item, parent, false);
 
         return new MyViewHolder(itemView);
     }
@@ -57,8 +57,8 @@ public class RoleHorizontalRecyclerViewAdapter extends RecyclerView.Adapter<Role
 
         public MyViewHolder(View view) {
             super(view);
-            image = (ImageView)view.findViewById(R.id.iv_recommended_role_item_image);
-            description = (TextView)view.findViewById(R.id.tv_role_description);
+            image = (ImageView)view.findViewById(R.id.iv_job_item_image);
+            description = (TextView)view.findViewById(R.id.tv_job_item_title);
             image.setOnClickListener(this);
         }
 
