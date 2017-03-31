@@ -179,7 +179,7 @@
             android:paddingLeft="@dimen/paddingleft"
             android:paddingRight="@dimen/paddingright"
             android:paddingTop="@dimen/paddingtop"
-            android:text="Start ASSESSMENT"
+            android:text=" Start ASSESSMENT "
             android:textAlignment="center"
             android:textColor="@color/white"
             android:textSize="@dimen/p3"

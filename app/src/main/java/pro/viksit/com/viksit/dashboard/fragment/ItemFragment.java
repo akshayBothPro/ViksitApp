@@ -2,9 +2,6 @@ package pro.viksit.com.viksit.dashboard.fragment;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
-import android.graphics.Color;
-import android.graphics.PorterDuff;
-import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -73,9 +70,7 @@ public class ItemFragment extends Fragment {
             cardView.setLayoutParams(layoutParams);
             CarouselLinearLayout root = (CarouselLinearLayout) linearLayout.findViewById(R.id.root_container);
             root.setScaleBoth(scale);
-            BitmapDrawable bitmapDrawable = (BitmapDrawable)start_game.getCompoundDrawables()[0];
-            bitmapDrawable.setColorFilter(Color.parseColor("#ffffff"), PorterDuff.Mode.MULTIPLY );
-            start_game.setCompoundDrawablesWithIntrinsicBounds(bitmapDrawable,null,null,null);
+
             start_game.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
