@@ -60,10 +60,11 @@
                 <LinearLayout
                     android:id="@+id/lll"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="150dp"
                     android:layout_below="@+id/title"
                     android:orientation="horizontal"
-                    android:layout_marginBottom="2dp"
+                    android:layout_marginBottom="5dp"
+                    android:background="@drawable/logos_55"
                     android:weightSum="100">
 
                     <LinearLayout
@@ -72,7 +73,6 @@
                         android:layout_weight="50"
                         android:gravity="center"
                         android:orientation="vertical"
-                        android:background="@color/theme_color"
                         android:padding="10dp">
 
                         <RelativeLayout
@@ -127,7 +127,6 @@
                         android:layout_weight="50"
                         android:orientation="vertical"
                         android:gravity="center"
-                        android:background="@color/selected_circle_color"
                         android:padding="10dp"
                         >
                         <RelativeLayout

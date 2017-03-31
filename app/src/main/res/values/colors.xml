@@ -32,8 +32,8 @@
     <color name="interview_color">#5790d3</color>
     <color name="rejected_color">#eb4b5f</color>
 
-    <color name="linkedIn_color">#0288d1</color>
-    <color name="google_color">#f4511e</color>
+    <color name="linkedIn_color">#4A77BB</color>
+    <color name="google_color">#DF4C39</color>DF4C39
     <color name="fb_color">#3b5998</color>
 
     <color name="selected_circle_color">#24b6f8</color>
@@ -53,7 +53,9 @@
     <color name="edit_text_color">#4e4e4e</color>
 
     <color name="section_heading">#adaeb1</color>
-    ><color name="challenger_color">#24b6f8</color>
+    <color name="challenger_color">#24b6f8</color>
     <color name="title_challenge">#9d9d9f</color>
     <color name="challenge_xp_color">#f9b9c1</color>
+
+    <color name="text_info_color">#4b4b4b</color>
 </resources>
