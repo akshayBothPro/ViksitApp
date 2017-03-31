@@ -94,8 +94,8 @@
                 android:layout_centerVertical="true"
                 android:layout_toLeftOf="@+id/coins"
                 android:tint="@android:color/white"
-                android:src="@mipmap/coins"
-                android:layout_marginRight="3dp"/>
+                android:src="@mipmap/ic_coins"
+                android:layout_marginRight="5dp"/>
         </RelativeLayout>
     </android.support.v7.widget.Toolbar>
 </RelativeLayout>

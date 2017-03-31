@@ -56,5 +56,6 @@
     <color name="challenger_color">#24b6f8</color>
     <color name="title_challenge">#9d9d9f</color>
     <color name="challenge_xp_color">#f9b9c1</color>
+    <color name="circle_tick">#7ed321</color>
 
 </resources>
