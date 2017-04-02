@@ -43,7 +43,8 @@
         <activity android:name=".home.activity.ResetPasswordActivity" />
         <activity android:name=".home.activity.ChangedPasswordActivity" />
         <activity android:name=".dashboard.activity.TaskCompletionActivity" />
-        <activity android:name=".role.activity.ModuleActivity"></activity>
+        <activity android:name=".role.activity.ModuleActivity" />
+        <activity android:name=".role.activity.PurchaseSuccessActivity"></activity>
     </application>
 
 </manifest>

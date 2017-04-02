@@ -52,7 +52,7 @@ public class ModuleVerticalRecyclerViewAdapter extends RecyclerView.Adapter<Modu
         holder.progressBar.setProgress(role.getCompletedItems());
         holder.progressBar.setProgressDrawable(context.getResources().getDrawable(R.drawable.progress_bar_drawable));
         /*holder.progressBar.getdeterminateDrawable().setColorFilter(context.getResources().getColor(R.color.linkedIn_color), PorterDuff.Mode.MULTIPLY);*/
-
+        /*holder.cardview.setPadding(20,20,20,20);*/
         Picasso.with(context).load(role.getImageResID()).transform(new CircleTransform()).into(holder.image);
         /*Picasso.with(context).load(role.getImageURL()).transform(new CircleTransform()).into(holder.image);*/
         // if we have image URL instead of resID use it
