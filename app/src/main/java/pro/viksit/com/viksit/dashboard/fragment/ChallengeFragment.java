@@ -38,6 +38,7 @@ public class ChallengeFragment extends Fragment {
         b.putFloat(SCALE, scale);
         return Fragment.instantiate(context, ChallengeFragment.class.getName(), b);
     }
+
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -49,6 +50,7 @@ public class ChallengeFragment extends Fragment {
         if (container == null) {
             return null;
         }
+
         LinearLayout linearLayout = (LinearLayout) inflater.inflate(R.layout.challenge_card, container, false);
         if(getArguments() != null){
             DashboardCard dashboardCard = (DashboardCard) getArguments().getSerializable("card");
@@ -73,7 +75,6 @@ public class ChallengeFragment extends Fragment {
             TextView challenger_name = (TextView) linearLayout.findViewById(R.id.challenger_name);
             Button myrank = (Button) linearLayout.findViewById(R.id.myrank);
             Button challenger_rank = (Button) linearLayout.findViewById(R.id.challenger_rank);
-
 
             System.out.println("Image url "+dashboardCard.getImage_url());
 

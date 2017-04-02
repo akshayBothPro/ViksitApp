@@ -17,7 +17,7 @@ public class Role implements Serializable {
     private int totalItems;
     private int completedItems;
     private String type;
-    /*private URL imageURL;*/
+    private String imageURL;
 
     public Role(){}
 
@@ -29,8 +29,25 @@ public class Role implements Serializable {
         this.completedItems = completedItems;
     }
 
+    public Role(String imageURL, String title, String subtitle, int totalItems, int completedItems) {
+        this.imageURL = imageURL;
+        this.title = title;
+        this.subtitle = subtitle;
+        this.totalItems = totalItems;
+        this.completedItems = completedItems;
+    }
+
     public Role(int imageResID, String title, String subtitle, int totalItems, int completedItems, String type) {
         this.imageResID = imageResID;
+        this.title = title;
+        this.subtitle = subtitle;
+        this.totalItems = totalItems;
+        this.completedItems = completedItems;
+        this.type = type;
+    }
+
+    public Role(String imageURL, String title, String subtitle, int totalItems, int completedItems, String type) {
+        this.imageURL = imageURL;
         this.title = title;
         this.subtitle = subtitle;
         this.totalItems = totalItems;
@@ -87,13 +104,13 @@ public class Role implements Serializable {
     }
 
     // in case we have image URL ,we use this
-    /*public URL getImageURL() {
+    public String getImageURL() {
         return imageURL;
     }
 
-    public void setImageURL(URL imageURL) {
+    public void setImageURL(String imageURL) {
         this.imageURL = imageURL;
-    }*/
+    }
 
     public String getType() {
         return type;

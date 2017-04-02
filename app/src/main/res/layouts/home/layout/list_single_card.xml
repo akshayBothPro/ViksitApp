@@ -28,7 +28,7 @@
         android:layout_centerHorizontal="true"
         android:text="hjbhjsdd hvbfhvbsdjbcsh"
         android:textColor="@color/black"
-        android:textSize="@dimen/p3"/>
+        android:textSize="@dimen/p5"/>
     </RelativeLayout>
     </android.support.v7.widget.CardView>
 </RelativeLayout>

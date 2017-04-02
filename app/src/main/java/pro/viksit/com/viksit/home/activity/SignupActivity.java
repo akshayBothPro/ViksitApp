@@ -9,6 +9,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.AppCompatEditText;
 import android.text.Html;
 import android.util.Log;
+import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -80,4 +81,26 @@ public class SignupActivity extends AppCompatActivity implements View.OnClickLis
     public void onClick(View v) {
 
     }
+
+    /*public boolean isValidEmail() {
+        String emailid = email.getText().toString();
+        String pasword = password.getText().toString();
+
+        if (emailid.isEmpty() || !Patterns.EMAIL_ADDRESS.matcher(emailid).matches()) {
+            email.setError("Enter a valid email address");
+
+        } else {
+            email.setError(null);
+        }
+
+        if (pasword.isEmpty() || pasword.length() < 4 || pasword.length() > 10) {
+            password.setError("Between 4 and 10 alphanumeric characters");
+            *//*valid = false;*//*
+        } else {
+            password.setError(null);
+        }
+    }*/
+
+
+
 }

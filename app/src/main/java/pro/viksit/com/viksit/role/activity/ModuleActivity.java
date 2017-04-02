@@ -1,9 +1,9 @@
 package pro.viksit.com.viksit.role.activity;
 
 import android.content.Intent;
-import android.os.Bundle;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -15,7 +15,8 @@ import java.util.ArrayList;
 import pro.viksit.com.viksit.R;
 import pro.viksit.com.viksit.assessment.activity.QuestionsActivity;
 import pro.viksit.com.viksit.dashboard.util.BottomBarUtil;
-import pro.viksit.com.viksit.role.adapter.RecyclerViewDataAdapter;
+import pro.viksit.com.viksit.role.adapter.ModuleHorizontalRecyclerViewAdapter;
+import pro.viksit.com.viksit.role.adapter.ModuleVerticalRecyclerViewAdapter;
 import pro.viksit.com.viksit.role.adapter.RoleHorizontalRecyclerViewAdapter;
 import pro.viksit.com.viksit.role.adapter.RoleVerticalRecyclerViewAdapter;
 import pro.viksit.com.viksit.role.pojo.RecommendedRole;
@@ -23,13 +24,13 @@ import pro.viksit.com.viksit.role.pojo.Role;
 import pro.viksit.com.viksit.role.pojo.SectionedRole;
 import pro.viksit.com.viksit.role.util.RecyclerItemClickListener;
 
-public class RoleActivity extends AppCompatActivity implements View.OnClickListener{
-    private static final String TAG = RoleActivity.class.getSimpleName();
+public class ModuleActivity extends AppCompatActivity {
+    private static final String TAG = ModuleActivity.class.getSimpleName();
 
     private Toolbar toolbar;
     private RecyclerView horizontalRecycler;
     private RecyclerView verticalRecycler;
-    private RoleVerticalRecyclerViewAdapter roleVerticalRecyclerViewAdapter;
+    private ModuleVerticalRecyclerViewAdapter moduleVerticalRecyclerViewAdapter;
     private RoleHorizontalRecyclerViewAdapter roleHorizontalRecyclerViewAdapter;
     private BottomNavigationView bottomNavigationView;
 
@@ -37,19 +38,18 @@ public class RoleActivity extends AppCompatActivity implements View.OnClickListe
     private ArrayList<RecommendedRole> recommendedRoles;
     private ArrayList <SectionedRole> allSampleData;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_role);
+        setContentView(R.layout.activity_module);
 
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         bottomNavigationView = (BottomNavigationView) findViewById(R.id.bottom_navigation);
-        verticalRecycler = (RecyclerView) findViewById(R.id.rv_role_vertical);
-        horizontalRecycler = (RecyclerView) findViewById(R.id.rv_role_horizontal);
+        verticalRecycler = (RecyclerView) findViewById(R.id.rv_module_vertical);
+        horizontalRecycler = (RecyclerView) findViewById(R.id.rv_module_horizontal);
 
         setSupportActionBar(toolbar);
-        new BottomBarUtil().setupBottomBar(bottomNavigationView,RoleActivity.this,R.id.role);//setting bottom navigation bar
+        new BottomBarUtil().setupBottomBar(bottomNavigationView,ModuleActivity.this,R.id.role);//setting bottom navigation bar
         setRoleData();
         createDummyData();
 
@@ -59,17 +59,17 @@ public class RoleActivity extends AppCompatActivity implements View.OnClickListe
     private void implementActions(){
 
         // setting up vertical recycler view
-        roleVerticalRecyclerViewAdapter = new RoleVerticalRecyclerViewAdapter(roles,getBaseContext());
+        moduleVerticalRecyclerViewAdapter = new ModuleVerticalRecyclerViewAdapter(roles,getBaseContext());
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
         linearLayoutManager.setAutoMeasureEnabled(true);
         verticalRecycler.setLayoutManager(linearLayoutManager);
         verticalRecycler.setItemAnimator(new DefaultItemAnimator());
-        verticalRecycler.setAdapter(roleVerticalRecyclerViewAdapter);
+        verticalRecycler.setAdapter(moduleVerticalRecyclerViewAdapter);
         verticalRecycler.addOnItemTouchListener(
-                new RecyclerItemClickListener (getBaseContext(), verticalRecycler ,new RecyclerItemClickListener.OnItemClickListener() {
+                new RecyclerItemClickListener(getBaseContext(), verticalRecycler ,new RecyclerItemClickListener.OnItemClickListener() {
                     @Override public void onItemClick(View view, int position) {
                         System.out.println("Vposition: " + position);
-                        Intent intent = new Intent(RoleActivity.this, ModuleActivity.class);
+                        Intent intent = new Intent(ModuleActivity.this, QuestionsActivity.class);
                        /* Bundle bundle = new Bundle();
                         bundle.putSerializable("role", roles.get(position));
                         intent.putExtras(bundle);*/
@@ -81,57 +81,11 @@ public class RoleActivity extends AppCompatActivity implements View.OnClickListe
                 })
         );
 
-
-        //
-        /*ArrayList<Role> recommendedList = new Role().getParticularSectionItems(roles,"Recommended");
-        ArrayList<Role> financeList = new Role().getParticularSectionItems(roles,"Finance");
-        ArrayList<Role> salesList = new Role().getParticularSectionItems(roles,"Sales and Marketing");*/
-
-        /*HorizontalSectionedRecyclerViewAdapter adapter = new HorizontalSectionedRecyclerViewAdapter(getBaseContext(),recommendedList, financeList, salesList, roles);
-        horizontalRecycler.setAdapter(adapter);*/
-
-
-        //to be done ...
-        //RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getBaseContext(), LinearLayoutManager.HORIZONTAL, false);
-        /*RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getBaseContext());
-
-        horizontalRecycler.setLayoutManager(mLayoutManager);*/
-
-
-        //
-
-
-
         horizontalRecycler.setHasFixedSize(true);
-
-        RecyclerViewDataAdapter adapter = new RecyclerViewDataAdapter(this, allSampleData);
-
+        ModuleHorizontalRecyclerViewAdapter adapter = new ModuleHorizontalRecyclerViewAdapter(this, allSampleData);
         horizontalRecycler.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
-
         horizontalRecycler.setAdapter(adapter);
 
-    }
-
-    private void setHorizontalRecyclers(RecyclerView horizontalRecycle){
-        //setting up horizontal recycler view
-        roleHorizontalRecyclerViewAdapter = new RoleHorizontalRecyclerViewAdapter(recommendedRoles);
-        RecyclerView.LayoutManager hLayoutManager = new LinearLayoutManager(getBaseContext(), LinearLayoutManager.HORIZONTAL, false);
-        horizontalRecycle.setLayoutManager(hLayoutManager);
-        horizontalRecycle.setItemAnimator(new DefaultItemAnimator());
-        horizontalRecycle.setAdapter(roleHorizontalRecyclerViewAdapter);
-        horizontalRecycle.addOnItemTouchListener(
-                new RecyclerItemClickListener (getBaseContext(), horizontalRecycle ,new RecyclerItemClickListener.OnItemClickListener() {
-                    @Override public void onItemClick(View view, int position) {
-                        // do something
-                        System.out.println("Hposition: " + position);
-                        Intent j = new Intent(RoleActivity.this,RoleDetailActivity.class);
-                        startActivity(j);
-                    }
-                    @Override public void onLongItemClick(View view, int position) {
-                        // do something
-                    }
-                })
-        );
     }
 
     private void setRoleData(){
@@ -171,8 +125,8 @@ public class RoleActivity extends AppCompatActivity implements View.OnClickListe
 
     }
 
-    @Override
+    /*@Override
     public void onClick(View v) {
 
-    }
+    }*/
 }

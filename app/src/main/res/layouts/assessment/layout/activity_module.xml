@@ -26,7 +26,7 @@
             android:layout_height="wrap_content">
 
             <android.support.v7.widget.RecyclerView
-                android:id="@+id/rv_role_vertical"
+                android:id="@+id/rv_module_vertical"
                 android:layout_width="match_parent"
                 android:layout_height="320dp"
                 android:layout_alignParentTop="true"
@@ -36,10 +36,10 @@
 
 
             <android.support.v7.widget.RecyclerView
-                android:id="@+id/rv_role_horizontal"
+                android:id="@+id/rv_module_horizontal"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/rv_role_vertical"
+                android:layout_below="@id/rv_module_vertical"
                 android:background="@color/white_color"
                 android:layout_alignParentBottom="true"
                 android:foregroundGravity="left"
