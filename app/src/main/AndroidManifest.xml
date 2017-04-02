@@ -44,7 +44,8 @@
         <activity android:name=".home.activity.ChangedPasswordActivity" />
         <activity android:name=".dashboard.activity.TaskCompletionActivity" />
         <activity android:name=".role.activity.ModuleActivity" />
-        <activity android:name=".role.activity.PurchaseSuccessActivity"></activity>
+        <activity android:name=".role.activity.PurchaseSuccessActivity" />
+        <activity android:name=".role.activity.CheckoutActivity"></activity>
     </application>
 
 </manifest>

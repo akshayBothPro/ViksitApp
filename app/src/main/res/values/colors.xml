@@ -60,4 +60,5 @@
     <color name="section_header">#98999b</color>
 
     <color name="color_success_purchase">#515151</color>
+    <color name="checkout_bg">#f5f6f9</color>
 </resources>
