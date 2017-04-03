@@ -83,7 +83,7 @@
                     android:layout_marginRight="5dp"
                     android:layout_marginBottom="20dp"
                     android:textSize="@dimen/p3"
-
+                    android:textColor="@color/desc_color"
                     />
             </RelativeLayout>
 

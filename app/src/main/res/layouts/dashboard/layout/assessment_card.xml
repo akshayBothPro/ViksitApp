@@ -71,6 +71,7 @@
                     android:layout_marginBottom="20dp"
                     android:layout_marginLeft="10dp"
                     android:layout_marginRight="5dp"
+                    android:textColor="@color/desc_color"
                     android:text="Lorem Ipsum is simply dummy text of the printing and typesetting industry."
                     android:textSize="@dimen/p3" />
 

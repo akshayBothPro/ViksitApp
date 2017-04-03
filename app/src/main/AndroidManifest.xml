@@ -45,7 +45,8 @@
         <activity android:name=".dashboard.activity.TaskCompletionActivity" />
         <activity android:name=".role.activity.ModuleActivity" />
         <activity android:name=".role.activity.PurchaseSuccessActivity" />
-        <activity android:name=".role.activity.CheckoutActivity"></activity>
+        <activity android:name=".role.activity.CheckoutActivity" />
+        <activity android:name=".role.activity.RolePurchaseActivity"></activity>
     </application>
 
 </manifest>
