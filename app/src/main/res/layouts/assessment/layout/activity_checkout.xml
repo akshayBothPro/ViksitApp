@@ -13,7 +13,6 @@
         android:layout_height="wrap_content"
         android:background="@color/theme_color"
         android:minHeight="?attr/actionBarSize"
-        android:padding="10dp"
         app:contentInsetLeft="0dp"
         app:contentInsetStart="0dp">
 
@@ -27,6 +26,8 @@
                 android:id="@+id/iv_back_btn"
                 android:layout_width="30dp"
                 android:layout_height="30dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginStart="10dp"
                 android:tint="@color/white_color"
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentStart="true"
@@ -39,10 +40,9 @@
                 android:layout_toRightOf="@+id/iv_back_btn"
                 android:layout_toEndOf="@+id/iv_back_btn"
                 android:text="Checkout"
-                android:textSize="@dimen/h3"
+                android:textSize="@dimen/h4"
                 android:textColor="@color/white_color"
                 />
-
 
         </RelativeLayout>
     </android.support.v7.widget.Toolbar>
@@ -72,8 +72,8 @@
             android:layout_height="match_parent">
             <ImageView
                 android:id="@+id/iv_checkout_image"
-                android:layout_width="60dp"
-                android:layout_height="60dp"
+                android:layout_width="90dp"
+                android:layout_height="90dp"
                 android:layout_margin="10dp"
                 android:src="@drawable/ic_1"/>
             <TextView
@@ -82,9 +82,9 @@
                 android:layout_height="wrap_content"
                 android:layout_toRightOf="@id/iv_checkout_image"
                 android:layout_centerVertical="true"
-                android:textSize="@dimen/p1"
+                android:textSize="@dimen/h6"
                 android:textColor="@color/desc_color"
-                android:text="User Interface developer"
+                android:text="User Interface Developer"
                 />
         </RelativeLayout>
             <View
@@ -103,7 +103,7 @@
                     android:layout_height="wrap_content"
                     android:textColor="@color/desc_color"
                     android:textSize="@dimen/p3"
-                    android:text="Funal amount to pay"/>
+                    android:text="Final amount to pay"/>
 
                 <TextView
                     android:id="@+id/tv_amount_digits"

@@ -12,6 +12,7 @@ import android.util.Log;
 import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 import pro.viksit.com.viksit.R;
@@ -27,9 +28,9 @@ public class SignupActivity extends AppCompatActivity implements View.OnClickLis
     private AppCompatEditText confirmPassword;
     private Button signup;
     private TextView viaSocial;
-    private FloatingActionButton linkedBtn;
-    private FloatingActionButton googleBtn;
-    private FloatingActionButton fbBtn;
+    private ImageButton linkedBtn;
+    private ImageButton googleBtn;
+    private ImageButton fbBtn;
     private Button loginInstead;
 
     @Override
@@ -44,9 +45,9 @@ public class SignupActivity extends AppCompatActivity implements View.OnClickLis
         signup = (Button) findViewById(R.id.btn_signup);
         viaSocial = (TextView) findViewById(R.id.tv_via_social);
         loginInstead = (Button) findViewById(R.id.btn_login_instead);
-        linkedBtn = (FloatingActionButton) findViewById(R.id.btn_signup_linkedIn);
-        googleBtn = (FloatingActionButton) findViewById(R.id.btn_signup_google);
-        fbBtn = (FloatingActionButton) findViewById(R.id.btn_signup_fb);
+        linkedBtn = (ImageButton) findViewById(R.id.btn_signup_linkedIn);
+        googleBtn = (ImageButton) findViewById(R.id.btn_signup_google);
+        fbBtn = (ImageButton) findViewById(R.id.btn_signup_fb);
 
         implementListeners();
     }
@@ -73,13 +74,22 @@ public class SignupActivity extends AppCompatActivity implements View.OnClickLis
             }
         });
 
-        Drawable sourceDrawable = getResources().getDrawable(R.mipmap.ic_remove_red_eye_black_36dp);
+        Drawable sourceDrawable = getResources().getDrawable(R.mipmap.ic_remove_red_eye_white_24dp);
         sourceDrawable.setColorFilter(getResources().getColor(R.color.eye_icon_color), PorterDuff.Mode.SRC_IN);
     }
 
     @Override
     public void onClick(View v) {
 
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        Intent i=new Intent(SignupActivity.this,HomeActivity.class);
+        i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        finish();
     }
 
     /*public boolean isValidEmail() {

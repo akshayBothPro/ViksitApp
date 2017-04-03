@@ -16,6 +16,7 @@ import android.util.Log;
 import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -29,9 +30,9 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     private AppCompatEditText password;
     private Button loginButton;
     private TextView viaSocial;
-    private FloatingActionButton linkedInBtn;
-    private FloatingActionButton googleBtn;
-    private FloatingActionButton fbBtn;
+    private ImageButton linkedInBtn;
+    private ImageButton googleBtn;
+    private ImageButton fbBtn;
     private Button forgotPassword;
     private Button registerInstead;
     private GradientDrawable drawable;
@@ -46,9 +47,9 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         password = (AppCompatEditText) findViewById(R.id.apet_login_password);
         loginButton = (Button) findViewById(R.id.btn_login);
         viaSocial = (TextView) findViewById(R.id.tv_via_social);
-        googleBtn = (FloatingActionButton) findViewById(R.id.btn_signup_google);
-        linkedInBtn = (FloatingActionButton) findViewById(R.id.btn_signup_linkedIn);
-        fbBtn = (FloatingActionButton) findViewById(R.id.btn_signup_fb);
+        googleBtn = (ImageButton) findViewById(R.id.btn_signup_google);
+        linkedInBtn = (ImageButton) findViewById(R.id.btn_signup_linkedIn);
+        fbBtn = (ImageButton) findViewById(R.id.btn_signup_fb);
         forgotPassword = (Button) findViewById(R.id.btn_forgot_password);
         registerInstead = (Button) findViewById(R.id.btn_register_instead);
 
@@ -139,5 +140,14 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         } else if(id == R.id.btn_forgot_password) {
             System.out.println("forgot password clicked");
         }
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        Intent i=new Intent(LoginActivity.this,HomeActivity.class);
+        i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        finish();
     }
 }

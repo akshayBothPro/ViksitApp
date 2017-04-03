@@ -8,7 +8,7 @@ import android.view.ViewGroup;
 import android.widget.RadioButton;
 import android.widget.TextView;
 
-import java.util.List;
+import java.util.ArrayList;
 
 import pro.viksit.com.viksit.R;
 import pro.viksit.com.viksit.role.pojo.Payment;
@@ -17,12 +17,13 @@ import pro.viksit.com.viksit.role.pojo.Payment;
  * Created by Akshay on 03/04/2017.
  */
 
+
 public class CheckoutVerticalRecyclerAdapter extends RecyclerView.Adapter<CheckoutVerticalRecyclerAdapter.MyViewHolder>  {
-    private List<Payment> paymentList;
+    private ArrayList<Payment> paymentArrayList;
     private Context context;
 
-    public CheckoutVerticalRecyclerAdapter(List<Payment> paymentList,Context context) {
-        this.paymentList = paymentList;
+    public CheckoutVerticalRecyclerAdapter(ArrayList<Payment> paymentArrayList,Context context) {
+        this.paymentArrayList = paymentArrayList;
         this.context = context;
     }
 
@@ -36,31 +37,27 @@ public class CheckoutVerticalRecyclerAdapter extends RecyclerView.Adapter<Checko
 
     @Override
     public void onBindViewHolder(MyViewHolder holder, int position) {
-        Payment payment = paymentList.get(position);
+        Payment payment = paymentArrayList.get(position);
         holder.title.setText(payment.getName());
-        /*holder.check;*/
-        /*Picasso.with(context).load(role.getImageURL()).transform(new CircleTransform()).into(holder.image);*/
-        // if we have image URL instead of resID use it
-        /*URL url = role.getImageURL();
-        Bitmap bmp = BitmapFactory.decodeStream(url.openConnection().getInputStream());
-        holder.image.setImageBitmap(bmp);*/
+        holder.radioButton.setActivated(payment.getCheck());
+
     }
 
     @Override
     public int getItemCount() {
-        return paymentList.size();
+        return paymentArrayList.size();
     }
 
     public class MyViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
 
-        public RadioButton check;
         public TextView title;
-
+        public RadioButton radioButton;
 
         public MyViewHolder(View view) {
             super(view);
-            title = (TextView) view.findViewById(R.id.tv_role_vertical_item_title);
-            check = (RadioButton) view.findViewById(R.id.rbtn_payment);
+
+            title = (TextView) view.findViewById(R.id.tv_payment_title);
+            radioButton = (RadioButton) view.findViewById(R.id.rbtn_payment);
         }
 
         @Override

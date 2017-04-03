@@ -32,7 +32,7 @@
     <color name="interview_color">#5790d3</color>
     <color name="rejected_color">#eb4b5f</color>
 
-    <color name="linkedIn_color">#4A77BB</color>
+    <color name="linkedIn_color">#0288d1</color>
     <color name="google_color">#DF4C39</color>DF4C39
     <color name="fb_color">#3b5998</color>
 
@@ -61,4 +61,7 @@
 
     <color name="color_success_purchase">#515151</color>
     <color name="checkout_bg">#f5f6f9</color>
+
+    <color name="error_text">#e35757</color>
+    <color name="error_bg">#ffeded</color>
 </resources>

@@ -26,6 +26,6 @@
         />
     <stroke
         android:width="2dp"
-        android:color="#dedede"
+        android:color="@color/input_border"
         />
 </shape>

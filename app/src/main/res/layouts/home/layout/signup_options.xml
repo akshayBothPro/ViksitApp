@@ -6,7 +6,6 @@
     android:layout_height="wrap_content"
     android:layout_marginRight="10dp"
     android:layout_marginLeft="10dp"
-    android:layout_marginTop="2dp"
     android:layout_marginBottom="5dp">
     <RelativeLayout
         android:layout_width="match_parent"
@@ -46,6 +45,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="30dp"
+            android:layout_marginBottom="10dp"
             android:textColor="@color/title_color"
             android:textSize="@dimen/p3"
             android:text="Log in via social media"/>
@@ -58,44 +58,28 @@
         android:padding="2dp"
         android:orientation="horizontal">
 
-        <android.support.design.widget.FloatingActionButton
+        <ImageButton
             android:id="@+id/btn_signup_linkedIn"
             android:layout_width="60dp"
             android:layout_height="60dp"
-            android:layout_margin="5dp"
-            app:borderWidth="0dp"
-            app:elevation="6dp"
-            android:scaleType="center"
-            app:backgroundTint="@color/linkedIn_color"
-            android:src="@mipmap/in"
-            />
+            android:layout_margin="6dp"
+            android:elevation="5dp"
+            android:background="@drawable/linkedin_circle_button"/>
 
-        <android.support.design.widget.FloatingActionButton
+        <ImageButton
             android:id="@+id/btn_signup_google"
-            android:layout_width="100dp"
+            android:layout_width="60dp"
             android:layout_height="60dp"
             android:layout_margin="6dp"
-            app:borderWidth="0dp"
-            app:elevation="6dp"
-            android:scaleType="center"
-            app:backgroundTint="@color/google_color"
-            android:src="@mipmap/google"/>
-
-        <android.support.design.widget.FloatingActionButton
+            android:elevation="5dp"
+            android:background="@drawable/google_circle_button"/>
+        <ImageButton
             android:id="@+id/btn_signup_fb"
             android:layout_width="60dp"
             android:layout_height="60dp"
-            app:borderWidth="0dp"
-            app:elevation="6dp"
-            android:layout_margin="5dp"
-            android:scaleType="center"
-            app:backgroundTint="@color/fb_color"
-            android:src="@mipmap/ic_fb"/>
-        <!--<ImageButton
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:src="@drawable/ic_accessible_black_36dp"
-            android:background="@drawable/circle_border"/>-->
+            android:layout_margin="6dp"
+            android:elevation="5dp"
+            android:background="@drawable/fb_circle_button"/>
 
     </LinearLayout>
 </LinearLayout>

@@ -22,29 +22,51 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:layout_margin="10dp"
-            android:textSize="@dimen/h5"
+            android:layout_marginLeft="10dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginBottom="20dp"
+            android:textSize="@dimen/h3"
             android:text="Welcome back! Ready to get some work done? "
             android:textColor="@color/title_color"/>
-        <android.support.v7.widget.AppCompatEditText
-            android:id="@+id/apet_login_email"
+        <LinearLayout
+            android:orientation="vertical"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="5dp"
-            android:paddingLeft="10dp"
-            android:paddingStart="10dp"
-            android:layout_marginBottom="5dp"
-            android:background="@drawable/input_shape"
-            android:textCursorDrawable="@null"
-            android:textColorHint="@color/hint_color"
-            android:inputType="textEmailAddress"
-            android:hint="Email ID"/>
-
+            android:layout_marginBottom="5dp">
+            <android.support.v7.widget.AppCompatEditText
+                android:id="@+id/apet_login_email"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="5dp"
+                android:paddingLeft="10dp"
+                android:paddingStart="10dp"
+                android:background="@drawable/input_shape"
+                android:textCursorDrawable="@null"
+                android:textColorHint="@color/hint_color"
+                android:inputType="textEmailAddress"
+                android:hint="Email ID"/>
+            <TextView
+                android:id="@+id/tv_error_email"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                android:background="@color/error_bg"
+                android:textColor="@color/error_text"
+                android:text="Enter a valid email ID."
+                android:textSize="@dimen/p4"
+                android:visibility="gone"/>
+        </LinearLayout>
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp">
         <android.support.v7.widget.AppCompatEditText
             android:id="@+id/apet_login_password"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="10dp"
             android:padding="5dp"
             android:paddingLeft="10dp"
             android:paddingStart="10dp"
@@ -53,6 +75,17 @@
             android:textColorHint="@color/hint_color"
             android:inputType="textPassword"
             android:hint="Password" />
+        <TextView
+            android:id="@+id/tv_error_password"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            android:background="@color/error_bg"
+            android:textColor="@color/error_text"
+            android:text="Username or Password incorrect."
+            android:textSize="@dimen/p4"
+            android:visibility="gone"/>
+        </LinearLayout>
 
         <Button
             android:id="@+id/btn_login"
@@ -60,6 +93,8 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
             android:text="LOG IN"
+            android:textSize="@dimen/p2"
+            android:textStyle="bold"
             android:textColor="@android:color/white"
             android:background="@drawable/signup_btn_shape"/>
 
@@ -71,7 +106,7 @@
             android:stateListAnimator="@null"
             android:textAllCaps="false"
             android:textColor="@color/hint_color"
-            android:textSize="@dimen/p4"/>
+            android:textSize="@dimen/p3"/>
 
     </LinearLayout>
     <include
@@ -85,7 +120,7 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="4dp"
         android:background="@color/white_color"
-        android:textSize="@dimen/p4"
+        android:textSize="@dimen/p3"
         android:textAllCaps="false"
         android:stateListAnimator="@null"
         android:text="TALEJDJKDKJHFJJKD"

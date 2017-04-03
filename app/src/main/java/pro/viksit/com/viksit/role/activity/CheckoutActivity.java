@@ -11,10 +11,13 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.squareup.picasso.Picasso;
+
 import java.util.ArrayList;
 import java.util.List;
 
 import pro.viksit.com.viksit.R;
+import pro.viksit.com.viksit.Util.CircleTransform;
 import pro.viksit.com.viksit.role.adapter.CheckoutVerticalRecyclerAdapter;
 import pro.viksit.com.viksit.role.pojo.Payment;
 import pro.viksit.com.viksit.role.util.RecyclerItemClickListener;
@@ -28,7 +31,7 @@ public class CheckoutActivity extends AppCompatActivity {
     private TextView amount;
     private RecyclerView verticalRecycler;
     private CheckoutVerticalRecyclerAdapter adapter;
-    private List<Payment> paymentArrayList;
+    private ArrayList<Payment> paymentArrayList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,6 +54,8 @@ public class CheckoutActivity extends AppCompatActivity {
     }
 
     private void implementActions(){
+        Picasso.with(getBaseContext()).load(R.drawable.ic_1).transform(new CircleTransform()).into(image);
+
         adapter = new CheckoutVerticalRecyclerAdapter(paymentArrayList,getBaseContext());
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
         linearLayoutManager.setAutoMeasureEnabled(true);

@@ -1,46 +1,37 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:tools="http://schemas.android.com/tools"
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:padding="20dp"
-    android:weightSum="100"
-    android:background="@android:color/white"
-    tools:context="pro.viksit.com.viksit.home.activity.HomeActivity">
     <RelativeLayout
+        xmlns:tools="http://schemas.android.com/tools"
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        tools:context="pro.viksit.com.viksit.home.activity.HomeActivity"
+        android:padding="20dp"
+        android:background="@android:color/white"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight="80">
+        android:layout_height="match_parent">
+    <RelativeLayout
+        android:id="@+id/rl_appicon_con"
+        android:layout_above="@+id/btn_get_started"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
         <ImageView
             android:id="@+id/iv_app_icon"
-            android:layout_width="80dp"
-            android:layout_height="80dp"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
             android:background="@drawable/app_store_inverted_cropped"
             android:layout_centerInParent="true"
-            android:layout_marginBottom="8dp"/>
+            android:layout_marginBottom="20dp"/>
         <TextView
             android:id="@+id/tv_talentify"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textColor="@color/welcome_text_color"
-            android:layout_marginTop="10dp"
-            android:typeface="sans"
-            android:textStyle="bold"
-            android:textSize="21sp"
-            android:text="Talentify"
-            android:textAllCaps="true"
             android:layout_below="@+id/iv_app_icon"
-            android:gravity="center_horizontal"/>
+            android:gravity="center_horizontal"
+            android:typeface="sans"
+            android:textColor="@color/welcome_text_color"
+            android:textStyle="bold"
+            android:textSize="@dimen/h1"
+            android:text="Talentify"
+            android:textAllCaps="true"/>
     </RelativeLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:gravity="center"
-        android:layout_weight="20">
         <Button
             android:id="@+id/btn_get_started"
             android:layout_above="@+id/btn_member"
@@ -49,6 +40,8 @@
             android:layout_marginBottom="5dp"
             android:background="@drawable/signup_btn_shape"
             android:textColor="@color/white_color"
+            android:textSize="@dimen/p2"
+            android:textStyle="bold"
             android:textAllCaps="true"
             android:text="get started"/>
         <Button
@@ -59,8 +52,7 @@
             android:stateListAnimator="@null"
             android:background="@color/white_color"
             android:textAllCaps="false"
+            android:textSize="@dimen/p3"
             android:textColor="@color/theme_color"
             android:text="Already a member ?"/>
-    </LinearLayout>
-
-</LinearLayout>
+    </RelativeLayout>

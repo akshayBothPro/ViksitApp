@@ -21,25 +21,39 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:gravity="center_horizontal"
-            android:layout_marginBottom="10dp"
+            android:layout_marginBottom="20dp"
             android:textSize="@dimen/h3"
             android:text="Welcome! Your Talentify journey begins here"
             android:textColor="@color/title_color"/>
 
-
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp">
         <android.support.v7.widget.AppCompatEditText
             android:id="@+id/apet_email"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/input_shape"
-            android:layout_marginBottom="5dp"
             android:padding="5dp"
-            android:paddingLeft="10dp"
-            android:paddingStart="10dp"
+            android:paddingLeft="15dp"
+            android:paddingStart="15dp"
             android:textCursorDrawable="@null"
             android:textColorHint="@color/hint_color"
             android:inputType="textEmailAddress"
             android:hint="Email ID"/>
+        <TextView
+            android:id="@+id/tv_error_email"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            android:background="@color/error_bg"
+            android:textColor="@color/error_text"
+            android:text="Enter a valid email ID."
+            android:textSize="@dimen/p4"
+            android:visibility="gone"/>
+        </LinearLayout>
         <android.support.v7.widget.AppCompatEditText
             android:id="@+id/apet_phone_number"
             android:layout_width="match_parent"
@@ -47,8 +61,8 @@
             android:background="@drawable/input_shape"
             android:layout_marginBottom="5dp"
             android:padding="5dp"
-            android:paddingLeft="10dp"
-            android:paddingStart="10dp"
+            android:paddingLeft="15dp"
+            android:paddingStart="15dp"
             android:textCursorDrawable="@null"
             android:textColorHint="@color/hint_color"
             android:inputType="phone"
@@ -60,10 +74,13 @@
             android:background="@drawable/input_shape"
             android:layout_marginBottom="10dp"
             android:padding="5dp"
-            android:paddingLeft="10dp"
-            android:paddingStart="10dp"
-            android:drawableRight="@mipmap/ic_remove_red_eye_black_36dp"
-            android:drawableEnd="@mipmap/ic_remove_red_eye_black_36dp"
+            android:paddingRight="15dp"
+            android:paddingEnd="15dp"
+            android:paddingLeft="15dp"
+            android:paddingStart="15dp"
+            android:drawableRight="@mipmap/ic_remove_red_eye_white_24dp"
+            android:drawableEnd="@mipmap/ic_remove_red_eye_white_24dp"
+
             android:drawableTint="@color/eye_icon_color"
             android:textCursorDrawable="@null"
             android:textColorHint="@color/hint_color"
@@ -75,6 +92,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="sign up"
+            android:textSize="@dimen/p2"
+            android:textStyle="bold"
             android:textColor="@android:color/white"
             android:background="@drawable/signup_btn_shape"/>
 
@@ -93,6 +112,6 @@
         android:textAllCaps="false"
         android:stateListAnimator="@null"
         android:text="Already a member? Login instead"
-        android:textSize="15sp"
+        android:textSize="@dimen/p3"
         android:textColor="@color/hint_color"/>
 </LinearLayout>
