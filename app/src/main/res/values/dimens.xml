@@ -21,8 +21,8 @@
 
     <dimen name="card_padding">35dp</dimen>
     <dimen name="paddingtop">15dp</dimen>
-    <dimen name="paddingright">7dp</dimen>
-    <dimen name="paddingleft">7dp</dimen>
+    <dimen name="paddingright">8dp</dimen>
+    <dimen name="paddingleft">8dp</dimen>
     <dimen name="paddingbottom">5dp</dimen>
     <dimen name="btn_start_game">150dp</dimen>
     <dimen name="btn_start_height">40dp</dimen>

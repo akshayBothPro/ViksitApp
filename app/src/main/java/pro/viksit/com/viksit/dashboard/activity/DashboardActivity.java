@@ -84,6 +84,8 @@ public class DashboardActivity extends AppCompatActivity {
         dashboardCards.add(dashboardCard1);
         DashboardCard dashboardCard2 = new DashboardCard("Mutual Fund Planner","New Challenge","Siddharth has challenged you Do you have what it takes?","http://3.bp.blogspot.com/_1fayrmhTf24/TR101EgZ-pI/AAAAAAAAAWQ/owExremngg0/s1600/priyamani-hot9-773160.jpg",20,40,20,"Challenge");
         dashboardCards.add(dashboardCard2);
+        DashboardCard dashboardCard3 = new DashboardCard("Mutual Fund Planner","The concept of Risk","Siddharth has challenged you Do you have what it takes?","http://3.bp.blogspot.com/_1fayrmhTf24/TR101EgZ-pI/AAAAAAAAAWQ/owExremngg0/s1600/priyamani-hot9-773160.jpg","presentation");
+        dashboardCards.add(dashboardCard3);
 
         return  dashboardCards;
 

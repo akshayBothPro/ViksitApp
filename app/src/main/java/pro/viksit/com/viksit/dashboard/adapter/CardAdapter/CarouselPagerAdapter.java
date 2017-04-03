@@ -15,6 +15,7 @@ import pro.viksit.com.viksit.dashboard.activity.DashboardActivity;
 import pro.viksit.com.viksit.dashboard.fragment.AssessmentFragment;
 import pro.viksit.com.viksit.dashboard.fragment.ChallengeFragment;
 import pro.viksit.com.viksit.dashboard.fragment.ItemFragment;
+import pro.viksit.com.viksit.dashboard.fragment.PresentationFragment;
 import pro.viksit.com.viksit.dashboard.pojo.DashboardCard;
 import pro.viksit.com.viksit.dashboard.util.CarouselLinearLayout;
 
@@ -58,6 +59,9 @@ public class CarouselPagerAdapter extends FragmentPagerAdapter implements ViewPa
 
         }else if (dashboardCards.get(position).getType().equalsIgnoreCase("Challenge")){
             return ChallengeFragment.newInstance(context, dashboardCards.get(position), scale);
+
+        } else if (dashboardCards.get(position).getType().equalsIgnoreCase("presentation")){
+            return PresentationFragment.newInstance(context, dashboardCards.get(position), scale);
 
         }
         else{
