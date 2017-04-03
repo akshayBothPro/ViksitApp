@@ -139,6 +139,8 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
             startActivity(new Intent(LoginActivity.this, SignupActivity.class));
         } else if(id == R.id.btn_forgot_password) {
             System.out.println("forgot password clicked");
+            /*Intent intent = new Intent(LoginActivity.this, ForgotPasswordActivity.class);*/
+            startActivity(new Intent(LoginActivity.this, ForgotPasswordActivity.class));
         }
     }
 

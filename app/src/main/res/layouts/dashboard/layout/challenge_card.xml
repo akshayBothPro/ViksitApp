@@ -312,7 +312,7 @@
             android:paddingLeft="@dimen/paddingleft"
             android:paddingRight="@dimen/paddingright"
             android:paddingTop="@dimen/paddingtop"
-            android:text=" Start Challenge "
+            android:text=" Accept Challenge "
             android:textAlignment="center"
             android:textColor="@color/white"
             android:textSize="@dimen/p3"
