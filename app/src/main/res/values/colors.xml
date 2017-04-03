@@ -64,4 +64,6 @@
 
     <color name="error_text">#e35757</color>
     <color name="error_bg">#ffeded</color>
+
+    <color name="recommended_roles_color">#a2a3a5</color>
 </resources>

@@ -106,7 +106,7 @@
                         android:id="@+id/tv_job_detail_description"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:textColor="@color/salary_color"
+                        android:textColor="@color/desc_color"
                         android:textSize="@dimen/p2"
                         android:text="@string/job_detail_info"/>
                     <LinearLayout
@@ -132,7 +132,7 @@
                         android:id="@+id/tv_job_detail_expiry_date"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textColor="@color/salary_color"
+                        android:textColor="@color/desc_color"
                         android:textSize="@dimen/p3"
                         android:text="28 February 2017"/>
                     <View
@@ -152,7 +152,7 @@
                         android:id="@+id/tv_job_detail_salary"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textColor="@color/salary_color"
+                        android:textColor="@color/desc_color"
                         android:textSize="@dimen/p3"
                         android:layout_marginBottom="5dp"
                         android:text="5 - 6 lakhs per annum"/>
@@ -163,14 +163,14 @@
                     android:layout_height="wrap_content"
                     android:paddingLeft="10dp"
                     android:paddingRight="10dp"
-                    android:background="@color/tab_unselected_color">
+                    android:background="@color/bg">
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_alignParentLeft="true"
                         android:layout_marginTop="5dp"
                         android:layout_marginBottom="5dp"
-                        android:textColor="@color/desc_color"
+                        android:textColor="@color/recommended_roles_color"
                         android:textSize="@dimen/p4"
                         android:text="Recommended Roles"/>
                     <TextView
@@ -190,7 +190,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:paddingBottom="5dp"
-                    android:background="@color/tab_unselected_color" />
+                    android:background="@color/white_color" />
 
             </LinearLayout>
         </android.support.v4.widget.NestedScrollView>

@@ -1,5 +1,6 @@
 package pro.viksit.com.viksit.job.activity;
 
+import android.content.Intent;
 import android.support.design.widget.BottomNavigationView;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
@@ -9,6 +10,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.ViewParent;
 
 import pro.viksit.com.viksit.R;
+import pro.viksit.com.viksit.dashboard.activity.DashboardActivity;
 import pro.viksit.com.viksit.dashboard.util.BottomBarUtil;
 import pro.viksit.com.viksit.job.adapter.JobTabPagerAdapter;
 import pro.viksit.com.viksit.role.activity.RoleActivity;
@@ -48,4 +50,15 @@ public class JobActivity extends AppCompatActivity {
         tabLayout.setupWithViewPager(viewPager);
 
     }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        Intent i=new Intent(JobActivity.this,DashboardActivity.class);
+        startActivity(i);
+        i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        finish();
+    }
+
 }

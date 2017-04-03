@@ -115,4 +115,14 @@ public class JobDetailActivity extends AppCompatActivity {
         recommendedRole = new RecommendedRole(R.mipmap.ic_work_black_24dp, "Financial Banker");
         recommendedRoles.add(recommendedRole);
     }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        Intent i=new Intent(JobDetailActivity.this,JobActivity.class);
+        startActivity(i);
+        i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        finish();
+    }
 }

@@ -52,6 +52,8 @@ public class RoleDetailActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 System.out.println("back is clicked");
+                Intent j = new Intent(RoleDetailActivity.this,RoleActivity.class);
+                startActivity(j);
             }
         });
 
@@ -112,7 +114,15 @@ public class RoleDetailActivity extends AppCompatActivity {
         collapsingToolbarLayout.setExpandedTitleTextAppearance(R.style.expandedappbar);
     }
 
-
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        Intent i=new Intent(RoleDetailActivity.this,RoleActivity .class);
+        startActivity(i);
+        i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        finish();
+    }
 
 
 }

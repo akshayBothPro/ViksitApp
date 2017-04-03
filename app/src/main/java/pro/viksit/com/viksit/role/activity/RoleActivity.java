@@ -14,6 +14,7 @@ import java.util.ArrayList;
 
 import pro.viksit.com.viksit.R;
 import pro.viksit.com.viksit.assessment.activity.QuestionsActivity;
+import pro.viksit.com.viksit.dashboard.activity.DashboardActivity;
 import pro.viksit.com.viksit.dashboard.util.BottomBarUtil;
 import pro.viksit.com.viksit.role.adapter.RecyclerViewDataAdapter;
 import pro.viksit.com.viksit.role.adapter.RoleHorizontalRecyclerViewAdapter;
@@ -69,7 +70,7 @@ public class RoleActivity extends AppCompatActivity implements View.OnClickListe
                 new RecyclerItemClickListener (getBaseContext(), verticalRecycler ,new RecyclerItemClickListener.OnItemClickListener() {
                     @Override public void onItemClick(View view, int position) {
                         System.out.println("Vposition: " + position);
-                        Intent intent = new Intent(RoleActivity.this, ModuleActivity.class);
+                        Intent intent = new Intent(RoleActivity.this, RoleDetailActivity.class);
                        /* Bundle bundle = new Bundle();
                         bundle.putSerializable("role", roles.get(position));
                         intent.putExtras(bundle);*/
@@ -169,6 +170,16 @@ public class RoleActivity extends AppCompatActivity implements View.OnClickListe
         dm = new SectionedRole("Sales and Marketing",salesList);
         allSampleData.add(dm);
 
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        Intent i=new Intent(RoleActivity.this,DashboardActivity.class);
+        startActivity(i);
+        i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        finish();
     }
 
     @Override
