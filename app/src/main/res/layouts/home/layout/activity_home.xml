@@ -34,7 +34,6 @@
             android:typeface="sans"
             android:textColor="@color/welcome_text_color"
             android:textSize="@dimen/h5"
-            android:textStyle="bold"
             android:text="Talentify"
             android:textAllCaps="true"/>
     </RelativeLayout>
@@ -47,7 +46,6 @@
         android:background="@drawable/signup_btn_shape"
         android:textColor="@color/white_color"
         android:textSize="@dimen/p2"
-        android:textStyle="bold"
         android:textAllCaps="true"
         android:text="get started"/>
     <Button

@@ -11,7 +11,7 @@
     <color name="forgot_password_color">#d6d6d6</color>
     <color name="register_instead_color">#7f7f7f</color>
     <color name="white_color">#ffffff</color>
-    <color name="welcome_text_color">#a5a5a5</color>
+    <color name="welcome_text_color">#bdbdbd</color>
     <color name="otp_info_color">#767676</color>
     <color name="role_item_subtitle">#4a4a4a</color>
     <color name="role_item_status">#c3c3c3</color>
