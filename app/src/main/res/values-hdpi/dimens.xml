@@ -26,5 +26,6 @@
     <dimen name="paddingleft">7dp</dimen>
     <dimen name="paddingbottom">5dp</dimen>
     <dimen name="btn_start_height">40dp</dimen>
+    <dimen name="margin_top_signup">0dp</dimen>
 
 </resources>

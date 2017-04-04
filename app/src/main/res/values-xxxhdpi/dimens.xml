@@ -22,5 +22,6 @@
     <dimen name="card_padding">35dp</dimen>
     <dimen name="btn_start_game">150dp</dimen>
     <dimen name="btn_start_height">40dp</dimen>
+    <dimen name="margin_top_signup">40dp</dimen>
 
 </resources>

@@ -92,12 +92,19 @@
             android:textSize="@dimen/p2"
             android:textStyle="bold"
             android:textColor="@android:color/white"
-            android:background="@drawable/signup_btn_shape"/>
-        <include
-            android:id="@+id/signup_options"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            layout="@layout/signup_options" />
+            android:background="@drawable/signup_btn_shape"
+            android:layout_marginTop="@dimen/margin_top_signup"
+            />
+
+    <include
+        android:id="@+id/signup_options"
+        layout="@layout/signup_options"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+
+        />
+
     <Button
         android:id="@+id/btn_login_instead"
         android:layout_width="wrap_content"
