@@ -1,20 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    tools:context="pro.viksit.com.viksit.home.activity.LoginActivity"
-    android:id="@+id/login_container"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:padding="30dp"
-    android:background="@color/white_color"
-    android:orientation="vertical">
+
     <LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
         android:id="@+id/ll_input_con"
+        android:padding="30dp"
+        android:background="@color/white_color"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_above="@+id/btn_register_instead"
         android:layout_alignParentTop="true"
         android:orientation="vertical"
         android:gravity="center_horizontal">
@@ -112,8 +106,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             layout="@layout/signup_options" />
-    </LinearLayout>
-
     <Button
         android:id="@+id/btn_register_instead"
         android:layout_width="wrap_content"
@@ -126,5 +118,8 @@
         android:stateListAnimator="@null"
         android:text="TALEJDJKDKJHFJJKD"
         android:textColor="@color/hint_color"/>
-</RelativeLayout>
+    </LinearLayout>
+
+
+
 

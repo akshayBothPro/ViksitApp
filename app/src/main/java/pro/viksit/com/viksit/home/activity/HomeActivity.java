@@ -42,7 +42,7 @@ public class HomeActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Log.i(TAG,"get started clicked");
-                startActivity(new Intent(HomeActivity.this, OTPActivity.class));
+                startActivity(new Intent(HomeActivity.this, BatchCodeActivity.class));
             }
         });
 

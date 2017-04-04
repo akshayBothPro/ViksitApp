@@ -1,21 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    tools:context="pro.viksit.com.viksit.home.activity.SignupActivity"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:padding="30dp"
-    android:background="@color/white_color"
-    android:orientation="vertical">
+
     <LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
         android:id="@+id/ll_input_con"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_above="@+id/btn_login_instead"
-        android:layout_marginBottom="5dp"
         android:layout_alignParentTop="true"
+        android:padding="30dp"
+        android:layout_marginBottom="5dp"
         android:orientation="vertical"
         android:gravity="center_horizontal">
         <TextView
@@ -103,8 +98,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             layout="@layout/signup_options" />
-    </LinearLayout>
-
     <Button
         android:id="@+id/btn_login_instead"
         android:layout_width="wrap_content"
@@ -118,4 +111,7 @@
         android:text="Already a member? Login instead"
         android:textSize="@dimen/p3"
         android:textColor="@color/hint_color"/>
-</RelativeLayout>
+    </LinearLayout>
+
+
+
