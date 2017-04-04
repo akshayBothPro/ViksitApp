@@ -1,99 +1,92 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#ffffff">
-
-    <android.support.v7.widget.Toolbar
-        android:id="@+id/toolbar"
+    android:fitsSystemWindows="true"
+    android:id="@+id/coordinatorLayout"
+    tools:context=".assessment.activity.AssessmentActivity">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
+        tools:context=".assessment.activity.AssessmentActivity"
+        android:background="@android:color/white">
+    <android.support.design.widget.AppBarLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/white"
-        android:minHeight="?attr/actionBarSize"
-        app:contentInsetLeft="0dp"
-        app:contentInsetStart="0dp">
+        android:theme="@style/AppTheme.AppBarOverlay"
+        android:id="@+id/appbar">
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="?attr/colorPrimary"
+            app:popupTheme="@style/AppTheme.PopupOverlay" />
+
+    </android.support.design.widget.AppBarLayout>
+
+    <include layout="@layout/content_main" />
+
+    </RelativeLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="350dp"
+        android:fitsSystemWindows="true"
+        android:orientation="vertical"
+        app:behavior_hideable="true"
+        app:behavior_peekHeight="50dp"
+        android:id="@+id/bottom_sheet"
+        android:background="@android:color/white"
+        app:layout_behavior="@string/bottom_sheet_behavior">
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-           >
-            <ImageButton
-                android:layout_width="24dp"
-                android:layout_height="24dp"
-                android:src="@mipmap/ic_arrow_back_black_24dp"
-                android:background="#00000000"
-                android:layout_alignParentLeft="true"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
-                android:id="@+id/back"
-                />
-            <ProgressBar
-                android:id="@+id/pb_role_vertical_item_progress"
-                android:layout_above="@+id/tv_role_vertical_item_status"
-                android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:id="@+id/rr"
+            >
+            <Button
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="3dp"
-                style="?android:attr/progressBarStyleHorizontal"
-                android:background="@color/white"
-                android:max="100"
-                android:progress="60"
-                android:layout_toRightOf="@+id/back"
-                android:layout_toLeftOf="@+id/smiley"
-                android:layout_centerVertical="true"
-                />
-            <ImageButton
-                android:layout_width="24dp"
-                android:layout_height="24dp"
-                android:src="@mipmap/ic_menu_black_24dp"
+                android:text="Prev"
+                android:layout_alignParentLeft="true"
+                android:drawableLeft="@mipmap/ic_keyboard_arrow_left_black_36dp"
                 android:background="#00000000"
-                android:layout_alignParentRight="true"
-                android:layout_marginRight="10dp"
-                android:layout_marginLeft="10dp"
-                android:id="@+id/smiley"
+                android:textColor="#bebebe"
+
                 />
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Jump To"
+                android:id="@+id/jump_to"
+                android:layout_centerInParent="true"
+                android:drawableLeft="@mipmap/ic_menu_black_36dp"
+                android:background="#00000000"
+
+                />
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Next"
+                android:layout_alignParentRight="true"
+                android:drawableRight="@mipmap/ic_keyboard_arrow_right_black_36dp"
+                android:background="#00000000"
+                android:textColor="#bebebe"
+                />
+
         </RelativeLayout>
-    </android.support.v7.widget.Toolbar>
-    <pro.viksit.com.viksit.Util.LockableViewPager
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/viewpager"
-        android:layout_below="@+id/toolbar"
-        android:layout_above="@+id/check_answer"
-        >
-    </pro.viksit.com.viksit.Util.LockableViewPager>
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/check_answer"
-        android:background="@drawable/pill_bg"
-        android:layout_alignParentBottom="true"
-        android:layout_marginBottom="7dp"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"
-        android:textColor="#858585"
-        android:text="Check Answer"
-        android:textSize="@dimen/h3"
-        />
 
-    <me.itangqi.waveloadingview.WaveLoadingView
-        android:id="@+id/waveLoadingView"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        app:wlv_borderColor="#ffffff"
-        app:wlv_borderWidth="0dp"
-        app:wlv_progressValue="0"
-        app:wlv_round_rectangle="false"
-        app:wlv_shapeType="rectangle"
-        app:wlv_titleCenter=""
-        app:wlv_titleCenterColor="@android:color/white"
-        app:wlv_titleCenterSize="24sp"
-        app:wlv_titleCenterStrokeColor="@android:color/holo_blue_dark"
-        app:wlv_titleCenterStrokeWidth="3dp"
-        app:wlv_triangle_direction="north"
-        app:wlv_waveAmplitude="9"
-        app:wlv_waveColor="#2ccaf0f4"
-        app:wlv_wave_background_Color="#0097a7"
-        android:translationZ="-1dp"/>
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/recyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+         />
 
-    </RelativeLayout>
+    </LinearLayout>
+
+
+</android.support.design.widget.CoordinatorLayout>

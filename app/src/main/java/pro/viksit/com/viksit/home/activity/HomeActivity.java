@@ -1,9 +1,6 @@
 package pro.viksit.com.viksit.home.activity;
 
 import android.content.Intent;
-import android.graphics.PorterDuff;
-import android.graphics.drawable.Drawable;
-import android.graphics.drawable.GradientDrawable;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -42,7 +39,7 @@ public class HomeActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Log.i(TAG,"get started clicked");
-                startActivity(new Intent(HomeActivity.this, BatchCodeActivity.class));
+                startActivity(new Intent(HomeActivity.this, LoginActivity.class));
             }
         });
 

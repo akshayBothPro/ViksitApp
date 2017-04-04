@@ -62,7 +62,7 @@ public class QuestionFragment extends Fragment {
                 public void onClick(View view) {
                     removeColor();
                     button.setBackgroundColor(getResources().getColor(R.color.theme_color));
-                    AssessmentActivity.changeCheckbutton();
+                  //  AssessmentActivity.changeCheckbutton();
                 }
             });
             buttonArrayList.add(button);

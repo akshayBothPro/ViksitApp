@@ -1,18 +1,14 @@
 package pro.viksit.com.viksit.assessment.activity;
 
-import android.content.Intent;
 import android.os.Bundle;
+import android.support.design.widget.BottomSheetBehavior;
 import android.support.v7.app.AppCompatActivity;
-import android.view.Gravity;
+import android.support.v7.widget.DefaultItemAnimator;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
-import android.widget.ImageButton;
-import android.widget.TextView;
-
-import com.mikepenz.materialdrawer.Drawer;
-import com.mikepenz.materialdrawer.DrawerBuilder;
-import com.mikepenz.materialdrawer.model.PrimaryDrawerItem;
-import com.mikepenz.materialdrawer.model.interfaces.IDrawerItem;
 
 import java.util.ArrayList;
 
@@ -22,87 +18,104 @@ import pro.viksit.com.viksit.Util.LockableViewPager;
 import pro.viksit.com.viksit.assessment.adapter.AssessmentAdapter;
 import pro.viksit.com.viksit.assessment.pojo.Option;
 import pro.viksit.com.viksit.assessment.pojo.Question;
+import pro.viksit.com.viksit.role.adapter.RoleVerticalRecyclerViewAdapter;
+import pro.viksit.com.viksit.role.pojo.Role;
 
 public class AssessmentActivity extends AppCompatActivity {
 
     private ArrayList<Question> questionArrayList;
     private LockableViewPager lockableViewPager;
     private AssessmentAdapter assessmentAdapter;
-    private static Button check_answer;
-    public static Drawer result = null;
-    private ArrayList<PrimaryDrawerItem> primaryDrawerItems;
+    private BottomSheetBehavior bottomSheetBehavior;
+    private Button jump_to;
+    private boolean flag;
+    private ArrayList<Role> roles;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_assessment);
         lockableViewPager = (LockableViewPager) findViewById(R.id.viewpager);
-        check_answer = (Button) findViewById(R.id.check_answer);
-        ImageButton imageButton = (ImageButton) findViewById(R.id.smiley);
         questionArrayList = new ArrayList<>();
         setupData();
+
         WaveLoadingView mWaveLoadingView = (WaveLoadingView) findViewById(R.id.waveLoadingView);
-        mWaveLoadingView.setAnimDuration(10000);
+        mWaveLoadingView.setAnimDuration(10000000);
         mWaveLoadingView.startAnimation();
+        RecyclerView verticalRecycler = (RecyclerView) findViewById(R.id.recyclerView);
+
+        setRoleData();
+        RoleVerticalRecyclerViewAdapter roleVerticalRecyclerViewAdapter = new RoleVerticalRecyclerViewAdapter(roles,getBaseContext());
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
+        linearLayoutManager.setAutoMeasureEnabled(true);
+        verticalRecycler.setLayoutManager(linearLayoutManager);
+        verticalRecycler.setItemAnimator(new DefaultItemAnimator());
+        verticalRecycler.setAdapter(roleVerticalRecyclerViewAdapter);
+
+
         assessmentAdapter = new AssessmentAdapter(getSupportFragmentManager(), questionArrayList);
         lockableViewPager.setAdapter(assessmentAdapter);
         lockableViewPager.setSwipeLocked(true);
-
-        primaryDrawerItems = new ArrayList<>();
-
-        int counter=0;
-        for(Question question3: questionArrayList){
-            PrimaryDrawerItem jj =  new PrimaryDrawerItem().withName(question3.getText()).withIdentifier(counter);
-            primaryDrawerItems.add(jj);
-            counter++;
-
-        }
-
-
-        result = new DrawerBuilder()
-                .withActivity(this).withDrawerWidthDp(280).withDrawerGravity(Gravity.RIGHT)
-                .withStickyHeader(R.layout.sticky_header)
-                .addDrawerItems(primaryDrawerItems.toArray(new PrimaryDrawerItem[primaryDrawerItems.size()]))
-                .withOnDrawerItemClickListener(new Drawer.OnDrawerItemClickListener() {
-                    @Override
-                    public boolean onItemClick(View view, int position, IDrawerItem drawerItem) {
-                        if (drawerItem != null) {
-                            Intent intent = null;
-
-                            lockableViewPager.setCurrentItem((int) drawerItem.getIdentifier());
-                        }
-                        return false;
-
-                    }
-                })
-                .withSavedInstance(savedInstanceState)
-                .build();
-        result.getStickyHeader().setBackgroundColor(getResources().getColor(R.color.theme_color));
-        TextView vv = (TextView) result.getStickyHeader().findViewById(R.id.question_title);
-        vv.setText("20 Questions ");
-        imageButton.setOnClickListener(new View.OnClickListener() {
+        lockableViewPager.setCurrentItem(1);
+       bottomSheetBehavior = BottomSheetBehavior.from(findViewById(R.id.bottom_sheet)) ;
+        jump_to = (Button) findViewById(R.id.jump_to);
+        bottomSheetBehavior.setBottomSheetCallback(new BottomSheetBehavior.BottomSheetCallback() {
             @Override
-            public void onClick(View view) {
-                result.openDrawer();
+            public void onStateChanged(View bottomSheet, int newState) {
+
+                if (newState == BottomSheetBehavior.STATE_EXPANDED) {
+                } else {
+
+                }
+
+                // Check Logs to see how bottom sheets behaves
+                switch (newState) {
+                    case BottomSheetBehavior.STATE_COLLAPSED:
+                        Log.e("Bottom Sheet Behaviour", "STATE_COLLAPSED");
+                        break;
+                    case BottomSheetBehavior.STATE_DRAGGING:
+                        Log.e("Bottom Sheet Behaviour", "STATE_DRAGGING");
+                        break;
+                    case BottomSheetBehavior.STATE_EXPANDED:
+                        Log.e("Bottom Sheet Behaviour", "STATE_EXPANDED");
+                        break;
+                    case BottomSheetBehavior.STATE_HIDDEN:
+                        Log.e("Bottom Sheet Behaviour", "STATE_HIDDEN");
+                        break;
+                    case BottomSheetBehavior.STATE_SETTLING:
+                        Log.e("Bottom Sheet Behaviour", "STATE_SETTLING");
+                        break;
+                }
+            }
+
+
+            @Override
+            public void onSlide(View bottomSheet, float slideOffset) {
+
             }
         });
+
+
+        jump_to.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(!flag) {
+                    bottomSheetBehavior.setState(BottomSheetBehavior.STATE_EXPANDED);
+                    flag = true;
+
+                }else {
+                    flag = false;
+                    bottomSheetBehavior.setState(BottomSheetBehavior.STATE_COLLAPSED);
+                }
+            }
+        });
+
+
     }
 
-    public static void changeCheckbutton() {
 
-        check_answer.setText("Submit");
-    }
 
-    @Override
-    protected void onSaveInstanceState(Bundle outState) {
-        //add the values which need to be saved from the drawer to the bundle
-        outState = result.saveInstanceState(outState);
-/*
-        outState = headerResult.saveInstanceState(outState);
-*/
 
-        //add the values which need to be saved from the accountHeader to the bundle
-        super.onSaveInstanceState(outState);
-    }
 
 
     public void setupData(){
@@ -139,5 +152,25 @@ public class AssessmentActivity extends AppCompatActivity {
         questionArrayList.add(question1);
 
 
+    }
+
+    private void setRoleData(){
+        roles = new ArrayList<>();
+        Role role;
+        for(int i = 0 ; i < 8 ; i++) {
+            //role constructor => (int imageResID, String title, String subtitle, int totalItems, int completedItems)
+            role = new Role(R.drawable.ic_7, "Game Designer", "User Interface Developer", 247, 131,"Recommended");
+            roles.add(role);
+            role = new Role(R.drawable.ic_8, "Game Designer", "User Interface Developer", 247, 231,"Finance");
+            roles.add(role);
+            role = new Role(R.drawable.ic_9, "Business Analyst", "Mutual Fund Planner", 247, 91,"Sales and Marketing");
+            roles.add(role);
+            role = new Role(R.drawable.ic_10, "Game Designer", "User Interface Developer", 247, 31,"Recommended");
+            roles.add(role);
+            role = new Role(R.drawable.ic_11, "Game Designer", "User Interface Developer", 247, 39,"Finance");
+            roles.add(role);
+            role = new Role(R.drawable.ic_12, "Business Analyst", "Mutual Fund Planner", 247, 51,"Sales and Marketing");
+            roles.add(role);
+        }
     }
 }
