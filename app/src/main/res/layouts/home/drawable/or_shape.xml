@@ -2,10 +2,10 @@
 <shape xmlns:android="http://schemas.android.com/apk/res/android"
     android:shape="oval">
     <!--circle filling color-->
-    <solid android:color="@color/input_border" />
-    <stroke
-        android:width="2dp"
-        android:color="@color/input_border" />
+    <solid android:color="@color/bg" />
+   <!-- <stroke
+        android:width="1dp"
+        android:color="@color/bg" />-->
     <corners
         android:bottomLeftRadius="2dp"
         android:bottomRightRadius="2dp"

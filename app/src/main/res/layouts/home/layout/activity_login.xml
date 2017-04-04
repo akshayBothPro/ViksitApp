@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-
-<LinearLayout
+<RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -9,12 +8,14 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="30dp"
-    android:gravity="center"
     android:background="@color/white_color"
     android:orientation="vertical">
     <LinearLayout
+        android:id="@+id/ll_input_con"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/btn_register_instead"
+        android:layout_alignParentTop="true"
         android:orientation="vertical"
         android:gravity="center_horizontal">
         <TextView
@@ -26,15 +27,15 @@
             android:layout_marginStart="10dp"
             android:layout_marginRight="10dp"
             android:layout_marginEnd="10dp"
-            android:layout_marginBottom="20dp"
-            android:textSize="@dimen/h3"
+            android:layout_marginBottom="30dp"
+            android:textSize="@dimen/h4"
             android:text="Welcome back! Ready to get some work done? "
             android:textColor="@color/title_color"/>
         <LinearLayout
             android:orientation="vertical"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="5dp">
+            android:layout_marginBottom="10dp">
             <android.support.v7.widget.AppCompatEditText
                 android:id="@+id/apet_login_email"
                 android:layout_width="match_parent"
@@ -62,7 +63,7 @@
             android:orientation="vertical"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="10dp">
+            android:layout_marginBottom="15dp">
         <android.support.v7.widget.AppCompatEditText
             android:id="@+id/apet_login_password"
             android:layout_width="match_parent"
@@ -91,7 +92,6 @@
             android:id="@+id/btn_login"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
             android:text="LOG IN"
             android:textSize="@dimen/p2"
             android:textStyle="bold"
@@ -107,23 +107,24 @@
             android:textAllCaps="false"
             android:textColor="@color/hint_color"
             android:textSize="@dimen/p3"/>
-
+        <include
+            android:id="@+id/signup_options"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            layout="@layout/signup_options" />
     </LinearLayout>
-    <include
-        android:id="@+id/signup_options"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        layout="@layout/signup_options" />
+
     <Button
         android:id="@+id/btn_register_instead"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="4dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
         android:background="@color/white_color"
         android:textSize="@dimen/p3"
         android:textAllCaps="false"
         android:stateListAnimator="@null"
         android:text="TALEJDJKDKJHFJJKD"
         android:textColor="@color/hint_color"/>
-</LinearLayout>
+</RelativeLayout>
 

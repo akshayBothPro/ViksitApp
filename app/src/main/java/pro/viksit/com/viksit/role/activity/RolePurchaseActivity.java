@@ -1,5 +1,6 @@
 package pro.viksit.com.viksit.role.activity;
 
+import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
@@ -36,5 +37,17 @@ public class RolePurchaseActivity extends AppCompatActivity {
         moduleListContainer = (LinearLayout) findViewById(R.id.ll_role_purchase_module_list_con);
         faq = (RecyclerView) findViewById(R.id.rv_role_purchase_faq);
         submit = (Button) findViewById(R.id.btn_role_purchase_submit);
+    }
+
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+       /* roleDepthAdapter.onSaveInstanceState(outState);*/
+    }
+
+    @Override
+    protected void onRestoreInstanceState(@NonNull Bundle savedInstanceState) {
+        super.onRestoreInstanceState(savedInstanceState);
+        /*roleDepthAdapter.onRestoreInstanceState(savedInstanceState);*/
     }
 }
