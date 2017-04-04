@@ -23,5 +23,8 @@
     <dimen name="btn_start_game">150dp</dimen>
     <dimen name="btn_start_height">40dp</dimen>
     <dimen name="margin_top_signup">0dp</dimen>
+    <dimen name="dashboard_card_height">150dp</dimen>
+    <dimen name="signup_margin">10dp</dimen>
+   <!-- <dimen name="circle_button_signup">48dp</dimen>-->
 
 </resources>

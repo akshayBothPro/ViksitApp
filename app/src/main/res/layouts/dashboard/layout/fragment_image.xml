@@ -55,7 +55,7 @@
                 />
             <ImageView
                 android:layout_width="match_parent"
-                android:layout_height="150dp"
+                android:layout_height="@dimen/dashboard_card_height"
                 android:src="@drawable/backgroundimg"
                 android:scaleType="fitXY"
                 android:id="@+id/image"
