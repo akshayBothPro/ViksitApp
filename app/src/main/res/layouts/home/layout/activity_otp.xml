@@ -22,27 +22,32 @@
             android:id="@+id/tv_otp_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="5dp"
+            android:layout_marginBottom="8dp"
             android:textColor="@color/black"
-            android:textSize="@dimen/h1"
+            android:textSize="@dimen/h2"
             android:text="Verify your phone number"/>
 
         <TextView
             android:id="@+id/tv_otp_info"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="5dp"
+            android:layout_marginBottom="20dp"
             android:gravity="center"
             android:text="An OTP has been sent to your phone number ending with xxxxx72858"
             android:textColor="@color/otp_info_color"
-            android:textSize="@dimen/p1" />
+            android:textSize="@dimen/p2" />
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="15dp"
-            android:paddingLeft="25dp"
-            android:paddingRight="25dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginStart="15dp"
+            android:layout_marginRight="15dp"
+            android:layout_marginEnd="15dp"
+            android:paddingLeft="30dp"
+            android:paddingRight="30dp"
+            android:paddingStart="30dp"
+            android:paddingEnd="30dp"
             android:orientation="vertical">
             <android.support.v7.widget.AppCompatEditText
                 android:id="@+id/apet_otp_input"
@@ -50,7 +55,7 @@
                 android:layout_height="wrap_content"
                 android:paddingLeft="10dp"
                 android:paddingStart="10dp"
-                android:layout_marginBottom="10dp"
+                android:layout_marginBottom="15dp"
                 android:layout_gravity="center_horizontal"
                 android:background="@drawable/input_shape"
                 android:textCursorDrawable="@null"
@@ -71,10 +76,9 @@
             android:id="@+id/tv_resend_otp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="center"
             android:background="@color/white"
             android:textAllCaps="false"
-            android:textColor="@color/forgot_password_color"
+            android:textColor="@color/hint_color"
             android:textSize="15sp"
             android:text="Resend OTP"/>
     </LinearLayout>
@@ -84,9 +88,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/white"
-        android:gravity="center"
-        android:text="Not Your Number?"
+        android:text="Not Your number?"
         android:textAllCaps="false"
-        android:textColor="@color/forgot_password_color"
+        android:textColor="@color/hint_color"
         android:textSize="15sp"/>
 </RelativeLayout>
