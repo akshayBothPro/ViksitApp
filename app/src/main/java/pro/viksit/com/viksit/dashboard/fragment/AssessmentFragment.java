@@ -102,7 +102,7 @@ public class AssessmentFragment extends Fragment {
             CarouselLinearLayout root = (CarouselLinearLayout) linearLayout.findViewById(R.id.root_container);
             root.setScaleBoth(scale);
 
-
+            start_game.bringToFront();
             start_game.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {

@@ -19,6 +19,7 @@
         card_view:cardCornerRadius="2dp"
         card_view:cardUseCompatPadding="true"
         card_view:cardBackgroundColor="@color/white"
+        android:translationZ="-1dp"
         >
 
 
@@ -55,8 +56,7 @@
                 />
             <ImageView
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/dashboard_card_height"
-                android:src="@drawable/backgroundimg"
+                android:layout_height="wrap_content"
                 android:scaleType="fitXY"
                 android:id="@+id/image"
                 android:layout_below="@+id/title"
@@ -89,7 +89,7 @@
             android:id="@+id/start_game"
             android:layout_centerHorizontal="true"
             android:textAlignment="center"
-            android:drawableLeft="@mipmap/ic_event_note_black_24dp"
+            android:drawableLeft="@drawable/ic_event_note_white_24dp"
             android:background="@drawable/signup_btn_shape"
             android:textColor="@color/white"
             android:drawableTint="@color/white"

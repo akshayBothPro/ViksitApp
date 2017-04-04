@@ -11,10 +11,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.squareup.picasso.Picasso;
 
 import pro.viksit.com.viksit.R;
 import pro.viksit.com.viksit.dashboard.pojo.DashboardCard;
@@ -65,12 +68,17 @@ public class ItemFragment extends Fragment {
             Button start_game = (Button) linearLayout.findViewById(R.id.start_game);
             TextView header = (TextView) linearLayout.findViewById(R.id.header);
             TextView title = (TextView) linearLayout.findViewById(R.id.title);
+            ImageView imageView = (ImageView) linearLayout.findViewById(R.id.image);
+            Picasso.with(getContext())
+                    .load(R.drawable.backgroundimg).resize(screenheitght/2,screenheitght/2)
+                    .into(imageView);
             header.setText(dashboardCard.getHeader());
             title.setText(dashboardCard.getTitle());
             cardView.setLayoutParams(layoutParams);
             CarouselLinearLayout root = (CarouselLinearLayout) linearLayout.findViewById(R.id.root_container);
             root.setScaleBoth(scale);
-
+            start_game.bringToFront();
+            root.invalidate();
             start_game.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {

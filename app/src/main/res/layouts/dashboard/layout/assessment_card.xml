@@ -20,7 +20,9 @@
             android:layout_height="wrap_content"
             card_view:cardBackgroundColor="@color/white"
             card_view:cardCornerRadius="2dp"
-            card_view:cardUseCompatPadding="true">
+            card_view:cardUseCompatPadding="true"
+            android:translationZ="-1dp"
+            >
 
 
             <RelativeLayout
@@ -173,7 +175,7 @@
             android:layout_centerHorizontal="true"
             android:layout_marginTop="-20dp"
             android:background="@drawable/signup_btn_shape"
-            android:drawableLeft="@mipmap/ic_event_note_black_24dp"
+            android:drawableLeft="@drawable/ic_event_note_white_24dp"
             android:drawableTint="@color/white"
             android:minWidth="@dimen/btn_start_game"
             android:paddingBottom="@dimen/paddingbottom"

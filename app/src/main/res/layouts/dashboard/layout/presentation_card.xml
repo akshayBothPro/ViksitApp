@@ -19,6 +19,8 @@
             card_view:cardCornerRadius="2dp"
             card_view:cardUseCompatPadding="true"
             card_view:cardBackgroundColor="@color/white"
+            android:translationZ="-1dp"
+
             >
 
 
@@ -88,7 +90,7 @@
             android:layout_below="@+id/card_view"
             android:layout_centerHorizontal="true"
             android:textAlignment="center"
-            android:drawableLeft="@mipmap/ic_event_note_black_24dp"
+            android:drawableLeft="@drawable/ic_event_note_white_24dp"
             android:background="@drawable/signup_btn_shape"
             android:textColor="@color/white"
             android:drawableTint="@color/white"
