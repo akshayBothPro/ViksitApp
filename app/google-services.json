@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "128116943468",
+    "project_id": "firebase-viksit"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:128116943468:android:b04a78a20b5ecb5b",
+        "android_client_info": {
+          "package_name": "pro.viksit.com.viksit"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "128116943468-lnu72blp2e21lri9bc2cki5bk2lbacvl.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "pro.viksit.com.viksit",
+            "certificate_hash": "ec3ade53e26d1aeb51f88e3ccfe40e788475f860"
+          }
+        },
+        {
+          "client_id": "128116943468-lsq6bhsdeov6ghkfe8qbf61h5hp885fa.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD2PUr6ozJVnR-ypOhnVpzfpCPfgHemyNw"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 1
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

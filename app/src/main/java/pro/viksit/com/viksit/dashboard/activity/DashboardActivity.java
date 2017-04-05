@@ -78,15 +78,15 @@ public class DashboardActivity extends AppCompatActivity {
 
     private ArrayList<DashboardCard> getData() {
         ArrayList<DashboardCard> dashboardCards = new ArrayList<>();
-        DashboardCard dashboardCard = new DashboardCard("Mutual Fund Planner","The Concept of Risk","Risk management is the identification, assessment, and prioritization of risks (defined in ISO 31000 as the effect of uncertainty on objectives) followed by coordinated and economical application of resources to minimize, monitor, and control the probability and/or impact of unfortunate events","https://static1.squarespace.com/static/53c6abe9e4b050924635b68f/t/5525af73e4b0964bcc72c023/1428533108432/","Course");
+        DashboardCard dashboardCard = new DashboardCard(0,"Mutual Fund Planner","The Concept of Risk","Risk management is the identification, assessment, and prioritization of risks (defined in ISO 31000 as the effect of uncertainty on objectives) followed by coordinated and economical application of resources to minimize, monitor, and control the probability and/or impact of unfortunate events","https://static1.squarespace.com/static/53c6abe9e4b050924635b68f/t/5525af73e4b0964bcc72c023/1428533108432/","Course");
         dashboardCards.add(dashboardCard);
-        DashboardCard dashboardCard1 = new DashboardCard("Mutual Fund Planner","Mid Term Assement","Life is full of risks, and so is a software project. Anything can go wrong anytime. We are always on our toes to make things right – but what about making sure that nothing goes wrong and that when it does we know exactly what to do","https://sites.google.com/site/petercromptonuk/_/rsrc/1443886923312/software-testing/risk-based-testing/risk%20based%20testing.png",16,50,30,"Assesment");
+        DashboardCard dashboardCard1 = new DashboardCard(0,"Mutual Fund Planner","Mid Term Assement","Life is full of risks, and so is a software project. Anything can go wrong anytime. We are always on our toes to make things right – but what about making sure that nothing goes wrong and that when it does we know exactly what to do","https://sites.google.com/site/petercromptonuk/_/rsrc/1443886923312/software-testing/risk-based-testing/risk%20based%20testing.png",16,50,30,"Assesment");
         dashboardCards.add(dashboardCard1);
-        DashboardCard dashboardCard2 = new DashboardCard("Mutual Fund Planner","New Challenge","Siddharth has challenged you Do you have what it takes?","http://3.bp.blogspot.com/_1fayrmhTf24/TR101EgZ-pI/AAAAAAAAAWQ/owExremngg0/s1600/priyamani-hot9-773160.jpg",20,40,20,"Challenge");
+        DashboardCard dashboardCard2 = new DashboardCard(0,"Mutual Fund Planner","New Challenge","Siddharth has challenged you Do you have what it takes?","http://3.bp.blogspot.com/_1fayrmhTf24/TR101EgZ-pI/AAAAAAAAAWQ/owExremngg0/s1600/priyamani-hot9-773160.jpg",20,40,20,"Challenge");
         dashboardCards.add(dashboardCard2);
-        DashboardCard dashboardCard3 = new DashboardCard("Mutual Fund Planner","The concept of Risk","Siddharth has challenged you Do you have what it takes?","http://3.bp.blogspot.com/_1fayrmhTf24/TR101EgZ-pI/AAAAAAAAAWQ/owExremngg0/s1600/priyamani-hot9-773160.jpg","presentation");
+        DashboardCard dashboardCard3 = new DashboardCard(0,"Mutual Fund Planner","The concept of Risk","Siddharth has challenged you Do you have what it takes?","http://3.bp.blogspot.com/_1fayrmhTf24/TR101EgZ-pI/AAAAAAAAAWQ/owExremngg0/s1600/priyamani-hot9-773160.jpg","presentation");
         dashboardCards.add(dashboardCard3);
-        DashboardCard dashboardCard4 = new DashboardCard("Mutual Fund Planner","The concept of Risk","Siddharth has challenged you Do you have what it takes?","http://3.bp.blogspot.com/_1fayrmhTf24/TR101EgZ-pI/AAAAAAAAAWQ/owExremngg0/s1600/priyamani-hot9-773160.jpg","video");
+        DashboardCard dashboardCard4 = new DashboardCard(0,"Mutual Fund Planner","The concept of Risk","Siddharth has challenged you Do you have what it takes?","http://3.bp.blogspot.com/_1fayrmhTf24/TR101EgZ-pI/AAAAAAAAAWQ/owExremngg0/s1600/priyamani-hot9-773160.jpg","video");
         dashboardCards.add(dashboardCard4);
 
         return  dashboardCards;

@@ -167,7 +167,6 @@
             android:layout_width="match_parent"
             android:layout_height="1dp"
             android:background="@color/hint_color"
-            android:layout_below="@+id/ll_module_list_con"
             android:layout_marginBottom="10dp"/>
         <TextView
             android:id="@+id/tv_role_purchase_asked_questions_title"

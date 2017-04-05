@@ -48,7 +48,7 @@ public class HomeActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Log.i(TAG,"already a member clicked");
-                startActivity(new Intent(HomeActivity.this, DashboardActivity.class));
+                startActivity(new Intent(HomeActivity.this, LoginActivity.class));
             }
         });
     }
