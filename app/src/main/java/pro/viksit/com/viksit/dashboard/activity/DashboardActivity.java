@@ -11,6 +11,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
+import java.io.FileWriter;
 import java.util.ArrayList;
 
 import pro.viksit.com.viksit.R;
@@ -89,9 +90,19 @@ public class DashboardActivity extends AppCompatActivity {
         DashboardCard dashboardCard4 = new DashboardCard(0,"Mutual Fund Planner","The concept of Risk","Siddharth has challenged you Do you have what it takes?","http://3.bp.blogspot.com/_1fayrmhTf24/TR101EgZ-pI/AAAAAAAAAWQ/owExremngg0/s1600/priyamani-hot9-773160.jpg","video");
         dashboardCards.add(dashboardCard4);
 
+        //
+
         return  dashboardCards;
 
     }
+
+    /*public void convertToJSON(){
+        Gson gson = new Gson();
+        Staff obj = new Staff();
+
+// 1. Java object to JSON, and save into a file
+        gson.toJson(obj, new FileWriter("D:\\file.json"));
+    }*/
 
 
     public void displayscreen(){
