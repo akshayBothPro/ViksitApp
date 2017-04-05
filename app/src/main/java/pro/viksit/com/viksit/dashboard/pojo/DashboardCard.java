@@ -31,6 +31,7 @@ public class DashboardCard implements Serializable{
 
     //game type / video type / presentation type
     public DashboardCard(int id, String header, String title, String description, String image_url,String type) {
+        this.id = id;
         this.header = header;
         this.title = title;
         this.description = description;
@@ -39,9 +40,10 @@ public class DashboardCard implements Serializable{
     }
 
 
-// challenge type
+    // challenge type
     public DashboardCard(int id, String header, String title, String description, String image_url, int nosofQuestion, int experience, int coins,
                          int personalRank, int personalExperience, int challengerExperience, int challengerRank){
+        this.id = id;
         this.header = header;
         this.title = title;
         this.description = description;
@@ -58,6 +60,7 @@ public class DashboardCard implements Serializable{
 
     //assessment type
     public DashboardCard(int id, String header, String title, String description, String image_url, int nosofQuestion, int experience, int coins, String type) {
+        this.id = id;
         this.header = header;
         this.title = title;
         this.description = description;
