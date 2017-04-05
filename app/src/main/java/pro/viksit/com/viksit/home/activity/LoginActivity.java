@@ -12,6 +12,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.AppCompatEditText;
 import android.text.Html;
+import android.util.DisplayMetrics;
 import android.util.Log;
 import android.util.Patterns;
 import android.view.View;
@@ -27,7 +28,9 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
     private TextView welcome;
     private AppCompatEditText email;
+    private TextView errorEmail;
     private AppCompatEditText password;
+    private TextView errorPassword;
     private Button loginButton;
     private TextView viaSocial;
     private ImageButton linkedInBtn;
@@ -37,14 +40,21 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     private Button registerInstead;
     private GradientDrawable drawable;
 
+    private int screenWidth;
+    private int screenHeight;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+        getWidthAndHeight();
 
         welcome = (TextView) findViewById(R.id.tv_login_welcome);
         email = (AppCompatEditText) findViewById(R.id.apet_login_email);
+        errorEmail = (TextView) findViewById(R.id.tv_error_email);
         password = (AppCompatEditText) findViewById(R.id.apet_login_password);
+        errorPassword = (TextView) findViewById(R.id.tv_error_password);
         loginButton = (Button) findViewById(R.id.btn_login);
         viaSocial = (TextView) findViewById(R.id.tv_via_social);
         googleBtn = (ImageButton) findViewById(R.id.btn_signup_google);
@@ -52,7 +62,6 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         fbBtn = (ImageButton) findViewById(R.id.btn_signup_fb);
         forgotPassword = (Button) findViewById(R.id.btn_forgot_password);
         registerInstead = (Button) findViewById(R.id.btn_register_instead);
-
 
         implementActionsListeners();
 
@@ -65,6 +74,12 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         forgotPassword.setOnClickListener(this);
         registerInstead.setText("Not a member? Register instead");
         registerInstead.setOnClickListener(this);
+
+
+       /* email.setMinHeight(screenHeight/5);
+        email.setMaxHeight(screenHeight/5);
+        password.setMinHeight(screenHeight/5);
+        password.setMaxHeight(screenHeight/5);*/
 
 
     }
@@ -111,17 +126,18 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         String pasword = password.getText().toString();
 
         if (emailid.isEmpty() || !Patterns.EMAIL_ADDRESS.matcher(emailid).matches()) {
-            email.setError("Enter a valid email address");
+            errorEmail.setVisibility(View.VISIBLE);
             valid = false;
         } else {
-            email.setError(null);
+            errorEmail.setVisibility(View.GONE);
         }
 
-        if (pasword.isEmpty() || pasword.length() < 4 || pasword.length() > 10) {
-            password.setError("Between 4 and 10 alphanumeric characters");
+        if (pasword.isEmpty() || pasword.length() < 6 || pasword.length() > 10) {
+            /*password.setError("Between 6 and 10 alphanumeric characters");*/
+            errorPassword.setVisibility(View.VISIBLE);
             valid = false;
         } else {
-            password.setError(null);
+            errorPassword.setVisibility(View.GONE);
         }
 
         return valid;
@@ -132,7 +148,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         int id = v.getId();
         if(id == R.id.btn_login) {
 
-            System.out.println("loign clicked");
+            System.out.println("login clicked");
             login();
         }else if(id == R.id.btn_register_instead) {
             System.out.println("register instead clicked");
@@ -152,5 +168,12 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         finish();
+    }
+
+    private void getWidthAndHeight() {
+        DisplayMetrics displaymetrics = new DisplayMetrics();
+        this.getWindowManager().getDefaultDisplay().getMetrics(displaymetrics);
+        screenHeight = displaymetrics.heightPixels;
+        screenWidth = displaymetrics.widthPixels;
     }
 }

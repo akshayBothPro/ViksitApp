@@ -5,67 +5,89 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:padding="20dp"
-    android:gravity="center_horizontal"
+    android:padding="@dimen/login_con_padding"
+    android:gravity="center"
     >
 
     <TextView
         android:id="@+id/tv_welcome"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/margin_bottom_double"
         android:gravity="center_horizontal"
         android:textAlignment="center"
         android:textSize="@dimen/h4"
         android:text="Welcome! Your Talentify journey begins here"
         android:textColor="@color/title_color"
-
-        android:layout_margin="@dimen/signup_margin"
         />
 
-    <android.support.v7.widget.AppCompatEditText
-        android:id="@+id/apet_email"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="@dimen/signup_margin"
-        android:background="@drawable/input_shape"
-        android:paddingLeft="@dimen/signup_margin"
-        android:hint="Email ID"
-        android:inputType="textEmailAddress"
-        android:textColorHint="@color/hint_color"
-        android:textCursorDrawable="@null" />
+        android:orientation="vertical"
+        android:layout_marginBottom="@dimen/margin_bottom">
+        <android.support.v7.widget.AppCompatEditText
+            android:id="@+id/apet_email"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/input_shape"
+            android:paddingLeft="@dimen/signup_margin"
+            android:hint="Email ID"
+            android:inputType="textEmailAddress"
+            android:textColorHint="@color/hint_color"
+            android:textCursorDrawable="@null" />
 
-    <TextView
-        android:id="@+id/tv_error_email"
+        <TextView
+            android:id="@+id/tv_error_email"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="2dp"
+            android:background="@color/error_bg"
+            android:textColor="@color/error_text"
+            android:text="Enter a valid email ID."
+            android:textSize="@dimen/p5"
+            android:visibility="gone"
+            />
+    </LinearLayout>
+
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="10dp"
-        android:background="@color/error_bg"
-        android:textColor="@color/error_text"
-        android:text="Enter a valid email ID."
-        android:textSize="@dimen/p4"
-        android:visibility="gone"
-        android:layout_margin="@dimen/signup_margin"
-        />
-
-    <android.support.v7.widget.AppCompatEditText
-        android:id="@+id/apet_phone_number"
+        android:orientation="vertical"
+        android:layout_marginBottom="@dimen/margin_bottom">
+        <android.support.v7.widget.AppCompatEditText
+            android:id="@+id/apet_phone_number"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/input_shape"
+            android:paddingLeft="@dimen/signup_margin"
+            android:hint="Phone Number"
+            android:inputType="phone"
+            android:textColorHint="@color/hint_color"
+            android:textCursorDrawable="@null" />
+        <TextView
+            android:id="@+id/tv_error_phone"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="2dp"
+            android:background="@color/error_bg"
+            android:textColor="@color/error_text"
+            android:text="Enter a valid phone number."
+            android:textSize="@dimen/p5"
+            android:visibility="gone"
+            />
+        </LinearLayout>
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/input_shape"
-        android:layout_margin="@dimen/signup_margin"
-        android:paddingLeft="@dimen/signup_margin"
-
-        android:hint=" Phone Number"
-        android:inputType="phone"
-        android:textColorHint="@color/hint_color"
-        android:textCursorDrawable="@null" />
+        android:orientation="vertical"
+        android:layout_marginBottom="@dimen/margin_bottom_double">
 
     <android.support.v7.widget.AppCompatEditText
         android:id="@+id/apet_password"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@drawable/input_shape"
-        android:layout_margin="@dimen/signup_margin"
         android:paddingLeft="@dimen/signup_margin"
         android:paddingRight="@dimen/signup_margin"
 
@@ -76,6 +98,18 @@
         android:textColorHint="@color/hint_color"
         android:inputType="textPassword"
         android:hint="Password"/>
+    <TextView
+        android:id="@+id/tv_error_password"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="2dp"
+        android:background="@color/error_bg"
+        android:textColor="@color/error_text"
+        android:text="Enter 6 to 14 characters."
+        android:textSize="@dimen/p5"
+        android:visibility="gone"
+        />
+        </LinearLayout>
 
     <Button
         android:id="@+id/btn_signup"
@@ -133,41 +167,35 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:weightSum="100"
         android:orientation="horizontal"
-        android:padding="10dp"
+        android:padding="@dimen/margin_bottom"
         android:gravity="center"
         >
         <Button
-            android:layout_width="60dp"
-            android:layout_height="60dp"
-            android:text=""
+            android:layout_width="50dp"
+            android:layout_height="50dp"
             android:background="@drawable/linkedin_circle_button"
-            android:layout_marginRight="10dp"
+            android:layout_marginRight="8dp"
             />
         <Button
-            android:layout_width="60dp"
-            android:layout_height="60dp"
-            android:text=""
+            android:layout_width="50dp"
+            android:layout_height="50dp"
             android:background="@drawable/google_circle_button"
-            android:layout_marginRight="10dp"
+            android:layout_marginRight="8dp"
 
             />
         <Button
-            android:layout_width="60dp"
-            android:layout_height="60dp"
-            android:text=""
+            android:layout_width="50dp"
+            android:layout_height="50dp"
             android:background="@drawable/fb_circle_button"
-            android:layout_marginRight="10dp"
+            android:layout_marginRight="8dp"
             />
-
-
     </LinearLayout>
     <Button
         android:id="@+id/btn_login_instead"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="5dp"
+        android:layout_marginBottom="@dimen/margin_bottom"
         android:textAllCaps="false"
         android:text="Already a member? Login instead"
         android:background="#00000000"

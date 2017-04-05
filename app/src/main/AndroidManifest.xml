@@ -15,14 +15,14 @@
         android:theme="@style/AppTheme">
         <activity
             android:name=".home.activity.SplashScreenActivity"
-            android:theme="@style/SplashTheme">
+            android:theme="@style/SplashTheme"/>
+        <activity android:name=".home.activity.HomeActivity" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".home.activity.HomeActivity" />
         <activity android:name=".home.activity.SignupActivity" />
         <activity android:name=".home.activity.LoginActivity" />
         <activity android:name=".home.activity.OTPActivity" />
@@ -47,7 +47,7 @@
         <activity android:name=".role.activity.ModuleActivity" />
         <activity android:name=".role.activity.PurchaseSuccessActivity" />
         <activity android:name=".role.activity.CheckoutActivity" />
-        <activity android:name=".role.activity.RolePurchaseActivity"></activity>
+        <activity android:name=".role.activity.RolePurchaseActivity"/>
     </application>
 
 </manifest>

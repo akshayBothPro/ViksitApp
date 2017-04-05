@@ -6,7 +6,9 @@ import java.io.Serializable;
  * Created by Feroz on 28-03-2017.
  */
 
+@SuppressWarnings("serial") //With this annotation we are going to hide compiler warnings
 public class DashboardCard implements Serializable{
+    private int id;
     private String header;
     private String title;
     private String description;
@@ -14,11 +16,48 @@ public class DashboardCard implements Serializable{
     private int experience;
     private int coins;
     private String type;
+    private int duration;
     private String image_url;
+    private int personalRank;
+    private int personalExperience;
+    private int challengerExperience;
+    private String challengerImage_url;
+    private String challengerName;
+    private int challengerRank;
+
+
     public DashboardCard() {
     }
 
-    public DashboardCard(String header, String title, String description, String image_url, int nosofQuestion, int experience, int coins, String type) {
+    //game type / video type / presentation type
+    public DashboardCard(int id, String header, String title, String description, String image_url,String type) {
+        this.header = header;
+        this.title = title;
+        this.description = description;
+        this.image_url = image_url;
+        this.type = type;
+    }
+
+
+// challenge type
+    public DashboardCard(int id, String header, String title, String description, String image_url, int nosofQuestion, int experience, int coins,
+                         int personalRank, int personalExperience, int challengerExperience, int challengerRank){
+        this.header = header;
+        this.title = title;
+        this.description = description;
+        this.image_url = image_url;
+        this.nosofQuestion = nosofQuestion;
+        this.experience = experience;
+        this.coins = coins;
+        this.personalRank = personalRank;
+        this.personalExperience = personalExperience;
+        this.challengerExperience = challengerExperience;
+        this.challengerRank = challengerRank;
+
+    }
+
+    //assessment type
+    public DashboardCard(int id, String header, String title, String description, String image_url, int nosofQuestion, int experience, int coins, String type) {
         this.header = header;
         this.title = title;
         this.description = description;
@@ -29,12 +68,20 @@ public class DashboardCard implements Serializable{
         this.image_url = image_url;
     }
 
-    public DashboardCard(String header, String title, String description, String image_url,String type) {
-        this.header = header;
-        this.title = title;
-        this.description = description;
-        this.image_url = image_url;
-        this.type = type;
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public int getPersonalExperience() {
+        return personalExperience;
+    }
+
+    public void setPersonalExperience(int personalExperience) {
+        this.personalExperience = personalExperience;
     }
 
     public String getHeader() {
@@ -101,4 +148,53 @@ public class DashboardCard implements Serializable{
         this.image_url = image_url;
     }
 
+    public int getDuration() {
+        return duration;
+    }
+
+    public void setDuration(int duration) {
+        this.duration = duration;
+    }
+
+    public int getPersonalRank() {
+        return personalRank;
+    }
+
+    public void setPersonalRank(int rank) {
+        this.personalRank = rank;
+    }
+
+
+
+    public int getChallengerExperience() {
+        return challengerExperience;
+    }
+
+    public void setChallengerExperience(int challengerExperience) {
+        this.challengerExperience = challengerExperience;
+    }
+
+    public String getChallengerName() {
+        return challengerName;
+    }
+
+    public void setChallengerName(String challengerName) {
+        this.challengerName = challengerName;
+    }
+
+    public int getChallengerRank() {
+        return challengerRank;
+    }
+
+    public void setChallengerRank(int challengerRank) {
+        this.challengerRank = challengerRank;
+    }
+
+    public String getChallengerImage_url() {
+        return challengerImage_url;
+    }
+
+    public void setChallengerImage_url(String challengerImage_url) {
+        this.challengerImage_url = challengerImage_url;
+    }
 }

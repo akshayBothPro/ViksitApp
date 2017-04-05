@@ -2,7 +2,7 @@
 <layer-list xmlns:android="http://schemas.android.com/apk/res/android">
     <item android:drawable="@mipmap/ic_linkedin" />
     <item>
-        <shape android:shape="oval" android:padding="10dp">
+        <shape android:shape="oval">
             <corners
                 android:bottomLeftRadius="2dp"
                 android:bottomRightRadius="2dp"

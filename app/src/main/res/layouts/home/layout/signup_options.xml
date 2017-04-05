@@ -14,7 +14,7 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="15dp">
+        android:layout_marginBottom="@dimen/margin_bottom_double">
 
         <View
             android:layout_width="match_parent"
@@ -59,29 +59,30 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:padding="5dp"
+        android:padding="@dimen/margin_bottom"
         android:orientation="horizontal">
 
         <ImageButton
             android:id="@+id/btn_signup_linkedIn"
-            android:layout_width="60dp"
-            android:layout_height="60dp"
-            android:layout_margin="10dp"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginRight="8dp"
             android:elevation="5dp"
             android:background="@drawable/linkedin_circle_button"/>
 
         <ImageButton
             android:id="@+id/btn_signup_google"
-            android:layout_width="60dp"
-            android:layout_height="60dp"
-            android:layout_margin="10dp"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginRight="8dp"
             android:elevation="5dp"
             android:background="@drawable/google_circle_button"/>
+
         <ImageButton
             android:id="@+id/btn_signup_fb"
-            android:layout_width="60dp"
-            android:layout_height="60dp"
-            android:layout_margin="10dp"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginRight="8dp"
             android:elevation="5dp"
             android:background="@drawable/fb_circle_button"/>
 

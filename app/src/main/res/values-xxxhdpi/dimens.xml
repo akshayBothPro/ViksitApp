@@ -26,6 +26,9 @@
     <dimen name="dashboard_card_height">250dp</dimen>
     <dimen name="signup_margin">10dp</dimen>
 
+    <dimen name="login_con_padding">30dp</dimen>
+    <dimen name="margin_bottom">5dp</dimen>
+    <dimen name="margin_bottom_double">10dp</dimen>
     <!--<dimen name="circle_button_signup">60dp</dimen>-->
 
 </resources>

@@ -10,6 +10,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import pro.viksit.com.viksit.R;
+import pro.viksit.com.viksit.dashboard.activity.DashboardActivity;
 
 public class HomeActivity extends AppCompatActivity {
     private static final String TAG = HomeActivity.class.getSimpleName();
@@ -47,7 +48,7 @@ public class HomeActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Log.i(TAG,"already a member clicked");
-                startActivity(new Intent(HomeActivity.this, LoginActivity.class));
+                startActivity(new Intent(HomeActivity.this, DashboardActivity.class));
             }
         });
     }
