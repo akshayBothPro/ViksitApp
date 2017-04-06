@@ -17,6 +17,9 @@ import com.linkedin.platform.utils.Scope;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
+import java.util.HashMap;
+
+import pro.viksit.com.viksit.R;
 import pro.viksit.com.viksit.dashboard.activity.DashboardActivity;
 import pro.viksit.com.viksit.home.activity.LoginActivity;
 
@@ -42,12 +45,19 @@ public class LinkedInUtil {
                             @Override
                             public void onApiSuccess(ApiResponse result) {
                                 try {
-                                    System.out.println("email --> "+result.getResponseDataAsJson().get("emailAddress").toString());
-                                    System.out.println("formattedName --> "+result.getResponseDataAsJson().get("formattedName").toString());
-                                    System.out.println("pictureUrl --> "+((JSONArray)((JSONObject)result.getResponseDataAsJson().get("pictureUrls")).get("values")).get(0));
-                                    Intent i = new Intent(context, DashboardActivity.class);
-                                    i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                                    context.startActivity(i);
+                                    if(result.getResponseDataAsJson() != null) {
+                                        HashMap<String, String> params = new HashMap<String, String>();
+                                        params.put(context.getResources().getString(R.string.socialmedia), "LINKEDIN");
+                                        params.put(context.getResources().getString(R.string.email), result.getResponseDataAsJson().get("emailAddress").toString());
+                                        params.put(context.getResources().getString(R.string.username), result.getResponseDataAsJson().get("formattedName").toString());
+                                        if ((JSONObject) result.getResponseDataAsJson().get("pictureUrls") != null && ((JSONArray) ((JSONObject) result.getResponseDataAsJson().get("pictureUrls")).get("values")).length() > 0)
+                                            params.put(context.getResources().getString(R.string.profilepic), ((JSONArray) ((JSONObject) result.getResponseDataAsJson().get("pictureUrls")).get("values")).get(0).toString());
+                                        new LoginAsync(params,context).execute(context.getResources().getString(R.string.socialloginurl));
+
+                                        //
+                                    }else{
+                                        System.out.println("There is an error while signing in with Linked in");
+                                    }
                                 } catch (Exception e) {
                                     e.printStackTrace();
                                 }

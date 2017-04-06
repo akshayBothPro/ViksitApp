@@ -10,6 +10,13 @@ import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInResult;
 import com.google.android.gms.common.api.GoogleApiClient;
 
+import org.json.JSONArray;
+import org.json.JSONObject;
+
+import java.util.HashMap;
+
+import pro.viksit.com.viksit.R;
+
 /**
  * Created by Feroz on 06-04-2017.
  */
@@ -22,13 +29,27 @@ public class GoogleUtil {
     }
 
 
-    public void handleSignInResult(GoogleSignInResult result) {
+    public void handleSignInResult(GoogleSignInResult result,Context context) {
         Log.d("LOGIN_GOOGLE", "handleSignInResult:" + result.isSuccess());
         if (result.isSuccess()) {
             GoogleSignInAccount acct = result.getSignInAccount();
             System.out.println("getDisplayName "+acct.getDisplayName());
             System.out.println("getEmail "+acct.getEmail());
             System.out.println("getPhotoUrl "+acct.getPhotoUrl());
+
+            if(acct != null ){
+                HashMap<String, String> params = new HashMap<String, String>();
+                params.put(context.getResources().getString(R.string.socialmedia), "GOOGLE");
+                params.put(context.getResources().getString(R.string.email), acct.getEmail());
+                params.put(context.getResources().getString(R.string.username), acct.getDisplayName());
+                if (acct.getPhotoUrl() != null)
+                    params.put(context.getResources().getString(R.string.profilepic), acct.getPhotoUrl().toString());
+                new LoginAsync(params,context).execute(context.getResources().getString(R.string.socialloginurl));
+
+            }
+
+
+
         } else {
         }
     }

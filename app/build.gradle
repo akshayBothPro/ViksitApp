@@ -74,5 +74,8 @@ dependencies {
     testCompile 'junit:junit:4.12'
     compile project(':linkedin-sdk')
     compile 'com.facebook.android:facebook-android-sdk:4.18.0'
+    android {
+        useLibrary 'org.apache.http.legacy'
+    }
 }
 
