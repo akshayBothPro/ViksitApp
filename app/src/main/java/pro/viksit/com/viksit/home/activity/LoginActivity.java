@@ -75,7 +75,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     private Button loginButton;
     private TextView viaSocial;
     private ImageButton linkedInBtn;
-    private ImageButton googleBtn;
+    private ImageButton googleBtn,fb;
     private LoginButton fbBtn;
     private Button forgotPassword;
     private Button registerInstead;
@@ -137,6 +137,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         googleBtn = (ImageButton) findViewById(R.id.btn_signup_google);
         linkedInBtn = (ImageButton) findViewById(R.id.btn_signup_linkedIn);
         fbBtn = (LoginButton) findViewById(R.id.btn_signup_fb);
+        fb = (ImageButton) findViewById(R.id.fb);
         forgotPassword = (Button) findViewById(R.id.btn_forgot_password);
         registerInstead = (Button) findViewById(R.id.btn_register_instead);
         generateHashkey();
@@ -159,7 +160,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         registerInstead.setOnClickListener(this);
         linkedInBtn.setOnClickListener(this);
         googleBtn.setOnClickListener(this);
-        fbBtn.setOnClickListener(this);
+        fb.setOnClickListener(this);
        /* email.setMinHeight(screenHeight/5);
         email.setMaxHeight(screenHeight/5);
         password.setMinHeight(screenHeight/5);
@@ -248,8 +249,9 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         }else if(id == R.id.btn_signup_google){
 
             signIn();
-        }else if(id== R.id.btn_signup_fb){
+        }else if(id== R.id.fb){
             getLoginDetails();
+            fbBtn.performClick();
         }
 
     }
