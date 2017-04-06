@@ -19,6 +19,7 @@
     <string name="profilepic">profileImage</string>
     <string name="socialmedia">socialMedia</string>
     <string name="socialloginurl">http://192.168.43.4:8080/t2c/AuthenticateUser/login/social</string>
+    <string name="loginerrormsg">OOPS Something went wrong ! \nCheck your Internet Connection\nOR\nCheck your Email/Password</string>
 
 
 </resources>

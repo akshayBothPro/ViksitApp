@@ -77,5 +77,6 @@ dependencies {
     android {
         useLibrary 'org.apache.http.legacy'
     }
+    compile 'com.afollestad.material-dialogs:commons:0.9.4.2'
 }
 

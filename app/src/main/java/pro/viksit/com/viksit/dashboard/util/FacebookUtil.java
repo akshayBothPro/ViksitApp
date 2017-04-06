@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.widget.Toast;
 
+import com.afollestad.materialdialogs.MaterialDialog;
 import com.facebook.AccessToken;
 import com.facebook.FacebookCallback;
 import com.facebook.FacebookException;
@@ -27,7 +28,7 @@ public class FacebookUtil {
 
 
 
-    public FacebookCallback<LoginResult> getFaceBookCallBack(final Context context){
+    public FacebookCallback<LoginResult> getFaceBookCallBack(final Context context,final MaterialDialog dialog){
          FacebookCallback<LoginResult> callback =  new FacebookCallback<LoginResult>() {
             @Override
             public void onSuccess(LoginResult loginResult) {
@@ -44,10 +45,13 @@ public class FacebookUtil {
                                 params.put(context.getResources().getString(R.string.profilepic), "https://graph.facebook.com/"+response.getJSONObject().get("id").toString()+"/picture?type=large");
                                 new LoginAsync(params,context).execute(context.getResources().getString(R.string.socialloginurl));
 
+                            }else{
+                                dialog.show();
                             }
 
                             Log.i("LoginActivity", "https://graph.facebook.com/"+response.getJSONObject().get("id").toString()+"/picture?type=large");
                         } catch (JSONException e) {
+                            dialog.show();
                             e.printStackTrace();
                         }
                         // Get facebook data from login response.getJSONObject().get("id")
@@ -66,6 +70,7 @@ public class FacebookUtil {
 
             @Override
             public void onError(FacebookException e) {
+                dialog.show();
             }
         };
         return callback;

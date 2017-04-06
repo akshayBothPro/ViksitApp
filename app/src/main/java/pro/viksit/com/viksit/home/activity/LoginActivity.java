@@ -22,6 +22,8 @@ import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.afollestad.materialdialogs.MaterialDialog;
 import com.facebook.FacebookSdk;
 import com.facebook.login.widget.LoginButton;
 import com.google.android.gms.auth.api.Auth;
@@ -56,7 +58,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     private ImageButton googleBtn,fb;
     private LoginButton fbBtn;
     private Button forgotPassword;
-    private Button registerInstead;
+    private Button registerInstead,ok;
     private GradientDrawable drawable;
 
     private int screenWidth;
@@ -66,13 +68,16 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     private final GoogleUtil googleUtil = new GoogleUtil();
     private GoogleApiClient mGoogleApiClient;
     CallbackManager callbackManager;
-
+    private MaterialDialog dialog;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         FacebookSdk.sdkInitialize(getApplicationContext());
         setContentView(R.layout.activity_login);
         getWidthAndHeight();
+        dialog  = new MaterialDialog.Builder(this)
+                .customView(R.layout.dialog_error, false)
+                .build();
         callbackManager = CallbackManager.Factory.create();
         welcome = (TextView) findViewById(R.id.tv_login_welcome);
         email = (AppCompatEditText) findViewById(R.id.apet_login_email);
@@ -87,6 +92,8 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         fb = (ImageButton) findViewById(R.id.fb);
         forgotPassword = (Button) findViewById(R.id.btn_forgot_password);
         registerInstead = (Button) findViewById(R.id.btn_register_instead);
+        ok =(Button) dialog.getCustomView().findViewById(R.id.ok);
+
         generateHashkey();
         implementActionsListeners();
         GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
@@ -108,6 +115,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         linkedInBtn.setOnClickListener(this);
         googleBtn.setOnClickListener(this);
         fb.setOnClickListener(this);
+        ok.setOnClickListener(this);
     }
 
     public void login() {
@@ -184,19 +192,21 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
             /*Intent intent = new Intent(LoginActivity.this, ForgotPasswordActivity.class);*/
             startActivity(new Intent(LoginActivity.this, ForgotPasswordActivity.class));
         }else if(id == R.id.btn_signup_linkedIn){
-           new LinkedInUtil().fetchData(getApplicationContext(),this);
+           new LinkedInUtil().fetchData(getApplicationContext(),this,dialog);
         }else if(id == R.id.btn_signup_google){
             googleUtil.signIn(mGoogleApiClient,RC_SIGN_IN,this);
         }else if(id== R.id.fb){
             getLoginDetails();
             fbBtn.performClick();
+        }else if(id== R.id.ok){
+            dialog.dismiss();
         }
 
     }
 
     private void getLoginDetails() {
         fbBtn.setReadPermissions("user_friends","public_profile","email");
-        fbBtn.registerCallback(callbackManager, new FacebookUtil().getFaceBookCallBack(this));
+        fbBtn.registerCallback(callbackManager, new FacebookUtil().getFaceBookCallBack(this,dialog));
 
     }
 
@@ -222,7 +232,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         if (requestCode == RC_SIGN_IN) {
             GoogleSignInResult result = Auth.GoogleSignInApi.getSignInResultFromIntent(data);
             if (result != null) {
-                googleUtil.handleSignInResult(result,this);
+                googleUtil.handleSignInResult(result,this,dialog);
             } else {
             }
         }else if (requestCode == FB_SIGN_IN){

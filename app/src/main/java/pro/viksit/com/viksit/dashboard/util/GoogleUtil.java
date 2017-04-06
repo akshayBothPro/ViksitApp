@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.util.Log;
 
+import com.afollestad.materialdialogs.MaterialDialog;
 import com.google.android.gms.auth.api.Auth;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInResult;
@@ -29,7 +30,7 @@ public class GoogleUtil {
     }
 
 
-    public void handleSignInResult(GoogleSignInResult result,Context context) {
+    public void handleSignInResult(GoogleSignInResult result,Context context,MaterialDialog dialog) {
         Log.d("LOGIN_GOOGLE", "handleSignInResult:" + result.isSuccess());
         if (result.isSuccess()) {
             GoogleSignInAccount acct = result.getSignInAccount();
@@ -46,11 +47,16 @@ public class GoogleUtil {
                     params.put(context.getResources().getString(R.string.profilepic), acct.getPhotoUrl().toString());
                 new LoginAsync(params,context).execute(context.getResources().getString(R.string.socialloginurl));
 
+            }else{
+                dialog.show();
             }
 
 
 
         } else {
+            dialog.show();
+
+
         }
     }
 }

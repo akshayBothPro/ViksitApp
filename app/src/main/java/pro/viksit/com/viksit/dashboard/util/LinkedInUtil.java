@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.widget.Toast;
 
+import com.afollestad.materialdialogs.MaterialDialog;
 import com.linkedin.platform.APIHelper;
 import com.linkedin.platform.LISessionManager;
 import com.linkedin.platform.errors.LIApiError;
@@ -33,7 +34,7 @@ public class LinkedInUtil {
             + "/v1/people/~:" +
             "(email-address,formatted-name,phone-numbers,picture-urls::(original))";
 
-    public void fetchData(final Context context,LoginActivity activity){
+    public void fetchData(final Context context,LoginActivity activity,final MaterialDialog dialog){
 
 
         LISessionManager.getInstance(context)
@@ -57,6 +58,7 @@ public class LinkedInUtil {
                                         //
                                     }else{
                                         System.out.println("There is an error while signing in with Linked in");
+                                        dialog.show();
                                     }
                                 } catch (Exception e) {
                                     e.printStackTrace();
@@ -64,6 +66,8 @@ public class LinkedInUtil {
                             }
                             @Override
                             public void onApiError(LIApiError LIApiError) {
+                                dialog.show();
+
                             }
                         });
 
@@ -74,10 +78,10 @@ public class LinkedInUtil {
 
                     @Override
                     public void onAuthError(LIAuthError error) {
-                        Toast.makeText(context, "failed "
-                                        + error.toString(),
-                                Toast.LENGTH_LONG).show();
+
                         System.out.println(" error -->"+error.toString());
+                        dialog.show();
+
                     }
                 }, true);
     }
