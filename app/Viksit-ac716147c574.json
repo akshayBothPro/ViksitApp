@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "firebase-viksit",
+  "private_key_id": "ac716147c574779665778d1be5d18bca089abc0c",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQDIm8MLp2oFXB5q\nUYX4z9oSYrXvHlJesXscQ/AzvBNWRzBD6rKrib/npEdJdYeZMBFvauM2+UnqT3Cc\nRhAJxo1waI+XROwgSp4pJHBXlNpuP3Y27ZDFG2HlCJpHoySmZFxuRwZ3tuQd1MMX\nxds6JFP05M68EvP9vmgqPaAhyY4Hji10958B/9ibgI2yznXlqHFnxxZ8eKY6aXxZ\nzcEmDzuC2PmKNW9qYNhyufKgUnDTpG0GBrYXVIVk2NH/ZUmkyul+axKeld3BnLc+\ncvvhoq236NeRnPFX4idmxudDMbtaHw3U/TRHbIiRS8l3DQk92cfUsFME7QLlaJ36\nTa89trsNAgMBAAECggEBAJoHfusj0DPtVy0rC0LP1RDo2eiPz48FlxFM2NHgRrio\nUFbVjfpH+iFR8aplo4frcHesCmnbXvWZqU1UPlxDJ7Z3kkkDkon4wRe18sxMbqrX\n71yda9rr+25v/IWkri9UP+QshLrGosCE7IcEVB+AZTZTuKiPpOffmvtT9e/7YiJJ\nm4YqLOln4+VAVfoFz4Ah3BtZc6ok5yaVOLChWmsKtwgBQAiuWL7LRBtTyDVvDnpu\nk1I/BngVpjzbamnoxuOA0yxl8yoCNeaubdI3Aqe4Tk6nrDB1e+aium82FPrAfvCj\nPFdXEmk02sU/5wezURc8uv+WB51hDRC6Zqh4FfTIucECgYEA9Bm1wqYHKTvP78YJ\nU0l4UaCCX/6xjoWV+F3YD2m7k/a/q3C/j0X7b0HIfyN9PdoNdYSgypgtQigxKlPX\nEWpzH4LxGMbGOD5AC00+ONTm5jEOKGVpe0GnMEVc98B0DizKZuQCPxh5tqUym1SR\nCzAEEQqUi3wO+xVH3ySBpWLGq0cCgYEA0mNJak0NDG1swR4zYeiIiunqhxlJpmv+\nF0lmid5TUX6gOUrL6DcY9mKOc69YO0+P5YMYdw9UsRzmnu7wDqbj18C9yJjH6gGC\nLHfQx3OlxV//GIsFu8i+04ydHUCyzRRpV8SE4ShmThX27h3KvfB1+jTmGc/Nnb2x\nmSH+MDXJKQsCgYApUijYmG5h5oQenLF7bdZ2SuuHAIBiFe77Kjem9EkSlRSBGwby\nY/BaNxKPoxxSWhUpLZhiczxGFLOt7J9djV2LmgjiHtPzNWZ2A09jI3cqxGcXI4Ol\nn8mDfFpufh+nPqHMpRBUSfpglrpoXPpooGov0FCxBAEtM78E4RMpQf1LhQKBgQCc\nl0/OchkTNeLrfloKNrRiiKaJ9ZVu7BRMKtLKLRNgpdoFqplIdrH6uPKEQm9ufdKB\npmiwPVXxGazBgOBmV2tga9IWGzk4//RuuqNHwNkSplfNYbRbx5fZB2Dto/kxUU7z\nB49LsvEqj4iiRMRhSTfWikb10UiebtFgQ//YzD+0bwKBgEJH9GMsGmQz7/mr832f\n69ahYiYqa9r5Q+YJdpAlJbBxvatFjF4QNpmWNoAF9OQKhmgOdCSC6HrhB++dtjr1\niRNWI+/Kyp/xynGbMesfmu2zAHPw3PKk02oTN8i3jMVZjp4pAYC0LYmFtGST3eH5\nHohpZW9eOsEejC9I97H/sC33\n-----END PRIVATE KEY-----\n",
+  "client_email": "feroz-680@firebase-viksit.iam.gserviceaccount.com",
+  "client_id": "113429896062038525201",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://accounts.google.com/o/oauth2/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/feroz-680%40firebase-viksit.iam.gserviceaccount.com"
+}

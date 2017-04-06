@@ -100,7 +100,6 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         mGoogleApiClient = new GoogleApiClient.Builder(this)
                 .enableAutoManage(this, this)
                 .addApi(Auth.GOOGLE_SIGN_IN_API, gso)
-
                 .build();
     }
 
@@ -285,7 +284,9 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         if (result.isSuccess()) {
             // Signed in successfully, show authenticated UI.
             GoogleSignInAccount acct = result.getSignInAccount();
-            System.out.println("SuccessSuccessSuccessSuccess"+acct.getDisplayName());
+            System.out.println("getDisplayName "+acct.getDisplayName());
+            System.out.println("getEmail "+acct.getEmail());
+            System.out.println("getPhotoUrl "+acct.getPhotoUrl());
 
             // updateUI(true);
         } else {

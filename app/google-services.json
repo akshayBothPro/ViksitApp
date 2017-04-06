@@ -1,7 +1,9 @@
 {
   "project_info": {
     "project_number": "128116943468",
-    "project_id": "firebase-viksit"
+    "firebase_url": "https://fir-viksit.firebaseio.com",
+    "project_id": "firebase-viksit",
+    "storage_bucket": "firebase-viksit.appspot.com"
   },
   "client": [
     {
@@ -12,6 +14,10 @@
         }
       },
       "oauth_client": [
+        {
+          "client_id": "128116943468-m74cnje4reds0d17nrsqfl437jkkdhud.apps.googleusercontent.com",
+          "client_type": 3
+        },
         {
           "client_id": "128116943468-lnu72blp2e21lri9bc2cki5bk2lbacvl.apps.googleusercontent.com",
           "client_type": 1,
@@ -35,11 +41,16 @@
           "status": 1
         },
         "appinvite_service": {
-          "status": 1,
-          "other_platform_oauth_client": []
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "128116943468-m74cnje4reds0d17nrsqfl437jkkdhud.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
         },
         "ads_service": {
-          "status": 1
+          "status": 2
         }
       }
     }
