@@ -26,6 +26,15 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.facebook.AccessToken;
+import com.facebook.FacebookCallback;
+import com.facebook.FacebookException;
+import com.facebook.FacebookSdk;
+import com.facebook.GraphRequest;
+import com.facebook.GraphResponse;
+import com.facebook.Profile;
+import com.facebook.login.LoginResult;
+import com.facebook.login.widget.LoginButton;
 import com.google.android.gms.auth.api.Auth;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
@@ -42,10 +51,14 @@ import com.linkedin.platform.listeners.AuthListener;
 import com.linkedin.platform.utils.Scope;
 
 import org.json.JSONArray;
+import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import com.facebook.CallbackManager;
 
 import pro.viksit.com.viksit.R;
 import pro.viksit.com.viksit.dashboard.activity.DashboardActivity;
@@ -63,7 +76,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     private TextView viaSocial;
     private ImageButton linkedInBtn;
     private ImageButton googleBtn;
-    private ImageButton fbBtn;
+    private LoginButton fbBtn;
     private Button forgotPassword;
     private Button registerInstead;
     private GradientDrawable drawable;
@@ -71,15 +84,49 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     private int screenWidth;
     private int screenHeight;
     private static final int RC_SIGN_IN = 9001;
-    private GoogleApiClient mGoogleApiClient;
+    private static final int FB_SIGN_IN = 64206;
 
+    private GoogleApiClient mGoogleApiClient;
+    CallbackManager callbackManager;
+    FacebookCallback<LoginResult> callback;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        FacebookSdk.sdkInitialize(getApplicationContext());
         setContentView(R.layout.activity_login);
         getWidthAndHeight();
+        callbackManager = CallbackManager.Factory.create();
+        callback = new FacebookCallback<LoginResult>() {
+            @Override
+            public void onSuccess(LoginResult loginResult) {
+                AccessToken accessToken = loginResult.getAccessToken();
+                GraphRequest request = GraphRequest.newMeRequest(loginResult.getAccessToken(), new GraphRequest.GraphJSONObjectCallback() {
+                    @Override
+                    public void onCompleted(JSONObject object, GraphResponse response) {
+                        try {
+                            Log.i("LoginActivity", "https://graph.facebook.com/"+response.getJSONObject().get("id").toString()+"/picture?type=large");
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                        // Get facebook data from login response.getJSONObject().get("id")
+                        //profile iamge https://graph.facebook.com/289692161469735/picture?type=large
+                    }
+                });
+                Bundle parameters = new Bundle();
+                parameters.putString("fields", "id, first_name, last_name, email,gender, birthday, location"); // Parámetros que pedimos a facebook
+                request.setParameters(parameters);
+                request.executeAsync();
+                Toast.makeText(getApplicationContext(), "Logging in...", Toast.LENGTH_SHORT).show();    }
 
+            @Override
+            public void onCancel() {
+            }
+
+            @Override
+            public void onError(FacebookException e) {
+            }
+        };
         welcome = (TextView) findViewById(R.id.tv_login_welcome);
         email = (AppCompatEditText) findViewById(R.id.apet_login_email);
         errorEmail = (TextView) findViewById(R.id.tv_error_email);
@@ -89,7 +136,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         viaSocial = (TextView) findViewById(R.id.tv_via_social);
         googleBtn = (ImageButton) findViewById(R.id.btn_signup_google);
         linkedInBtn = (ImageButton) findViewById(R.id.btn_signup_linkedIn);
-        fbBtn = (ImageButton) findViewById(R.id.btn_signup_fb);
+        fbBtn = (LoginButton) findViewById(R.id.btn_signup_fb);
         forgotPassword = (Button) findViewById(R.id.btn_forgot_password);
         registerInstead = (Button) findViewById(R.id.btn_register_instead);
         generateHashkey();
@@ -112,6 +159,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         registerInstead.setOnClickListener(this);
         linkedInBtn.setOnClickListener(this);
         googleBtn.setOnClickListener(this);
+        fbBtn.setOnClickListener(this);
        /* email.setMinHeight(screenHeight/5);
         email.setMaxHeight(screenHeight/5);
         password.setMinHeight(screenHeight/5);
@@ -200,7 +248,15 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         }else if(id == R.id.btn_signup_google){
 
             signIn();
+        }else if(id== R.id.btn_signup_fb){
+            getLoginDetails();
         }
+
+    }
+
+    private void getLoginDetails() {
+        fbBtn.setReadPermissions("user_friends");
+        fbBtn.registerCallback(callbackManager, callback);
 
     }
 
@@ -239,7 +295,12 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
             } else {
                 //createErrorDialog("Invalid Google Account ");
             }
-        }else {
+        }else if (requestCode == FB_SIGN_IN){
+            callbackManager.onActivityResult(requestCode, resultCode, data);
+
+        }
+
+        else {
             LISessionManager.getInstance(getApplicationContext())
                     .onActivityResult(this,
                             requestCode, resultCode, data);
@@ -294,4 +355,47 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
             //updateUI(false);
         }
     }
+
+
+    private Bundle getFacebookData(JSONObject object) {
+        Bundle bundle = new Bundle();
+
+        try {
+            String id = object.getString("id");
+
+            try {
+                URL profile_pic = new URL("https://graph.facebook.com/" + id + "/picture?width=200&height=150");
+                Log.i("profile_pic", profile_pic + "");
+                bundle.putString("profile_pic", profile_pic.toString());
+
+            } catch (MalformedURLException e) {
+                e.printStackTrace();
+                return null;
+            }
+
+            bundle.putString("idFacebook", id);
+            if (object.has("first_name"))
+                bundle.putString("first_name", object.getString("first_name"));
+            if (object.has("last_name"))
+                bundle.putString("last_name", object.getString("last_name"));
+            if (object.has("email"))
+                bundle.putString("email", object.getString("email"));
+            if (object.has("gender"))
+                bundle.putString("gender", object.getString("gender"));
+            if (object.has("birthday"))
+                bundle.putString("birthday", object.getString("birthday"));
+            if (object.has("location"))
+                bundle.putString("location", object.getJSONObject("location").getString("name"));
+        }
+
+        catch(JSONException e) {
+            Log.d(TAG,"Error parsing JSON");
+        }
+        return bundle;
+
+    }
+
+
+
+
 }
