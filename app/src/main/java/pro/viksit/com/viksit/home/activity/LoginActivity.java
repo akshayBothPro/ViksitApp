@@ -62,6 +62,8 @@ import com.facebook.CallbackManager;
 
 import pro.viksit.com.viksit.R;
 import pro.viksit.com.viksit.dashboard.activity.DashboardActivity;
+import pro.viksit.com.viksit.dashboard.util.FacebookUtil;
+import pro.viksit.com.viksit.dashboard.util.GoogleUtil;
 import pro.viksit.com.viksit.dashboard.util.LinkedInUtil;
 
 public class LoginActivity extends AppCompatActivity implements View.OnClickListener,GoogleApiClient.OnConnectionFailedListener{
@@ -85,10 +87,9 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     private int screenHeight;
     private static final int RC_SIGN_IN = 9001;
     private static final int FB_SIGN_IN = 64206;
-
+    private final GoogleUtil googleUtil = new GoogleUtil();
     private GoogleApiClient mGoogleApiClient;
     CallbackManager callbackManager;
-    FacebookCallback<LoginResult> callback;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -97,36 +98,6 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         setContentView(R.layout.activity_login);
         getWidthAndHeight();
         callbackManager = CallbackManager.Factory.create();
-        callback = new FacebookCallback<LoginResult>() {
-            @Override
-            public void onSuccess(LoginResult loginResult) {
-                AccessToken accessToken = loginResult.getAccessToken();
-                GraphRequest request = GraphRequest.newMeRequest(loginResult.getAccessToken(), new GraphRequest.GraphJSONObjectCallback() {
-                    @Override
-                    public void onCompleted(JSONObject object, GraphResponse response) {
-                        try {
-                            Log.i("LoginActivity", "https://graph.facebook.com/"+response.getJSONObject().get("id").toString()+"/picture?type=large");
-                        } catch (JSONException e) {
-                            e.printStackTrace();
-                        }
-                        // Get facebook data from login response.getJSONObject().get("id")
-                        //profile iamge https://graph.facebook.com/289692161469735/picture?type=large
-                    }
-                });
-                Bundle parameters = new Bundle();
-                parameters.putString("fields", "id, first_name, last_name, email,gender, birthday, location"); // Parámetros que pedimos a facebook
-                request.setParameters(parameters);
-                request.executeAsync();
-                Toast.makeText(getApplicationContext(), "Logging in...", Toast.LENGTH_SHORT).show();    }
-
-            @Override
-            public void onCancel() {
-            }
-
-            @Override
-            public void onError(FacebookException e) {
-            }
-        };
         welcome = (TextView) findViewById(R.id.tv_login_welcome);
         email = (AppCompatEditText) findViewById(R.id.apet_login_email);
         errorEmail = (TextView) findViewById(R.id.tv_error_email);
@@ -161,12 +132,6 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         linkedInBtn.setOnClickListener(this);
         googleBtn.setOnClickListener(this);
         fb.setOnClickListener(this);
-       /* email.setMinHeight(screenHeight/5);
-        email.setMaxHeight(screenHeight/5);
-        password.setMinHeight(screenHeight/5);
-        password.setMaxHeight(screenHeight/5);*/
-
-
     }
 
     public void login() {
@@ -232,10 +197,8 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     public void onClick(View v) {
         int id = v.getId();
         if(id == R.id.btn_login) {
-
             System.out.println("login clicked");
             LISessionManager.getInstance(getApplicationContext()).clearSession();
-
             //login();
         }else if(id == R.id.btn_register_instead) {
             System.out.println("register instead clicked");
@@ -247,8 +210,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         }else if(id == R.id.btn_signup_linkedIn){
            new LinkedInUtil().fetchData(getApplicationContext(),this);
         }else if(id == R.id.btn_signup_google){
-
-            signIn();
+            googleUtil.signIn(mGoogleApiClient,RC_SIGN_IN,this);
         }else if(id== R.id.fb){
             getLoginDetails();
             fbBtn.performClick();
@@ -258,19 +220,11 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
     private void getLoginDetails() {
         fbBtn.setReadPermissions("user_friends");
-        fbBtn.registerCallback(callbackManager, callback);
+        fbBtn.registerCallback(callbackManager, new FacebookUtil().getFaceBookCallBack(this));
 
     }
 
-    @Override
-    public void onBackPressed() {
-        super.onBackPressed();
-        Intent i=new Intent(LoginActivity.this,HomeActivity.class);
-        startActivity(i);
-        i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-        i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-        finish();
-    }
+
 
     private void getWidthAndHeight() {
         DisplayMetrics displaymetrics = new DisplayMetrics();
@@ -292,71 +246,27 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         if (requestCode == RC_SIGN_IN) {
             GoogleSignInResult result = Auth.GoogleSignInApi.getSignInResultFromIntent(data);
             if (result != null) {
-                // System.out.println(".. \" result.getStatus().getStatusCode() \"+result.getStatus().getStatusCode() .. " + result.getStatus().getStatusCode());
-                    handleSignInResult(result);
+                googleUtil.handleSignInResult(result);
             } else {
-                //createErrorDialog("Invalid Google Account ");
             }
         }else if (requestCode == FB_SIGN_IN){
             callbackManager.onActivityResult(requestCode, resultCode, data);
-
         }
-
         else {
             LISessionManager.getInstance(getApplicationContext())
-                    .onActivityResult(this,
-                            requestCode, resultCode, data);
+                    .onActivityResult(this,requestCode, resultCode, data);
         }
 
     }
 
-    public void generateHashkey(){
-        try {
-            PackageInfo info = getPackageManager().getPackageInfo(
-                    PACKAGE,
-                    PackageManager.GET_SIGNATURES);
-            for (Signature signature : info.signatures) {
-                MessageDigest md = MessageDigest.getInstance("SHA");
-                md.update(signature.toByteArray());
 
-                System.out.println("HAsh is ---------> "+Base64.encodeToString(md.digest(),
-                        Base64.NO_WRAP));
-            }
-        } catch (PackageManager.NameNotFoundException e) {
-            Log.d("Name not found", e.getMessage(), e);
-
-        } catch (NoSuchAlgorithmException e) {
-            Log.d("Error", e.getMessage(), e);
-        }
-    }
 
     @Override
     public void onConnectionFailed(@NonNull ConnectionResult connectionResult) {
 
     }
 
-    private void signIn() {
-        Auth.GoogleSignInApi.signOut(mGoogleApiClient);
-        Intent signInIntent = Auth.GoogleSignInApi.getSignInIntent(mGoogleApiClient);
-        startActivityForResult(signInIntent, RC_SIGN_IN);
-    }
 
-
-    private void handleSignInResult(GoogleSignInResult result) {
-            Log.d(TAG, "handleSignInResult:" + result.isSuccess());
-        if (result.isSuccess()) {
-            // Signed in successfully, show authenticated UI.
-            GoogleSignInAccount acct = result.getSignInAccount();
-            System.out.println("getDisplayName "+acct.getDisplayName());
-            System.out.println("getEmail "+acct.getEmail());
-            System.out.println("getPhotoUrl "+acct.getPhotoUrl());
-
-            // updateUI(true);
-        } else {
-            // Signed out, show unauthenticated UI.
-            //updateUI(false);
-        }
-    }
 
 
     private Bundle getFacebookData(JSONObject object) {
@@ -399,5 +309,36 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
 
 
+
+
+    public void generateHashkey(){
+        try {
+            PackageInfo info = getPackageManager().getPackageInfo(
+                    PACKAGE,
+                    PackageManager.GET_SIGNATURES);
+            for (Signature signature : info.signatures) {
+                MessageDigest md = MessageDigest.getInstance("SHA");
+                md.update(signature.toByteArray());
+
+                System.out.println("HAsh is ---------> "+Base64.encodeToString(md.digest(),
+                        Base64.NO_WRAP));
+            }
+        } catch (PackageManager.NameNotFoundException e) {
+            Log.d("Name not found", e.getMessage(), e);
+
+        } catch (NoSuchAlgorithmException e) {
+            Log.d("Error", e.getMessage(), e);
+        }
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        Intent i=new Intent(LoginActivity.this,HomeActivity.class);
+        startActivity(i);
+        i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        finish();
+    }
 
 }
