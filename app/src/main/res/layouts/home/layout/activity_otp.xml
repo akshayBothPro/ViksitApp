@@ -5,8 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:gravity="center_horizontal"
-    android:padding="20dp"
+    android:padding="@dimen/otp_con_padding"
     android:background="@color/white_color"
     tools:context="pro.viksit.com.viksit.home.activity.OTPActivity">
 
@@ -22,7 +21,7 @@
             android:id="@+id/tv_otp_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="8dp"
+            android:layout_marginBottom="@dimen/otp_header_bottom_margin"
             android:textColor="@color/black"
             android:textSize="@dimen/h2"
             android:text="Verify your phone number"/>
@@ -31,7 +30,7 @@
             android:id="@+id/tv_otp_info"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="20dp"
+            android:layout_marginBottom="@dimen/otp_info_bottom_margin"
             android:gravity="center"
             android:text="An OTP has been sent to your phone number ending with xxxxx72858"
             android:textColor="@color/otp_info_color"
@@ -40,22 +39,17 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="15dp"
-            android:layout_marginStart="15dp"
-            android:layout_marginRight="15dp"
-            android:layout_marginEnd="15dp"
-            android:paddingLeft="30dp"
-            android:paddingRight="30dp"
-            android:paddingStart="30dp"
-            android:paddingEnd="30dp"
+            android:paddingRight="@dimen/otp_edittext_con_horzontal_padding"
+            android:paddingEnd="@dimen/otp_edittext_con_horzontal_padding"
+            android:paddingLeft="@dimen/otp_edittext_con_horzontal_padding"
+            android:paddingStart="@dimen/otp_edittext_con_horzontal_padding"
             android:orientation="vertical">
             <android.support.v7.widget.AppCompatEditText
                 android:id="@+id/apet_otp_input"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:paddingLeft="10dp"
-                android:paddingStart="10dp"
-                android:layout_marginBottom="15dp"
+                android:padding="@dimen/otp_edittext_padding"
+                android:layout_marginBottom="@dimen/otp_edittext_bottom_margin"
                 android:layout_gravity="center_horizontal"
                 android:background="@drawable/input_shape"
                 android:textCursorDrawable="@null"
@@ -63,7 +57,7 @@
                 android:inputType="text"
                 android:hint="OTP"/>
             <Button
-                android:id="@+id/btn_enter_otp"
+                android:id="@+id/btn_submit_otp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
@@ -73,17 +67,17 @@
         </LinearLayout>
 
         <Button
-            android:id="@+id/tv_resend_otp"
+            android:id="@+id/btn_resend_otp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@color/white"
             android:textAllCaps="false"
             android:textColor="@color/hint_color"
-            android:textSize="15sp"
+            android:textSize="@dimen/p2"
             android:text="Resend OTP"/>
     </LinearLayout>
     <Button
-        android:id="@+id/tv_not_number"
+        android:id="@+id/btn_not_number"
         android:layout_alignParentBottom="true"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -91,5 +85,5 @@
         android:text="Not Your number?"
         android:textAllCaps="false"
         android:textColor="@color/hint_color"
-        android:textSize="15sp"/>
+        android:textSize="@dimen/p2"/>
 </RelativeLayout>

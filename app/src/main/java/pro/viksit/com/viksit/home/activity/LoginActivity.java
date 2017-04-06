@@ -40,6 +40,7 @@ import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import com.facebook.CallbackManager;
 import pro.viksit.com.viksit.R;
+import pro.viksit.com.viksit.dashboard.activity.DashboardActivity;
 import pro.viksit.com.viksit.dashboard.util.FacebookUtil;
 import pro.viksit.com.viksit.dashboard.util.GoogleUtil;
 import pro.viksit.com.viksit.dashboard.util.LinkedInUtil;
@@ -59,7 +60,6 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     private LoginButton fbBtn;
     private Button forgotPassword;
     private Button registerInstead,ok;
-    private GradientDrawable drawable;
 
     private int screenWidth;
     private int screenHeight;
@@ -81,7 +81,6 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         callbackManager = CallbackManager.Factory.create();
         welcome = (TextView) findViewById(R.id.tv_login_welcome);
         email = (AppCompatEditText) findViewById(R.id.apet_login_email);
-        errorEmail = (TextView) findViewById(R.id.tv_error_email);
         password = (AppCompatEditText) findViewById(R.id.apet_login_password);
         errorPassword = (TextView) findViewById(R.id.tv_error_password);
         loginButton = (Button) findViewById(R.id.btn_login);
@@ -96,6 +95,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
         generateHashkey();
         implementActionsListeners();
+
         GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
                 .requestEmail()
                 .build();
@@ -118,34 +118,10 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         ok.setOnClickListener(this);
     }
 
-    public void login() {
-        Log.d(TAG, "going for Login");
-
-        if (!validate()) {
-            onLoginFailed();
-            return;
-        }
-
-        final ProgressDialog progressDialog = new ProgressDialog(getBaseContext(), R.style.AppTheme);
-        progressDialog.setIndeterminate(true);
-        progressDialog.setMessage("Authenticating...");
-        progressDialog.show();
-
-        // TODO: Implement your own authentication logic here.
-
-        new Handler().postDelayed(
-                new Runnable() {
-                    public void run() {
-                        // On complete call either onLoginSuccess or onLoginFailed
-                        onLoginSuccess();
-                        // onLoginFailed();
-                        progressDialog.dismiss();
-                    }
-                }, 3000);
-    }
 
     public void onLoginSuccess() {
         //do something
+        startActivity(new Intent(LoginActivity.this, DashboardActivity.class));
     }
 
     public void onLoginFailed() {
@@ -153,27 +129,31 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         //do something
     }
 
-    private boolean validate() {
-        boolean valid = true;
+    public void login(){
+        if(!validate()){
+            onLoginFailed();
+            return;
+        }
 
+        onLoginSuccess();
+    }
+
+    public boolean validate() {
+        boolean valid = true;
         String emailid = email.getText().toString();
         String pasword = password.getText().toString();
 
-        if (emailid.isEmpty() || !Patterns.EMAIL_ADDRESS.matcher(emailid).matches()) {
+        if (pasword.isEmpty() || pasword.length() < 4 || pasword.length() > 10 ||emailid.isEmpty() || !Patterns.EMAIL_ADDRESS.matcher(emailid).matches() ) {
+
+            if (pasword.isEmpty() || pasword.length() < 4 || pasword.length() > 10) {
+                password.setError("Type 4 and 10 alphanumeric characters");
+            }
+
             errorEmail.setVisibility(View.VISIBLE);
             valid = false;
         } else {
             errorEmail.setVisibility(View.GONE);
         }
-
-        if (pasword.isEmpty() || pasword.length() < 6 || pasword.length() > 10) {
-            /*password.setError("Between 6 and 10 alphanumeric characters");*/
-            errorPassword.setVisibility(View.VISIBLE);
-            valid = false;
-        } else {
-            errorPassword.setVisibility(View.GONE);
-        }
-
         return valid;
     }
 
@@ -182,8 +162,11 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         int id = v.getId();
         if(id == R.id.btn_login) {
             System.out.println("login clicked");
-            LISessionManager.getInstance(getApplicationContext()).clearSession();
+
             //login();
+            LISessionManager.getInstance(getApplicationContext()).clearSession();
+
+
         }else if(id == R.id.btn_register_instead) {
             System.out.println("register instead clicked");
             startActivity(new Intent(LoginActivity.this, SignupActivity.class));

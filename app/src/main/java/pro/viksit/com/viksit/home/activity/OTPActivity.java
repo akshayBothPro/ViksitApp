@@ -11,14 +11,14 @@ import android.widget.TextView;
 
 import pro.viksit.com.viksit.R;
 
-public class OTPActivity extends AppCompatActivity {
+public class OTPActivity extends AppCompatActivity implements  View.OnClickListener{
     private static final String TAG = OTPActivity.class.getSimpleName();
 
     private TextView title;
     private TextView info;
     private AppCompatEditText otpInput;
     private Button enterOTP;
-    private TextView resend;
+    private Button resend;
     private TextView notNumber;
 
     @Override
@@ -29,25 +29,15 @@ public class OTPActivity extends AppCompatActivity {
         title = (TextView) findViewById(R.id.tv_otp_title);
         info = (TextView) findViewById(R.id.tv_otp_info);
         otpInput = (AppCompatEditText) findViewById(R.id.apet_otp_input);
-        enterOTP = (Button) findViewById(R.id.btn_enter_otp);
-        resend = (TextView) findViewById(R.id.tv_resend_otp);
-        notNumber = (TextView) findViewById(R.id.tv_not_number);
+        enterOTP = (Button) findViewById(R.id.btn_submit_otp);
+        resend = (Button) findViewById(R.id.btn_resend_otp);
+        notNumber = (TextView) findViewById(R.id.btn_not_number);
     }
 
     private void implementListeners(){
-        enterOTP.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Log.i(TAG,"Enter OTP Button clicked");
-            }
-        });
+        enterOTP.setOnClickListener(this);
 
-        resend.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Log.i(TAG,"resend OTP clicked");
-            }
-        });
+        resend.setOnClickListener(this);
 
         notNumber.setText(Html.fromHtml("<u>Not your number?</u>"));
         notNumber.setOnClickListener(new View.OnClickListener() {
@@ -56,5 +46,17 @@ public class OTPActivity extends AppCompatActivity {
                 Log.i(TAG,"not your number clicked");
             }
         });
+    }
+
+    @Override
+    public void onClick(View v) {
+        if(v.getId() == R.id.btn_submit_otp){
+            Log.i(TAG,"Submit OTP Button clicked");
+        } else if(v.getId() == R.id.btn_resend_otp){
+            resend.setText("OTP has been re-sent.");
+            resend.setTextColor(getResources().getColor(R.color.theme_color));
+        } else if(v.getId() == R.id.btn_not_number){
+            Log.i(TAG,"Submit OTP Button clicked");
+        }
     }
 }

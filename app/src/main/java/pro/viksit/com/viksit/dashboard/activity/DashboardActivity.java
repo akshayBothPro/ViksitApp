@@ -11,7 +11,13 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
+import com.google.gson.Gson;
+
+import java.io.BufferedWriter;
+import java.io.FileReader;
 import java.io.FileWriter;
+import java.io.IOException;
+import java.io.Reader;
 import java.util.ArrayList;
 
 import pro.viksit.com.viksit.R;
@@ -39,6 +45,7 @@ public class DashboardActivity extends AppCompatActivity {
         pager_indicator = (LinearLayout) findViewById(R.id.viewPagerCountDots);
         horizontalScrollView = (HorizontalScrollView) findViewById(R.id.dots);
         setSupportActionBar(toolbar);
+
         dashboardCards = getData();
         BottomNavigationView bottomNavigationView = (BottomNavigationView) findViewById(R.id.bottom_navigation);
         new BottomBarUtil().setupBottomBar(bottomNavigationView,DashboardActivity.this,R.id.task);
@@ -90,19 +97,29 @@ public class DashboardActivity extends AppCompatActivity {
         DashboardCard dashboardCard4 = new DashboardCard(0,"Mutual Fund Planner","The concept of Risk","Siddharth has challenged you Do you have what it takes?","http://3.bp.blogspot.com/_1fayrmhTf24/TR101EgZ-pI/AAAAAAAAAWQ/owExremngg0/s1600/priyamani-hot9-773160.jpg","video");
         dashboardCards.add(dashboardCard4);
 
+        convertToJSON(dashboardCard4);
         //
 
         return  dashboardCards;
 
     }
 
-    /*public void convertToJSON(){
+    public void convertToJSON(DashboardCard dashboardCard){
         Gson gson = new Gson();
-        Staff obj = new Staff();
 
-// 1. Java object to JSON, and save into a file
-        gson.toJson(obj, new FileWriter("D:\\file.json"));
-    }*/
+
+/*// 1. Java object to JSON, and save into a file
+        gson.toJson(dashboardCard, new FileWriter("D:\\file.json"));*/
+
+        String jsonInString = gson.toJson(dashboardCard);
+
+        //
+
+        //
+
+
+        System.out.println("this is json "+jsonInString);
+    }
 
 
     public void displayscreen(){

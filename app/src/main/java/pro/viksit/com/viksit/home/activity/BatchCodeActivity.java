@@ -1,5 +1,6 @@
 package pro.viksit.com.viksit.home.activity;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.AppCompatEditText;
@@ -11,7 +12,7 @@ import android.widget.TextView;
 
 import pro.viksit.com.viksit.R;
 
-public class BatchCodeActivity extends AppCompatActivity {
+public class BatchCodeActivity extends AppCompatActivity implements View.OnClickListener{
     private static final String TAG = BatchCodeActivity.class.getSimpleName();
 
     private TextView title;
@@ -20,10 +21,9 @@ public class BatchCodeActivity extends AppCompatActivity {
     private AppCompatEditText input2;
     private AppCompatEditText input3;
     private AppCompatEditText input4;
-    private AppCompatEditText input5;
-    private AppCompatEditText input6;
+
     private Button submitButton;
-    private TextView signin_different;
+    private Button signin_different;
 
 
     @Override
@@ -37,47 +37,42 @@ public class BatchCodeActivity extends AppCompatActivity {
         input2 = (AppCompatEditText) findViewById(R.id.apet_bachcode_input2);
         input3 = (AppCompatEditText) findViewById(R.id.apet_bachcode_input3);
         input4 = (AppCompatEditText) findViewById(R.id.apet_bachcode_input4);
-        input5 = (AppCompatEditText) findViewById(R.id.apet_bachcode_input5);
-        input6 = (AppCompatEditText) findViewById(R.id.apet_bachcode_input6);
+        /*input5 = (AppCompatEditText) findViewById(R.id.apet_bachcode_input5);
+        input6 = (AppCompatEditText) findViewById(R.id.apet_bachcode_input6);*/
         submitButton = (Button) findViewById(R.id.btn_batchcode_submit);
-        signin_different = (TextView) findViewById(R.id.tv_batchcode_signin_different);
+        signin_different = (Button) findViewById(R.id.btn_batchcode_signin_different);
+
 
         implementListeners();
     }
 
     private void implementListeners(){
-        submitButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Log.i(TAG,"batchcode submit clicked");
+        submitButton.setOnClickListener(this);
+        signin_different.setOnClickListener(this);
+    }
 
-                //fetching batchcode input appending batchcode in a string
-                String tmp = input1.getText().toString();
-                StringBuffer batchCode = new StringBuffer();
+    @Override
+    public void onClick(View v) {
+        if (v.getId() == R.id.btn_batchcode_submit){
+            //fetching batchcode input appending batchcode in a string
+            String tmp = input1.getText().toString();
+            StringBuffer batchCode = new StringBuffer();
 
-                batchCode.append(tmp.trim());
-                tmp  = input2.getText().toString();
-                batchCode.append(tmp.trim());
-                tmp  = input3.getText().toString();
-                batchCode.append(tmp.trim());
-                tmp  = input4.getText().toString();
-                batchCode.append(tmp.trim());
-                tmp  = input5.getText().toString();
+            batchCode.append(tmp.trim());
+            tmp  = input2.getText().toString();
+            batchCode.append(tmp.trim());
+            tmp  = input3.getText().toString();
+            batchCode.append(tmp.trim());
+            tmp  = input4.getText().toString();
+            batchCode.append(tmp.trim());
+                /*tmp  = input5.getText().toString();
                 batchCode.append(tmp.trim());
                 tmp  = input6.getText().toString();
-                batchCode.append(tmp.trim());
-                System.out.println("Batch Code: " + batchCode.toString());
-                //do something
-            }
-        });
+                batchCode.append(tmp.trim());*/
+            System.out.println("Batch Code: " + batchCode.toString());
 
-        signin_different.setText(Html.fromHtml("<u>Sign in with a different account</u>"));
-        signin_different.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Log.i(TAG,"batchcode signin different clicked");
-                //do something
-            }
-        });
+        } else if (v.getId() == R.id.btn_batchcode_signin_different){
+            startActivity(new Intent(BatchCodeActivity.this, HomeActivity.class));
+        }
     }
 }

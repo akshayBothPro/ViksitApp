@@ -1,19 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
-
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/ll_input_con"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:padding="@dimen/login_con_padding"
-    android:gravity="center"
-    >
-
+    android:paddingLeft="@dimen/signup_con_horizontal_padding"
+    android:paddingStart="@dimen/signup_con_horizontal_padding"
+    android:paddingRight="@dimen/signup_con_horizontal_padding"
+    android:paddingEnd="@dimen/signup_con_horizontal_padding"
+    android:gravity="center">
     <TextView
         android:id="@+id/tv_welcome"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="@dimen/margin_bottom_double"
+        android:paddingLeft="@dimen/signup_header_horizontal_padding"
+        android:paddingStart="@dimen/signup_header_horizontal_padding"
+        android:paddingRight="@dimen/signup_header_horizontal_padding"
+        android:paddingEnd="@dimen/signup_header_horizontal_padding"
+        android:layout_marginBottom="@dimen/signup_header_bottom_margin"
         android:gravity="center_horizontal"
         android:textAlignment="center"
         android:textSize="@dimen/h4"
@@ -25,13 +29,16 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:layout_marginBottom="@dimen/margin_bottom">
+        android:layout_marginBottom="@dimen/signup_edittext_con_bottom_margin">
         <android.support.v7.widget.AppCompatEditText
             android:id="@+id/apet_email"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/input_shape"
-            android:paddingLeft="@dimen/signup_margin"
+            android:paddingLeft="@dimen/signup_edittext_horizontal_padding"
+            android:paddingStart="@dimen/signup_edittext_horizontal_padding"
+            android:paddingRight="@dimen/signup_edittext_horizontal_padding"
+            android:paddingEnd="@dimen/signup_edittext_horizontal_padding"
             android:hint="Email ID"
             android:inputType="textEmailAddress"
             android:textColorHint="@color/hint_color"
@@ -41,56 +48,40 @@
             android:id="@+id/tv_error_email"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="2dp"
+            android:padding="@dimen/signup_error_padding"
             android:background="@color/error_bg"
             android:textColor="@color/error_text"
             android:text="Enter a valid email ID."
-            android:textSize="@dimen/p5"
+            android:textSize="@dimen/p2"
             android:visibility="gone"
             />
     </LinearLayout>
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:layout_marginBottom="@dimen/margin_bottom">
         <android.support.v7.widget.AppCompatEditText
             android:id="@+id/apet_phone_number"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/input_shape"
-            android:paddingLeft="@dimen/signup_margin"
+            android:layout_marginBottom="@dimen/signup_edittext_con_bottom_margin"
+            android:paddingLeft="@dimen/signup_edittext_horizontal_padding"
+            android:paddingStart="@dimen/signup_edittext_horizontal_padding"
+            android:paddingRight="@dimen/signup_edittext_horizontal_padding"
+            android:paddingEnd="@dimen/signup_edittext_horizontal_padding"
             android:hint="Phone Number"
             android:inputType="phone"
             android:textColorHint="@color/hint_color"
             android:textCursorDrawable="@null" />
-        <TextView
-            android:id="@+id/tv_error_phone"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:padding="2dp"
-            android:background="@color/error_bg"
-            android:textColor="@color/error_text"
-            android:text="Enter a valid phone number."
-            android:textSize="@dimen/p5"
-            android:visibility="gone"
-            />
-        </LinearLayout>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:layout_marginBottom="@dimen/margin_bottom_double">
 
     <android.support.v7.widget.AppCompatEditText
         android:id="@+id/apet_password"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@drawable/input_shape"
-        android:paddingLeft="@dimen/signup_margin"
-        android:paddingRight="@dimen/signup_margin"
-
+        android:layout_marginBottom="@dimen/signup_edittext_con_bottom_margin_double"
+        android:paddingLeft="@dimen/signup_edittext_horizontal_padding"
+        android:paddingRight="@dimen/signup_edittext_horizontal_padding"
+        android:paddingStart="@dimen/signup_edittext_horizontal_padding"
+        android:paddingEnd="@dimen/signup_edittext_horizontal_padding"
         android:drawableRight="@mipmap/ic_remove_red_eye_white_24dp"
         android:drawableEnd="@mipmap/ic_remove_red_eye_white_24dp"
         android:drawableTint="@color/eye_icon_color"
@@ -98,39 +89,26 @@
         android:textColorHint="@color/hint_color"
         android:inputType="textPassword"
         android:hint="Password"/>
-    <TextView
-        android:id="@+id/tv_error_password"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:padding="2dp"
-        android:background="@color/error_bg"
-        android:textColor="@color/error_text"
-        android:text="Enter 6 to 14 characters."
-        android:textSize="@dimen/p5"
-        android:visibility="gone"
-        />
-        </LinearLayout>
 
     <Button
         android:id="@+id/btn_signup"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/margin_top_signup"
+        android:layout_marginBottom="@dimen/signup_btn_bottom_margin"
         android:background="@drawable/signup_btn_shape"
-        android:layout_margin="@dimen/signup_margin"
         android:text="sign up"
         android:textColor="@android:color/white"
-        android:textSize="@dimen/p2"
-        android:textStyle="bold" />
+        android:textSize="@dimen/p2" />
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="15dp">
+        android:layout_marginBottom="@dimen/signup_or_con_bottom_margin">
 
         <View
             android:layout_width="match_parent"
             android:layout_height="1dp"
             android:layout_alignLeft="@+id/or"
+            android:layout_alignStart="@+id/or"
             android:layout_centerVertical="true"
             android:layout_marginLeft="40dp"
             android:layout_marginStart="40dp"
@@ -158,44 +136,41 @@
 
     </RelativeLayout>
     <TextView
+        android:id="@+id/tv_via_social"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/signup_social_media_bottom_margin"
+        android:textSize="@dimen/p5"
         android:text="Sign up via social medai"
-        android:id="@+id/tv_via_social"
         />
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:padding="@dimen/margin_bottom"
-        android:gravity="center"
-        >
+        android:padding="@dimen/signup_social_media_con_padding"
+        android:gravity="center">
         <Button
-            android:layout_width="50dp"
-            android:layout_height="50dp"
+            android:layout_width="@dimen/signup_social_media_btn_size"
+            android:layout_height="@dimen/signup_social_media_btn_size"
             android:background="@drawable/linkedin_circle_button"
-            android:layout_marginRight="8dp"
-            />
+            android:layout_marginRight="@dimen/signup_social_media_btn_horizontal_margin"/>
         <Button
-            android:layout_width="50dp"
-            android:layout_height="50dp"
+            android:layout_width="@dimen/signup_social_media_btn_size"
+            android:layout_height="@dimen/signup_social_media_btn_size"
             android:background="@drawable/google_circle_button"
-            android:layout_marginRight="8dp"
-
-            />
+            android:layout_marginRight="@dimen/signup_social_media_btn_horizontal_margin"/>
         <Button
-            android:layout_width="50dp"
-            android:layout_height="50dp"
+            android:layout_width="@dimen/signup_social_media_btn_size"
+            android:layout_height="@dimen/signup_social_media_btn_size"
             android:background="@drawable/fb_circle_button"
-            android:layout_marginRight="8dp"
-            />
+            android:layout_marginRight="@dimen/signup_social_media_btn_horizontal_margin"/>
     </LinearLayout>
     <Button
         android:id="@+id/btn_login_instead"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="@dimen/margin_bottom"
+        android:layout_marginBottom="@dimen/signup_login_instead_btn_bottom_margin"
         android:textAllCaps="false"
         android:text="Already a member? Login instead"
         android:background="#00000000"

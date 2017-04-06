@@ -12,7 +12,7 @@ import android.widget.TextView;
 import pro.viksit.com.viksit.R;
 import pro.viksit.com.viksit.dashboard.activity.DashboardActivity;
 
-public class HomeActivity extends AppCompatActivity {
+public class HomeActivity extends AppCompatActivity implements View.OnClickListener{
     private static final String TAG = HomeActivity.class.getSimpleName();
 
     private ImageView icon;
@@ -35,21 +35,21 @@ public class HomeActivity extends AppCompatActivity {
     }
 
     private void implementListeners(){
+        getStarted.setOnClickListener(this);
+        member.setOnClickListener(this);
 
-        getStarted.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Log.i(TAG,"get started clicked");
-                startActivity(new Intent(HomeActivity.this, SignupActivity.class));
-            }
-        });
 
-        member.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Log.i(TAG,"already a member clicked");
-                startActivity(new Intent(HomeActivity.this, LoginActivity.class));
-            }
-        });
+    }
+
+    @Override
+    public void onClick(View v) {
+        if(v.getId() == R.id.btn_get_started){
+            Log.i(TAG,"get started clicked");
+            startActivity(new Intent(HomeActivity.this, SignupActivity.class));
+        } else  if(v.getId() == R.id.btn_member){
+            Log.i(TAG,"already a member clicked");
+            startActivity(new Intent(HomeActivity.this, LoginActivity.class));
+        }
+
     }
 }

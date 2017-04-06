@@ -48,6 +48,7 @@
         <activity android:name=".role.activity.PurchaseSuccessActivity" />
         <activity android:name=".role.activity.CheckoutActivity" />
         <activity android:name=".role.activity.RolePurchaseActivity"/>
+        <activity android:name=".dashboard.activity.NotificationActivity"/>
         <meta-data android:name="com.facebook.sdk.ApplicationId" android:value="@string/facebook_app_id"/>
         <provider              android:authorities="com.facebook.app.FacebookContentProvider"                 android:name="com.facebook.FacebookContentProvider"
             android:exported="true"/>

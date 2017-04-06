@@ -29,10 +29,7 @@ public class SignupActivity extends AppCompatActivity implements View.OnClickLis
     private AppCompatEditText email;
     private TextView errorEmail;
     private AppCompatEditText phoneNumber;
-    private TextView errorPhone;
     private AppCompatEditText password;
-    private TextView errorPassword;
-    private AppCompatEditText confirmPassword;
     private Button signup;
     private TextView viaSocial;
     private ImageButton linkedBtn;
@@ -53,9 +50,7 @@ public class SignupActivity extends AppCompatActivity implements View.OnClickLis
         email = (AppCompatEditText) findViewById(R.id.apet_email);
         errorEmail =(TextView) findViewById(R.id.tv_error_email);
         phoneNumber = (AppCompatEditText) findViewById(R.id.apet_phone_number);
-        errorPhone =(TextView) findViewById(R.id.tv_error_phone);
         password = (AppCompatEditText) findViewById(R.id.apet_password);
-        errorPassword =(TextView) findViewById(R.id.tv_error_password);
         signup = (Button) findViewById(R.id.btn_signup);
         viaSocial = (TextView) findViewById(R.id.tv_via_social);
         loginInstead = (Button) findViewById(R.id.btn_login_instead);
@@ -106,54 +101,32 @@ public class SignupActivity extends AppCompatActivity implements View.OnClickLis
             return;
         }
 
+        startActivity(new Intent(SignupActivity.this,OTPActivity.class));
+
         //else do ur thing
     }
 
     public boolean validate() {
         boolean valid = true;
         String emailid = email.getText().toString();
-        String phoneNo = phoneNumber.getText().toString();
         String pasword = password.getText().toString();
-        ArrayList <String> errorlist = new ArrayList<>();
+        String phone = phoneNumber.getText().toString();
 
-        if (emailid.isEmpty() || !Patterns.EMAIL_ADDRESS.matcher(emailid).matches()) {
+        if (pasword.isEmpty() || pasword.length() < 4 || pasword.length() > 10 ||emailid.isEmpty() || !Patterns.EMAIL_ADDRESS.matcher(emailid).matches() || phone.isEmpty()) {
+
+            if (pasword.isEmpty() || pasword.length() < 4 || pasword.length() > 10) {
+                password.setError("Type 4 and 10 alphanumeric characters");
+            }
+
+            if (phone.length() != 10) {
+                phoneNumber.setError("Type 10 characters");
+            }
             errorEmail.setVisibility(View.VISIBLE);
-            errorlist.add("Email");
             valid = false;
-
         } else {
             errorEmail.setVisibility(View.GONE);
         }
 
-        if (phoneNo.isEmpty() || !Patterns.PHONE.matcher(phoneNo).matches() || phoneNo.length() != 10) {
-            errorPhone.setVisibility(View.VISIBLE);
-            errorlist.add("Phone Number");
-            valid = false;
-        } else {
-            errorPhone.setVisibility(View.GONE);
-        }
-
-        if (pasword.isEmpty() || pasword.length() < 4 || pasword.length() > 10) {
-            errorPassword.setVisibility(View.VISIBLE);
-            errorlist.add("Password");
-            valid = false;
-        } else {
-            errorPassword.setVisibility(View.GONE);
-        }
-        /*String errorr = "";
-        for(int i = 0; i < errorlist.size();i++){
-            if(i == errorlist.size()-1 && i != 0) {
-                errorr = errorlist.get(i) + "are incorrect";
-                errorPassword.setText(errorr);
-                errorPassword.setVisibility(View.VISIBLE);
-            } else if(i == errorlist.size()-1 && i == 0) {
-                errorr = errorlist.get(i) + "is incorrect";
-                errorPassword.setText(errorr);
-                errorPassword.setVisibility(View.VISIBLE);
-            } else {
-                errorr = errorr + errorlist.get(i) + "/";
-            }
-        }*/
         return valid;
     }
 
