@@ -49,10 +49,9 @@ public class SignupActivity extends AppCompatActivity implements View.OnClickLis
     private AppCompatEditText password;
     private Button signup, btn_signup_linkedIn, btn_signup_google, fb;
     private Button viaSocial;
-    private ImageButton linkedBtn;
-    private ImageButton googleBtn;
+
     private LoginButton fbBtn;
-    private Button loginInstead;
+    private Button loginInstead, ok;
     private int screenWidth;
     private int screenHeight;
     private MaterialDialog dialog;
@@ -79,6 +78,7 @@ public class SignupActivity extends AppCompatActivity implements View.OnClickLis
                 .build();
         callbackManager = CallbackManager.Factory.create();
         sharedpreferences = getSharedPreferences(getResources().getString(R.string.shared_preference_key), Context.MODE_PRIVATE);
+        ok = (Button) dialog.getCustomView().findViewById(R.id.ok);
 
         welcome = (TextView) findViewById(R.id.tv_welcome);
         email = (AppCompatEditText) findViewById(R.id.apet_email);
@@ -88,8 +88,7 @@ public class SignupActivity extends AppCompatActivity implements View.OnClickLis
         signup = (Button) findViewById(R.id.btn_signup);
         viaSocial = (Button) findViewById(R.id.tv_via_social);
         loginInstead = (Button) findViewById(R.id.btn_login_instead);
-        linkedBtn = (ImageButton) findViewById(R.id.btn_signup_linkedIn);
-        googleBtn = (ImageButton) findViewById(R.id.btn_signup_google);
+
         fbBtn = (LoginButton) findViewById(R.id.btn_signup_fb);
 //btn_signup_linkedIn,btn_signup_google,fb,btn_signup_fb
         btn_signup_linkedIn = (Button) findViewById(R.id.btn_signup_linkedIn);
@@ -116,6 +115,8 @@ public class SignupActivity extends AppCompatActivity implements View.OnClickLis
         btn_signup_linkedIn.setOnClickListener(this);
         btn_signup_google.setOnClickListener(this);
         fb.setOnClickListener(this);
+        ok.setOnClickListener(this);
+
         Drawable sourceDrawable = getResources().getDrawable(R.mipmap.ic_remove_red_eye_white_24dp);
         sourceDrawable.setColorFilter(getResources().getColor(R.color.eye_icon_color), PorterDuff.Mode.SRC_IN);
 
@@ -143,6 +144,9 @@ public class SignupActivity extends AppCompatActivity implements View.OnClickLis
             case R.id.fb:
                 getLoginDetails();
                 fbBtn.performClick();
+                break;
+            case R.id.ok:
+                dialog.dismiss();
                 break;
         }
 
