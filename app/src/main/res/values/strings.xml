@@ -29,7 +29,7 @@
     <!-- end of params For services -->
 
     <!--Start of URL For services -->
-    <string name="serverip">http://192.168.1.44:8080/</string>
+    <string name="serverip">http://192.168.1.28:8080/</string>
     <string name="socialloginurl">t2c/AuthenticateUser/login/social</string>
     <string name="loginurl">t2c/AuthenticateUser/login</string>
     <string name="signupurl">t2c/user/create</string>

@@ -6,6 +6,7 @@ import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 
 import pro.viksit.com.viksit.R;
+import pro.viksit.com.viksit.dashboard.activity.DashboardActivity;
 
 /**
  * Created by ravy on 17/03/2017.
@@ -25,7 +26,7 @@ public class SplashScreenActivity extends AppCompatActivity {
             @Override
             public void run() {
                 /*startActivity(new Intent(SplashScreenActivity.this, LoginActivity.class));*/
-                startActivity(new Intent(SplashScreenActivity.this, HomeActivity.class));
+                startActivity(new Intent(SplashScreenActivity.this, DashboardActivity.class));
                 SplashScreenActivity.this.finish();
             }
         }, SPLASH_TIME_OUT);

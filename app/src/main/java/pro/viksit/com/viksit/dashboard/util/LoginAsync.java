@@ -29,6 +29,7 @@ import java.util.List;
 import pro.viksit.com.viksit.R;
 import pro.viksit.com.viksit.dashboard.activity.DashboardActivity;
 import pro.viksit.com.viksit.dashboard.pojo.StudentProfile;
+import pro.viksit.com.viksit.home.activity.SplashScreenActivity;
 
 /**
  * Created by Feroz on 06-04-2017.
@@ -67,7 +68,7 @@ public class LoginAsync extends AsyncTask<String, Integer, String> {
         if(result.equalsIgnoreCase("null")){
             dialog.show();
         }else {
-            Intent i = new Intent(context, DashboardActivity.class);
+            Intent i = new Intent(context, SplashScreenActivity.class);
             i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             context.startActivity(i);
         }
