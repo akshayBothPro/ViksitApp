@@ -101,8 +101,7 @@
         android:textSize="@dimen/p2" />
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="@dimen/signup_or_con_bottom_margin">
+        android:layout_height="wrap_content">
 
         <View
             android:layout_width="match_parent"
@@ -135,20 +134,22 @@
             android:background="@color/hint_color" />
 
     </RelativeLayout>
-    <TextView
+    <Button
         android:id="@+id/tv_via_social"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="@dimen/signup_social_media_bottom_margin"
-        android:textSize="@dimen/p5"
-        android:text="Sign up via social medai"
+        android:background="#00000000"
+        android:stateListAnimator="@null"
+        android:textAllCaps="false"
+        android:textSize="@dimen/p4"
+        android:textColor="@color/title_color"
+        android:text="Sign up via social media"
         />
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:padding="@dimen/signup_social_media_con_padding"
         android:gravity="center">
         <Button
             android:layout_width="@dimen/signup_social_media_btn_size"

@@ -31,7 +31,7 @@ public class SignupActivity extends AppCompatActivity implements View.OnClickLis
     private AppCompatEditText phoneNumber;
     private AppCompatEditText password;
     private Button signup;
-    private TextView viaSocial;
+    private Button viaSocial;
     private ImageButton linkedBtn;
     private ImageButton googleBtn;
     private ImageButton fbBtn;
@@ -52,7 +52,7 @@ public class SignupActivity extends AppCompatActivity implements View.OnClickLis
         phoneNumber = (AppCompatEditText) findViewById(R.id.apet_phone_number);
         password = (AppCompatEditText) findViewById(R.id.apet_password);
         signup = (Button) findViewById(R.id.btn_signup);
-        viaSocial = (TextView) findViewById(R.id.tv_via_social);
+        viaSocial = (Button) findViewById(R.id.tv_via_social);
         loginInstead = (Button) findViewById(R.id.btn_login_instead);
         linkedBtn = (ImageButton) findViewById(R.id.btn_signup_linkedIn);
         googleBtn = (ImageButton) findViewById(R.id.btn_signup_google);

@@ -13,8 +13,7 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="@dimen/margin_bottom_double">
+        android:layout_height="wrap_content">
 
         <View
             android:layout_width="match_parent"
@@ -47,26 +46,28 @@
 
     </RelativeLayout>
 
-    <TextView
+    <Button
         android:id="@+id/tv_via_social"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textColor="@color/title_color"
+        android:background="#00000000"
+        android:stateListAnimator="@null"
+        android:textAllCaps="false"
         android:textSize="@dimen/p4"
-        android:text="Log in via social media"/>
+        android:textColor="@color/title_color"
+        android:text="Log in via social media" />
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:padding="@dimen/margin_bottom"
         android:orientation="horizontal">
 
         <ImageButton
             android:id="@+id/btn_signup_linkedIn"
             android:layout_width="50dp"
             android:layout_height="50dp"
-            android:layout_marginRight="8dp"
+            android:layout_marginRight="10dp"
             android:elevation="5dp"
             android:background="@drawable/linkedin_circle_button"/>
 
@@ -74,7 +75,7 @@
             android:id="@+id/btn_signup_google"
             android:layout_width="50dp"
             android:layout_height="50dp"
-            android:layout_marginRight="8dp"
+            android:layout_marginRight="10dp"
             android:elevation="5dp"
             android:background="@drawable/google_circle_button"/>
 
@@ -82,7 +83,7 @@
             android:id="@+id/fb"
             android:layout_width="50dp"
             android:layout_height="50dp"
-            android:layout_marginRight="8dp"
+            android:layout_marginRight="10dp"
             android:elevation="5dp"
             android:background="@drawable/fb_circle_button"/>
         <com.facebook.login.widget.LoginButton

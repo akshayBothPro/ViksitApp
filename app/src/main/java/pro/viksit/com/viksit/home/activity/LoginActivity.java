@@ -58,7 +58,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     private AppCompatEditText password;
     private TextView errorPassword;
     private Button loginButton;
-    private TextView viaSocial;
+    private Button viaSocial;
     private ImageButton linkedInBtn;
     private ImageButton googleBtn,fb;
     private LoginButton fbBtn;
@@ -93,7 +93,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         password = (AppCompatEditText) findViewById(R.id.apet_login_password);
         errorPassword = (TextView) findViewById(R.id.tv_error_password);
         loginButton = (Button) findViewById(R.id.btn_login);
-        viaSocial = (TextView) findViewById(R.id.tv_via_social);
+        viaSocial = (Button) findViewById(R.id.tv_via_social);
         googleBtn = (ImageButton) findViewById(R.id.btn_signup_google);
         linkedInBtn = (ImageButton) findViewById(R.id.btn_signup_linkedIn);
         fbBtn = (LoginButton) findViewById(R.id.btn_signup_fb);
