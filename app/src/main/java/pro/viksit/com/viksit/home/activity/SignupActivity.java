@@ -11,12 +11,14 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.AppCompatEditText;
 import android.text.Html;
+import android.text.InputType;
 import android.util.DisplayMetrics;
 import android.util.Log;
 import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -49,6 +51,7 @@ public class SignupActivity extends AppCompatActivity implements View.OnClickLis
     private TextView errorEmail;
     private AppCompatEditText phoneNumber;
     private AppCompatEditText password;
+    private ImageView showPassword;
     private Button signup, btn_signup_linkedIn, btn_signup_google, fb;
     private Button viaSocial;
 
@@ -87,6 +90,7 @@ public class SignupActivity extends AppCompatActivity implements View.OnClickLis
         errorEmail = (TextView) findViewById(R.id.tv_error_email);
         phoneNumber = (AppCompatEditText) findViewById(R.id.apet_phone_number);
         password = (AppCompatEditText) findViewById(R.id.apet_password);
+        showPassword = (ImageView) findViewById(R.id.iv_show_password);
         signup = (Button) findViewById(R.id.btn_signup);
         viaSocial = (Button) findViewById(R.id.tv_via_social);
         loginInstead = (Button) findViewById(R.id.btn_login_instead);
@@ -111,6 +115,7 @@ public class SignupActivity extends AppCompatActivity implements View.OnClickLis
 
         viaSocial.setText("Sign Up via social media");
         signup.setOnClickListener(this);
+        showPassword.setOnClickListener(this);
 
         loginInstead.setText("Already a member? Login instead");
         loginInstead.setOnClickListener(this);
@@ -149,6 +154,13 @@ public class SignupActivity extends AppCompatActivity implements View.OnClickLis
                 break;
             case R.id.ok:
                 dialog.dismiss();
+                break;
+            case R.id.iv_show_password:
+                if(password.getInputType() == InputType.TYPE_TEXT_VARIATION_PASSWORD) {
+                    password.setInputType(InputType.TYPE_CLASS_TEXT);
+                } else {
+                    password.setInputType(InputType.TYPE_TEXT_VARIATION_PASSWORD);
+                }
                 break;
         }
 

@@ -28,14 +28,24 @@ public class ModuleVerticalRecyclerViewAdapter extends RecyclerView.Adapter<Modu
     private List<Role> roles;
     private Context context;
 
+    private int screenWidth;
+    private int screenHeight;
+
     public ModuleVerticalRecyclerViewAdapter(List<Role> roles,Context context) {
         this.roles = roles;
         this.context = context;
     }
 
+    public ModuleVerticalRecyclerViewAdapter(List<Role> roles,Context context, int screenWidth, int screenHeight) {
+        this.roles = roles;
+        this.context = context;
+        this.screenWidth = screenWidth;
+        this.screenHeight = screenHeight;
+    }
+
     @Override
     public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View itemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.role_vertical_item_card_view, parent, false);
+        View itemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.module_vertical_card_item, parent, false);
 
         //
         return new MyViewHolder(itemView);
@@ -46,7 +56,7 @@ public class ModuleVerticalRecyclerViewAdapter extends RecyclerView.Adapter<Modu
         Role role = roles.get(position);
         holder.title.setText(role.getTitle());
         holder.subtitle.setText(role.getSubtitle());
-        holder.status.setText(Integer.toString(role.getCompletedItems()) + " of " + Integer.toString(role.getTotalItems()) + " items completed");
+        holder.status.setText(Integer.toString(role.getCompletedItems()) + " of " + Integer.toString(role.getTotalItems()) + " modules completed");
         /*holder.image.setImageResource(role.getImageResID());*/
         holder.progressBar.setMax(role.getTotalItems());
         holder.progressBar.setProgress(role.getCompletedItems());
@@ -54,6 +64,12 @@ public class ModuleVerticalRecyclerViewAdapter extends RecyclerView.Adapter<Modu
         /*holder.progressBar.getdeterminateDrawable().setColorFilter(context.getResources().getColor(R.color.linkedIn_color), PorterDuff.Mode.MULTIPLY);*/
         /*holder.cardview.setPadding(20,20,20,20);*/
         Picasso.with(context).load(role.getImageResID()).transform(new CircleTransform()).into(holder.image);
+        if(screenHeight != 0 && screenWidth != 0) {
+            ViewGroup.LayoutParams params = holder.image.getLayoutParams();
+            params.height = screenHeight/7;
+            params.width = screenHeight/6;
+            holder.image.setLayoutParams(params);
+        }
         /*Picasso.with(context).load(role.getImageURL()).transform(new CircleTransform()).into(holder.image);*/
         // if we have image URL instead of resID use it
         /*URL url = role.getImageURL();
@@ -71,7 +87,6 @@ public class ModuleVerticalRecyclerViewAdapter extends RecyclerView.Adapter<Modu
         public ImageView image;
         public TextView title, subtitle, status;
         public ProgressBar progressBar;
-        public CardView cardview;
 
         public MyViewHolder(View view) {
             super(view);
@@ -80,11 +95,9 @@ public class ModuleVerticalRecyclerViewAdapter extends RecyclerView.Adapter<Modu
             status = (TextView) view.findViewById(R.id.tv_role_vertical_item_status);
             image = (ImageView)view.findViewById(R.id.iv_role_vertical_item_image);
             progressBar = (ProgressBar) view.findViewById(R.id.pb_role_vertical_item_progress);
-            cardview = (CardView)view.findViewById(R.id.cv_role_vertical_card);
 
             progressBar.getProgressDrawable().setColorFilter(Color.parseColor("#5bc6f6"), PorterDuff.Mode.MULTIPLY);
 
-            cardview.setOnClickListener(this);
         }
 
         @Override

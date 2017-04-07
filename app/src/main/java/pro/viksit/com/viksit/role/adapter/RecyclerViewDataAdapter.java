@@ -62,7 +62,6 @@ public class RecyclerViewDataAdapter extends RecyclerView.Adapter<RecyclerViewDa
         itemRowHolder.recycler_view_list.setLayoutManager(new LinearLayoutManager(mContext, LinearLayoutManager.HORIZONTAL, false));
         itemRowHolder.recycler_view_list.setAdapter(itemListDataAdapter);
 
-
         itemRowHolder.recycler_view_list.setNestedScrollingEnabled(false);
 
 

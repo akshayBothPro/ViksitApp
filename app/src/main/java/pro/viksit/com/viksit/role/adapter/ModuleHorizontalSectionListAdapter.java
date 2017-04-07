@@ -26,14 +26,24 @@ public class ModuleHorizontalSectionListAdapter extends RecyclerView.Adapter<Mod
     private ArrayList<Role> itemsList;
     private Context mContext;
 
+    private int screenWidth;
+    private int screenHeight;
+
     public ModuleHorizontalSectionListAdapter(Context context, ArrayList<Role> itemsList) {
         this.itemsList = itemsList;
         this.mContext = context;
     }
 
+    public ModuleHorizontalSectionListAdapter(Context context, ArrayList<Role> itemsList, int screenWidth, int screenHeight) {
+        this.itemsList = itemsList;
+        this.mContext = context;
+        this.screenWidth = screenWidth;
+        this.screenHeight = screenHeight;
+    }
+
     @Override
     public SingleItemRowHolder onCreateViewHolder(ViewGroup viewGroup, int i) {
-        View v = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.list_single_card, null);
+        View v = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.module_horizontal_item, null);
         SingleItemRowHolder mh = new SingleItemRowHolder(v);
         return mh;
     }
@@ -44,10 +54,14 @@ public class ModuleHorizontalSectionListAdapter extends RecyclerView.Adapter<Mod
         Role singleItem = itemsList.get(i);
 
         holder.tvTitle.setText(singleItem.getTitle());
-        holder.itemImage.setImageResource(singleItem.getImageResID());
 
         Picasso.with(mContext).load(singleItem.getImageResID()).transform(new CircleTransform()).into(holder.itemImage);
-
+        if(screenHeight != 0 && screenWidth != 0){
+            ViewGroup.LayoutParams params = holder.itemImage.getLayoutParams();
+            params.height = screenWidth/4;
+            params.width = screenWidth/4;
+            holder.itemImage.setLayoutParams(params);
+        }
     }
 
     @Override

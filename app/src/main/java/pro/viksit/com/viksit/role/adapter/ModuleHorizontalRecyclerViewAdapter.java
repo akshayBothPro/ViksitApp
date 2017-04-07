@@ -22,9 +22,19 @@ public class ModuleHorizontalRecyclerViewAdapter extends RecyclerView.Adapter<Mo
     private ArrayList<SectionedRole> dataList;
     private Context mContext;
 
+    private int screenWidth;
+    private int screenHeight;
+
     public ModuleHorizontalRecyclerViewAdapter(Context context, ArrayList<SectionedRole> dataList) {
         this.dataList = dataList;
         this.mContext = context;
+    }
+
+    public ModuleHorizontalRecyclerViewAdapter(Context context, ArrayList<SectionedRole> dataList, int screenWidth, int screenHeight) {
+        this.dataList = dataList;
+        this.mContext = context;
+        this.screenWidth = screenWidth;
+        this.screenHeight = screenHeight;
     }
 
     @Override
@@ -41,7 +51,7 @@ public class ModuleHorizontalRecyclerViewAdapter extends RecyclerView.Adapter<Mo
         ArrayList singleSectionItems = dataList.get(i).getAllItemsInSection();
 
         itemRowHolder.itemTitle.setText(sectionName);
-        ModuleHorizontalSectionListAdapter itemListDataAdapter = new ModuleHorizontalSectionListAdapter(mContext, singleSectionItems);
+        ModuleHorizontalSectionListAdapter itemListDataAdapter = new ModuleHorizontalSectionListAdapter(mContext, singleSectionItems, screenWidth, screenHeight);
 
         itemRowHolder.recycler_view_list.setHasFixedSize(true);
         itemRowHolder.recycler_view_list.setLayoutManager(new LinearLayoutManager(mContext, LinearLayoutManager.HORIZONTAL, false));

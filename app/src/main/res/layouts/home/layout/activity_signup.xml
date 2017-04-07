@@ -72,23 +72,38 @@
             android:textColorHint="@color/hint_color"
             android:textCursorDrawable="@null" />
 
-    <android.support.v7.widget.AppCompatEditText
-        android:id="@+id/apet_password"
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/input_shape"
-        android:layout_marginBottom="@dimen/signup_edittext_con_bottom_margin_double"
-        android:paddingLeft="@dimen/signup_edittext_horizontal_padding"
-        android:paddingRight="@dimen/signup_edittext_horizontal_padding"
-        android:paddingStart="@dimen/signup_edittext_horizontal_padding"
-        android:paddingEnd="@dimen/signup_edittext_horizontal_padding"
-        android:drawableRight="@mipmap/ic_remove_red_eye_white_24dp"
-        android:drawableEnd="@mipmap/ic_remove_red_eye_white_24dp"
-        android:drawableTint="@color/eye_icon_color"
-        android:textCursorDrawable="@null"
-        android:textColorHint="@color/hint_color"
-        android:inputType="textPassword"
-        android:hint="Password"/>
+        android:layout_marginBottom="@dimen/signup_edittext_con_bottom_margin_double">
+
+        <android.support.v7.widget.AppCompatEditText
+            android:id="@+id/apet_password"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/input_shape"
+            android:paddingLeft="@dimen/signup_edittext_horizontal_padding"
+            android:paddingRight="@dimen/signup_edittext_horizontal_padding"
+            android:paddingStart="@dimen/signup_edittext_horizontal_padding"
+            android:paddingEnd="@dimen/signup_edittext_horizontal_padding"
+            android:drawableTint="@color/eye_icon_color"
+            android:textCursorDrawable="@null"
+            android:textColorHint="@color/hint_color"
+            android:inputType="textPassword"
+            android:hint="Password"/>
+        <ImageView
+            android:id="@+id/iv_show_password"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:tint="@color/eye_icon_color"
+            android:layout_marginRight="@dimen/signup_edittext_horizontal_padding"
+            android:layout_marginEnd="@dimen/signup_edittext_horizontal_padding"
+            android:src="@mipmap/ic_remove_red_eye_white_24dp"/>
+
+    </RelativeLayout>
 
     <Button
         android:id="@+id/btn_signup"

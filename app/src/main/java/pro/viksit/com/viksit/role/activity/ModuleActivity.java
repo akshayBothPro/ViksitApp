@@ -8,6 +8,7 @@ import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.util.DisplayMetrics;
 import android.view.View;
 
 import java.util.ArrayList;
@@ -38,10 +39,14 @@ public class ModuleActivity extends AppCompatActivity {
     private ArrayList<RecommendedRole> recommendedRoles;
     private ArrayList <SectionedRole> allSampleData;
 
+    private int screenWidth;
+    private int screenHeight;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_module);
+        getWidthAndHeight();
 
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         bottomNavigationView = (BottomNavigationView) findViewById(R.id.bottom_navigation);
@@ -59,7 +64,7 @@ public class ModuleActivity extends AppCompatActivity {
     private void implementActions(){
 
         // setting up vertical recycler view
-        moduleVerticalRecyclerViewAdapter = new ModuleVerticalRecyclerViewAdapter(roles,getBaseContext());
+        moduleVerticalRecyclerViewAdapter = new ModuleVerticalRecyclerViewAdapter(roles,getBaseContext(), screenWidth, screenHeight);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
         linearLayoutManager.setAutoMeasureEnabled(true);
         verticalRecycler.setLayoutManager(linearLayoutManager);
@@ -129,4 +134,11 @@ public class ModuleActivity extends AppCompatActivity {
     public void onClick(View v) {
 
     }*/
+
+    private void getWidthAndHeight() {
+        DisplayMetrics displaymetrics = new DisplayMetrics();
+        this.getWindowManager().getDefaultDisplay().getMetrics(displaymetrics);
+        screenHeight = displaymetrics.heightPixels;
+        screenWidth = displaymetrics.widthPixels;
+    }
 }
