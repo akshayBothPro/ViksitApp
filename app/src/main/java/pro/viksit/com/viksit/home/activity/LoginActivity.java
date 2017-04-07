@@ -39,12 +39,15 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.util.HashMap;
+
 import com.facebook.CallbackManager;
 import pro.viksit.com.viksit.R;
 import pro.viksit.com.viksit.dashboard.activity.DashboardActivity;
 import pro.viksit.com.viksit.dashboard.util.FacebookUtil;
 import pro.viksit.com.viksit.dashboard.util.GoogleUtil;
 import pro.viksit.com.viksit.dashboard.util.LinkedInUtil;
+import pro.viksit.com.viksit.dashboard.util.LoginAsync;
 
 public class LoginActivity extends AppCompatActivity implements View.OnClickListener,GoogleApiClient.OnConnectionFailedListener{
     private static final String TAG = LoginActivity.class.getSimpleName();
@@ -81,7 +84,6 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                 .customView(R.layout.dialog_error, false)
                 .build();
         progressdialog =  new MaterialDialog.Builder(this)
-                .title(R.string.app_name)
                 .content("Please wait ..")
                 .progress(true, 0)
                 .build();
@@ -110,6 +112,21 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                 .enableAutoManage(this, this)
                 .addApi(Auth.GOOGLE_SIGN_IN_API, gso)
                 .build();
+
+        email.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                errorPassword.setVisibility(View.GONE);
+
+            }
+        });
+        password.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                errorPassword.setVisibility(View.GONE);
+
+            }
+        });
     }
 
     private void implementActionsListeners(){
@@ -128,7 +145,12 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
     public void onLoginSuccess() {
         //do something
-        startActivity(new Intent(LoginActivity.this, DashboardActivity.class));
+        String emailid = email.getText().toString();
+        String pasword = password.getText().toString();
+        HashMap<String, String> params = new HashMap<String, String>();
+        params.put(getResources().getString(R.string.email), emailid);
+        params.put(getResources().getString(R.string.password), pasword);
+        new LoginAsync(params,this,dialog,progressdialog).execute(getResources().getString(R.string.loginurl));
     }
 
 
@@ -145,16 +167,25 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         String emailid = email.getText().toString();
         String pasword = password.getText().toString();
 
-        if (pasword.isEmpty() || pasword.length() < 4 || pasword.length() > 10 ||emailid.isEmpty() || !Patterns.EMAIL_ADDRESS.matcher(emailid).matches() ) {
-
-            if (pasword.isEmpty() || pasword.length() < 4 || pasword.length() > 10) {
-                password.setError("Type 4 and 10 alphanumeric characters");
+        if (pasword.isEmpty() || pasword.length() < 4  ||emailid.isEmpty() || !Patterns.EMAIL_ADDRESS.matcher(emailid).matches() ) {
+            String error_message="";
+            if(emailid.isEmpty()){
+                error_message = "Email id is required";
+            }else if(!Patterns.EMAIL_ADDRESS.matcher(emailid).matches()){
+                error_message = "Please enter a valid email Id ";
             }
+            if(pasword.isEmpty()){
+                error_message = error_message+"\n"+"Password is required";
+            }
+            else if (password.length() < 4){
+                error_message = error_message+"\n"+"Password is too short";
+            }
+            errorPassword.setText(error_message);
 
-            errorEmail.setVisibility(View.VISIBLE);
+            errorPassword.setVisibility(View.VISIBLE);
             valid = false;
         } else {
-            errorEmail.setVisibility(View.GONE);
+            errorPassword.setVisibility(View.GONE);
         }
         return valid;
     }
@@ -165,8 +196,8 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         if(id == R.id.btn_login) {
             System.out.println("login clicked");
 
-            //login();
-            LISessionManager.getInstance(getApplicationContext()).clearSession();
+            login();
+//            LISessionManager.getInstance(getApplicationContext()).clearSession();
 
 
         }else if(id == R.id.btn_register_instead) {
