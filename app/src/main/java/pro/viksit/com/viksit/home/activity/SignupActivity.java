@@ -32,12 +32,14 @@ import com.google.android.gms.common.api.GoogleApiClient;
 import com.linkedin.platform.LISessionManager;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import pro.viksit.com.viksit.R;
 import pro.viksit.com.viksit.dashboard.activity.DashboardActivity;
 import pro.viksit.com.viksit.dashboard.util.FacebookUtil;
 import pro.viksit.com.viksit.dashboard.util.GoogleUtil;
 import pro.viksit.com.viksit.dashboard.util.LinkedInUtil;
+import pro.viksit.com.viksit.dashboard.util.LoginAsync;
 
 public class SignupActivity extends AppCompatActivity implements View.OnClickListener, GoogleApiClient.OnConnectionFailedListener {
     private static final String TAG = SignupActivity.class.getSimpleName();
@@ -174,8 +176,15 @@ public class SignupActivity extends AppCompatActivity implements View.OnClickLis
             onSignupFailed();
             return;
         }
+        String emailid = email.getText().toString();
+        String pasword = password.getText().toString();
+        String phone = phoneNumber.getText().toString();
+        HashMap<String, String> params = new HashMap<String, String>();
+        params.put(getResources().getString(R.string.email), emailid);
+        params.put(getResources().getString(R.string.password), pasword);
+        params.put(getResources().getString(R.string.phone), phone);
+        new LoginAsync(params, this, dialog, progressdialog, sharedpreferences).execute(getResources().getString(R.string.signupurl));
 
-        startActivity(new Intent(SignupActivity.this, OTPActivity.class));
 
         //else do ur thing
     }

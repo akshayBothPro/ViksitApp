@@ -14,18 +14,29 @@
     <string name="quotes">Quotes</string>
     <string name="html">HTML</string>
     <string name="attach">Attach</string>
+
+    <string name="shared_preference_key">istarViksitComplexKey</string>
+
+    <string name="loginerrormsg">OOPS Something went wrong ! \nCheck your Internet Connection\nOR\nCheck your Email/Password</string>
+
+    <!--Start of params For services -->
     <string name="email">email</string>
     <string name="password">password</string>
-    <string name="shared_preference_key">istarViksitComplexKey</string>
     <string name="username">name</string>
     <string name="profilepic">profileImage</string>
     <string name="socialmedia">socialMedia</string>
-    <string name="loginerrormsg">OOPS Something went wrong ! \nCheck your Internet Connection\nOR\nCheck your Email/Password</string>
+    <string name="phone">mobile</string>
+    <!-- end of params For services -->
 
-    <!--STart of URL For services -->
-    <string name="socialloginurl">http://192.168.1.44:8080/t2c/AuthenticateUser/login/social</string>
-    <string name="loginurl">http://192.168.43.4:8080/AuthenticateUser/login</string>
+    <!--Start of URL For services -->
+    <string name="serverip">http://192.168.1.44:8080/</string>
+    <string name="socialloginurl">t2c/AuthenticateUser/login/social</string>
+    <string name="loginurl">t2c/AuthenticateUser/login</string>
+    <string name="signupurl">t2c/user/create</string>
+
     <!-- end of URL For services -->
+
+
     <!--start Stored/cached data-->
     <string name="user_profile">USERPROFILE</string>
 

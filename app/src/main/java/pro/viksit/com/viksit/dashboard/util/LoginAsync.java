@@ -83,7 +83,8 @@ public class LoginAsync extends AsyncTask<String, Integer, String> {
 
     private String postData(HashMap<String,String> param,String url) {
         HttpClient httpclient = new DefaultHttpClient();
-        HttpPost httppost = new HttpPost(url);
+        System.out.println("calling url is -> "+context.getResources().getString(R.string.serverip)+url);
+        HttpPost httppost = new HttpPost(context.getResources().getString(R.string.serverip)+url);
         String jsonresponse= "";
         try {
             // Add your data
@@ -115,7 +116,9 @@ public class LoginAsync extends AsyncTask<String, Integer, String> {
 
             e.printStackTrace();
             return "null";
-
+        }catch (Exception e){
+            e.printStackTrace();
+            return "null";
         }
         return jsonresponse;
     }
