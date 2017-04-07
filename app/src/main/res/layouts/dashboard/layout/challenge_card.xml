@@ -29,35 +29,32 @@
                 android:id="@+id/gg"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:paddingTop="@dimen/challenge_card_hor_padding"
+                android:paddingBottom="@dimen/challenge_card_hor_padding"
                 android:orientation="vertical">
 
                 <TextView
                     android:id="@+id/header"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="5dp"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginRight="5dp"
-                    android:layout_marginTop="5dp"
+                    android:layout_marginBottom="@dimen/challenge_header_bottom_margin"
+                    android:paddingLeft="@dimen/challenge_card_hor_padding"
+                    android:paddingRight="@dimen/challenge_card_hor_padding"
                     android:text="Risk vs Uncertainity"
                     android:textSize="@dimen/p5"
                     android:textAllCaps="true"
-                    android:textColor="@color/title_challenge"
-                    android:textStyle="italic" />
+                    android:textColor="@color/title_challenge" />
 
                 <TextView
                     android:id="@+id/title"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/header"
-                    android:layout_marginBottom="10dp"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginRight="5dp"
+                    android:paddingLeft="@dimen/challenge_card_hor_padding"
+                    android:paddingRight="@dimen/challenge_card_hor_padding"
                     android:text="The Concept of Risk"
                     android:textColor="@color/desc_color"
-                    android:textSize="@dimen/h4"
-                    android:textStyle="bold" />
-
+                    android:textSize="@dimen/h5" />
 
                 <LinearLayout
                     android:id="@+id/lll"
@@ -65,7 +62,8 @@
                     android:layout_height="150dp"
                     android:layout_below="@+id/title"
                     android:orientation="horizontal"
-                    android:layout_marginBottom="5dp"
+                    android:layout_marginTop="@dimen/challenge_pic_margin"
+                    android:layout_marginBottom="@dimen/challenge_pic_margin"
                     android:background="@drawable/logos_55"
                     android:weightSum="100">
 
@@ -105,20 +103,21 @@
                         </RelativeLayout>
 
                         <TextView
+                            android:id="@+id/myid"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="You"
-                            android:id="@+id/myid"
                             android:textColor="@color/white_color"
-                            android:textSize="@dimen/h3"
+                            android:textSize="@dimen/p4"
                             android:textStyle="bold" />
 
                         <TextView
+                            android:id="@+id/mypoints"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="5685 XP"
                             android:textColor="@color/challenge_xp_color"
-                            android:id="@+id/mypoints"/>
+                            android:textSize="@dimen/p6" />
 
                     </LinearLayout>
 
@@ -164,13 +163,14 @@
                             android:text="You"
                             android:id="@+id/challenger_name"
                             android:textColor="@color/white_color"
-                            android:textSize="@dimen/h3"
+                            android:textSize="@dimen/p4"
                             android:textStyle="bold" />
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="5685 XP"
+                            android:textSize="@dimen/p6"
                             android:textColor="@color/challenge_xp_color"
                             android:id="@+id/challenger_points"
                             />
@@ -187,10 +187,12 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/lll"
-                    android:layout_marginTop="5dp"
-                    android:layout_marginBottom="5dp"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginRight="5dp"
+                    android:layout_marginBottom="@dimen/challenge_bottom_margin"
+                    android:paddingLeft="@dimen/challenge_card_hor_padding"
+                    android:paddingRight="@dimen/challenge_card_hor_padding"
+                    android:maxLines="2"
+                    android:minLines="1"
+                    android:ellipsize="end"
                     android:text="Lorem Ipsum is simply dummy text of the printing and typesetting industry."
                     android:textColor="@color/desc_color"
                     android:textSize="@dimen/p2" />
@@ -200,11 +202,13 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/description"
-                    android:layout_marginBottom="3dp"
+                    android:paddingLeft="@dimen/challenge_card_hor_padding"
+                    android:paddingRight="@dimen/challenge_card_hor_padding"
+                    android:layout_marginBottom="@dimen/challenge_bottom_margin"
                     android:orientation="horizontal"
                     android:weightSum="100">
 
-                    <LinearLayout
+                    <!--<LinearLayout
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="33"
@@ -217,7 +221,7 @@
                             android:text="16"
                             android:textAlignment="center"
                             android:textColor="@color/desc_color"
-                            android:textSize="@dimen/p1"
+                            android:textSize="@dimen/p2"
                             android:textStyle="bold" />
 
                         <TextView
@@ -228,12 +232,12 @@
                             android:textAlignment="center"
                             android:textSize="@dimen/p5" />
 
-                    </LinearLayout>
+                    </LinearLayout>-->
 
                     <LinearLayout
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_weight="33"
+                        android:layout_weight="50"
                         android:orientation="vertical">
 
                         <TextView
@@ -242,7 +246,7 @@
                             android:layout_height="wrap_content"
                             android:text="40 XP"
                             android:textAlignment="center"
-                            android:textSize="@dimen/p1"
+                            android:textSize="@dimen/p2"
                             android:textColor="@color/desc_color"
                             android:textStyle="bold" />
 
@@ -258,11 +262,12 @@
                     <LinearLayout
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_weight="33"
+                        android:layout_weight="50"
                         android:orientation="vertical">
-                        <RelativeLayout
+                        <LinearLayout
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content">
+                            android:layout_height="wrap_content"
+                            android:gravity="center">
                         <TextView
                             android:id="@+id/coins"
                             android:layout_width="wrap_content"
@@ -270,22 +275,23 @@
                             android:text="16"
                             android:layout_centerInParent="true"
                             android:textAlignment="center"
-                            android:textSize="@dimen/p1"
+                            android:textSize="@dimen/p2"
                             android:textColor="@color/desc_color"
                             android:textStyle="bold" />
                         <ImageView
-                            android:layout_width="17dp"
-                            android:layout_height="17dp"
+                            android:layout_width="15dp"
+                            android:layout_height="15dp"
                             android:layout_toRightOf="@+id/coins"
                             android:layout_alignTop="@+id/coins"
                             android:layout_marginLeft="5dp"
                             android:layout_marginStart="5dp"
+                            android:tint="@color/desc_color"
                             android:src="@mipmap/ic_coins"/>
-                        </RelativeLayout>
+                        </LinearLayout>
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="Coins"
+                            android:text="Rewards"
                             android:textColor="@color/title_challenge"
                             android:textAlignment="center"
                             android:textSize="@dimen/p5" />
@@ -300,9 +306,9 @@
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/ll"
                     android:layout_centerHorizontal="true"
+                    android:layout_marginBottom="@dimen/challenge_bottom_margin"
                     android:drawableTint="@color/title_challenge"
                     android:drawableRight="@mipmap/ic_coins"
-                    android:padding="15dp"
                     android:textColor="@color/title_challenge"
                     android:text="Participating in this challenge costs 10 "
                     android:textSize="@dimen/p5" />

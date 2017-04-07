@@ -1,6 +1,8 @@
 package pro.viksit.com.viksit.dashboard.fragment;
 
 import android.app.Activity;
+import android.graphics.PorterDuff;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -65,7 +67,6 @@ public class ChallengeFragment extends Fragment {
             Button start_game = (Button) linearLayout.findViewById(R.id.start_game);
             TextView header = (TextView) linearLayout.findViewById(R.id.header);
             TextView title = (TextView) linearLayout.findViewById(R.id.title);
-            TextView questions = (TextView) linearLayout.findViewById(R.id.questions);
             TextView experience = (TextView) linearLayout.findViewById(R.id.experience);
             TextView timelimit = (TextView) linearLayout.findViewById(R.id.coins);
             ImageView myprofile = (ImageView) linearLayout.findViewById(R.id.myprofile);
@@ -75,16 +76,25 @@ public class ChallengeFragment extends Fragment {
             TextView challenger_name = (TextView) linearLayout.findViewById(R.id.challenger_name);
             Button myrank = (Button) linearLayout.findViewById(R.id.myrank);
             Button challenger_rank = (Button) linearLayout.findViewById(R.id.challenger_rank);
+            LinearLayout ln = (LinearLayout) linearLayout.findViewById(R.id.lll);
+
 
             System.out.println("Image url "+dashboardCard.getImage_url());
 
-            Picasso.with(getContext()).load(dashboardCard.getImage_url()).transform(new CircleTransform()).into(myprofile);
-            Picasso.with(getContext()).load(dashboardCard.getImage_url()).transform(new CircleTransform()).into(challengeprofile);
+            Drawable drawable = getResources().getDrawable(R.mipmap.ic_coins);
+            drawable.setColorFilter(getResources().getColor(R.color.title_challenge), PorterDuff.Mode.SRC_IN);
+
+            Picasso.with(getContext()).load(dashboardCard.getImage_url()).resize(screenHeight/7, screenHeight/7).transform(new CircleTransform()).into(myprofile);
+            Picasso.with(getContext()).load(dashboardCard.getImage_url()).resize(screenHeight/7, screenHeight/7).transform(new CircleTransform()).into(challengeprofile);
+
+            ViewGroup.LayoutParams params = ln.getLayoutParams();
+            params.height = screenHeight/4;
+            params.width = screenHeight/2;
+            ln.setLayoutParams(params);
 
             //experience timelimit
             header.setText(dashboardCard.getHeader());
             title.setText(dashboardCard.getTitle());
-            questions.setText(dashboardCard.getNosofQuestion()+"");
             experience.setText(dashboardCard.getExperience()+" XP");
             timelimit.setText(dashboardCard.getCoins()+"");
             cardView.setLayoutParams(layoutParams);

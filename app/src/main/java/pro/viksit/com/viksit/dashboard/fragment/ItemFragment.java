@@ -70,7 +70,7 @@ public class ItemFragment extends Fragment {
             TextView title = (TextView) linearLayout.findViewById(R.id.title);
             ImageView imageView = (ImageView) linearLayout.findViewById(R.id.image);
             Picasso.with(getContext())
-                    .load(R.drawable.backgroundimg).resize(screenheitght/2,screenheitght/2)
+                    .load(R.drawable.backgroundimg).resize(screenheitght/2,screenheitght/3)
                     .into(imageView);
             header.setText(dashboardCard.getHeader());
             title.setText(dashboardCard.getTitle());

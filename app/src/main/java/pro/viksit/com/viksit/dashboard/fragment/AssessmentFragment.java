@@ -88,7 +88,7 @@ public class AssessmentFragment extends Fragment {
             }else {
                 System.out.println("FILE NOT EXITS >>>>>> ");
                 Picasso.with(getContext())
-                        .load(dashboardCard.getImage_url()).resize(150, 150).transform(new CircleTransform())
+                        .load(dashboardCard.getImage_url()).resize(screenHeight/2, screenHeight/3).transform(new CircleTransform())
                         .into(image);
                 new SaveImageAsync(imageSaver).execute(dashboardCard.getImage_url());
 

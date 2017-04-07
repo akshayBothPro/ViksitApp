@@ -109,4 +109,26 @@
     <dimen name="changed_pswrd_header_bottom_margin">10dp</dimen>
     <dimen name="changed_pswrd_info_bottom_margin">20dp</dimen>
 
+    <!--Assessment Card dimensions-->
+    <dimen name="asses_card_header_hor_padding">10dp</dimen>
+    <dimen name="asses_card_header_bottom_margin">10dp</dimen>
+    <dimen name="asses_card_image_margin">20dp</dimen>
+
+    <!--Fragment image dimensions-->
+    <dimen name="fragment_image_hor_padding">10dp</dimen>
+    <dimen name="fragment_image_header_bottom_margin">10dp</dimen>
+    <dimen name="fragment_image_pic_margin">10dp</dimen>
+
+    <!--Challenge Card dimensions-->
+    <dimen name="challenge_card_hor_padding">10dp</dimen>
+    <dimen name="challenge_header_bottom_margin">10dp</dimen>
+    <dimen name="challenge_pic_margin">10dp</dimen>
+    <dimen name="challenge_bottom_margin">10dp</dimen>
+
+    <!--Presenattion Card dimensions-->
+    <dimen name="presentation_card_hor_padding">10dp</dimen>
+    <dimen name="presentation_header_bottom_margin">10dp</dimen>
+    <dimen name="presentation_pic_margin">10dp</dimen>
+    <dimen name="presentation_bottom_margin">10dp</dimen>
+
 </resources>
