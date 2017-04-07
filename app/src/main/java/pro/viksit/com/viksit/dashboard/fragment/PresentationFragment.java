@@ -73,6 +73,8 @@ public class PresentationFragment extends Fragment {
             Picasso.with(getContext())
                     .load(R.drawable.ic_1).resize(screenheitght/2,screenheitght/3)
                     .into(image);
+            image.setMinimumHeight(screenheitght/3);
+            image.setMaxHeight(screenheitght/3);
             header.setText(dashboardCard.getHeader());
             title.setText(dashboardCard.getTitle());
             cardView.setLayoutParams(layoutParams);

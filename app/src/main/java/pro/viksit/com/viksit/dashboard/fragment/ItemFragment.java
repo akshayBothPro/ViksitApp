@@ -72,6 +72,8 @@ public class ItemFragment extends Fragment {
             Picasso.with(getContext())
                     .load(R.drawable.backgroundimg).resize(screenheitght/2,screenheitght/3)
                     .into(imageView);
+            imageView.setMinimumHeight(screenheitght/3);
+            imageView.setMaxHeight(screenheitght/3);
             header.setText(dashboardCard.getHeader());
             title.setText(dashboardCard.getTitle());
             cardView.setLayoutParams(layoutParams);

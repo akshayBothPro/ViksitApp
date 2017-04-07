@@ -112,7 +112,7 @@
     <!--Assessment Card dimensions-->
     <dimen name="asses_card_header_hor_padding">10dp</dimen>
     <dimen name="asses_card_header_bottom_margin">5dp</dimen>
-    <dimen name="asses_card_image_margin">15dp</dimen>
+    <dimen name="asses_card_image_margin">10dp</dimen>
 
 
     <!--Fragment image dimensions-->
@@ -129,5 +129,10 @@
     <!--Presenattion Card dimensions-->
     <dimen name="presentation_card_hor_padding">10dp</dimen>
     <dimen name="presentation_header_bottom_margin">5dp</dimen>
-    <dimen name="presentation_pic_margin">15dp</dimen>
+    <dimen name="presentation_pic_margin">10dp</dimen>
+
+    <!--Video Card dimensions-->
+    <dimen name="video_hor_padding">10dp</dimen>
+    <dimen name="video_header_bottom_margin">5dp</dimen>
+    <dimen name="video_pic_margin">10dp</dimen>
 </resources>

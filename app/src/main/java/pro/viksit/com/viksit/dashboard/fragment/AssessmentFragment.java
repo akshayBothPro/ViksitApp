@@ -81,18 +81,24 @@ public class AssessmentFragment extends Fragment {
             if(imageSaver.checkFile()){
                 Uri uri = Uri.fromFile(imageSaver.pathFile());
                 Picasso.with(getContext())
-                        .load(uri).resize(150,150).transform(new CircleTransform())
+                        .load(uri).resize(screenHeight/4, screenHeight/4).transform(new CircleTransform())
                         .into(image);
                 System.out.println("FILE  EXITS >>>>>> ");
 
             }else {
                 System.out.println("FILE NOT EXITS >>>>>> ");
                 Picasso.with(getContext())
-                        .load(dashboardCard.getImage_url()).resize(screenHeight/2, screenHeight/3).transform(new CircleTransform())
+                        .load(dashboardCard.getImage_url()).resize(screenheitght/4, screenheitght/4).transform(new CircleTransform())
                         .into(image);
+
                 new SaveImageAsync(imageSaver).execute(dashboardCard.getImage_url());
 
-            }//experience timelimit
+            }
+
+            image.setMinimumHeight(screenheitght/4);
+            image.setMaxHeight(screenheitght/4);
+
+            //experience timelimit
             header.setText(dashboardCard.getHeader());
             title.setText(dashboardCard.getTitle());
             questions.setText(dashboardCard.getNosofQuestion()+"");

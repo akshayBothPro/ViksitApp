@@ -131,4 +131,8 @@
     <dimen name="presentation_pic_margin">10dp</dimen>
     <dimen name="presentation_bottom_margin">10dp</dimen>
 
+    <!--Video Card dimensions-->
+    <dimen name="video_hor_padding">10dp</dimen>
+    <dimen name="video_header_bottom_margin">10dp</dimen>
+    <dimen name="video_pic_margin">15dp</dimen>
 </resources>

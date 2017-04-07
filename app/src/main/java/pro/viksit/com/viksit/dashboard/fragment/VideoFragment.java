@@ -11,10 +11,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.squareup.picasso.Picasso;
 
 import pro.viksit.com.viksit.R;
 import pro.viksit.com.viksit.dashboard.pojo.DashboardCard;
@@ -65,6 +68,12 @@ public class VideoFragment extends Fragment {
             Button start_video = (Button) linearLayout.findViewById(R.id.start_video);
             TextView header = (TextView) linearLayout.findViewById(R.id.header);
             TextView title = (TextView) linearLayout.findViewById(R.id.title);
+            ImageView image = (ImageView) linearLayout.findViewById(R.id.image);
+            Picasso.with(getContext())
+                    .load(R.drawable.backgroundimg).resize(screenheitght/2,screenheitght/3)
+                    .into(image);
+            image.setMinimumHeight(screenheitght/3);
+            image.setMaxHeight(screenheitght/3);
             header.setText(dashboardCard.getHeader());
             title.setText(dashboardCard.getTitle());
             cardView.setLayoutParams(layoutParams);
