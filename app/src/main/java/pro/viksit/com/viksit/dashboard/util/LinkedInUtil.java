@@ -21,6 +21,8 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.util.HashMap;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 import pro.viksit.com.viksit.R;
 import pro.viksit.com.viksit.dashboard.activity.DashboardActivity;
@@ -53,9 +55,23 @@ public class LinkedInUtil {
                                         params.put(context.getResources().getString(R.string.socialmedia), "LINKEDIN");
                                         params.put(context.getResources().getString(R.string.email), result.getResponseDataAsJson().get("emailAddress").toString());
                                         params.put(context.getResources().getString(R.string.username), result.getResponseDataAsJson().get("formattedName").toString());
-                                        if ((JSONObject) result.getResponseDataAsJson().get("pictureUrls") != null && ((JSONArray) ((JSONObject) result.getResponseDataAsJson().get("pictureUrls")).get("values")).length() > 0)
+                                        if ((JSONObject) result.getResponseDataAsJson().get("pictureUrls") != null && ((JSONArray) ((JSONObject) result.getResponseDataAsJson().get("pictureUrls")).get("values")).length() > 0) {
                                             params.put(context.getResources().getString(R.string.profilepic), ((JSONArray) ((JSONObject) result.getResponseDataAsJson().get("pictureUrls")).get("values")).get(0).toString());
-                                        new LoginAsync(params,context,dialog,progressdialog,sharedpreferences).execute(context.getResources().getString(R.string.socialloginurl));
+                                            ExecutorService executor = Executors.newFixedThreadPool(2);
+                                            Runnable worker = new ProfileImageThread(context,((JSONArray) ((JSONObject) result.getResponseDataAsJson().get("pictureUrls")).get("values")).get(0).toString());
+                                            executor.execute(worker);
+                                            Runnable worker1 = new LoginThread(context,params,dialog,progressdialog,sharedpreferences);
+                                            executor.execute(worker1);
+
+                                            executor.shutdown();
+                                            while (!executor.isTerminated()) {   }
+                                        }else{
+                                            new LoginAsync(params,context,dialog,progressdialog,sharedpreferences).execute(context.getResources().getString(R.string.socialloginurl));
+
+                                        }
+
+
+                                        System.out.println("Finished all threads");
 
                                         //
                                     }else{

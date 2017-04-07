@@ -17,6 +17,8 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.util.HashMap;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 import pro.viksit.com.viksit.R;
 
@@ -45,10 +47,18 @@ public class GoogleUtil {
                 params.put(context.getResources().getString(R.string.socialmedia), "GOOGLE");
                 params.put(context.getResources().getString(R.string.email), acct.getEmail());
                 params.put(context.getResources().getString(R.string.username), acct.getDisplayName());
-                if (acct.getPhotoUrl() != null)
+                if (acct.getPhotoUrl() != null) {
                     params.put(context.getResources().getString(R.string.profilepic), acct.getPhotoUrl().toString());
-                new LoginAsync(params,context,dialog,progressdialog,sharedpreferences).execute(context.getResources().getString(R.string.socialloginurl));
-
+                    ExecutorService executor = Executors.newFixedThreadPool(2);
+                    Runnable worker = new ProfileImageThread(context,acct.getPhotoUrl().toString());
+                    executor.execute(worker);
+                    Runnable worker1 = new LoginThread(context,params,dialog,progressdialog,sharedpreferences);
+                    executor.execute(worker1);
+                    executor.shutdown();
+                    while (!executor.isTerminated()) {   }
+                }else {
+                    new LoginAsync(params, context, dialog, progressdialog, sharedpreferences).execute(context.getResources().getString(R.string.socialloginurl));
+                }
             }else{
                 dialog.show();
             }

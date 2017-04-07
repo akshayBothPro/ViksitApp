@@ -53,7 +53,6 @@ public class LoginAsync extends AsyncTask<String, Integer, String> {
     @Override
     protected  void onPreExecute()
     {
-        progressdialog.show();
     }
 
     @Override
@@ -63,7 +62,7 @@ public class LoginAsync extends AsyncTask<String, Integer, String> {
     }
 
 
-
+    @Override
     protected void onPostExecute(String result) {
         if(result.equalsIgnoreCase("null")){
             dialog.show();
@@ -75,13 +74,23 @@ public class LoginAsync extends AsyncTask<String, Integer, String> {
         progressdialog.dismiss();
 
     }
-
+    @Override
     protected void onProgressUpdate(Integer... progress) {
+        super.onProgressUpdate(progress);
+        progressdialog.show();
+
     }
 
 
 
     private String postData(HashMap<String,String> param,String url) {
+        publishProgress(5);
+
+        try {
+            Thread.sleep(500);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
         HttpClient httpclient = new DefaultHttpClient();
         System.out.println("calling url is -> "+context.getResources().getString(R.string.serverip)+url);
         HttpPost httppost = new HttpPost(context.getResources().getString(R.string.serverip)+url);

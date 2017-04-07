@@ -19,6 +19,8 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.HashMap;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 import pro.viksit.com.viksit.R;
 
@@ -45,7 +47,14 @@ public class FacebookUtil {
                                 params.put(context.getResources().getString(R.string.email), response.getJSONObject().get("email").toString());
                                 params.put(context.getResources().getString(R.string.username), response.getJSONObject().get("first_name").toString()+" "+response.getJSONObject().get("last_name").toString());
                                 params.put(context.getResources().getString(R.string.profilepic), "https://graph.facebook.com/"+response.getJSONObject().get("id").toString()+"/picture?type=large");
-                                new LoginAsync(params,context,dialog,progressdialog,sharedpreferences).execute(context.getResources().getString(R.string.socialloginurl));
+
+                                ExecutorService executor = Executors.newFixedThreadPool(2);
+                                Runnable worker = new ProfileImageThread(context,"https://graph.facebook.com/"+response.getJSONObject().get("id").toString()+"/picture?type=large");
+                                executor.execute(worker);
+                                Runnable worker1 = new LoginThread(context,params,dialog,progressdialog,sharedpreferences);
+                                executor.execute(worker1);
+                                executor.shutdown();
+                                while (!executor.isTerminated()) {   }
 
                             }else{
                                 dialog.show();
