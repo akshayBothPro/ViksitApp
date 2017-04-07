@@ -1,7 +1,9 @@
 package pro.viksit.com.viksit.home.activity;
 
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.Signature;
@@ -58,13 +60,12 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     private AppCompatEditText password;
     private TextView errorPassword;
     private Button loginButton;
-    private Button viaSocial;
+    private TextView viaSocial;
     private ImageButton linkedInBtn;
     private ImageButton googleBtn,fb;
     private LoginButton fbBtn;
     private Button forgotPassword;
     private Button registerInstead,ok;
-
     private int screenWidth;
     private int screenHeight;
     private static final int RC_SIGN_IN = 9001;
@@ -74,6 +75,8 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     CallbackManager callbackManager;
     private MaterialDialog dialog;
     private MaterialDialog progressdialog;
+    private SharedPreferences sharedpreferences;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -93,7 +96,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         password = (AppCompatEditText) findViewById(R.id.apet_login_password);
         errorPassword = (TextView) findViewById(R.id.tv_error_password);
         loginButton = (Button) findViewById(R.id.btn_login);
-        viaSocial = (Button) findViewById(R.id.tv_via_social);
+        viaSocial = (TextView) findViewById(R.id.tv_via_social);
         googleBtn = (ImageButton) findViewById(R.id.btn_signup_google);
         linkedInBtn = (ImageButton) findViewById(R.id.btn_signup_linkedIn);
         fbBtn = (LoginButton) findViewById(R.id.btn_signup_fb);
@@ -104,6 +107,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
         generateHashkey();
         implementActionsListeners();
+        sharedpreferences = getSharedPreferences(getResources().getString(R.string.shared_preference_key), Context.MODE_PRIVATE);
 
         GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
                 .requestEmail()
@@ -150,7 +154,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         HashMap<String, String> params = new HashMap<String, String>();
         params.put(getResources().getString(R.string.email), emailid);
         params.put(getResources().getString(R.string.password), pasword);
-        new LoginAsync(params,this,dialog,progressdialog).execute(getResources().getString(R.string.loginurl));
+        new LoginAsync(params,this,dialog,progressdialog,sharedpreferences).execute(getResources().getString(R.string.loginurl));
     }
 
 
@@ -208,7 +212,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
             /*Intent intent = new Intent(LoginActivity.this, ForgotPasswordActivity.class);*/
             startActivity(new Intent(LoginActivity.this, ForgotPasswordActivity.class));
         }else if(id == R.id.btn_signup_linkedIn){
-           new LinkedInUtil().fetchData(getApplicationContext(),this,dialog,progressdialog);
+            new LinkedInUtil().fetchData(getApplicationContext(),this,dialog,progressdialog,sharedpreferences);
         }else if(id == R.id.btn_signup_google){
             googleUtil.signIn(mGoogleApiClient,RC_SIGN_IN,this);
         }else if(id== R.id.fb){
@@ -222,7 +226,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
     private void getLoginDetails() {
         fbBtn.setReadPermissions("user_friends","public_profile","email");
-        fbBtn.registerCallback(callbackManager, new FacebookUtil().getFaceBookCallBack(this,dialog,progressdialog));
+        fbBtn.registerCallback(callbackManager, new FacebookUtil().getFaceBookCallBack(this,dialog,progressdialog,sharedpreferences));
 
     }
 
@@ -248,7 +252,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         if (requestCode == RC_SIGN_IN) {
             GoogleSignInResult result = Auth.GoogleSignInApi.getSignInResultFromIntent(data);
             if (result != null) {
-                googleUtil.handleSignInResult(result,this,dialog,progressdialog);
+                googleUtil.handleSignInResult(result,this,dialog,progressdialog,sharedpreferences);
             } else {
             }
         }else if (requestCode == FB_SIGN_IN){

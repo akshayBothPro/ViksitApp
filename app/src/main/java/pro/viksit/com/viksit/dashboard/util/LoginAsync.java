@@ -2,11 +2,13 @@ package pro.viksit.com.viksit.dashboard.util;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.view.View;
 import android.widget.ProgressBar;
 
 import com.afollestad.materialdialogs.MaterialDialog;
+import com.google.gson.Gson;
 
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
@@ -24,7 +26,9 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
+import pro.viksit.com.viksit.R;
 import pro.viksit.com.viksit.dashboard.activity.DashboardActivity;
+import pro.viksit.com.viksit.dashboard.pojo.StudentProfile;
 
 /**
  * Created by Feroz on 06-04-2017.
@@ -35,11 +39,15 @@ public class LoginAsync extends AsyncTask<String, Integer, String> {
     private Context context;
     private MaterialDialog dialog;
     private  MaterialDialog progressdialog;
-    public LoginAsync(HashMap<String,String> param,Context context,MaterialDialog dialog, MaterialDialog progressdialog){
+    private SharedPreferences sharedpreferences;
+    private final Gson gson = new Gson();
+
+    public LoginAsync(HashMap<String,String> param,Context context,MaterialDialog dialog, MaterialDialog progressdialog,SharedPreferences sharedpreferences){
         this.param = param;
         this.context = context;
         this.dialog = dialog;
         this.progressdialog = progressdialog;
+        this.sharedpreferences = sharedpreferences;
     }
 
     @Override
@@ -91,6 +99,13 @@ public class LoginAsync extends AsyncTask<String, Integer, String> {
             jsonresponse = EntityUtils.toString(httpEntity);
 
             System.out.println("jsonresponse "+jsonresponse);
+            StudentProfile studentProfile = gson.fromJson(jsonresponse,StudentProfile.class);
+            System.out.println("studentProfile "+studentProfile.getEmail());
+
+            SharedPreferences.Editor editor = sharedpreferences.edit();
+            editor.putString(context.getResources().getString(R.string.user_profile), jsonresponse);
+            editor.apply();
+            editor.commit();
         } catch (ClientProtocolException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
