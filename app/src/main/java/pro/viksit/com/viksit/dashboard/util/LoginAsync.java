@@ -4,6 +4,9 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.view.View;
+import android.widget.ProgressBar;
+
+import com.afollestad.materialdialogs.MaterialDialog;
 
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
@@ -30,9 +33,19 @@ import pro.viksit.com.viksit.dashboard.activity.DashboardActivity;
 public class LoginAsync extends AsyncTask<String, Integer, String> {
     private  HashMap<String,String> param;
     private Context context;
-    public LoginAsync(HashMap<String,String> param,Context context){
+    private MaterialDialog dialog;
+    private  MaterialDialog progressdialog;
+    public LoginAsync(HashMap<String,String> param,Context context,MaterialDialog dialog, MaterialDialog progressdialog){
         this.param = param;
         this.context = context;
+        this.dialog = dialog;
+        this.progressdialog = progressdialog;
+    }
+
+    @Override
+    protected  void onPreExecute()
+    {
+        progressdialog.show();
     }
 
     @Override
@@ -44,9 +57,14 @@ public class LoginAsync extends AsyncTask<String, Integer, String> {
 
 
     protected void onPostExecute(String result) {
-        Intent i = new Intent(context, DashboardActivity.class);
-        i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-        context.startActivity(i);
+        if(result.equalsIgnoreCase("null")){
+            dialog.show();
+        }else {
+            Intent i = new Intent(context, DashboardActivity.class);
+            i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            context.startActivity(i);
+        }
+        progressdialog.dismiss();
 
     }
 
@@ -76,10 +94,13 @@ public class LoginAsync extends AsyncTask<String, Integer, String> {
         } catch (ClientProtocolException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
-
+            return "null";
         } catch (IOException e) {
             // TODO Auto-generated catch block
+
             e.printStackTrace();
+            return "null";
+
         }
         return jsonresponse;
     }

@@ -3,6 +3,7 @@ package pro.viksit.com.viksit.dashboard.util;
 import android.content.Context;
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.afollestad.materialdialogs.MaterialDialog;
@@ -28,7 +29,7 @@ public class FacebookUtil {
 
 
 
-    public FacebookCallback<LoginResult> getFaceBookCallBack(final Context context,final MaterialDialog dialog){
+    public FacebookCallback<LoginResult> getFaceBookCallBack(final Context context,final MaterialDialog dialog, final MaterialDialog progressdialog){
          FacebookCallback<LoginResult> callback =  new FacebookCallback<LoginResult>() {
             @Override
             public void onSuccess(LoginResult loginResult) {
@@ -43,7 +44,7 @@ public class FacebookUtil {
                                 params.put(context.getResources().getString(R.string.email), response.getJSONObject().get("email").toString());
                                 params.put(context.getResources().getString(R.string.username), response.getJSONObject().get("first_name").toString()+" "+response.getJSONObject().get("last_name").toString());
                                 params.put(context.getResources().getString(R.string.profilepic), "https://graph.facebook.com/"+response.getJSONObject().get("id").toString()+"/picture?type=large");
-                                new LoginAsync(params,context).execute(context.getResources().getString(R.string.socialloginurl));
+                                new LoginAsync(params,context,dialog,progressdialog).execute(context.getResources().getString(R.string.socialloginurl));
 
                             }else{
                                 dialog.show();

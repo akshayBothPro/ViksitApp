@@ -20,6 +20,7 @@ import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -69,6 +70,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     private GoogleApiClient mGoogleApiClient;
     CallbackManager callbackManager;
     private MaterialDialog dialog;
+    private MaterialDialog progressdialog;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -77,6 +79,11 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         getWidthAndHeight();
         dialog  = new MaterialDialog.Builder(this)
                 .customView(R.layout.dialog_error, false)
+                .build();
+        progressdialog =  new MaterialDialog.Builder(this)
+                .title(R.string.app_name)
+                .content("Please wait ..")
+                .progress(true, 0)
                 .build();
         callbackManager = CallbackManager.Factory.create();
         welcome = (TextView) findViewById(R.id.tv_login_welcome);
@@ -170,7 +177,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
             /*Intent intent = new Intent(LoginActivity.this, ForgotPasswordActivity.class);*/
             startActivity(new Intent(LoginActivity.this, ForgotPasswordActivity.class));
         }else if(id == R.id.btn_signup_linkedIn){
-           new LinkedInUtil().fetchData(getApplicationContext(),this,dialog);
+           new LinkedInUtil().fetchData(getApplicationContext(),this,dialog,progressdialog);
         }else if(id == R.id.btn_signup_google){
             googleUtil.signIn(mGoogleApiClient,RC_SIGN_IN,this);
         }else if(id== R.id.fb){
@@ -184,7 +191,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
     private void getLoginDetails() {
         fbBtn.setReadPermissions("user_friends","public_profile","email");
-        fbBtn.registerCallback(callbackManager, new FacebookUtil().getFaceBookCallBack(this,dialog));
+        fbBtn.registerCallback(callbackManager, new FacebookUtil().getFaceBookCallBack(this,dialog,progressdialog));
 
     }
 
@@ -210,7 +217,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         if (requestCode == RC_SIGN_IN) {
             GoogleSignInResult result = Auth.GoogleSignInApi.getSignInResultFromIntent(data);
             if (result != null) {
-                googleUtil.handleSignInResult(result,this,dialog);
+                googleUtil.handleSignInResult(result,this,dialog,progressdialog);
             } else {
             }
         }else if (requestCode == FB_SIGN_IN){
@@ -229,50 +236,6 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     public void onConnectionFailed(@NonNull ConnectionResult connectionResult) {
 
     }
-
-
-
-
-    private Bundle getFacebookData(JSONObject object) {
-        Bundle bundle = new Bundle();
-
-        try {
-            String id = object.getString("id");
-
-            try {
-                URL profile_pic = new URL("https://graph.facebook.com/" + id + "/picture?width=200&height=150");
-                Log.i("profile_pic", profile_pic + "");
-                bundle.putString("profile_pic", profile_pic.toString());
-
-            } catch (MalformedURLException e) {
-                e.printStackTrace();
-                return null;
-            }
-
-            bundle.putString("idFacebook", id);
-            if (object.has("first_name"))
-                bundle.putString("first_name", object.getString("first_name"));
-            if (object.has("last_name"))
-                bundle.putString("last_name", object.getString("last_name"));
-            if (object.has("email"))
-                bundle.putString("email", object.getString("email"));
-            if (object.has("gender"))
-                bundle.putString("gender", object.getString("gender"));
-            if (object.has("birthday"))
-                bundle.putString("birthday", object.getString("birthday"));
-            if (object.has("location"))
-                bundle.putString("location", object.getJSONObject("location").getString("name"));
-        }
-
-        catch(JSONException e) {
-            Log.d(TAG,"Error parsing JSON");
-        }
-        return bundle;
-
-    }
-
-
-
 
 
     public void generateHashkey(){

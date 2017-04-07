@@ -3,6 +3,7 @@ package pro.viksit.com.viksit.dashboard.util;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.afollestad.materialdialogs.MaterialDialog;
@@ -34,7 +35,7 @@ public class LinkedInUtil {
             + "/v1/people/~:" +
             "(email-address,formatted-name,phone-numbers,picture-urls::(original))";
 
-    public void fetchData(final Context context,LoginActivity activity,final MaterialDialog dialog){
+    public void fetchData(final Context context, LoginActivity activity, final MaterialDialog dialog, final MaterialDialog progressdialog){
 
 
         LISessionManager.getInstance(context)
@@ -53,7 +54,7 @@ public class LinkedInUtil {
                                         params.put(context.getResources().getString(R.string.username), result.getResponseDataAsJson().get("formattedName").toString());
                                         if ((JSONObject) result.getResponseDataAsJson().get("pictureUrls") != null && ((JSONArray) ((JSONObject) result.getResponseDataAsJson().get("pictureUrls")).get("values")).length() > 0)
                                             params.put(context.getResources().getString(R.string.profilepic), ((JSONArray) ((JSONObject) result.getResponseDataAsJson().get("pictureUrls")).get("values")).get(0).toString());
-                                        new LoginAsync(params,context).execute(context.getResources().getString(R.string.socialloginurl));
+                                        new LoginAsync(params,context,dialog,progressdialog).execute(context.getResources().getString(R.string.socialloginurl));
 
                                         //
                                     }else{

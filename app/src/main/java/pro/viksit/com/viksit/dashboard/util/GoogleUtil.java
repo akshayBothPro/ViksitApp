@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.util.Log;
+import android.widget.ProgressBar;
 
 import com.afollestad.materialdialogs.MaterialDialog;
 import com.google.android.gms.auth.api.Auth;
@@ -30,7 +31,7 @@ public class GoogleUtil {
     }
 
 
-    public void handleSignInResult(GoogleSignInResult result,Context context,MaterialDialog dialog) {
+    public void handleSignInResult(GoogleSignInResult result,Context context,MaterialDialog dialog, final MaterialDialog progressdialog) {
         Log.d("LOGIN_GOOGLE", "handleSignInResult:" + result.isSuccess());
         if (result.isSuccess()) {
             GoogleSignInAccount acct = result.getSignInAccount();
@@ -45,7 +46,7 @@ public class GoogleUtil {
                 params.put(context.getResources().getString(R.string.username), acct.getDisplayName());
                 if (acct.getPhotoUrl() != null)
                     params.put(context.getResources().getString(R.string.profilepic), acct.getPhotoUrl().toString());
-                new LoginAsync(params,context).execute(context.getResources().getString(R.string.socialloginurl));
+                new LoginAsync(params,context,dialog,progressdialog).execute(context.getResources().getString(R.string.socialloginurl));
 
             }else{
                 dialog.show();
