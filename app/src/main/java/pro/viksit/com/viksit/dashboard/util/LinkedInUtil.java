@@ -36,7 +36,7 @@ public class LinkedInUtil {
             + "/v1/people/~:" +
             "(email-address,formatted-name,phone-numbers,picture-urls::(original))";
 
-    public void fetchData(final Context context, LoginActivity activity, final MaterialDialog dialog, final MaterialDialog progressdialog,final SharedPreferences sharedpreferences){
+    public void fetchData(final Context context, Activity activity, final MaterialDialog dialog, final MaterialDialog progressdialog,final SharedPreferences sharedpreferences){
 
 
         LISessionManager.getInstance(context)

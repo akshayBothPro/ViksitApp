@@ -155,17 +155,28 @@
             android:layout_width="@dimen/signup_social_media_btn_size"
             android:layout_height="@dimen/signup_social_media_btn_size"
             android:background="@drawable/linkedin_circle_button"
-            android:layout_marginRight="@dimen/signup_social_media_btn_horizontal_margin"/>
+            android:layout_marginRight="@dimen/signup_social_media_btn_horizontal_margin"
+            android:id="@+id/btn_signup_linkedIn"/>
         <Button
             android:layout_width="@dimen/signup_social_media_btn_size"
             android:layout_height="@dimen/signup_social_media_btn_size"
             android:background="@drawable/google_circle_button"
-            android:layout_marginRight="@dimen/signup_social_media_btn_horizontal_margin"/>
+            android:layout_marginRight="@dimen/signup_social_media_btn_horizontal_margin"
+            android:id="@+id/btn_signup_google"/>
         <Button
             android:layout_width="@dimen/signup_social_media_btn_size"
             android:layout_height="@dimen/signup_social_media_btn_size"
             android:background="@drawable/fb_circle_button"
-            android:layout_marginRight="@dimen/signup_social_media_btn_horizontal_margin"/>
+            android:layout_marginRight="@dimen/signup_social_media_btn_horizontal_margin"
+            android:id="@+id/fb"/>
+        <com.facebook.login.widget.LoginButton
+            android:id="@+id/btn_signup_fb"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="4dp"
+            android:paddingTop="12dp"
+            android:paddingBottom="12dp"
+            android:visibility="gone"/>
     </LinearLayout>
     <Button
         android:id="@+id/btn_login_instead"

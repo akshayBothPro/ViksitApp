@@ -35,8 +35,10 @@ import com.google.android.gms.auth.api.signin.GoogleSignInResult;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.linkedin.platform.LISessionManager;
+
 import org.json.JSONException;
 import org.json.JSONObject;
+
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.security.MessageDigest;
@@ -44,6 +46,7 @@ import java.security.NoSuchAlgorithmException;
 import java.util.HashMap;
 
 import com.facebook.CallbackManager;
+
 import pro.viksit.com.viksit.R;
 import pro.viksit.com.viksit.dashboard.activity.DashboardActivity;
 import pro.viksit.com.viksit.dashboard.util.FacebookUtil;
@@ -51,7 +54,7 @@ import pro.viksit.com.viksit.dashboard.util.GoogleUtil;
 import pro.viksit.com.viksit.dashboard.util.LinkedInUtil;
 import pro.viksit.com.viksit.dashboard.util.LoginAsync;
 
-public class LoginActivity extends AppCompatActivity implements View.OnClickListener,GoogleApiClient.OnConnectionFailedListener{
+public class LoginActivity extends AppCompatActivity implements View.OnClickListener, GoogleApiClient.OnConnectionFailedListener {
     private static final String TAG = LoginActivity.class.getSimpleName();
     public static final String PACKAGE = "pro.viksit.com.viksit";
     private TextView welcome;
@@ -62,10 +65,10 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     private Button loginButton;
     private TextView viaSocial;
     private ImageButton linkedInBtn;
-    private ImageButton googleBtn,fb;
+    private ImageButton googleBtn, fb;
     private LoginButton fbBtn;
     private Button forgotPassword;
-    private Button registerInstead,ok;
+    private Button registerInstead, ok;
     private int screenWidth;
     private int screenHeight;
     private static final int RC_SIGN_IN = 9001;
@@ -83,10 +86,10 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         FacebookSdk.sdkInitialize(getApplicationContext());
         setContentView(R.layout.activity_login);
         getWidthAndHeight();
-        dialog  = new MaterialDialog.Builder(this)
+        dialog = new MaterialDialog.Builder(this)
                 .customView(R.layout.dialog_error, false)
                 .build();
-        progressdialog =  new MaterialDialog.Builder(this)
+        progressdialog = new MaterialDialog.Builder(this)
                 .content("Please wait ..")
                 .progress(true, 0)
                 .build();
@@ -103,7 +106,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         fb = (ImageButton) findViewById(R.id.fb);
         forgotPassword = (Button) findViewById(R.id.btn_forgot_password);
         registerInstead = (Button) findViewById(R.id.btn_register_instead);
-        ok =(Button) dialog.getCustomView().findViewById(R.id.ok);
+        ok = (Button) dialog.getCustomView().findViewById(R.id.ok);
 
         generateHashkey();
         implementActionsListeners();
@@ -133,7 +136,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         });
     }
 
-    private void implementActionsListeners(){
+    private void implementActionsListeners() {
         loginButton.setOnClickListener(this);
         viaSocial.setText("Log In via social media");
         forgotPassword.setText("Forgot Password?");
@@ -154,12 +157,12 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         HashMap<String, String> params = new HashMap<String, String>();
         params.put(getResources().getString(R.string.email), emailid);
         params.put(getResources().getString(R.string.password), pasword);
-        new LoginAsync(params,this,dialog,progressdialog,sharedpreferences).execute(getResources().getString(R.string.loginurl));
+        new LoginAsync(params, this, dialog, progressdialog, sharedpreferences).execute(getResources().getString(R.string.loginurl));
     }
 
 
-    public void login(){
-        if(!validate()){
+    public void login() {
+        if (!validate()) {
             return;
         }
 
@@ -171,18 +174,17 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         String emailid = email.getText().toString();
         String pasword = password.getText().toString();
 
-        if (pasword.isEmpty() || pasword.length() < 4  ||emailid.isEmpty() || !Patterns.EMAIL_ADDRESS.matcher(emailid).matches() ) {
-            String error_message="";
-            if(emailid.isEmpty()){
+        if (pasword.isEmpty() || pasword.length() < 4 || emailid.isEmpty() || !Patterns.EMAIL_ADDRESS.matcher(emailid).matches()) {
+            String error_message = "";
+            if (emailid.isEmpty()) {
                 error_message = "Email id is required";
-            }else if(!Patterns.EMAIL_ADDRESS.matcher(emailid).matches()){
+            } else if (!Patterns.EMAIL_ADDRESS.matcher(emailid).matches()) {
                 error_message = "Please enter a valid email Id ";
             }
-            if(pasword.isEmpty()){
-                error_message = error_message+"\n"+"Password is required";
-            }
-            else if (password.length() < 4){
-                error_message = error_message+"\n"+"Password is too short";
+            if (pasword.isEmpty()) {
+                error_message = error_message + "\n" + "Password is required";
+            } else if (password.length() < 4) {
+                error_message = error_message + "\n" + "Password is too short";
             }
             errorPassword.setText(error_message);
 
@@ -197,39 +199,38 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     @Override
     public void onClick(View v) {
         int id = v.getId();
-        if(id == R.id.btn_login) {
+        if (id == R.id.btn_login) {
             System.out.println("login clicked");
 
             login();
 //            LISessionManager.getInstance(getApplicationContext()).clearSession();
 
 
-        }else if(id == R.id.btn_register_instead) {
+        } else if (id == R.id.btn_register_instead) {
             System.out.println("register instead clicked");
             startActivity(new Intent(LoginActivity.this, SignupActivity.class));
-        } else if(id == R.id.btn_forgot_password) {
+        } else if (id == R.id.btn_forgot_password) {
             System.out.println("forgot password clicked");
             /*Intent intent = new Intent(LoginActivity.this, ForgotPasswordActivity.class);*/
             startActivity(new Intent(LoginActivity.this, ForgotPasswordActivity.class));
-        }else if(id == R.id.btn_signup_linkedIn){
-            new LinkedInUtil().fetchData(getApplicationContext(),this,dialog,progressdialog,sharedpreferences);
-        }else if(id == R.id.btn_signup_google){
-            googleUtil.signIn(mGoogleApiClient,RC_SIGN_IN,this);
-        }else if(id== R.id.fb){
+        } else if (id == R.id.btn_signup_linkedIn) {
+            new LinkedInUtil().fetchData(getApplicationContext(), this, dialog, progressdialog, sharedpreferences);
+        } else if (id == R.id.btn_signup_google) {
+            googleUtil.signIn(mGoogleApiClient, RC_SIGN_IN, this);
+        } else if (id == R.id.fb) {
             getLoginDetails();
             fbBtn.performClick();
-        }else if(id== R.id.ok){
+        } else if (id == R.id.ok) {
             dialog.dismiss();
         }
 
     }
 
     private void getLoginDetails() {
-        fbBtn.setReadPermissions("user_friends","public_profile","email");
-        fbBtn.registerCallback(callbackManager, new FacebookUtil().getFaceBookCallBack(this,dialog,progressdialog,sharedpreferences));
+        fbBtn.setReadPermissions("user_friends", "public_profile", "email");
+        fbBtn.registerCallback(callbackManager, new FacebookUtil().getFaceBookCallBack(this, dialog, progressdialog, sharedpreferences));
 
     }
-
 
 
     private void getWidthAndHeight() {
@@ -240,31 +241,23 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     }
 
 
-
-
-
-
-
-
     @Override
     protected void onActivityResult(int requestCode,
                                     int resultCode, Intent data) {
         if (requestCode == RC_SIGN_IN) {
             GoogleSignInResult result = Auth.GoogleSignInApi.getSignInResultFromIntent(data);
             if (result != null) {
-                googleUtil.handleSignInResult(result,this,dialog,progressdialog,sharedpreferences);
+                googleUtil.handleSignInResult(result, this, dialog, progressdialog, sharedpreferences);
             } else {
             }
-        }else if (requestCode == FB_SIGN_IN){
+        } else if (requestCode == FB_SIGN_IN) {
             callbackManager.onActivityResult(requestCode, resultCode, data);
-        }
-        else {
+        } else {
             LISessionManager.getInstance(getApplicationContext())
-                    .onActivityResult(this,requestCode, resultCode, data);
+                    .onActivityResult(this, requestCode, resultCode, data);
         }
 
     }
-
 
 
     @Override
@@ -273,7 +266,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     }
 
 
-    public void generateHashkey(){
+    public void generateHashkey() {
         try {
             PackageInfo info = getPackageManager().getPackageInfo(
                     PACKAGE,
@@ -282,7 +275,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                 MessageDigest md = MessageDigest.getInstance("SHA");
                 md.update(signature.toByteArray());
 
-                System.out.println("HAsh is ---------> "+Base64.encodeToString(md.digest(),
+                System.out.println("HAsh is ---------> " + Base64.encodeToString(md.digest(),
                         Base64.NO_WRAP));
             }
         } catch (PackageManager.NameNotFoundException e) {
@@ -296,7 +289,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     @Override
     public void onBackPressed() {
         super.onBackPressed();
-        Intent i=new Intent(LoginActivity.this,HomeActivity.class);
+        Intent i = new Intent(LoginActivity.this, HomeActivity.class);
         startActivity(i);
         i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);

@@ -1,9 +1,12 @@
 package pro.viksit.com.viksit.home.activity;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.PorterDuff;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.AppCompatEditText;
@@ -17,12 +20,26 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.afollestad.materialdialogs.MaterialDialog;
+import com.facebook.CallbackManager;
+import com.facebook.FacebookSdk;
+import com.facebook.login.widget.LoginButton;
+import com.google.android.gms.auth.api.Auth;
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
+import com.google.android.gms.auth.api.signin.GoogleSignInResult;
+import com.google.android.gms.common.ConnectionResult;
+import com.google.android.gms.common.api.GoogleApiClient;
+import com.linkedin.platform.LISessionManager;
+
 import java.util.ArrayList;
 
 import pro.viksit.com.viksit.R;
 import pro.viksit.com.viksit.dashboard.activity.DashboardActivity;
+import pro.viksit.com.viksit.dashboard.util.FacebookUtil;
+import pro.viksit.com.viksit.dashboard.util.GoogleUtil;
+import pro.viksit.com.viksit.dashboard.util.LinkedInUtil;
 
-public class SignupActivity extends AppCompatActivity implements View.OnClickListener{
+public class SignupActivity extends AppCompatActivity implements View.OnClickListener, GoogleApiClient.OnConnectionFailedListener {
     private static final String TAG = SignupActivity.class.getSimpleName();
 
     private TextView welcome;
@@ -30,25 +47,42 @@ public class SignupActivity extends AppCompatActivity implements View.OnClickLis
     private TextView errorEmail;
     private AppCompatEditText phoneNumber;
     private AppCompatEditText password;
-    private Button signup;
+    private Button signup, btn_signup_linkedIn, btn_signup_google, fb;
     private Button viaSocial;
     private ImageButton linkedBtn;
     private ImageButton googleBtn;
-    private ImageButton fbBtn;
+    private LoginButton fbBtn;
     private Button loginInstead;
-
     private int screenWidth;
     private int screenHeight;
-
+    private MaterialDialog dialog;
+    private MaterialDialog progressdialog;
+    CallbackManager callbackManager;
+    private GoogleApiClient mGoogleApiClient;
+    private SharedPreferences sharedpreferences;
+    private final GoogleUtil googleUtil = new GoogleUtil();
+    private static final int RC_SIGN_IN = 9001;
+    private static final int FB_SIGN_IN = 64206;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        FacebookSdk.sdkInitialize(getApplicationContext());
+
         setContentView(R.layout.activity_signup);
+        dialog = new MaterialDialog.Builder(this)
+                .customView(R.layout.dialog_error, false)
+                .build();
+        progressdialog = new MaterialDialog.Builder(this)
+                .content("Please wait ..")
+                .progress(true, 0)
+                .build();
+        callbackManager = CallbackManager.Factory.create();
+        sharedpreferences = getSharedPreferences(getResources().getString(R.string.shared_preference_key), Context.MODE_PRIVATE);
 
         welcome = (TextView) findViewById(R.id.tv_welcome);
         email = (AppCompatEditText) findViewById(R.id.apet_email);
-        errorEmail =(TextView) findViewById(R.id.tv_error_email);
+        errorEmail = (TextView) findViewById(R.id.tv_error_email);
         phoneNumber = (AppCompatEditText) findViewById(R.id.apet_phone_number);
         password = (AppCompatEditText) findViewById(R.id.apet_password);
         signup = (Button) findViewById(R.id.btn_signup);
@@ -56,19 +90,32 @@ public class SignupActivity extends AppCompatActivity implements View.OnClickLis
         loginInstead = (Button) findViewById(R.id.btn_login_instead);
         linkedBtn = (ImageButton) findViewById(R.id.btn_signup_linkedIn);
         googleBtn = (ImageButton) findViewById(R.id.btn_signup_google);
-        fbBtn = (ImageButton) findViewById(R.id.btn_signup_fb);
-
+        fbBtn = (LoginButton) findViewById(R.id.btn_signup_fb);
+//btn_signup_linkedIn,btn_signup_google,fb,btn_signup_fb
+        btn_signup_linkedIn = (Button) findViewById(R.id.btn_signup_linkedIn);
+        btn_signup_google = (Button) findViewById(R.id.btn_signup_google);
+        fb = (Button) findViewById(R.id.fb);
+        fbBtn = (LoginButton) findViewById(R.id.btn_signup_fb);
+        GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+                .requestEmail()
+                .build();
+        mGoogleApiClient = new GoogleApiClient.Builder(this)
+                .enableAutoManage(this, this)
+                .addApi(Auth.GOOGLE_SIGN_IN_API, gso)
+                .build();
         implementActions();
     }
 
-    private void implementActions(){
+    private void implementActions() {
 
         viaSocial.setText("Sign Up via social media");
         signup.setOnClickListener(this);
 
         loginInstead.setText("Already a member? Login instead");
         loginInstead.setOnClickListener(this);
-
+        btn_signup_linkedIn.setOnClickListener(this);
+        btn_signup_google.setOnClickListener(this);
+        fb.setOnClickListener(this);
         Drawable sourceDrawable = getResources().getDrawable(R.mipmap.ic_remove_red_eye_white_24dp);
         sourceDrawable.setColorFilter(getResources().getColor(R.color.eye_icon_color), PorterDuff.Mode.SRC_IN);
 
@@ -77,31 +124,54 @@ public class SignupActivity extends AppCompatActivity implements View.OnClickLis
     @Override
     public void onClick(View v) {
         int id = v.getId();
-        if(id == R.id.btn_signup) {
-            System.out.println("sign up clicked");
-            signup();
-        } else if(id == R.id.btn_login_instead){
-            startActivity(new Intent(SignupActivity.this, LoginActivity.class));
+
+        switch (id) {
+            case R.id.btn_signup:
+                System.out.println("sign up clicked");
+                signup();
+                break;
+            case R.id.btn_login_instead:
+                break;
+            case R.id.btn_signup_linkedIn:
+                new LinkedInUtil().fetchData(getApplicationContext(), this, dialog, progressdialog, sharedpreferences);
+
+                break;
+            case R.id.btn_signup_google:
+                googleUtil.signIn(mGoogleApiClient, RC_SIGN_IN, this);
+
+                break;
+            case R.id.fb:
+                getLoginDetails();
+                fbBtn.performClick();
+                break;
         }
+
+
+    }
+
+    private void getLoginDetails() {
+        fbBtn.setReadPermissions("user_friends", "public_profile", "email");
+        fbBtn.registerCallback(callbackManager, new FacebookUtil().getFaceBookCallBack(this, dialog, progressdialog, sharedpreferences));
+
     }
 
     @Override
     public void onBackPressed() {
         super.onBackPressed();
-        Intent i=new Intent(SignupActivity.this,HomeActivity.class);
+        Intent i = new Intent(SignupActivity.this, HomeActivity.class);
         startActivity(i);
         i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         finish();
     }
 
-    public void signup(){
+    public void signup() {
         if (!validate()) {
             onSignupFailed();
             return;
         }
 
-        startActivity(new Intent(SignupActivity.this,OTPActivity.class));
+        startActivity(new Intent(SignupActivity.this, OTPActivity.class));
 
         //else do ur thing
     }
@@ -112,7 +182,7 @@ public class SignupActivity extends AppCompatActivity implements View.OnClickLis
         String pasword = password.getText().toString();
         String phone = phoneNumber.getText().toString();
 
-        if (pasword.isEmpty() || pasword.length() < 4 || pasword.length() > 10 ||emailid.isEmpty() || !Patterns.EMAIL_ADDRESS.matcher(emailid).matches() || phone.isEmpty()) {
+        if (pasword.isEmpty() || pasword.length() < 4 || pasword.length() > 10 || emailid.isEmpty() || !Patterns.EMAIL_ADDRESS.matcher(emailid).matches() || phone.isEmpty()) {
 
             if (pasword.isEmpty() || pasword.length() < 4 || pasword.length() > 10) {
                 password.setError("Type 4 and 10 alphanumeric characters");
@@ -142,4 +212,26 @@ public class SignupActivity extends AppCompatActivity implements View.OnClickLis
         screenWidth = displaymetrics.widthPixels;
     }
 
+    @Override
+    public void onConnectionFailed(@NonNull ConnectionResult connectionResult) {
+
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode,
+                                    int resultCode, Intent data) {
+        if (requestCode == RC_SIGN_IN) {
+            GoogleSignInResult result = Auth.GoogleSignInApi.getSignInResultFromIntent(data);
+            if (result != null) {
+                googleUtil.handleSignInResult(result, this, dialog, progressdialog, sharedpreferences);
+            } else {
+            }
+        } else if (requestCode == FB_SIGN_IN) {
+            callbackManager.onActivityResult(requestCode, resultCode, data);
+        } else {
+            LISessionManager.getInstance(getApplicationContext())
+                    .onActivityResult(this, requestCode, resultCode, data);
+        }
+
+    }
 }
