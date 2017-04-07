@@ -51,7 +51,7 @@ public class SignupActivity extends AppCompatActivity implements View.OnClickLis
     private TextView errorEmail;
     private AppCompatEditText phoneNumber;
     private AppCompatEditText password;
-    private ImageView showPassword;
+    private ImageButton showPassword;
     private Button signup, btn_signup_linkedIn, btn_signup_google, fb;
     private Button viaSocial;
 
@@ -90,7 +90,7 @@ public class SignupActivity extends AppCompatActivity implements View.OnClickLis
         errorEmail = (TextView) findViewById(R.id.tv_error_email);
         phoneNumber = (AppCompatEditText) findViewById(R.id.apet_phone_number);
         password = (AppCompatEditText) findViewById(R.id.apet_password);
-        showPassword = (ImageView) findViewById(R.id.iv_show_password);
+        showPassword = (ImageButton) findViewById(R.id.iv_show_password);
         signup = (Button) findViewById(R.id.btn_signup);
         viaSocial = (Button) findViewById(R.id.tv_via_social);
         loginInstead = (Button) findViewById(R.id.btn_login_instead);
@@ -156,21 +156,19 @@ public class SignupActivity extends AppCompatActivity implements View.OnClickLis
                 dialog.dismiss();
                 break;
             case R.id.iv_show_password:
-                if(password.getInputType() == InputType.TYPE_TEXT_VARIATION_PASSWORD) {
+                if(password.getInputType() == InputType.TYPE_TEXT_VARIATION_PASSWORD ) {
                     password.setInputType(InputType.TYPE_CLASS_TEXT);
-                } else {
+                } else
                     password.setInputType(InputType.TYPE_TEXT_VARIATION_PASSWORD);
-                }
+
                 break;
         }
-
 
     }
 
     private void getLoginDetails() {
         fbBtn.setReadPermissions("user_friends", "public_profile", "email");
         fbBtn.registerCallback(callbackManager, new FacebookUtil().getFaceBookCallBack(this, dialog, progressdialog, sharedpreferences));
-
     }
 
     @Override
