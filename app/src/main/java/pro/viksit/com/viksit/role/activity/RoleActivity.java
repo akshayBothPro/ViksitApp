@@ -8,7 +8,10 @@ import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.util.DisplayMetrics;
 import android.view.View;
+import android.view.ViewGroup;
+import android.widget.LinearLayout;
 
 import java.util.ArrayList;
 
@@ -28,6 +31,7 @@ public class RoleActivity extends AppCompatActivity implements View.OnClickListe
     private static final String TAG = RoleActivity.class.getSimpleName();
 
     private Toolbar toolbar;
+    private LinearLayout verticalContainer;
     private RecyclerView horizontalRecycler;
     private RecyclerView verticalRecycler;
     private RoleVerticalRecyclerViewAdapter roleVerticalRecyclerViewAdapter;
@@ -38,6 +42,9 @@ public class RoleActivity extends AppCompatActivity implements View.OnClickListe
     private ArrayList<RecommendedRole> recommendedRoles;
     private ArrayList <SectionedRole> allSampleData;
 
+    private int screenWidth;
+    private int screenHeight;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,6 +54,7 @@ public class RoleActivity extends AppCompatActivity implements View.OnClickListe
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         bottomNavigationView = (BottomNavigationView) findViewById(R.id.bottom_navigation);
         verticalRecycler = (RecyclerView) findViewById(R.id.rv_role_vertical);
+        verticalContainer = (LinearLayout) findViewById(R.id.ll_vertical_rv_con);
         horizontalRecycler = (RecyclerView) findViewById(R.id.rv_role_horizontal);
 
         setSupportActionBar(toolbar);
@@ -58,7 +66,15 @@ public class RoleActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     private void implementActions(){
-
+        /*Double d = new Double(screenWidth / 1.2);
+        Double d1= new Double(screenHeight/1.6);
+        int screenwidth = d.intValue();;
+        int screenheitght = d1.intValue();*/
+        ViewGroup.LayoutParams params = verticalContainer.getLayoutParams();
+        params.height = screenHeight/3;
+        params.width = screenWidth;
+        verticalContainer.setLayoutParams(params);
+        verticalContainer.setMinimumHeight(screenHeight/3);
         // setting up vertical recycler view
         roleVerticalRecyclerViewAdapter = new RoleVerticalRecyclerViewAdapter(roles,getBaseContext());
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
@@ -185,5 +201,15 @@ public class RoleActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     public void onClick(View v) {
 
+    }
+
+    /**
+     * Get device screen width and height
+     */
+    private void getWidthAndHeight() {
+        DisplayMetrics displaymetrics = new DisplayMetrics();
+        this.getWindowManager().getDefaultDisplay().getMetrics(displaymetrics);
+        screenHeight = displaymetrics.heightPixels;
+        screenWidth = displaymetrics.widthPixels;
     }
 }

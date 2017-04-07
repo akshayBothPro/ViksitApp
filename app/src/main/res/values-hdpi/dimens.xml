@@ -45,7 +45,6 @@
     <dimen name="home_icon_bottom_margin">30dp</dimen>
     <dimen name="home_start_btn_bottom_margin">5dp</dimen>
 
-
     <!--login activity dimensions-->
     <dimen name="login_con_padding">30dp</dimen>
     <dimen name="login_header_horizontal_padding">10dp</dimen>
@@ -54,7 +53,6 @@
     <dimen name="login_edittext_con_bottom_margin_double">10dp</dimen>
     <dimen name="login_edittext_horizontal_padding">10dp</dimen>
     <dimen name="login_error_padding">10dp</dimen>
-
 
     <!--signup activity dimensions-->
     <dimen name="signup_con_horizontal_padding">30dp</dimen>
@@ -113,7 +111,6 @@
     <dimen name="asses_card_header_hor_padding">10dp</dimen>
     <dimen name="asses_card_header_bottom_margin">5dp</dimen>
     <dimen name="asses_card_image_margin">10dp</dimen>
-
 
     <!--Fragment image dimensions-->
     <dimen name="fragment_image_hor_padding">10dp</dimen>
