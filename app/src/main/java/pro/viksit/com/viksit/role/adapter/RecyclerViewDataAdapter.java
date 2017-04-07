@@ -24,9 +24,20 @@ public class RecyclerViewDataAdapter extends RecyclerView.Adapter<RecyclerViewDa
     private ArrayList<SectionedRole> dataList;
     private Context mContext;
 
+    private int screenWidth;
+    private int screenHeight;
+
+
     public RecyclerViewDataAdapter(Context context, ArrayList<SectionedRole> dataList) {
         this.dataList = dataList;
         this.mContext = context;
+    }
+
+    public RecyclerViewDataAdapter(Context context, ArrayList<SectionedRole> dataList, int screenWidth, int screenHeight) {
+        this.dataList = dataList;
+        this.mContext = context;
+        this.screenWidth = screenWidth;
+        this.screenHeight = screenHeight;
     }
 
     @Override
@@ -45,7 +56,7 @@ public class RecyclerViewDataAdapter extends RecyclerView.Adapter<RecyclerViewDa
 
         itemRowHolder.itemTitle.setText(sectionName);
 
-        SectionListDataAdapter itemListDataAdapter = new SectionListDataAdapter(mContext, singleSectionItems);
+        SectionListDataAdapter itemListDataAdapter = new SectionListDataAdapter(mContext, singleSectionItems, screenWidth, screenHeight);
 
         itemRowHolder.recycler_view_list.setHasFixedSize(true);
         itemRowHolder.recycler_view_list.setLayoutManager(new LinearLayoutManager(mContext, LinearLayoutManager.HORIZONTAL, false));

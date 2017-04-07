@@ -54,29 +54,24 @@ public class RoleActivity extends AppCompatActivity implements View.OnClickListe
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         bottomNavigationView = (BottomNavigationView) findViewById(R.id.bottom_navigation);
         verticalRecycler = (RecyclerView) findViewById(R.id.rv_role_vertical);
-        verticalContainer = (LinearLayout) findViewById(R.id.ll_vertical_rv_con);
         horizontalRecycler = (RecyclerView) findViewById(R.id.rv_role_horizontal);
 
         setSupportActionBar(toolbar);
         new BottomBarUtil().setupBottomBar(bottomNavigationView,RoleActivity.this,R.id.role);//setting bottom navigation bar
         setRoleData();
         createDummyData();
-
+        getWidthAndHeight();
         implementActions();
     }
 
     private void implementActions(){
-        /*Double d = new Double(screenWidth / 1.2);
-        Double d1= new Double(screenHeight/1.6);
-        int screenwidth = d.intValue();;
-        int screenheitght = d1.intValue();*/
-        ViewGroup.LayoutParams params = verticalContainer.getLayoutParams();
-        params.height = screenHeight/3;
-        params.width = screenWidth;
-        verticalContainer.setLayoutParams(params);
-        verticalContainer.setMinimumHeight(screenHeight/3);
+
+        ViewGroup.LayoutParams params = verticalRecycler.getLayoutParams();
+        params.height = screenHeight/2;
+        verticalRecycler.setLayoutParams(params);
         // setting up vertical recycler view
-        roleVerticalRecyclerViewAdapter = new RoleVerticalRecyclerViewAdapter(roles,getBaseContext());
+        verticalRecycler.setHasFixedSize(true);
+        roleVerticalRecyclerViewAdapter = new RoleVerticalRecyclerViewAdapter(roles,getBaseContext(),screenWidth,screenHeight);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
         linearLayoutManager.setAutoMeasureEnabled(true);
         verticalRecycler.setLayoutManager(linearLayoutManager);
@@ -121,7 +116,7 @@ public class RoleActivity extends AppCompatActivity implements View.OnClickListe
 
         horizontalRecycler.setHasFixedSize(true);
 
-        RecyclerViewDataAdapter adapter = new RecyclerViewDataAdapter(this, allSampleData);
+        RecyclerViewDataAdapter adapter = new RecyclerViewDataAdapter(this, allSampleData,screenWidth,screenHeight);
 
         horizontalRecycler.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
 

@@ -107,7 +107,7 @@
     <!--Assessment Card dimensions-->
     <dimen name="asses_card_header_hor_padding">10dp</dimen>
     <dimen name="asses_card_header_bottom_margin">10dp</dimen>
-    <dimen name="asses_card_image_margin">20dp</dimen>
+    <dimen name="asses_card_image_margin">15dp</dimen>
 
     <!--Fragment image dimensions-->
     <dimen name="fragment_image_hor_padding">10dp</dimen>

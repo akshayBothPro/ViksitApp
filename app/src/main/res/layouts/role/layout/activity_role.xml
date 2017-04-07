@@ -24,27 +24,22 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent">
-            <LinearLayout
-                android:id="@+id/ll_vertical_rv_con"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_alignParentTop="true"
-                android:orientation="vertical">
+
 
             <android.support.v7.widget.RecyclerView
                 android:id="@+id/rv_role_vertical"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:fadeScrollbars="false"
-                android:scrollbarStyle="insideOverlay"
-                android:scrollbars="horizontal" />
-            </LinearLayout>
+                android:orientation="vertical"
+                 />
+
 
             <android.support.v7.widget.RecyclerView
                 android:id="@+id/rv_role_horizontal"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/ll_vertical_rv_con"
+                android:layout_below="@+id/rv_role_vertical"
                 android:background="@color/white_color"
                 android:layout_alignParentBottom="true"
                 android:foregroundGravity="left"

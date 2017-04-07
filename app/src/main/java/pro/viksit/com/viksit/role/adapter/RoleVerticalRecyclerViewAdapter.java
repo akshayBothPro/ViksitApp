@@ -25,6 +25,15 @@ import pro.viksit.com.viksit.role.pojo.Role;
 public class RoleVerticalRecyclerViewAdapter extends RecyclerView.Adapter<RoleVerticalRecyclerViewAdapter.MyViewHolder>  {
     private List<Role> roles;
     private Context context;
+    private int screenWidth;
+    private int screenHeight;
+
+    public RoleVerticalRecyclerViewAdapter(List<Role> roles,Context context, int screenWidth, int screenHeight) {
+        this.roles = roles;
+        this.context = context;
+        this.screenWidth = screenWidth;
+        this.screenHeight = screenHeight;
+    }
 
     public RoleVerticalRecyclerViewAdapter(List<Role> roles,Context context) {
         this.roles = roles;
@@ -45,7 +54,13 @@ public class RoleVerticalRecyclerViewAdapter extends RecyclerView.Adapter<RoleVe
         holder.title.setText(role.getTitle());
         holder.subtitle.setText(role.getSubtitle());
         holder.status.setText(Integer.toString(role.getCompletedItems()) + " of " + Integer.toString(role.getTotalItems()) + " items completed");
-        holder.image.setImageResource(role.getImageResID());
+        holder.image.setBackgroundResource(role.getImageResID());
+        if(screenHeight != 0 && screenWidth != 0) {
+            ViewGroup.LayoutParams params = holder.image.getLayoutParams();
+            params.height = screenHeight/7;
+            params.width = screenHeight/6;
+            holder.image.setLayoutParams(params);
+        }
         holder.progressBar.setMax(role.getTotalItems());
         holder.progressBar.setProgress(role.getCompletedItems());
         holder.progressBar.setProgressDrawable(context.getResources().getDrawable(R.drawable.progress_bar_drawable));
@@ -86,6 +101,7 @@ public class RoleVerticalRecyclerViewAdapter extends RecyclerView.Adapter<RoleVe
         public void onClick(View view) {
 
         }
+
 
     }
 

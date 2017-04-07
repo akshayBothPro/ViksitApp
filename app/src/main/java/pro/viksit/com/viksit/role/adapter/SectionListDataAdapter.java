@@ -24,9 +24,19 @@ public class SectionListDataAdapter extends RecyclerView.Adapter<SectionListData
     private ArrayList<Role> itemsList;
     private Context mContext;
 
+    private int screenWidth;
+    private int screenHeight;
+
     public SectionListDataAdapter(Context context, ArrayList<Role> itemsList) {
         this.itemsList = itemsList;
         this.mContext = context;
+    }
+
+    public SectionListDataAdapter(Context context, ArrayList<Role> itemsList, int screenWidth, int screenHeight) {
+        this.itemsList = itemsList;
+        this.mContext = context;
+        this.screenWidth = screenWidth;
+        this.screenHeight = screenHeight;
     }
 
     @Override
@@ -42,7 +52,13 @@ public class SectionListDataAdapter extends RecyclerView.Adapter<SectionListData
         Role singleItem = itemsList.get(i);
 
         holder.tvTitle.setText(singleItem.getTitle());
-        holder.itemImage.setImageResource(singleItem.getImageResID());
+        holder.itemImage.setBackgroundResource(singleItem.getImageResID());
+        if(screenHeight != 0 && screenWidth != 0){
+            ViewGroup.LayoutParams params = holder.itemImage.getLayoutParams();
+            params.height = screenWidth/4;
+            params.width = screenWidth/4;
+            holder.itemImage.setLayoutParams(params);
+        }
 
 
        /* Glide.with(mContext)
@@ -61,7 +77,6 @@ public class SectionListDataAdapter extends RecyclerView.Adapter<SectionListData
     public class SingleItemRowHolder extends RecyclerView.ViewHolder {
 
         protected TextView tvTitle;
-
         protected ImageView itemImage;
 
 
@@ -71,11 +86,9 @@ public class SectionListDataAdapter extends RecyclerView.Adapter<SectionListData
             this.tvTitle = (TextView) view.findViewById(R.id.tv_item_title);
             this.itemImage = (ImageView) view.findViewById(R.id.iv_item_image);
 
-
             view.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-
 
                     Toast.makeText(v.getContext(), tvTitle.getText(), Toast.LENGTH_SHORT).show();
 
