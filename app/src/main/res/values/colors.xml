@@ -66,4 +66,5 @@
     <color name="error_bg">#ffeded</color>
 
     <color name="recommended_roles_color">#a2a3a5</color>
+    <color name="hor_card_bottom" >#d6d7da</color>
 </resources>

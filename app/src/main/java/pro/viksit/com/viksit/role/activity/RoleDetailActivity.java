@@ -9,6 +9,7 @@ import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.util.DisplayMetrics;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -27,17 +28,20 @@ public class RoleDetailActivity extends AppCompatActivity {
     RecyclerView verticalRecycler;
     private List<Role> roles;
 
+    private int screenWidth;
+    private int screenHeight;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_role_detail);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        getWidthAndHeight();
 
 
         TextView toolbar_title = (TextView) findViewById(R.id.toolbar_title);
         toolbar_title.setText("Mutual Fund Planner");
-        toolbar_title.setTypeface(null, Typeface.BOLD);
         ImageView info = (ImageView) findViewById(R.id.info);
         ImageView back = (ImageView) findViewById(R.id.back);
 
@@ -81,7 +85,7 @@ public class RoleDetailActivity extends AppCompatActivity {
             roles.add(role);
 
         }
-        roleVerticalRecyclerViewAdapter = new RoleDetailAdapter(roles,RoleDetailActivity.this);
+        roleVerticalRecyclerViewAdapter = new RoleDetailAdapter(roles,RoleDetailActivity.this,screenWidth,screenHeight);
 
         verticalRecycler.setHasFixedSize(true);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
@@ -124,5 +128,11 @@ public class RoleDetailActivity extends AppCompatActivity {
         finish();
     }
 
+    private void getWidthAndHeight() {
+        DisplayMetrics displaymetrics = new DisplayMetrics();
+        this.getWindowManager().getDefaultDisplay().getMetrics(displaymetrics);
+        screenHeight = displaymetrics.heightPixels;
+        screenWidth = displaymetrics.widthPixels;
+    }
 
 }

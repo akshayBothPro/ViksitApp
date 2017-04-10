@@ -63,8 +63,6 @@ public class GoogleUtil {
                 dialog.show();
             }
 
-
-
         } else {
             dialog.show();
 

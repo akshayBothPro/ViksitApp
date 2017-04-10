@@ -10,6 +10,7 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.util.DisplayMetrics;
 import android.view.View;
+import android.view.ViewGroup;
 
 import java.util.ArrayList;
 
@@ -63,7 +64,10 @@ public class ModuleActivity extends AppCompatActivity {
 
     private void implementActions(){
 
-        // setting up vertical recycler view
+        // setting up vertical recycler viewViewGroup.LayoutParams params = verticalRecycler.getLayoutParams();
+        ViewGroup.LayoutParams params = verticalRecycler.getLayoutParams();
+        params.height = screenHeight/2;
+        verticalRecycler.setLayoutParams(params);
         moduleVerticalRecyclerViewAdapter = new ModuleVerticalRecyclerViewAdapter(roles,getBaseContext(), screenWidth, screenHeight);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
         linearLayoutManager.setAutoMeasureEnabled(true);
@@ -98,17 +102,17 @@ public class ModuleActivity extends AppCompatActivity {
         Role role;
         for(int i = 0 ; i < 8 ; i++) {
             //role constructor => (int imageResID, String title, String subtitle, int totalItems, int completedItems)
-            role = new Role(R.drawable.ic_7, "Game Designer", "User Interface Developer", 247, 131,"Recommended");
+            role = new Role(R.drawable.ic_7, "Game DesignerAnalyst", "User Interface Developer", 247, 131,"Recommended");
             roles.add(role);
-            role = new Role(R.drawable.ic_8, "Game Designer", "User Interface Developer", 247, 231,"Finance");
+            role = new Role(R.drawable.ic_8, "Game Designer Analyst", "User Interface Developer", 247, 231,"Finance");
             roles.add(role);
-            role = new Role(R.drawable.ic_9, "Business Analyst", "Mutual Fund Planner", 247, 91,"Sales and Marketing");
+            role = new Role(R.drawable.ic_9, "Business Analyst Designer", "Mutual Fund Planner", 247, 91,"Sales and Marketing");
             roles.add(role);
-            role = new Role(R.drawable.ic_10, "Game Designer", "User Interface Developer", 247, 31,"Recommended");
+            role = new Role(R.drawable.ic_10, "Game Designer Analyst", "User Interface Developer", 247, 31,"Recommended");
             roles.add(role);
-            role = new Role(R.drawable.ic_11, "Game Designer", "User Interface Developer", 247, 39,"Finance");
+            role = new Role(R.drawable.ic_11, "Game Designer Analyst", "User Interface Developer", 247, 39,"Finance");
             roles.add(role);
-            role = new Role(R.drawable.ic_12, "Business Analyst", "Mutual Fund Planner", 247, 51,"Sales and Marketing");
+            role = new Role(R.drawable.ic_12, "Business Analyst Designer", "Mutual Fund Planner", 247, 51,"Sales and Marketing");
             roles.add(role);
         }
     }

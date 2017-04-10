@@ -52,6 +52,7 @@
     <dimen name="login_edittext_con_bottom_margin_double">10dp</dimen>
     <dimen name="login_edittext_horizontal_padding">10dp</dimen>
     <dimen name="login_error_padding">10dp</dimen>
+    <dimen name="circle_button_margin">10dp</dimen>
 
 
     <!--signup activity dimensions-->
@@ -135,4 +136,17 @@
     <dimen name="video_hor_padding">10dp</dimen>
     <dimen name="video_header_bottom_margin">10dp</dimen>
     <dimen name="video_pic_margin">15dp</dimen>
+
+    <!--Role Activity dimensions-->
+    <dimen name="role_info_hor_padding">10dp</dimen>
+    <dimen name="role_ver_item_padding">5dp</dimen>
+    <dimen name="card_item_bottom_margin">5dp</dimen>
+    <dimen name="module_header_margin">1dp</dimen>
+    <dimen name="module_progress_bard_bottom_margin">3dp</dimen>
+
+    <!--Role Detail Demensions-->
+    <dimen name="role_detail_image_margin">10dp</dimen>
+    <dimen name="role_detail_card_margin">5dp</dimen>
+
+
 </resources>

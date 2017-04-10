@@ -2,33 +2,25 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white_color"
-    android:layout_marginBottom="10dp"
-    android:layout_marginTop="10dp"
-    android:layout_marginLeft="5dp">
-    <LinearLayout
-        android:id="@+id/ll_con"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:background="@color/bg">
+    android:background="@color/white_color">
+
     <TextView
         android:id="@+id/tv_role_description"
-        android:textAlignment="center"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="5dp"
-        android:layout_marginTop="2dp"
-        android:layout_marginBottom="1dp"
+        android:background="@color/bg"
+        android:padding="@dimen/role_info_hor_padding"
         android:textColor="@color/comment_reply_color"
         android:textSize="@dimen/p4"/>
-    </LinearLayout>
-
-        <android.support.v7.widget.RecyclerView
-            android:id="@+id/recycler_view_list"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/ll_con"/>
-
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/recycler_view_list"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv_role_description"/>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_below="@id/recycler_view_list"
+        android:background="@color/hor_card_bottom"/>
 
 </RelativeLayout>

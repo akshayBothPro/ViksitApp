@@ -6,12 +6,16 @@
         android:id="@+id/tv_question_text"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="15dp"
+        android:padding="10dp"
+        android:maxLines="3"
+        android:minLines="1"
+        android:ellipsize="end"
         android:textColor="@color/question_text_color"
-        android:textSize="@dimen/p3"/>
+        android:text="dhcbjd sbcnds bcjdsc bdjch bdsjh cbdjcnc nbchj bcbcjhc jbdsjc hbd scb dsj bcdj hbc"
+        android:textSize="@dimen/p2"/>
     <View
         android:layout_width="match_parent"
-        android:layout_alignParentBottom="true"
         android:layout_height="1dp"
+        android:layout_below="@id/tv_question_text"
         android:background="@color/hint_color"/>
 </RelativeLayout>

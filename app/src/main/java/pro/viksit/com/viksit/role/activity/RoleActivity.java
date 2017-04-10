@@ -81,7 +81,7 @@ public class RoleActivity extends AppCompatActivity implements View.OnClickListe
                 new RecyclerItemClickListener (getBaseContext(), verticalRecycler ,new RecyclerItemClickListener.OnItemClickListener() {
                     @Override public void onItemClick(View view, int position) {
                         System.out.println("Vposition: " + position);
-                        Intent intent = new Intent(RoleActivity.this, ModuleActivity.class);
+                        Intent intent = new Intent(RoleActivity.this, RoleDetailActivity.class);
                        /* Bundle bundle = new Bundle();
                         bundle.putSerializable("role", roles.get(position));
                         intent.putExtras(bundle);*/
@@ -151,17 +151,17 @@ public class RoleActivity extends AppCompatActivity implements View.OnClickListe
         Role role;
         for(int i = 0 ; i < 8 ; i++) {
             //role constructor => (int imageResID, String title, String subtitle, int totalItems, int completedItems)
-            role = new Role(R.drawable.ic_7, "Game Designer", "User Interface Developer", 247, 131,"Recommended");
+            role = new Role(R.drawable.ic_7, "Game Designer Analyst", "User Interface Developer", 247, 131,"Recommended");
             roles.add(role);
-            role = new Role(R.drawable.ic_8, "Game Designer", "User Interface Developer", 247, 231,"Finance");
+            role = new Role(R.drawable.ic_8, "Game Designer Analyst", "User Interface Developer", 247, 231,"Finance");
             roles.add(role);
-            role = new Role(R.drawable.ic_9, "Business Analyst", "Mutual Fund Planner", 247, 91,"Sales and Marketing");
+            role = new Role(R.drawable.ic_9, "Business Analyst Designer", "Mutual Fund Planner", 247, 91,"Sales and Marketing");
             roles.add(role);
-            role = new Role(R.drawable.ic_10, "Game Designer", "User Interface Developer", 247, 31,"Recommended");
+            role = new Role(R.drawable.ic_10, "Game Designer Analyst", "User Interface Developer", 247, 31,"Recommended");
             roles.add(role);
-            role = new Role(R.drawable.ic_11, "Game Designer", "User Interface Developer", 247, 39,"Finance");
+            role = new Role(R.drawable.ic_11, "Game Designer Analyst", "User Interface Developer", 247, 39,"Finance");
             roles.add(role);
-            role = new Role(R.drawable.ic_12, "Business Analyst", "Mutual Fund Planner", 247, 51,"Sales and Marketing");
+            role = new Role(R.drawable.ic_12, "Business Analyst Designer", "Mutual Fund Planner", 247, 51,"Sales and Marketing");
             roles.add(role);
         }
     }

@@ -60,30 +60,31 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/signup_btn_bottom_margin"
         android:gravity="center"
         android:orientation="horizontal">
 
         <ImageButton
             android:id="@+id/btn_signup_linkedIn"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:layout_marginRight="10dp"
+            android:layout_width="@dimen/signup_social_media_btn_size"
+            android:layout_height="@dimen/signup_social_media_btn_size"
+            android:layout_marginRight="@dimen/circle_button_margin"
             android:elevation="5dp"
             android:background="@drawable/linkedin_circle_button"/>
 
         <ImageButton
             android:id="@+id/btn_signup_google"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:layout_marginRight="10dp"
+            android:layout_width="@dimen/signup_social_media_btn_size"
+            android:layout_height="@dimen/signup_social_media_btn_size"
+            android:layout_marginRight="@dimen/circle_button_margin"
             android:elevation="5dp"
             android:background="@drawable/google_circle_button"/>
 
        <ImageButton
             android:id="@+id/fb"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:layout_marginRight="10dp"
+            android:layout_width="@dimen/signup_social_media_btn_size"
+            android:layout_height="@dimen/signup_social_media_btn_size"
+            android:layout_marginRight="@dimen/circle_button_margin"
             android:elevation="5dp"
             android:background="@drawable/fb_circle_button"/>
         <com.facebook.login.widget.LoginButton

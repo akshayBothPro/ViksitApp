@@ -55,9 +55,10 @@ public class RoleVerticalRecyclerViewAdapter extends RecyclerView.Adapter<RoleVe
         holder.subtitle.setText(role.getSubtitle());
         holder.status.setText(Integer.toString(role.getCompletedItems()) + " of " + Integer.toString(role.getTotalItems()) + " items completed");
         holder.image.setBackgroundResource(role.getImageResID());
+
         if(screenHeight != 0 && screenWidth != 0) {
             ViewGroup.LayoutParams params = holder.image.getLayoutParams();
-            params.height = screenHeight/7;
+            params.height = screenHeight/6;
             params.width = screenHeight/6;
             holder.image.setLayoutParams(params);
         }
