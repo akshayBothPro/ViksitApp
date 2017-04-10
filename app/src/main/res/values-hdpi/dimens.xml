@@ -136,6 +136,7 @@
 
     <!--Role Activity dimensions-->
     <dimen name="role_info_hor_padding">10dp</dimen>
+    <dimen name="role_item_hor_padding">10dp</dimen>
     <dimen name="role_ver_item_padding">5dp</dimen>
     <dimen name="card_item_bottom_margin">5dp</dimen>
     <dimen name="module_header_margin">1dp</dimen>
@@ -144,4 +145,9 @@
     <!--Role Detail Demensions-->
     <dimen name="role_detail_image_margin">10dp</dimen>
     <dimen name="role_detail_card_margin">5dp</dimen>
+
+
+
+    <!--Question Activity Dimension-->
+    <dimen name="question_item_padding">10dp</dimen>
 </resources>

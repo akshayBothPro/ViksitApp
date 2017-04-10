@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<pro.viksit.com.viksit.dashboard.util.CarouselLinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/root_container"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/transparent"
+    android:orientation="vertical">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        >
+        <android.support.v7.widget.CardView
+            android:id="@+id/card_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            card_view:cardCornerRadius="2dp"
+            card_view:cardUseCompatPadding="true"
+            card_view:cardBackgroundColor="@color/white"
+            android:translationZ="-1dp"
+            >
+
+            <LinearLayout
+                android:id="@+id/gg"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingTop="@dimen/completed_task_hor_padding"
+                android:paddingBottom="@dimen/completed_task_hor_padding"
+                android:orientation="vertical"
+                >
+                <TextView
+                    android:id="@+id/tv_completed_task_header"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/completed_task_header_margin"
+                    android:paddingLeft="@dimen/completed_task_hor_padding"
+                    android:paddingRight="@dimen/completed_task_hor_padding"
+                    android:paddingStart="@dimen/completed_task_hor_padding"
+                    android:paddingEnd="@dimen/completed_task_hor_padding"
+                    android:text="Risk vs Uncertainity"
+                    android:textSize="@dimen/p5"
+                    android:textAllCaps="true"
+                    />
+                <TextView
+                    android:id="@+id/tv_completed_task_title"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingLeft="@dimen/completed_task_hor_padding"
+                    android:paddingRight="@dimen/completed_task_hor_padding"
+                    android:paddingStart="@dimen/completed_task_hor_padding"
+                    android:paddingEnd="@dimen/completed_task_hor_padding"
+                    android:text="The Concept of Risk"
+                    android:textSize="@dimen/h5"
+                    android:textColor="@color/black"
+                    />
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/rv_completed_task"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/completed_task_recycler_margin"
+                    android:layout_marginBottom="@dimen/completed_task_recycler_margin"/>
+
+            </LinearLayout>
+
+
+        </android.support.v7.widget.CardView>
+
+    </RelativeLayout>
+
+</pro.viksit.com.viksit.dashboard.util.CarouselLinearLayout>

@@ -29,6 +29,8 @@ public class StudentProfile {
 	private String postGraduationCollege;
 	private String resumeURL;
 
+
+
 	public Integer getId() {
 		return id;
 	}

@@ -51,6 +51,7 @@ public class SignupActivity extends AppCompatActivity implements View.OnClickLis
     private TextView errorEmail;
     private AppCompatEditText phoneNumber;
     private AppCompatEditText password;
+    private TextView errorPaswword;
     private ImageButton showPassword;
     private Button signup, btn_signup_linkedIn, btn_signup_google, fb;
     private Button viaSocial;
@@ -91,6 +92,7 @@ public class SignupActivity extends AppCompatActivity implements View.OnClickLis
         phoneNumber = (AppCompatEditText) findViewById(R.id.apet_phone_number);
         password = (AppCompatEditText) findViewById(R.id.apet_password);
         showPassword = (ImageButton) findViewById(R.id.iv_show_password);
+        errorPaswword = (TextView) findViewById(R.id.tv_error_password);
         signup = (Button) findViewById(R.id.btn_signup);
         viaSocial = (Button) findViewById(R.id.tv_via_social);
         loginInstead = (Button) findViewById(R.id.btn_login_instead);
@@ -146,7 +148,6 @@ public class SignupActivity extends AppCompatActivity implements View.OnClickLis
                 break;
             case R.id.btn_signup_google:
                 googleUtil.signIn(mGoogleApiClient, RC_SIGN_IN, this);
-
                 break;
             case R.id.fb:
                 getLoginDetails();
@@ -208,7 +209,8 @@ public class SignupActivity extends AppCompatActivity implements View.OnClickLis
         if (pasword.isEmpty() || pasword.length() < 4 || pasword.length() > 10 || emailid.isEmpty() || !Patterns.EMAIL_ADDRESS.matcher(emailid).matches() || phone.isEmpty()) {
 
             if (pasword.isEmpty() || pasword.length() < 4 || pasword.length() > 10) {
-                password.setError("Type 4 and 10 alphanumeric characters");
+               /* password.setError("Type 4 and 10 alphanumeric characters");*/
+               errorPaswword.setVisibility(View.VISIBLE);
             }
 
             if (phone.length() != 10) {

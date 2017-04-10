@@ -62,7 +62,6 @@ public class DashboardActivity extends AppCompatActivity {
         String profile_date= sharedpreferences.getString(getResources().getString(R.string.user_profile),"");
         StudentProfile studentProfile = gson.fromJson(profile_date,StudentProfile.class);
 
-
         setSupportActionBar(toolbar);
 
 

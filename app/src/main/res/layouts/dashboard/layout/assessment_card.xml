@@ -22,7 +22,6 @@
             android:translationZ="-1dp"
             >
 
-
             <RelativeLayout
                 android:id="@+id/gg"
                 android:layout_width="match_parent"

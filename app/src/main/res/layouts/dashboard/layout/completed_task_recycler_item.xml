@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingTop="5dp">
+    <RelativeLayout
+        android:id="@+id/rl_image_icon_con"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/completed_task_hor_padding"
+        android:layout_marginStart="@dimen/completed_task_hor_padding"
+        android:layout_marginRight="10dp"
+        android:layout_marginEnd="10dp">
+        <ImageView
+            android:id="@+id/iv_completed_task_item_icon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="5dp"
+            android:tint="@color/selected_circle_color"
+            android:src="@mipmap/ic_adjust_black_24dp"/>
+        <View
+            android:layout_width="1dp"
+            android:layout_height="match_parent"
+            android:layout_centerHorizontal="true"
+            android:background="@color/hint_color"
+            android:layout_below="@+id/iv_completed_task_item_icon"/>
+    </RelativeLayout>
+    <TextView
+        android:id="@+id/tv_completed_task_item_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/rl_image_icon_con"
+        android:layout_marginBottom="5dp"
+        android:textSize="@dimen/p2"
+        android:textColor="@color/completed_task_points_color"
+        android:text="Won against sidharth"/>
+    <TextView
+        android:id="@+id/tv_completed_task_item_time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="20dp"
+        android:layout_below="@id/tv_completed_task_item_title"
+        android:layout_toRightOf="@id/rl_image_icon_con"
+        android:textSize="@dimen/p4"
+        android:textColor="@color/hint_color"
+        android:text="at 12:10 pm"/>
+</RelativeLayout>

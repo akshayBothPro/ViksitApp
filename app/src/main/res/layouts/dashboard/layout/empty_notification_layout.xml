@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="30dp">
+    <ImageView
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:tint="@color/hint_color"
+        android:background="#00000000"
+        android:src="@mipmap/ic_sentiment_very_dissatisfied_white_24dp"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAlignment="center"
+        android:textSize="@dimen/p1"
+        android:text="You dont have any notifications yet. Check back in later for important announcements or updates"/>
+
+</LinearLayout>

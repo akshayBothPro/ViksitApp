@@ -15,6 +15,10 @@
     <color name="otp_info_color">#767676</color>
     <color name="role_item_subtitle">#4a4a4a</color>
     <color name="role_item_status">#c3c3c3</color>
+    <color name="progress_bar_bg_color">#ebebeb</color>
+    <color name="completed_task_points_color">#4f4f4f</color>
+    <color name="gold_coin_color">#f6b72e</color>
+    <color name="dialog_sub_title">#444444</color>
 
     <color name="bottombarinactive">#989EA2</color>
     <color name="bottombarbackground">#F3F3F3</color>

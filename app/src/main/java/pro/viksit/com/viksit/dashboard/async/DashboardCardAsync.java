@@ -104,6 +104,8 @@ public class DashboardCardAsync extends AsyncTask<String, Integer, String> {
             System.out.println("jsonresponse "+jsonresponse);
             Type listType = new TypeToken<List<DashboardCard>>(){}.getType();
             ArrayList<DashboardCard> dashboardCards = (ArrayList<DashboardCard>) gson.fromJson(jsonresponse, listType);
+
+
             if(dashboardCards.size() <7){
                 loop = dashboardCards.size();
             }else{
@@ -134,8 +136,6 @@ public class DashboardCardAsync extends AsyncTask<String, Integer, String> {
             pager.addOnPageChangeListener(carouselPagerAdapter);
             pager.setCurrentItem(1);
             pager.setOffscreenPageLimit(3);
-
-
 
             SharedPreferences.Editor editor = sharedPreferences.edit();
             editor.putString(context.getResources().getString(R.string.dashboardcards), jsonresponse);

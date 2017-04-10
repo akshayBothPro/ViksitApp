@@ -2,10 +2,10 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:paddingTop="@dimen/role_info_hor_padding"
-    android:paddingBottom="@dimen/role_info_hor_padding"
-    android:paddingLeft="@dimen/role_info_hor_padding"
-    android:paddingStart="@dimen/role_info_hor_padding"
+    android:paddingTop="@dimen/role_item_hor_padding"
+    android:paddingBottom="@dimen/role_item_hor_padding"
+    android:paddingLeft="@dimen/role_item_hor_padding"
+    android:paddingStart="@dimen/role_item_hor_padding"
     android:background="@color/white_color">
 
 
@@ -23,7 +23,7 @@
         android:layout_alignEnd="@id/iv_item_image"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:maxWidth="90dp"
+        android:maxWidth="80dp"
         android:maxLines="2"
         android:minLines="1"
         android:ellipsize="end"

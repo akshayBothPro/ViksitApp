@@ -34,7 +34,7 @@
                 android:layout_toRightOf="@+id/iv_role_vertical_item_image"
                 android:layout_toEndOf="@id/iv_role_vertical_item_image"
                 android:layout_marginBottom="@dimen/module_header_margin"
-                android:paddingTop="5dp"
+                android:paddingTop="@dimen/card_item_bottom_margin"
                 android:textColor="@color/welcome_text_color"
                 android:textSize="@dimen/p7"
                 android:textAllCaps="true"

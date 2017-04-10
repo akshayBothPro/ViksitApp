@@ -76,14 +76,13 @@
     <dimen name="forgot_pswrd_error_padding">10dp</dimen>
     <dimen name="forgot_pswrd_btn_bottom_margin">5dp</dimen>
 
-
     <!--batch code activity dimensions-->
     <dimen name="batch_code_con_padding">30dp</dimen>
-    <dimen name="batch_code_header_bottom_margin">10dp</dimen>
+    <dimen name="batch_code_header_bottom_margin">15dp</dimen>
     <dimen name="batch_code_info_bottom_margin">15dp</dimen>
     <dimen name="batch_code_edittext_parent_con_horzontal_padding">40dp</dimen>
     <dimen name="batch_code_edittext_con_bottom_margin">15dp</dimen>
-    <dimen name="batch_code_edittext_margin">5dp</dimen>
+    <dimen name="batch_code_edittext_margin">10dp</dimen>
 
     <!--OTP activity dimensions-->
     <dimen name="otp_con_padding">30dp</dimen>
@@ -95,31 +94,54 @@
 
     <!--Reset Password activity dimensions-->
     <dimen name="reset_pswrd_con_padding">30dp</dimen>
-    <dimen name="reset_pswrd_header_bottom_margin">15dp</dimen>
+    <dimen name="reset_pswrd_header_bottom_margin">20dp</dimen>
     <dimen name="reset_pswrd_edittext_bottom_margin_double">15dp</dimen>
     <dimen name="reset_pswrd_edittext_bottom_margin">10dp</dimen>
     <dimen name="reset_pswrd_edittext_padding">10dp</dimen>
 
     <!--Changed Password activity dimensions-->
     <dimen name="changed_pswrd_con_padding">30dp</dimen>
-    <dimen name="changed_pswrd_header_bottom_margin">10dp</dimen>
+    <dimen name="changed_pswrd_header_bottom_margin">15dp</dimen>
     <dimen name="changed_pswrd_info_bottom_margin">20dp</dimen>
 
     <!--Assessment Card dimensions-->
-    <dimen name="asses_card_header_hor_padding">10dp</dimen>
-    <dimen name="asses_card_header_bottom_margin">10dp</dimen>
-    <dimen name="asses_card_image_margin">15dp</dimen>
+    <dimen name="asses_card_header_hor_padding">15dp</dimen>
+    <dimen name="asses_card_header_bottom_margin">5dp</dimen>
+    <dimen name="asses_card_image_margin">10dp</dimen>
 
     <!--Fragment image dimensions-->
-    <dimen name="fragment_image_hor_padding">10dp</dimen>
-    <dimen name="fragment_image_header_bottom_margin">10dp</dimen>
-    <dimen name="fragment_image_pic_margin">10dp</dimen>
+    <dimen name="fragment_image_hor_padding">15dp</dimen>
+    <dimen name="fragment_image_header_bottom_margin">5dp</dimen>
+    <dimen name="fragment_image_pic_margin">15dp</dimen>
+
+    <!--Challenge Card dimensions-->
+    <dimen name="challenge_card_hor_padding">15dp</dimen>
+    <dimen name="challenge_header_bottom_margin">5dp</dimen>
+    <dimen name="challenge_pic_margin">10dp</dimen>
+    <dimen name="challenge_bottom_margin">10dp</dimen>
+
+    <!--Presenattion Card dimensions-->
+    <dimen name="presentation_card_hor_padding">15dp</dimen>
+    <dimen name="presentation_header_bottom_margin">5dp</dimen>
+    <dimen name="presentation_pic_margin">15dp</dimen>
+
+    <!--Video Card dimensions-->
+    <dimen name="video_hor_padding">15dp</dimen>
+    <dimen name="video_header_bottom_margin">5dp</dimen>
+    <dimen name="video_pic_margin">15dp</dimen>
+
+    <!--completed Task Dimension-->
+    <dimen name="completed_task_hor_padding">15dp</dimen>
 
     <!--Role Activity dimensions-->
     <dimen name="role_info_hor_padding">10dp</dimen>
+    <dimen name="role_item_hor_padding">15dp</dimen>
     <dimen name="role_ver_item_padding">5dp</dimen>
     <dimen name="card_item_bottom_margin">5dp</dimen>
     <dimen name="module_header_margin">1dp</dimen>
-    <dimen name="module_progress_bard_bottom_margin">3dp</dimen>
+    <dimen name="module_progress_bard_bottom_margin">5dp</dimen>
+
+    <!--Question Activity Dimension-->
+    <dimen name="question_item_padding">15dp</dimen>
 
 </resources>

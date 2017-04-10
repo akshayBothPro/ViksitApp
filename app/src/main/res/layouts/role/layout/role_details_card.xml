@@ -17,6 +17,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         card_view:cardBackgroundColor="@color/white"
+        card_view:cardUseCompatPadding="false"
         card_view:cardCornerRadius="2dp">
 
        <RelativeLayout
@@ -60,7 +61,7 @@
                     android:maxLength="16"
                     android:text="test analysis"
                     android:textSize="@dimen/p4"
-                    android:textColor="@color/desc_color"
+                    android:textColor="@color/hint_color"
                     android:background="@drawable/pill_bg"
                     />
                <TextView
@@ -71,7 +72,7 @@
                    android:ellipsize="end"
                    android:maxLength="16"
                    android:text="test analysis"
-                   android:textColor="@color/desc_color"
+                   android:textColor="@color/hint_color"
                    android:textSize="@dimen/p4"
                    android:background="@drawable/pill_bg"
                    />

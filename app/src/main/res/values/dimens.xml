@@ -137,8 +137,14 @@
     <dimen name="video_header_bottom_margin">10dp</dimen>
     <dimen name="video_pic_margin">15dp</dimen>
 
+    <!--completed Task Dimension-->
+    <dimen name="completed_task_hor_padding">10dp</dimen>
+    <dimen name="completed_task_header_margin">5dp</dimen>
+    <dimen name="completed_task_recycler_margin">10dp</dimen>
+
     <!--Role Activity dimensions-->
     <dimen name="role_info_hor_padding">10dp</dimen>
+    <dimen name="role_item_hor_padding">10dp</dimen>
     <dimen name="role_ver_item_padding">5dp</dimen>
     <dimen name="card_item_bottom_margin">5dp</dimen>
     <dimen name="module_header_margin">1dp</dimen>
@@ -148,5 +154,11 @@
     <dimen name="role_detail_image_margin">10dp</dimen>
     <dimen name="role_detail_card_margin">5dp</dimen>
 
+
+    <!--Question Activity Dimension-->
+    <dimen name="question_item_padding">15dp</dimen>
+
+    <!--Dashboard Activity Dimension-->
+    <dimen name="circle_indiactor_margin">120dp</dimen>
 
 </resources>

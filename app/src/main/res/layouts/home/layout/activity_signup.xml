@@ -3,13 +3,21 @@
     android:id="@+id/ll_input_con"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:background="@color/white_color"
-    android:paddingLeft="@dimen/signup_con_horizontal_padding"
-    android:paddingStart="@dimen/signup_con_horizontal_padding"
-    android:paddingRight="@dimen/signup_con_horizontal_padding"
-    android:paddingEnd="@dimen/signup_con_horizontal_padding"
-    android:gravity="center">
+    android:background="@color/white_color">
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scrollbarSize="0dp">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingTop="@dimen/signup_con_horizontal_padding"
+        android:paddingLeft="@dimen/signup_con_horizontal_padding"
+        android:paddingStart="@dimen/signup_con_horizontal_padding"
+        android:paddingRight="@dimen/signup_con_horizontal_padding"
+        android:paddingEnd="@dimen/signup_con_horizontal_padding"
+        android:gravity="center">
     <TextView
         android:id="@+id/tv_welcome"
         android:layout_width="wrap_content"
@@ -64,6 +72,7 @@
             android:layout_height="wrap_content"
             android:background="@drawable/input_shape"
             android:layout_marginBottom="@dimen/signup_edittext_con_bottom_margin"
+            android:maxLength="10"
             android:paddingLeft="@dimen/signup_edittext_horizontal_padding"
             android:paddingStart="@dimen/signup_edittext_horizontal_padding"
             android:paddingRight="@dimen/signup_edittext_horizontal_padding"
@@ -77,6 +86,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="@dimen/signup_edittext_con_bottom_margin_double">
+        <RelativeLayout
+            android:id="@+id/ll_pswrd_con"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
         <android.support.v7.widget.AppCompatEditText
             android:id="@+id/apet_password"
@@ -87,7 +100,6 @@
             android:paddingRight="@dimen/signup_edittext_horizontal_padding"
             android:paddingStart="@dimen/signup_edittext_horizontal_padding"
             android:paddingEnd="@dimen/signup_edittext_horizontal_padding"
-            android:drawableTint="@color/eye_icon_color"
             android:textCursorDrawable="@null"
             android:textColorHint="@color/hint_color"
             android:inputType="textPassword"
@@ -104,6 +116,19 @@
             android:layout_marginRight="@dimen/signup_edittext_horizontal_padding"
             android:layout_marginEnd="@dimen/signup_edittext_horizontal_padding"
             android:src="@mipmap/ic_remove_red_eye_white_24dp"/>
+        </RelativeLayout>
+        <TextView
+            android:id="@+id/tv_error_password"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/ll_pswrd_con"
+            android:padding="@dimen/signup_error_padding"
+            android:background="@color/error_bg"
+            android:textColor="@color/error_text"
+            android:text="Password should be 4 to 10 characters."
+            android:textSize="@dimen/p2"
+            android:visibility="gone"
+            />
     </RelativeLayout>
 
     <Button
@@ -206,6 +231,8 @@
         android:background="#00000000"
         android:textSize="@dimen/p3"
         android:textColor="@color/hint_color"/>
+    </LinearLayout>
+    </ScrollView>
 </LinearLayout>
 
 

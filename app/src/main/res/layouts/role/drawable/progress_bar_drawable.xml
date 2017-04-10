@@ -4,9 +4,9 @@
         <shape>
             <corners android:radius="3dip" />
             <gradient
-                android:startColor="@color/input_border"
-                android:centerColor="@color/input_border"
-                android:endColor="@color/input_border"
+                android:startColor="@color/progress_bar_bg_color"
+                android:centerColor="@color/progress_bar_bg_color"
+                android:endColor="@color/progress_bar_bg_color"
                 />
         </shape>
     </item>
@@ -32,8 +32,8 @@
                 <corners
                     android:radius="5dip" />
                 <gradient
-                    android:startColor="@color/linkedIn_color"
-                    android:endColor="@color/linkedIn_color"
+                    android:startColor="@color/selected_circle_color"
+                    android:endColor="@color/selected_circle_color"
                     android:angle="270"
                     />
             </shape>

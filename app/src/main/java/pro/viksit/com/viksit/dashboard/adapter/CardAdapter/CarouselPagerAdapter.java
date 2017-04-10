@@ -14,6 +14,7 @@ import pro.viksit.com.viksit.R;
 import pro.viksit.com.viksit.dashboard.activity.DashboardActivity;
 import pro.viksit.com.viksit.dashboard.fragment.AssessmentFragment;
 import pro.viksit.com.viksit.dashboard.fragment.ChallengeFragment;
+import pro.viksit.com.viksit.dashboard.fragment.CompletedTaskFragment;
 import pro.viksit.com.viksit.dashboard.fragment.ItemFragment;
 import pro.viksit.com.viksit.dashboard.fragment.PresentationFragment;
 import pro.viksit.com.viksit.dashboard.fragment.VideoFragment;
@@ -57,23 +58,26 @@ public class CarouselPagerAdapter extends FragmentPagerAdapter implements ViewPa
         } catch (Exception e) {
             e.printStackTrace();
         }
-        if(dashboardCards.get(position).getItemType().equalsIgnoreCase("ASSESSMENT")){
-            return AssessmentFragment.newInstance(context, dashboardCards.get(position), scale);
 
-        }else if (dashboardCards.get(position).getItemType().equalsIgnoreCase("Challenge")){
-            return ChallengeFragment.newInstance(context, dashboardCards.get(position), scale);
+            if (dashboardCards.get(position).getItemType().equalsIgnoreCase("ASSESSMENT")) {
+                return AssessmentFragment.newInstance(context, dashboardCards.get(position), scale);
 
-        } else if (dashboardCards.get(position).getItemType().equalsIgnoreCase("presentation")){
-            return PresentationFragment.newInstance(context, dashboardCards.get(position), scale);
+            } else if (dashboardCards.get(position).getItemType().equalsIgnoreCase("Challenge")) {
+                return ChallengeFragment.newInstance(context, dashboardCards.get(position), scale);
 
-        }  else if (dashboardCards.get(position).getItemType().equalsIgnoreCase("video")){
-            return VideoFragment.newInstance(context, dashboardCards.get(position), scale);
+            } else if (dashboardCards.get(position).getItemType().equalsIgnoreCase("presentation")) {
+                return PresentationFragment.newInstance(context, dashboardCards.get(position), scale);
 
-        }
-        else{
-            return ItemFragment.newInstance(context, dashboardCards.get(position), scale);
+            } else if (dashboardCards.get(position).getItemType().equalsIgnoreCase("video")) {
+                return VideoFragment.newInstance(context, dashboardCards.get(position), scale);
 
-        }
+            } else if (dashboardCards.get(position).getItemType().equalsIgnoreCase("completed")) {
+                return CompletedTaskFragment.newInstance(context, dashboardCards.get(position), scale);
+
+            } else {
+                return ItemFragment.newInstance(context, dashboardCards.get(position), scale);
+
+            }
 
     }
 
