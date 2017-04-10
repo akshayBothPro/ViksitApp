@@ -7,84 +7,78 @@ import java.io.Serializable;
  */
 
 @SuppressWarnings("serial") //With this annotation we are going to hide compiler warnings
-public class DashboardCard implements Serializable{
-    private int id;
+public class DashboardCard implements Serializable {
+
+    private static final long serialVersionUID = 1L;
+    private Integer id;
     private String header;
     private String title;
     private String description;
-    private int nosofQuestion;
-    private int experience;
-    private int coins;
-    private String type;
-    private int duration;
-    private String image_url;
-    private int personalRank;
-    private int personalExperience;
-    private int challengerExperience;
-    private String challengerImage_url;
+    private Integer numberOfQuestions;
+    private Integer itemExperience;
+    private Integer itemCoins;
+    private String itemType;
+    private Integer itemId;
+    private Integer duration;
+    private String imageURL;
     private String challengerName;
-    private int challengerRank;
+    private Integer challengerRank;
+    private Integer challengerExperience;
 
-
-    public DashboardCard() {
-    }
-
-    //game type / video type / presentation type
-    public DashboardCard(int id, String header, String title, String description, String image_url,String type) {
+    // Game, Video, Presentation
+    public DashboardCard(Integer id, String header, String title, String description, String imageURL, String itemType,
+                         Integer itemId) {
         this.id = id;
         this.header = header;
         this.title = title;
         this.description = description;
-        this.image_url = image_url;
-        this.type = type;
+        this.imageURL = imageURL;
+        this.itemType = itemType;
+        this.itemId = itemId;
     }
 
-
-    // challenge type
-    public DashboardCard(int id, String header, String title, String description, String image_url, int nosofQuestion, int experience, int coins,
-                         int personalRank, int personalExperience, int challengerExperience, int challengerRank){
+    // Challenge
+    public DashboardCard(Integer id, String header, String title, String description, String imageURL,
+                         Integer numberOfQuestions, Integer itemExperience, Integer duration, Integer itemCoins, String itemType,
+                         Integer itemId, Integer challengerExperience, Integer challengerRank) {
         this.id = id;
         this.header = header;
         this.title = title;
         this.description = description;
-        this.image_url = image_url;
-        this.nosofQuestion = nosofQuestion;
-        this.experience = experience;
-        this.coins = coins;
-        this.personalRank = personalRank;
-        this.personalExperience = personalExperience;
+        this.duration = duration;
+        this.imageURL = imageURL;
+        this.numberOfQuestions = numberOfQuestions;
+        this.itemExperience = itemExperience;
+        this.itemCoins = itemCoins;
+        this.itemType = itemType;
+        this.itemId = itemId;
         this.challengerExperience = challengerExperience;
         this.challengerRank = challengerRank;
-
     }
 
-    //assessment type
-    public DashboardCard(int id, String header, String title, String description, String image_url, int nosofQuestion, int experience, int coins, String type) {
+    // Assessments
+    public DashboardCard(Integer id, String header, String title, String description, String imageURL,
+                         Integer numberOfQuestions, Integer duration, Integer itemExperience, Integer itemCoins, String itemType,
+                         Integer itemId) {
         this.id = id;
         this.header = header;
         this.title = title;
         this.description = description;
-        this.nosofQuestion = nosofQuestion;
-        this.experience = experience;
-        this.coins = coins;
-        this.type = type;
-        this.image_url = image_url;
+        this.duration = duration;
+        this.numberOfQuestions = numberOfQuestions;
+        this.itemExperience = itemExperience;
+        this.itemCoins = itemCoins;
+        this.itemType = itemType;
+        this.itemId = itemId;
+        this.imageURL = "/root/talentify/assessment.png";
     }
 
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
-    }
-
-    public int getPersonalExperience() {
-        return personalExperience;
-    }
-
-    public void setPersonalExperience(int personalExperience) {
-        this.personalExperience = personalExperience;
     }
 
     public String getHeader() {
@@ -111,70 +105,60 @@ public class DashboardCard implements Serializable{
         this.description = description;
     }
 
-    public int getNosofQuestion() {
-        return nosofQuestion;
+    public Integer getNumberOfQuestions() {
+        return numberOfQuestions;
     }
 
-    public void setNosofQuestion(int nosofQuestion) {
-        this.nosofQuestion = nosofQuestion;
+    public void setNumberOfQuestions(Integer numberOfQuestions) {
+        this.numberOfQuestions = numberOfQuestions;
     }
 
-    public int getExperience() {
-        return experience;
+    public Integer getItemExperience() {
+        return itemExperience;
     }
 
-    public void setExperience(int experience) {
-        this.experience = experience;
+    public void setItemExperience(Integer itemExperience) {
+        this.itemExperience = itemExperience;
     }
 
-    public int getCoins() {
-        return coins;
+    public Integer getItemCoins() {
+        return itemCoins;
     }
 
-    public void setCoins(int coins) {
-        this.coins = coins;
+    public void setItemCoins(Integer itemCoins) {
+        this.itemCoins = itemCoins;
     }
 
-    public String getType() {
-        return type;
+    public String getItemType() {
+        return itemType;
     }
 
-    public void setType(String type) {
-        this.type = type;
+    public void setItemType(String itemType) {
+        this.itemType = itemType;
     }
 
-    public String getImage_url() {
-        return image_url;
+    public Integer getItemId() {
+        return itemId;
     }
 
-    public void setImage_url(String image_url) {
-        this.image_url = image_url;
+    public void setItemId(Integer itemId) {
+        this.itemId = itemId;
     }
 
-    public int getDuration() {
+    public Integer getDuration() {
         return duration;
     }
 
-    public void setDuration(int duration) {
+    public void setDuration(Integer duration) {
         this.duration = duration;
     }
 
-    public int getPersonalRank() {
-        return personalRank;
+    public String getImageURL() {
+        return imageURL;
     }
 
-    public void setPersonalRank(int rank) {
-        this.personalRank = rank;
-    }
-
-
-
-    public int getChallengerExperience() {
-        return challengerExperience;
-    }
-
-    public void setChallengerExperience(int challengerExperience) {
-        this.challengerExperience = challengerExperience;
+    public void setImageURL(String imageURL) {
+        this.imageURL = imageURL;
     }
 
     public String getChallengerName() {
@@ -185,19 +169,20 @@ public class DashboardCard implements Serializable{
         this.challengerName = challengerName;
     }
 
-    public int getChallengerRank() {
+    public Integer getChallengerRank() {
         return challengerRank;
     }
 
-    public void setChallengerRank(int challengerRank) {
+    public void setChallengerRank(Integer challengerRank) {
         this.challengerRank = challengerRank;
     }
 
-    public String getChallengerImage_url() {
-        return challengerImage_url;
+    public Integer getChallengerExperience() {
+        return challengerExperience;
     }
 
-    public void setChallengerImage_url(String challengerImage_url) {
-        this.challengerImage_url = challengerImage_url;
+    public void setChallengerExperience(Integer challengerExperience) {
+        this.challengerExperience = challengerExperience;
     }
+
 }

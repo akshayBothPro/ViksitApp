@@ -33,12 +33,14 @@ public class CarouselPagerAdapter extends FragmentPagerAdapter implements ViewPa
     private FragmentManager fragmentManager;
     private float scale;
     private ArrayList<DashboardCard> dashboardCards;
-    private int lastposition;
-    public CarouselPagerAdapter(DashboardActivity context, FragmentManager fm,ArrayList<DashboardCard> dashboardCards) {
+    private int lastposition,loop;
+
+    public CarouselPagerAdapter(DashboardActivity context, FragmentManager fm,ArrayList<DashboardCard> dashboardCards,int loop) {
         super(fm);
         this.fragmentManager = fm;
         this.context = context;
         this.dashboardCards = dashboardCards;
+        this.loop= loop;
     }
 
     @Override
@@ -55,16 +57,16 @@ public class CarouselPagerAdapter extends FragmentPagerAdapter implements ViewPa
         } catch (Exception e) {
             e.printStackTrace();
         }
-        if(dashboardCards.get(position).getType().equalsIgnoreCase("Assesment")){
+        if(dashboardCards.get(position).getItemType().equalsIgnoreCase("ASSESSMENT")){
             return AssessmentFragment.newInstance(context, dashboardCards.get(position), scale);
 
-        }else if (dashboardCards.get(position).getType().equalsIgnoreCase("Challenge")){
+        }else if (dashboardCards.get(position).getItemType().equalsIgnoreCase("Challenge")){
             return ChallengeFragment.newInstance(context, dashboardCards.get(position), scale);
 
-        } else if (dashboardCards.get(position).getType().equalsIgnoreCase("presentation")){
+        } else if (dashboardCards.get(position).getItemType().equalsIgnoreCase("presentation")){
             return PresentationFragment.newInstance(context, dashboardCards.get(position), scale);
 
-        }  else if (dashboardCards.get(position).getType().equalsIgnoreCase("video")){
+        }  else if (dashboardCards.get(position).getItemType().equalsIgnoreCase("video")){
             return VideoFragment.newInstance(context, dashboardCards.get(position), scale);
 
         }
@@ -118,10 +120,10 @@ public class CarouselPagerAdapter extends FragmentPagerAdapter implements ViewPa
                 context.pager_indicator.addView(context.dots[i], params);
             }
         }else {
-            context.dots = new ImageView[context.loop];
+            context.dots = new ImageView[loop];
             context.pager_indicator.removeAllViews();
 
-            for (int i = 0; i < context.loop; i++) {
+            for (int i = 0; i < loop; i++) {
                 context.dots[i] = new ImageView(context);
                 context.dots[i].setImageDrawable(context.getResources().getDrawable(R.drawable.nonselecteditem_dot));
 
@@ -129,7 +131,7 @@ public class CarouselPagerAdapter extends FragmentPagerAdapter implements ViewPa
             }
         }
 
-        context.dots[position %context.loop ].setImageDrawable(context.getResources().getDrawable(R.drawable.selecteditem_dot));
+        context.dots[position %loop ].setImageDrawable(context.getResources().getDrawable(R.drawable.selecteditem_dot));
     }
 
     @Override

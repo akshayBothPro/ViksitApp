@@ -71,12 +71,14 @@ public class AssessmentFragment extends Fragment {
             TextView experience = (TextView) linearLayout.findViewById(R.id.experience);
             TextView timelimit = (TextView) linearLayout.findViewById(R.id.timelimit);
             ImageView image =(ImageView) linearLayout.findViewById(R.id.image);
-            System.out.println("Image url "+dashboardCard.getImage_url());
+            TextView description = (TextView) linearLayout.findViewById(R.id.description);
 
-            int index = dashboardCard.getImage_url().lastIndexOf("/");
+            System.out.println("Image url "+dashboardCard.getImageURL());
+
+            int index = dashboardCard.getImageURL().lastIndexOf("/");
             ImageSaver imageSaver = new ImageSaver(getContext()).
                     setParentDirectoryName("dashboard").
-                    setFileName(new DisplayUtil().getFileNameReplaced(dashboardCard.getImage_url().substring(index+1,dashboardCard.getImage_url().length()))).
+                    setFileName(new DisplayUtil().getFileNameReplaced(dashboardCard.getImageURL().substring(index+1,dashboardCard.getImageURL().length()))).
                     setExternal(ImageSaver.isExternalStorageReadable());
             if(imageSaver.checkFile()){
                 Uri uri = Uri.fromFile(imageSaver.pathFile());
@@ -88,10 +90,10 @@ public class AssessmentFragment extends Fragment {
             }else {
                 System.out.println("FILE NOT EXITS >>>>>> ");
                 Picasso.with(getContext())
-                        .load(dashboardCard.getImage_url()).resize(screenheitght/4, screenheitght/4).transform(new CircleTransform())
+                        .load(dashboardCard.getImageURL()).resize(screenheitght/4, screenheitght/4).transform(new CircleTransform())
                         .into(image);
 
-                new SaveImageAsync(imageSaver).execute(dashboardCard.getImage_url());
+                new SaveImageAsync(imageSaver).execute(dashboardCard.getImageURL());
 
             }
 
@@ -101,9 +103,10 @@ public class AssessmentFragment extends Fragment {
             //experience timelimit
             header.setText(dashboardCard.getHeader());
             title.setText(dashboardCard.getTitle());
-            questions.setText(dashboardCard.getNosofQuestion()+"");
-            experience.setText(dashboardCard.getExperience()+" XP");
-            timelimit.setText(dashboardCard.getCoins()+"");
+            questions.setText(dashboardCard.getNumberOfQuestions()+"");
+            experience.setText(dashboardCard.getItemExperience()+" XP");
+            timelimit.setText(dashboardCard.getItemCoins()+"");
+            description.setText(dashboardCard.getDescription());
             cardView.setLayoutParams(layoutParams);
             CarouselLinearLayout root = (CarouselLinearLayout) linearLayout.findViewById(R.id.root_container);
             root.setScaleBoth(scale);

@@ -79,13 +79,13 @@ public class ChallengeFragment extends Fragment {
             LinearLayout ln = (LinearLayout) linearLayout.findViewById(R.id.lll);
 
 
-            System.out.println("Image url "+dashboardCard.getImage_url());
+            System.out.println("Image url "+dashboardCard.getImageURL());
 
             Drawable drawable = getResources().getDrawable(R.mipmap.ic_coins);
             drawable.setColorFilter(getResources().getColor(R.color.title_challenge), PorterDuff.Mode.SRC_IN);
 
-            Picasso.with(getContext()).load(dashboardCard.getImage_url()).resize(screenHeight/7, screenHeight/7).transform(new CircleTransform()).into(myprofile);
-            Picasso.with(getContext()).load(dashboardCard.getImage_url()).resize(screenHeight/7, screenHeight/7).transform(new CircleTransform()).into(challengeprofile);
+            Picasso.with(getContext()).load(dashboardCard.getImageURL()).resize(screenHeight/7, screenHeight/7).transform(new CircleTransform()).into(myprofile);
+            Picasso.with(getContext()).load(dashboardCard.getImageURL()).resize(screenHeight/7, screenHeight/7).transform(new CircleTransform()).into(challengeprofile);
 
             ViewGroup.LayoutParams params = ln.getLayoutParams();
             params.height = screenHeight/4;
@@ -95,8 +95,8 @@ public class ChallengeFragment extends Fragment {
             //experience timelimit
             header.setText(dashboardCard.getHeader());
             title.setText(dashboardCard.getTitle());
-            experience.setText(dashboardCard.getExperience()+" XP");
-            timelimit.setText(dashboardCard.getCoins()+"");
+            experience.setText(dashboardCard.getItemExperience()+" XP");
+            timelimit.setText(dashboardCard.getItemCoins()+"");
             cardView.setLayoutParams(layoutParams);
             CarouselLinearLayout root = (CarouselLinearLayout) linearLayout.findViewById(R.id.root_container);
             root.setScaleBoth(scale);
