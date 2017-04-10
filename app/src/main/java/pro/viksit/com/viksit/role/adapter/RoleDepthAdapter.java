@@ -33,7 +33,6 @@ public class RoleDepthAdapter extends ExpandableRecyclerAdapter<RoleParent,RoleC
         context = context;
     }
 
-
     @NonNull
     @Override
     public RoleSkillViewHolder onCreateParentViewHolder(@NonNull ViewGroup parentViewGroup, int viewType) {

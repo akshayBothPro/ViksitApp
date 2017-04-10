@@ -9,6 +9,7 @@ import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bignerdranch.expandablerecyclerview.ExpandableRecyclerAdapter;
@@ -21,6 +22,12 @@ import pro.viksit.com.viksit.role.pojo.RoleChild;
 import pro.viksit.com.viksit.role.pojo.RoleParent;
 
 public class RoleDepthActivity extends AppCompatActivity {
+
+    private TextView attained;
+    private TextView outOf;
+    private TextView accuracyPercent;
+    private TextView avgPercent;
+    private TextView noOfStudentsAttempted;
     private ArrayList<RoleParent> roleParents;
     private RoleDepthAdapter roleDepthAdapter;
 
@@ -34,6 +41,11 @@ public class RoleDepthActivity extends AppCompatActivity {
         setContentView(R.layout.activity_role_depth);
 
         final RecyclerView recyclerView = (RecyclerView) findViewById(R.id.rv_role_vertical);
+        attained = (TextView) findViewById(R.id.tv_attained_score);
+        outOf = (TextView) findViewById(R.id.tv_total_score);
+        accuracyPercent = (TextView) findViewById(R.id.tv_accuracy_percent);
+        avgPercent = (TextView) findViewById(R.id.tv_avg_percent);
+        noOfStudentsAttempted = (TextView) findViewById(R.id.tv_no_of_students_attempted);
 
 
         lastExpandedPosition = -1;

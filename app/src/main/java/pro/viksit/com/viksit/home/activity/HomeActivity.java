@@ -13,6 +13,7 @@ import pro.viksit.com.viksit.R;
 import pro.viksit.com.viksit.dashboard.activity.DashboardActivity;
 import pro.viksit.com.viksit.role.activity.ModuleActivity;
 import pro.viksit.com.viksit.role.activity.RoleActivity;
+import pro.viksit.com.viksit.role.activity.RoleDepthActivity;
 import pro.viksit.com.viksit.role.activity.RoleDetailActivity;
 
 public class HomeActivity extends AppCompatActivity implements View.OnClickListener{
@@ -51,7 +52,7 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
             startActivity(new Intent(HomeActivity.this, SignupActivity.class));
         } else  if(v.getId() == R.id.btn_member){
             Log.i(TAG,"already a member clicked");
-            startActivity(new Intent(HomeActivity.this, DashboardActivity.class));
+            startActivity(new Intent(HomeActivity.this, RoleDepthActivity.class));
         }
 
     }
