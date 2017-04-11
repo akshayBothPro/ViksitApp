@@ -15,8 +15,8 @@
         android:theme="@style/AppTheme">
         <activity
             android:name=".home.activity.SplashScreenActivity"
-            android:theme="@style/SplashTheme"/>
-        <activity android:name=".home.activity.HomeActivity" >
+            android:theme="@style/SplashTheme" />
+        <activity android:name=".home.activity.HomeActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -47,11 +47,19 @@
         <activity android:name=".role.activity.ModuleActivity" />
         <activity android:name=".role.activity.PurchaseSuccessActivity" />
         <activity android:name=".role.activity.CheckoutActivity" />
-        <activity android:name=".role.activity.RolePurchaseActivity"/>
-        <activity android:name=".dashboard.activity.NotificationActivity"/>
-        <meta-data android:name="com.facebook.sdk.ApplicationId" android:value="@string/facebook_app_id"/>
-        <provider              android:authorities="com.facebook.app.FacebookContentProvider"                 android:name="com.facebook.FacebookContentProvider"
-            android:exported="true"/>
+        <activity android:name=".role.activity.RolePurchaseActivity" />
+        <activity android:name=".dashboard.activity.NotificationActivity" />
+
+        <meta-data
+            android:name="com.facebook.sdk.ApplicationId"
+            android:value="@string/facebook_app_id" />
+
+        <provider
+            android:name="com.facebook.FacebookContentProvider"
+            android:authorities="com.facebook.app.FacebookContentProvider"
+            android:exported="true" />
+
+        <activity android:name=".dashboard.activity.VideoPlayActivity"></activity>
     </application>
 
 </manifest>

@@ -26,7 +26,7 @@ public class DisplayUtil {
     }
 
     public String getFileNameReplaced(String filename){
-        return filename.replaceAll(".jpg",".aaa").replaceAll(".png",".aaa").replaceAll(".jpeg",".aaa");
+        return filename.replaceAll(".jpg",".aaa").replaceAll(".png",".aaa").replaceAll(".jpeg",".aaa").replaceAll(".mp4",".aaa");
     }
 
 }

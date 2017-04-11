@@ -6,20 +6,22 @@
     android:layout_height="match_parent"
     android:background="@android:color/transparent"
     android:orientation="vertical">
+
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
 
         >
+
         <android.support.v7.widget.CardView
             android:id="@+id/card_view"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:translationZ="-1dp"
+            card_view:cardBackgroundColor="@color/white"
             card_view:cardCornerRadius="2dp"
             card_view:cardUseCompatPadding="true"
-            card_view:cardBackgroundColor="@color/white"
-            android:translationZ="-1dp"
 
             >
 
@@ -28,100 +30,101 @@
                 android:id="@+id/gg"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:paddingTop="@dimen/video_hor_padding"
-                android:paddingBottom="@dimen/video_hor_padding"
                 android:orientation="vertical"
-                >
+                android:paddingBottom="@dimen/video_hor_padding"
+                android:paddingTop="@dimen/video_hor_padding">
+
                 <TextView
                     android:id="@+id/header"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="@dimen/video_header_bottom_margin"
+                    android:paddingEnd="@dimen/video_hor_padding"
                     android:paddingLeft="@dimen/video_hor_padding"
                     android:paddingRight="@dimen/video_hor_padding"
                     android:paddingStart="@dimen/video_hor_padding"
-                    android:paddingEnd="@dimen/video_hor_padding"
                     android:text="Risk vs Uncertainity"
-                    android:textSize="@dimen/p5"
                     android:textAllCaps="true"
-                    />
+                    android:textSize="@dimen/p5" />
+
                 <TextView
                     android:id="@+id/title"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="The Concept of Risk"
-                    android:textSize="@dimen/h5"
-                    android:textColor="@color/black"
                     android:layout_below="@+id/header"
+                    android:paddingEnd="@dimen/video_hor_padding"
                     android:paddingLeft="@dimen/video_hor_padding"
                     android:paddingRight="@dimen/video_hor_padding"
                     android:paddingStart="@dimen/video_hor_padding"
-                    android:paddingEnd="@dimen/video_hor_padding"
-                    />
+                    android:text="The Concept of Risk"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/h5" />
+
                 <RelativeLayout
                     android:id="@+id/rl_img_con"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_below="@+id/title"
                     android:layout_alignParentLeft="true"
                     android:layout_alignParentStart="true"
-                    android:layout_marginTop="@dimen/video_pic_margin"
-                    android:layout_marginBottom="@dimen/video_pic_margin">
-                <ImageView
-                    android:id="@+id/image"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:scaleType="fitXY" />
-                <ImageView
-                    android:id="@+id/video_icon"
-                    android:layout_width="100dp"
-                    android:layout_height="100dp"
-                    android:layout_centerInParent="true"
-                    android:src="@drawable/ic_video_icon"
-                    android:scaleType="fitXY" />
+                    android:layout_below="@+id/title"
+                    android:layout_marginBottom="@dimen/video_pic_margin"
+                    android:layout_marginTop="@dimen/video_pic_margin">
+
+                    <ImageView
+                        android:id="@+id/image"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:scaleType="fitXY" />
+
+                    <ImageView
+                        android:id="@+id/video_icon"
+                        android:layout_width="100dp"
+                        android:layout_height="100dp"
+                        android:layout_centerInParent="true"
+                        android:scaleType="fitXY"
+                        android:src="@drawable/ic_video_icon" />
                 </RelativeLayout>
+
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book."
                     android:layout_below="@+id/rl_img_con"
+                    android:ellipsize="end"
+                    android:maxLines="5"
+                    android:minLines="1"
+                    android:paddingEnd="@dimen/video_hor_padding"
                     android:paddingLeft="@dimen/video_hor_padding"
                     android:paddingRight="@dimen/video_hor_padding"
                     android:paddingStart="@dimen/video_hor_padding"
-                    android:paddingEnd="@dimen/video_hor_padding"
-                    android:maxLines="5"
-                    android:minLines="1"
-                    android:ellipsize="end"
-                    android:textSize="@dimen/p2"
+                    android:text="Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book."
                     android:textColor="@color/desc_color"
-                    />
+                    android:textSize="@dimen/p2" />
             </RelativeLayout>
 
 
-
         </android.support.v7.widget.CardView>
+
         <Button
             android:id="@+id/start_video"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:minHeight="@dimen/btn_start_height"
-            android:minWidth="@dimen/btn_start_game"
-            android:text="Start Video"
             android:layout_below="@+id/card_view"
             android:layout_centerHorizontal="true"
-            android:textAlignment="center"
-            android:drawableLeft="@drawable/ic_event_note_white_24dp"
+            android:layout_marginTop="-20dp"
             android:background="@drawable/signup_btn_shape"
-            android:textColor="@color/white"
+            android:drawableLeft="@drawable/ic_event_note_white_24dp"
             android:drawableTint="@color/white"
-            android:textSize="@dimen/p3"
-            android:paddingTop="@dimen/paddingtop"
-            android:paddingRight="@dimen/paddingright"
+            android:minHeight="@dimen/btn_start_height"
+            android:minWidth="@dimen/btn_start_game"
             android:paddingBottom="@dimen/paddingbottom"
             android:paddingLeft="@dimen/paddingleft"
-            android:layout_marginTop="-20dp"
-            android:translationZ="6dp"
-            />
+            android:paddingRight="@dimen/paddingright"
+            android:paddingTop="@dimen/paddingtop"
+            android:text="Start Video"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            android:textSize="@dimen/p3"
+            android:translationZ="6dp" />
     </RelativeLayout>
 
 </pro.viksit.com.viksit.dashboard.util.CarouselLinearLayout>

@@ -26,6 +26,7 @@ import pro.viksit.com.viksit.Util.ImageSaver;
 import pro.viksit.com.viksit.Util.SaveImageAsync;
 import pro.viksit.com.viksit.dashboard.pojo.DashboardCard;
 import pro.viksit.com.viksit.dashboard.util.CarouselLinearLayout;
+import pro.viksit.com.viksit.dashboard.util.ImageSaverUtil;
 
 /**
  * Created by Feroz on 28-03-2017.
@@ -80,22 +81,9 @@ public class AssessmentFragment extends Fragment {
                     setParentDirectoryName("dashboard").
                     setFileName(new DisplayUtil().getFileNameReplaced(dashboardCard.getImageURL().substring(index+1,dashboardCard.getImageURL().length()))).
                     setExternal(ImageSaver.isExternalStorageReadable());
-            if(imageSaver.checkFile()){
-                Uri uri = Uri.fromFile(imageSaver.pathFile());
-                Picasso.with(getContext())
-                        .load(uri).resize(screenHeight/4, screenHeight/4).transform(new CircleTransform())
-                        .into(image);
-                System.out.println("FILE  EXITS >>>>>> ");
+            Picasso picasso = Picasso.with(getContext());
 
-            }else {
-                System.out.println("FILE NOT EXITS >>>>>> ");
-                Picasso.with(getContext())
-                        .load(getString(R.string.resourceserverip)+dashboardCard.getImageURL()).resize(screenheitght/4, screenheitght/4).transform(new CircleTransform())
-                        .into(image);
-
-                new SaveImageAsync(imageSaver).execute(getString(R.string.resourceserverip)+dashboardCard.getImageURL());
-
-            }
+            new ImageSaverUtil(imageSaver,picasso,image,screenHeight,getString(R.string.resourceserverip)+dashboardCard.getImageURL()).checkImageExist();
 
             image.setMinimumHeight(screenheitght/3);
             image.setMaxHeight(screenheitght/3);
