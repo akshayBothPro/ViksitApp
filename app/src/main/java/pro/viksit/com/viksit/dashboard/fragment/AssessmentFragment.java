@@ -90,10 +90,10 @@ public class AssessmentFragment extends Fragment {
             }else {
                 System.out.println("FILE NOT EXITS >>>>>> ");
                 Picasso.with(getContext())
-                        .load(dashboardCard.getImageURL()).resize(screenheitght/4, screenheitght/4).transform(new CircleTransform())
+                        .load(getString(R.string.resourceserverip)+dashboardCard.getImageURL()).resize(screenheitght/4, screenheitght/4).transform(new CircleTransform())
                         .into(image);
 
-                new SaveImageAsync(imageSaver).execute(dashboardCard.getImageURL());
+                new SaveImageAsync(imageSaver).execute(getString(R.string.resourceserverip)+dashboardCard.getImageURL());
 
             }
 

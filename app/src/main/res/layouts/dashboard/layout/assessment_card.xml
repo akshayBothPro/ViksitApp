@@ -54,6 +54,7 @@
                     android:layout_below="@+id/title"
                     android:layout_margin="@dimen/asses_card_image_margin"
                     android:layout_centerHorizontal="true"
+
                     />
 
                 <TextView
