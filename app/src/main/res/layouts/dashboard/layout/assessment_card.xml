@@ -45,7 +45,7 @@
                     android:layout_below="@+id/header"
                     android:text="The Concept of Risk"
                     android:textColor="@color/black"
-                    android:textSize="@dimen/h5" />
+                    android:textSize="@dimen/h7" />
 
                 <ImageView
                     android:id="@+id/image"

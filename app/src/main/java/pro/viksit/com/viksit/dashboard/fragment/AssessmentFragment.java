@@ -97,8 +97,8 @@ public class AssessmentFragment extends Fragment {
 
             }
 
-            image.setMinimumHeight(screenheitght/4);
-            image.setMaxHeight(screenheitght/4);
+            image.setMinimumHeight(screenheitght/3);
+            image.setMaxHeight(screenheitght/3);
 
             //experience timelimit
             header.setText(dashboardCard.getHeader());
