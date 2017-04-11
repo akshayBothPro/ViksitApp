@@ -1,6 +1,8 @@
 package pro.viksit.com.viksit.home.activity;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -23,6 +25,7 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
     private TextView talentify;
     private Button getStarted;
     private Button member;
+    private SharedPreferences sharedpreferences;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,7 +36,11 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
         talentify = (TextView) findViewById(R.id.tv_talentify);
         getStarted = (Button) findViewById(R.id.btn_get_started);
         member = (Button) findViewById(R.id.btn_member);
-
+        sharedpreferences = getSharedPreferences(getResources().getString(R.string.shared_preference_key), Context.MODE_PRIVATE);
+        if(!sharedpreferences.getString(getResources().getString(R.string.user_profile),"").equalsIgnoreCase("")){
+            Intent i = new Intent(HomeActivity.this,SplashScreenActivity.class);
+            startActivity(i);
+        }
         implementListeners();
 
     }

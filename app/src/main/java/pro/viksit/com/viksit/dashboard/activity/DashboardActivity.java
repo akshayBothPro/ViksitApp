@@ -8,9 +8,13 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.DisplayMetrics;
+import android.view.View;
+import android.widget.Button;
 import android.widget.HorizontalScrollView;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.ProgressBar;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -47,6 +51,10 @@ public class DashboardActivity extends AppCompatActivity {
     TextView points,coins;
     private SharedPreferences sharedpreferences;
     private final Gson gson = new Gson();
+    private ProgressBar progress;
+    private RelativeLayout error_layout;
+    private Button button_layout;
+    private StudentProfile studentProfile;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -58,13 +66,23 @@ public class DashboardActivity extends AppCompatActivity {
         profile_pic = (HexagonImageView) findViewById(R.id.profile_pic);
         points = (TextView) findViewById(R.id.points);
         coins = (TextView) findViewById(R.id.coins);
+        progress = (ProgressBar) findViewById(R.id.progress);
+        error_layout = (RelativeLayout) findViewById(R.id.error_layout);
+        button_layout = (Button) findViewById(R.id.button_layout);
         sharedpreferences = getSharedPreferences(getResources().getString(R.string.shared_preference_key), Context.MODE_PRIVATE);
         String profile_date= sharedpreferences.getString(getResources().getString(R.string.user_profile),"");
-        StudentProfile studentProfile = gson.fromJson(profile_date,StudentProfile.class);
+        studentProfile = gson.fromJson(profile_date,StudentProfile.class);
 
         setSupportActionBar(toolbar);
 
-        new DashboardCardAsync(this,getSupportFragmentManager(),studentProfile.getId(),sharedpreferences,pager_indicator,this,pager,loop).execute();
+        new DashboardCardAsync(this,getSupportFragmentManager(),studentProfile.getId(),sharedpreferences,pager_indicator,this,pager,loop,progress,error_layout).execute();
+        button_layout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                new DashboardCardAsync(DashboardActivity.this,getSupportFragmentManager(),studentProfile.getId(),sharedpreferences,pager_indicator,DashboardActivity.this,pager,loop,progress,error_layout).execute();
+
+            }
+        });
         BottomNavigationView bottomNavigationView = (BottomNavigationView) findViewById(R.id.bottom_navigation);
         new BottomBarUtil().setupBottomBar(bottomNavigationView,DashboardActivity.this,R.id.task);
 

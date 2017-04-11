@@ -6,6 +6,7 @@
     android:background="#ffffff">
 
   <include layout="@layout/custom_tool_bar"></include>
+
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -49,7 +50,47 @@
 
       </LinearLayout>
     </HorizontalScrollView>
+      <ProgressBar
+          android:theme="@style/CircularProgress"
+          style="@style/Widget.AppCompat.ProgressBar"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_centerInParent="true"
+          android:id="@+id/progress"
+          android:visibility="visible"
+          />
+      <RelativeLayout
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:id="@+id/error_layout"
+          android:layout_centerInParent="true"
+          android:visibility="visible"
+          android:gravity="center"
 
+          >
+      <TextView
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:textAlignment="center"
+          android:text="Please check your internet connection."
+          android:textColor="@color/theme_color"
+          android:id="@+id/error_text"
+          android:layout_centerHorizontal="true"
+          android:padding="5dp"
+          android:layout_marginBottom="10dp"
+          />
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:background="@color/theme_color"
+            android:text="Click here to refresh"
+            android:layout_below="@+id/error_text"
+            android:padding="5dp"
+            android:layout_centerHorizontal="true"
+            android:textColor="@color/white"
+            android:id="@+id/button_layout"
+            />
+      </RelativeLayout>
     </RelativeLayout>
 
 

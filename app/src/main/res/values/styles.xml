@@ -45,5 +45,7 @@
     <style name="AppTheme.BlueColor">
         <item name="colorAccent">@color/linkedIn_color</item> <!-- Whatever color you want-->
     </style>
-
+    <style name="CircularProgress" parent="Theme.AppCompat.Light">
+        <item name="colorAccent">@color/theme_color</item>
+    </style>
 </resources>
