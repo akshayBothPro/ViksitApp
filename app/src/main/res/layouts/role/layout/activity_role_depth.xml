@@ -2,7 +2,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#E7E7E7"
+    android:background="@color/white_color"
     android:fitsSystemWindows="true">
 
     <android.support.design.widget.AppBarLayout
@@ -24,44 +24,95 @@
             app:titleEnabled="false">
 
             <LinearLayout
+                android:id="@+id/ll_report_container"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="?attr/actionBarSize"
                 android:orientation="vertical">
-            <include
-                android:id="@+id/signup_options"
-                layout="@layout/assessment_score_item"
-                android:layout_width="match_parent"
-                android:layout_height="110dp" />
-            <TextView
-                android:id="@+id/tv_no_of_students_attempted"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:padding="10dp"
-                android:textSize="@dimen/p5"
-                android:text="25 of 50 students have attempted this assessment"/>
+                <include
+                    android:id="@+id/signup_options"
+                    layout="@layout/assessment_score_item"
+                    android:layout_width="match_parent"
+                    android:layout_height="100dp" />
+                <TextView
+                    android:id="@+id/tv_no_of_students_attempted"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="10dp"
+                    android:paddingBottom="10dp"
+                    android:paddingLeft="20dp"
+                    android:paddingRight="20dp"
+                    android:textSize="@dimen/p5"
+                    android:text="25 of 50 students have attempted this assessment"/>
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/hint_color"/>
             </LinearLayout>
-
             <android.support.v7.widget.Toolbar
                 android:id="@+id/toolbar"
                 android:layout_width="match_parent"
                 android:layout_height="?attr/actionBarSize"
+                android:background="@color/theme_color"
                 app:contentInsetLeft="0dp"
                 app:contentInsetStart="0dp"
                 app:layout_collapseMode="pin"
                 app:popupTheme="@style/ThemeOverlay.AppCompat.Light">
 
             </android.support.v7.widget.Toolbar>
-
         </android.support.design.widget.CollapsingToolbarLayout>
 
     </android.support.design.widget.AppBarLayout>
 
-
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/rv_role_vertical"
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior"
-        />
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+        <TextView
+            android:id="@+id/tv_skill_breakdown"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp"
+            android:textAllCaps="true"
+            android:textSize="@dimen/p5"
+            android:text="Skill BreakDown"/>
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/rv_role_vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/tv_skill_breakdown"
+            android:layout_above="@+id/btn_review_questions"
+            />
+        <Button
+            android:id="@+id/btn_repaeat_assessment"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_marginLeft="20dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginBottom="10dp"
+            android:background="@drawable/signup_btn_shape"
+            android:text="repeat assessment"
+            android:textColor="@color/white_color"/>
+        <Button
+            android:id="@+id/btn_review_questions"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/btn_repaeat_assessment"
+            android:layout_marginLeft="20dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:textColor="@color/theme_color"
+            android:background="@drawable/white_bg_button"
+            android:text="review questions"/>
+    </RelativeLayout>
 
 </android.support.design.widget.CoordinatorLayout>

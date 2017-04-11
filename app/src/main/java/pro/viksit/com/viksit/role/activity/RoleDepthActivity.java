@@ -1,6 +1,7 @@
 package pro.viksit.com.viksit.role.activity;
 
 import android.content.Intent;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.UiThread;
@@ -9,6 +10,9 @@ import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.Toolbar;
+import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -23,6 +27,8 @@ import pro.viksit.com.viksit.role.pojo.RoleParent;
 
 public class RoleDepthActivity extends AppCompatActivity {
 
+    private Toolbar toolbar;
+
     private TextView attained;
     private TextView outOf;
     private TextView accuracyPercent;
@@ -30,9 +36,11 @@ public class RoleDepthActivity extends AppCompatActivity {
     private TextView noOfStudentsAttempted;
     private ArrayList<RoleParent> roleParents;
     private RoleDepthAdapter roleDepthAdapter;
-
+    private Button repeatAssessment;
+    private Button reviewQuestions;
     private int lastExpandedPosition;
     private CollapsingToolbarLayout mCollapsingToolbarLayout;
+    private LinearLayout reportContainer;
 
 
     @Override
@@ -40,14 +48,24 @@ public class RoleDepthActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_role_depth);
 
+        toolbar = (Toolbar) findViewById(R.id.toolbar);
+
         final RecyclerView recyclerView = (RecyclerView) findViewById(R.id.rv_role_vertical);
         attained = (TextView) findViewById(R.id.tv_attained_score);
         outOf = (TextView) findViewById(R.id.tv_total_score);
         accuracyPercent = (TextView) findViewById(R.id.tv_accuracy_percent);
         avgPercent = (TextView) findViewById(R.id.tv_avg_percent);
         noOfStudentsAttempted = (TextView) findViewById(R.id.tv_no_of_students_attempted);
+        repeatAssessment = (Button) findViewById(R.id.btn_repaeat_assessment);
+        reviewQuestions = (Button) findViewById(R.id.btn_review_questions);
+        reportContainer = (LinearLayout)findViewById(R.id.ll_report_container);
 
 
+
+        toolbar.setTitle("Mid-Assesment Report");
+        toolbar.setTitleTextColor(getResources().getColor(R.color.white_color));
+        toolbar.setNavigationIcon(R.drawable.ic_keyboard_backspace_white_24dp);
+        setSupportActionBar(toolbar);
         lastExpandedPosition = -1;
         roleParents = new ArrayList<>();
         for(int i=0;i<15;i++){
@@ -111,6 +129,10 @@ public class RoleDepthActivity extends AppCompatActivity {
 
             @Override
             public void onOffsetChanged(AppBarLayout appBarLayout, int verticalOffset) {
+
+                reportContainer.setAlpha(1.0f - Math.abs(verticalOffset / (float)
+                        appBarLayout.getTotalScrollRange()));
+
                 if (scrollRange == -1) {
                     scrollRange = appBarLayout.getTotalScrollRange();
                 }

@@ -64,8 +64,6 @@ public class DashboardActivity extends AppCompatActivity {
 
         setSupportActionBar(toolbar);
 
-
-
         new DashboardCardAsync(this,getSupportFragmentManager(),studentProfile.getId(),sharedpreferences,pager_indicator,this,pager,loop).execute();
         BottomNavigationView bottomNavigationView = (BottomNavigationView) findViewById(R.id.bottom_navigation);
         new BottomBarUtil().setupBottomBar(bottomNavigationView,DashboardActivity.this,R.id.task);

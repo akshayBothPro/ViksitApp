@@ -19,6 +19,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textStyle="bold"
+            android:textColor="@color/black"
             android:textSize="@dimen/h1"
             android:text="150"/>
         <TextView
@@ -61,7 +62,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="86%"
-                android:textColor="@color/desc_color"
+                android:textColor="@color/black"
                 android:textSize="@dimen/h4"/>
             <TextView
                 android:layout_width="wrap_content"
@@ -80,7 +81,7 @@
                 android:id="@+id/tv_avg_percent"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="@color/desc_color"
+                android:textColor="@color/black"
                 android:textSize="@dimen/h4"
                 android:text="79%"/>
             <TextView
