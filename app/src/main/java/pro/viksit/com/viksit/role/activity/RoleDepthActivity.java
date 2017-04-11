@@ -11,6 +11,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.util.DisplayMetrics;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -42,11 +44,28 @@ public class RoleDepthActivity extends AppCompatActivity {
     private CollapsingToolbarLayout mCollapsingToolbarLayout;
     private LinearLayout reportContainer;
 
+    private int screenWidth;
+    private int screenHeight;
+    private double diagonalInches;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_role_depth);
+        getWidthAndHeight();
+        Double d, d1;
+        if (diagonalInches>=6.5){
+            // 6.5inch device or bigger
+            d = new Double(screenWidth / 1.2);
+            d1= new Double(screenHeight/1.3);
+        }else{
+            // smaller device
+            d = new Double(screenWidth / 1.2);
+            d1= new Double(screenHeight/1.6);
+        }
+        int screenwidth = d.intValue();;
+        int screenheitght = d1.intValue();
 
         toolbar = (Toolbar) findViewById(R.id.toolbar);
 
@@ -59,6 +78,7 @@ public class RoleDepthActivity extends AppCompatActivity {
         repeatAssessment = (Button) findViewById(R.id.btn_repaeat_assessment);
         reviewQuestions = (Button) findViewById(R.id.btn_review_questions);
         reportContainer = (LinearLayout)findViewById(R.id.ll_report_container);
+
 
 
 
@@ -123,6 +143,13 @@ public class RoleDepthActivity extends AppCompatActivity {
         //
         mCollapsingToolbarLayout = (CollapsingToolbarLayout) findViewById(R.id.collapsing_toolbar);
         AppBarLayout appBarLayout = (AppBarLayout) findViewById(R.id.appbar);
+
+        if (diagonalInches>=6.5){
+            ViewGroup.LayoutParams params = appBarLayout.getLayoutParams();
+            params.height = screenHeight/3;
+            appBarLayout.setLayoutParams(params);
+        }
+
         appBarLayout.addOnOffsetChangedListener(new AppBarLayout.OnOffsetChangedListener() {
             boolean isShow = false;
             int scrollRange = -1;
@@ -130,8 +157,7 @@ public class RoleDepthActivity extends AppCompatActivity {
             @Override
             public void onOffsetChanged(AppBarLayout appBarLayout, int verticalOffset) {
 
-                reportContainer.setAlpha(1.0f - Math.abs(verticalOffset / (float)
-                        appBarLayout.getTotalScrollRange()));
+                reportContainer.setAlpha(1.0f - Math.abs(verticalOffset / (float)appBarLayout.getTotalScrollRange()));//for scroll fade
 
                 if (scrollRange == -1) {
                     scrollRange = appBarLayout.getTotalScrollRange();
@@ -173,5 +199,15 @@ public class RoleDepthActivity extends AppCompatActivity {
         finish();
     }
 
+    private void getWidthAndHeight() {
+        DisplayMetrics displaymetrics = new DisplayMetrics();
+        this.getWindowManager().getDefaultDisplay().getMetrics(displaymetrics);
+        screenHeight = displaymetrics.heightPixels;
+        screenWidth = displaymetrics.widthPixels;
+
+        float yInches= displaymetrics.heightPixels/displaymetrics.ydpi;
+        float xInches= displaymetrics.widthPixels/displaymetrics.xdpi;
+        diagonalInches = Math.sqrt(xInches*xInches + yInches*yInches);
+    }
 
 }

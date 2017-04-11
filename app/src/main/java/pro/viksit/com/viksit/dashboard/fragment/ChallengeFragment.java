@@ -33,6 +33,7 @@ public class ChallengeFragment extends Fragment {
     private static final String SCALE = "scale";
     private int screenWidth;
     private int screenHeight;
+    private double diagonalInches;
 
     public static Fragment newInstance(Activity context, DashboardCard dashboardCard, float scale) {
         Bundle b = new Bundle();
@@ -57,8 +58,16 @@ public class ChallengeFragment extends Fragment {
         if(getArguments() != null){
             DashboardCard dashboardCard = (DashboardCard) getArguments().getSerializable("card");
             float scale = this.getArguments().getFloat(SCALE);
-            Double d = new Double(screenWidth / 1.2);
-            Double d1= new Double(screenHeight/1.6);
+            Double d, d1;
+            if (diagonalInches>=6.5){
+                // 6.5inch device or bigger
+                d = new Double(screenWidth / 1.2);
+                d1= new Double(screenHeight/1.3);
+            }else{
+                // smaller device
+                d = new Double(screenWidth / 1.2);
+                d1= new Double(screenHeight/1.6);
+            }
             int screenwidth = d.intValue();;
             int screenheitght = d1.intValue();
 
@@ -84,13 +93,39 @@ public class ChallengeFragment extends Fragment {
             Drawable drawable = getResources().getDrawable(R.mipmap.ic_coins);
             drawable.setColorFilter(getResources().getColor(R.color.title_challenge), PorterDuff.Mode.SRC_IN);
 
-            Picasso.with(getContext()).load(dashboardCard.getImageURL()).resize(screenHeight/7, screenHeight/7).transform(new CircleTransform()).into(myprofile);
-            Picasso.with(getContext()).load(dashboardCard.getImageURL()).resize(screenHeight/7, screenHeight/7).transform(new CircleTransform()).into(challengeprofile);
+            if(dashboardCard.getImageURL().isEmpty()){
 
-            ViewGroup.LayoutParams params = ln.getLayoutParams();
-            params.height = screenHeight/4;
-            params.width = screenHeight/2;
-            ln.setLayoutParams(params);
+                Picasso.with(getContext()).load(R.drawable.profile_default).resize(screenwidth / 3, screenwidth / 3).transform(new CircleTransform()).into(myprofile);
+                Picasso.with(getContext()).load(R.drawable.profile_default).resize(screenwidth / 3, screenwidth / 3).transform(new CircleTransform()).into(challengeprofile);
+
+
+            }else {
+
+                Picasso.with(getContext()).load(dashboardCard.getImageURL()).resize(screenwidth / 3, screenwidth / 3).transform(new CircleTransform()).into(myprofile);
+                Picasso.with(getContext()).load(dashboardCard.getImageURL()).resize(screenwidth / 3, screenwidth / 3).transform(new CircleTransform()).into(challengeprofile);
+
+            }
+            if (diagonalInches>=6.5){
+                ViewGroup.LayoutParams params = ln.getLayoutParams();
+                params.height = screenHeight / 3;
+                params.width = screenHeight / 2;
+                ln.setLayoutParams(params);
+            } else {
+                ViewGroup.LayoutParams params = ln.getLayoutParams();
+                params.height = screenHeight / 4;
+                params.width = screenHeight / 2;
+                ln.setLayoutParams(params);
+            }
+
+            myprofile.setMinimumHeight(screenwidth / 3);
+            myprofile.setMaxHeight(screenwidth / 3);
+            challengeprofile.setMinimumHeight(screenwidth / 3);
+            challengeprofile.setMaxHeight(screenwidth / 3);
+
+            myrank.setMaxHeight(myprofile.getMaxHeight()/3);
+            myrank.setMinHeight(myprofile.getMinimumHeight()/3);
+            myrank.setMaxWidth(myprofile.getMaxHeight()/3);
+            myrank.setMinWidth(myprofile.getMinimumHeight()/3);
 
             //experience timelimit
             header.setText(dashboardCard.getHeader());
@@ -117,7 +152,7 @@ public class ChallengeFragment extends Fragment {
             start_game.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    Toast.makeText(getActivity(), "Start game clicked",
+                    Toast.makeText(getActivity(), "Start challenge clicked",
                             Toast.LENGTH_LONG).show();
                 }
             });
@@ -130,5 +165,9 @@ public class ChallengeFragment extends Fragment {
         getActivity().getWindowManager().getDefaultDisplay().getMetrics(displaymetrics);
         screenHeight = displaymetrics.heightPixels;
         screenWidth = displaymetrics.widthPixels;
+
+        float yInches= displaymetrics.heightPixels/displaymetrics.ydpi;
+        float xInches= displaymetrics.widthPixels/displaymetrics.xdpi;
+        diagonalInches = Math.sqrt(xInches*xInches + yInches*yInches);
     }
 }

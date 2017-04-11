@@ -10,17 +10,18 @@
 
         <ImageView
             android:id="@+id/iv_item_image"
-            android:layout_alignParentTop="true"
             android:layout_marginBottom="@dimen/card_item_bottom_margin"
             android:layout_width="80dp"
             android:layout_height="70dp" />
         <TextView
             android:id="@+id/tv_item_title"
             android:layout_below="@+id/iv_item_image"
+            android:layout_alignLeft="@id/iv_item_image"
+            android:layout_alignStart="@id/iv_item_image"
+            android:layout_alignRight="@id/iv_item_image"
+            android:layout_alignEnd="@id/iv_item_image"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
-            android:layout_alignLeft="@id/iv_item_image"
             android:maxWidth="80dp"
             android:maxLines="2"
             android:minLines="1"

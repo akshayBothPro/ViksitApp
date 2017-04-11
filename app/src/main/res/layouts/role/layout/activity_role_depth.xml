@@ -8,7 +8,7 @@
     <android.support.design.widget.AppBarLayout
         android:id="@+id/appbar"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="160dp"
         android:fitsSystemWindows="true">
 
         <android.support.design.widget.CollapsingToolbarLayout
@@ -26,28 +26,11 @@
             <LinearLayout
                 android:id="@+id/ll_report_container"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:layout_marginTop="?attr/actionBarSize"
                 android:orientation="vertical">
-                <include
-                    android:id="@+id/signup_options"
-                    layout="@layout/assessment_score_item"
-                    android:layout_width="match_parent"
-                    android:layout_height="100dp" />
-                <TextView
-                    android:id="@+id/tv_no_of_students_attempted"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:paddingTop="10dp"
-                    android:paddingBottom="10dp"
-                    android:paddingLeft="20dp"
-                    android:paddingRight="20dp"
-                    android:textSize="@dimen/p5"
-                    android:text="25 of 50 students have attempted this assessment"/>
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:background="@color/hint_color"/>
+
+                <include layout="@layout/assessment_score_item"/>
             </LinearLayout>
             <android.support.v7.widget.Toolbar
                 android:id="@+id/toolbar"
@@ -68,6 +51,10 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:layout_behavior="@string/appbar_scrolling_view_behavior">
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/hint_color"/>
         <TextView
             android:id="@+id/tv_skill_breakdown"
             android:layout_width="wrap_content"

@@ -45,7 +45,7 @@
                     android:layout_below="@+id/header"
                     android:text="The Concept of Risk"
                     android:textColor="@color/black"
-                    android:textSize="@dimen/h7" />
+                    android:textSize="@dimen/h5" />
 
                 <ImageView
                     android:id="@+id/image"
@@ -54,7 +54,6 @@
                     android:layout_below="@+id/title"
                     android:layout_margin="@dimen/asses_card_image_margin"
                     android:layout_centerHorizontal="true"
-
                     />
 
                 <TextView
@@ -164,22 +163,23 @@
         <Button
             android:id="@+id/start_game"
             android:layout_width="wrap_content"
-            android:layout_height="@dimen/btn_start_height"
+            android:layout_height="wrap_content"
+            android:minHeight="@dimen/btn_start_height"
+            android:minWidth="@dimen/btn_start_game"
+            android:text="Start Assessment"
             android:layout_below="@+id/card_view"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="-20dp"
-            android:background="@drawable/signup_btn_shape"
-            android:drawableLeft="@drawable/ic_event_note_white_24dp"
-            android:drawableTint="@color/white"
-            android:minWidth="@dimen/btn_start_game"
-            android:paddingBottom="@dimen/paddingbottom"
-            android:paddingLeft="@dimen/paddingleft"
-            android:paddingRight="@dimen/paddingright"
-            android:paddingTop="@dimen/paddingtop"
-            android:text=" Start ASSESSMENT "
             android:textAlignment="center"
+            android:drawableLeft="@drawable/ic_event_note_white_24dp"
+            android:background="@drawable/signup_btn_shape"
             android:textColor="@color/white"
+            android:drawableTint="@color/white"
             android:textSize="@dimen/p3"
+            android:paddingLeft="@dimen/paddingleft"
+            android:paddingStart="@dimen/paddingleft"
+            android:paddingRight="@dimen/paddingright"
+            android:paddingEnd="@dimen/paddingright"
+            android:layout_marginTop="-20dp"
             android:translationZ="6dp" />
     </RelativeLayout>
 

@@ -47,13 +47,13 @@ public class ModuleActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_module);
-        getWidthAndHeight();
 
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         bottomNavigationView = (BottomNavigationView) findViewById(R.id.bottom_navigation);
         verticalRecycler = (RecyclerView) findViewById(R.id.rv_module_vertical);
         horizontalRecycler = (RecyclerView) findViewById(R.id.rv_module_horizontal);
 
+        getWidthAndHeight();
         setSupportActionBar(toolbar);
         new BottomBarUtil().setupBottomBar(bottomNavigationView,ModuleActivity.this,R.id.role);//setting bottom navigation bar
         setRoleData();
@@ -78,7 +78,7 @@ public class ModuleActivity extends AppCompatActivity {
                 new RecyclerItemClickListener(getBaseContext(), verticalRecycler ,new RecyclerItemClickListener.OnItemClickListener() {
                     @Override public void onItemClick(View view, int position) {
                         System.out.println("Vposition: " + position);
-                        Intent intent = new Intent(ModuleActivity.this, QuestionsActivity.class);
+                        Intent intent = new Intent(ModuleActivity.this, RoleDetailActivity.class);
                        /* Bundle bundle = new Bundle();
                         bundle.putSerializable("role", roles.get(position));
                         intent.putExtras(bundle);*/
@@ -91,7 +91,7 @@ public class ModuleActivity extends AppCompatActivity {
         );
 
         horizontalRecycler.setHasFixedSize(true);
-        ModuleHorizontalRecyclerViewAdapter adapter = new ModuleHorizontalRecyclerViewAdapter(this, allSampleData);
+        ModuleHorizontalRecyclerViewAdapter adapter = new ModuleHorizontalRecyclerViewAdapter(this, allSampleData, screenWidth, screenHeight);
         horizontalRecycler.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
         horizontalRecycler.setAdapter(adapter);
 

@@ -26,8 +26,8 @@
            android:id="@+id/main_layout">
 
            <ImageView
-               android:layout_width="80dp"
-               android:layout_height="80dp"
+               android:layout_width="100dp"
+               android:layout_height="100dp"
                android:layout_margin="@dimen/role_detail_image_margin"
                android:src="@drawable/ic_4"
                android:id="@+id/image"

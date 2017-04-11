@@ -3,6 +3,7 @@ package pro.viksit.com.viksit.role.activity;
 import android.content.Intent;
 import android.graphics.Typeface;
 import android.os.Bundle;
+import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.DefaultItemAnimator;
@@ -11,6 +12,7 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.util.DisplayMetrics;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -25,21 +27,43 @@ import pro.viksit.com.viksit.role.util.RecyclerItemClickListener;
 public class RoleDetailActivity extends AppCompatActivity {
     CollapsingToolbarLayout collapsingToolbarLayout;
     RoleDetailAdapter roleVerticalRecyclerViewAdapter;
+    private AppBarLayout appbar;
     RecyclerView verticalRecycler;
     private List<Role> roles;
 
     private int screenWidth;
     private int screenHeight;
+    private double diagonalInches;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_role_detail);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
+        appbar = (AppBarLayout) findViewById(R.id.appbar);
+
         getWidthAndHeight();
+        Double d, d1;
+        if (diagonalInches>=6.5){
+            // 6.5inch device or bigger
+            d = new Double(screenWidth / 1.2);
+            d1= new Double(screenHeight/1.3);
+        }else{
+            // smaller device
+            d = new Double(screenWidth / 1.2);
+            d1= new Double(screenHeight/1.6);
+        }
+        int screenwidth = d.intValue();;
+        int screenheitght = d1.intValue();
 
+        setSupportActionBar(toolbar);
 
+        if (diagonalInches>=6.5){
+            ViewGroup.LayoutParams params = appbar.getLayoutParams();
+            params.height = screenHeight/5;
+
+            appbar.setLayoutParams(params);
+        }
         TextView toolbar_title = (TextView) findViewById(R.id.toolbar_title);
         toolbar_title.setText("Mutual Fund Planner");
         ImageView info = (ImageView) findViewById(R.id.info);
@@ -74,6 +98,9 @@ public class RoleDetailActivity extends AppCompatActivity {
         collapsingToolbarLayout.setTitle(getResources().getString(R.string.app_name));
         collapsingToolbarLayout.setContentScrimColor(getResources().getColor(R.color.theme_color));
         collapsingToolbarLayout.setStatusBarScrimColor(getResources().getColor(R.color.black));
+
+
+
         toolbarTextAppernce();
         verticalRecycler = (RecyclerView) findViewById(R.id.rv_role_vertical);
         roles = new ArrayList<>();
@@ -110,7 +137,6 @@ public class RoleDetailActivity extends AppCompatActivity {
                 })
         );
 
-
     }
 
     private void toolbarTextAppernce() {
@@ -133,6 +159,10 @@ public class RoleDetailActivity extends AppCompatActivity {
         this.getWindowManager().getDefaultDisplay().getMetrics(displaymetrics);
         screenHeight = displaymetrics.heightPixels;
         screenWidth = displaymetrics.widthPixels;
+
+        float yInches= displaymetrics.heightPixels/displaymetrics.ydpi;
+        float xInches= displaymetrics.widthPixels/displaymetrics.xdpi;
+        diagonalInches = Math.sqrt(xInches*xInches + yInches*yInches);
     }
 
 }

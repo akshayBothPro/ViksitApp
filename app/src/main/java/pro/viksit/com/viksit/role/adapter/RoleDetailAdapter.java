@@ -35,13 +35,14 @@ public class RoleDetailAdapter extends RecyclerView.Adapter<RoleDetailAdapter.My
     public RoleDetailAdapter(List<Role> roles,Context context) {
         this.roles = roles;
         this.context = context;
-        this.screenWidth = screenWidth;
-        this.screenHeight = screenHeight;
+
     }
 
     public RoleDetailAdapter(List<Role> roles,Context context, int screenWidth, int screenHeight) {
         this.roles = roles;
         this.context = context;
+        this.screenWidth = screenWidth;
+        this.screenHeight = screenHeight;
     }
     @Override
     public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
@@ -59,7 +60,7 @@ public class RoleDetailAdapter extends RecyclerView.Adapter<RoleDetailAdapter.My
         Picasso.with(context).load(R.drawable.ic_4).transform(new CircleTransform()).into(holder.image);
         if(screenHeight != 0 && screenWidth != 0) {
             ViewGroup.LayoutParams params = holder.image.getLayoutParams();
-            params.height = screenHeight/6;
+            params.height = screenHeight/7;
             params.width = screenHeight/6;
             holder.image.setLayoutParams(params);
         }

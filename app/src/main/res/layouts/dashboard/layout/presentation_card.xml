@@ -100,10 +100,10 @@
             android:textColor="@color/white"
             android:drawableTint="@color/white"
             android:textSize="@dimen/p3"
-            android:paddingTop="@dimen/paddingtop"
-            android:paddingRight="@dimen/paddingright"
-            android:paddingBottom="@dimen/paddingbottom"
             android:paddingLeft="@dimen/paddingleft"
+            android:paddingStart="@dimen/paddingleft"
+            android:paddingRight="@dimen/paddingright"
+            android:paddingEnd="@dimen/paddingright"
             android:layout_marginTop="-20dp"
             android:translationZ="6dp"
             />

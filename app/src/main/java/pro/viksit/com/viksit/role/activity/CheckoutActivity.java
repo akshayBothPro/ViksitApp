@@ -7,7 +7,9 @@ import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.util.DisplayMetrics;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -33,10 +35,27 @@ public class CheckoutActivity extends AppCompatActivity {
     private CheckoutVerticalRecyclerAdapter adapter;
     private ArrayList<Payment> paymentArrayList;
 
+    private int screenWidth;
+    private int screenHeight;
+    private double diagonalInches;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_checkout);
+        getWidthAndHeight();
+        Double d, d1;
+        if (diagonalInches>=6.5){
+            // 6.5inch device or bigger
+            d = new Double(screenWidth / 1.2);
+            d1= new Double(screenHeight/1.3);
+        }else{
+            // smaller device
+            d = new Double(screenWidth / 1.2);
+            d1= new Double(screenHeight/1.6);
+        }
+        int screenwidth = d.intValue();;
+        int screenheitght = d1.intValue();
 
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         backBtn = (ImageView) findViewById(R.id.iv_back_btn);
@@ -51,10 +70,17 @@ public class CheckoutActivity extends AppCompatActivity {
 
         implementActions();
 
+
     }
 
     private void implementActions(){
         Picasso.with(getBaseContext()).load(R.drawable.ic_1).transform(new CircleTransform()).into(image);
+        if(screenHeight != 0 && screenWidth != 0) {
+            ViewGroup.LayoutParams params = image.getLayoutParams();
+            params.height = screenHeight/6;
+            params.width = screenHeight/6;
+            image.setLayoutParams(params);
+        }
 
         adapter = new CheckoutVerticalRecyclerAdapter(paymentArrayList,getBaseContext());
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
@@ -94,6 +120,16 @@ public class CheckoutActivity extends AppCompatActivity {
         paymentArrayList.add(payment);
 
 
+    }
 
+    private void getWidthAndHeight() {
+        DisplayMetrics displaymetrics = new DisplayMetrics();
+        this.getWindowManager().getDefaultDisplay().getMetrics(displaymetrics);
+        screenHeight = displaymetrics.heightPixels;
+        screenWidth = displaymetrics.widthPixels;
+
+        float yInches= displaymetrics.heightPixels/displaymetrics.ydpi;
+        float xInches= displaymetrics.widthPixels/displaymetrics.xdpi;
+        diagonalInches = Math.sqrt(xInches*xInches + yInches*yInches);
     }
 }

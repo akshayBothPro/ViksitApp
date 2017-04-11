@@ -78,10 +78,10 @@
                             android:layout_height="wrap_content">
 
                             <ImageView
-                                android:layout_width="80dp"
-                                android:layout_height="80dp"
-                                android:src="@drawable/profile_default"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
                                 android:id="@+id/myprofile"
+                                android:src="@drawable/profile_default"
                                 android:scaleType="centerCrop"
                                 android:layout_centerHorizontal="true"
                                 />
@@ -93,10 +93,11 @@
                                 android:textAlignment="center"
                                 android:layout_alignBottom="@+id/myprofile"
                                 android:layout_alignRight="@+id/myprofile"
+                                android:layout_alignEnd="@id/myprofile"
                                 android:textSize="@dimen/p7"
                                 android:textAllCaps="false"
                                 android:textColor="@color/theme_color"
-                                android:background="@drawable/selected_circle_indicator"
+                                android:background="@drawable/white_circle"
                                 />
                         </RelativeLayout>
 
@@ -133,8 +134,8 @@
                             android:layout_height="wrap_content">
 
                             <ImageView
-                                android:layout_width="80dp"
-                                android:layout_height="80dp"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
                                 android:src="@drawable/profile_default"
                                 android:id="@+id/challengeprofile"
                                 android:scaleType="centerCrop"
@@ -151,7 +152,7 @@
                                 android:textColor="@color/challenger_color"
                                 android:layout_alignBottom="@+id/challengeprofile"
                                 android:layout_alignRight="@+id/challengeprofile"
-                                android:background="@drawable/selected_circle_indicator"
+                                android:background="@drawable/white_circle"
                                 />
                         </RelativeLayout>
 
@@ -326,22 +327,23 @@
         <Button
             android:id="@+id/start_game"
             android:layout_width="wrap_content"
-            android:layout_height="@dimen/btn_start_height"
+            android:layout_height="wrap_content"
+            android:minHeight="@dimen/btn_start_height"
+            android:minWidth="@dimen/btn_start_game"
+            android:text="Start Challenge"
             android:layout_below="@+id/card_view"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="-20dp"
-            android:background="@drawable/signup_btn_shape"
-            android:drawableLeft="@drawable/ic_event_note_white_24dp"
-            android:drawableTint="@color/white"
-            android:minWidth="@dimen/btn_start_game"
-            android:paddingBottom="@dimen/paddingbottom"
-            android:paddingLeft="@dimen/paddingleft"
-            android:paddingRight="@dimen/paddingright"
-            android:paddingTop="@dimen/paddingtop"
-            android:text=" Accept Challenge "
             android:textAlignment="center"
+            android:drawableLeft="@drawable/ic_event_note_white_24dp"
+            android:background="@drawable/signup_btn_shape"
             android:textColor="@color/white"
+            android:drawableTint="@color/white"
             android:textSize="@dimen/p3"
+            android:paddingRight="@dimen/paddingright"
+            android:paddingEnd="@dimen/paddingright"
+            android:paddingLeft="@dimen/paddingleft"
+            android:paddingStart="@dimen/paddingleft"
+            android:layout_marginTop="-20dp"
             android:translationZ="6dp" />
     </RelativeLayout>
 

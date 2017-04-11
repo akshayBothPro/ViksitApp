@@ -55,6 +55,7 @@ public class ModuleHorizontalSectionListAdapter extends RecyclerView.Adapter<Mod
         Role singleItem = itemsList.get(i);
 
         holder.tvTitle.setText(singleItem.getTitle());
+        Picasso.with(mContext).load(singleItem.getImageResID()).transform(new CircleTransform()).into(holder.itemImage);
         if(screenHeight != 0 && screenWidth != 0){
             ViewGroup.LayoutParams params = holder.itemImage.getLayoutParams();
             params.height = screenWidth/4;
@@ -62,7 +63,7 @@ public class ModuleHorizontalSectionListAdapter extends RecyclerView.Adapter<Mod
             holder.itemImage.setLayoutParams(params);
 
         }
-        Picasso.with(mContext).load(singleItem.getImageResID()).transform(new CircleTransform()).into(holder.itemImage);
+
 
     }
 

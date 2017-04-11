@@ -32,6 +32,7 @@ public class ItemFragment extends Fragment {
     private static final String SCALE = "scale";
     private int screenWidth;
     private int screenHeight;
+    private double diagonalInches;
 
     public static Fragment newInstance(Activity context, DashboardCard dashboardCard, float scale) {
         Bundle b = new Bundle();
@@ -58,8 +59,17 @@ public class ItemFragment extends Fragment {
         if(getArguments() != null){
             DashboardCard dashboardCard = (DashboardCard) getArguments().getSerializable("card");
             float scale = this.getArguments().getFloat(SCALE);
-            Double d = new Double(screenWidth / 1.2);
-            Double d1= new Double(screenHeight/1.6);
+            Double d, d1;
+
+            if (diagonalInches>=6.5){
+                // 6.5inch device or bigger
+                d = new Double(screenWidth / 1.2);
+                d1= new Double(screenHeight/1.3);
+            }else{
+                // smaller device
+                d = new Double(screenWidth / 1.2);
+                d1= new Double(screenHeight/1.6);
+            }
             int screenwidth = d.intValue();;
             int screenheitght = d1.intValue();
 
@@ -69,11 +79,20 @@ public class ItemFragment extends Fragment {
             TextView header = (TextView) linearLayout.findViewById(R.id.header);
             TextView title = (TextView) linearLayout.findViewById(R.id.title);
             ImageView imageView = (ImageView) linearLayout.findViewById(R.id.image);
-            Picasso.with(getContext())
-                    .load(R.drawable.backgroundimg).resize(screenheitght/2,screenheitght/3)
-                    .into(imageView);
-            imageView.setMinimumHeight(screenheitght/3);
-            imageView.setMaxHeight(screenheitght/3);
+
+            if (diagonalInches>=6.5){
+                Picasso.with(getContext())
+                        .load(R.drawable.backgroundimg).resize(screenheitght / 2, screenheitght / 2)
+                        .into(imageView);
+                imageView.setMinimumHeight(screenheitght / 2);
+                imageView.setMaxHeight(screenheitght / 2);
+            } else {
+                Picasso.with(getContext())
+                        .load(R.drawable.backgroundimg).resize(screenheitght / 2, screenheitght / 3)
+                        .into(imageView);
+                imageView.setMinimumHeight(screenheitght / 3);
+                imageView.setMaxHeight(screenheitght / 3);
+            }
             header.setText(dashboardCard.getHeader());
             title.setText(dashboardCard.getTitle());
             cardView.setLayoutParams(layoutParams);
@@ -100,5 +119,9 @@ public class ItemFragment extends Fragment {
         getActivity().getWindowManager().getDefaultDisplay().getMetrics(displaymetrics);
         screenHeight = displaymetrics.heightPixels;
         screenWidth = displaymetrics.widthPixels;
+
+        float yInches= displaymetrics.heightPixels/displaymetrics.ydpi;
+        float xInches= displaymetrics.widthPixels/displaymetrics.xdpi;
+        diagonalInches = Math.sqrt(xInches*xInches + yInches*yInches);
     }
 }

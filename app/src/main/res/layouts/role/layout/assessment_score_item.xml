@@ -1,8 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    >
+    <TextView
+        android:id="@+id/tv_no_of_students_attempted"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"
+        android:textSize="@dimen/p5"
+        android:text="25 of 50 students have attempted this assessment"/>
+<LinearLayout
     android:orientation="horizontal"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:layout_above="@id/tv_no_of_students_attempted"
     android:id="@+id/ll_score_container"
     android:weightSum="5">
     <LinearLayout
@@ -93,3 +110,5 @@
         </LinearLayout>
     </LinearLayout>
 </LinearLayout>
+
+</RelativeLayout>
