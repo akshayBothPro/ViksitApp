@@ -14,7 +14,10 @@
         android:background="@color/theme_color"
         android:minHeight="?attr/actionBarSize"
         app:contentInsetLeft="0dp"
-        app:contentInsetStart="0dp">
+        app:contentInsetStart="0dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true">
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -26,8 +29,8 @@
                 android:id="@+id/iv_back_btn"
                 android:layout_width="30dp"
                 android:layout_height="30dp"
-                android:layout_marginLeft="10dp"
-                android:layout_marginStart="10dp"
+                android:layout_marginLeft="@dimen/checkout_back_btn_hor_margin"
+                android:layout_marginStart="@dimen/checkout_back_btn_hor_margin"
                 android:tint="@color/white_color"
                 android:layout_centerVertical="true"
                 android:layout_alignParentLeft="true"
@@ -37,7 +40,8 @@
                 android:id="@+id/checkout_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="20dp"
+                android:layout_marginLeft="@dimen/checkout_toolbar_title_hor_margin"
+                android:layout_marginStart="@dimen/checkout_toolbar_title_hor_margin"
                 android:layout_toRightOf="@+id/iv_back_btn"
                 android:layout_toEndOf="@+id/iv_back_btn"
                 android:text="Checkout"
@@ -55,7 +59,7 @@
         android:id="@+id/tv_checkout_order_summary"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:padding="10dp"
+        android:padding="@dimen/checkout_summary_padding"
         android:textColor="@color/comment_reply_color"
         android:textSize="@dimen/p2"
         android:text="Order Summary"/>
@@ -75,7 +79,7 @@
                 android:id="@+id/iv_checkout_image"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
-                android:layout_margin="10dp"
+                android:layout_margin="@dimen/checkout_image_margin"
                 android:src="@drawable/ic_1"/>
             <TextView
                 android:id="@+id/tv_checkout_role_title"
@@ -95,7 +99,7 @@
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:padding="10dp">
+                android:padding="@dimen/checkout_summary_padding">
                 <TextView
                     android:id="@+id/tv_amount_to_pay"
                     android:layout_alignParentLeft="true"
@@ -124,7 +128,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/cv_checkout_info"
-        android:padding="10dp"
+        android:padding="@dimen/checkout_summary_padding"
         android:textSize="@dimen/p2"
         android:textColor="@color/comment_reply_color"
         android:text="Choose Payment Method"/>
@@ -135,9 +139,10 @@
         android:layout_height="wrap_content"/>
 </RelativeLayout>
 <Button
+    android:id="@+id/btn_pay"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_margin="20dp"
+    android:layout_margin="@dimen/checkout_btn_margin"
     android:layout_alignParentBottom="true"
     android:textSize="@dimen/p2"
     android:textAllCaps="false"

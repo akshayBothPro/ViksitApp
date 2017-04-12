@@ -43,9 +43,10 @@ public class CompletedTaskRecyclerAdapter extends RecyclerView.Adapter<Completed
         CompletedTask completedTask = completedTaskArrayList.get(position);
         holder.title.setText(completedTask.getDescription());
         holder.time.setText(completedTask.getTime());
+        holder.line.setVisibility(View.VISIBLE);
 
         if(completedTask.getType().equalsIgnoreCase("challenge")){
-            holder.image.setBackgroundResource(R.mipmap.ic_challenge);
+            holder.image.setImageResource(R.mipmap.ic_challenge);
         } else if(completedTask.getType().equalsIgnoreCase("video")){
             holder.image.setImageResource(R.mipmap.ic_play_circle_outline_white_24dp);
         } else {
@@ -62,12 +63,14 @@ public class CompletedTaskRecyclerAdapter extends RecyclerView.Adapter<Completed
 
         public ImageView image;
         public TextView title, time;
+        public View line;
 
         public MyViewHolder(View view) {
             super(view);
             image = (ImageView)view.findViewById(R.id.iv_completed_task_item_icon);
             title = (TextView) view.findViewById(R.id.tv_completed_task_item_title);
             time = (TextView) view.findViewById(R.id.tv_completed_task_item_time);
+            line = view.findViewById(R.id.completed_task_item_vline);
 
         }
 

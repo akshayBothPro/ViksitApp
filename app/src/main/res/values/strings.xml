@@ -45,5 +45,6 @@
 
     <!-- end of Stored/cached data- -->
 
-
+    <string name="Rs">\u20B9</string><!--for rupee icon-->
+    <string name="rs">\u20A8</string>
 </resources>

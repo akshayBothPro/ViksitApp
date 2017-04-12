@@ -9,10 +9,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:paddingTop="10dp"
-        android:paddingBottom="10dp"
-        android:paddingLeft="20dp"
-        android:paddingRight="20dp"
+        android:paddingTop="@dimen/role_depth_title_ver_padding"
+        android:paddingBottom="@dimen/role_depth_title_ver_padding"
+        android:paddingLeft="@dimen/role_depth_title_hor_padding"
+        android:paddingRight="@dimen/role_depth_title_hor_padding"
         android:textSize="@dimen/p5"
         android:text="25 of 50 students have attempted this assessment"/>
 <LinearLayout

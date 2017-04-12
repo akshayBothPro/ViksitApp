@@ -131,6 +131,8 @@ public class DashboardActivity extends AppCompatActivity {
         dashboardCard = new DashboardCard(0,"Mutual Head Planner", "UI Developer","Lorem Ipsum is simply dummy text of the printing and typesetting industry.","",0,0,0,0,"assessment",0);
         dashboardCards.add(dashboardCard);
 
+        dashboardCard = new DashboardCard(0,"Mutual Head Planner", "UI Developer","completed");
+        dashboardCards.add(dashboardCard);
 
         return dashboardCards;
     }
@@ -138,7 +140,6 @@ public class DashboardActivity extends AppCompatActivity {
     public void doforStatic(){
         ArrayList<DashboardCard> dashboardCards = new ArrayList<>();
         dashboardCards = setdummydata(dashboardCards);
-
 
         if(dashboardCards.size() <7){
             loop = dashboardCards.size();

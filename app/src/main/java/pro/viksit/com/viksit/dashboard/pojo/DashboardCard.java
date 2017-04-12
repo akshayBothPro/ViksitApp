@@ -73,6 +73,14 @@ public class DashboardCard implements Serializable {
         this.imageURL = "/root/talentify/assessment.png";
     }
 
+    //for completed tasks
+    public DashboardCard(Integer id, String header, String title, String itemType){
+        this.id = id;
+        this.header = header;
+        this.title = title;
+        this.itemType = itemType;
+    }
+
     public Integer getId() {
         return id;
     }

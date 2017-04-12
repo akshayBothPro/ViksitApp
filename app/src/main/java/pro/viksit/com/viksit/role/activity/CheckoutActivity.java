@@ -10,6 +10,7 @@ import android.support.v7.widget.Toolbar;
 import android.util.DisplayMetrics;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -32,6 +33,7 @@ public class CheckoutActivity extends AppCompatActivity {
     private TextView title;
     private TextView amount;
     private RecyclerView verticalRecycler;
+    private Button btnPay;
     private CheckoutVerticalRecyclerAdapter adapter;
     private ArrayList<Payment> paymentArrayList;
 
@@ -64,12 +66,12 @@ public class CheckoutActivity extends AppCompatActivity {
         title = (TextView) findViewById(R.id.tv_checkout_role_title);
         amount = (TextView) findViewById(R.id.tv_amount_digits);
         verticalRecycler = (RecyclerView) findViewById(R.id.rv_payment_option);
+        btnPay = (Button) findViewById(R.id.btn_pay);
 
         setSupportActionBar(toolbar);
         setPaymentOptionsData();
 
         implementActions();
-
 
     }
 
@@ -103,6 +105,10 @@ public class CheckoutActivity extends AppCompatActivity {
                     }
                 })
         );
+
+        String rs = getString(R.string.Rs);
+        btnPay.setText("Pay "+ rs +" 350");
+        amount.setText("" + rs + " 350");
 
     }
 

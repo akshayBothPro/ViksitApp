@@ -16,6 +16,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -35,22 +36,20 @@ public class CompletedTaskFragment extends Fragment {
     private CardView cardView;
     private TextView header;
     private TextView title;
+    private TextView remainingTasks;
     private RecyclerView verticalRecycler;
     private CompletedTaskRecyclerAdapter adapter;
     private ArrayList<CompletedTask> completedTaskArrayList;
 
     private int screenWidth;
     private int screenHeight;
+    private double diagonalInches;
 
     public static Fragment newInstance(Activity context, DashboardCard dashboardCard, float scale) {
         Bundle b = new Bundle();
         b.putSerializable("card",dashboardCard);
         b.putFloat(SCALE, scale);
         return Fragment.instantiate(context, CompletedTaskFragment.class.getName(), b);
-    }
-
-    public CompletedTaskFragment() {
-        // Required empty public constructor
     }
 
     @Override
@@ -71,16 +70,26 @@ public class CompletedTaskFragment extends Fragment {
         if(getArguments() != null){
             DashboardCard dashboardCard = (DashboardCard) getArguments().getSerializable("card");
             float scale = this.getArguments().getFloat(SCALE);
-            Double d = new Double(screenWidth / 1.2);
-            Double d1= new Double(screenHeight/1.6);
+
+            Double d, d1;
+            if (diagonalInches>=6.5){
+                // 6.5inch device or bigger
+                d = new Double(screenWidth / 1.2);
+                d1= new Double(screenHeight/1.3);
+            }else{
+                // smaller device
+                d = new Double(screenWidth / 1.2);
+                d1= new Double(screenHeight/1.6);
+            }
             int screenwidth = d.intValue();;
             int screenheitght = d1.intValue();
 
-            LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(screenwidth, screenheitght);
+            RelativeLayout.LayoutParams layoutParams = new RelativeLayout.LayoutParams(screenwidth, screenheitght);
             cardView = (CardView) linearLayout.findViewById(R.id.card_view);
             header = (TextView) linearLayout.findViewById(R.id.tv_completed_task_header);
             title = (TextView) linearLayout.findViewById(R.id.tv_completed_task_title);
             verticalRecycler = (RecyclerView) linearLayout.findViewById(R.id.rv_completed_task);
+            remainingTasks = (TextView) linearLayout.findViewById(R.id.tv_remaining_task);
 
             setDummylistData();
             implementActions();
@@ -131,6 +140,10 @@ public class CompletedTaskFragment extends Fragment {
         getActivity().getWindowManager().getDefaultDisplay().getMetrics(displaymetrics);
         screenHeight = displaymetrics.heightPixels;
         screenWidth = displaymetrics.widthPixels;
+
+        float yInches= displaymetrics.heightPixels/displaymetrics.ydpi;
+        float xInches= displaymetrics.widthPixels/displaymetrics.xdpi;
+        diagonalInches = Math.sqrt(xInches*xInches + yInches*yInches);
     }
 
     private void setDummylistData(){
