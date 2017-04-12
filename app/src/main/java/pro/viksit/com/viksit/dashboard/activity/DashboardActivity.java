@@ -77,9 +77,9 @@ public class DashboardActivity extends AppCompatActivity {
         studentProfile = gson.fromJson(profile_date,StudentProfile.class);
 
         setSupportActionBar(toolbar);
-        doforStatic();
+        /*doforStatic();*/
 
-        /*new DashboardCardAsync(this,getSupportFragmentManager(),studentProfile.getId(),sharedpreferences,pager_indicator,this,pager,loop,progress,error_layout).execute();
+        new DashboardCardAsync(this,getSupportFragmentManager(),studentProfile.getId(),sharedpreferences,pager_indicator,this,pager,loop,progress,error_layout).execute();
         button_layout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -103,7 +103,7 @@ public class DashboardActivity extends AppCompatActivity {
         }
 
         coins.setText(studentProfile.getCoins()+"");
-        points.setText(studentProfile.getExperiencePoints()+"");*/
+        points.setText(studentProfile.getExperiencePoints()+"");
 
     }
 
@@ -119,7 +119,7 @@ public class DashboardActivity extends AppCompatActivity {
         DashboardCard dashboardCard = new DashboardCard(0,"Mutual Head Planner", "UI Developer","","","video",0);
         dashboardCards.add(dashboardCard);
 
-        /*dashboardCard = new DashboardCard(0,"Mutual Head Planner", "UI Developer","Lorem Ipsum is simply dummy text of the printing and typesetting industry.","","presentation",0);
+        dashboardCard = new DashboardCard(0,"Mutual Head Planner", "UI Developer","Lorem Ipsum is simply dummy text of the printing and typesetting industry.","","presentation",0);
         dashboardCards.add(dashboardCard);
 
         dashboardCard = new DashboardCard(0,"Mutual Head Planner", "UI Developer","Lorem Ipsum is simply dummy text of the printing and typesetting industry.","","game",0);
@@ -129,7 +129,7 @@ public class DashboardActivity extends AppCompatActivity {
         dashboardCards.add(dashboardCard);
 
         dashboardCard = new DashboardCard(0,"Mutual Head Planner", "UI Developer","Lorem Ipsum is simply dummy text of the printing and typesetting industry.","",0,0,0,0,"assessment",0);
-        dashboardCards.add(dashboardCard);*/
+        dashboardCards.add(dashboardCard);
 
         dashboardCard = new DashboardCard(0,"Mutual Head Planner", "UI Developer","completed");
         dashboardCards.add(dashboardCard);
