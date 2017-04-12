@@ -126,7 +126,7 @@
     <dimen name="challenge_pic_margin">10dp</dimen>
     <dimen name="challenge_bottom_margin">10dp</dimen>
 
-    <!--Presenattion Card dimensions-->
+    <!--Presentation Card dimensions-->
     <dimen name="presentation_card_hor_padding">10dp</dimen>
     <dimen name="presentation_header_bottom_margin">10dp</dimen>
     <dimen name="presentation_pic_margin">10dp</dimen>
@@ -154,9 +154,25 @@
     <dimen name="role_detail_image_margin">10dp</dimen>
     <dimen name="role_detail_card_margin">5dp</dimen>
 
+    <!--Role Depth Demensions-->
+    <dimen name="role_depth_title_ver_padding">10dp</dimen>
+    <dimen name="role_depth_title_hor_padding">20dp</dimen>
+
+    <!--Checkout Activity Dimension-->
+    <dimen name="checkout_back_btn_hor_margin">10dp</dimen>
+    <dimen name="checkout_toolbar_title_hor_margin">20dp</dimen>
+    <dimen name="checkout_summary_padding">10dp</dimen>
+    <dimen name="checkout_image_margin">10dp</dimen>
+    <dimen name="checkout_btn_margin">20dp</dimen>
+    <dimen name="checkout_rbtn_margin">10dp</dimen>
 
     <!--Question Activity Dimension-->
     <dimen name="question_item_padding">15dp</dimen>
+
+    <!--Notification Activity Dimension-->
+    <dimen name="notification_hor_padding">10dp</dimen>
+    <dimen name="notification_back_btn_right_mrgin">20dp</dimen>
+    <dimen name="notification_item_bottom_mrgin">5dp</dimen>
 
     <!--Dashboard Activity Dimension-->
     <dimen name="circle_indiactor_margin">120dp</dimen>

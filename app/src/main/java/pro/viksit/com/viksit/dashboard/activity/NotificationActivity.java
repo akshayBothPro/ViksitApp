@@ -9,6 +9,7 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -21,7 +22,7 @@ import pro.viksit.com.viksit.role.util.RecyclerItemClickListener;
 public class NotificationActivity extends AppCompatActivity {
 
     private Toolbar toolbar;
-    private Button backBtn;
+    private ImageButton backBtn;
     private TextView title;
     private RecyclerView verticalRecycler;
     private NoticationVerticalRecyclerAdapter adapter;
@@ -33,7 +34,7 @@ public class NotificationActivity extends AppCompatActivity {
         setContentView(R.layout.activity_notification);
 
         toolbar = (Toolbar) findViewById(R.id.toolbar);
-        backBtn = (Button) findViewById(R.id.btn_notfication_back);
+        backBtn = (ImageButton) findViewById(R.id.btn_notfication_back);
         title = (TextView) findViewById(R.id.tv_notification_toolbar_title);
         verticalRecycler = (RecyclerView) findViewById(R.id.rv_notification);
 

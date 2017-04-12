@@ -11,14 +11,13 @@
         android:id="@+id/rbtn_payment"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="10dp"
+        android:layout_margin="@dimen/checkout_rbtn_margin"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"/>
     <TextView
         android:id="@+id/tv_payment_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-
         android:layout_centerVertical="true"
         android:layout_toRightOf="@+id/rbtn_payment"
         android:layout_toEndOf="@+id/rbtn_payment"
