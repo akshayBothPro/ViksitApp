@@ -1,11 +1,16 @@
 package pro.viksit.com.viksit.dashboard.activity;
 
 import android.app.ProgressDialog;
+import android.content.Intent;
+import android.graphics.PorterDuff;
+import android.graphics.drawable.Drawable;
 import android.media.MediaPlayer;
 import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.LinearLayout;
 import android.widget.MediaController;
 import android.widget.SeekBar;
 import android.widget.VideoView;
@@ -18,6 +23,8 @@ import pro.viksit.com.viksit.R;
 import pro.viksit.com.viksit.Util.DisplayUtil;
 import pro.viksit.com.viksit.Util.ImageSaver;
 import pro.viksit.com.viksit.dashboard.util.VideoSaveThread;
+import pro.viksit.com.viksit.home.activity.HomeActivity;
+import pro.viksit.com.viksit.home.activity.LoginActivity;
 
 public class VideoPlayActivity extends AppCompatActivity {
     private VideoView myVideoView;
@@ -31,9 +38,7 @@ public class VideoPlayActivity extends AppCompatActivity {
         setContentView(R.layout.activity_video_play);
         if (mediaControls == null) {
             mediaControls = new MediaController(VideoPlayActivity.this);
-            final int topContainerId1 = getResources().getIdentifier("mediacontroller_progress", "id", "android");
-            final SeekBar seekbar = (SeekBar) mediaControls.findViewById(topContainerId1);
-
+            mediaControls.setBackgroundColor(getResources().getColor(R.color.white));
             myVideoView = (VideoView) findViewById(R.id.video_view);
 
             progressDialog = new ProgressDialog(VideoPlayActivity.this);
@@ -91,6 +96,12 @@ public class VideoPlayActivity extends AppCompatActivity {
                     }
                 }
             });
+            myVideoView.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+                @Override
+                public void onCompletion(MediaPlayer mp) {
+                    System.out.println("Video completed..");
+                }
+            });
         }
     }
 
@@ -110,4 +121,14 @@ public class VideoPlayActivity extends AppCompatActivity {
         position = savedInstanceState.getInt("Position");
         myVideoView.seekTo(position);
     }
+
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        Intent i = new Intent(VideoPlayActivity.this, DashboardActivity.class);
+        startActivity(i);
+    }
+
+
 }
