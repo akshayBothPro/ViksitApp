@@ -34,7 +34,7 @@
     <string name="socialloginurl">AuthenticateUser/login/social</string>
     <string name="loginurl">AuthenticateUser/login</string>
     <string name="signupurl">user/create</string>
-    <string name="dashboardcardurl">dashboard/user_id/cards</string>
+    <string name="dashboardcardurl">user/user_id/dashboard</string>
 
     <!-- end of URL For services -->
 

@@ -95,7 +95,8 @@ public class DashboardCardAsync extends AsyncTask<String, Integer, String> {
     protected void onPostExecute(String jsonresponse) {
 
 
-        if(jsonresponse != null && !jsonresponse.equalsIgnoreCase("null") && !jsonresponse.equalsIgnoreCase("")) {
+        if(jsonresponse != null && !jsonresponse.equalsIgnoreCase("null")
+                && !jsonresponse.equalsIgnoreCase("") && !jsonresponse.contains("HTTP Status")) {
             System.out.println("jsonresponse " + jsonresponse);
             Type listType = new TypeToken<List<DashboardCard>>() {
             }.getType();
@@ -148,8 +149,8 @@ public class DashboardCardAsync extends AsyncTask<String, Integer, String> {
     private String postData(Context context,
                             FragmentManager fm,SharedPreferences sharedPreferences) {
         HttpClient httpclient = new DefaultHttpClient();
-        System.out.println(context.getResources().getString(R.string.serverip)+(context.getResources().getString(R.string.dashboardcardurl).replaceAll("user_id",463+"")));
-        HttpGet httppost = new HttpGet(context.getResources().getString(R.string.serverip)+(context.getResources().getString(R.string.dashboardcardurl).replaceAll("user_id",463+"")));
+        System.out.println(context.getResources().getString(R.string.serverip)+(context.getResources().getString(R.string.dashboardcardurl).replaceAll("user_id",12+"")));
+        HttpGet httppost = new HttpGet(context.getResources().getString(R.string.serverip)+(context.getResources().getString(R.string.dashboardcardurl).replaceAll("user_id",12+"")));
         int timeoutConnection = 6000;
         final HttpParams httpParameters = httpclient.getParams();
         HttpConnectionParams.setConnectionTimeout(httpParameters, timeoutConnection);

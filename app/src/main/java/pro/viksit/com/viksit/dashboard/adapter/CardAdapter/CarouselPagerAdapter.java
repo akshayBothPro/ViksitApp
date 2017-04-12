@@ -68,7 +68,7 @@ public class CarouselPagerAdapter extends FragmentPagerAdapter implements ViewPa
             } else if (dashboardCards.get(position).getItemType().equalsIgnoreCase("presentation")) {
                 return PresentationFragment.newInstance(context, dashboardCards.get(position), scale);
 
-            } else if (dashboardCards.get(position).getItemType().equalsIgnoreCase("video")) {
+            } else if (dashboardCards.get(position).getItemType().equalsIgnoreCase("LESSON")) {
                 return VideoFragment.newInstance(context, dashboardCards.get(position), scale);
 
             } else if (dashboardCards.get(position).getItemType().equalsIgnoreCase("completed")) {
