@@ -59,7 +59,8 @@
             android:authorities="com.facebook.app.FacebookContentProvider"
             android:exported="true" />
 
-        <activity android:name=".dashboard.activity.VideoPlayActivity"></activity>
+        <activity android:name=".dashboard.activity.VideoPlayActivity" />
+        <activity android:name=".dashboard.activity.NoTaskActivity"></activity>
     </application>
 
 </manifest>

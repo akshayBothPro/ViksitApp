@@ -9,11 +9,12 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import pro.viksit.com.viksit.R;
+import pro.viksit.com.viksit.home.async.ForgotAsync;
 
 public class ForgotPasswordActivity extends AppCompatActivity implements View.OnClickListener{
 
     private TextView title;
-    private TextView info;
+    private TextView info,tv_error_email;
     private AppCompatEditText input;
     private Button submit;
     private Button signInDifferent;
@@ -28,14 +29,14 @@ public class ForgotPasswordActivity extends AppCompatActivity implements View.On
         input = (AppCompatEditText) findViewById(R.id.apet_email);
         submit = (Button) findViewById(R.id.btn_forgot_submit);
         signInDifferent = (Button) findViewById(R.id.btn_sign_in_different);
-
+        tv_error_email = (TextView) findViewById(R.id.tv_error_email);
         implementActions();
 
     }
 
     private void implementActions(){
         signInDifferent.setOnClickListener(this);
-
+        submit.setOnClickListener(this);
 
     }
 
@@ -56,6 +57,13 @@ public class ForgotPasswordActivity extends AppCompatActivity implements View.On
         if(id == R.id.btn_sign_in_different) {
             System.out.println("sign in different clicked");
             startActivity(new Intent(ForgotPasswordActivity.this, LoginActivity.class));
+        }else if(id == R.id.btn_forgot_submit){
+            if(input == null || input.getText().toString().equalsIgnoreCase("")){
+                tv_error_email.setText("Phone number cannot be blank.");
+                tv_error_email.setVisibility(View.VISIBLE);
+            }else{
+                    new ForgotAsync(this,input.getText().toString(),tv_error_email).execute();
+            }
         }
     }
 }

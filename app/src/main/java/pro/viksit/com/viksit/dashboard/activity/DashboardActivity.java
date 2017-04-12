@@ -69,6 +69,8 @@ public class DashboardActivity extends AppCompatActivity {
         progress = (ProgressBar) findViewById(R.id.progress);
         error_layout = (RelativeLayout) findViewById(R.id.error_layout);
         button_layout = (Button) findViewById(R.id.button_layout);
+        profile_pic = (HexagonImageView) findViewById(R.id.profile_pic);
+
         BottomNavigationView bottomNavigationView = (BottomNavigationView) findViewById(R.id.bottom_navigation);
         new BottomBarUtil().setupBottomBar(bottomNavigationView,DashboardActivity.this,R.id.task);
 
@@ -113,66 +115,9 @@ public class DashboardActivity extends AppCompatActivity {
         System.out.println("this is json "+jsonInString);
     }
 
-    public ArrayList<DashboardCard> setdummydata (ArrayList<DashboardCard> dashboardCards){
-        //Integer id, String header, String title, String description, String imageURL, String itemType,Integer itemId
 
-        DashboardCard dashboardCard = new DashboardCard(0,"Mutual Head Planner", "UI Developer","","","video",0);
-        dashboardCards.add(dashboardCard);
 
-        dashboardCard = new DashboardCard(0,"Mutual Head Planner", "UI Developer","Lorem Ipsum is simply dummy text of the printing and typesetting industry.","","presentation",0);
-        dashboardCards.add(dashboardCard);
 
-        dashboardCard = new DashboardCard(0,"Mutual Head Planner", "UI Developer","Lorem Ipsum is simply dummy text of the printing and typesetting industry.","","game",0);
-        dashboardCards.add(dashboardCard);
-
-        dashboardCard = new DashboardCard(0,"Mutual Head Planner", "UI Developer","Lorem Ipsum is simply dummy text of the printing and typesetting industry.","",0,0,0,0,"challenge",0,0,0);
-        dashboardCards.add(dashboardCard);
-
-        dashboardCard = new DashboardCard(0,"Mutual Head Planner", "UI Developer","Lorem Ipsum is simply dummy text of the printing and typesetting industry.","",0,0,0,0,"assessment",0);
-        dashboardCards.add(dashboardCard);
-
-        dashboardCard = new DashboardCard(0,"Mutual Head Planner", "UI Developer","completed");
-        dashboardCards.add(dashboardCard);
-
-        return dashboardCards;
-    }
-
-    public void doforStatic(){
-        ArrayList<DashboardCard> dashboardCards = new ArrayList<>();
-        dashboardCards = setdummydata(dashboardCards);
-
-        if(dashboardCards.size() <7){
-            loop = dashboardCards.size();
-        }else{
-            loop=7;
-            lastposition =(7*(dashboardCards.size()/7)) ;
-        }
-        dots = new ImageView[dashboardCards.size()];
-        for (int i = 0; i < loop; i++) {
-            dots[i] = new ImageView(getBaseContext());
-            dots[i].setImageDrawable(getBaseContext().getResources().getDrawable(R.drawable.nonselecteditem_dot));
-            LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(
-                    LinearLayout.LayoutParams.WRAP_CONTENT,
-                    LinearLayout.LayoutParams.WRAP_CONTENT
-            );
-            params.setMargins(4, 0, 4, 0);
-            pager_indicator.addView(dots[i], params);
-        }
-        dots[0].setImageDrawable(getBaseContext().getResources().getDrawable(R.drawable.selecteditem_dot));
-        CarouselPagerAdapter carouselPagerAdapter = new CarouselPagerAdapter(this,getSupportFragmentManager(),dashboardCards,loop);
-        DisplayMetrics metrics = new DisplayMetrics();
-        this.getWindowManager().getDefaultDisplay().getMetrics(metrics);
-        int pageMargin = ((metrics.widthPixels / 12) );
-        System.out.println("pageMargin "+pageMargin);
-        pager.setClipToPadding(false);
-        pager.setPadding(pageMargin, pageMargin/2, pageMargin, 0);
-        pager.setAdapter(carouselPagerAdapter);
-        carouselPagerAdapter.notifyDataSetChanged();
-        pager.addOnPageChangeListener(carouselPagerAdapter);
-        pager.setCurrentItem(1);
-        pager.setOffscreenPageLimit(3);
-
-    }
 
     public void displayscreen(){
         switch (getResources().getDisplayMetrics().densityDpi) {

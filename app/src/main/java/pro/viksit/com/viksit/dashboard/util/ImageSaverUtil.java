@@ -20,27 +20,39 @@ public class ImageSaverUtil {
     private ImageView imageView;
     private int screenHeight;
     private String url;
-
-    public ImageSaverUtil(ImageSaver imageSaver, Picasso picasso, ImageView imageView, int screenHeight, String url) {
+    private boolean flag;
+    public ImageSaverUtil(ImageSaver imageSaver, Picasso picasso, ImageView imageView, int screenHeight, String url,boolean flag) {
         this.imageSaver = imageSaver;
         this.picasso = picasso;
         this.imageView = imageView;
         this.screenHeight = screenHeight;
         this.url = url;
+        this.flag = flag;
     }
 
     public void checkImageExist() {
         if (this.imageSaver.checkFile()) {
             Uri uri = Uri.fromFile(imageSaver.pathFile());
-            picasso
-                    .load(uri).resize(screenHeight / 4, screenHeight / 4).transform(new CircleTransform())
-                    .into(imageView);
+            if(!flag) {
+                picasso
+                        .load(uri).resize(screenHeight / 4, screenHeight / 4).transform(new CircleTransform())
+                        .into(imageView);
+            }else{
+                picasso
+                        .load(uri).resize(screenHeight / 4, screenHeight / 4).into(imageView);
+            }
             System.out.println("FILE  EXITS >>>>>> ");
         } else {
             System.out.println("FILE NOT EXITS >>>>>> ");
-            picasso
-                    .load(url).resize(screenHeight / 4, screenHeight / 4).transform(new CircleTransform())
-                    .into(imageView);
+            if(!flag) {
+                picasso
+                        .load(url).resize(screenHeight / 4, screenHeight / 4).transform(new CircleTransform())
+                        .into(imageView);
+            }else{
+                picasso
+                        .load(url).resize(screenHeight / 4, screenHeight / 4)
+                        .into(imageView);
+            }
 
             new SaveImageAsync(imageSaver).execute(url);
 

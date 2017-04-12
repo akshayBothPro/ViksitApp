@@ -2,6 +2,7 @@ package pro.viksit.com.viksit.dashboard.async;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.support.v4.app.FragmentManager;
@@ -37,6 +38,7 @@ import java.util.List;
 
 import pro.viksit.com.viksit.R;
 import pro.viksit.com.viksit.dashboard.activity.DashboardActivity;
+import pro.viksit.com.viksit.dashboard.activity.NoTaskActivity;
 import pro.viksit.com.viksit.dashboard.adapter.CardAdapter.CarouselPagerAdapter;
 import pro.viksit.com.viksit.dashboard.pojo.DashboardCard;
 import pro.viksit.com.viksit.dashboard.pojo.StudentProfile;
@@ -60,17 +62,18 @@ public class DashboardCardAsync extends AsyncTask<String, Integer, String> {
     private ViewPager pager;
     private ProgressBar progressBar;
     private RelativeLayout error_layout;
+
     public DashboardCardAsync(Context context,
                               FragmentManager fm, int userid,
                               SharedPreferences sharedPreferences,
-                              LinearLayout pager_indicator, DashboardActivity activity,ViewPager pager,int loop,ProgressBar progressBar,RelativeLayout error_layout){
-    this.context = context;
+                              LinearLayout pager_indicator, DashboardActivity activity, ViewPager pager, int loop, ProgressBar progressBar, RelativeLayout error_layout) {
+        this.context = context;
         this.fm = fm;
         this.userid = userid;
         this.sharedPreferences = sharedPreferences;
         this.pager_indicator = pager_indicator;
         this.activity = activity;
-        this.pager =pager;
+        this.pager = pager;
         this.loop = loop;
         this.progressBar = progressBar;
         this.error_layout = error_layout;
@@ -78,14 +81,12 @@ public class DashboardCardAsync extends AsyncTask<String, Integer, String> {
 
     @Override
     protected String doInBackground(String... params) {
-        return  postData(context,fm,sharedPreferences);
+        return postData(context, fm, sharedPreferences);
     }
 
 
-
     @Override
-    protected  void onPreExecute()
-    {
+    protected void onPreExecute() {
         progressBar.setVisibility(View.VISIBLE);
         error_layout.setVisibility(View.GONE);
 
@@ -95,8 +96,12 @@ public class DashboardCardAsync extends AsyncTask<String, Integer, String> {
     protected void onPostExecute(String jsonresponse) {
 
 
-        if(jsonresponse != null && !jsonresponse.equalsIgnoreCase("null")
-                && !jsonresponse.equalsIgnoreCase("") && !jsonresponse.contains("HTTP Status")) {
+        if (jsonresponse != null && !jsonresponse.equalsIgnoreCase("null")
+                && !jsonresponse.equalsIgnoreCase("") && !jsonresponse.contains("HTTP Status")
+
+                ) {
+
+            if(!jsonresponse.equalsIgnoreCase("[]")){
             System.out.println("jsonresponse " + jsonresponse);
             Type listType = new TypeToken<List<DashboardCard>>() {
             }.getType();
@@ -138,25 +143,34 @@ public class DashboardCardAsync extends AsyncTask<String, Integer, String> {
             editor.putString(context.getResources().getString(R.string.dashboardcards), jsonresponse);
             editor.apply();
             editor.commit();
-        }else{
-            error_layout.setVisibility(View.VISIBLE);
-        }
-        progressBar.setVisibility(View.GONE);
+
+        } else{
+                Intent notask = new Intent(context, NoTaskActivity.class);
+                context.startActivity(notask);
+                ((Activity) context).overridePendingTransition(R.anim.zoom_enter, R.anim.zoom_exit);
+
+            }
+
+
+            } else {
+                error_layout.setVisibility(View.VISIBLE);
+            }
+            progressBar.setVisibility(View.GONE);
 
     }
 
 
     private String postData(Context context,
-                            FragmentManager fm,SharedPreferences sharedPreferences) {
+                            FragmentManager fm, SharedPreferences sharedPreferences) {
         HttpClient httpclient = new DefaultHttpClient();
-        System.out.println(context.getResources().getString(R.string.serverip)+(context.getResources().getString(R.string.dashboardcardurl).replaceAll("user_id",12+"")));
-        HttpGet httppost = new HttpGet(context.getResources().getString(R.string.serverip)+(context.getResources().getString(R.string.dashboardcardurl).replaceAll("user_id",12+"")));
+        System.out.println(context.getResources().getString(R.string.serverip) + (context.getResources().getString(R.string.dashboardcardurl).replaceAll("user_id", 12 + "")));
+        HttpGet httppost = new HttpGet(context.getResources().getString(R.string.serverip) + (context.getResources().getString(R.string.dashboardcardurl).replaceAll("user_id", 12 + "")));
         int timeoutConnection = 6000;
         final HttpParams httpParameters = httpclient.getParams();
         HttpConnectionParams.setConnectionTimeout(httpParameters, timeoutConnection);
-        HttpConnectionParams.setSoTimeout        (httpParameters, 10000);
+        HttpConnectionParams.setSoTimeout(httpParameters, 10000);
 
-        String jsonresponse= "";
+        String jsonresponse = "";
         try {
             // Add your data
 
@@ -175,11 +189,11 @@ public class DashboardCardAsync extends AsyncTask<String, Integer, String> {
 
             e.printStackTrace();
             return "null";
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
             return "null";
         }
-        return  jsonresponse;
+        return jsonresponse;
     }
 
 }

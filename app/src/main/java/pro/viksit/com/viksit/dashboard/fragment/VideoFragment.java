@@ -42,7 +42,7 @@ public class VideoFragment extends Fragment {
     private static final String SCALE = "scale";
     private RelativeLayout rl_img_con;
     private DashboardCard dashboardCard;
-    private static final String TEST_URL = "http://clips.vorwaerts-gmbh.de/big_buck_bunny.mp4";
+    //private static final String TEST_URL = "http://clips.vorwaerts-gmbh.de/big_buck_bunny.mp4";
 
     private int screenWidth;
     private int screenHeight;
@@ -86,16 +86,16 @@ public class VideoFragment extends Fragment {
             //
             int screenwidth = d.intValue();
             int screenheitght = d1.intValue();
-            System.out.println("Image url " + TEST_URL);
+            System.out.println("Image url " + dashboardCard.getVideoURL());
 
-            int videoindex = TEST_URL.lastIndexOf("/");
+            int videoindex = dashboardCard.getVideoURL().lastIndexOf("/");
             ImageSaver videosaver = new ImageSaver(getContext()).
                     setParentDirectoryName("dashboard").
-                    setFileName(new DisplayUtil().getFileNameReplaced(TEST_URL.substring(videoindex + 1, TEST_URL.length()))).
+                    setFileName(new DisplayUtil().getFileNameReplaced(dashboardCard.getVideoURL().substring(videoindex + 1, dashboardCard.getVideoURL().length()))).
                     setExternal(ImageSaver.isExternalStorageReadable());
             if (!videosaver.checkFile()) {
                 ExecutorService executor = Executors.newFixedThreadPool(1);
-                Runnable worker = new VideoSaveThread(TEST_URL, videosaver);
+                Runnable worker = new VideoSaveThread(getString(R.string.resourceserverip) +dashboardCard.getVideoURL(), videosaver);
                 executor.execute(worker);
             }
             RelativeLayout.LayoutParams layoutParams = new RelativeLayout.LayoutParams(screenwidth, screenheitght);
@@ -129,7 +129,7 @@ public class VideoFragment extends Fragment {
                     setExternal(ImageSaver.isExternalStorageReadable());
             Picasso picasso = Picasso.with(getContext());
 
-            new ImageSaverUtil(imageSaver, picasso, image, screenHeight, getString(R.string.resourceserverip) + dashboardCard.getImageURL()).checkImageExist();
+            new ImageSaverUtil(imageSaver, picasso, image, screenHeight, getString(R.string.resourceserverip) + dashboardCard.getImageURL(),true).checkImageExist();
 
             header.setText(dashboardCard.getHeader());
             title.setText(dashboardCard.getTitle());
@@ -172,7 +172,7 @@ public class VideoFragment extends Fragment {
 
     private void gotoVideo(DashboardCard dashboardCard, Context context) {
         Intent i = new Intent(context, VideoPlayActivity.class);
-        i.putExtra("url", TEST_URL);
+        i.putExtra("url", getString(R.string.resourceserverip) +dashboardCard.getVideoURL());
         startActivity(i);
     }
 
