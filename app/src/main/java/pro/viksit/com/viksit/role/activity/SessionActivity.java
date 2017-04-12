@@ -78,7 +78,7 @@ public class SessionActivity extends AppCompatActivity {
         });
         DisplayMetrics metrics = new DisplayMetrics();
         getWindowManager().getDefaultDisplay().getMetrics(metrics);
-        double pageMargin = ((metrics.widthPixels / 1.6) );
+        double pageMargin = ((metrics.widthPixels / 1.8) );
         Double widthpage = new Double(pageMargin);
         viewPager.setOffscreenPageLimit(3);
         viewPager.setPageMargin(-widthpage.intValue());

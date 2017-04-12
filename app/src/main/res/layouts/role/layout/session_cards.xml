@@ -10,40 +10,46 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:layout_margin="5dp"
+        android:layout_margin="@dimen/session_card_margin"
         card_view:cardBackgroundColor="@color/white"
         card_view:cardCornerRadius="2dp"
-        card_view:contentPadding="10dp"
+        card_view:contentPadding="@dimen/session_card_padding"
         android:layout_centerInParent="true">
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:padding="10dp">
+            android:padding="@dimen/session_card_padding">
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Assessing Risk Associated with event"
-                android:textSize="@dimen/h4"
+                android:layout_marginBottom="@dimen/session_card_item_bottom_margin"
+                android:maxLines="2"
+                android:minLines="1"
+                android:ellipsize="end"
+                android:text="Assessing Risk Associated with an event"
+                android:textSize="@dimen/h3"
                 android:textColor="@color/black"
-                android:textStyle="bold"
                 android:textAlignment="center"
                 />
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:maxLines="4"
+                android:minLines="1"
+                android:ellipsize="end"
                 android:text="Learn the basic concpets of risk and various types of risks in the world of bussiness"
                 android:textAlignment="center"
                 android:textSize="@dimen/p4"
-                android:layout_marginBottom="15dp"/>
+                android:layout_marginBottom="@dimen/session_card_item_bottom_margin"/>
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Take a Shortcut"
                 android:textAllCaps="true"
                 android:layout_gravity="center_horizontal"
-                android:textColor="@color/linkedIn_color"
-                android:layout_marginBottom="15dp"
+                android:textColor="@color/theme_color"
+                android:layout_marginBottom="@dimen/session_card_item_bottom_margin"
 
                 />
         </LinearLayout>
@@ -74,7 +80,6 @@
         android:background="@drawable/signup_btn_shape"
         android:padding="10dp"
         android:textColor="@color/white"
-        android:textStyle="bold"
         android:translationZ="6dp"
         />
 </RelativeLayout>

@@ -61,6 +61,7 @@
 
         <activity android:name=".dashboard.activity.VideoPlayActivity" />
         <activity android:name=".dashboard.activity.NoTaskActivity"></activity>
+        <activity android:name=".challenge.activity.LeaderBoardActivity"></activity>
     </application>
 
 </manifest>

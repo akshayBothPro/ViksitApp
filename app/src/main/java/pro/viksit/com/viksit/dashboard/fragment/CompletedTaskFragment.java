@@ -1,9 +1,7 @@
 package pro.viksit.com.viksit.dashboard.fragment;
 
 import android.app.Activity;
-import android.content.Context;
 import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.CardView;
@@ -14,7 +12,6 @@ import android.util.DisplayMetrics;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -22,7 +19,7 @@ import android.widget.TextView;
 import java.util.ArrayList;
 
 import pro.viksit.com.viksit.R;
-import pro.viksit.com.viksit.dashboard.adapter.CompletedTaskRecyclerAdapter;
+import pro.viksit.com.viksit.dashboard.adapter.CompletedTaskTimeLineAdapter;
 import pro.viksit.com.viksit.dashboard.pojo.CompletedTask;
 import pro.viksit.com.viksit.dashboard.pojo.DashboardCard;
 import pro.viksit.com.viksit.dashboard.util.CarouselLinearLayout;
@@ -38,7 +35,7 @@ public class CompletedTaskFragment extends Fragment {
     private TextView title;
     private TextView remainingTasks;
     private RecyclerView verticalRecycler;
-    private CompletedTaskRecyclerAdapter adapter;
+    private CompletedTaskTimeLineAdapter adapter;
     private ArrayList<CompletedTask> completedTaskArrayList;
 
     private int screenWidth;
@@ -109,7 +106,7 @@ public class CompletedTaskFragment extends Fragment {
     private void implementActions(){
 
         verticalRecycler.setHasFixedSize(true);
-        adapter = new CompletedTaskRecyclerAdapter(completedTaskArrayList,getContext(),screenWidth,screenHeight);
+        adapter = new CompletedTaskTimeLineAdapter(getContext(),completedTaskArrayList);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext());
         linearLayoutManager.setAutoMeasureEnabled(true);
         verticalRecycler.setLayoutManager(linearLayoutManager);
@@ -150,7 +147,7 @@ public class CompletedTaskFragment extends Fragment {
         completedTaskArrayList = new ArrayList<>();
         CompletedTask task;
 
-        task = new CompletedTask("challenge", "Won against Siddharth","at 12:10pm",true);
+        task = new CompletedTask("challenge", "Won against Siddharth","at 12:10pm",false);
         completedTaskArrayList.add(task);
 
         task = new CompletedTask("video", "Won against Siddharth","at 12:10pm",true);
@@ -159,10 +156,10 @@ public class CompletedTaskFragment extends Fragment {
         task = new CompletedTask("challenge", "Won against Siddharth","at 12:10pm",true);
         completedTaskArrayList.add(task);
 
-        task = new CompletedTask("video", "Won against Siddharth","at 12:10pm",true);
+        task = new CompletedTask("video", "Won against Siddharth","at 12:10pm",false);
         completedTaskArrayList.add(task);
 
-        task = new CompletedTask("", "Won against Siddharth","at 12:10pm",true);
+        task = new CompletedTask("", "Won against Siddharth","at 12:10pm",false);
         completedTaskArrayList.add(task);
     }
 
