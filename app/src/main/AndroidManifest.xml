@@ -64,7 +64,8 @@
         <activity android:name=".dashboard.activity.VideoPlayActivity" />
         <activity android:name=".dashboard.activity.NoTaskActivity" />
         <activity android:name=".challenge.activity.LeaderBoardActivity" />
-        <activity android:name=".dashboard.activity.MyProfileActivity"></activity>
+        <activity android:name=".dashboard.activity.MyProfileActivity" />
+        <activity android:name=".role.activity.RoleSpecificActivity"></activity>
     </application>
 
 </manifest>
