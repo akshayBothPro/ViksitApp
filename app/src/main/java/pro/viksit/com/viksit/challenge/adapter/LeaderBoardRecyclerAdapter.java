@@ -24,10 +24,18 @@ import pro.viksit.com.viksit.challenge.pojo.LeaderBoardProfile;
 public class LeaderBoardRecyclerAdapter extends RecyclerView.Adapter<LeaderBoardRecyclerAdapter.MyViewHolder>  {
     private ArrayList<LeaderBoardProfile> list;
     private Context context;
+    private int screenWidth,screenHeight;
 
     public LeaderBoardRecyclerAdapter(ArrayList<LeaderBoardProfile> list,Context context) {
         this.list = list;
         this.context = context;
+    }
+
+    public LeaderBoardRecyclerAdapter(ArrayList<LeaderBoardProfile> list,Context context, int screenWidth,int screenHeight) {
+        this.list = list;
+        this.context = context;
+        this.screenWidth = screenWidth;
+        this.screenHeight = screenHeight;
     }
 
     @Override
@@ -42,10 +50,10 @@ public class LeaderBoardRecyclerAdapter extends RecyclerView.Adapter<LeaderBoard
     public void onBindViewHolder(MyViewHolder holder, int position) {
         LeaderBoardProfile profile = list.get(position);
         holder.name.setText(profile.getName());
-        holder.rank.setText(profile.getRank());
-        holder.xp.setText(profile.getXp());
+        holder.rank.setText(ordinal(profile.getRank()));
+        holder.xp.setText(Integer.toString(profile.getXp()));
 
-        if(!profile.getImageURL().isEmpty()){
+        if(profile.getImageURL() != null){
             Picasso.with(context).load(profile.getImageURL()).transform(new CircleTransform()).into(holder.image);
         } else if(profile.getImageResId() != 0){
             Picasso.with(context).load(profile.getImageResId()).transform(new CircleTransform()).into(holder.image);
@@ -55,6 +63,19 @@ public class LeaderBoardRecyclerAdapter extends RecyclerView.Adapter<LeaderBoard
     @Override
     public int getItemCount() {
         return list.size();
+    }
+
+    public  String ordinal(int i) {
+        String[] sufixes = new String[] { "th", "st", "nd", "rd", "th", "th", "th", "th", "th", "th" };
+        switch (i % 100) {
+            case 11:
+            case 12:
+            case 13:
+                return i + "th";
+            default:
+                return i + sufixes[i % 10];
+
+        }
     }
 
     public class MyViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
