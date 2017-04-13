@@ -16,7 +16,8 @@
         app:contentInsetStart="0dp">
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:padding="10dp">
 
 
             <ImageButton
@@ -26,8 +27,6 @@
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentStart="true"
                 android:layout_centerVertical="true"
-                android:layout_marginLeft="10dp"
-                android:layout_marginStart="10dp"
                 android:layout_marginRight="10dp"
                 android:layout_marginEnd="10dp"
                 android:tint="@android:color/white"
@@ -45,7 +44,7 @@
                 android:textColor="@android:color/white"
                 android:textSize="@dimen/h3"/>
             <android.support.v7.widget.AppCompatSpinner
-                android:id="@+id/spn_dropdown"
+                android:id="@+id/spin_dropdown"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
@@ -90,6 +89,8 @@
             android:layout_alignRight="@+id/iv_2nd"
             android:layout_alignEnd="@+id/iv_2nd"
             android:layout_alignBottom="@+id/tv_1st_name"
+            android:textSize="@dimen/h7"
+            android:textColor="@color/desc_color"
             android:textAlignment="center"
             android:text="Dinesh"/>
         <TextView
@@ -101,14 +102,21 @@
             android:layout_alignRight="@+id/iv_2nd"
             android:layout_alignEnd="@+id/iv_2nd"
             android:layout_below="@+id/tv_1st_name"
+            android:textSize="@dimen/p1"
+            android:textColor="@color/hint_color"
             android:textAlignment="center"
-            android:text="5670 xp"/>
+            android:text="5670 XP"/>
 
         <ImageView
             android:id="@+id/iv_1st"
             android:layout_width="100dp"
             android:layout_height="100dp"
-            android:layout_margin="20dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginEnd="20dp"
             android:layout_centerHorizontal="true"
             android:scaleType="centerCrop"
             android:src="@drawable/ic_2"/>
@@ -130,6 +138,8 @@
             android:layout_alignRight="@id/iv_1st"
             android:layout_alignEnd="@id/iv_1st"
             android:layout_below="@+id/iv_1st"
+            android:textSize="@dimen/h7"
+            android:textColor="@color/desc_color"
             android:textAlignment="center"
             android:text="Dinesh"/>
         <TextView
@@ -141,9 +151,11 @@
             android:layout_alignRight="@id/iv_1st"
             android:layout_alignEnd="@id/iv_1st"
             android:layout_below="@+id/tv_1st_name"
-            android:layout_marginBottom="20dp"
+            android:layout_marginBottom="10dp"
+            android:textSize="@dimen/p1"
+            android:textColor="@color/hint_color"
             android:textAlignment="center"
-            android:text="5670 xp"/>
+            android:text="5670 XP"/>
         <ImageView
             android:id="@+id/iv_3rd"
             android:layout_width="70dp"
@@ -171,6 +183,8 @@
             android:layout_alignRight="@+id/iv_3rd"
             android:layout_alignEnd="@+id/iv_3rd"
             android:layout_alignBottom="@+id/tv_1st_name"
+            android:textSize="@dimen/h7"
+            android:textColor="@color/desc_color"
             android:textAlignment="center"
             android:text="Dinesh"/>
         <TextView
@@ -182,8 +196,10 @@
             android:layout_alignRight="@+id/iv_3rd"
             android:layout_alignEnd="@+id/iv_3rd"
             android:layout_below="@+id/tv_3rd_name"
+            android:textSize="@dimen/p1"
+            android:textColor="@color/hint_color"
             android:textAlignment="center"
-            android:text="5670 xp"/>
+            android:text="5670 XP"/>
         <View
             android:layout_width="match_parent"
             android:layout_height="1dp"

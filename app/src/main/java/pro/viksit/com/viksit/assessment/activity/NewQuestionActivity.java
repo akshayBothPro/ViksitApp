@@ -23,19 +23,13 @@ import pro.viksit.com.viksit.R;
 public class NewQuestionActivity extends AppCompatActivity {
 
     private Toolbar toolbar;
-    private Button goBack;
-    private Button send;
+    private Button goBack, send;
     private Spinner dropdown;
     private List<String> modules;
-    private EditText question;
-    private EditText description;
+    private EditText question, description;
     private ArrayAdapter<String> dataAdapter;
-    private ImageButton bold;
-    private ImageButton italic;
-    private ImageButton underline;
-    private ImageButton quotes;
-    private ImageButton check;
-    private ImageButton attach;
+    private ImageButton bold, italic, underline, quotes, check, attach;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
