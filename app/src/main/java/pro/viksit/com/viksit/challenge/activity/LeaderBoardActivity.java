@@ -82,38 +82,8 @@ public class LeaderBoardActivity extends AppCompatActivity {
         verticalRecycler = (RecyclerView) findViewById(R.id.rv_leaderboard);
 
 
-
-        if (diagonalInches>=6.5){
-            ViewGroup.LayoutParams params = appBarLayout.getLayoutParams();
-            params.height = screenHeight/3;
-            appBarLayout.setLayoutParams(params);
-        }
-
-        appBarLayout.addOnOffsetChangedListener(new AppBarLayout.OnOffsetChangedListener() {
-            boolean isShow = false;
-            int scrollRange = -1;
-
-            @Override
-            public void onOffsetChanged(AppBarLayout appBarLayout, int verticalOffset) {
-
-                headerContainer.setAlpha(1.0f - Math.abs(verticalOffset / (float)appBarLayout.getTotalScrollRange()));//for scroll fade
-
-                if (scrollRange == -1) {
-                    scrollRange = appBarLayout.getTotalScrollRange();
-                }
-                if (scrollRange + verticalOffset == 0) {
-                    mCollapsingToolbarLayout.setTitle("Title");
-                    isShow = true;
-                } else if(isShow) {
-                    mCollapsingToolbarLayout.setTitle("titles ");//carefull there should a space between double quote otherwise it wont work
-                    isShow = false;
-                }
-            }
-        });
-
         setSupportActionBar(toolbar);
         getWidthAndHeight();
-        profileList = setDummyData(profileList);
         implementActions();
 
     }
@@ -143,8 +113,9 @@ public class LeaderBoardActivity extends AppCompatActivity {
         });
 
         // setting vertical recycler view
+        profileList = setDummyData(profileList);
         verticalRecycler.setHasFixedSize(true);
-        adapter = new LeaderBoardRecyclerAdapter(profileList,getBaseContext(),screenWidth,screenHeight);
+        adapter = new LeaderBoardRecyclerAdapter(profileList,getBaseContext(),screenWidth,screenHeight,diagonalInches);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
         linearLayoutManager.setAutoMeasureEnabled(true);
         verticalRecycler.setLayoutManager(linearLayoutManager);
@@ -163,14 +134,42 @@ public class LeaderBoardActivity extends AppCompatActivity {
                 })
         );
 
-        // setting up first images
-        /*ViewGroup.LayoutParams params = verticalRecycler.getLayoutParams();
-        params.height = screenHeight/5;
-        params.width = screenWidth/5;
-        first.setLayoutParams(params);*/
+
         Picasso.with(this).load(R.drawable.ic_urvashi).transform(new CircleTransform()).into(first);
         Picasso.with(this).load(R.drawable.ic_sunny).transform(new CircleTransform()).into(second);
         Picasso.with(this).load(R.drawable.ic_deepika).transform(new CircleTransform()).into(third);
+
+        if (diagonalInches>=6.5){
+            ViewGroup.LayoutParams params = first.getLayoutParams();
+            params.height = screenHeight/6;
+            params.width = screenHeight/6;
+            first.setLayoutParams(params);
+
+            params = second.getLayoutParams();
+            params.height = screenHeight/7;
+            params.width = screenHeight/7;
+            second.setLayoutParams(params);
+
+            params = third.getLayoutParams();
+            params.height = screenHeight/8;
+            params.width = screenHeight/8;
+            third.setLayoutParams(params);
+
+            params = firstRank.getLayoutParams();
+            params.height = 40;
+            params.width = 40;
+            firstRank.setLayoutParams(params);
+
+            params = secondRank.getLayoutParams();
+            params.height = 40;
+            params.width = 40;
+            secondRank.setLayoutParams(params);
+
+            params = thirdRank.getLayoutParams();
+            params.height = 40;
+            params.width = 40;
+            thirdRank.setLayoutParams(params);
+        }
     }
 
     public ArrayList<LeaderBoardProfile> setDummyData(ArrayList<LeaderBoardProfile> list){

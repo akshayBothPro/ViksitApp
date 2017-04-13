@@ -25,17 +25,19 @@ public class LeaderBoardRecyclerAdapter extends RecyclerView.Adapter<LeaderBoard
     private ArrayList<LeaderBoardProfile> list;
     private Context context;
     private int screenWidth,screenHeight;
+    private double diagonalInches;
 
     public LeaderBoardRecyclerAdapter(ArrayList<LeaderBoardProfile> list,Context context) {
         this.list = list;
         this.context = context;
     }
 
-    public LeaderBoardRecyclerAdapter(ArrayList<LeaderBoardProfile> list,Context context, int screenWidth,int screenHeight) {
+    public LeaderBoardRecyclerAdapter(ArrayList<LeaderBoardProfile> list,Context context, int screenWidth,int screenHeight,double diagonalInches) {
         this.list = list;
         this.context = context;
         this.screenWidth = screenWidth;
         this.screenHeight = screenHeight;
+        this.diagonalInches = diagonalInches;
     }
 
     @Override
@@ -57,6 +59,14 @@ public class LeaderBoardRecyclerAdapter extends RecyclerView.Adapter<LeaderBoard
             Picasso.with(context).load(profile.getImageURL()).transform(new CircleTransform()).into(holder.image);
         } else if(profile.getImageResId() != 0){
             Picasso.with(context).load(profile.getImageResId()).transform(new CircleTransform()).into(holder.image);
+        }
+
+        //for tablets
+        if (diagonalInches>=6.5) {
+            ViewGroup.LayoutParams params = holder.image.getLayoutParams();
+            params.height = screenHeight / 11;
+            params.width = screenHeight / 11;
+            holder.image.setLayoutParams(params);
         }
     }
 

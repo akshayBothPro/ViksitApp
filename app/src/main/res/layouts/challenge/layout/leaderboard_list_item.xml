@@ -7,12 +7,12 @@
         android:id="@+id/rl_item_con"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingTop="10dp"
-        android:paddingBottom="10dp">
+        android:paddingTop="@dimen/list_item_image_ver_margin"
+        android:paddingBottom="@dimen/list_item_image_ver_margin">
         <ImageView
             android:id="@+id/iv_item_image"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
+            android:layout_width="@dimen/list_item_image_size"
+            android:layout_height="@dimen/list_item_image_size"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
             android:scaleType="centerCrop"
@@ -24,8 +24,8 @@
             android:layout_toRightOf="@+id/iv_item_image"
             android:layout_toEndOf="@+id/iv_item_image"
             android:layout_centerVertical="true"
-            android:layout_marginLeft="10dp"
-            android:layout_marginStart="10dp"
+            android:layout_marginLeft="@dimen/list_item_image_ver_margin"
+            android:layout_marginStart="@dimen/list_item_image_ver_margin"
             android:textSize="@dimen/p1"
             android:textColor="@color/desc_color"
             android:text="Urvashi"/>
@@ -36,8 +36,8 @@
             android:layout_toLeftOf="@+id/tv_item_xp"
             android:layout_toStartOf="@+id/tv_item_xp"
             android:layout_centerVertical="true"
-            android:layout_marginRight="20dp"
-            android:layout_marginEnd="20dp"
+            android:layout_marginRight="@dimen/list_item_rank_right_margin"
+            android:layout_marginEnd="@dimen/list_item_rank_right_margin"
             android:textSize="@dimen/p1"
             android:textColor="@color/desc_color"
             android:text="3rd"/>
@@ -56,5 +56,5 @@
         android:layout_width="match_parent"
         android:layout_height="1dp"
         android:layout_below="@+id/rl_item_con"
-        android:background="@color/hint_color"/>
+        android:background="@color/hline"/>
 </RelativeLayout>
