@@ -72,4 +72,5 @@
     <color name="recommended_roles_color">#a2a3a5</color>
     <color name="hor_card_bottom" >#d6d7da</color>
     <color name="hline">#ececec</color>
+    <color name="role_depth_red_progress">#f5462d</color>
 </resources>

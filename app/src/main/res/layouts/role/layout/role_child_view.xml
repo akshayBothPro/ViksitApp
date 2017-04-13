@@ -8,62 +8,53 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="horizontal">
     <RelativeLayout
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        android:layout_weight="5">
+        android:layout_weight="2">
 
-            <View
-                android:id="@+id/rl_hor_line"
-                android:layout_width="1dp"
-                android:layout_height="match_parent"
-                android:layout_centerInParent="true"
-                />
-        <RelativeLayout
-            android:layout_toRightOf="@id/rl_hor_line"
+        <View
+            android:id="@+id/rl_hor_line"
+            android:layout_width="1dp"
+            android:layout_height="match_parent"
+            android:layout_centerInParent="true"
+            android:background="@color/unselected_circle_color"
+            />
+        <View
+            android:id="@+id/rl_ver_line"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
-            <View
-                android:id="@+id/hor_line"
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:background="#e0e0e0"
-                android:layout_centerInParent="true"
-                />
-            <View
-                android:layout_above="@id/hor_line"
-                android:layout_width="1dp"
-                android:layout_height="match_parent"
-                android:background="#e0e0e0"
-                />
-            <View
-                android:id="@+id/line_for_last"
-                android:layout_below="@id/hor_line"
-                android:layout_width="1dp"
-                android:layout_height="match_parent"
-                android:background="#e0e0e0"
-                />
-        </RelativeLayout>
+            android:layout_height="1dp"
+            android:layout_centerInParent="true"
+            android:layout_toRightOf="@+id/rl_hor_line"
+            android:layout_toEndOf="@+id/rl_hor_line"
+            android:background="@color/unselected_circle_color"
+            />
+
     </RelativeLayout>
-    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    <LinearLayout
         android:orientation="vertical"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="match_parent"
         android:gravity="center_vertical"
-        android:padding="10dp"
-        android:layout_weight="1">
+        android:paddingLeft="@dimen/role_depth_child_title_left_pad"
+        android:paddingStart="@dimen/role_depth_child_title_left_pad"
+        android:paddingRight="@dimen/role_depth_title_hor_padding"
+        android:paddingEnd="@dimen/role_depth_title_hor_padding"
+        android:paddingBottom="@dimen/role_depth_child_bottom_pad"
+        android:layout_weight="10">
         <TextView
             android:id="@+id/title1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/role_depth_child_bottom_pad"
             android:text="Identification of risk"
-            android:textSize="@dimen/p4"
-            android:textColor="@color/theme_color"/>
+            android:textSize="@dimen/p3"
+            android:textColor="@color/desc_color"/>
 
         <ProgressBar
             android:id="@+id/progress1"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="5dp"
             style="?android:attr/progressBarStyleHorizontal"
             android:max="100"
             android:progress="60"

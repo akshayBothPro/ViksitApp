@@ -21,7 +21,6 @@ import pro.viksit.com.viksit.role.pojo.Role;
  * Created by Akshay on 06/04/2017.
  */
 
-
 public class NoticationVerticalRecyclerAdapter extends RecyclerView.Adapter<NoticationVerticalRecyclerAdapter.MyViewHolder>  {
     private ArrayList<Notification> notificationList;
     private Context context;
@@ -46,8 +45,6 @@ public class NoticationVerticalRecyclerAdapter extends RecyclerView.Adapter<Noti
         holder.time.setText(notification.getTime());
 
         if(notification.getImageResID() != 0){
-            holder.image.setImageResource(notification.getImageResID());
-        } else {
             Picasso.with(context).load(notification.getImageResID()).transform(new CircleTransform()).into(holder.image);
         }
     }

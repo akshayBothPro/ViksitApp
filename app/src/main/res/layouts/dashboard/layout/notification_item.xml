@@ -8,8 +8,8 @@
         android:id="@+id/iv_notification_image"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
+        android:layout_width="@dimen/notification_item_image_size"
+        android:layout_height="@dimen/notification_item_image_size"
         android:layout_margin="@dimen/notification_hor_padding"
         android:src="@drawable/ic_2"/>
     <TextView
@@ -30,7 +30,15 @@
         android:layout_toEndOf="@id/iv_notification_image"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/notification_hor_padding"
         android:textColor="@color/hint_color"
         android:textSize="@dimen/p4"
         android:text="4 hours ago" />
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_below="@id/tv_notification_time"
+        android:layout_alignLeft="@id/tv_notification_time"
+        android:layout_alignStart="@id/tv_notification_time"
+        android:background="@color/hline"/>
 </RelativeLayout>

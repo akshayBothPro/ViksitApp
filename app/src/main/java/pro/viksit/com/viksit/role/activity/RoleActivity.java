@@ -11,6 +11,7 @@ import android.support.v7.widget.Toolbar;
 import android.util.DisplayMetrics;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 
 import java.util.ArrayList;
@@ -18,6 +19,7 @@ import java.util.ArrayList;
 import pro.viksit.com.viksit.R;
 import pro.viksit.com.viksit.assessment.activity.QuestionsActivity;
 import pro.viksit.com.viksit.dashboard.activity.DashboardActivity;
+import pro.viksit.com.viksit.dashboard.activity.NotificationActivity;
 import pro.viksit.com.viksit.dashboard.util.BottomBarUtil;
 import pro.viksit.com.viksit.role.adapter.RecyclerViewDataAdapter;
 import pro.viksit.com.viksit.role.adapter.RoleHorizontalRecyclerViewAdapter;
@@ -31,6 +33,7 @@ public class RoleActivity extends AppCompatActivity implements View.OnClickListe
     private static final String TAG = RoleActivity.class.getSimpleName();
 
     private Toolbar toolbar;
+    private ImageView notification;
     private LinearLayout verticalContainer;
     private RecyclerView horizontalRecycler;
     private RecyclerView verticalRecycler;
@@ -52,6 +55,7 @@ public class RoleActivity extends AppCompatActivity implements View.OnClickListe
         setContentView(R.layout.activity_role);
 
         toolbar = (Toolbar) findViewById(R.id.toolbar);
+        notification = (ImageView) findViewById(R.id.notfication);
         bottomNavigationView = (BottomNavigationView) findViewById(R.id.bottom_navigation);
         verticalRecycler = (RecyclerView) findViewById(R.id.rv_role_vertical);
         horizontalRecycler = (RecyclerView) findViewById(R.id.rv_role_horizontal);
@@ -196,6 +200,9 @@ public class RoleActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     public void onClick(View v) {
 
+        if(v.getId() == R.id.notfication){
+            startActivity(new Intent(RoleActivity.this, NotificationActivity.class));
+        }
     }
 
     /**

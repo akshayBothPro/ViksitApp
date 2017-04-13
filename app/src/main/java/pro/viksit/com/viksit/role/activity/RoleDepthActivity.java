@@ -68,7 +68,6 @@ public class RoleDepthActivity extends AppCompatActivity {
         int screenheitght = d1.intValue();
 
         toolbar = (Toolbar) findViewById(R.id.toolbar);
-
         final RecyclerView recyclerView = (RecyclerView) findViewById(R.id.rv_role_vertical);
         attained = (TextView) findViewById(R.id.tv_attained_score);
         outOf = (TextView) findViewById(R.id.tv_total_score);
@@ -78,9 +77,6 @@ public class RoleDepthActivity extends AppCompatActivity {
         repeatAssessment = (Button) findViewById(R.id.btn_repaeat_assessment);
         reviewQuestions = (Button) findViewById(R.id.btn_review_questions);
         reportContainer = (LinearLayout)findViewById(R.id.ll_report_container);
-
-
-
 
         toolbar.setTitle("Mid-Assesment Report");
         toolbar.setTitleTextColor(getResources().getColor(R.color.white_color));
@@ -172,8 +168,6 @@ public class RoleDepthActivity extends AppCompatActivity {
             }
         });
         //
-
-
 
     }
 

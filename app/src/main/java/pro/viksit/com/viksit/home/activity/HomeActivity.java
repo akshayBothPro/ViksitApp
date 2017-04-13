@@ -14,6 +14,7 @@ import android.widget.TextView;
 import pro.viksit.com.viksit.R;
 import pro.viksit.com.viksit.challenge.activity.LeaderBoardActivity;
 import pro.viksit.com.viksit.dashboard.activity.DashboardActivity;
+import pro.viksit.com.viksit.dashboard.activity.NotificationActivity;
 import pro.viksit.com.viksit.role.activity.ModuleActivity;
 import pro.viksit.com.viksit.role.activity.RoleActivity;
 import pro.viksit.com.viksit.role.activity.RoleDepthActivity;
@@ -60,7 +61,7 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
             startActivity(new Intent(HomeActivity.this, SignupActivity.class));
         } else  if(v.getId() == R.id.btn_member){
             Log.i(TAG,"already a member clicked");
-            startActivity(new Intent(HomeActivity.this, LeaderBoardActivity.class));
+            startActivity(new Intent(HomeActivity.this, RoleDepthActivity.class));
         }
 
     }

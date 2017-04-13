@@ -30,7 +30,7 @@ public class RoleDepthAdapter extends ExpandableRecyclerAdapter<RoleParent,RoleC
         super(roleParents);
         this.roleParents = roleParents;
         mInflater = LayoutInflater.from(context);
-        context = context;
+        this.context = context;
     }
 
     @NonNull

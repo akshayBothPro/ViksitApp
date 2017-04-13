@@ -1,6 +1,7 @@
 package pro.viksit.com.viksit.role.viewholder;
 
 import android.annotation.SuppressLint;
+import android.content.Context;
 import android.os.Build;
 import android.support.annotation.NonNull;
 import android.view.View;
@@ -30,10 +31,12 @@ public class RoleSkillViewHolder extends ParentViewHolder {
     private ProgressBar pb;
     private View vLine;
     private View lastLine;
+    private Context context;
 
 
     public RoleSkillViewHolder(@NonNull View itemView) {
         super(itemView);
+
         title = (TextView) itemView.findViewById(R.id.title);
         desc = (TextView) itemView.findViewById(R.id.description);
         pb = (ProgressBar) itemView.findViewById(R.id.progress);
@@ -46,6 +49,7 @@ public class RoleSkillViewHolder extends ParentViewHolder {
     title.setText(roleParent.getTitle());
         desc.setText(roleParent.getText());
         pb.setProgress(roleParent.getProgress());
+        pb.setProgressDrawable(itemView.getResources().getDrawable(R.drawable.role_depth_progress));
         mArrowExpandImageView.setImageResource(R.mipmap.ic_add_circle_outline_black_24dp);
 
     }

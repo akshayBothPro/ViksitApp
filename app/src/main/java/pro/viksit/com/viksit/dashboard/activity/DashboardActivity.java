@@ -1,6 +1,7 @@
 package pro.viksit.com.viksit.dashboard.activity;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.design.widget.BottomNavigationView;
@@ -38,8 +39,9 @@ import pro.viksit.com.viksit.dashboard.pojo.DashboardCard;
 import pro.viksit.com.viksit.dashboard.pojo.StudentProfile;
 import pro.viksit.com.viksit.dashboard.util.BottomBarUtil;
 
-public class DashboardActivity extends AppCompatActivity {
+public class DashboardActivity extends AppCompatActivity implements View.OnClickListener{
     private Toolbar toolbar;
+    private ImageView notification;
     private CarouselPagerAdapter carouselPagerAdapter;
     public ViewPager pager;
     public LinearLayout pager_indicator;
@@ -60,6 +62,7 @@ public class DashboardActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dashboard);
         toolbar = (Toolbar) findViewById(R.id.toolbar);
+        notification = (ImageView) findViewById(R.id.notfication);
         pager = (ViewPager) findViewById(R.id.viewpager);
         pager_indicator = (LinearLayout) findViewById(R.id.viewPagerCountDots);
         horizontalScrollView = (HorizontalScrollView) findViewById(R.id.dots);
@@ -107,6 +110,9 @@ public class DashboardActivity extends AppCompatActivity {
         coins.setText(studentProfile.getCoins()+"");
         points.setText(studentProfile.getExperiencePoints()+"");
 
+        //
+        notification.setOnClickListener(this);
+
     }
 
     public void convertToJSON(DashboardCard dashboardCard){
@@ -114,10 +120,6 @@ public class DashboardActivity extends AppCompatActivity {
         String jsonInString = gson.toJson(dashboardCard);
         System.out.println("this is json "+jsonInString);
     }
-
-
-
-
 
     public void displayscreen(){
         switch (getResources().getDisplayMetrics().densityDpi) {
@@ -145,5 +147,12 @@ public class DashboardActivity extends AppCompatActivity {
                 break;
         }
 
+    }
+
+    @Override
+    public void onClick(View v) {
+        if(v.getId() == R.id.notfication){
+            startActivity(new Intent(DashboardActivity.this, NotificationActivity.class));
+        }
     }
 }
