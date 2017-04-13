@@ -5,6 +5,7 @@ import android.content.Context;
 import android.os.Build;
 import android.support.annotation.NonNull;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
@@ -32,10 +33,15 @@ public class RoleSkillViewHolder extends ParentViewHolder {
     private View vLine;
     private View lastLine;
     private Context context;
+    private int screenWidth,screenHeight;
+    private double diagonalInches;
 
 
-    public RoleSkillViewHolder(@NonNull View itemView) {
+    public RoleSkillViewHolder(@NonNull View itemView,int screenWidth,int screenHeight,double diagonalInches) {
         super(itemView);
+        this.screenWidth = screenWidth;
+        this.screenHeight = screenHeight;
+        this.diagonalInches = diagonalInches;
 
         title = (TextView) itemView.findViewById(R.id.title);
         desc = (TextView) itemView.findViewById(R.id.description);
@@ -46,11 +52,17 @@ public class RoleSkillViewHolder extends ParentViewHolder {
     }
 
     public void bind(@NonNull RoleParent roleParent) {
-    title.setText(roleParent.getTitle());
+        title.setText(roleParent.getTitle());
         desc.setText(roleParent.getText());
         pb.setProgress(roleParent.getProgress());
         pb.setProgressDrawable(itemView.getResources().getDrawable(R.drawable.role_depth_progress));
         mArrowExpandImageView.setImageResource(R.mipmap.ic_add_circle_outline_black_24dp);
+        if (diagonalInches>=6.5) {
+            ViewGroup.LayoutParams params = mArrowExpandImageView.getLayoutParams();
+            params.height = 50;
+            params.width = 50;
+            mArrowExpandImageView.setLayoutParams(params);
+        }
 
     }
 

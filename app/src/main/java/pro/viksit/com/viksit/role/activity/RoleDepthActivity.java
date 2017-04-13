@@ -101,7 +101,7 @@ public class RoleDepthActivity extends AppCompatActivity {
             roleParents.add(roleParent);
         }
 
-        roleDepthAdapter = new RoleDepthAdapter(this,roleParents);
+        roleDepthAdapter = new RoleDepthAdapter(this,roleParents, screenWidth,screenHeight,diagonalInches);
         recyclerView.setAdapter(roleDepthAdapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         roleDepthAdapter.setExpandCollapseListener(new ExpandableRecyclerAdapter.ExpandCollapseListener() {

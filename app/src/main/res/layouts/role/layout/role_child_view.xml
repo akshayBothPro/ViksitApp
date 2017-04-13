@@ -31,6 +31,24 @@
             />
 
     </RelativeLayout>
+    <RelativeLayout
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1">
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_centerInParent="true"
+            android:background="@color/unselected_circle_color"
+            />
+        <ImageView
+            android:layout_width="5dp"
+            android:layout_height="5dp"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:src="@drawable/unselected_circle_indicator"/>
+    </RelativeLayout>
     <LinearLayout
         android:orientation="vertical"
         android:layout_width="0dp"
@@ -41,7 +59,7 @@
         android:paddingRight="@dimen/role_depth_title_hor_padding"
         android:paddingEnd="@dimen/role_depth_title_hor_padding"
         android:paddingBottom="@dimen/role_depth_child_bottom_pad"
-        android:layout_weight="10">
+        android:layout_weight="9">
         <TextView
             android:id="@+id/title1"
             android:layout_width="wrap_content"

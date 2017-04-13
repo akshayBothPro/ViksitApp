@@ -32,7 +32,7 @@ public class LeaderBoardRecyclerAdapter extends RecyclerView.Adapter<LeaderBoard
         this.context = context;
     }
 
-    public LeaderBoardRecyclerAdapter(ArrayList<LeaderBoardProfile> list,Context context, int screenWidth,int screenHeight,double diagonalInches) {
+    public LeaderBoardRecyclerAdapter(ArrayList<LeaderBoardProfile> list ,Context context, int screenWidth,int screenHeight, double diagonalInches) {
         this.list = list;
         this.context = context;
         this.screenWidth = screenWidth;

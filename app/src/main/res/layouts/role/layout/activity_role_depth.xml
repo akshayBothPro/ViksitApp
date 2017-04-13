@@ -8,7 +8,7 @@
     <android.support.design.widget.AppBarLayout
         android:id="@+id/appbar"
         android:layout_width="match_parent"
-        android:layout_height="160dp"
+        android:layout_height="190dp"
         android:fitsSystemWindows="true">
 
         <android.support.design.widget.CollapsingToolbarLayout
@@ -17,8 +17,6 @@
             android:layout_height="match_parent"
             android:background="@color/white_color"
             android:fitsSystemWindows="true"
-            app:expandedTitleMarginEnd="64dp"
-            app:expandedTitleMarginStart="48dp"
             app:layout_scrollFlags="scroll|exitUntilCollapsed|snap"
             app:title="@string/app_name"
             app:titleEnabled="false">
@@ -69,7 +67,7 @@
         <android.support.v7.widget.RecyclerView
             android:id="@+id/rv_role_vertical"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_below="@+id/tv_skill_breakdown"
             android:layout_above="@+id/btn_review_questions"
             />

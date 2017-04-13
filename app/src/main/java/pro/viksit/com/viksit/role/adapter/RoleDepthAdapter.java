@@ -25,12 +25,24 @@ public class RoleDepthAdapter extends ExpandableRecyclerAdapter<RoleParent,RoleC
     List<RoleParent> roleParents;
     private LayoutInflater mInflater;
     private Context context;
+    private int screenWidth,screenHeight;
+    private double diagonalInches;
 
     public RoleDepthAdapter(Context context, @NonNull List<RoleParent> roleParents) {
         super(roleParents);
         this.roleParents = roleParents;
         mInflater = LayoutInflater.from(context);
         this.context = context;
+    }
+
+    public RoleDepthAdapter(Context context, @NonNull List<RoleParent> roleParents, int screenWidth,int screenHeight, double diagonalInches) {
+        super(roleParents);
+        this.roleParents = roleParents;
+        mInflater = LayoutInflater.from(context);
+        this.context = context;
+        this.screenWidth = screenWidth;
+        this.screenHeight = screenHeight;
+        this.diagonalInches = diagonalInches;
     }
 
     @NonNull
@@ -40,7 +52,7 @@ public class RoleDepthAdapter extends ExpandableRecyclerAdapter<RoleParent,RoleC
 
         recipeView = mInflater.inflate(R.layout.role_parent_view, parentViewGroup, false);
 
-        return new RoleSkillViewHolder(recipeView);
+        return new RoleSkillViewHolder(recipeView, screenWidth, screenHeight, diagonalInches);
     }
 
     @NonNull
