@@ -1,4 +1,4 @@
-package pro.viksit.com.viksit.dashboard.util;
+package pro.viksit.com.viksit.dashboard.thread;
 
 import android.content.Context;
 import android.content.SharedPreferences;
@@ -8,6 +8,7 @@ import com.afollestad.materialdialogs.MaterialDialog;
 import java.util.HashMap;
 
 import pro.viksit.com.viksit.R;
+import pro.viksit.com.viksit.dashboard.async.LoginAsync;
 
 /**
  * Created by Feroz on 07-04-2017.

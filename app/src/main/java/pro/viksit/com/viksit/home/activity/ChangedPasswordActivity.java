@@ -13,6 +13,7 @@ public class ChangedPasswordActivity extends AppCompatActivity {
     private TextView title;
     private TextView info;
     private Button gotologin;
+    private String otp,jsonresponse,phonenos;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,20 +27,35 @@ public class ChangedPasswordActivity extends AppCompatActivity {
         gotologin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(ChangedPasswordActivity.this, LoginActivity.class));
-
+                Intent changepassword = new Intent(ChangedPasswordActivity.this, LoginActivity.class);
+                changepassword.putExtra("otp", otp);
+                changepassword.putExtra("phonenos", phonenos);
+                changepassword.putExtra("jsonresponse", jsonresponse);
+                startActivity(changepassword);
             }
         });
+        if(getIntent()!= null){
+            if(getIntent().getStringExtra("otp") != null){
+                otp = getIntent().getStringExtra("otp");
+            }
+            if(getIntent().getStringExtra("phonenos") != null){
+                phonenos = getIntent().getStringExtra("phonenos");
+            }
+            if(getIntent().getStringExtra("jsonresponse") != null){
+                jsonresponse = getIntent().getStringExtra("jsonresponse");
+            }
+
+        }
     }
 
     @Override
     public void onBackPressed() {
         super.onBackPressed();
-        Intent i=new Intent(ChangedPasswordActivity.this,LoginActivity.class);
-        startActivity(i);
-        i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-        i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-        finish();
+        Intent changepassword = new Intent(ChangedPasswordActivity.this, ResetPasswordActivity.class);
+        changepassword.putExtra("otp", otp);
+        changepassword.putExtra("phonenos", phonenos);
+        changepassword.putExtra("jsonresponse", jsonresponse);
+        startActivity(changepassword);
     }
 
 }

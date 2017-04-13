@@ -31,7 +31,7 @@ import pro.viksit.com.viksit.dashboard.activity.VideoPlayActivity;
 import pro.viksit.com.viksit.dashboard.pojo.DashboardCard;
 import pro.viksit.com.viksit.dashboard.util.CarouselLinearLayout;
 import pro.viksit.com.viksit.dashboard.util.ImageSaverUtil;
-import pro.viksit.com.viksit.dashboard.util.VideoSaveThread;
+import pro.viksit.com.viksit.dashboard.thread.VideoSaveThread;
 
 /**
  * Created by Akshay on 03/04/2017.

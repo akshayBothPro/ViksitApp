@@ -6,6 +6,8 @@ import android.os.Bundle;
 import android.support.v7.widget.AppCompatEditText;
 import android.view.View;
 import android.widget.Button;
+import android.widget.LinearLayout;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import pro.viksit.com.viksit.R;
@@ -18,7 +20,8 @@ public class ForgotPasswordActivity extends AppCompatActivity implements View.On
     private AppCompatEditText input;
     private Button submit;
     private Button signInDifferent;
-
+    private ProgressBar progress;
+    private LinearLayout main_layout;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -30,6 +33,8 @@ public class ForgotPasswordActivity extends AppCompatActivity implements View.On
         submit = (Button) findViewById(R.id.btn_forgot_submit);
         signInDifferent = (Button) findViewById(R.id.btn_sign_in_different);
         tv_error_email = (TextView) findViewById(R.id.tv_error_email);
+        progress = (ProgressBar) findViewById(R.id.progress);
+        main_layout = (LinearLayout) findViewById(R.id.main_layout);
         implementActions();
 
     }
@@ -62,7 +67,7 @@ public class ForgotPasswordActivity extends AppCompatActivity implements View.On
                 tv_error_email.setText("Phone number cannot be blank.");
                 tv_error_email.setVisibility(View.VISIBLE);
             }else{
-                    new ForgotAsync(this,input.getText().toString(),tv_error_email).execute();
+                    new ForgotAsync(this,input.getText().toString(),tv_error_email,input.getText().toString(),progress,main_layout).execute();
             }
         }
     }

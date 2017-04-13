@@ -4,7 +4,6 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
-import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.afollestad.materialdialogs.MaterialDialog;
@@ -23,6 +22,8 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
 import pro.viksit.com.viksit.R;
+import pro.viksit.com.viksit.dashboard.thread.LoginThread;
+import pro.viksit.com.viksit.dashboard.thread.ProfileImageThread;
 
 /**
  * Created by Feroz on 06-04-2017.

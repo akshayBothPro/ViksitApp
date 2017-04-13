@@ -5,7 +5,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.util.Log;
-import android.widget.ProgressBar;
 
 import com.afollestad.materialdialogs.MaterialDialog;
 import com.google.android.gms.auth.api.Auth;
@@ -13,14 +12,14 @@ import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInResult;
 import com.google.android.gms.common.api.GoogleApiClient;
 
-import org.json.JSONArray;
-import org.json.JSONObject;
-
 import java.util.HashMap;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
 import pro.viksit.com.viksit.R;
+import pro.viksit.com.viksit.dashboard.async.LoginAsync;
+import pro.viksit.com.viksit.dashboard.thread.LoginThread;
+import pro.viksit.com.viksit.dashboard.thread.ProfileImageThread;
 
 /**
  * Created by Feroz on 06-04-2017.

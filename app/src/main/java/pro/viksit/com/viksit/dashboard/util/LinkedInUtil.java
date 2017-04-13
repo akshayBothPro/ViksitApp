@@ -2,10 +2,7 @@ package pro.viksit.com.viksit.dashboard.util;
 
 import android.app.Activity;
 import android.content.Context;
-import android.content.Intent;
 import android.content.SharedPreferences;
-import android.widget.ProgressBar;
-import android.widget.Toast;
 
 import com.afollestad.materialdialogs.MaterialDialog;
 import com.linkedin.platform.APIHelper;
@@ -25,8 +22,9 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
 import pro.viksit.com.viksit.R;
-import pro.viksit.com.viksit.dashboard.activity.DashboardActivity;
-import pro.viksit.com.viksit.home.activity.LoginActivity;
+import pro.viksit.com.viksit.dashboard.async.LoginAsync;
+import pro.viksit.com.viksit.dashboard.thread.LoginThread;
+import pro.viksit.com.viksit.dashboard.thread.ProfileImageThread;
 
 /**
  * Created by Feroz on 05-04-2017.

@@ -34,8 +34,10 @@
     <string name="socialloginurl">auth/login/social</string>
     <string name="loginurl">AuthenticateUser/login</string>
     <string name="signupurl">user/create</string>
-    <string name="dashboardcardurl">user/user_id/dashboard</string>
-    <string name="forgotpassword">/user1/password/forgot</string>
+    <string name="dashboardcardurl">dashboard/user/user_id</string>
+    <string name="forgotpassword">user/password/forgot</string>
+    <string name="otpurl">user/user_id/mobile</string>
+    <string name="reseturl">user/password/reset</string>
 
     <!-- end of URL For services -->
 

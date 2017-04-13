@@ -2,29 +2,21 @@ package pro.viksit.com.viksit.dashboard.activity;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
-import android.graphics.PorterDuff;
-import android.graphics.drawable.Drawable;
 import android.media.MediaPlayer;
 import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.View;
-import android.widget.LinearLayout;
 import android.widget.MediaController;
-import android.widget.SeekBar;
 import android.widget.VideoView;
 
-import java.io.File;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
 import pro.viksit.com.viksit.R;
 import pro.viksit.com.viksit.Util.DisplayUtil;
 import pro.viksit.com.viksit.Util.ImageSaver;
-import pro.viksit.com.viksit.dashboard.util.VideoSaveThread;
-import pro.viksit.com.viksit.home.activity.HomeActivity;
-import pro.viksit.com.viksit.home.activity.LoginActivity;
+import pro.viksit.com.viksit.dashboard.thread.VideoSaveThread;
 
 public class VideoPlayActivity extends AppCompatActivity {
     private VideoView myVideoView;
