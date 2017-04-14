@@ -26,7 +26,7 @@ public class Questiontimer extends CountDownTimer  {
             System.out.println("millisUntilFinished:::::::: "+millisUntilFinished);
             System.out.println("millisInFuture:::::::: "+millisInFuture);
 
-            int progress =(int)(100 - (millisUntilFinished *100)/millisInFuture);
+            int progress =(int)((millisUntilFinished *100)/millisInFuture);
             System.out.println("progress  -> "+progress);
             mWaveLoadingView.setProgressValue(progress);
 
