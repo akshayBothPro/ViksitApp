@@ -21,6 +21,7 @@ import android.widget.Toast;
 
 import com.github.siyamed.shapeimageview.HexagonImageView;
 import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import com.squareup.picasso.Picasso;
 
 import java.io.BufferedWriter;
@@ -33,6 +34,7 @@ import java.util.ArrayList;
 import pro.viksit.com.viksit.R;
 import pro.viksit.com.viksit.Util.DisplayUtil;
 import pro.viksit.com.viksit.Util.ImageSaver;
+import pro.viksit.com.viksit.Util.SaveImageAsync;
 import pro.viksit.com.viksit.dashboard.adapter.CardAdapter.CarouselPagerAdapter;
 import pro.viksit.com.viksit.dashboard.async.DashboardCardAsync;
 import pro.viksit.com.viksit.dashboard.pojo.DashboardCard;
@@ -52,7 +54,6 @@ public class DashboardActivity extends AppCompatActivity implements View.OnClick
     HexagonImageView profile_pic;
     TextView points,coins;
     private SharedPreferences sharedpreferences;
-    private final Gson gson = new Gson();
     private ProgressBar progress;
     private RelativeLayout error_layout;
     private Button button_layout;
@@ -79,8 +80,8 @@ public class DashboardActivity extends AppCompatActivity implements View.OnClick
 
         sharedpreferences = getSharedPreferences(getResources().getString(R.string.shared_preference_key), Context.MODE_PRIVATE);
         String profile_date= sharedpreferences.getString(getResources().getString(R.string.user_profile),"");
+        Gson gson = new GsonBuilder().setDateFormat("yyyy-MM-dd HH:mm:ss").create();
         studentProfile = gson.fromJson(profile_date,StudentProfile.class);
-
         setSupportActionBar(toolbar);
         /*doforStatic();*/
 
@@ -93,7 +94,7 @@ public class DashboardActivity extends AppCompatActivity implements View.OnClick
             }
         });
 
-       ImageSaver local_profile = new ImageSaver(this).
+        ImageSaver local_profile = new ImageSaver(this).
                 setParentDirectoryName("profile_pic").
                 setFileName(new DisplayUtil().getFileNameReplaced("profile_pic.jpg")).
                 setExternal(ImageSaver.isExternalStorageReadable());
@@ -102,8 +103,19 @@ public class DashboardActivity extends AppCompatActivity implements View.OnClick
             profile_pic.setImageBitmap(local_profile.load());
         }else{
             if(studentProfile.getProfileImage() != null && !studentProfile.getProfileImage().equalsIgnoreCase("")){
-                Picasso.with(this)
-                        .load(studentProfile.getProfileImage()).into(profile_pic);
+                if(studentProfile.getProfileImage().contains("http")) {
+                    Picasso.with(this)
+                            .load(studentProfile.getProfileImage()).into(profile_pic);
+                    new SaveImageAsync(local_profile).execute(studentProfile.getProfileImage());
+                }else{
+                    Picasso.with(this)
+                            .load(getResources().getString(R.string.resourceserverip)+studentProfile.getProfileImage()).into(profile_pic);
+                    new SaveImageAsync(local_profile).execute(getResources().getString(R.string.resourceserverip)+studentProfile.getProfileImage());
+
+                }
+
+            }else{
+                profile_pic.setBackground(getResources().getDrawable(R.drawable.profile_default));
             }
         }
 
