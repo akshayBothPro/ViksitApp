@@ -1,6 +1,7 @@
 package pro.viksit.com.viksit.assessment.async;
 
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.support.v4.app.FragmentManager;
 import android.support.v7.widget.DefaultItemAnimator;
@@ -55,11 +56,12 @@ public class FetchAssessmentData extends AsyncTask<String, Integer, String> {
     private RecyclerView verticalRecycler;
     private QuestionsRecyclerViewAdapter questionadapter;
     private AssessmentActivity assessmentActivity;
+    private SharedPreferences sharedpreferences;
 
     public FetchAssessmentData(Context context, AssessmentActivity assessmentActivity, ProgressBar progress, int user_id, int assessment_id,
                                LockableViewPager lockableViewPager, AssessmentAdapter assessmentAdapter
                                 , FragmentManager fm, AssessmentTotalTimer totalTimer,Questiontimer questiontimer, TextView timer
-                               , RecyclerView verticalRecycler, QuestionsRecyclerViewAdapter questionadapter
+                               , RecyclerView verticalRecycler, QuestionsRecyclerViewAdapter questionadapter,SharedPreferences sharedpreferences
                                 ){
         this.context = context;
         this.assessmentActivity = assessmentActivity;
@@ -74,6 +76,7 @@ public class FetchAssessmentData extends AsyncTask<String, Integer, String> {
         this.verticalRecycler = verticalRecycler;
         this.questionadapter = questionadapter;
         this.questiontimer = questiontimer;
+        this.sharedpreferences = sharedpreferences;
     }
 
     @Override
@@ -100,8 +103,8 @@ public class FetchAssessmentData extends AsyncTask<String, Integer, String> {
             lockableViewPager.setAdapter(assessmentAdapter);
             lockableViewPager.setSwipeLocked(true);
             lockableViewPager.setCurrentItem(0);
-            assessmentActivity.setCorrectanswer(assessmentPOJO.getQuestions().size());
-            questionadapter = new QuestionsRecyclerViewAdapter(context,lockableViewPager,assessmentPOJO.getQuestions());
+            assessmentActivity.setCorrectanswer(assessmentPOJO.getQuestions().size(),true);
+            questionadapter = new QuestionsRecyclerViewAdapter(context,assessmentActivity,lockableViewPager,assessmentPOJO.getQuestions());
             RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(context);
             verticalRecycler.setLayoutManager(mLayoutManager);
             verticalRecycler.setItemAnimator(new DefaultItemAnimator());
@@ -109,6 +112,10 @@ public class FetchAssessmentData extends AsyncTask<String, Integer, String> {
             totalTimer = new AssessmentTotalTimer(context,timer,assessmentPOJO.getDurationInMinutes()*60000,1000);
             totalTimer.start();
             assessmentActivity.setQuestionTimer(context,assessmentPOJO.getQuestions().get(0).getDurationInSec() *1000);
+            SharedPreferences.Editor editor = sharedpreferences.edit();
+            editor.putString(AssessmentActivity.TAG+assessment_id, jsonresponse);
+            editor.apply();
+            editor.commit();
         }else{
 
         }

@@ -1,6 +1,7 @@
 package pro.viksit.com.viksit.assessment.activity;
 
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.graphics.PorterDuff;
 import android.graphics.drawable.Drawable;
@@ -71,6 +72,10 @@ public class AssessmentActivity extends AppCompatActivity implements View.OnClic
     private RecyclerView verticalRecycler;
     private QuestionsRecyclerViewAdapter questionadapter;
     private AssessmentResultPojo assessmentResultPojo;
+    public final static String TAG = "AssessmentActivity";
+    private SharedPreferences sharedpreferences;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -90,7 +95,8 @@ public class AssessmentActivity extends AppCompatActivity implements View.OnClic
         lockableViewPager = (LockableViewPager) findViewById(R.id.viewpager);
         mWaveLoadingView = (WaveLoadingView) findViewById(R.id.waveLoadingView);
         verticalRecycler = (RecyclerView) findViewById(R.id.recyclerView);
-        new FetchAssessmentData(this,this,progress,1858,10195,lockableViewPager,assessmentAdapter,getSupportFragmentManager(),totalTimer,questiontimer,timer,verticalRecycler,questionadapter).execute();
+        sharedpreferences = getSharedPreferences(getResources().getString(R.string.shared_preference_key), Context.MODE_PRIVATE);
+        new FetchAssessmentData(this,this,progress,1858,10195,lockableViewPager,assessmentAdapter,getSupportFragmentManager(),totalTimer,questiontimer,timer,verticalRecycler,questionadapter,sharedpreferences).execute();
         assessmentResultPojo = new AssessmentResultPojo();
         assessmentResultPojo.setUser_id(1858);
         assessmentResultPojo.setAssessment_id(10195);
@@ -121,9 +127,9 @@ public class AssessmentActivity extends AppCompatActivity implements View.OnClic
 
             @Override
             public void onPageSelected(int position) {
+                setCorrectanswer(assessmentResultPojo.getOptions().size(),false);
                 String time=((TextView) ((QuestionFragment)lockableViewPager.getAdapter().instantiateItem(lockableViewPager,lockableViewPager.getCurrentItem())).getView().findViewById(R.id.hiddentext)).getText().toString();
                System.out.println("Time question -> "+time);
-
 
                 setQuestionTimer(AssessmentActivity.this,Integer.parseInt(time)*1000);
                 if(position !=0){
@@ -159,7 +165,8 @@ public class AssessmentActivity extends AppCompatActivity implements View.OnClic
                         break;
                     case BottomSheetBehavior.STATE_EXPANDED:
                         Log.i("BottomSheetCallback", "BottomSheetBehavior.STATE_EXPANDED");
-
+                        bottomSheet.requestLayout();
+                        bottomSheet.invalidate();
                         bottom_buttons.startAnimation(animFadeOut);
 
                         break;
@@ -302,7 +309,7 @@ public class AssessmentActivity extends AppCompatActivity implements View.OnClic
 
             @Override
             public void onAnimationEnd(Animation animation) {
-                questionListRecycler.setVisibility(View.VISIBLE);
+                //questionListRecycler.setVisibility(View.VISIBLE);
                 close_layout.setVisibility(View.VISIBLE);
             }
 
@@ -320,7 +327,7 @@ public class AssessmentActivity extends AppCompatActivity implements View.OnClic
 
             @Override
             public void onAnimationEnd(Animation animation) {
-                questionListRecycler.setVisibility(View.GONE);
+                //questionListRecycler.setVisibility(View.GONE);
                 close_layout.setVisibility(View.GONE);
                 bottom_buttons.startAnimation(animFadeIn1);
             }
@@ -393,10 +400,15 @@ public class AssessmentActivity extends AppCompatActivity implements View.OnClic
         System.out.println(gson.toJson(assessmentResultPojo));
     }
 
-    public void setCorrectanswer(Integer nos){
+    public void setCorrectanswer(Integer nos,Boolean flag){
+        if(flag)
         correctanswer.setText("0 of "+nos+" ANSWER");
+        else
+            correctanswer.setText(nos+" of "+lockableViewPager.getAdapter().getCount()+" ANSWER");
 
     }
+
+
     public void setQuestionTimer(Context context,int duration ){
         if(questiontimer != null){
             questiontimer.cancel();
@@ -412,7 +424,19 @@ public class AssessmentActivity extends AppCompatActivity implements View.OnClic
         }else{
             return  false;
         }
+    }
 
+    public boolean checkQuestion(int question_id){
+        if(assessmentResultPojo.getOptions().size() >0){
+            return assessmentResultPojo.getOptions().containsKey(question_id);
+        }else{
+            return  false;
+        }
+    }
+
+    public void checkRecylclerIconChange(int position,int question){
+       View view= verticalRecycler.getLayoutManager().findViewByPosition(position);
+        System.out.println(view);
     }
 
 }

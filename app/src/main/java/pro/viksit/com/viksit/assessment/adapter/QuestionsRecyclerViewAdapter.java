@@ -1,6 +1,8 @@
 package pro.viksit.com.viksit.assessment.adapter;
 
 import android.content.Context;
+import android.graphics.PorterDuff;
+import android.graphics.drawable.Drawable;
 import android.support.v7.widget.RecyclerView;
 import android.text.Html;
 import android.view.LayoutInflater;
@@ -27,13 +29,15 @@ public class QuestionsRecyclerViewAdapter extends  RecyclerView.Adapter<Question
     private List<QuestionPOJO> questions;
     private Context context;
     private LockableViewPager lockableViewPager;
+    private AssessmentActivity assessmentActivity;
 
 
 
-    public QuestionsRecyclerViewAdapter(Context context,LockableViewPager lockableViewPager,List<QuestionPOJO> questions) {
+    public QuestionsRecyclerViewAdapter(Context context,AssessmentActivity assessmentActivity,LockableViewPager lockableViewPager,List<QuestionPOJO> questions) {
         this.context = context;
         this.questions = questions;
         this.lockableViewPager =lockableViewPager;
+        this.assessmentActivity = assessmentActivity;
     }
 
     @Override
@@ -48,6 +52,10 @@ public class QuestionsRecyclerViewAdapter extends  RecyclerView.Adapter<Question
     public void onBindViewHolder(MyJobViewHolder holder, int position) {
         QuestionPOJO question = questions.get(position);
         holder.questionText.setText((position+1)+". "+Html.fromHtml(question.getText()));
+        if(assessmentActivity.checkQuestion(question.getId())) {
+            Drawable[] drawablenext = holder.questionText.getCompoundDrawables();
+            drawablenext[2].setColorFilter(context.getResources().getColor(R.color.assessment_bottom), PorterDuff.Mode.SRC_ATOP);
+        }
     }
 
     @Override
@@ -76,5 +84,13 @@ public class QuestionsRecyclerViewAdapter extends  RecyclerView.Adapter<Question
         }
 
     }
+
+    /*public void checkViewholder(int question_id,int position){
+        if(assessmentActivity.checkQuestion(question_id)) {
+            Drawable[] drawablenext = this.getItemId().questionText.getCompoundDrawables();
+            drawablenext[2].setColorFilter(context.getResources().getColor(R.color.assessment_bottom), PorterDuff.Mode.SRC_ATOP);
+            QuestionsRecyclerViewAdapter.this.notifyItemChanged(position);
+        }
+    }*/
 
 }
