@@ -7,20 +7,20 @@
     android:layout_below="@+id/appbar"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context=".assessment.activity.AssessmentActivity"
-    tools:showIn="@layout/activity_main">
+    tools:showIn="@layout/activity_main"
+    android:layout_marginBottom="70dp"
+    >
 
     <pro.viksit.com.viksit.Util.LockableViewPager
         android:id="@+id/viewpager"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="60dp"
         />
 
     <me.itangqi.waveloadingview.WaveLoadingView
         android:id="@+id/waveLoadingView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginBottom="60dp"
 
         android:translationZ="-1dp"
         app:wlv_borderColor="#ffffff"

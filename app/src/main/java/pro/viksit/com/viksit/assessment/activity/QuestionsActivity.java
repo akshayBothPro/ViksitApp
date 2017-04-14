@@ -41,7 +41,7 @@ public class QuestionsActivity extends AppCompatActivity {
     }
 
     private void implementActions(){
-        qAdapter = new QuestionsRecyclerViewAdapter(getBaseContext(), questions);
+        /*qAdapter = new QuestionsRecyclerViewAdapter(getBaseContext(), questions);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getBaseContext());
         recyclerView.setLayoutManager(linearLayoutManager);
         recyclerView.setItemAnimator(new DefaultItemAnimator());
@@ -51,11 +51,11 @@ public class QuestionsActivity extends AppCompatActivity {
                 new RecyclerItemClickListener(getBaseContext(), recyclerView ,new RecyclerItemClickListener.OnItemClickListener() {
                     @Override public void onItemClick(View view, int position) {
                         System.out .println("Module position: " + position);
-                        /*Intent intent = new Intent(RoleActivity.this, ModuleViewActivity.class);
+                        *//*Intent intent = new Intent(RoleActivity.this, ModuleViewActivity.class);
                         Bundle bundle = new Bundle();
                         bundle.putSerializable("role", roles.get(position));
                         intent.putExtras(bundle);
-                        startActivity(intent);*/
+                        startActivity(intent);*//*
                     }
 
                     @Override public void onLongItemClick(View view, int position) {
@@ -70,7 +70,7 @@ public class QuestionsActivity extends AppCompatActivity {
                 Intent j = new Intent(QuestionsActivity.this,NewQuestionActivity.class);
                 startActivity(j);
             }
-        });
+        });*/
     }
 
     private void prepareQuestionData(){

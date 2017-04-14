@@ -1,12 +1,21 @@
 package pro.viksit.com.viksit.assessment.fragment;
 
 import android.graphics.Color;
+import android.graphics.PorterDuff;
+import android.graphics.drawable.GradientDrawable;
+import android.graphics.drawable.ShapeDrawable;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.webkit.WebChromeClient;
+import android.webkit.WebView;
+import android.webkit.WebViewClient;
 import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -16,7 +25,9 @@ import me.itangqi.waveloadingview.WaveLoadingView;
 import pro.viksit.com.viksit.R;
 import pro.viksit.com.viksit.assessment.activity.AssessmentActivity;
 import pro.viksit.com.viksit.assessment.pojo.Option;
+import pro.viksit.com.viksit.assessment.pojo.OptionPOJO;
 import pro.viksit.com.viksit.assessment.pojo.Question;
+import pro.viksit.com.viksit.assessment.pojo.QuestionPOJO;
 
 /**
  * Created by Feroz on 20-03-2017.
@@ -24,52 +35,102 @@ import pro.viksit.com.viksit.assessment.pojo.Question;
 
 public class QuestionFragment extends Fragment {
     public static final String GET_QUESTION = "GET_QUESTION";
-    private TextView header,question_title;
-    private RelativeLayout button_layout;
-    private int count;
-    private ArrayList<Button> buttonArrayList;
+    public static final String POSITION = "POSITION";
+    public static final String TOTALCOUNT = "TOTALCOUNT";
+
+    private TextView header,hiddentext;
+    private WebView question_title;
+    private LinearLayout button_layout;
+    private ArrayList<RelativeLayout> optionWebviewList;
+    private ArrayList<WebView> webViewArrayList;
+    private QuestionPOJO questionPOJO;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
        View view = inflater.inflate(R.layout.question_fragment, container, false);
         header = (TextView) view.findViewById(R.id.header);
-        question_title = (TextView) view.findViewById(R.id.question_title);
-        button_layout = (RelativeLayout) view.findViewById(R.id.button_layout);
+        question_title = (WebView) view.findViewById(R.id.question_title);
+        button_layout = (LinearLayout) view.findViewById(R.id.button_layout);
+        questionPOJO = (QuestionPOJO) getArguments().getSerializable(GET_QUESTION);
+        header.setText("Question "+(getArguments().getInt(POSITION)+1)+" OF "+getArguments().getInt(TOTALCOUNT));
+        hiddentext = (TextView) view.findViewById(R.id.hiddentext);
+        hiddentext.setText(questionPOJO.getDurationInSec()+"");
+        question_title.loadDataWithBaseURL(null, questionPOJO.getText(), "text/html", "utf-8", null);
+        question_title.setBackgroundColor(0);
+        optionWebviewList = new ArrayList<>();
+        webViewArrayList = new ArrayList<>();
+        for(final OptionPOJO option: questionPOJO.getOptions()){
+            LinearLayout.LayoutParams mainparams = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+            mainparams.setMargins(10,10,10,10);
 
-        count = 1;
-        Question question = (Question) getArguments().getSerializable(GET_QUESTION);
-        question_title.setText(question.getText());
-        buttonArrayList = new ArrayList<>();
-        for(Option option: question.getOptionArrayList()){
-            final Button button = new Button(getContext());
-            button.setId(count);
-            button.setBackground(getResources().getDrawable(R.drawable.button_bg));
-            button.setTextColor(Color.parseColor("#767676"));
-            button.setText(option.getText());
-            RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.WRAP_CONTENT, RelativeLayout.LayoutParams.WRAP_CONTENT);
+            final RelativeLayout linearLayout = new RelativeLayout(getContext());
+            linearLayout.setLayoutParams(mainparams);
+            linearLayout.requestLayout();
 
-            if(count != 1){
-                params.addRule(RelativeLayout.BELOW,count-1);
-            }else{
-            }
-            params.addRule(RelativeLayout.CENTER_HORIZONTAL);
-            params.setMargins(10,10,10,10);
-            button.setLayoutParams(params);
+            final WebView optionview = new WebView(getContext());
+            optionview.getSettings().setDomStorageEnabled(true);
+            optionview.getSettings().setSaveFormData(true);
+            optionview.getSettings().setAllowContentAccess(true);
+            optionview.getSettings().setAllowFileAccess(true);
+            optionview.getSettings().setAllowFileAccessFromFileURLs(true);
+            optionview.getSettings().setAllowUniversalAccessFromFileURLs(true);
+            optionview.setWebViewClient(new WebViewClient());
+            optionview.setClickable(true);
+            optionview.getSettings().setJavaScriptEnabled(true);
+            optionview.setBackgroundColor(0);
+            optionview.setWebChromeClient(new WebChromeClient());
 
-            button.setOnClickListener(new View.OnClickListener() {
+            if(((AssessmentActivity)getActivity()).checkSelectedOption(option.getId()))
+                linearLayout.setBackground(getResources().getDrawable(R.drawable.select_option_bg));
+            else
+            linearLayout.setBackground(getResources().getDrawable(R.drawable.button_bg));
+            optionview.loadDataWithBaseURL(null, option.getText(), "text/html", "utf-8", null);
+            RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.MATCH_PARENT, RelativeLayout.LayoutParams.WRAP_CONTENT);
+            params.setMargins(5,5,5,5);
+
+            optionview.setLayoutParams(params);
+
+
+
+
+            optionview.setOnTouchListener(new View.OnTouchListener() {
                 @Override
-                public void onClick(View view) {
-                    removeColor();
-                    button.setBackgroundColor(getResources().getColor(R.color.theme_color));
-                  //  AssessmentActivity.changeCheckbutton();
+                public boolean onTouch(View v, MotionEvent event) {
+                    switch(event.getAction()){
+                        case MotionEvent.ACTION_DOWN:
+                            removeColor();
+                            optionview.loadUrl(
+                                    "javascript:document.body.style.setProperty(\"color\", \"#0288d1\");"
+                            );
+                            linearLayout.setBackground(getResources().getDrawable(R.drawable.select_option_bg));
+                            if(((AssessmentActivity)getActivity()).lockableViewPager.getCurrentItem() != ((AssessmentActivity)getActivity()).lockableViewPager.getAdapter().getCount()-1){
+                                ((AssessmentActivity)getActivity()).setResult(questionPOJO.getId(),option.getId());
+                                ((AssessmentActivity)getActivity()).lockableViewPager.setCurrentItem(((AssessmentActivity)getActivity()).lockableViewPager.getCurrentItem()+1);
+                            }else{
+                                System.out.println("Assessment ENded here");
+                                ((AssessmentActivity)getActivity()).printResult();
+
+                            }
+
+
+
+                            break;
+                    }
+
+                    return false;
                 }
+
+
             });
-            buttonArrayList.add(button);
-            button_layout.addView(button);
-            count++;
+            linearLayout.addView(optionview);
+            optionWebviewList.add(linearLayout);
+            webViewArrayList.add(optionview);
+            button_layout.addView(linearLayout);
+
+
+
         }
-        count = 1;
 
 
 
@@ -77,11 +138,17 @@ public class QuestionFragment extends Fragment {
     }
 
     private void removeColor() {
-        if(buttonArrayList != null){
-            for(Button button:buttonArrayList){
-                button.setBackgroundColor(getResources().getColor(R.color.white));
-                button.setBackground(getResources().getDrawable(R.drawable.button_bg));
+        if(optionWebviewList != null){
+            for(RelativeLayout webView:optionWebviewList){
+                webView.setBackgroundColor(getResources().getColor(R.color.white));
+                webView.setBackground(getResources().getDrawable(R.drawable.button_bg));
             }
+            for(WebView webView:webViewArrayList){
+                webView.loadUrl(
+                        "javascript:document.body.style.setProperty(\"color\", \"#000000\");"
+                );
+            }
+
         }
     }
 }

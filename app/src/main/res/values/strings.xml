@@ -29,15 +29,16 @@
     <!-- end of params For services -->
 
     <!--Start of URL For services -->
-    <string name="resourceserverip">http://192.168.1.14:8080</string>
-    <string name="serverip">http://192.168.1.14:8080/t2c/</string>
+    <string name="resourceserverip">http://192.168.1.6:8080</string>
+    <string name="serverip">http://192.168.1.6:8080/t2c/</string>
     <string name="socialloginurl">auth/login/social</string>
-    <string name="loginurl">AuthenticateUser/login</string>
+    <string name="loginurl">auth/login</string>
     <string name="signupurl">user/create</string>
     <string name="dashboardcardurl">dashboard/user/user_id</string>
     <string name="forgotpassword">user/password/forgot</string>
     <string name="otpurl">user/user_id/mobile</string>
     <string name="reseturl">user/password/reset</string>
+    <string name="assessmenturl">assessments/user</string>
 
     <!-- end of URL For services -->
 

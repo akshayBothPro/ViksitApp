@@ -29,8 +29,6 @@ public class StudentProfile {
 	private String postGraduationCollege;
 	private String resumeURL;
 
-
-
 	public Integer getId() {
 		return id;
 	}
@@ -46,7 +44,7 @@ public class StudentProfile {
 	public void setAuthenticationToken(String authenticationToken) {
 		this.authenticationToken = authenticationToken;
 	}
-	
+
 	public String getLoginType() {
 		return loginType;
 	}
@@ -54,7 +52,7 @@ public class StudentProfile {
 	public void setLoginType(String loginType) {
 		this.loginType = loginType;
 	}
-	
+
 	public Boolean getIsVerified() {
 		return isVerified;
 	}

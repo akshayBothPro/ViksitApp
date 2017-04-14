@@ -10,11 +10,13 @@ import android.widget.TextView;
 
 import com.github.siyamed.shapeimageview.HexagonImageView;
 import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import com.squareup.picasso.Picasso;
 
 import pro.viksit.com.viksit.R;
 import pro.viksit.com.viksit.Util.DisplayUtil;
 import pro.viksit.com.viksit.Util.ImageSaver;
+import pro.viksit.com.viksit.Util.SaveImageAsync;
 import pro.viksit.com.viksit.dashboard.pojo.StudentProfile;
 import pro.viksit.com.viksit.dashboard.util.BottomBarUtil;
 
@@ -23,7 +25,6 @@ public class NoTaskActivity extends AppCompatActivity {
     private TextView points,coins;
     private SharedPreferences sharedpreferences;
     private StudentProfile studentProfile;
-    private final Gson gson = new Gson();
     private HexagonImageView profile_pic;
 
 
@@ -40,6 +41,7 @@ public class NoTaskActivity extends AppCompatActivity {
 
         sharedpreferences = getSharedPreferences(getResources().getString(R.string.shared_preference_key), Context.MODE_PRIVATE);
         String profile_date= sharedpreferences.getString(getResources().getString(R.string.user_profile),"");
+        Gson gson = new GsonBuilder().setDateFormat("yyyy-MM-dd HH:mm:ss").create();
         studentProfile = gson.fromJson(profile_date,StudentProfile.class);
         setSupportActionBar(toolbar);
         ImageSaver local_profile = new ImageSaver(this).
@@ -51,8 +53,19 @@ public class NoTaskActivity extends AppCompatActivity {
             profile_pic.setImageBitmap(local_profile.load());
         }else{
             if(studentProfile.getProfileImage() != null && !studentProfile.getProfileImage().equalsIgnoreCase("")){
-                Picasso.with(this)
-                        .load(studentProfile.getProfileImage()).into(profile_pic);
+                if(studentProfile.getProfileImage().contains("http")) {
+                    Picasso.with(this)
+                            .load(studentProfile.getProfileImage()).into(profile_pic);
+                    new SaveImageAsync(local_profile).execute(studentProfile.getProfileImage());
+                }else{
+                    Picasso.with(this)
+                            .load(getResources().getString(R.string.resourceserverip)+studentProfile.getProfileImage()).into(profile_pic);
+                    new SaveImageAsync(local_profile).execute(getResources().getString(R.string.resourceserverip)+studentProfile.getProfileImage());
+
+                }
+
+            }else{
+                profile_pic.setBackground(getResources().getDrawable(R.drawable.profile_default));
             }
         }
 

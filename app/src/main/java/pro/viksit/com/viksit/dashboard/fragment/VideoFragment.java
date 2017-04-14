@@ -104,6 +104,7 @@ public class VideoFragment extends Fragment {
             TextView header = (TextView) linearLayout.findViewById(R.id.header);
             TextView title = (TextView) linearLayout.findViewById(R.id.title);
             ImageView image = (ImageView) linearLayout.findViewById(R.id.image);
+            TextView description = (TextView) linearLayout.findViewById(R.id.description);
             if (diagonalInches>=6.5){
                 Picasso.with(getContext())
                         .load(R.drawable.backgroundimg).resize(screenheitght / 2, screenheitght / 2)
@@ -133,6 +134,7 @@ public class VideoFragment extends Fragment {
 
             header.setText(dashboardCard.getHeader());
             title.setText(dashboardCard.getTitle());
+            description.setText(dashboardCard.getDescription());
             cardView.setLayoutParams(layoutParams);
             CarouselLinearLayout root = (CarouselLinearLayout) linearLayout.findViewById(R.id.root_container);
             root.setScaleBoth(scale);

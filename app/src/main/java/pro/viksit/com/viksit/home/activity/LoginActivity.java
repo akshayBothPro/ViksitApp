@@ -205,10 +205,9 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         if (id == R.id.btn_login) {
             System.out.println("login clicked");
 
-            //login();
+            login();
 //            LISessionManager.getInstance(getApplicationContext()).clearSession();
-            Intent intent = new Intent(LoginActivity.this, DashboardActivity.class);
-            startActivity(intent);
+
         } else if (id == R.id.btn_register_instead) {
             System.out.println("register instead clicked");
             startActivity(new Intent(LoginActivity.this, SignupActivity.class));

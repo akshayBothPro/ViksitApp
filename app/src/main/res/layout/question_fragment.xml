@@ -3,45 +3,56 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:fadeScrollbars="false"
+    android:scrollbarThumbVertical="@drawable/scrollbar"
+    >
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:padding="10dp"
         >
-
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="question 7 of 20"
+            android:textAllCaps="true"
+            android:textColor="@color/black"
+            android:id="@+id/hiddentext"
+            android:visibility="gone"
+            />
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="question 7 of 20"
         android:textAllCaps="true"
-        android:textColor="@color/black"
+        android:textColor="#A4A5A6"
         android:id="@+id/header"
+        android:textSize="@dimen/p6"
+        android:layout_marginBottom="5dp"
         />
-        <TextView
+        <WebView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Question text is "
             android:layout_below="@+id/header"
-            android:id="@+id/question_title"/>
+            android:id="@+id/question_title"
+            android:layout_marginBottom="5dp"
+            android:textSize="@dimen/h7"
+            android:textColor="@color/black"
+            />
 
-        <RelativeLayout
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/button_layout"
             android:layout_below="@+id/question_title"
+            android:orientation="vertical"
             >
-          <!--  <Button
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="10dp"
-                android:text="Taxation rules"
-                android:background="@drawable/button_bg"
-                android:textColor="#767676"
-                />-->
 
 
-        </RelativeLayout>
+        </LinearLayout>
 
 
     </RelativeLayout>

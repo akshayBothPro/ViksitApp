@@ -163,12 +163,12 @@ public class DashboardCardAsync extends AsyncTask<String, Integer, String> {
     private String postData(Context context,
                             FragmentManager fm, SharedPreferences sharedPreferences) {
         HttpClient httpclient = new DefaultHttpClient();
-        System.out.println(context.getResources().getString(R.string.serverip) + (context.getResources().getString(R.string.dashboardcardurl).replaceAll("user_id", 12 + "")));
-        HttpGet httppost = new HttpGet(context.getResources().getString(R.string.serverip) + (context.getResources().getString(R.string.dashboardcardurl).replaceAll("user_id", 12 + "")));
-        int timeoutConnection = 6000;
+        System.out.println(context.getResources().getString(R.string.serverip) + (context.getResources().getString(R.string.dashboardcardurl).replaceAll("user_id", userid + "")));
+        HttpGet httppost = new HttpGet(context.getResources().getString(R.string.serverip) + (context.getResources().getString(R.string.dashboardcardurl).replaceAll("user_id", userid + "")));
+        int timeoutConnection = 20000;
         final HttpParams httpParameters = httpclient.getParams();
         HttpConnectionParams.setConnectionTimeout(httpParameters, timeoutConnection);
-        HttpConnectionParams.setSoTimeout(httpParameters, 10000);
+        HttpConnectionParams.setSoTimeout(httpParameters, 20000);
 
         String jsonresponse = "";
         try {

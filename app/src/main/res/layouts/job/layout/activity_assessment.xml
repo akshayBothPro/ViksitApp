@@ -2,81 +2,93 @@
 <android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/coordinatorLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
-    android:id="@+id/coordinatorLayout"
     tools:context=".assessment.activity.AssessmentActivity">
+
+    <include layout="@layout/assessment_toolbar" />
+
+
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior"
-        tools:context=".assessment.activity.AssessmentActivity"
-        android:background="@android:color/white">
-    <android.support.design.widget.AppBarLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:theme="@style/AppTheme.AppBarOverlay"
-        android:id="@+id/appbar">
-
-        <android.support.v7.widget.Toolbar
-            android:id="@+id/toolbar"
-            android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            android:background="?attr/colorPrimary"
-            app:popupTheme="@style/AppTheme.PopupOverlay" />
-
-    </android.support.design.widget.AppBarLayout>
-
-    <include layout="@layout/content_main" />
-
-    </RelativeLayout>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="350dp"
-        android:fitsSystemWindows="true"
-        android:orientation="vertical"
-        app:behavior_hideable="true"
-        app:behavior_peekHeight="50dp"
-        android:id="@+id/bottom_sheet"
-        android:background="@android:color/white"
-        app:layout_behavior="@string/bottom_sheet_behavior">
-
+        android:layout_height="250dp"
+        app:behavior_hideable="false"
+        app:layout_behavior="@string/bottom_sheet_behavior"
+        app:behavior_peekHeight="60dp"
+        android:background="@color/white"
+        android:id="@+id/bottomSheetLayout"
+        >
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:id="@+id/rr"
+            android:background="@color/white"
+            android:id="@+id/bottom_buttons"
+
             >
             <Button
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Prev"
-                android:layout_alignParentLeft="true"
-                android:drawableLeft="@mipmap/ic_keyboard_arrow_left_black_36dp"
-                android:background="#00000000"
-                android:textColor="#bebebe"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="prev"
+            android:layout_alignParentLeft="true"
+            android:background="#00000000"
+            android:drawableLeft="@mipmap/ic_keyboard_arrow_left_black_36dp"
+            android:layout_centerVertical="true"
+            android:id="@+id/prev"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:textColor="@color/bottom_color"
+            android:drawableTint="@color/bottom_color"
+            />
 
-                />
             <Button
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Jump To"
-                android:id="@+id/jump_to"
+                android:text="VIEW ALL"
                 android:layout_centerInParent="true"
-                android:drawableLeft="@mipmap/ic_menu_black_36dp"
                 android:background="#00000000"
-
+                android:drawableLeft="@mipmap/ic_menu_black_36dp"
+                android:layout_centerVertical="true"
+                android:id="@+id/view_all"
+                android:textColor="@color/bottom_color"
+                android:drawableTint="@color/bottom_color"
                 />
             <Button
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Next"
+                android:text="NEXT"
+                android:background="#00000000"
                 android:layout_alignParentRight="true"
                 android:drawableRight="@mipmap/ic_keyboard_arrow_right_black_36dp"
-                android:background="#00000000"
-                android:textColor="#bebebe"
-                />
+                android:layout_centerVertical="true"
+                android:id="@+id/next"
+                android:textColor="@color/bottom_color"
+                android:drawableTint="@color/bottom_color"/>
+        </RelativeLayout>
+        <RelativeLayout
+            android:id="@+id/close_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/theme_color"
+            android:layout_below="@+id/bottom_buttons"
+            android:padding="10dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="View All"
+                android:textColor="@color/white"
+                android:textSize="@dimen/h5"
+                android:textStyle="bold" />
+
+            <ImageView
+                android:id="@+id/close_bottomsheet"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:src="@mipmap/ic_close_black_24dp"
+                android:tint="@color/white" />
 
         </RelativeLayout>
 
@@ -84,9 +96,11 @@
             android:id="@+id/recyclerView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-         />
+            android:layout_below="@+id/close_layout"
 
-    </LinearLayout>
+            />
+
+    </RelativeLayout>
 
 
 </android.support.design.widget.CoordinatorLayout>

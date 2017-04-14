@@ -9,6 +9,8 @@ import android.widget.ProgressBar;
 
 import com.afollestad.materialdialogs.MaterialDialog;
 import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonSyntaxException;
 
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
@@ -41,7 +43,7 @@ public class LoginAsync extends AsyncTask<String, Integer, String> {
     private MaterialDialog dialog;
     private  MaterialDialog progressdialog;
     private SharedPreferences sharedpreferences;
-    private final Gson gson = new Gson();
+    //private final Gson gson = new Gson();
 
     public LoginAsync(HashMap<String,String> param,Context context,MaterialDialog dialog, MaterialDialog progressdialog,SharedPreferences sharedpreferences){
         this.param = param;
@@ -95,7 +97,7 @@ public class LoginAsync extends AsyncTask<String, Integer, String> {
         HttpClient httpclient = new DefaultHttpClient();
         System.out.println("calling url is -> "+context.getResources().getString(R.string.serverip)+url);
         HttpPost httppost = new HttpPost(context.getResources().getString(R.string.serverip)+url);
-        String jsonresponse= "";
+        String jsonresponse= "null";
         try {
             // Add your data
             List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>();
@@ -110,6 +112,7 @@ public class LoginAsync extends AsyncTask<String, Integer, String> {
             jsonresponse = EntityUtils.toString(httpEntity);
 
             System.out.println("jsonresponse "+jsonresponse);
+            Gson gson = new GsonBuilder().setDateFormat("yyyy-MM-dd HH:mm:ss").create();
             StudentProfile studentProfile = gson.fromJson(jsonresponse,StudentProfile.class);
             System.out.println("studentProfile "+studentProfile.getEmail());
 
@@ -125,6 +128,9 @@ public class LoginAsync extends AsyncTask<String, Integer, String> {
             // TODO Auto-generated catch block
 
             e.printStackTrace();
+            return "null";
+        }catch (JsonSyntaxException jse) {
+            jse.printStackTrace();
             return "null";
         }catch (Exception e){
             e.printStackTrace();
