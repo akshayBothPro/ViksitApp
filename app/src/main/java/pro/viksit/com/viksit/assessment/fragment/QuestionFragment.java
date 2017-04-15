@@ -106,7 +106,9 @@ public class QuestionFragment extends Fragment {
                             linearLayout.setBackground(getResources().getDrawable(R.drawable.select_option_bg));
                             if(((AssessmentActivity)getActivity()).lockableViewPager.getCurrentItem() != ((AssessmentActivity)getActivity()).lockableViewPager.getAdapter().getCount()-1){
                                 ((AssessmentActivity)getActivity()).setResult(questionPOJO.getId(),option.getId());
+                                int position = ((AssessmentActivity)getActivity()).lockableViewPager.getCurrentItem();
                                 ((AssessmentActivity)getActivity()).lockableViewPager.setCurrentItem(((AssessmentActivity)getActivity()).lockableViewPager.getCurrentItem()+1);
+                                ((AssessmentActivity)getActivity()).checkRecylclerIconChange(position,questionPOJO.getId());
                             }else{
                                 System.out.println("Assessment ENded here");
                                 ((AssessmentActivity)getActivity()).printResult();

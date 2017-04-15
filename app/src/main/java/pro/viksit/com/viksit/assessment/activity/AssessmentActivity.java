@@ -8,6 +8,7 @@ import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomSheetBehavior;
+import android.support.v4.content.ContextCompat;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.DefaultItemAnimator;
@@ -69,7 +70,6 @@ public class AssessmentActivity extends AppCompatActivity implements View.OnClic
     private ProgressBar progress;
     public WaveLoadingView mWaveLoadingView;
     private AssessmentPOJO assessmentPOJO;
-    private RecyclerView verticalRecycler;
     private QuestionsRecyclerViewAdapter questionadapter;
     private AssessmentResultPojo assessmentResultPojo;
     public final static String TAG = "AssessmentActivity";
@@ -94,9 +94,10 @@ public class AssessmentActivity extends AppCompatActivity implements View.OnClic
         mBottomSheetBehavior1 = BottomSheetBehavior.from(findViewById(R.id.bottomSheetLayout));
         lockableViewPager = (LockableViewPager) findViewById(R.id.viewpager);
         mWaveLoadingView = (WaveLoadingView) findViewById(R.id.waveLoadingView);
-        verticalRecycler = (RecyclerView) findViewById(R.id.recyclerView);
         sharedpreferences = getSharedPreferences(getResources().getString(R.string.shared_preference_key), Context.MODE_PRIVATE);
-        new FetchAssessmentData(this,this,progress,1858,10195,lockableViewPager,assessmentAdapter,getSupportFragmentManager(),totalTimer,questiontimer,timer,verticalRecycler,questionadapter,sharedpreferences).execute();
+        questionListRecycler = (RecyclerView) findViewById(R.id.recyclerView);
+        //questionListRecycler.setVisibility(View.GONE);
+        new FetchAssessmentData(this,this,progress,1858,10195,lockableViewPager,assessmentAdapter,getSupportFragmentManager(),totalTimer,questiontimer,timer,questionListRecycler,questionadapter,sharedpreferences).execute();
         assessmentResultPojo = new AssessmentResultPojo();
         assessmentResultPojo.setUser_id(1858);
         assessmentResultPojo.setAssessment_id(10195);
@@ -104,8 +105,7 @@ public class AssessmentActivity extends AppCompatActivity implements View.OnClic
         correctanswer.setAllCaps(true);
         view_all.setOnClickListener(this);
         close_bottomsheet.setOnClickListener(this);
-        questionListRecycler = (RecyclerView) findViewById(R.id.recyclerView);
-        questionListRecycler.setVisibility(View.GONE);
+
         close_layout.setVisibility(View.GONE);
         animFadeOut = AnimationUtils.loadAnimation(getApplicationContext(),
                 R.anim.fade_out);
@@ -186,7 +186,7 @@ public class AssessmentActivity extends AppCompatActivity implements View.OnClic
 
             @Override
             public void onSlide(@NonNull View bottomSheet, float slideOffset) {
-                System.out.println("new slideOffset"+slideOffset);
+                //System.out.println("new slideOffset"+slideOffset);
 
             }
         });
@@ -278,8 +278,11 @@ public class AssessmentActivity extends AppCompatActivity implements View.OnClic
 
         Drawable[] drawablenext  =next.getCompoundDrawables();
         drawablenext[2].setColorFilter(getResources().getColor(R.color.assessment_bottom), PorterDuff.Mode.SRC_ATOP);
-        correctanswer.getCompoundDrawables()[0].setColorFilter(getResources().getColor(R.color.linkedIn_color), PorterDuff.Mode.SRC_ATOP);
 
+        Drawable drawable = ContextCompat.getDrawable(this, R.mipmap.ic_check_circle_black_24dp).mutate();
+
+        drawable.setColorFilter(getResources().getColor(R.color.linkedIn_color), PorterDuff.Mode.SRC_ATOP);
+        correctanswer.setCompoundDrawablesWithIntrinsicBounds(drawable,null,null,null);
     }
 
     private void setAnimListner() {
@@ -310,7 +313,7 @@ public class AssessmentActivity extends AppCompatActivity implements View.OnClic
             @Override
             public void onAnimationEnd(Animation animation) {
                 //questionListRecycler.setVisibility(View.VISIBLE);
-                close_layout.setVisibility(View.VISIBLE);
+                close_layout.setVisibility(View.INVISIBLE);
             }
 
             @Override
@@ -328,7 +331,7 @@ public class AssessmentActivity extends AppCompatActivity implements View.OnClic
             @Override
             public void onAnimationEnd(Animation animation) {
                 //questionListRecycler.setVisibility(View.GONE);
-                close_layout.setVisibility(View.GONE);
+                close_layout.setVisibility(View.INVISIBLE);
                 bottom_buttons.startAnimation(animFadeIn1);
             }
 
@@ -435,8 +438,13 @@ public class AssessmentActivity extends AppCompatActivity implements View.OnClic
     }
 
     public void checkRecylclerIconChange(int position,int question){
-       View view= verticalRecycler.getLayoutManager().findViewByPosition(position);
-        System.out.println(view);
+        questionListRecycler.setVisibility(View.VISIBLE);
+        System.out.println("position CXCXX "+position);
+
+       // TextView tx =(TextView)questionListRecycler.getLayoutManager().findViewByPosition(position).findViewById(R.id.tv_question_text);
+        //System.out.println("TXXX "+tx.getText().toString());
+
+        questionListRecycler.getAdapter().notifyItemChanged(position);
     }
 
 }

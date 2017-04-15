@@ -32,9 +32,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:drawableLeft="@mipmap/ic_check_circle_black_24dp"
                 android:text="14 OF 20 ANSWERED"
-                android:drawableTint="@color/linkedIn_color"
                 android:textSize="@dimen/h7"
                 android:textColor="@color/black"
                 android:layout_margin="5dp"

@@ -3,6 +3,7 @@ package pro.viksit.com.viksit.assessment.adapter;
 import android.content.Context;
 import android.graphics.PorterDuff;
 import android.graphics.drawable.Drawable;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.RecyclerView;
 import android.text.Html;
 import android.view.LayoutInflater;
@@ -52,9 +53,14 @@ public class QuestionsRecyclerViewAdapter extends  RecyclerView.Adapter<Question
     public void onBindViewHolder(MyJobViewHolder holder, int position) {
         QuestionPOJO question = questions.get(position);
         holder.questionText.setText((position+1)+". "+Html.fromHtml(question.getText()));
-        if(assessmentActivity.checkQuestion(question.getId())) {
-            Drawable[] drawablenext = holder.questionText.getCompoundDrawables();
-            drawablenext[2].setColorFilter(context.getResources().getColor(R.color.assessment_bottom), PorterDuff.Mode.SRC_ATOP);
+        if(assessmentActivity.checkQuestion(question.getId())){
+            Drawable drawable = ContextCompat.getDrawable(context, R.mipmap.ic_check_circle_black_24dp).mutate();
+            drawable.setColorFilter(context.getResources().getColor(R.color.linkedIn_color), PorterDuff.Mode.SRC_ATOP);
+            holder.questionText.setCompoundDrawablesWithIntrinsicBounds(null,null,drawable,null);
+        }else{
+            Drawable drawable = ContextCompat.getDrawable(context, R.mipmap.ic_check_circle_black_24dp).mutate();
+            holder.questionText.setCompoundDrawablesWithIntrinsicBounds(null,null,drawable,null);
+
         }
     }
 

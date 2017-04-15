@@ -29,8 +29,8 @@
     <!-- end of params For services -->
 
     <!--Start of URL For services -->
-    <string name="resourceserverip">http://192.168.1.6:8080</string>
-    <string name="serverip">http://192.168.1.6:8080/t2c/</string>
+    <string name="resourceserverip">http://192.168.0.130:8080</string>
+    <string name="serverip">http://192.168.0.130:8080/t2c/</string>
     <string name="socialloginurl">auth/login/social</string>
     <string name="loginurl">auth/login</string>
     <string name="signupurl">user/create</string>
