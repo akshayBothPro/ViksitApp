@@ -108,7 +108,7 @@ public class QuestionFragment extends Fragment {
                             if(((AssessmentActivity)getActivity()).lockableViewPager.getCurrentItem() != ((AssessmentActivity)getActivity()).lockableViewPager.getAdapter().getCount()-1){
                                 ((AssessmentActivity)getActivity()).setResult(questionPOJO.getId(),questionPOJO.getId(),((AssessmentActivity)getActivity()).question_time_taken);
                                 int position = ((AssessmentActivity)getActivity()).lockableViewPager.getCurrentItem();
-                                ((AssessmentActivity)getActivity()).lockableViewPager.setCurrentItem(((AssessmentActivity)getActivity()).lockableViewPager.getCurrentItem()+1);
+                               // ((AssessmentActivity)getActivity()).lockableViewPager.setCurrentItem(((AssessmentActivity)getActivity()).lockableViewPager.getCurrentItem()+1);
                                 ((AssessmentActivity)getActivity()).checkRecylclerIconChange(position,questionPOJO.getId());
                             }else{
                                 System.out.println("Assessment ENded here");
