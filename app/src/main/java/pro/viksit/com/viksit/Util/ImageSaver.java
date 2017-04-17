@@ -21,7 +21,7 @@ import java.io.OutputStream;
 
 public class ImageSaver {
 
-    private String directoryName = "Viksit";
+    private String directoryName = ".Viksit";
     private String parentDirectory = "default";
     private String fileName = "image.png";
     private Context context;
@@ -88,8 +88,7 @@ public class ImageSaver {
     }
 
     private File getAlbumStorageDir(String albumName) {
-        File parent_dir = new File(Environment.getExternalStoragePublicDirectory(
-                Environment.DIRECTORY_PICTURES), albumName);
+        File parent_dir = new File(Environment.getExternalStorageDirectory(), albumName);
         if (!parent_dir.mkdirs()) {
 
         }

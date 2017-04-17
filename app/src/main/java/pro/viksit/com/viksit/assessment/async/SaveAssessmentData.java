@@ -8,6 +8,7 @@ import android.widget.ProgressBar;
 
 import com.google.gson.Gson;
 
+import pro.viksit.com.viksit.assessment.database.AssessmentDataHandler;
 import pro.viksit.com.viksit.assessment.pojo.AssessmentPOJO;
 import pro.viksit.com.viksit.assessment.pojo.AssessmentResultPojo;
 import pro.viksit.com.viksit.assessment.pojo.QuestionPOJO;
@@ -48,7 +49,8 @@ public class SaveAssessmentData extends AsyncTask<String, Integer, String> {
         if(isNetworkConnected()){
 
         }else{
-
+            AssessmentDataHandler assessmentDataHandler = new AssessmentDataHandler(context);
+            assessmentDataHandler.saveContent(assessmentResultPojo.getAssessment_id()+"",gson.toJson(assessmentResultPojo));
         }
         return null;
     }
