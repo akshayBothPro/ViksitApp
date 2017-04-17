@@ -88,8 +88,6 @@ public class LinkedInUtil {
                         });
 
 
-
-
                     }
 
                     @Override

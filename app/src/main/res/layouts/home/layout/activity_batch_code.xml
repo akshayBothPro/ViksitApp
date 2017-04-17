@@ -40,9 +40,15 @@
             android:paddingRight="@dimen/batch_code_edittext_parent_con_horzontal_padding">
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:background="@color/error_bg"
                 android:layout_marginBottom="@dimen/batch_code_edittext_con_bottom_margin"
-                android:orientation="horizontal"
+                >
+                <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+               android:orientation="horizontal"
                 android:weightSum="60">
 
                 <android.support.v7.widget.AppCompatEditText
@@ -93,6 +99,20 @@
                     android:textColorHint="@color/hint_color"
                     android:inputType="textPassword" />
 
+            </LinearLayout>
+                <TextView
+                    android:id="@+id/tv_show_error"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/batch_code_edittext_margin"
+                    android:layout_marginStart="@dimen/batch_code_edittext_margin"
+                    android:layout_marginRight="@dimen/batch_code_edittext_margin"
+                    android:layout_marginEnd="@dimen/batch_code_edittext_margin"
+                    android:layout_marginBottom="@dimen/batch_code_edittext_margin"
+                    android:textColor="@color/error_text"
+                    android:textSize="@dimen/p4"
+                    android:visibility="visible"
+                    android:text="Invalid Batch code. Please contact your school administrators"/>
             </LinearLayout>
 
             <Button

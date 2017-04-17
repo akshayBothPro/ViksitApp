@@ -86,7 +86,6 @@ public class CompletedTaskFragment extends Fragment {
             header = (TextView) linearLayout.findViewById(R.id.tv_completed_task_header);
             title = (TextView) linearLayout.findViewById(R.id.tv_completed_task_title);
             verticalRecycler = (RecyclerView) linearLayout.findViewById(R.id.rv_completed_task);
-            remainingTasks = (TextView) linearLayout.findViewById(R.id.tv_remaining_task);
 
             setDummylistData();
             implementActions();
@@ -127,7 +126,6 @@ public class CompletedTaskFragment extends Fragment {
                     }
                 })
         );
-
 
 
     }

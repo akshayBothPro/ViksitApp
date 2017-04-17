@@ -24,19 +24,25 @@
                 android:id="@+id/gg"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:padding="@dimen/asses_card_header_hor_padding"
                 >
+                <RelativeLayout
+                    android:id="@+id/rl_header_con"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="@dimen/asses_card_header_hor_padding"
+                    android:background="@color/selected_circle_color">
                 <TextView
                     android:id="@+id/tv_completed_task_header"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="@dimen/completed_task_header_margin"
+                    android:layout_marginBottom="@dimen/completed_task_recycler_margin"
                     android:paddingLeft="@dimen/completed_task_hor_padding"
                     android:paddingRight="@dimen/completed_task_hor_padding"
                     android:paddingStart="@dimen/completed_task_hor_padding"
                     android:paddingEnd="@dimen/completed_task_hor_padding"
-                    android:text="Risk vs Uncertainity"
+                    android:text="Today's activity"
                     android:textSize="@dimen/p5"
+                    android:textColor="@color/blue_bg_header_color"
                     android:textAllCaps="true"
                     />
                 <TextView
@@ -48,43 +54,29 @@
                     android:paddingRight="@dimen/completed_task_hor_padding"
                     android:paddingStart="@dimen/completed_task_hor_padding"
                     android:paddingEnd="@dimen/completed_task_hor_padding"
-                    android:text="The Concept of Risk"
+                    android:text="7 Tasks Completed"
                     android:textSize="@dimen/h5"
-                    android:textColor="@color/black"
+                    android:textColor="@color/white_color"
                     />
+
+
+                <ImageView
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_alignParentRight="true"
+                    android:layout_alignParentEnd="true"
+                    android:background="@color/white_color"
+                    android:tint="@color/selected_circle_color"
+                    android:layout_alignBottom="@+id/tv_completed_task_title"
+                    android:src="@drawable/ic_circle_tick_24dp"/>
+                </RelativeLayout>
                 <android.support.v7.widget.RecyclerView
                     android:id="@+id/rv_completed_task"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_below="@id/tv_completed_task_title"
-                    android:layout_above="@+id/rl_remaining_task_con"
-                    android:layout_marginTop="@dimen/completed_task_recycler_margin"
-                    android:layout_marginBottom="@dimen/completed_task_recycler_margin"/>
-                <RelativeLayout
-                    android:id="@+id/rl_remaining_task_con"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentBottom="true">
-                    <ImageView
-                        android:id="@+id/iv_remaining_point"
-                        android:layout_width="30dp"
-                        android:layout_height="30dp"
-                        android:layout_centerVertical="true"
-                        android:layout_marginLeft="@dimen/completed_task_hor_padding"
-                        android:layout_marginStart="@dimen/completed_task_hor_padding"
-                        android:layout_marginRight="@dimen/completed_task_recycler_margin"
-                        android:layout_marginEnd="@dimen/completed_task_recycler_margin"
-                        android:src="@drawable/unselected_circle_indicator"/>
-                    <TextView
-                        android:id="@+id/tv_remaining_task"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_centerVertical="true"
-                        android:layout_toRightOf="@+id/iv_remaining_point"
-                        android:text="2 more remaining tasks"
-                        android:textColor="@color/hint_color"
-                        android:textSize="@dimen/p5"/>
-                </RelativeLayout>
+                    android:layout_below="@id/rl_header_con"
+                    android:padding="@dimen/asses_card_header_hor_padding"/>
+
 
             </RelativeLayout>
         </android.support.v7.widget.CardView>

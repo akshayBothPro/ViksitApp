@@ -33,6 +33,8 @@ public class CompletedTaskTimeLineAdapter extends RecyclerView.Adapter<Completed
     private ArrayList<CompletedTask> mFeedList;
     private Context mContext;
     private LayoutInflater mLayoutInflater;
+    private int countCompleted =0;
+    private int countUnCompleted =0;
 
     public CompletedTaskTimeLineAdapter(Context mContext, ArrayList<CompletedTask> feedList) {
         this.mFeedList = feedList;
@@ -59,10 +61,9 @@ public class CompletedTaskTimeLineAdapter extends RecyclerView.Adapter<Completed
 
         CompletedTask timeLineModel = mFeedList.get(position);
 
-        if(timeLineModel.getCompleted()) {
+       /* if(timeLineModel.getCompleted()) {
             if(timeLineModel.getType().equalsIgnoreCase("challenge")){
                 holder.mTimelineView.setMarker(mContext.getResources().getDrawable(R.mipmap.ic_challenge));
-
                 Drawable drawable = mContext.getResources().getDrawable(R.mipmap.ic_challenge);
                 drawable.setColorFilter(new PorterDuffColorFilter(mContext.getResources().getColor(R.color.selected_circle_color),PorterDuff.Mode.SRC_IN));
             } else if(timeLineModel.getType().equalsIgnoreCase("video")){
@@ -72,22 +73,48 @@ public class CompletedTaskTimeLineAdapter extends RecyclerView.Adapter<Completed
             } else {
                 holder.mTimelineView.setMarker(mContext.getResources().getDrawable(R.drawable.selected_circle_indicator));
             }
-        } else if(!timeLineModel.getCompleted()){
-            if(timeLineModel.getType().equalsIgnoreCase("challenge")){
-                holder.mTimelineView.setMarker(mContext.getResources().getDrawable(R.mipmap.ic_challenge));
-                Drawable drawable = mContext.getResources().getDrawable(R.mipmap.ic_challenge);
-                drawable.setColorFilter(new PorterDuffColorFilter(mContext.getResources().getColor(R.color.unselected_circle_color),PorterDuff.Mode.SRC_IN));
-            } else if(timeLineModel.getType().equalsIgnoreCase("video")){
-                holder.mTimelineView.setMarker(mContext.getResources().getDrawable(R.mipmap.ic_play_circle_outline_white_24dp));
-                Drawable drawable = mContext.getResources().getDrawable(R.mipmap.ic_play_circle_outline_white_24dp);
-                drawable.setColorFilter(new PorterDuffColorFilter(mContext.getResources().getColor(R.color.unselected_circle_color),PorterDuff.Mode.SRC_IN));
-            } else {
+        } else {
                 holder.mTimelineView.setMarker(mContext.getResources().getDrawable(R.drawable.unselected_circle_indicator));
-            }
-        }
+        }*/
 
-        holder.time.setText(timeLineModel.getTime());
-        holder.mMessage.setText(timeLineModel.getDescription());
+       /* holder.time.setText(timeLineModel.getTime());
+        holder.mMessage.setText(timeLineModel.getDescription());*/
+
+
+       if(timeLineModel.getCompleted()){
+           countCompleted++;
+
+           if(countCompleted < 5) {
+               if (timeLineModel.getType().equalsIgnoreCase("challenge")) {
+
+                   holder.mTimelineView.setMarker(mContext.getResources().getDrawable(R.mipmap.ic_challenge));
+                   Drawable drawable = mContext.getResources().getDrawable(R.mipmap.ic_challenge);
+                   drawable.setColorFilter(new PorterDuffColorFilter(mContext.getResources().getColor(R.color.selected_circle_color), PorterDuff.Mode.SRC_IN));
+               } else if (timeLineModel.getType().equalsIgnoreCase("video")) {
+                   holder.mTimelineView.setMarker(mContext.getResources().getDrawable(R.mipmap.ic_play_circle_outline_white_24dp));
+                   Drawable drawable = mContext.getResources().getDrawable(R.mipmap.ic_play_circle_outline_white_24dp);
+                   drawable.setColorFilter(new PorterDuffColorFilter(mContext.getResources().getColor(R.color.selected_circle_color), PorterDuff.Mode.SRC_IN));
+               }  else if (timeLineModel.getType().equalsIgnoreCase("presentation")) {
+                   holder.mTimelineView.setMarker(mContext.getResources().getDrawable(R.mipmap.ic_play_circle_outline_white_24dp));
+                   Drawable drawable = mContext.getResources().getDrawable(R.mipmap.ic_play_circle_outline_white_24dp);
+                   drawable.setColorFilter(new PorterDuffColorFilter(mContext.getResources().getColor(R.color.selected_circle_color), PorterDuff.Mode.SRC_IN));
+               }
+
+
+               holder.mMessage.setText(timeLineModel.getDescription());
+               holder.time.setText(timeLineModel.getTime());
+           } else if(countCompleted == 5){
+               holder.mTimelineView.setMarker(mContext.getResources().getDrawable(R.drawable.selected_circle_indicator));
+               holder.mMessage.setText("+" + (Integer.toString(countCompleted-4)) + "more");
+           }
+
+
+       } else if(!timeLineModel.getCompleted()){
+           countUnCompleted++;
+       } else if(position == getItemCount()-1){
+           holder.mTimelineView.setMarker(mContext.getResources().getDrawable(R.drawable.unselected_circle_indicator));
+           holder.mMessage.setText(Integer.toString(countUnCompleted) + " tasks remaining for the day");
+       }
     }
 
     @Override
