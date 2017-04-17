@@ -37,6 +37,7 @@ import java.util.concurrent.ExecutionException;
 
 import me.itangqi.waveloadingview.WaveLoadingView;
 import pro.viksit.com.viksit.R;
+import pro.viksit.com.viksit.assessment.adapter.DialogTotalTimer;
 import pro.viksit.com.viksit.util.LockableViewPager;
 import pro.viksit.com.viksit.assessment.adapter.AssessmentAdapter;
 import pro.viksit.com.viksit.assessment.adapter.AssessmentTotalTimer;
@@ -63,7 +64,8 @@ public class AssessmentActivity extends AppCompatActivity implements View.OnClic
     public BottomSheetBehavior mBottomSheetBehavior1;
     private RelativeLayout bottom_buttons,close_layout;
     private RecyclerView questionListRecycler;
-    private AssessmentTotalTimer totalTimer,dialogtimer;
+    private AssessmentTotalTimer totalTimer;
+    private DialogTotalTimer dialogtimer;
     private Questiontimer questiontimer;
     private ProgressBar progress;
     public WaveLoadingView mWaveLoadingView;
@@ -401,7 +403,7 @@ public class AssessmentActivity extends AppCompatActivity implements View.OnClic
         TextView time = (TextView)  dialog.getCustomView().findViewById(R.id.time);
         TextView unanswered = (TextView)  dialog.getCustomView().findViewById(R.id.unanswered);
         unanswered.setText(checkUnanswered()+"");
-        dialogtimer = new AssessmentTotalTimer(this,time,remaining_time,1000);
+        dialogtimer = new DialogTotalTimer(this,time,remaining_time,1000);
         dialogtimer.start();
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
