@@ -3,8 +3,10 @@ package pro.viksit.com.viksit.home.activity;
 import android.Manifest;
 import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
+import android.net.ConnectivityManager;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.ActivityCompat;
@@ -19,6 +21,7 @@ import pro.viksit.com.viksit.R;
 import pro.viksit.com.viksit.challenge.activity.LeaderBoardActivity;
 import pro.viksit.com.viksit.dashboard.activity.DashboardActivity;
 import pro.viksit.com.viksit.dashboard.activity.NotificationActivity;
+import pro.viksit.com.viksit.recievers.NetworkChangeReceiver;
 import pro.viksit.com.viksit.role.activity.ModuleActivity;
 import pro.viksit.com.viksit.role.activity.RoleActivity;
 import pro.viksit.com.viksit.role.activity.RoleDepthActivity;
@@ -46,7 +49,8 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
         if (!hasPermissions(this, PERMISSIONS)) {
             ActivityCompat.requestPermissions(this, PERMISSIONS, PERMISSION_ALL);
         }
-
+        registerReceiver(new NetworkChangeReceiver(),
+                new IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION));
         icon = (ImageView) findViewById(R.id.iv_app_icon);
         talentify = (TextView) findViewById(R.id.tv_talentify);
         getStarted = (Button) findViewById(R.id.btn_get_started);

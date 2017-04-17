@@ -68,6 +68,15 @@
         <activity android:name=".dashboard.activity.MyProfileActivity" />
         <activity android:name=".role.activity.RoleSpecificActivity" />
         <activity android:name=".role.activity.PracticeCompletionActivity"></activity>
+        <receiver
+            android:name=".recievers.NetworkChangeReceiver"
+            android:enabled="true"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
+                <action android:name="android.net.wifi.WIFI_STATE_CHANGED" />
+            </intent-filter>
+        </receiver>
     </application>
 
 </manifest>

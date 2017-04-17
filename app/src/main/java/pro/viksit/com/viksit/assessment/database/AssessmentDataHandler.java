@@ -7,9 +7,14 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.os.Environment;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonSyntaxException;
+
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
+
+import pro.viksit.com.viksit.assessment.pojo.AssessmentResultPojo;
 
 /**
  * Created by Feroz on 17-04-2017.
@@ -88,17 +93,23 @@ public class AssessmentDataHandler extends SQLiteOpenHelper {
     }
 
 
-    public List<String> getAllContent() {
-        List<String> ppt_ids = new ArrayList<String>();
+    public List<AssessmentResultPojo> getAllContent() {
+        List<AssessmentResultPojo> assessmentResultPojos= new ArrayList<>();
         String selectQuery = "SELECT  * FROM " + TABLE;
         SQLiteDatabase db = this.getWritableDatabase();
         Cursor cursor = db.rawQuery(selectQuery, null);
         if (cursor.moveToFirst()) {
             do {
-                ppt_ids.add(cursor.getString(0));
+                try {
+                    assessmentResultPojos.add(new Gson().fromJson(cursor.getString(1), AssessmentResultPojo.class));
+                }catch (JsonSyntaxException jse){
+                    jse.printStackTrace();
+                }catch (Exception e){
+                    e.printStackTrace();
+                }
             } while (cursor.moveToNext());
         }
-        return ppt_ids;
+        return assessmentResultPojos;
     }
 
     @Override
