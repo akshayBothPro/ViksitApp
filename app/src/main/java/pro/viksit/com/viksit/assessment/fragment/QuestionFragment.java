@@ -28,6 +28,7 @@ import pro.viksit.com.viksit.assessment.pojo.Option;
 import pro.viksit.com.viksit.assessment.pojo.OptionPOJO;
 import pro.viksit.com.viksit.assessment.pojo.Question;
 import pro.viksit.com.viksit.assessment.pojo.QuestionPOJO;
+import pro.viksit.com.viksit.assessment.pojo.QuestionResult;
 
 /**
  * Created by Feroz on 20-03-2017.
@@ -105,7 +106,7 @@ public class QuestionFragment extends Fragment {
                             );
                             linearLayout.setBackground(getResources().getDrawable(R.drawable.select_option_bg));
                             if(((AssessmentActivity)getActivity()).lockableViewPager.getCurrentItem() != ((AssessmentActivity)getActivity()).lockableViewPager.getAdapter().getCount()-1){
-                                ((AssessmentActivity)getActivity()).setResult(questionPOJO.getId(),option.getId());
+                                ((AssessmentActivity)getActivity()).setResult(questionPOJO.getId(),questionPOJO.getId(),((AssessmentActivity)getActivity()).question_time_taken);
                                 int position = ((AssessmentActivity)getActivity()).lockableViewPager.getCurrentItem();
                                 ((AssessmentActivity)getActivity()).lockableViewPager.setCurrentItem(((AssessmentActivity)getActivity()).lockableViewPager.getCurrentItem()+1);
                                 ((AssessmentActivity)getActivity()).checkRecylclerIconChange(position,questionPOJO.getId());

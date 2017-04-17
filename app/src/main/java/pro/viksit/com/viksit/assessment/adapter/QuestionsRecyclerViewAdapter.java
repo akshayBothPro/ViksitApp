@@ -3,6 +3,7 @@ package pro.viksit.com.viksit.assessment.adapter;
 import android.content.Context;
 import android.graphics.PorterDuff;
 import android.graphics.drawable.Drawable;
+import android.support.design.widget.BottomSheetBehavior;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.RecyclerView;
 import android.text.Html;
@@ -86,6 +87,7 @@ public class QuestionsRecyclerViewAdapter extends  RecyclerView.Adapter<Question
         @Override
         public void onClick(View view) {
             System.out.println("Call ho gaya");
+            assessmentActivity.mBottomSheetBehavior1.setState(BottomSheetBehavior.STATE_COLLAPSED);
             lockableViewPager.setCurrentItem(getAdapterPosition());
         }
 

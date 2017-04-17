@@ -11,6 +11,7 @@ import android.view.ViewGroup;
 
 import java.util.List;
 
+import pro.viksit.com.viksit.assessment.fragment.EndAssessmentFragment;
 import pro.viksit.com.viksit.assessment.fragment.QuestionFragment;
 import pro.viksit.com.viksit.assessment.pojo.Question;
 import pro.viksit.com.viksit.assessment.pojo.QuestionPOJO;
@@ -30,18 +31,23 @@ public class AssessmentAdapter extends FragmentStatePagerAdapter {
 
     @Override
     public Fragment getItem(int position) {
-        Fragment fragment = new QuestionFragment();
-        final Bundle bundle = new Bundle();
-        bundle.putSerializable(QuestionFragment.GET_QUESTION,questionList.get(position));
-        bundle.putInt(QuestionFragment.POSITION,position);
-        bundle.putInt(QuestionFragment.TOTALCOUNT,questionList.size());
-        fragment.setArguments(bundle);
+        Fragment fragment = null;
+        if(position != questionList.size()) {
+            fragment = new QuestionFragment();
+            final Bundle bundle = new Bundle();
+            bundle.putSerializable(QuestionFragment.GET_QUESTION,questionList.get(position));
+            bundle.putInt(QuestionFragment.POSITION,position);
+            bundle.putInt(QuestionFragment.TOTALCOUNT,questionList.size());
+            fragment.setArguments(bundle);
+        }        else
+            fragment = new EndAssessmentFragment();
+
         return fragment;
     }
 
     @Override
     public int getCount() {
-        return questionList.size();
+        return questionList.size()+1;
     }
 
     @Override

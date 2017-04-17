@@ -7,6 +7,8 @@ import android.widget.TextView;
 
 import java.util.Date;
 
+import pro.viksit.com.viksit.assessment.activity.AssessmentActivity;
+
 /**
  * Created by Feroz on 14-04-2017.
  */
@@ -25,6 +27,7 @@ public class AssessmentTotalTimer extends CountDownTimer {
 
     @Override
     public void onTick(long millisUntilFinished) {
+        ((AssessmentActivity)context).remaining_time = millisUntilFinished;
         int seconds = (int) ((millisUntilFinished) / 1000) % 60 ;
         int minutes = (int) ((( millisUntilFinished) / (1000*60)) % 60);
         int hours   = (int) (((millisUntilFinished) / (1000*60*60)) % 24);

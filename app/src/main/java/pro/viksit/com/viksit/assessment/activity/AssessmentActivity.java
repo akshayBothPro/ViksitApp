@@ -1,6 +1,7 @@
 package pro.viksit.com.viksit.assessment.activity;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.graphics.PorterDuff;
@@ -18,16 +19,21 @@ import android.util.Log;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
+import android.view.animation.BounceInterpolator;
+import android.view.animation.DecelerateInterpolator;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.eftimoff.viewpagertransformers.RotateUpTransformer;
 import com.google.gson.Gson;
 
+import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.concurrent.ExecutionException;
 
 import me.itangqi.waveloadingview.WaveLoadingView;
 import pro.viksit.com.viksit.R;
@@ -37,31 +43,29 @@ import pro.viksit.com.viksit.assessment.adapter.AssessmentTotalTimer;
 import pro.viksit.com.viksit.assessment.adapter.QuestionsRecyclerViewAdapter;
 import pro.viksit.com.viksit.assessment.adapter.Questiontimer;
 import pro.viksit.com.viksit.assessment.async.FetchAssessmentData;
+import pro.viksit.com.viksit.assessment.async.SaveAssessmentData;
+import pro.viksit.com.viksit.assessment.fragment.EndAssessmentFragment;
 import pro.viksit.com.viksit.assessment.fragment.QuestionFragment;
 import pro.viksit.com.viksit.assessment.pojo.AssessmentPOJO;
 import pro.viksit.com.viksit.assessment.pojo.AssessmentResultPojo;
 import pro.viksit.com.viksit.assessment.pojo.Option;
 import pro.viksit.com.viksit.assessment.pojo.Question;
 import pro.viksit.com.viksit.assessment.pojo.QuestionPOJO;
+import pro.viksit.com.viksit.assessment.pojo.QuestionResult;
+import pro.viksit.com.viksit.assessment.util.FixedSpeedScroller;
 import pro.viksit.com.viksit.role.adapter.RoleVerticalRecyclerViewAdapter;
 import pro.viksit.com.viksit.role.pojo.Role;
 
 public class AssessmentActivity extends AppCompatActivity implements View.OnClickListener {
 
-    private ArrayList<Question> questionArrayList;
+
+
     public LockableViewPager lockableViewPager;
-
     private AssessmentAdapter assessmentAdapter;
-    private BottomSheetBehavior bottomSheetBehavior;
-    private Button jump_to;
-    private boolean flag;
-    private ArrayList<Role> roles;
-
-
     private ImageView toolbar_close,close_bottomsheet;
     private TextView correctanswer,timer;
     private Button prev,next,view_all;
-    private BottomSheetBehavior mBottomSheetBehavior1;
+    public BottomSheetBehavior mBottomSheetBehavior1;
     private RelativeLayout bottom_buttons,close_layout;
     private RecyclerView questionListRecycler;
     Animation animFadeOut,animFadeIn,animFadeOut1,animFadeIn1;
@@ -74,8 +78,8 @@ public class AssessmentActivity extends AppCompatActivity implements View.OnClic
     private AssessmentResultPojo assessmentResultPojo;
     public final static String TAG = "AssessmentActivity";
     private SharedPreferences sharedpreferences;
-
-
+    public long remaining_time=0;
+    public long question_time_taken =0;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -97,11 +101,56 @@ public class AssessmentActivity extends AppCompatActivity implements View.OnClic
         sharedpreferences = getSharedPreferences(getResources().getString(R.string.shared_preference_key), Context.MODE_PRIVATE);
         questionListRecycler = (RecyclerView) findViewById(R.id.recyclerView);
         //questionListRecycler.setVisibility(View.GONE);
-        new FetchAssessmentData(this,this,progress,1858,10195,lockableViewPager,assessmentAdapter,getSupportFragmentManager(),totalTimer,questiontimer,timer,questionListRecycler,questionadapter,sharedpreferences).execute();
+        try {
+            String jsonresponse = new FetchAssessmentData(this,progress,1858,10195).execute().get();
+            if (jsonresponse != null && !jsonresponse.equalsIgnoreCase("null")
+                    && !jsonresponse.equalsIgnoreCase("") && !jsonresponse.contains("HTTP Status")
+                    ) {
+                assessmentPOJO =   new Gson().fromJson(jsonresponse, AssessmentPOJO.class);
+                System.out.println("Ass mine -> "+assessmentPOJO.getName());
+                assessmentAdapter = new AssessmentAdapter(this,getSupportFragmentManager(), assessmentPOJO.getQuestions());
+                lockableViewPager.setAdapter(assessmentAdapter);
+                lockableViewPager.setSwipeLocked(true);
+                lockableViewPager.setCurrentItem(0);
+                lockableViewPager.setPageTransformer(true, new RotateUpTransformer());
+                try {
+                    Field mScroller;
+                    mScroller = ViewPager.class.getDeclaredField("mScroller");
+                    mScroller.setAccessible(true);
+                    FixedSpeedScroller scroller = new FixedSpeedScroller(lockableViewPager.getContext(), new DecelerateInterpolator());
+                    // scroller.setFixedDuration(5000);
+                    mScroller.set(lockableViewPager, scroller);
+                } catch (NoSuchFieldException e) {
+                } catch (IllegalArgumentException e) {
+                } catch (IllegalAccessException e) {
+                }
+                setCorrectanswer(assessmentPOJO.getQuestions().size(),true);
+                questionadapter = new QuestionsRecyclerViewAdapter(this,this,lockableViewPager,assessmentPOJO.getQuestions());
+                RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(this);
+                questionListRecycler.setLayoutManager(mLayoutManager);
+                questionListRecycler.setItemAnimator(new DefaultItemAnimator());
+                questionListRecycler.setAdapter(questionadapter);
+                totalTimer = new AssessmentTotalTimer(this,timer,assessmentPOJO.getDurationInMinutes()*60000,1000);
+                totalTimer.start();
+                setQuestionTimer(this,assessmentPOJO.getQuestions().get(0).getDurationInSec() *1000);
+                SharedPreferences.Editor editor = sharedpreferences.edit();
+                editor.putString(AssessmentActivity.TAG+10195, jsonresponse);
+                editor.apply();
+                editor.commit();
+            }else{
+
+            }
+
+
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        } catch (ExecutionException e) {
+            e.printStackTrace();
+        }
         assessmentResultPojo = new AssessmentResultPojo();
         assessmentResultPojo.setUser_id(1858);
         assessmentResultPojo.setAssessment_id(10195);
-        assessmentResultPojo.setOptions(new HashMap<Integer, Integer>());
+        assessmentResultPojo.setOptions(new HashMap<Integer, QuestionResult>());
         correctanswer.setAllCaps(true);
         view_all.setOnClickListener(this);
         close_bottomsheet.setOnClickListener(this);
@@ -127,11 +176,29 @@ public class AssessmentActivity extends AppCompatActivity implements View.OnClic
 
             @Override
             public void onPageSelected(int position) {
-                setCorrectanswer(assessmentResultPojo.getOptions().size(),false);
-                String time=((TextView) ((QuestionFragment)lockableViewPager.getAdapter().instantiateItem(lockableViewPager,lockableViewPager.getCurrentItem())).getView().findViewById(R.id.hiddentext)).getText().toString();
-               System.out.println("Time question -> "+time);
+                if(position != assessmentPOJO.getQuestions().size()) {
+                    setCorrectanswer(assessmentResultPojo.getOptions().size(), false);
+                    String time = ((TextView) ((QuestionFragment) lockableViewPager.getAdapter().instantiateItem(lockableViewPager, lockableViewPager.getCurrentItem())).getView().findViewById(R.id.hiddentext)).getText().toString();
+                    System.out.println("Time question -> " + time);
+                    setQuestionTimer(AssessmentActivity.this, Integer.parseInt(time) * 1000);
+                    if(correctanswer.getVisibility()== View.INVISIBLE){
+                        correctanswer.setVisibility(View.VISIBLE);
+                    }
+                    if(timer.getVisibility()== View.INVISIBLE){
+                        setTotalTimer(remaining_time,timer);
+                        timer.setVisibility(View.VISIBLE);
 
-                setQuestionTimer(AssessmentActivity.this,Integer.parseInt(time)*1000);
+                    }
+                }else{
+                    TextView unanswered = ((TextView) ((EndAssessmentFragment) lockableViewPager.getAdapter().instantiateItem(lockableViewPager, lockableViewPager.getCurrentItem())).getView().findViewById(R.id.unanswered));
+                    TextView time = ((TextView) ((EndAssessmentFragment) lockableViewPager.getAdapter().instantiateItem(lockableViewPager, lockableViewPager.getCurrentItem())).getView().findViewById(R.id.time));
+
+                    unanswered.setText(checkUnanswered()+"");
+                    setQuestionTimer(AssessmentActivity.this,(int)remaining_time);
+                    correctanswer.setVisibility(View.INVISIBLE);
+                    timer.setVisibility(View.INVISIBLE);
+                    setTotalTimer(remaining_time,time);
+                }
                 if(position !=0){
                     prev.setVisibility(View.VISIBLE);
                 }else{
@@ -190,80 +257,6 @@ public class AssessmentActivity extends AppCompatActivity implements View.OnClic
 
             }
         });
-        /*lockableViewPager = (LockableViewPager) findViewById(R.id.viewpager);
-        questionArrayList = new ArrayList<>();
-        setupData();
-
-        WaveLoadingView mWaveLoadingView = (WaveLoadingView) findViewById(R.id.waveLoadingView);
-        mWaveLoadingView.setAnimDuration(10000000);
-        mWaveLoadingView.startAnimation();
-
-        setRoleData();
-        RoleVerticalRecyclerViewAdapter roleVerticalRecyclerViewAdapter = new RoleVerticalRecyclerViewAdapter(roles,getBaseContext());
-        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
-        linearLayoutManager.setAutoMeasureEnabled(true);
-        verticalRecycler.setLayoutManager(linearLayoutManager);
-        verticalRecycler.setItemAnimator(new DefaultItemAnimator());
-        verticalRecycler.setAdapter(roleVerticalRecyclerViewAdapter);
-
-
-        assessmentAdapter = new AssessmentAdapter(getSupportFragmentManager(), questionArrayList);
-        lockableViewPager.setAdapter(assessmentAdapter);
-        lockableViewPager.setSwipeLocked(true);
-        lockableViewPager.setCurrentItem(1);
-       bottomSheetBehavior = BottomSheetBehavior.from(findViewById(R.id.bottom_sheet)) ;
-        jump_to = (Button) findViewById(R.id.jump_to);
-        bottomSheetBehavior.setBottomSheetCallback(new BottomSheetBehavior.BottomSheetCallback() {
-            @Override
-            public void onStateChanged(View bottomSheet, int newState) {
-
-                if (newState == BottomSheetBehavior.STATE_EXPANDED) {
-                } else {
-
-                }
-
-                // Check Logs to see how bottom sheets behaves
-                switch (newState) {
-                    case BottomSheetBehavior.STATE_COLLAPSED:
-                        Log.e("Bottom Sheet Behaviour", "STATE_COLLAPSED");
-                        break;
-                    case BottomSheetBehavior.STATE_DRAGGING:
-                        Log.e("Bottom Sheet Behaviour", "STATE_DRAGGING");
-                        break;
-                    case BottomSheetBehavior.STATE_EXPANDED:
-                        Log.e("Bottom Sheet Behaviour", "STATE_EXPANDED");
-                        break;
-                    case BottomSheetBehavior.STATE_HIDDEN:
-                        Log.e("Bottom Sheet Behaviour", "STATE_HIDDEN");
-                        break;
-                    case BottomSheetBehavior.STATE_SETTLING:
-                        Log.e("Bottom Sheet Behaviour", "STATE_SETTLING");
-                        break;
-                }
-            }
-
-
-            @Override
-            public void onSlide(View bottomSheet, float slideOffset) {
-
-            }
-        });
-
-
-        jump_to.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if(!flag) {
-                    bottomSheetBehavior.setState(BottomSheetBehavior.STATE_EXPANDED);
-                    flag = true;
-
-                }else {
-                    flag = false;
-                    bottomSheetBehavior.setState(BottomSheetBehavior.STATE_COLLAPSED);
-                }
-            }
-        });
-*/
 
         next.setOnClickListener(this);
         prev.setOnClickListener(this);
@@ -389,11 +382,13 @@ public class AssessmentActivity extends AppCompatActivity implements View.OnClic
 
 
 
-    public void setResult(Integer question_id,Integer option_id){
+    public void setResult(Integer question_id,Integer option_id,Long duration){
         if(assessmentResultPojo.getOptions().containsKey(question_id)){
-            assessmentResultPojo.getOptions().put(assessmentResultPojo.getOptions().get(question_id),option_id);
+            QuestionResult questionResult = new QuestionResult(question_id,option_id,duration);
+            assessmentResultPojo.getOptions().put(assessmentResultPojo.getOptions().get(question_id).getQuestion_id(),questionResult);
         }else{
-            assessmentResultPojo.getOptions().put(question_id,option_id);
+            QuestionResult questionResult = new QuestionResult(question_id,option_id,duration);
+            assessmentResultPojo.getOptions().put(question_id,questionResult);
         }
     }
 
@@ -405,14 +400,14 @@ public class AssessmentActivity extends AppCompatActivity implements View.OnClic
 
     public void setCorrectanswer(Integer nos,Boolean flag){
         if(flag)
-        correctanswer.setText("0 of "+nos+" ANSWER");
+        correctanswer.setText("0 of "+(nos-1)+" ANSWER");
         else
-            correctanswer.setText(nos+" of "+lockableViewPager.getAdapter().getCount()+" ANSWER");
+            correctanswer.setText(nos+" of "+(lockableViewPager.getAdapter().getCount()-1)+" ANSWER");
 
     }
 
 
-    public void setQuestionTimer(Context context,int duration ){
+    public void setQuestionTimer(Context context,long duration ){
         if(questiontimer != null){
             questiontimer.cancel();
             questiontimer=null;
@@ -421,6 +416,15 @@ public class AssessmentActivity extends AppCompatActivity implements View.OnClic
         questiontimer.start();
     }
 
+
+    public void setTotalTimer(long time,TextView tx){
+        if(totalTimer != null){
+            totalTimer.cancel();
+            totalTimer=null;
+        }
+        totalTimer = new AssessmentTotalTimer(this,tx,time,1000);
+        totalTimer.start();
+    }
     public boolean checkSelectedOption(int option_id){
         if(assessmentResultPojo.getOptions().size() >0){
             return assessmentResultPojo.getOptions().containsValue(option_id);
@@ -440,11 +444,24 @@ public class AssessmentActivity extends AppCompatActivity implements View.OnClic
     public void checkRecylclerIconChange(int position,int question){
         questionListRecycler.setVisibility(View.VISIBLE);
         System.out.println("position CXCXX "+position);
-
-       // TextView tx =(TextView)questionListRecycler.getLayoutManager().findViewByPosition(position).findViewById(R.id.tv_question_text);
-        //System.out.println("TXXX "+tx.getText().toString());
-
         questionListRecycler.getAdapter().notifyItemChanged(position);
+    }
+
+    public int checkUnanswered(){
+        return (assessmentPOJO.getQuestions().size() - assessmentResultPojo.getOptions().size())+1;
+    }
+
+    public void submitAssessment(){
+        if(questiontimer != null){
+            questiontimer.cancel();
+            questiontimer=null;
+        }
+        if(totalTimer != null){
+            totalTimer.cancel();
+            totalTimer=null;
+        }
+        assessmentResultPojo.setDuration(remaining_time);
+        new SaveAssessmentData(this,progress,assessmentPOJO,assessmentResultPojo).execute();
     }
 
 }

@@ -45,38 +45,15 @@ public class FetchAssessmentData extends AsyncTask<String, Integer, String> {
     private Context context;
     private ProgressBar progress;
     private int user_id,assessment_id;
-    private final Gson gson = new Gson();
-    private LockableViewPager lockableViewPager;
-    private AssessmentAdapter assessmentAdapter;
-    private FragmentManager fm;
-    private AssessmentTotalTimer totalTimer;
-    private Questiontimer questiontimer;
 
-    private TextView timer;
-    private RecyclerView verticalRecycler;
-    private QuestionsRecyclerViewAdapter questionadapter;
-    private AssessmentActivity assessmentActivity;
-    private SharedPreferences sharedpreferences;
+    public FetchAssessmentData(Context context, ProgressBar progress, int user_id, int assessment_id
 
-    public FetchAssessmentData(Context context, AssessmentActivity assessmentActivity, ProgressBar progress, int user_id, int assessment_id,
-                               LockableViewPager lockableViewPager, AssessmentAdapter assessmentAdapter
-                                , FragmentManager fm, AssessmentTotalTimer totalTimer,Questiontimer questiontimer, TextView timer
-                               , RecyclerView verticalRecycler, QuestionsRecyclerViewAdapter questionadapter,SharedPreferences sharedpreferences
                                 ){
         this.context = context;
-        this.assessmentActivity = assessmentActivity;
         this.progress = progress;
         this.user_id = user_id;
         this.assessment_id = assessment_id;
-        this.lockableViewPager = lockableViewPager;
-        this.assessmentAdapter = assessmentAdapter;
-        this.fm = fm;
-        this.totalTimer = totalTimer;
-        this.timer = timer;
-        this.verticalRecycler = verticalRecycler;
-        this.questionadapter = questionadapter;
-        this.questiontimer = questiontimer;
-        this.sharedpreferences = sharedpreferences;
+
     }
 
     @Override
@@ -94,31 +71,7 @@ public class FetchAssessmentData extends AsyncTask<String, Integer, String> {
 
     @Override
     protected void onPostExecute(String jsonresponse) {
-        if (jsonresponse != null && !jsonresponse.equalsIgnoreCase("null")
-                && !jsonresponse.equalsIgnoreCase("") && !jsonresponse.contains("HTTP Status")
-                ) {
-            AssessmentPOJO assessmentPOJO=   gson.fromJson(jsonresponse, AssessmentPOJO.class);
-            System.out.println("Ass mine -> "+assessmentPOJO.getName());
-            assessmentAdapter = new AssessmentAdapter(context,fm, assessmentPOJO.getQuestions());
-            lockableViewPager.setAdapter(assessmentAdapter);
-            lockableViewPager.setSwipeLocked(true);
-            lockableViewPager.setCurrentItem(0);
-            assessmentActivity.setCorrectanswer(assessmentPOJO.getQuestions().size(),true);
-            questionadapter = new QuestionsRecyclerViewAdapter(context,assessmentActivity,lockableViewPager,assessmentPOJO.getQuestions());
-            RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(context);
-            verticalRecycler.setLayoutManager(mLayoutManager);
-            verticalRecycler.setItemAnimator(new DefaultItemAnimator());
-            verticalRecycler.setAdapter(questionadapter);
-            totalTimer = new AssessmentTotalTimer(context,timer,assessmentPOJO.getDurationInMinutes()*60000,1000);
-            totalTimer.start();
-            assessmentActivity.setQuestionTimer(context,assessmentPOJO.getQuestions().get(0).getDurationInSec() *1000);
-            SharedPreferences.Editor editor = sharedpreferences.edit();
-            editor.putString(AssessmentActivity.TAG+assessment_id, jsonresponse);
-            editor.apply();
-            editor.commit();
-        }else{
 
-        }
         progress.setVisibility(View.GONE);
 
     }

@@ -5,6 +5,7 @@ import android.os.CountDownTimer;
 import android.widget.TextView;
 
 import me.itangqi.waveloadingview.WaveLoadingView;
+import pro.viksit.com.viksit.assessment.activity.AssessmentActivity;
 
 /**
  * Created by Feroz on 14-04-2017.
@@ -24,7 +25,7 @@ public class Questiontimer extends CountDownTimer  {
         @Override
     public void onTick(long millisUntilFinished) {
 
-
+            ((AssessmentActivity)context).question_time_taken = millisUntilFinished;
             int progress =(int)((millisUntilFinished *100)/millisInFuture);
             mWaveLoadingView.setProgressValue(progress);
 
