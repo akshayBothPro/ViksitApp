@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <TextView
+        android:id="@+id/tv_practice_item_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/prac_line_bottom_margin"
+        android:maxLines="2"
+        android:ellipsize="end"
+        android:textSize="@dimen/p2"
+        android:textColor="@color/desc_color"
+        android:text="Indroduction to Risk"/>
+    <ProgressBar
+        android:id="@+id/pb_practice_item_progress"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/prac_line_bottom_margin"
+        android:progress="40"
+        android:progressTint="@color/linkedIn_color"
+        style="?android:attr/progressBarStyleHorizontal"/>
+</LinearLayout>

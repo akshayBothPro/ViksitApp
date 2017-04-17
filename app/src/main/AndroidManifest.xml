@@ -65,7 +65,8 @@
         <activity android:name=".dashboard.activity.NoTaskActivity" />
         <activity android:name=".challenge.activity.LeaderBoardActivity" />
         <activity android:name=".dashboard.activity.MyProfileActivity" />
-        <activity android:name=".role.activity.RoleSpecificActivity"></activity>
+        <activity android:name=".role.activity.RoleSpecificActivity" />
+        <activity android:name=".role.activity.PracticeCompletionActivity"></activity>
     </application>
 
 </manifest>

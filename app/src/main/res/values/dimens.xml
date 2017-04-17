@@ -203,4 +203,10 @@
     <dimen name="list_item_image_size">40dp</dimen>
     <dimen name="list_item_rank_right_margin">20dp</dimen>
 
+    <!--Practice Completion Activity Dimension-->
+    <dimen name="prac_con_padding">20dp</dimen>
+    <dimen name="prac_header_bottom_margin">10dp</dimen>
+    <dimen name="prac_line_bottom_margin">10dp</dimen>
+    <dimen name="prac_button_bottom_margin">10dp</dimen>
+
 </resources>

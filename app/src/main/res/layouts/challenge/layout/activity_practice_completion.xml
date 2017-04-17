@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center_horizontal"
+    android:padding="@dimen/prac_con_padding"
+    tools:context="pro.viksit.com.viksit.role.activity.PracticeCompletionActivity">
+    <TextView
+        android:id="@+id/tv_practice_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/prac_header_bottom_margin"
+        android:textSize="@dimen/h4"
+        android:textColor="@color/desc_color"
+        android:text="Practice Session Completed"/>
+    <ImageView
+        android:id="@+id/iv_practice_tick"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:tint="@color/circle_tick"
+        android:layout_marginBottom="@dimen/prac_header_bottom_margin"
+        android:src="@drawable/ic_tick_circle_1"/>
+    <TextView
+        android:id="@+id/tv_practice_subtitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/prac_header_bottom_margin"
+        android:textSize="@dimen/p2"
+        android:textColor="@color/gray"
+        android:text="You made gain in 3 skills"/>
+    <view
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginBottom="@dimen/prac_line_bottom_margin"
+        android:background="@color/progress_bar_bg_color"/>
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/rv_practice_completed"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+    <Button
+        android:id="@+id/btn_review_questions"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/prac_button_bottom_margin"
+        android:layout_marginBottom="@dimen/prac_button_bottom_margin"
+        android:background="@drawable/white_bg_button"
+        android:textColor="@color/theme_color"
+        android:text="do More Practice"/>
+    <Button
+        android:id="@+id/btn_repaeat_assessment"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/prac_button_bottom_margin"
+        android:background="@drawable/signup_btn_shape"
+        android:text="Continue"
+        android:textColor="@color/white_color"/>
+
+</LinearLayout>
