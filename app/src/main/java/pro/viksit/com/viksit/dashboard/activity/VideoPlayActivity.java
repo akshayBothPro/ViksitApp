@@ -14,8 +14,8 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
 import pro.viksit.com.viksit.R;
-import pro.viksit.com.viksit.Util.DisplayUtil;
-import pro.viksit.com.viksit.Util.ImageSaver;
+import pro.viksit.com.viksit.util.DisplayUtil;
+import pro.viksit.com.viksit.util.ImageSaver;
 import pro.viksit.com.viksit.dashboard.thread.VideoSaveThread;
 
 public class VideoPlayActivity extends AppCompatActivity {

@@ -5,10 +5,9 @@ import android.widget.ImageView;
 
 import com.squareup.picasso.Picasso;
 
-import pro.viksit.com.viksit.R;
-import pro.viksit.com.viksit.Util.CircleTransform;
-import pro.viksit.com.viksit.Util.ImageSaver;
-import pro.viksit.com.viksit.Util.SaveImageAsync;
+import pro.viksit.com.viksit.util.CircleTransform;
+import pro.viksit.com.viksit.util.ImageSaver;
+import pro.viksit.com.viksit.util.SaveImageAsync;
 
 /**
  * Created by Feroz on 11-04-2017.

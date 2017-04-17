@@ -13,13 +13,11 @@ import android.view.ViewGroup;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import pro.viksit.com.viksit.R;
-import pro.viksit.com.viksit.Util.LockableViewPager;
+import pro.viksit.com.viksit.util.LockableViewPager;
 import pro.viksit.com.viksit.assessment.activity.AssessmentActivity;
-import pro.viksit.com.viksit.assessment.pojo.Question;
 import pro.viksit.com.viksit.assessment.pojo.QuestionPOJO;
 
 /**

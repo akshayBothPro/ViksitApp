@@ -2,9 +2,9 @@ package pro.viksit.com.viksit.dashboard.thread;
 
 import android.content.Context;
 
-import pro.viksit.com.viksit.Util.DisplayUtil;
-import pro.viksit.com.viksit.Util.ImageSaver;
-import pro.viksit.com.viksit.Util.SaveImageAsync;
+import pro.viksit.com.viksit.util.DisplayUtil;
+import pro.viksit.com.viksit.util.ImageSaver;
+import pro.viksit.com.viksit.util.SaveImageAsync;
 
 /**
  * Created by Feroz on 07-04-2017.

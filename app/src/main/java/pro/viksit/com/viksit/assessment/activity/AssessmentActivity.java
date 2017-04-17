@@ -1,9 +1,8 @@
 package pro.viksit.com.viksit.assessment.activity;
 
 import android.content.Context;
-import android.content.Intent;
+import android.content.DialogInterface;
 import android.content.SharedPreferences;
-import android.graphics.Color;
 import android.graphics.PorterDuff;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
@@ -16,10 +15,11 @@ import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.View;
+import android.view.WindowManager;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
-import android.view.animation.BounceInterpolator;
 import android.view.animation.DecelerateInterpolator;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -27,17 +27,17 @@ import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.afollestad.materialdialogs.MaterialDialog;
 import com.eftimoff.viewpagertransformers.RotateUpTransformer;
 import com.google.gson.Gson;
 
 import java.lang.reflect.Field;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.concurrent.ExecutionException;
 
 import me.itangqi.waveloadingview.WaveLoadingView;
 import pro.viksit.com.viksit.R;
-import pro.viksit.com.viksit.Util.LockableViewPager;
+import pro.viksit.com.viksit.util.LockableViewPager;
 import pro.viksit.com.viksit.assessment.adapter.AssessmentAdapter;
 import pro.viksit.com.viksit.assessment.adapter.AssessmentTotalTimer;
 import pro.viksit.com.viksit.assessment.adapter.QuestionsRecyclerViewAdapter;
@@ -48,13 +48,8 @@ import pro.viksit.com.viksit.assessment.fragment.EndAssessmentFragment;
 import pro.viksit.com.viksit.assessment.fragment.QuestionFragment;
 import pro.viksit.com.viksit.assessment.pojo.AssessmentPOJO;
 import pro.viksit.com.viksit.assessment.pojo.AssessmentResultPojo;
-import pro.viksit.com.viksit.assessment.pojo.Option;
-import pro.viksit.com.viksit.assessment.pojo.Question;
-import pro.viksit.com.viksit.assessment.pojo.QuestionPOJO;
 import pro.viksit.com.viksit.assessment.pojo.QuestionResult;
 import pro.viksit.com.viksit.assessment.util.FixedSpeedScroller;
-import pro.viksit.com.viksit.role.adapter.RoleVerticalRecyclerViewAdapter;
-import pro.viksit.com.viksit.role.pojo.Role;
 
 public class AssessmentActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -68,8 +63,7 @@ public class AssessmentActivity extends AppCompatActivity implements View.OnClic
     public BottomSheetBehavior mBottomSheetBehavior1;
     private RelativeLayout bottom_buttons,close_layout;
     private RecyclerView questionListRecycler;
-    Animation animFadeOut,animFadeIn,animFadeOut1,animFadeIn1;
-    private AssessmentTotalTimer totalTimer;
+    private AssessmentTotalTimer totalTimer,dialogtimer;
     private Questiontimer questiontimer;
     private ProgressBar progress;
     public WaveLoadingView mWaveLoadingView;
@@ -80,11 +74,17 @@ public class AssessmentActivity extends AppCompatActivity implements View.OnClic
     private SharedPreferences sharedpreferences;
     public long remaining_time=0;
     public long question_time_taken =0;
+    public MaterialDialog dialog;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_assessment);
-
+        dialog = new MaterialDialog.Builder(this)
+                .customView(R.layout.activity_end_assessment, false)
+                .build();
+       getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
+       getWindow().addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
         toolbar_close = (ImageView) findViewById(R.id.toolbar_close);
         close_bottomsheet = (ImageView) findViewById(R.id.close_bottomsheet);
         correctanswer = (TextView) findViewById(R.id.correctanswer);
@@ -137,6 +137,7 @@ public class AssessmentActivity extends AppCompatActivity implements View.OnClic
                 editor.putString(AssessmentActivity.TAG+10195, jsonresponse);
                 editor.apply();
                 editor.commit();
+
             }else{
 
             }
@@ -155,16 +156,8 @@ public class AssessmentActivity extends AppCompatActivity implements View.OnClic
         view_all.setOnClickListener(this);
         close_bottomsheet.setOnClickListener(this);
 
-        close_layout.setVisibility(View.GONE);
-        animFadeOut = AnimationUtils.loadAnimation(getApplicationContext(),
-                R.anim.fade_out);
-        animFadeIn = AnimationUtils.loadAnimation(getApplicationContext(),
-                R.anim.fade_in);
-        animFadeOut1 = AnimationUtils.loadAnimation(getApplicationContext(),
-                R.anim.fade_out);
-        animFadeIn1 = AnimationUtils.loadAnimation(getApplicationContext(),
-                R.anim.fade_in);
-        setAnimListner();
+        close_layout.setVisibility(View.INVISIBLE);
+
         setIconColor();
         prev.setVisibility(View.GONE);
 
@@ -234,13 +227,15 @@ public class AssessmentActivity extends AppCompatActivity implements View.OnClic
                         Log.i("BottomSheetCallback", "BottomSheetBehavior.STATE_EXPANDED");
                         bottomSheet.requestLayout();
                         bottomSheet.invalidate();
-                        bottom_buttons.startAnimation(animFadeOut);
+                        bottom_buttons.setVisibility(View.GONE);
+                        close_layout.setVisibility(View.VISIBLE);
 
                         break;
                     case BottomSheetBehavior.STATE_COLLAPSED:
                         Log.i("BottomSheetCallback", "BottomSheetBehavior.STATE_COLLAPSED");
 
-                        close_layout.startAnimation(animFadeOut1);
+                        close_layout.setVisibility(View.INVISIBLE);
+                        bottom_buttons.setVisibility(View.VISIBLE);
 
 
 
@@ -260,7 +255,9 @@ public class AssessmentActivity extends AppCompatActivity implements View.OnClic
 
         next.setOnClickListener(this);
         prev.setOnClickListener(this);
+        setupDialog();
     }
+
 
     private void setIconColor() {
         Drawable[] drawablesprev  =prev.getCompoundDrawables();
@@ -278,80 +275,7 @@ public class AssessmentActivity extends AppCompatActivity implements View.OnClic
         correctanswer.setCompoundDrawablesWithIntrinsicBounds(drawable,null,null,null);
     }
 
-    private void setAnimListner() {
-        animFadeOut.setAnimationListener(new Animation.AnimationListener() {
-            @Override
-            public void onAnimationStart(Animation animation) {
 
-            }
-
-            @Override
-            public void onAnimationEnd(Animation animation) {
-                bottom_buttons.setVisibility(View.GONE);
-                close_layout.startAnimation(animFadeIn);
-            }
-
-            @Override
-            public void onAnimationRepeat(Animation animation) {
-
-            }
-        });
-
-        animFadeIn.setAnimationListener(new Animation.AnimationListener() {
-            @Override
-            public void onAnimationStart(Animation animation) {
-
-            }
-
-            @Override
-            public void onAnimationEnd(Animation animation) {
-                //questionListRecycler.setVisibility(View.VISIBLE);
-                close_layout.setVisibility(View.INVISIBLE);
-            }
-
-            @Override
-            public void onAnimationRepeat(Animation animation) {
-
-            }
-        });
-
-        animFadeOut1.setAnimationListener(new Animation.AnimationListener() {
-            @Override
-            public void onAnimationStart(Animation animation) {
-
-            }
-
-            @Override
-            public void onAnimationEnd(Animation animation) {
-                //questionListRecycler.setVisibility(View.GONE);
-                close_layout.setVisibility(View.INVISIBLE);
-                bottom_buttons.startAnimation(animFadeIn1);
-            }
-
-            @Override
-            public void onAnimationRepeat(Animation animation) {
-
-            }
-        });
-
-        animFadeIn1.setAnimationListener(new Animation.AnimationListener() {
-            @Override
-            public void onAnimationStart(Animation animation) {
-
-            }
-
-            @Override
-            public void onAnimationEnd(Animation animation) {
-                bottom_buttons.setVisibility(View.VISIBLE);
-
-            }
-
-            @Override
-            public void onAnimationRepeat(Animation animation) {
-
-            }
-        });
-    }
 
 
 
@@ -400,7 +324,7 @@ public class AssessmentActivity extends AppCompatActivity implements View.OnClic
 
     public void setCorrectanswer(Integer nos,Boolean flag){
         if(flag)
-        correctanswer.setText("0 of "+(nos-1)+" ANSWER");
+        correctanswer.setText("0 of "+(nos)+" ANSWER");
         else
             correctanswer.setText(nos+" of "+(lockableViewPager.getAdapter().getCount()-1)+" ANSWER");
 
@@ -460,8 +384,82 @@ public class AssessmentActivity extends AppCompatActivity implements View.OnClic
             totalTimer.cancel();
             totalTimer=null;
         }
+        if(dialogtimer != null){
+            dialogtimer.cancel();
+            dialogtimer=null;
+        }
         assessmentResultPojo.setDuration(remaining_time);
+
         new SaveAssessmentData(this,progress,assessmentPOJO,assessmentResultPojo).execute();
     }
 
+
+    private void setupDialog() {
+       TextView desc =(TextView) dialog.getCustomView().findViewById(R.id.description);
+        desc.setText("Are you sure you want to submit ?");
+        Button btn = (Button) dialog.getCustomView().findViewById(R.id.submit);
+        TextView time = (TextView)  dialog.getCustomView().findViewById(R.id.time);
+        TextView unanswered = (TextView)  dialog.getCustomView().findViewById(R.id.unanswered);
+        unanswered.setText(checkUnanswered()+"");
+        dialogtimer = new AssessmentTotalTimer(this,time,remaining_time,1000);
+        dialogtimer.start();
+        btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(dialogtimer != null){
+                    dialogtimer.cancel();
+                    dialogtimer=null;
+                }
+                submitAssessment();
+            }
+        });
+        dialog.setOnDismissListener(new DialogInterface.OnDismissListener() {
+            @Override
+            public void onDismiss(DialogInterface dialog) {
+                if(dialogtimer != null){
+                    dialogtimer.cancel();
+                    dialogtimer=null;
+                }
+            }
+        });
+    }
+
+    public void showDialog(){
+        setupDialog();
+        dialog.show();
+    }
+
+
+    /*@Override
+    public void onBackPressed() {
+
+        showDialog();
+    }*/
+
+
+
+
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        Log.d("GGGG", "The onPause() event");
+        getWindow().clearFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
+        getWindow().clearFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        submitAssessment();
+    }
+
+    /** Called when the activity is no longer visible. */
+    @Override
+    protected void onStop() {
+        super.onStop();
+        Log.d("GGGG", "The onStop() event");
+    }
+
+    /** Called just before the activity is destroyed. */
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        Log.d("GGGG", "The onDestroy() event");
+    }
 }

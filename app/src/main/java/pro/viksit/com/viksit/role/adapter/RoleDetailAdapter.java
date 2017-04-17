@@ -3,13 +3,11 @@ package pro.viksit.com.viksit.role.adapter;
 import android.content.Context;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
-import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.squareup.picasso.Picasso;
@@ -17,7 +15,7 @@ import com.squareup.picasso.Picasso;
 import java.util.List;
 
 import pro.viksit.com.viksit.R;
-import pro.viksit.com.viksit.Util.CircleTransform;
+import pro.viksit.com.viksit.util.CircleTransform;
 import pro.viksit.com.viksit.role.pojo.Role;
 
 /**

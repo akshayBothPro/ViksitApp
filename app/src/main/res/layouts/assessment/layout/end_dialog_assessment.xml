@@ -13,7 +13,7 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="You have reached the end of the assessment."
+        android:text="Are you sure you want to submit ?"
         android:textColor="@color/black"
         android:textSize="@dimen/h7"
         android:layout_margin="10dp"

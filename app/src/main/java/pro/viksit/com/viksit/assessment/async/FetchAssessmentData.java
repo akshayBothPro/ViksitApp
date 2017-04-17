@@ -1,17 +1,10 @@
 package pro.viksit.com.viksit.assessment.async;
 
 import android.content.Context;
-import android.content.SharedPreferences;
 import android.os.AsyncTask;
-import android.support.v4.app.FragmentManager;
-import android.support.v7.widget.DefaultItemAnimator;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.ProgressBar;
-import android.widget.TextView;
 
-import com.google.gson.Gson;
 import com.google.gson.JsonSyntaxException;
 
 import org.apache.http.HttpEntity;
@@ -26,16 +19,8 @@ import org.apache.http.util.EntityUtils;
 
 import java.io.IOException;
 
-import me.itangqi.waveloadingview.WaveLoadingView;
 import pro.viksit.com.viksit.R;
-import pro.viksit.com.viksit.Util.LockableViewPager;
-import pro.viksit.com.viksit.assessment.activity.AssessmentActivity;
-import pro.viksit.com.viksit.assessment.adapter.AssessmentAdapter;
-import pro.viksit.com.viksit.assessment.adapter.AssessmentTotalTimer;
-import pro.viksit.com.viksit.assessment.adapter.QuestionsRecyclerViewAdapter;
-import pro.viksit.com.viksit.assessment.adapter.Questiontimer;
-import pro.viksit.com.viksit.assessment.pojo.AssessmentPOJO;
-import pro.viksit.com.viksit.role.adapter.RoleVerticalRecyclerViewAdapter;
+import pro.viksit.com.viksit.util.HttpUtil;
 
 /**
  * Created by Feroz on 14-04-2017.
@@ -77,39 +62,10 @@ public class FetchAssessmentData extends AsyncTask<String, Integer, String> {
     }
 
     private String postData() {
-        HttpClient httpclient = new DefaultHttpClient();
-        System.out.println("4567 ->"+context.getResources().getString(R.string.serverip) + (context.getResources().getString(R.string.assessmenturl)+"/"+user_id+"/"+assessment_id));
-        HttpGet httppost = new HttpGet(context.getResources().getString(R.string.serverip) + (context.getResources().getString(R.string.assessmenturl)+"/"+user_id+"/"+assessment_id));
-        int timeoutConnection = 20000;
-        final HttpParams httpParameters = httpclient.getParams();
-        HttpConnectionParams.setConnectionTimeout(httpParameters, timeoutConnection);
-        HttpConnectionParams.setSoTimeout(httpParameters, 20000);
-
-        String jsonresponse = "";
-        try {
-            // Add your data
-
-            // Execute HTTP Post Request
-            HttpResponse response = httpclient.execute(httppost);
-            HttpEntity httpEntity = response.getEntity();
-            jsonresponse = EntityUtils.toString(httpEntity);
-
-        } catch (ClientProtocolException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-            return "null";
-        } catch (IOException e) {
-            // TODO Auto-generated catch block
-
-            e.printStackTrace();
-            return "null";
-        } catch (JsonSyntaxException jse) {
-            jse.printStackTrace();
-            return "null";
-        }catch (Exception e) {
-            e.printStackTrace();
-            return "null";
-        }
+        HttpUtil httpUtil = new HttpUtil();
+        httpUtil.setType("GET");
+        httpUtil.setUrl(context.getResources().getString(R.string.serverip) + (context.getResources().getString(R.string.assessmenturl)+"/"+user_id+"/"+assessment_id));
+        String jsonresponse = httpUtil.getStringResponse();
         return jsonresponse;
     }
 }

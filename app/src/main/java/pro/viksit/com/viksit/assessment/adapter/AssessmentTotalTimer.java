@@ -51,5 +51,6 @@ public class AssessmentTotalTimer extends CountDownTimer {
     @Override
     public void onFinish() {
         timer.setText("times up");
+        ((AssessmentActivity)context).submitAssessment();
     }
 }

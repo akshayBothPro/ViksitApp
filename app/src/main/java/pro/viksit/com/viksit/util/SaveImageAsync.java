@@ -1,4 +1,4 @@
-package pro.viksit.com.viksit.Util;
+package pro.viksit.com.viksit.util;
 
 import android.graphics.Bitmap;
 import android.os.AsyncTask;

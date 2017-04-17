@@ -4,8 +4,11 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.AppCompatEditText;
+import android.view.KeyEvent;
 import android.view.View;
+import android.view.inputmethod.EditorInfo;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
@@ -36,6 +39,17 @@ public class ForgotPasswordActivity extends AppCompatActivity implements View.On
         progress = (ProgressBar) findViewById(R.id.progress);
         main_layout = (LinearLayout) findViewById(R.id.main_layout);
         implementActions();
+        input.setOnEditorActionListener(new EditText.OnEditorActionListener() {
+            @Override
+            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+// which is u had set a imeoption
+                if (actionId == EditorInfo.IME_ACTION_DONE) {
+                    submit.performClick();
+                    return true;
+                }
+                return false;
+            }
+        });
 
     }
 

@@ -21,7 +21,7 @@ import android.widget.Toast;
 import com.squareup.picasso.Picasso;
 
 import pro.viksit.com.viksit.R;
-import pro.viksit.com.viksit.Util.CircleTransform;
+import pro.viksit.com.viksit.util.CircleTransform;
 import pro.viksit.com.viksit.dashboard.pojo.DashboardCard;
 import pro.viksit.com.viksit.dashboard.util.CarouselLinearLayout;
 

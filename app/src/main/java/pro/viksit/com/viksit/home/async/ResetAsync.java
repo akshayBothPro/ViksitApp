@@ -9,6 +9,7 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.google.gson.Gson;
+import com.google.gson.JsonSyntaxException;
 
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
@@ -24,11 +25,13 @@ import org.apache.http.util.EntityUtils;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 import pro.viksit.com.viksit.R;
 import pro.viksit.com.viksit.dashboard.pojo.IstarUserPOJO;
 import pro.viksit.com.viksit.home.activity.ChangedPasswordActivity;
+import pro.viksit.com.viksit.util.HttpUtil;
 
 /**
  * Created by Feroz on 13-04-2017.
@@ -62,42 +65,18 @@ public class ResetAsync extends AsyncTask<String, Integer, String> {
     }
     @Override
     protected String doInBackground(String... params) {
-        HttpClient httpclient = new DefaultHttpClient();
         String httpresponse = "";
-
         try {
-            IstarUserPOJO istarUserPOJO = gson.fromJson(jsonresponse, IstarUserPOJO.class);
-
-            HttpPut httppost = new HttpPut(context.getResources().getString(R.string.serverip) + context.getResources().getString(R.string.reseturl).replace("user_id", istarUserPOJO.getIstarUserId() + "") );
-            System.out.println("calling otp service url -> " + context.getResources().getString(R.string.serverip) + context.getResources().getString(R.string.reseturl).replace("user_id", istarUserPOJO.getIstarUserId() + "") );
-
-            List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>(2);
-
-            nameValuePairs.add(new BasicNameValuePair("userId", istarUserPOJO.getIstarUserId()+""));
-            nameValuePairs.add(new BasicNameValuePair("password", password));
-
-            httppost.setEntity(new UrlEncodedFormEntity(nameValuePairs));
-
-            // Execute HTTP Post Request
-            HttpResponse response = httpclient.execute(httppost);
-            HttpEntity httpEntity = response.getEntity();
-            httpresponse = EntityUtils.toString(httpEntity);
-            int status = response.getStatusLine().getStatusCode();
-            if(status == 201){
-                httpresponse = "true";
-            }
-            System.out.println("jsonresponse " + httpresponse);
-
-        } catch (ClientProtocolException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-            return "null";
-        } catch (IOException e) {
-            // TODO Auto-generated catch block
-
-            e.printStackTrace();
-            return "null";
-        } catch (Exception e) {
+        IstarUserPOJO istarUserPOJO = gson.fromJson(jsonresponse, IstarUserPOJO.class);
+        HttpUtil httpUtil = new HttpUtil();
+        httpUtil.setUrl(context.getResources().getString(R.string.serverip) + context.getResources().getString(R.string.reseturl).replace("user_id", istarUserPOJO.getIstarUserId() + ""));
+        HashMap<String, String> param = new HashMap<>();
+        param.put("userId", istarUserPOJO.getIstarUserId()+"");
+        param.put("password", password);
+        httpUtil.setParam(param);
+        httpUtil.setType("GET");
+        httpresponse = httpUtil.getStringResponse();
+        }  catch (JsonSyntaxException e) {
             e.printStackTrace();
             return "null";
         }

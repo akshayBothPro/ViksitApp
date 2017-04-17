@@ -58,7 +58,7 @@
         android:layout_below="@+id/toolbar"
         android:layout_marginBottom="60dp"
         android:id="@+id/rr">
-        <pro.viksit.com.viksit.Util.LockableViewPager
+        <pro.viksit.com.viksit.util.LockableViewPager
             android:id="@+id/viewpager"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

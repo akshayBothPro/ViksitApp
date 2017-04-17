@@ -9,6 +9,7 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.google.gson.Gson;
+import com.google.gson.JsonSyntaxException;
 
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
@@ -23,6 +24,7 @@ import java.io.IOException;
 import pro.viksit.com.viksit.R;
 import pro.viksit.com.viksit.dashboard.pojo.IstarUserPOJO;
 import pro.viksit.com.viksit.home.activity.OTPActivity;
+import pro.viksit.com.viksit.util.HttpUtil;
 
 /**
  * Created by Feroz on 13-04-2017.
@@ -61,26 +63,11 @@ public class OTPAsync extends AsyncTask<String, Integer, String> {
 
         try {
             IstarUserPOJO istarUserPOJO = gson.fromJson(jsonreponse, IstarUserPOJO.class);
-
-            HttpGet httppost = new HttpGet(context.getResources().getString(R.string.serverip) + context.getResources().getString(R.string.otpurl).replace("user_id", istarUserPOJO.getIstarUserId() + "") + "?mobile=" + phonenos);
-            System.out.println("calling otp service url -> " + context.getResources().getString(R.string.serverip) + context.getResources().getString(R.string.otpurl).replace("user_id", istarUserPOJO.getIstarUserId() + "") + "?mobile=" + phonenos);
-            // Execute HTTP Post Request
-            HttpResponse response = httpclient.execute(httppost);
-            HttpEntity httpEntity = response.getEntity();
-            httpresponse = EntityUtils.toString(httpEntity);
-
-            System.out.println("jsonresponse " + httpresponse);
-
-        } catch (ClientProtocolException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-            return "null";
-        } catch (IOException e) {
-            // TODO Auto-generated catch block
-
-            e.printStackTrace();
-            return "null";
-        } catch (Exception e) {
+            HttpUtil httpUtil = new HttpUtil();
+            httpUtil.setType("POST");
+            httpUtil.setUrl(context.getResources().getString(R.string.serverip) + context.getResources().getString(R.string.otpurl).replace("user_id", istarUserPOJO.getIstarUserId() + "") + "?mobile=" + phonenos);
+            httpresponse = httpUtil.getStringResponse();
+        }  catch (JsonSyntaxException e) {
             e.printStackTrace();
             return "null";
         }

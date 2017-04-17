@@ -19,7 +19,6 @@ import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
-import android.widget.Spinner;
 import android.widget.TextView;
 
 import com.squareup.picasso.Picasso;
@@ -27,7 +26,7 @@ import com.squareup.picasso.Picasso;
 import java.util.ArrayList;
 
 import pro.viksit.com.viksit.R;
-import pro.viksit.com.viksit.Util.CircleTransform;
+import pro.viksit.com.viksit.util.CircleTransform;
 import pro.viksit.com.viksit.challenge.adapter.LeaderBoardRecyclerAdapter;
 import pro.viksit.com.viksit.challenge.pojo.LeaderBoardProfile;
 import pro.viksit.com.viksit.role.activity.CheckoutActivity;

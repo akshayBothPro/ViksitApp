@@ -7,12 +7,29 @@ import android.view.View;
 import android.widget.ProgressBar;
 
 import com.google.gson.Gson;
+import com.google.gson.JsonSyntaxException;
 
+import org.apache.http.HttpEntity;
+import org.apache.http.HttpResponse;
+import org.apache.http.client.HttpClient;
+import org.apache.http.client.methods.HttpPost;
+import org.apache.http.client.methods.HttpPut;
+import org.apache.http.entity.StringEntity;
+import org.apache.http.impl.client.DefaultHttpClient;
+import org.apache.http.message.BasicHeader;
+import org.apache.http.protocol.HTTP;
+import org.apache.http.util.EntityUtils;
+
+import java.io.IOException;
+import java.io.UnsupportedEncodingException;
+
+import pro.viksit.com.viksit.R;
 import pro.viksit.com.viksit.assessment.database.AssessmentDataHandler;
 import pro.viksit.com.viksit.assessment.pojo.AssessmentPOJO;
 import pro.viksit.com.viksit.assessment.pojo.AssessmentResultPojo;
 import pro.viksit.com.viksit.assessment.pojo.QuestionPOJO;
 import pro.viksit.com.viksit.assessment.pojo.QuestionResult;
+import pro.viksit.com.viksit.util.HttpUtil;
 
 /**
  * Created by Feroz on 17-04-2017.
@@ -47,11 +64,21 @@ public class SaveAssessmentData extends AsyncTask<String, Integer, String> {
         }
         System.out.println(gson.toJson(assessmentResultPojo));
         if(isNetworkConnected()){
+            try{
+                HttpUtil httpUtil = new HttpUtil();
+                httpUtil.setUrl(context.getResources().getString(R.string.resourceserverip)+"/AndroidTest/JsonServlet");
+                httpUtil.setType("PUT");
+                httpUtil.setPostrequest(gson.toJson(assessmentResultPojo).toString());
+                String jsonresponse = httpUtil.getStringResponse();
+
+            } catch (JsonSyntaxException e) {
+                e.printStackTrace();
+                saveAssessment(context);
+            }
 
         }else{
-            AssessmentDataHandler assessmentDataHandler = new AssessmentDataHandler(context);
-            assessmentDataHandler.saveContent(assessmentResultPojo.getAssessment_id()+"",gson.toJson(assessmentResultPojo));
-        }
+        saveAssessment(context);
+         }
         return null;
     }
 
@@ -68,4 +95,11 @@ public class SaveAssessmentData extends AsyncTask<String, Integer, String> {
 
         return cm.getActiveNetworkInfo() != null;
     }
+
+    private void saveAssessment(Context context){
+        AssessmentDataHandler assessmentDataHandler = new AssessmentDataHandler(context);
+        assessmentDataHandler.saveContent(assessmentResultPojo.getAssessment_id()+"",gson.toJson(assessmentResultPojo));
+
+    }
+
     }

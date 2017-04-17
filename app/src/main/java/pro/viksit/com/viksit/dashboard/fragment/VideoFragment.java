@@ -25,8 +25,8 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
 import pro.viksit.com.viksit.R;
-import pro.viksit.com.viksit.Util.DisplayUtil;
-import pro.viksit.com.viksit.Util.ImageSaver;
+import pro.viksit.com.viksit.util.DisplayUtil;
+import pro.viksit.com.viksit.util.ImageSaver;
 import pro.viksit.com.viksit.dashboard.activity.VideoPlayActivity;
 import pro.viksit.com.viksit.dashboard.pojo.DashboardCard;
 import pro.viksit.com.viksit.dashboard.util.CarouselLinearLayout;

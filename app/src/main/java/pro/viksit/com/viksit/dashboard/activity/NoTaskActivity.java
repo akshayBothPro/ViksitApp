@@ -14,9 +14,9 @@ import com.google.gson.GsonBuilder;
 import com.squareup.picasso.Picasso;
 
 import pro.viksit.com.viksit.R;
-import pro.viksit.com.viksit.Util.DisplayUtil;
-import pro.viksit.com.viksit.Util.ImageSaver;
-import pro.viksit.com.viksit.Util.SaveImageAsync;
+import pro.viksit.com.viksit.util.DisplayUtil;
+import pro.viksit.com.viksit.util.ImageSaver;
+import pro.viksit.com.viksit.util.SaveImageAsync;
 import pro.viksit.com.viksit.dashboard.pojo.StudentProfile;
 import pro.viksit.com.viksit.dashboard.util.BottomBarUtil;
 

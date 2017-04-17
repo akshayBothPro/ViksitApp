@@ -32,6 +32,7 @@ import pro.viksit.com.viksit.R;
 import pro.viksit.com.viksit.dashboard.activity.DashboardActivity;
 import pro.viksit.com.viksit.dashboard.pojo.StudentProfile;
 import pro.viksit.com.viksit.home.activity.SplashScreenActivity;
+import pro.viksit.com.viksit.util.HttpUtil;
 
 /**
  * Created by Feroz on 06-04-2017.
@@ -94,48 +95,14 @@ public class LoginAsync extends AsyncTask<String, Integer, String> {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-        HttpClient httpclient = new DefaultHttpClient();
-        System.out.println("calling url is -> "+context.getResources().getString(R.string.serverip)+url);
-        HttpPost httppost = new HttpPost(context.getResources().getString(R.string.serverip)+url);
-        String jsonresponse= "null";
-        try {
-            // Add your data
-            List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>();
-            for(String key: param.keySet()) {
-                nameValuePairs.add(new BasicNameValuePair(key, param.get(key)));
-            }
-            httppost.setEntity(new UrlEncodedFormEntity(nameValuePairs));
-
-            // Execute HTTP Post Request
-            HttpResponse response = httpclient.execute(httppost);
-            HttpEntity httpEntity = response.getEntity();
-            jsonresponse = EntityUtils.toString(httpEntity);
-
-            System.out.println("jsonresponse "+jsonresponse);
-            Gson gson = new GsonBuilder().setDateFormat("yyyy-MM-dd HH:mm:ss").create();
-            StudentProfile studentProfile = gson.fromJson(jsonresponse,StudentProfile.class);
-            System.out.println("studentProfile "+studentProfile.getEmail());
-
+        String jsonresponse = new HttpUtil(context.getResources().getString(R.string.serverip)+url,"POST",param,null).getStringResponse();
+        if(!jsonresponse.equalsIgnoreCase("null") && !jsonresponse.equalsIgnoreCase("[]") && !jsonresponse.equalsIgnoreCase("") ){
             SharedPreferences.Editor editor = sharedpreferences.edit();
             editor.putString(context.getResources().getString(R.string.user_profile), jsonresponse);
             editor.apply();
             editor.commit();
-        } catch (ClientProtocolException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-            return "null";
-        } catch (IOException e) {
-            // TODO Auto-generated catch block
-
-            e.printStackTrace();
-            return "null";
-        }catch (JsonSyntaxException jse) {
-            jse.printStackTrace();
-            return "null";
-        }catch (Exception e){
-            e.printStackTrace();
-            return "null";
         }
+
         return jsonresponse;
     }
 }

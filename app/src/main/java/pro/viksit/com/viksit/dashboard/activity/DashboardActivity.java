@@ -24,17 +24,10 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.squareup.picasso.Picasso;
 
-import java.io.BufferedWriter;
-import java.io.FileReader;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.io.Reader;
-import java.util.ArrayList;
-
 import pro.viksit.com.viksit.R;
-import pro.viksit.com.viksit.Util.DisplayUtil;
-import pro.viksit.com.viksit.Util.ImageSaver;
-import pro.viksit.com.viksit.Util.SaveImageAsync;
+import pro.viksit.com.viksit.util.DisplayUtil;
+import pro.viksit.com.viksit.util.ImageSaver;
+import pro.viksit.com.viksit.util.SaveImageAsync;
 import pro.viksit.com.viksit.dashboard.adapter.CardAdapter.CarouselPagerAdapter;
 import pro.viksit.com.viksit.dashboard.async.DashboardCardAsync;
 import pro.viksit.com.viksit.dashboard.pojo.DashboardCard;

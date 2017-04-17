@@ -13,9 +13,8 @@ import com.squareup.picasso.Picasso;
 import java.util.ArrayList;
 
 import pro.viksit.com.viksit.R;
-import pro.viksit.com.viksit.Util.CircleTransform;
+import pro.viksit.com.viksit.util.CircleTransform;
 import pro.viksit.com.viksit.dashboard.pojo.Notification;
-import pro.viksit.com.viksit.role.pojo.Role;
 
 /**
  * Created by Akshay on 06/04/2017.

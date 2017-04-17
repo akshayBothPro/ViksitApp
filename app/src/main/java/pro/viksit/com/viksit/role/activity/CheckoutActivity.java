@@ -17,10 +17,9 @@ import android.widget.TextView;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
-import java.util.List;
 
 import pro.viksit.com.viksit.R;
-import pro.viksit.com.viksit.Util.CircleTransform;
+import pro.viksit.com.viksit.util.CircleTransform;
 import pro.viksit.com.viksit.role.adapter.CheckoutVerticalRecyclerAdapter;
 import pro.viksit.com.viksit.role.pojo.Payment;
 import pro.viksit.com.viksit.role.util.RecyclerItemClickListener;

@@ -18,6 +18,7 @@ import org.apache.http.util.EntityUtils;
 import java.io.IOException;
 
 import pro.viksit.com.viksit.R;
+import pro.viksit.com.viksit.util.HttpUtil;
 
 /**
  * Created by Feroz on 12-04-2017.
@@ -49,32 +50,7 @@ public class ForgotAsync extends AsyncTask<String, Integer, String> {
 
     @Override
     protected String doInBackground(String... params) {
-        HttpClient httpclient = new DefaultHttpClient();
-        HttpGet httppost = new HttpGet(context.getResources().getString(R.string.serverip) + context.getResources().getString(R.string.forgotpassword)+"?mobile="+mobile);
-        String jsonresponse = "";
-        try {
-
-
-            // Execute HTTP Post Request
-            HttpResponse response = httpclient.execute(httppost);
-            HttpEntity httpEntity = response.getEntity();
-            jsonresponse = EntityUtils.toString(httpEntity);
-
-            System.out.println("jsonresponse " + jsonresponse);
-
-        } catch (ClientProtocolException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-            return "null";
-        } catch (IOException e) {
-            // TODO Auto-generated catch block
-
-            e.printStackTrace();
-            return "null";
-        } catch (Exception e) {
-            e.printStackTrace();
-            return "null";
-        }
+        String jsonresponse  = new HttpUtil(context.getResources().getString(R.string.serverip) + context.getResources().getString(R.string.forgotpassword)+"?mobile="+mobile,"GET",null,null).getStringResponse();
         return jsonresponse;
     }
 
