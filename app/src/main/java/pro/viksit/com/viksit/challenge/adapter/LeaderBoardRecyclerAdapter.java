@@ -58,6 +58,7 @@ public class LeaderBoardRecyclerAdapter extends RecyclerView.Adapter<LeaderBoard
             holder.rank.setText(ordinal(profile.getBatchRank()));
             holder.xp.setText(Integer.toString(profile.getPoints()));
 
+
             if (profile.getImageURL() != null) {
                 Picasso.with(context).load(profile.getImageURL()).transform(new CircleTransform()).into(holder.image);
             }/* else if(profile.getImageResId() != 0){
