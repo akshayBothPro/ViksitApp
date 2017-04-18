@@ -8,7 +8,7 @@
     android:fitsSystemWindows="true"
     tools:context=".assessment.activity.AssessmentActivity">
 
-    <include layout="@layout/assessment_toolbar" />
+    <include layout="@layout/assessment_result_toolbar" />
 
 
     <RelativeLayout
@@ -28,19 +28,19 @@
 
             >
             <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="prev"
-            android:layout_alignParentLeft="true"
-            android:background="#00000000"
-            android:drawableLeft="@mipmap/ic_keyboard_arrow_left_black_36dp"
-            android:layout_centerVertical="true"
-            android:id="@+id/prev"
-            android:paddingLeft="10dp"
-            android:paddingRight="10dp"
-            android:textColor="@color/bottom_color"
-            android:drawableTint="@color/bottom_color"
-            />
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="prev"
+                android:layout_alignParentLeft="true"
+                android:background="#00000000"
+                android:drawableLeft="@mipmap/ic_keyboard_arrow_left_black_36dp"
+                android:layout_centerVertical="true"
+                android:id="@+id/prev"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:textColor="@color/bottom_color"
+                android:drawableTint="@color/bottom_color"
+                />
 
             <Button
                 android:layout_width="wrap_content"

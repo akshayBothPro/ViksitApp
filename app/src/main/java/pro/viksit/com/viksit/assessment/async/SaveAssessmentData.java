@@ -22,9 +22,12 @@ import org.apache.http.util.EntityUtils;
 
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
+import java.util.ArrayList;
+import java.util.HashMap;
 
 import pro.viksit.com.viksit.R;
 import pro.viksit.com.viksit.assessment.database.AssessmentDataHandler;
+import pro.viksit.com.viksit.assessment.fragment.QuestionResultFragment;
 import pro.viksit.com.viksit.assessment.pojo.AssessmentPOJO;
 import pro.viksit.com.viksit.assessment.pojo.AssessmentResultPojo;
 import pro.viksit.com.viksit.assessment.pojo.QuestionPOJO;
@@ -59,16 +62,22 @@ public class SaveAssessmentData extends AsyncTask<String, Integer, String> {
 
         for(QuestionPOJO questionPOJO:assessmentPOJO.getQuestions() ){
             if(!assessmentResultPojo.getOptions().containsKey(questionPOJO.getId())){
-                assessmentResultPojo.getOptions().put(questionPOJO.getId(),new QuestionResult(questionPOJO.getId(),-1,null));
+                assessmentResultPojo.getOptions().put(questionPOJO.getId(),new QuestionResult(questionPOJO.getId(),null,null));
             }
         }
-        System.out.println(gson.toJson(assessmentResultPojo));
         if(isNetworkConnected()){
             try{
                 HttpUtil httpUtil = new HttpUtil();
                 httpUtil.setUrl(context.getResources().getString(R.string.resourceserverip)+"/AndroidTest/JsonServlet");
                 httpUtil.setType("PUT");
-                httpUtil.setPostrequest(gson.toJson(assessmentResultPojo).toString());
+                HashMap<Integer, QuestionResult> map = assessmentResultPojo.getOptions();
+                ArrayList<QuestionResult> list = new ArrayList<>();
+                for(Integer key:map.keySet()){
+                    list.add(map.get(key));
+                }
+                System.out.println(gson.toJson(list));
+
+                httpUtil.setPostrequest(gson.toJson(list).toString());
                 String jsonresponse = httpUtil.getStringResponse();
 
             } catch (JsonSyntaxException e) {

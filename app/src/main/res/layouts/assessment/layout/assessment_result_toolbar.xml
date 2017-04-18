@@ -17,7 +17,7 @@
         app:contentInsetLeft="0dp"
         app:contentInsetStart="0dp">
 
-        <LinearLayout
+        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="horizontal"
@@ -25,32 +25,26 @@
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:background="@mipmap/ic_close_black_24dp"
+                android:background="@mipmap/ic_arrow_back_black_24dp"
                 android:id="@+id/toolbar_close"
                 android:layout_margin="5dp"
                 />
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="14 OF 20 ANSWERED"
-                android:textSize="@dimen/h7"
-                android:textColor="@color/black"
-                android:layout_margin="5dp"
-                android:id="@+id/correctanswer"
-                />
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:drawableLeft="@mipmap/ic_timer_black_24dp"
-                android:text="10:14"
-                android:textColor="@color/black"
-                android:textSize="@dimen/h7"
-                android:layout_margin="5dp"
-                android:id="@+id/timer"
+            <ProgressBar
+                android:id="@+id/pb_role_vertical_item_progress"
+                android:layout_above="@+id/tv_role_vertical_item_status"
+                android:layout_toRightOf="@+id/toolbar_close"
+                android:layout_toEndOf="@id/toolbar_close"
+                android:layout_width="match_parent"
+                android:layout_height="5dp"
+                android:layout_marginBottom="@dimen/module_progress_bard_bottom_margin"
+                android:paddingRight="@dimen/role_info_hor_padding"
+                android:progressTint="@color/linkedIn_color"
+                style="?android:attr/progressBarStyleHorizontal"
+                android:max="100"
+                android:progress="60"
+                android:layout_centerVertical="true"/>
 
-                />
-
-        </LinearLayout>
+        </RelativeLayout>
     </android.support.v7.widget.Toolbar>
     <RelativeLayout
         android:layout_width="match_parent"
@@ -63,25 +57,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             />
-        <me.itangqi.waveloadingview.WaveLoadingView
-            android:id="@+id/waveLoadingView"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:translationZ="-1dp"
-            app:wlv_borderColor="#ffffff"
-            app:wlv_borderWidth="0dp"
-            app:wlv_progressValue="100"
-            app:wlv_round_rectangle="false"
-            app:wlv_shapeType="rectangle"
-            app:wlv_titleCenter=""
-            app:wlv_titleCenterColor="@android:color/white"
-            app:wlv_titleCenterSize="24sp"
-            app:wlv_titleCenterStrokeColor="#c3e6f4"
-            app:wlv_titleCenterStrokeWidth="3dp"
-            app:wlv_triangle_direction="north"
-            app:wlv_waveAmplitude="9"
-            app:wlv_waveColor="#ffffff"
-            app:wlv_wave_background_Color="#c3e6f4" />
+
 
     </RelativeLayout>
     <ProgressBar

@@ -1,13 +1,7 @@
 package pro.viksit.com.viksit.assessment.fragment;
 
-import android.graphics.Color;
-import android.graphics.PorterDuff;
-import android.graphics.drawable.GradientDrawable;
-import android.graphics.drawable.ShapeDrawable;
 import android.os.Bundle;
-import android.os.Handler;
 import android.support.v4.app.Fragment;
-import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
@@ -16,28 +10,24 @@ import android.webkit.WebChromeClient;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
-import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
-import me.itangqi.waveloadingview.WaveLoadingView;
 import pro.viksit.com.viksit.R;
 import pro.viksit.com.viksit.assessment.activity.AssessmentActivity;
-import pro.viksit.com.viksit.assessment.pojo.Option;
 import pro.viksit.com.viksit.assessment.pojo.OptionPOJO;
-import pro.viksit.com.viksit.assessment.pojo.Question;
 import pro.viksit.com.viksit.assessment.pojo.QuestionPOJO;
-import pro.viksit.com.viksit.assessment.pojo.QuestionResult;
 
 /**
- * Created by Feroz on 20-03-2017.
+ * Created by Feroz on 18-04-2017.
  */
 
-public class QuestionFragment extends Fragment {
+public class MutlipleChoiceFragment extends Fragment {
     public static final String GET_QUESTION = "GET_QUESTION";
     public static final String POSITION = "POSITION";
     public static final String TOTALCOUNT = "TOTALCOUNT";
@@ -45,14 +35,14 @@ public class QuestionFragment extends Fragment {
     private TextView header,hiddentext;
     private WebView question_title;
     private LinearLayout button_layout;
-    private ArrayList<RelativeLayout> optionWebviewList;
+    private HashMap<Integer,RelativeLayout> optionWebviewList;
     private ArrayList<WebView> webViewArrayList;
     private QuestionPOJO questionPOJO;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-       View view = inflater.inflate(R.layout.question_fragment, container, false);
+        View view = inflater.inflate(R.layout.question_fragment, container, false);
         header = (TextView) view.findViewById(R.id.header);
         question_title = (WebView) view.findViewById(R.id.question_title);
         button_layout = (LinearLayout) view.findViewById(R.id.button_layout);
@@ -76,7 +66,7 @@ public class QuestionFragment extends Fragment {
         question_title.setHapticFeedbackEnabled(false);
 
         question_title.setBackgroundColor(0);
-        optionWebviewList = new ArrayList<>();
+        optionWebviewList = new HashMap<>();
         webViewArrayList = new ArrayList<>();
         for(final OptionPOJO option: questionPOJO.getOptions()){
             LinearLayout.LayoutParams mainparams = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
@@ -102,7 +92,7 @@ public class QuestionFragment extends Fragment {
             if(((AssessmentActivity)getActivity()).checkSelectedOption(option.getId()))
                 linearLayout.setBackground(getResources().getDrawable(R.drawable.select_option_bg));
             else
-            linearLayout.setBackground(getResources().getDrawable(R.drawable.button_bg));
+                linearLayout.setBackground(getResources().getDrawable(R.drawable.button_bg));
 
 
             optionview.getSettings().setTextSize(WebSettings.TextSize.NORMAL);
@@ -133,31 +123,39 @@ public class QuestionFragment extends Fragment {
                         case MotionEvent.ACTION_DOWN:
 
 
-                            if(linearLayout.getBackground().getConstantState().equals(getContext().getResources().getDrawable(R.drawable.select_option_bg).getConstantState())) {
-                                removeColor();
-                                linearLayout.setBackground(getResources().getDrawable(R.drawable.button_bg));
+                                if(linearLayout.getBackground().getConstantState().equals(getContext().getResources().getDrawable(R.drawable.select_option_bg).getConstantState())) {
+                                    linearLayout.setBackground(getResources().getDrawable(R.drawable.button_bg));
 
-                                ((AssessmentActivity) getActivity()).removeResult(questionPOJO.getId(), option.getId(),false);
+                                    List<Integer> options_id = new ArrayList<>();
+                                    for(Integer key:optionWebviewList.keySet()){
+                                        if(optionWebviewList.get(key).getBackground().getConstantState().equals(getContext().getResources().getDrawable(R.drawable.select_option_bg).getConstantState())){
+                                            options_id.add(key);
+                                        }
+                                    }
+                                    boolean flag = options_id.size()>0;
+                                    ((AssessmentActivity) getActivity()).removeResult(questionPOJO.getId(), option.getId(),flag);
 
 
-                            } else {
-                                removeColor();
-                                optionview.loadUrl(
-                                        "javascript:document.body.style.setProperty(\"color\", \"#0288d1\");"
-                                );
-                                linearLayout.setBackground(getResources().getDrawable(R.drawable.select_option_bg));
-                                if (((AssessmentActivity) getActivity()).lockableViewPager.getCurrentItem() != ((AssessmentActivity) getActivity()).lockableViewPager.getAdapter().getCount() - 1) {
-                                    ((AssessmentActivity) getActivity()).setResult(questionPOJO.getId(), option.getId(), ((AssessmentActivity) getActivity()).question_time_taken);
-                                    int position = ((AssessmentActivity) getActivity()).lockableViewPager.getCurrentItem();
-                                    // ((AssessmentActivity)getActivity()).lockableViewPager.setCurrentItem(((AssessmentActivity)getActivity()).lockableViewPager.getCurrentItem()+1);
-                                    ((AssessmentActivity) getActivity()).checkRecylclerIconChange(position, questionPOJO.getId());
-                                } else {
-                                    System.out.println("Assessment ENded here");
-                                    ((AssessmentActivity) getActivity()).printResult();
+                                    optionview.loadUrl(
+                                            "javascript:document.body.style.setProperty(\"color\", \"#000000\");"
+                                    );
+                                }else {
+                                    optionview.loadUrl(
+                                            "javascript:document.body.style.setProperty(\"color\", \"#0288d1\");"
+                                    );
+                                    linearLayout.setBackground(getResources().getDrawable(R.drawable.select_option_bg));
+                                    if (((AssessmentActivity) getActivity()).lockableViewPager.getCurrentItem() != ((AssessmentActivity) getActivity()).lockableViewPager.getAdapter().getCount() - 1) {
+                                        ((AssessmentActivity) getActivity()).setResultMultiChoice(questionPOJO.getId(), option.getId(), ((AssessmentActivity) getActivity()).question_time_taken);
+                                        int position = ((AssessmentActivity) getActivity()).lockableViewPager.getCurrentItem();
+                                        // ((AssessmentActivity)getActivity()).lockableViewPager.setCurrentItem(((AssessmentActivity)getActivity()).lockableViewPager.getCurrentItem()+1);
+                                        ((AssessmentActivity) getActivity()).checkRecylclerIconChange(position, questionPOJO.getId());
+                                    } else {
+                                        System.out.println("Assessment ENded here");
+                                        ((AssessmentActivity) getActivity()).printResult();
+
+                                    }
 
                                 }
-                            }
-
 
                             break;
                     }
@@ -168,33 +166,14 @@ public class QuestionFragment extends Fragment {
 
             });
             linearLayout.addView(optionview);
-            optionWebviewList.add(linearLayout);
+            optionWebviewList.put(option.getId(),linearLayout);
             webViewArrayList.add(optionview);
             button_layout.addView(linearLayout);
-
-
-
         }
-
-
 
         return view;
     }
 
-    private void removeColor() {
-        if(optionWebviewList != null){
-            for(RelativeLayout webView:optionWebviewList){
-                webView.setBackgroundColor(getResources().getColor(R.color.white));
-                webView.setBackground(getResources().getDrawable(R.drawable.button_bg));
-            }
-            for(WebView webView:webViewArrayList){
-                webView.loadUrl(
-                        "javascript:document.body.style.setProperty(\"color\", \"#000000\");"
-                );
-            }
-
-        }
-    }
 
 
 }

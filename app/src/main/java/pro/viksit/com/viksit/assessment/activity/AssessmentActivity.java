@@ -32,12 +32,15 @@ import com.eftimoff.viewpagertransformers.RotateUpTransformer;
 import com.google.gson.Gson;
 
 import java.lang.reflect.Field;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.concurrent.ExecutionException;
 
 import me.itangqi.waveloadingview.WaveLoadingView;
 import pro.viksit.com.viksit.R;
 import pro.viksit.com.viksit.assessment.adapter.DialogTotalTimer;
+import pro.viksit.com.viksit.assessment.fragment.MutlipleChoiceFragment;
 import pro.viksit.com.viksit.util.LockableViewPager;
 import pro.viksit.com.viksit.assessment.adapter.AssessmentAdapter;
 import pro.viksit.com.viksit.assessment.adapter.AssessmentTotalTimer;
@@ -71,7 +74,7 @@ public class AssessmentActivity extends AppCompatActivity implements View.OnClic
     public WaveLoadingView mWaveLoadingView;
     private AssessmentPOJO assessmentPOJO;
     private QuestionsRecyclerViewAdapter questionadapter;
-    private AssessmentResultPojo assessmentResultPojo;
+    public AssessmentResultPojo assessmentResultPojo;
     public final static String TAG = "AssessmentActivity";
     private SharedPreferences sharedpreferences;
     public long remaining_time=0;
@@ -104,7 +107,7 @@ public class AssessmentActivity extends AppCompatActivity implements View.OnClic
         questionListRecycler = (RecyclerView) findViewById(R.id.recyclerView);
         //questionListRecycler.setVisibility(View.GONE);
         try {
-            String jsonresponse = new FetchAssessmentData(this,progress,1858,10195).execute().get();
+            String jsonresponse = new FetchAssessmentData(this,progress,463,10320).execute().get();
             if (jsonresponse != null && !jsonresponse.equalsIgnoreCase("null")
                     && !jsonresponse.equalsIgnoreCase("") && !jsonresponse.contains("HTTP Status")
                     ) {
@@ -136,7 +139,7 @@ public class AssessmentActivity extends AppCompatActivity implements View.OnClic
                 totalTimer.start();
                 setQuestionTimer(this,assessmentPOJO.getQuestions().get(0).getDurationInSec() *1000);
                 SharedPreferences.Editor editor = sharedpreferences.edit();
-                editor.putString(AssessmentActivity.TAG+10195, jsonresponse);
+                editor.putString(AssessmentActivity.TAG+10320, jsonresponse);
                 editor.apply();
                 editor.commit();
 
@@ -173,7 +176,16 @@ public class AssessmentActivity extends AppCompatActivity implements View.OnClic
             public void onPageSelected(int position) {
                 if(position != assessmentPOJO.getQuestions().size()) {
                     setCorrectanswer(assessmentResultPojo.getOptions().size(), false);
-                    String time = ((TextView) ((QuestionFragment) lockableViewPager.getAdapter().instantiateItem(lockableViewPager, lockableViewPager.getCurrentItem())).getView().findViewById(R.id.hiddentext)).getText().toString();
+
+                    Object object = lockableViewPager.getAdapter().instantiateItem(lockableViewPager, lockableViewPager.getCurrentItem());
+                    String time="";
+                    if(object instanceof  QuestionFragment) {
+
+                        time  = ((TextView) ((QuestionFragment) lockableViewPager.getAdapter().instantiateItem(lockableViewPager, lockableViewPager.getCurrentItem())).getView().findViewById(R.id.hiddentext)).getText().toString();
+                    }else{
+                        time = ((TextView) ((MutlipleChoiceFragment) lockableViewPager.getAdapter().instantiateItem(lockableViewPager, lockableViewPager.getCurrentItem())).getView().findViewById(R.id.hiddentext)).getText().toString();
+                    }
+
                     System.out.println("Time question -> " + time);
                     setQuestionTimer(AssessmentActivity.this, Integer.parseInt(time) * 1000);
                     if(correctanswer.getVisibility()== View.INVISIBLE){
@@ -257,6 +269,7 @@ public class AssessmentActivity extends AppCompatActivity implements View.OnClic
 
         next.setOnClickListener(this);
         prev.setOnClickListener(this);
+        toolbar_close.setOnClickListener(this);
         setupDialog();
     }
 
@@ -301,6 +314,9 @@ public class AssessmentActivity extends AppCompatActivity implements View.OnClic
                     lockableViewPager.setCurrentItem(lockableViewPager.getCurrentItem()+1);
                 }
                 break;
+            case R.id.toolbar_close:
+                showDialog();
+                break;
 
         }
 
@@ -309,13 +325,16 @@ public class AssessmentActivity extends AppCompatActivity implements View.OnClic
 
 
     public void setResult(Integer question_id,Integer option_id,Long duration){
+        List<Integer> options = new ArrayList<>();
+        options.add(option_id);
         if(assessmentResultPojo.getOptions().containsKey(question_id)){
-            QuestionResult questionResult = new QuestionResult(question_id,option_id,duration);
+            QuestionResult questionResult = new QuestionResult(question_id,options,duration);
             assessmentResultPojo.getOptions().put(assessmentResultPojo.getOptions().get(question_id).getQuestion_id(),questionResult);
         }else{
-            QuestionResult questionResult = new QuestionResult(question_id,option_id,duration);
+            QuestionResult questionResult = new QuestionResult(question_id,options,duration);
             assessmentResultPojo.getOptions().put(question_id,questionResult);
         }
+
     }
 
 
@@ -374,7 +393,7 @@ public class AssessmentActivity extends AppCompatActivity implements View.OnClic
     }
 
     public int checkUnanswered(){
-        return (assessmentPOJO.getQuestions().size() - assessmentResultPojo.getOptions().size())+1;
+        return (assessmentPOJO.getQuestions().size() - assessmentResultPojo.getOptions().size());
     }
 
     public void submitAssessment(){
@@ -463,5 +482,33 @@ public class AssessmentActivity extends AppCompatActivity implements View.OnClic
     public void onDestroy() {
         super.onDestroy();
         Log.d("GGGG", "The onDestroy() event");
+    }
+
+    public void removeResult(Integer question_id, Integer optionid,boolean flag ) {
+       QuestionResult questionResult = assessmentResultPojo.getOptions().get(question_id);
+        if(questionResult != null  && questionResult.getOption_id() != null) {
+            if(!flag)
+            assessmentResultPojo.getOptions().remove(question_id);
+            else
+                assessmentResultPojo.getOptions().get(question_id).getOption_id().remove(optionid);
+        }
+        checkRecylclerIconChange(lockableViewPager.getCurrentItem(), question_id);
+
+    }
+
+    public void setResultMultiChoice(Integer question_id, Integer option_id, long duration) {
+        List<Integer> options = new ArrayList<>();
+        options.add(option_id);
+        if(assessmentResultPojo.getOptions().containsKey(question_id) && assessmentResultPojo.getOptions().get(question_id)  != null
+                && assessmentResultPojo.getOptions().get(question_id).getOption_id()!= null
+                ) {
+            List<Integer> option =assessmentResultPojo.getOptions().get(question_id).getOption_id();
+            option.add(option_id);
+            QuestionResult questionResult = new QuestionResult(question_id,option,duration);
+            assessmentResultPojo.getOptions().put(assessmentResultPojo.getOptions().get(question_id).getQuestion_id(),questionResult);
+        }else{
+            QuestionResult questionResult = new QuestionResult(question_id,options,duration);
+            assessmentResultPojo.getOptions().put(question_id,questionResult);
+        }
     }
 }

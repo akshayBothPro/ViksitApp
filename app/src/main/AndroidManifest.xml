@@ -36,9 +36,7 @@
         <activity android:name=".job.activity.JobActivity" />
         <activity android:name=".role.activity.RoleDetailActivity" />
         <activity android:name=".role.activity.RoleDepthActivity" />
-        <activity android:name=".assessment.activity.AssessmentActivity" >
-
-        </activity>
+        <activity android:name=".assessment.activity.AssessmentActivity"></activity>
         <activity android:name=".calendar.activity.CalendarActivity" />
         <activity android:name=".assessment.activity.QuestionsActivity" />
         <activity android:name=".job.activity.JobDetailActivity" />
@@ -69,7 +67,8 @@
         <activity android:name=".challenge.activity.LeaderBoardActivity" />
         <activity android:name=".dashboard.activity.MyProfileActivity" />
         <activity android:name=".role.activity.RoleSpecificActivity" />
-        <activity android:name=".role.activity.PracticeCompletionActivity"></activity>
+        <activity android:name=".role.activity.PracticeCompletionActivity" />
+
         <receiver
             android:name=".recievers.NetworkChangeReceiver"
             android:enabled="true"
@@ -79,6 +78,8 @@
                 <action android:name="android.net.wifi.WIFI_STATE_CHANGED" />
             </intent-filter>
         </receiver>
+
+        <activity android:name=".assessment.activity.AssessmentResult"></activity>
     </application>
 
 </manifest>

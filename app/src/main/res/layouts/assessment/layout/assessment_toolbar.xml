@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:id="@+id/toolbar_layout"
+
+    >
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:minHeight="?attr/actionBarSize"
+        app:contentInsetLeft="0dp"
+        app:contentInsetStart="0dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            >
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@mipmap/ic_close_black_24dp"
+                android:id="@+id/toolbar_close"
+                android:layout_margin="5dp"
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="14 OF 20 ANSWERED"
+                android:textSize="@dimen/h7"
+                android:textColor="@color/black"
+                android:layout_margin="5dp"
+                android:id="@+id/correctanswer"
+                android:fontFamily="sans-serif-medium"
+            />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawableLeft="@mipmap/ic_timer_black_24dp"
+                android:text="10:14"
+                android:textColor="@color/black"
+                android:textSize="@dimen/h7"
+                android:layout_margin="5dp"
+                android:id="@+id/timer"
+                android:fontFamily="sans-serif-medium"
+
+                />
+
+        </LinearLayout>
+    </android.support.v7.widget.Toolbar>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/toolbar"
+        android:layout_marginBottom="60dp"
+        android:id="@+id/rr">
+        <pro.viksit.com.viksit.util.LockableViewPager
+            android:id="@+id/viewpager"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            />
+        <me.itangqi.waveloadingview.WaveLoadingView
+            android:id="@+id/waveLoadingView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:translationZ="-1dp"
+            app:wlv_borderColor="#ffffff"
+            app:wlv_borderWidth="0dp"
+            app:wlv_progressValue="100"
+            app:wlv_round_rectangle="false"
+            app:wlv_shapeType="rectangle"
+            app:wlv_titleCenter=""
+            app:wlv_titleCenterColor="@android:color/white"
+            app:wlv_titleCenterSize="24sp"
+            app:wlv_titleCenterStrokeColor="#c3e6f4"
+            app:wlv_titleCenterStrokeWidth="3dp"
+            app:wlv_triangle_direction="north"
+            app:wlv_waveAmplitude="9"
+            app:wlv_waveColor="#ffffff"
+            app:wlv_wave_background_Color="#c3e6f4" />
+
+    </RelativeLayout>
+    <ProgressBar
+        android:theme="@style/CircularProgress"
+        style="@style/Widget.AppCompat.ProgressBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:id="@+id/progress"
+        android:visibility="gone"
+        android:translationZ="1dp"
+        />
+
+</RelativeLayout>
