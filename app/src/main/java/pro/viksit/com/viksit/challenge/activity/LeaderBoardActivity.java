@@ -14,6 +14,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.util.DisplayMetrics;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
@@ -52,7 +53,10 @@ import pro.viksit.com.viksit.challenge.pojo.StudentRankPOJO;
 import pro.viksit.com.viksit.role.activity.CheckoutActivity;
 import pro.viksit.com.viksit.role.util.RecyclerItemClickListener;
 import pro.viksit.com.viksit.util.CircleTransform;
+import pro.viksit.com.viksit.util.DisplayUtil;
 import pro.viksit.com.viksit.util.HttpUtil;
+import pro.viksit.com.viksit.util.ImageSaver;
+import pro.viksit.com.viksit.util.SaveImageAsync;
 
 public class LeaderBoardActivity extends AppCompatActivity {
 
@@ -66,6 +70,7 @@ public class LeaderBoardActivity extends AppCompatActivity {
     private ImageButton goBack;
     private TextView barTitle;
     private ArrayList<StudentRankPOJO> profileList = new ArrayList<>();
+    /*private ArrayList<StudentRankPOJO> ranklist = new;*/
     private ImageView first, second, third;
     private Button firstRank, secondRank, thirdRank;
     private TextView firstName, secondName, thirdName;
@@ -74,6 +79,7 @@ public class LeaderBoardActivity extends AppCompatActivity {
     private LeaderBoardRecyclerAdapter adapter;
     private SharedPreferences sharedpreferences;
 
+    private Picasso picasso;
     private int screenWidth, screenHeight;
     private double diagonalInches;
 
@@ -110,15 +116,13 @@ public class LeaderBoardActivity extends AppCompatActivity {
 
         sharedpreferences = getSharedPreferences(getResources().getString(R.string.shared_preference_key), Context.MODE_PRIVATE);
         String jsonresponse = sharedpreferences.getString(getResources().getString(R.string.leaderboard),"");
-
         System.out.println("this is response" + jsonresponse);
 
         Gson gson = new Gson();
         Type listType = new TypeToken<List<LeaderBoardCourse>>() {
         }.getType();
         leaderBoardCourses = (ArrayList<LeaderBoardCourse>) gson.fromJson(jsonresponse, listType);
-        System.out.println("    ->     s      "+leaderBoardCourses);
-
+        /*System.out.println("    ->     s      "+leaderBoardCourses);*/
 
         if (leaderBoardCourses != null && leaderBoardCourses.size() > 0) {
             implementActions();
@@ -138,6 +142,18 @@ public class LeaderBoardActivity extends AppCompatActivity {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 String item = parent.getItemAtPosition(position).toString();
+                System.out.println("       s          s  s s " + item);
+                for(LeaderBoardCourse course : leaderBoardCourses){
+                    if(dropdown.getSelectedItem().toString().equalsIgnoreCase(course.getName())){
+                        profileList = course.getAllStudentRanks();
+                        adapter = new LeaderBoardRecyclerAdapter(profileList, getBaseContext(), screenWidth, screenHeight, diagonalInches);
+                        verticalRecycler.setAdapter(adapter);
+                        adapter.notifyDataSetChanged();
+                        System.out.println("dataset changedd");
+                        break;
+                    }
+                }
+
             }
 
             @Override
@@ -145,8 +161,6 @@ public class LeaderBoardActivity extends AppCompatActivity {
 
             }
         });
-
-        dropdown.setSelection(0);
 
         //String text = spinner.getSelectedItem().toString();
         for(LeaderBoardCourse course : leaderBoardCourses){
@@ -156,28 +170,54 @@ public class LeaderBoardActivity extends AppCompatActivity {
             }
         }
 
+        //
+        String url = profileList.get(0).getImageURL();
+        int videoindex = url.lastIndexOf("/");
+        ImageSaver studentImage = new ImageSaver(this).
+                setParentDirectoryName("leaderboard").
+                setFileName(new DisplayUtil().getFileNameReplaced(url.substring(videoindex+1,url.length()))).
+                setExternal(ImageSaver.isExternalStorageReadable());
+        picasso = Picasso.with(this);
+
         //setting first
-        Picasso.with(this).load(profileList.get(0).getImageURL()).transform(new CircleTransform()).into(first);//image
+        if(studentImage.checkFile()){
+            picasso.load(studentImage.pathFile()).transform(new CircleTransform()).into(first);
+        }else{
+            picasso.load(profileList.get(0).getImageURL()).transform(new CircleTransform()).into(first);//image
+            new SaveImageAsync(studentImage).execute(getResources().getString(R.string.resourceserverip)+url);
+        }
+        System.out.println("Kuch likh dia "+getResources().getString(R.string.resourceserverip) + profileList.get(1).getImageURL());
         firstRank.setText(Integer.toString(profileList.get(0).getBatchRank()));
         firstName.setText(profileList.get(0).getName().toLowerCase());
         firstXP.setText(Integer.toString(profileList.get(0).getPoints()));
-        System.out.print("hb  " + profileList.get(0).getPoints());
 
         //setting second
-        Picasso.with(this).load(profileList.get(1).getImageURL()).transform(new CircleTransform()).into(second);//image
+        if(studentImage.checkFile()){
+            picasso.load(studentImage.pathFile()).transform(new CircleTransform()).into(second);
+        }else{
+            picasso.load(getResources().getString(R.string.resourceserverip) + profileList.get(1).getImageURL()).transform(new CircleTransform()).into(second);//image
+            new SaveImageAsync(studentImage).execute(getResources().getString(R.string.resourceserverip)+url);
+        }
         secondRank.setText(Integer.toString(profileList.get(1).getBatchRank()));
         secondName.setText(profileList.get(1).getName().toLowerCase());
         secondXP.setText(Integer.toString(profileList.get(1).getPoints()));
 
         //setting third
-        Picasso.with(this).load(profileList.get(2).getImageURL()).transform(new CircleTransform()).into(third);//image
+        if(studentImage.checkFile()){
+            picasso.load(studentImage.pathFile()).transform(new CircleTransform()).into(third);
+        }else{
+            picasso.load(getResources().getString(R.string.resourceserverip) + profileList.get(2).getImageURL()).transform(new CircleTransform()).into(third);//image
+            new SaveImageAsync(studentImage).execute(getResources().getString(R.string.resourceserverip)+url);
+        }
         thirdRank.setText(Integer.toString(profileList.get(2).getBatchRank()));
         thirdName.setText(profileList.get(2).getName().toLowerCase());
         thirdXP.setText(Integer.toString(profileList.get(2).getPoints()));
 
         // setting vertical recycler view
         verticalRecycler.setHasFixedSize(true);
-        adapter = new LeaderBoardRecyclerAdapter(profileList, getBaseContext(), screenWidth, screenHeight, diagonalInches);
+        ArrayList<StudentRankPOJO> ranklist = new ArrayList<>(profileList.subList(3, profileList.size()));
+
+        adapter = new LeaderBoardRecyclerAdapter(ranklist, getBaseContext(), screenWidth, screenHeight, diagonalInches);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
         linearLayoutManager.setAutoMeasureEnabled(true);
         verticalRecycler.setLayoutManager(linearLayoutManager);

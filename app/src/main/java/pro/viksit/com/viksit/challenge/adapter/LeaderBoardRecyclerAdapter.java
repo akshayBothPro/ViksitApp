@@ -16,6 +16,9 @@ import pro.viksit.com.viksit.R;
 import pro.viksit.com.viksit.challenge.pojo.StudentRankPOJO;
 import pro.viksit.com.viksit.util.CircleTransform;
 import pro.viksit.com.viksit.challenge.pojo.LeaderBoardCourse;
+import pro.viksit.com.viksit.util.DisplayUtil;
+import pro.viksit.com.viksit.util.ImageSaver;
+import pro.viksit.com.viksit.util.SaveImageAsync;
 
 /**
  * Created by Akshay on 13/04/2017.
@@ -27,6 +30,7 @@ public class LeaderBoardRecyclerAdapter extends RecyclerView.Adapter<LeaderBoard
     private Context context;
     private int screenWidth,screenHeight;
     private double diagonalInches;
+    private Picasso picasso;
 
     public LeaderBoardRecyclerAdapter(ArrayList<StudentRankPOJO> list, Context context) {
         this.list = list;
@@ -59,10 +63,22 @@ public class LeaderBoardRecyclerAdapter extends RecyclerView.Adapter<LeaderBoard
             holder.xp.setText(Integer.toString(profile.getPoints()));
 
 
-            if (profile.getImageURL() != null) {
+            int index = profile.getImageURL().lastIndexOf("/");
+
+            ImageSaver studentImage = new ImageSaver(context).
+                    setParentDirectoryName("leaderboard").
+                    setFileName(new DisplayUtil().getFileNameReplaced(profile.getImageURL().substring(index+1,profile.getImageURL().length()))).
+                    setExternal(ImageSaver.isExternalStorageReadable());
+
+            picasso = Picasso.with(context);
+            if(studentImage.checkFile()){
+                picasso.load(studentImage.pathFile()).transform(new CircleTransform()).into(holder.image);
+            }else{
+                picasso.load(context.getResources().getString(R.string.resourceserverip) + profile.getImageURL()).transform(new CircleTransform()).into(holder.image);//image
+                new SaveImageAsync(studentImage).execute(context.getResources().getString(R.string.resourceserverip)+profile.getImageURL());
+            }
+            /*if (profile.getImageURL() != null) {
                 Picasso.with(context).load(profile.getImageURL()).transform(new CircleTransform()).into(holder.image);
-            }/* else if(profile.getImageResId() != 0){
-                Picasso.with(context).load(profile.getImageResId()).transform(new CircleTransform()).into(holder.image);
             }*/
 
             //for tablets

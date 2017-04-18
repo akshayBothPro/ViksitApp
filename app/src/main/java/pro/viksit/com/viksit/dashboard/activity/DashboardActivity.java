@@ -25,6 +25,7 @@ import com.google.gson.GsonBuilder;
 import com.squareup.picasso.Picasso;
 
 import pro.viksit.com.viksit.R;
+import pro.viksit.com.viksit.challenge.activity.LeaderBoardActivity;
 import pro.viksit.com.viksit.util.DisplayUtil;
 import pro.viksit.com.viksit.util.ImageSaver;
 import pro.viksit.com.viksit.util.SaveImageAsync;
@@ -157,7 +158,7 @@ public class DashboardActivity extends AppCompatActivity implements View.OnClick
     @Override
     public void onClick(View v) {
         if(v.getId() == R.id.notfication){
-            startActivity(new Intent(DashboardActivity.this, NotificationActivity.class));
+            startActivity(new Intent(DashboardActivity.this, LeaderBoardActivity.class));
         }
     }
 }
