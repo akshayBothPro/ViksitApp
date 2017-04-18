@@ -1,6 +1,8 @@
 package pro.viksit.com.viksit.challenge.activity;
 
+import android.content.Context;
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.v7.app.AppCompatActivity;
@@ -21,16 +23,32 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 import com.squareup.picasso.Picasso;
 
+import org.apache.http.HttpEntity;
+import org.apache.http.HttpResponse;
+import org.apache.http.client.ClientProtocolException;
+import org.apache.http.client.HttpClient;
+import org.apache.http.client.methods.HttpGet;
+import org.apache.http.impl.client.DefaultHttpClient;
+import org.apache.http.params.HttpConnectionParams;
+import org.apache.http.params.HttpParams;
+import org.apache.http.util.EntityUtils;
+
+import java.io.IOException;
+import java.lang.reflect.Type;
 import java.util.ArrayList;
+import java.util.List;
 
 import pro.viksit.com.viksit.R;
-import pro.viksit.com.viksit.util.CircleTransform;
 import pro.viksit.com.viksit.challenge.adapter.LeaderBoardRecyclerAdapter;
-import pro.viksit.com.viksit.challenge.pojo.LeaderBoardProfile;
+import pro.viksit.com.viksit.challenge.pojo.LeaderBoardCourse;
+import pro.viksit.com.viksit.challenge.pojo.StudentRankPOJO;
 import pro.viksit.com.viksit.role.activity.CheckoutActivity;
 import pro.viksit.com.viksit.role.util.RecyclerItemClickListener;
+import pro.viksit.com.viksit.util.CircleTransform;
 
 public class LeaderBoardActivity extends AppCompatActivity {
 
@@ -43,16 +61,18 @@ public class LeaderBoardActivity extends AppCompatActivity {
     private Toolbar toolbar;
     private ImageButton goBack;
     private TextView barTitle;
-    private ArrayList<LeaderBoardProfile> profileList;
-    private ImageView first, second,third;
+    private ArrayList<StudentRankPOJO> profileList;
+    private ImageView first, second, third;
     private Button firstRank, secondRank, thirdRank;
     private TextView firstName, secondName, thirdName;
     private TextView firstXP, secondXP, thirdXP;
     private RecyclerView verticalRecycler;
     private LeaderBoardRecyclerAdapter adapter;
 
-    private int screenWidth,screenHeight;
+    private int screenWidth, screenHeight;
     private double diagonalInches;
+
+    ArrayList<LeaderBoardCourse> leaderBoardCourses;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -83,19 +103,19 @@ public class LeaderBoardActivity extends AppCompatActivity {
 
         setSupportActionBar(toolbar);
         getWidthAndHeight();
-        implementActions();
+        //
+
+        new LeaderBoardAsync(this).executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
 
     }
 
-    private void implementActions(){
+    private void implementActions() {
         //setting dropdown
         spinnerList = new ArrayList<String>();
         spinnerList.add("All Roles");
-        spinnerList.add("Business");
-        spinnerList.add("Computers");
-        spinnerList.add("Education");
-        spinnerList.add("Personal");
-        spinnerList.add("Travel");
+        for (LeaderBoardCourse course : leaderBoardCourses) {
+            spinnerList.add(course.getName());
+        }
         spinnerAdapter = new ArrayAdapter<>(this, R.layout.dropdown_spinner_item, spinnerList);
         spinnerAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         dropdown.setAdapter(spinnerAdapter);
@@ -111,47 +131,71 @@ public class LeaderBoardActivity extends AppCompatActivity {
             }
         });
 
+        //String text = spinner.getSelectedItem().toString();
+        for(LeaderBoardCourse course : leaderBoardCourses){
+            if(dropdown.getSelectedItem().toString().equalsIgnoreCase(course.getName())){
+                profileList = course.getAllStudentRanks();
+            }
+        }
+
+        //setting first
+        Picasso.with(this).load(profileList.get(0).getImageURL()).transform(new CircleTransform()).into(first);//image
+        firstRank.setText(profileList.get(0).getBatchRank());
+        firstName.setText(profileList.get(0).getName());
+        firstXP.setText(profileList.get(0).getPoints());
+
+        //setting second
+        Picasso.with(this).load(profileList.get(1).getImageURL()).transform(new CircleTransform()).into(second);//image
+        secondRank.setText(profileList.get(1).getBatchRank());
+        secondName.setText(profileList.get(1).getName());
+        secondXP.setText(profileList.get(1).getPoints());
+
+        //setting third
+        Picasso.with(this).load(profileList.get(2).getImageURL()).transform(new CircleTransform()).into(third);//image
+        thirdRank.setText(profileList.get(2).getBatchRank());
+        thirdName.setText(profileList.get(2).getName());
+        thirdXP.setText(profileList.get(2).getPoints());
+
         // setting vertical recycler view
-        profileList = setDummyData(profileList);
+        //profileList = setProfileData(profileList);
         verticalRecycler.setHasFixedSize(true);
-        adapter = new LeaderBoardRecyclerAdapter(profileList,getBaseContext(),screenWidth,screenHeight,diagonalInches);
+        adapter = new LeaderBoardRecyclerAdapter(profileList, getBaseContext(), screenWidth, screenHeight, diagonalInches);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
         linearLayoutManager.setAutoMeasureEnabled(true);
         verticalRecycler.setLayoutManager(linearLayoutManager);
         verticalRecycler.setItemAnimator(new DefaultItemAnimator());
         verticalRecycler.setAdapter(adapter);
         verticalRecycler.addOnItemTouchListener(
-                new RecyclerItemClickListener(getBaseContext(), verticalRecycler ,new RecyclerItemClickListener.OnItemClickListener() {
-                    @Override public void onItemClick(View view, int position) {
+                new RecyclerItemClickListener(getBaseContext(), verticalRecycler, new RecyclerItemClickListener.OnItemClickListener() {
+                    @Override
+                    public void onItemClick(View view, int position) {
                         System.out.println("Vposition: " + position);
                         Intent intent = new Intent(LeaderBoardActivity.this, CheckoutActivity.class);
                         startActivity(intent);
                     }
-                    @Override public void onLongItemClick(View view, int position) {
+
+                    @Override
+                    public void onLongItemClick(View view, int position) {
                         // do something
                     }
                 })
         );
 
 
-        Picasso.with(this).load(R.drawable.ic_urvashi).transform(new CircleTransform()).into(first);
-        Picasso.with(this).load(R.drawable.ic_sunny).transform(new CircleTransform()).into(second);
-        Picasso.with(this).load(R.drawable.ic_deepika).transform(new CircleTransform()).into(third);
-
-        if (diagonalInches>=6.5){
+        if (diagonalInches >= 6.5) {
             ViewGroup.LayoutParams params = first.getLayoutParams();
-            params.height = screenHeight/6;
-            params.width = screenHeight/6;
+            params.height = screenHeight / 6;
+            params.width = screenHeight / 6;
             first.setLayoutParams(params);
 
             params = second.getLayoutParams();
-            params.height = screenHeight/7;
-            params.width = screenHeight/7;
+            params.height = screenHeight / 7;
+            params.width = screenHeight / 7;
             second.setLayoutParams(params);
 
             params = third.getLayoutParams();
-            params.height = screenHeight/8;
-            params.width = screenHeight/8;
+            params.height = screenHeight / 8;
+            params.width = screenHeight / 8;
             third.setLayoutParams(params);
 
             params = firstRank.getLayoutParams();
@@ -171,24 +215,12 @@ public class LeaderBoardActivity extends AppCompatActivity {
         }
     }
 
-    public ArrayList<LeaderBoardProfile> setDummyData(ArrayList<LeaderBoardProfile> list){
-        LeaderBoardProfile profile;
+    public ArrayList<LeaderBoardCourse> setProfileData(ArrayList<LeaderBoardCourse> list) {
         list = new ArrayList<>();
 
-        for(int i = 0 ; i < 4; i++) {
-            profile = new LeaderBoardProfile(R.drawable.ic_urvashi, "Urvashi", 4, 2596);
-            list.add(profile);
-
-            profile = new LeaderBoardProfile(R.drawable.ic_sunny, "Sunny", 5, 4796);
-            list.add(profile);
-
-            profile = new LeaderBoardProfile(R.drawable.ic_deepika, "Deepika", 6, 4896);
-            list.add(profile);
-
-            profile = new LeaderBoardProfile(R.drawable.ic_disha, "Disha", 7, 4996);
+        for (LeaderBoardCourse profile : leaderBoardCourses) {
             list.add(profile);
         }
-
         return list;
     }
 
@@ -198,8 +230,70 @@ public class LeaderBoardActivity extends AppCompatActivity {
         screenHeight = displaymetrics.heightPixels;
         screenWidth = displaymetrics.widthPixels;
 
-        float yInches= displaymetrics.heightPixels/displaymetrics.ydpi;
-        float xInches= displaymetrics.widthPixels/displaymetrics.xdpi;
-        diagonalInches = Math.sqrt(xInches*xInches + yInches*yInches);
+        float yInches = displaymetrics.heightPixels / displaymetrics.ydpi;
+        float xInches = displaymetrics.widthPixels / displaymetrics.xdpi;
+        diagonalInches = Math.sqrt(xInches * xInches + yInches * yInches);
+    }
+
+    public class LeaderBoardAsync extends AsyncTask {
+        private Context context;
+        private Gson gson = new Gson();
+
+
+        public LeaderBoardAsync(Context context) {
+            this.context = context;
+        }
+
+        @Override
+        protected Object doInBackground(Object[] params) {
+            HttpClient httpclient = new DefaultHttpClient();
+            System.out.println(context.getResources().getString(R.string.serverip) + "/courses/user/456/leaderboard");
+            HttpGet httppost = new HttpGet(context.getResources().getString(R.string.serverip) + "/courses/user/456/leaderboard");
+            int timeoutConnection = 120000;
+            final HttpParams httpParameters = httpclient.getParams();
+            HttpConnectionParams.setConnectionTimeout(httpParameters, timeoutConnection);
+            HttpConnectionParams.setSoTimeout(httpParameters, 120000);
+
+            String jsonresponse = "";
+            try {
+
+                // Execute HTTP Post Request
+                HttpResponse response = httpclient.execute(httppost);
+                HttpEntity httpEntity = response.getEntity();
+                jsonresponse = EntityUtils.toString(httpEntity);
+
+
+            } catch (ClientProtocolException e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+                return "null";
+            } catch (IOException e) {
+                // TODO Auto-generated catch block
+
+                e.printStackTrace();
+                return "null";
+            } catch (Exception e) {
+                e.printStackTrace();
+                return "null";
+            }
+            return jsonresponse;
+        }
+
+        protected void onPostExecute(String result) {
+            if (result != null && !result.equalsIgnoreCase("")) {
+                try {
+                    Type listType = new TypeToken<List<LeaderBoardCourse>>() {
+                    }.getType();
+                    leaderBoardCourses = (ArrayList<LeaderBoardCourse>) gson.fromJson(result, listType);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+                if (leaderBoardCourses != null && leaderBoardCourses.size() > 0) {
+                    implementActions();
+                }
+            }
+
+
+        }
     }
 }

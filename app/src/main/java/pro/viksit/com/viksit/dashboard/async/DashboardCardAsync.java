@@ -105,7 +105,7 @@ public class DashboardCardAsync extends AsyncTask<String, Integer, String> {
             System.out.println("jsonresponse " + jsonresponse);
             Type listType = new TypeToken<List<DashboardCard>>() {
             }.getType();
-            ArrayList<DashboardCard> dashboardCards = (ArrayList<DashboardCard>) gson.fromJson(jsonresponse, listType);
+                ArrayList<DashboardCard> dashboardCards = (ArrayList<DashboardCard>) gson.fromJson(jsonresponse, listType);
 
 
             if (dashboardCards.size() < 7) {

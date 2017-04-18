@@ -13,8 +13,9 @@ import com.squareup.picasso.Picasso;
 import java.util.ArrayList;
 
 import pro.viksit.com.viksit.R;
+import pro.viksit.com.viksit.challenge.pojo.StudentRankPOJO;
 import pro.viksit.com.viksit.util.CircleTransform;
-import pro.viksit.com.viksit.challenge.pojo.LeaderBoardProfile;
+import pro.viksit.com.viksit.challenge.pojo.LeaderBoardCourse;
 
 /**
  * Created by Akshay on 13/04/2017.
@@ -22,17 +23,17 @@ import pro.viksit.com.viksit.challenge.pojo.LeaderBoardProfile;
 
 
 public class LeaderBoardRecyclerAdapter extends RecyclerView.Adapter<LeaderBoardRecyclerAdapter.MyViewHolder>  {
-    private ArrayList<LeaderBoardProfile> list;
+    private ArrayList<StudentRankPOJO> list;
     private Context context;
     private int screenWidth,screenHeight;
     private double diagonalInches;
 
-    public LeaderBoardRecyclerAdapter(ArrayList<LeaderBoardProfile> list,Context context) {
+    public LeaderBoardRecyclerAdapter(ArrayList<StudentRankPOJO> list, Context context) {
         this.list = list;
         this.context = context;
     }
 
-    public LeaderBoardRecyclerAdapter(ArrayList<LeaderBoardProfile> list ,Context context, int screenWidth,int screenHeight, double diagonalInches) {
+    public LeaderBoardRecyclerAdapter(ArrayList<StudentRankPOJO> list , Context context, int screenWidth, int screenHeight, double diagonalInches) {
         this.list = list;
         this.context = context;
         this.screenWidth = screenWidth;
@@ -50,23 +51,26 @@ public class LeaderBoardRecyclerAdapter extends RecyclerView.Adapter<LeaderBoard
 
     @Override
     public void onBindViewHolder(MyViewHolder holder, int position) {
-        LeaderBoardProfile profile = list.get(position);
-        holder.name.setText(profile.getName());
-        holder.rank.setText(ordinal(profile.getRank()));
-        holder.xp.setText(Integer.toString(profile.getXp()));
 
-        if(profile.getImageURL() != null){
-            Picasso.with(context).load(profile.getImageURL()).transform(new CircleTransform()).into(holder.image);
-        } else if(profile.getImageResId() != 0){
-            Picasso.with(context).load(profile.getImageResId()).transform(new CircleTransform()).into(holder.image);
-        }
+        StudentRankPOJO profile = list.get(position);
+        if(profile.getBatchRank() != 3 || profile.getBatchRank() != 1 || profile.getBatchRank() != 2) {
+            holder.name.setText(profile.getName());
+            holder.rank.setText(ordinal(profile.getBatchRank()));
+            holder.xp.setText(Integer.toString(profile.getPoints()));
 
-        //for tablets
-        if (diagonalInches>=6.5) {
-            ViewGroup.LayoutParams params = holder.image.getLayoutParams();
-            params.height = screenHeight / 11;
-            params.width = screenHeight / 11;
-            holder.image.setLayoutParams(params);
+            if (profile.getImageURL() != null) {
+                Picasso.with(context).load(profile.getImageURL()).transform(new CircleTransform()).into(holder.image);
+            }/* else if(profile.getImageResId() != 0){
+                Picasso.with(context).load(profile.getImageResId()).transform(new CircleTransform()).into(holder.image);
+            }*/
+
+            //for tablets
+            if (diagonalInches >= 6.5) {
+                ViewGroup.LayoutParams params = holder.image.getLayoutParams();
+                params.height = screenHeight / 11;
+                params.width = screenHeight / 11;
+                holder.image.setLayoutParams(params);
+            }
         }
     }
 
