@@ -53,8 +53,8 @@ public class LeaderBoardRecyclerAdapter extends RecyclerView.Adapter<LeaderBoard
     public void onBindViewHolder(MyViewHolder holder, int position) {
 
         StudentRankPOJO profile = list.get(position);
-        if(profile.getBatchRank() != 3 || profile.getBatchRank() != 1 || profile.getBatchRank() != 2) {
-            holder.name.setText(profile.getName());
+        if(position != 0 || position != 1 || position != 2) {
+            holder.name.setText(profile.getName().toLowerCase());
             holder.rank.setText(ordinal(profile.getBatchRank()));
             holder.xp.setText(Integer.toString(profile.getPoints()));
 

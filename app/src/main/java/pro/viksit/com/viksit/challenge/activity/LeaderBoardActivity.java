@@ -2,6 +2,7 @@ package pro.viksit.com.viksit.challenge.activity;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.CollapsingToolbarLayout;
@@ -41,14 +42,17 @@ import java.io.IOException;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.ExecutionException;
 
 import pro.viksit.com.viksit.R;
 import pro.viksit.com.viksit.challenge.adapter.LeaderBoardRecyclerAdapter;
+import pro.viksit.com.viksit.challenge.async.LeaderBoardAsync;
 import pro.viksit.com.viksit.challenge.pojo.LeaderBoardCourse;
 import pro.viksit.com.viksit.challenge.pojo.StudentRankPOJO;
 import pro.viksit.com.viksit.role.activity.CheckoutActivity;
 import pro.viksit.com.viksit.role.util.RecyclerItemClickListener;
 import pro.viksit.com.viksit.util.CircleTransform;
+import pro.viksit.com.viksit.util.HttpUtil;
 
 public class LeaderBoardActivity extends AppCompatActivity {
 
@@ -61,13 +65,14 @@ public class LeaderBoardActivity extends AppCompatActivity {
     private Toolbar toolbar;
     private ImageButton goBack;
     private TextView barTitle;
-    private ArrayList<StudentRankPOJO> profileList;
+    private ArrayList<StudentRankPOJO> profileList = new ArrayList<>();
     private ImageView first, second, third;
     private Button firstRank, secondRank, thirdRank;
     private TextView firstName, secondName, thirdName;
     private TextView firstXP, secondXP, thirdXP;
-    private RecyclerView verticalRecycler;
+    public RecyclerView verticalRecycler;
     private LeaderBoardRecyclerAdapter adapter;
+    private SharedPreferences sharedpreferences;
 
     private int screenWidth, screenHeight;
     private double diagonalInches;
@@ -100,19 +105,29 @@ public class LeaderBoardActivity extends AppCompatActivity {
         thirdXP = (TextView) findViewById(R.id.tv_3rd_xp);
         verticalRecycler = (RecyclerView) findViewById(R.id.rv_leaderboard);
 
-
         setSupportActionBar(toolbar);
         getWidthAndHeight();
-        //
 
-        new LeaderBoardAsync(this).executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
+        sharedpreferences = getSharedPreferences(getResources().getString(R.string.shared_preference_key), Context.MODE_PRIVATE);
+        String jsonresponse = sharedpreferences.getString(getResources().getString(R.string.leaderboard),"");
 
+        System.out.println("this is response" + jsonresponse);
+
+        Gson gson = new Gson();
+        Type listType = new TypeToken<List<LeaderBoardCourse>>() {
+        }.getType();
+        leaderBoardCourses = (ArrayList<LeaderBoardCourse>) gson.fromJson(jsonresponse, listType);
+        System.out.println("    ->     s      "+leaderBoardCourses);
+
+
+        if (leaderBoardCourses != null && leaderBoardCourses.size() > 0) {
+            implementActions();
+        }
     }
 
     private void implementActions() {
         //setting dropdown
         spinnerList = new ArrayList<String>();
-        spinnerList.add("All Roles");
         for (LeaderBoardCourse course : leaderBoardCourses) {
             spinnerList.add(course.getName());
         }
@@ -131,33 +146,36 @@ public class LeaderBoardActivity extends AppCompatActivity {
             }
         });
 
+        dropdown.setSelection(0);
+
         //String text = spinner.getSelectedItem().toString();
         for(LeaderBoardCourse course : leaderBoardCourses){
             if(dropdown.getSelectedItem().toString().equalsIgnoreCase(course.getName())){
                 profileList = course.getAllStudentRanks();
+                break;
             }
         }
 
         //setting first
         Picasso.with(this).load(profileList.get(0).getImageURL()).transform(new CircleTransform()).into(first);//image
-        firstRank.setText(profileList.get(0).getBatchRank());
-        firstName.setText(profileList.get(0).getName());
-        firstXP.setText(profileList.get(0).getPoints());
+        firstRank.setText(Integer.toString(profileList.get(0).getBatchRank()));
+        firstName.setText(profileList.get(0).getName().toLowerCase());
+        firstXP.setText(Integer.toString(profileList.get(0).getPoints()));
+        System.out.print("hb  " + profileList.get(0).getPoints());
 
         //setting second
         Picasso.with(this).load(profileList.get(1).getImageURL()).transform(new CircleTransform()).into(second);//image
-        secondRank.setText(profileList.get(1).getBatchRank());
-        secondName.setText(profileList.get(1).getName());
-        secondXP.setText(profileList.get(1).getPoints());
+        secondRank.setText(Integer.toString(profileList.get(1).getBatchRank()));
+        secondName.setText(profileList.get(1).getName().toLowerCase());
+        secondXP.setText(Integer.toString(profileList.get(1).getPoints()));
 
         //setting third
         Picasso.with(this).load(profileList.get(2).getImageURL()).transform(new CircleTransform()).into(third);//image
-        thirdRank.setText(profileList.get(2).getBatchRank());
-        thirdName.setText(profileList.get(2).getName());
-        thirdXP.setText(profileList.get(2).getPoints());
+        thirdRank.setText(Integer.toString(profileList.get(2).getBatchRank()));
+        thirdName.setText(profileList.get(2).getName().toLowerCase());
+        thirdXP.setText(Integer.toString(profileList.get(2).getPoints()));
 
         // setting vertical recycler view
-        //profileList = setProfileData(profileList);
         verticalRecycler.setHasFixedSize(true);
         adapter = new LeaderBoardRecyclerAdapter(profileList, getBaseContext(), screenWidth, screenHeight, diagonalInches);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
@@ -180,7 +198,6 @@ public class LeaderBoardActivity extends AppCompatActivity {
                     }
                 })
         );
-
 
         if (diagonalInches >= 6.5) {
             ViewGroup.LayoutParams params = first.getLayoutParams();
@@ -215,15 +232,6 @@ public class LeaderBoardActivity extends AppCompatActivity {
         }
     }
 
-    public ArrayList<LeaderBoardCourse> setProfileData(ArrayList<LeaderBoardCourse> list) {
-        list = new ArrayList<>();
-
-        for (LeaderBoardCourse profile : leaderBoardCourses) {
-            list.add(profile);
-        }
-        return list;
-    }
-
     private void getWidthAndHeight() {
         DisplayMetrics displaymetrics = new DisplayMetrics();
         this.getWindowManager().getDefaultDisplay().getMetrics(displaymetrics);
@@ -235,65 +243,4 @@ public class LeaderBoardActivity extends AppCompatActivity {
         diagonalInches = Math.sqrt(xInches * xInches + yInches * yInches);
     }
 
-    public class LeaderBoardAsync extends AsyncTask {
-        private Context context;
-        private Gson gson = new Gson();
-
-
-        public LeaderBoardAsync(Context context) {
-            this.context = context;
-        }
-
-        @Override
-        protected Object doInBackground(Object[] params) {
-            HttpClient httpclient = new DefaultHttpClient();
-            System.out.println(context.getResources().getString(R.string.serverip) + "/courses/user/456/leaderboard");
-            HttpGet httppost = new HttpGet(context.getResources().getString(R.string.serverip) + "/courses/user/456/leaderboard");
-            int timeoutConnection = 120000;
-            final HttpParams httpParameters = httpclient.getParams();
-            HttpConnectionParams.setConnectionTimeout(httpParameters, timeoutConnection);
-            HttpConnectionParams.setSoTimeout(httpParameters, 120000);
-
-            String jsonresponse = "";
-            try {
-
-                // Execute HTTP Post Request
-                HttpResponse response = httpclient.execute(httppost);
-                HttpEntity httpEntity = response.getEntity();
-                jsonresponse = EntityUtils.toString(httpEntity);
-
-
-            } catch (ClientProtocolException e) {
-                // TODO Auto-generated catch block
-                e.printStackTrace();
-                return "null";
-            } catch (IOException e) {
-                // TODO Auto-generated catch block
-
-                e.printStackTrace();
-                return "null";
-            } catch (Exception e) {
-                e.printStackTrace();
-                return "null";
-            }
-            return jsonresponse;
-        }
-
-        protected void onPostExecute(String result) {
-            if (result != null && !result.equalsIgnoreCase("")) {
-                try {
-                    Type listType = new TypeToken<List<LeaderBoardCourse>>() {
-                    }.getType();
-                    leaderBoardCourses = (ArrayList<LeaderBoardCourse>) gson.fromJson(result, listType);
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-                if (leaderBoardCourses != null && leaderBoardCourses.size() > 0) {
-                    implementActions();
-                }
-            }
-
-
-        }
-    }
 }

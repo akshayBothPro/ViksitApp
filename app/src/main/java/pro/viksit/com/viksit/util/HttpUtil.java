@@ -16,6 +16,9 @@ import org.apache.http.entity.StringEntity;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.message.BasicHeader;
 import org.apache.http.message.BasicNameValuePair;
+import org.apache.http.params.BasicHttpParams;
+import org.apache.http.params.HttpConnectionParams;
+import org.apache.http.params.HttpParams;
 import org.apache.http.protocol.HTTP;
 import org.apache.http.util.EntityUtils;
 
@@ -39,6 +42,8 @@ public class HttpUtil {
     private HashMap<String,String> param;
     private String postrequest;
     public HttpUtil(){}
+    private int socketTimeOut=0, connectionTimeOut=0;
+
     public HttpUtil(String url, String type, HashMap<String, String> param,String postrequest) {
         this.url = url;
         this.type = type;
@@ -101,7 +106,14 @@ public class HttpUtil {
         try{
         switch(type){
             case "GET":
+                if(socketTimeOut != 0 && connectionTimeOut != 0){
+                    HttpParams httpParameters = new BasicHttpParams();
+                    HttpConnectionParams.setConnectionTimeout(httpParameters, connectionTimeOut);
+                    HttpConnectionParams.setSoTimeout(httpParameters, socketTimeOut);
+                    httpclient = new DefaultHttpClient(httpParameters);
+                }
                 httpResponse = httpclient.execute(new HttpGet(url));
+
                 break;
             case "POST":
                 List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>();
@@ -149,5 +161,21 @@ public class HttpUtil {
 
     public void setPostrequest(String postrequest) {
         this.postrequest = postrequest;
+    }
+
+    public int getSocketTimeOut() {
+        return socketTimeOut;
+    }
+
+    public void setSocketTimeOut(int socketTimeOut) {
+        this.socketTimeOut = socketTimeOut;
+    }
+
+    public int getConnectionTimeOut() {
+        return connectionTimeOut;
+    }
+
+    public void setConnectionTimeOut(int connectionTimeOut) {
+        this.connectionTimeOut = connectionTimeOut;
     }
 }

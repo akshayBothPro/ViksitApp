@@ -179,7 +179,6 @@ public class DashboardCardAsync extends AsyncTask<String, Integer, String> {
             HttpEntity httpEntity = response.getEntity();
             jsonresponse = EntityUtils.toString(httpEntity);
 
-
         } catch (ClientProtocolException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
