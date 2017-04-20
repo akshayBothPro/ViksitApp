@@ -31,7 +31,7 @@
 
     <!--Start of URL For services -->
     <string name="resourceserverip">http://192.168.0.105:8080</string>
-    <string name="serverip">http://192.168.0.140:8080/t2c/</string>
+    <string name="serverip">http://192.168.0.105:8080/t2c/</string>
     <string name="socialloginurl">auth/login/social</string>
     <string name="loginurl">auth/login</string>
     <string name="signupurl">user/create</string>
@@ -40,8 +40,9 @@
     <string name="otpurl">user/user_id/mobile</string>
     <string name="reseturl">user/password/reset</string>
     <string name="assessmenturl">assessments/user</string>
-    <string name="allassessment">assessments/user/user_id</string>
+    <string name="allassessment">assessments/user/</string>
     <string name="leaderboarddata">courses/user/user_id/leaderboard</string>
+    <string name="allcourse">courses/user</string>
 
     <!-- end of URL For services -->
 
@@ -49,8 +50,9 @@
     <!--start Stored/cached data-->
     <string name="user_profile">USERPROFILE</string>
     <string name="dashboardcards">DASHBOARDCARDS</string>
-
     <string name="leaderboard">LEADERBOARD</string>
+    <string name="assessment">Assessment_</string>
+
     <!-- end of Stored/cached data- -->
 
     <string name="Rs">\u20B9</string><!--for rupee icon-->

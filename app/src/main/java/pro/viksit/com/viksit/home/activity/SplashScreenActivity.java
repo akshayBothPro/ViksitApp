@@ -19,10 +19,10 @@ import pro.viksit.com.viksit.R;
 import pro.viksit.com.viksit.dashboard.activity.DashboardActivity;
 import pro.viksit.com.viksit.dashboard.pojo.StudentProfile;
 import pro.viksit.com.viksit.home.util.DashBoardCallable;
-import pro.viksit.com.viksit.home.util.LeaderBoardThread;
+import pro.viksit.com.viksit.home.util.ThreadUtil;
 
 /**
- * Created by ravy on 17/03/2017.
+ * Created by Feroz on 19/04/2017.
  */
 
 public class SplashScreenActivity extends AppCompatActivity {
@@ -30,6 +30,7 @@ public class SplashScreenActivity extends AppCompatActivity {
     private static int SPLASH_TIME_OUT = 5000;
     private SharedPreferences sharedpreferences;
     private StudentProfile studentProfile;
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -46,10 +47,11 @@ public class SplashScreenActivity extends AppCompatActivity {
         ExecutorService executor = Executors.newFixedThreadPool(2);
         DashBoardCallable dashBoardCallable = new DashBoardCallable(SplashScreenActivity.this,studentProfile.getId());
         FutureTask<String> dashboardFuture = new FutureTask<String>(dashBoardCallable);
-        LeaderBoardThread leaderBoardThread = new LeaderBoardThread(SplashScreenActivity.this,sharedpreferences);
-
+        ThreadUtil assessmentThread = new ThreadUtil(SplashScreenActivity.this,sharedpreferences,3504,getResources().getString(R.string.serverip)+getResources().getString(R.string.allassessment),"Assessment");
+        ThreadUtil leaderBoardThread = new ThreadUtil(SplashScreenActivity.this,sharedpreferences,3504,getResources().getString(R.string.serverip)+getResources().getString(R.string.leaderboarddata).replaceAll("user_id",3504+""),"Leaderboard");
         executor.execute(dashboardFuture);
         executor.execute(leaderBoardThread);
+        executor.execute(assessmentThread);
                 try {
                     String response =dashboardFuture.get();
                     SharedPreferences.Editor editor = sharedpreferences.edit();
