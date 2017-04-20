@@ -47,7 +47,7 @@ public class LeaderBoardAsync extends AsyncTask<String, Integer, String> {
     protected String doInBackground(String... params) {
 
         HttpUtil httpUtil = new HttpUtil();
-        httpUtil.setUrl(context.getResources().getString(R.string.serverip) + "courses/user/5267/leaderboard");
+        httpUtil.setUrl(context.getResources().getString(R.string.serverip) + "courses/user/5209/leaderboard");
         httpUtil.setType("GET");
         httpUtil.setConnectionTimeOut(5000);
         httpUtil.setSocketTimeOut(5000);

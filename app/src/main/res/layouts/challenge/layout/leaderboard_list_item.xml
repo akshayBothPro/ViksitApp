@@ -26,6 +26,7 @@
             android:layout_centerVertical="true"
             android:layout_marginLeft="@dimen/list_item_image_ver_margin"
             android:layout_marginStart="@dimen/list_item_image_ver_margin"
+            android:maxLength="15"
             android:textSize="@dimen/p1"
             android:textColor="@color/desc_color"
             android:text="Urvashi"/>

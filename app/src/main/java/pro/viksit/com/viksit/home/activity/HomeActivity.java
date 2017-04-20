@@ -19,6 +19,7 @@ import android.widget.TextView;
 
 import pro.viksit.com.viksit.R;
 import pro.viksit.com.viksit.challenge.activity.LeaderBoardActivity;
+import pro.viksit.com.viksit.challenge.async.LeaderBoardAsync;
 import pro.viksit.com.viksit.dashboard.activity.DashboardActivity;
 import pro.viksit.com.viksit.dashboard.activity.NotificationActivity;
 import pro.viksit.com.viksit.recievers.NetworkChangeReceiver;
@@ -56,6 +57,9 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
         getStarted = (Button) findViewById(R.id.btn_get_started);
         member = (Button) findViewById(R.id.btn_member);
         sharedpreferences = getSharedPreferences(getResources().getString(R.string.shared_preference_key), Context.MODE_PRIVATE);
+        //
+        /*new LeaderBoardAsync(this).execute();*/
+        //
         if(!sharedpreferences.getString(getResources().getString(R.string.user_profile),"").equalsIgnoreCase("")){
            Intent i = new Intent(HomeActivity.this,SplashScreenActivity.class);
             startActivity(i);
