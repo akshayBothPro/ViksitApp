@@ -76,6 +76,7 @@
     <color name="role_depth_red_progress">#f5462d</color>
     <color name="assessment_bottom" >#9F9F9F</color>
     <color name="Centre_Grey" >#9b9b9b</color>
+    <color name="test_info_color"> #9b9b9b</color>
 
 
 
