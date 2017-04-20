@@ -58,7 +58,7 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
         member = (Button) findViewById(R.id.btn_member);
         sharedpreferences = getSharedPreferences(getResources().getString(R.string.shared_preference_key), Context.MODE_PRIVATE);
         //
-        /*new LeaderBoardAsync(this).execute();*/
+        new LeaderBoardAsync(this).execute();
         //
         if(!sharedpreferences.getString(getResources().getString(R.string.user_profile),"").equalsIgnoreCase("")){
            Intent i = new Intent(HomeActivity.this,SplashScreenActivity.class);
@@ -83,7 +83,7 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
             startActivity(new Intent(HomeActivity.this, SignupActivity.class));
         } else  if(v.getId() == R.id.btn_member){
             Log.i(TAG,"already a member clicked");
-            startActivity(new Intent(HomeActivity.this, LoginActivity.class));
+            startActivity(new Intent(HomeActivity.this, LeaderBoardActivity.class));
         }
 
     }

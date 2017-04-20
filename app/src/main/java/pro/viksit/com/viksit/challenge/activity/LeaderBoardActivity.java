@@ -29,17 +29,6 @@ import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.squareup.picasso.Picasso;
 
-import org.apache.http.HttpEntity;
-import org.apache.http.HttpResponse;
-import org.apache.http.client.ClientProtocolException;
-import org.apache.http.client.HttpClient;
-import org.apache.http.client.methods.HttpGet;
-import org.apache.http.impl.client.DefaultHttpClient;
-import org.apache.http.params.HttpConnectionParams;
-import org.apache.http.params.HttpParams;
-import org.apache.http.util.EntityUtils;
-
-import java.io.IOException;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
@@ -140,8 +129,7 @@ public class LeaderBoardActivity extends AppCompatActivity {
         dropdown.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                String item = parent.getItemAtPosition(position).toString();
-                System.out.println("       s          s  s s " + item);
+                //String item = parent.getItemAtPosition(position).toString();
                 for (LeaderBoardCourse course : leaderBoardCourses) {
                     if (dropdown.getSelectedItem().toString().equalsIgnoreCase(course.getName())) {
                         profileList = course.getAllStudentRanks();
@@ -150,6 +138,7 @@ public class LeaderBoardActivity extends AppCompatActivity {
                         verticalRecycler.setAdapter(adapter);
                         adapter.notifyDataSetChanged();
                         appBarLayout.setExpanded(true);
+                        setToppers();
                         break;
                     }
                 }
@@ -169,71 +158,8 @@ public class LeaderBoardActivity extends AppCompatActivity {
                 break;
             }
         }
+        setToppers();//setting 1st, 2nd, 3rd
 
-        //setting first
-        String url = profileList.get(0).getImageURL();
-        if (!url.startsWith("http")) {
-            url += getResources().getString(R.string.resourceserverip) + url;
-        }
-        int videoindex = url.lastIndexOf("/");
-        ImageSaver studentImage = new ImageSaver(this).
-                setParentDirectoryName("leaderboard").
-                setFileName(new DisplayUtil().getFileNameReplaced(url.substring(videoindex + 1, url.length()))).
-                setExternal(ImageSaver.isExternalStorageReadable());
-        picasso = Picasso.with(this);
-        if(profileList!=null && profileList.get(0)!=null){
-            if (studentImage.checkFile()) {
-                picasso.load(studentImage.pathFile()).transform(new CircleTransform()).into(first);
-            } else {
-                picasso.load(url).transform(new CircleTransform()).into(first);//image
-                new SaveImageAsync(studentImage).execute(url);
-            }
-            System.out.println("Kuch likh dia " + getResources().getString(R.string.resourceserverip) + profileList.get(1).getImageURL());
-            firstRank.setText(Integer.toString(profileList.get(0).getBatchRank()));
-            firstName.setText(profileList.get(0).getName().toLowerCase());
-            firstXP.setText(Integer.toString(profileList.get(0).getPoints()) + " xp");
-        }
-
-        //setting second
-        if(profileList!=null && profileList.get(1)!=null) {
-            url = profileList.get(1).getImageURL();
-            if (!url.startsWith("http")) {
-                url += getResources().getString(R.string.resourceserverip) + url;
-            }
-
-            videoindex = url.lastIndexOf("/");
-            studentImage = new ImageSaver(this).
-                    setParentDirectoryName("leaderboard").
-                    setFileName(new DisplayUtil().getFileNameReplaced(url.substring(videoindex + 1, url.length()))).
-                    setExternal(ImageSaver.isExternalStorageReadable());
-
-            if (studentImage.checkFile()) {
-                picasso.load(studentImage.pathFile()).transform(new CircleTransform()).into(second);
-            } else {
-                picasso.load(url).transform(new CircleTransform()).into(second);//image
-                new SaveImageAsync(studentImage).execute(url);
-            }
-            secondRank.setText(Integer.toString(profileList.get(1).getBatchRank()));
-            secondName.setText(profileList.get(1).getName().toLowerCase());
-            secondXP.setText(Integer.toString(profileList.get(1).getPoints()) + " xp");
-        }
-        //setting third
-        if(profileList!=null && profileList.get(2)!=null){
-            url = profileList.get(2).getImageURL();
-            if (!url.startsWith("http")) {
-                url += getResources().getString(R.string.resourceserverip) + url;
-            }
-
-            if (studentImage.checkFile()) {
-                picasso.load(studentImage.pathFile()).transform(new CircleTransform()).into(third);
-            } else {
-                picasso.load(url).transform(new CircleTransform()).into(third);//image
-                new SaveImageAsync(studentImage).execute(url);
-            }
-            thirdRank.setText(Integer.toString(profileList.get(2).getBatchRank()));
-            thirdName.setText(profileList.get(2).getName().toLowerCase());
-            thirdXP.setText(Integer.toString(profileList.get(2).getPoints()) + " xp");
-        }
         // setting vertical recycler view
         verticalRecycler.setHasFixedSize(true);
         ArrayList<StudentRankPOJO> ranklist = new ArrayList<>(profileList.subList(3, profileList.size()));
@@ -290,6 +216,96 @@ public class LeaderBoardActivity extends AppCompatActivity {
             params.height = 40;
             params.width = 40;
             thirdRank.setLayoutParams(params);
+        }
+
+        // fade toggle appbar on collapse/expand
+        appBarLayout.addOnOffsetChangedListener(new AppBarLayout.OnOffsetChangedListener() {
+            boolean isShow = false;
+            int scrollRange = -1;
+
+            @Override
+            public void onOffsetChanged(AppBarLayout appBarLayout, int verticalOffset) {
+
+                headerContainer.setAlpha(1.0f - Math.abs(verticalOffset / (float)appBarLayout.getTotalScrollRange()));//for scroll fade
+
+                if (scrollRange == -1) {
+                    scrollRange = appBarLayout.getTotalScrollRange();
+                }
+                if (scrollRange + verticalOffset == 0) {
+                    mCollapsingToolbarLayout.setTitle("Title");
+                    isShow = true;
+                } else if(isShow) {
+                    mCollapsingToolbarLayout.setTitle("titles ");//carefull there should a space between double quote otherwise it wont work
+                    isShow = false;
+                }
+            }
+        });
+    }
+
+    public void setToppers(){
+        String url = profileList.get(0).getImageURL();
+        if (!url.startsWith("http")) {
+            url += getResources().getString(R.string.resourceserverip) + url;
+        }
+        int videoindex = url.lastIndexOf("/");
+        ImageSaver studentImage = new ImageSaver(this).
+                setParentDirectoryName("leaderboard").
+                setFileName(new DisplayUtil().getFileNameReplaced(url.substring(videoindex + 1, url.length()))).
+                setExternal(ImageSaver.isExternalStorageReadable());
+        picasso = Picasso.with(this);
+        if(profileList!=null && profileList.get(0)!=null){
+            if (studentImage.checkFile()) {
+                picasso.load(studentImage.pathFile()).transform(new CircleTransform()).into(first);
+            } else {
+                picasso.load(url).transform(new CircleTransform()).into(first);//image
+                new SaveImageAsync(studentImage).execute(url);
+            }
+            System.out.println("Kuch likh dia " + getResources().getString(R.string.resourceserverip) + profileList.get(1).getImageURL());
+            firstRank.setText(Integer.toString(profileList.get(0).getBatchRank()));
+            firstName.setText(profileList.get(0).getName().toLowerCase());
+            firstXP.setText(Integer.toString(profileList.get(0).getPoints()) + " xp");
+        }
+
+        //setting second
+        if(profileList!=null && profileList.get(1)!=null) {
+            url = profileList.get(1).getImageURL();
+            if (!url.startsWith("http")) {
+                url += getResources().getString(R.string.resourceserverip) + url;
+            }
+
+            videoindex = url.lastIndexOf("/");
+            studentImage = new ImageSaver(this).
+                    setParentDirectoryName("leaderboard").
+                    setFileName(new DisplayUtil().getFileNameReplaced(url.substring(videoindex + 1, url.length()))).
+                    setExternal(ImageSaver.isExternalStorageReadable());
+
+            if (studentImage.checkFile()) {
+                picasso.load(studentImage.pathFile()).transform(new CircleTransform()).into(second);
+            } else {
+                picasso.load(url).transform(new CircleTransform()).into(second);//image
+                new SaveImageAsync(studentImage).execute(url);
+            }
+            secondRank.setText(Integer.toString(profileList.get(1).getBatchRank()));
+            secondName.setText(profileList.get(1).getName().toLowerCase());
+            secondXP.setText(Integer.toString(profileList.get(1).getPoints()) + " xp");
+        }
+
+        //setting third
+        if(profileList!=null && profileList.get(2)!=null){
+            url = profileList.get(2).getImageURL();
+            if (!url.startsWith("http")) {
+                url += getResources().getString(R.string.resourceserverip) + url;
+            }
+
+            if (studentImage.checkFile()) {
+                picasso.load(studentImage.pathFile()).transform(new CircleTransform()).into(third);
+            } else {
+                picasso.load(url).transform(new CircleTransform()).into(third);//image
+                new SaveImageAsync(studentImage).execute(url);
+            }
+            thirdRank.setText(Integer.toString(profileList.get(2).getBatchRank()));
+            thirdName.setText(profileList.get(2).getName().toLowerCase());
+            thirdXP.setText(Integer.toString(profileList.get(2).getPoints()) + " xp");
         }
     }
 
