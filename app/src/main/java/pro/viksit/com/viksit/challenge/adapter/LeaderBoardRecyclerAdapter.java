@@ -57,29 +57,30 @@ public class LeaderBoardRecyclerAdapter extends RecyclerView.Adapter<LeaderBoard
     public void onBindViewHolder(MyViewHolder holder, int position) {
 
         StudentRankPOJO profile = list.get(position);
-        if(position != 0 || position != 1 || position != 2) {
+       // if(position != 0 || position != 1 || position != 2) {
             holder.name.setText(profile.getName().toLowerCase());
             holder.rank.setText(ordinal(profile.getBatchRank()));
             holder.xp.setText(Integer.toString(profile.getPoints()));
 
+           String url =  profile.getImageURL();
+            if(!url.startsWith("http")){
+                url+=context.getResources().getString(R.string.resourceserverip)+url;
+            }
 
-            int index = profile.getImageURL().lastIndexOf("/");
+            int index = url.lastIndexOf("/");
 
             ImageSaver studentImage = new ImageSaver(context).
                     setParentDirectoryName("leaderboard").
-                    setFileName(new DisplayUtil().getFileNameReplaced(profile.getImageURL().substring(index+1,profile.getImageURL().length()))).
+                    setFileName(new DisplayUtil().getFileNameReplaced(url.substring(index+1,url.length()))).
                     setExternal(ImageSaver.isExternalStorageReadable());
 
             picasso = Picasso.with(context);
             if(studentImage.checkFile()){
                 picasso.load(studentImage.pathFile()).transform(new CircleTransform()).into(holder.image);
             }else{
-                picasso.load(context.getResources().getString(R.string.resourceserverip) + profile.getImageURL()).transform(new CircleTransform()).into(holder.image);//image
-                new SaveImageAsync(studentImage).execute(context.getResources().getString(R.string.resourceserverip)+profile.getImageURL());
+                picasso.load(url).transform(new CircleTransform()).into(holder.image);//image
+                new SaveImageAsync(studentImage).execute(url);
             }
-            /*if (profile.getImageURL() != null) {
-                Picasso.with(context).load(profile.getImageURL()).transform(new CircleTransform()).into(holder.image);
-            }*/
 
             //for tablets
             if (diagonalInches >= 6.5) {
@@ -88,7 +89,7 @@ public class LeaderBoardRecyclerAdapter extends RecyclerView.Adapter<LeaderBoard
                 params.width = screenHeight / 11;
                 holder.image.setLayoutParams(params);
             }
-        }
+        //}
     }
 
     @Override

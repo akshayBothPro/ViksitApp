@@ -60,5 +60,28 @@
             android:clickable="true"
             app:backgroundTint="@color/theme_color"
             android:src="@mipmap/ic_add_white_24dp" />
+        <LinearLayout
+            android:id="@+id/ll_for_empty_list_con"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:padding="25dp"
+            android:gravity="center"
+            android:visibility="gone">
+                <ImageView
+                    android:id="@+id/iv_empty_image"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:layout_marginBottom="10dp"
+                    android:src="@mipmap/questions_graphic"/>
+
+                <TextView
+                    android:id="@+id/tv_no_questions"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAlignment="center"
+                    android:textSize="@dimen/h7"
+                    android:text="There are no questions here. Send one to your instructor by clicking the big red button below"/>
+        </LinearLayout>
     </RelativeLayout>
 </RelativeLayout>

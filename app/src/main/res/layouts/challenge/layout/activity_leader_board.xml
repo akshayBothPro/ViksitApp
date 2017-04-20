@@ -24,175 +24,7 @@
             app:layout_scrollFlags="scroll|exitUntilCollapsed|snap"
             app:title="@string/app_name"
             app:titleEnabled="false">
-            <RelativeLayout
-                android:id="@+id/rl_header_con"
-                android:layout_below="@+id/toolbar"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="?attr/actionBarSize"
-                android:paddingBottom="@dimen/xp_bottom_margin">
 
-                <ImageView
-                    android:id="@+id/iv_2nd"
-                    android:layout_width="@dimen/second_rank_image_size"
-                    android:layout_height="@dimen/second_rank_image_size"
-                    android:layout_toLeftOf="@+id/iv_1st"
-                    android:layout_toStartOf="@+id/iv_1st"
-                    android:layout_alignBottom="@id/iv_1st"
-                    android:scaleType="centerCrop"
-                    android:src="@drawable/ic_2"/>
-                <Button
-                    android:id="@+id/btn_2nd_rank"
-                    android:layout_width="@dimen/rank_btn_size"
-                    android:layout_height="@dimen/rank_btn_size"
-                    android:layout_alignRight="@+id/iv_2nd"
-                    android:layout_alignEnd="@id/iv_2nd"
-                    android:layout_alignBottom="@+id/iv_2nd"
-                    android:text="2"
-                    android:textSize="@dimen/p4"
-                    android:textColor="@color/white_color"
-                    android:background="@drawable/selected_circle_indicator"/>
-                <TextView
-                    android:id="@+id/tv_2nd_name"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignLeft="@+id/iv_2nd"
-                    android:layout_alignStart="@+id/iv_2nd"
-                    android:layout_alignRight="@+id/iv_2nd"
-                    android:layout_alignEnd="@+id/iv_2nd"
-                    android:layout_alignBottom="@+id/tv_1st_name"
-                    android:maxLines="1"
-                    android:ellipsize="end"
-                    android:textSize="@dimen/h7"
-                    android:textColor="@color/desc_color"
-                    android:textAlignment="center"
-                    android:text="Sunny"/>
-
-                <TextView
-                    android:id="@+id/tv_2nd_xp"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignLeft="@id/iv_2nd"
-                    android:layout_alignStart="@id/iv_2nd"
-                    android:layout_alignRight="@id/iv_2nd"
-                    android:layout_alignEnd="@id/iv_2nd"
-                    android:layout_below="@+id/tv_2nd_name"
-                    android:maxLines="1"
-                    android:ellipsize="end"
-                    android:textSize="@dimen/p3"
-                    android:textColor="@color/hint_color"
-                    android:textAlignment="center"
-                    android:text="7670 XP"/>
-
-                <ImageView
-                    android:id="@+id/iv_1st"
-                    android:layout_width="@dimen/first_rank_image_size"
-                    android:layout_height="@dimen/first_rank_image_size"
-                    android:layout_marginTop="@dimen/first_rank_image_ver_margin"
-                    android:layout_marginBottom="@dimen/first_rank_image_ver_margin"
-                    android:layout_marginLeft="@dimen/first_rank_image_hor_margin"
-                    android:layout_marginStart="@dimen/first_rank_image_hor_margin"
-                    android:layout_marginRight="@dimen/first_rank_image_hor_margin"
-                    android:layout_marginEnd="@dimen/first_rank_image_hor_margin"
-                    android:scaleType="centerCrop"
-                    android:src="@drawable/ic_2"
-                    android:layout_alignParentTop="true"
-                    android:layout_centerHorizontal="true" />
-                <Button
-                    android:id="@+id/btn_1st_rank"
-                    android:layout_width="@dimen/rank_btn_size"
-                    android:layout_height="@dimen/rank_btn_size"
-                    android:layout_alignRight="@+id/iv_1st"
-                    android:layout_alignEnd="@id/iv_1st"
-                    android:layout_alignBottom="@+id/iv_1st"
-                    android:text="1"
-                    android:textSize="@dimen/p4"
-                    android:textColor="@color/white_color"
-                    android:background="@drawable/selected_circle_indicator"/>
-                <TextView
-                    android:id="@+id/tv_1st_name"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignLeft="@id/iv_1st"
-                    android:layout_alignStart="@id/iv_1st"
-                    android:layout_alignRight="@id/iv_1st"
-                    android:layout_alignEnd="@id/iv_1st"
-                    android:layout_below="@+id/iv_1st"
-                    android:maxLines="1"
-                    android:ellipsize="end"
-                    android:textSize="@dimen/h7"
-                    android:textColor="@color/desc_color"
-                    android:textAlignment="center"
-                    android:text="Urvashi"/>
-                <TextView
-                    android:id="@+id/tv_1st_xp"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignLeft="@id/iv_1st"
-                    android:layout_alignStart="@id/iv_1st"
-                    android:layout_alignRight="@id/iv_1st"
-                    android:layout_alignEnd="@id/iv_1st"
-                    android:layout_below="@+id/tv_1st_name"
-                    android:maxLines="1"
-                    android:ellipsize="end"
-                    android:textSize="@dimen/p3"
-                    android:textColor="@color/hint_color"
-                    android:textAlignment="center"
-                    android:text="9670 XP"/>
-                <ImageView
-                    android:id="@+id/iv_3rd"
-                    android:layout_width="@dimen/third_rank_image_size"
-                    android:layout_height="@dimen/third_rank_image_size"
-                    android:layout_toRightOf="@+id/iv_1st"
-                    android:layout_toEndOf="@+id/iv_1st"
-                    android:layout_alignBottom="@id/iv_1st"
-                    android:scaleType="centerCrop"
-                    android:src="@drawable/ic_2"/>
-                <Button
-                    android:id="@+id/btn_3rd_rank"
-                    android:layout_width="@dimen/rank_btn_size"
-                    android:layout_height="@dimen/rank_btn_size"
-                    android:layout_alignRight="@+id/iv_3rd"
-                    android:layout_alignEnd="@id/iv_3rd"
-                    android:layout_alignBottom="@+id/iv_3rd"
-                    android:text="3"
-                    android:textSize="@dimen/p4"
-                    android:textColor="@color/white_color"
-                    android:background="@drawable/selected_circle_indicator"/>
-                <TextView
-                    android:id="@+id/tv_3rd_name"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignLeft="@+id/iv_3rd"
-                    android:layout_alignStart="@+id/iv_3rd"
-                    android:layout_alignRight="@+id/iv_3rd"
-                    android:layout_alignEnd="@+id/iv_3rd"
-                    android:layout_alignBottom="@+id/tv_1st_name"
-                    android:maxLines="1"
-                    android:ellipsize="end"
-                    android:textSize="@dimen/h7"
-                    android:textColor="@color/desc_color"
-                    android:textAlignment="center"
-                    android:text="Deepika"/>
-
-                <TextView
-                    android:id="@+id/tv_3rd_xp"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignLeft="@id/iv_3rd"
-                    android:layout_alignStart="@id/iv_3rd"
-                    android:layout_alignRight="@id/iv_3rd"
-                    android:layout_alignEnd="@id/iv_3rd"
-                    android:layout_below="@+id/tv_3rd_name"
-                    android:maxLines="1"
-                    android:ellipsize="end"
-                    android:textSize="@dimen/p3"
-                    android:textColor="@color/hint_color"
-                    android:textAlignment="center"
-                    android:text="6670 XP"/>
-
-
-            </RelativeLayout>
             <android.support.v7.widget.Toolbar
                 android:id="@+id/toolbar"
                 android:layout_width="match_parent"
@@ -243,6 +75,187 @@
 
                 </RelativeLayout>
             </android.support.v7.widget.Toolbar>
+
+            <RelativeLayout
+                android:id="@+id/rl_header_con"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/toolbar"
+                android:layout_marginTop="?attr/actionBarSize"
+                android:paddingBottom="@dimen/xp_bottom_margin">
+
+                <ImageView
+                    android:id="@+id/iv_2nd"
+                    android:layout_width="@dimen/second_rank_image_size"
+                    android:layout_height="@dimen/second_rank_image_size"
+                    android:layout_alignBottom="@+id/iv_1st"
+                    android:layout_toLeftOf="@+id/iv_1st"
+                    android:layout_toStartOf="@+id/iv_1st"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/ic_2" />
+
+                <Button
+                    android:id="@+id/btn_2nd_rank"
+                    android:layout_width="@dimen/rank_btn_size"
+                    android:layout_height="@dimen/rank_btn_size"
+                    android:layout_alignBottom="@+id/iv_2nd"
+                    android:layout_alignEnd="@+id/iv_2nd"
+                    android:layout_alignRight="@+id/iv_2nd"
+                    android:background="@drawable/selected_circle_indicator"
+                    android:text="2"
+                    android:textColor="@color/white_color"
+                    android:textSize="@dimen/p4" />
+
+                <TextView
+                    android:id="@+id/tv_2nd_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBottom="@+id/tv_1st_name"
+                    android:layout_alignEnd="@+id/iv_2nd"
+                    android:layout_alignLeft="@+id/iv_2nd"
+                    android:layout_alignRight="@+id/iv_2nd"
+                    android:layout_alignStart="@+id/iv_2nd"
+                    android:ellipsize="end"
+                    android:maxLines="1"
+                    android:text="Sunny"
+                    android:textAlignment="center"
+                    android:textColor="@color/desc_color"
+                    android:textSize="@dimen/p1" />
+
+                <TextView
+                    android:id="@+id/tv_2nd_xp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignEnd="@+id/iv_2nd"
+                    android:layout_alignLeft="@+id/iv_2nd"
+                    android:layout_alignRight="@+id/iv_2nd"
+                    android:layout_alignStart="@+id/iv_2nd"
+                    android:layout_below="@+id/tv_2nd_name"
+                    android:ellipsize="end"
+                    android:maxLines="1"
+                    android:text="7670 XP"
+                    android:textAllCaps="true"
+                    android:textAlignment="center"
+                    android:textColor="@color/hint_color"
+                    android:textSize="@dimen/p3" />
+
+                <ImageView
+                    android:id="@+id/iv_1st"
+                    android:layout_width="@dimen/first_rank_image_size"
+                    android:layout_height="@dimen/first_rank_image_size"
+                    android:layout_alignParentTop="true"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginBottom="@dimen/first_rank_image_ver_margin"
+                    android:layout_marginEnd="@dimen/first_rank_image_hor_margin"
+                    android:layout_marginLeft="@dimen/first_rank_image_hor_margin"
+                    android:layout_marginRight="@dimen/first_rank_image_hor_margin"
+                    android:layout_marginStart="@dimen/first_rank_image_hor_margin"
+                    android:layout_marginTop="@dimen/first_rank_image_ver_margin"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/ic_2" />
+
+                <Button
+                    android:id="@+id/btn_1st_rank"
+                    android:layout_width="@dimen/rank_btn_size"
+                    android:layout_height="@dimen/rank_btn_size"
+                    android:layout_alignBottom="@+id/iv_1st"
+                    android:layout_alignEnd="@+id/iv_1st"
+                    android:layout_alignRight="@+id/iv_1st"
+                    android:background="@drawable/selected_circle_indicator"
+                    android:text="1"
+                    android:textColor="@color/white_color"
+                    android:textSize="@dimen/p4" />
+
+                <TextView
+                    android:id="@+id/tv_1st_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignEnd="@+id/iv_1st"
+                    android:layout_alignLeft="@+id/iv_1st"
+                    android:layout_alignRight="@+id/iv_1st"
+                    android:layout_alignStart="@+id/iv_1st"
+                    android:layout_below="@+id/iv_1st"
+                    android:ellipsize="end"
+                    android:maxLines="1"
+                    android:text="Urvashi"
+                    android:textAlignment="center"
+                    android:textColor="@color/desc_color"
+                    android:textSize="@dimen/p1" />
+
+                <TextView
+                    android:id="@+id/tv_1st_xp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignEnd="@+id/iv_1st"
+                    android:layout_alignLeft="@+id/iv_1st"
+                    android:layout_alignRight="@+id/iv_1st"
+                    android:layout_alignStart="@+id/iv_1st"
+                    android:layout_below="@+id/tv_1st_name"
+                    android:ellipsize="end"
+                    android:maxLines="1"
+                    android:text="9670 XP"
+                    android:textAllCaps="true"
+                    android:textAlignment="center"
+                    android:textColor="@color/hint_color"
+                    android:textSize="@dimen/p3" />
+
+                <ImageView
+                    android:id="@+id/iv_3rd"
+                    android:layout_width="@dimen/third_rank_image_size"
+                    android:layout_height="@dimen/third_rank_image_size"
+                    android:layout_alignBottom="@id/iv_1st"
+                    android:layout_toEndOf="@+id/iv_1st"
+                    android:layout_toRightOf="@+id/iv_1st"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/ic_2" />
+
+                <Button
+                    android:id="@+id/btn_3rd_rank"
+                    android:layout_width="@dimen/rank_btn_size"
+                    android:layout_height="@dimen/rank_btn_size"
+                    android:layout_alignBottom="@+id/iv_3rd"
+                    android:layout_alignEnd="@id/iv_3rd"
+                    android:layout_alignRight="@+id/iv_3rd"
+                    android:background="@drawable/selected_circle_indicator"
+                    android:text="3"
+                    android:textColor="@color/white_color"
+                    android:textSize="@dimen/p4" />
+
+                <TextView
+                    android:id="@+id/tv_3rd_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignEnd="@+id/iv_3rd"
+                    android:layout_alignLeft="@+id/iv_3rd"
+                    android:layout_alignRight="@+id/iv_3rd"
+                    android:layout_alignStart="@+id/iv_3rd"
+                    android:layout_below="@+id/iv_1st"
+                    android:ellipsize="end"
+                    android:maxLines="1"
+                    android:text="Deepika"
+                    android:textAlignment="center"
+                    android:textColor="@color/desc_color"
+                    android:textSize="@dimen/p1" />
+
+                <TextView
+                    android:id="@+id/tv_3rd_xp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignEnd="@+id/iv_3rd"
+                    android:layout_alignLeft="@+id/iv_3rd"
+                    android:layout_alignRight="@+id/iv_3rd"
+                    android:layout_alignStart="@+id/iv_3rd"
+                    android:layout_below="@+id/tv_3rd_name"
+                    android:ellipsize="end"
+                    android:maxLines="1"
+                    android:text="6670 XP"
+                    android:textAllCaps="true"
+                    android:textAlignment="center"
+                    android:textColor="@color/hint_color"
+                    android:textSize="@dimen/p3" />
+
+
+            </RelativeLayout>
         </android.support.design.widget.CollapsingToolbarLayout>
 
     </android.support.design.widget.AppBarLayout>

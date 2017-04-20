@@ -38,6 +38,7 @@ import java.util.HashMap;
 import com.facebook.CallbackManager;
 
 import pro.viksit.com.viksit.R;
+import pro.viksit.com.viksit.challenge.async.LeaderBoardAsync;
 import pro.viksit.com.viksit.dashboard.activity.DashboardActivity;
 import pro.viksit.com.viksit.dashboard.pojo.IstarUserPOJO;
 import pro.viksit.com.viksit.dashboard.util.FacebookUtil;
@@ -77,6 +78,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         FacebookSdk.sdkInitialize(getApplicationContext());
         setContentView(R.layout.activity_login);
         getWidthAndHeight();
+
         dialog = new MaterialDialog.Builder(this)
                 .customView(R.layout.dialog_error, false)
                 .build();
