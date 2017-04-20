@@ -79,6 +79,7 @@ public class DashboardActivity extends AppCompatActivity implements View.OnClick
         setSupportActionBar(toolbar);
         /*doforStatic();*/
 
+        if(sharedpreferences.getString(getResources().getString(R.string.dashboardcards),"").equalsIgnoreCase(""))
         new DashboardCardAsync(this,getSupportFragmentManager(),studentProfile.getId(),sharedpreferences,pager_indicator,this,pager,loop,progress,error_layout).execute();
         button_layout.setOnClickListener(new View.OnClickListener() {
             @Override

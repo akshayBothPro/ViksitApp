@@ -40,6 +40,8 @@
     <string name="otpurl">user/user_id/mobile</string>
     <string name="reseturl">user/password/reset</string>
     <string name="assessmenturl">assessments/user</string>
+    <string name="allassessment">assessments/user/user_id</string>
+    <string name="leaderboarddata">courses/user/user_id/leaderboard</string>
 
     <!-- end of URL For services -->
 

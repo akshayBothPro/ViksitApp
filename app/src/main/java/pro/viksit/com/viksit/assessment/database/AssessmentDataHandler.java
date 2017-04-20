@@ -2,6 +2,7 @@ package pro.viksit.com.viksit.assessment.database;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
@@ -50,37 +51,59 @@ public class AssessmentDataHandler extends SQLiteOpenHelper {
     }
 
     public void saveContent(String id, String content) {
-
-        Cursor cursor = getData(Integer.parseInt(id));
+        Cursor cursor = null;
+        SQLiteDatabase db = null;
+        try{
+            cursor= getData(Integer.parseInt(id));
+            db= this.getWritableDatabase();
         if (cursor != null && cursor.getCount() > 0) {
             System.out.println("updateContent done");
             updateContent(id, content);
         } else {
-            SQLiteDatabase db = this.getWritableDatabase();
             ContentValues contentValues = new ContentValues();
             contentValues.put(KEY_ID, id);
             contentValues.put(KEY_NAME, content);
             db.insert(TABLE, null, contentValues);
             System.out.println("saveContent done");
+        }}finally {
+            if (cursor != null && !cursor.isClosed())
+                cursor.close();
+            if(db != null)
+            db.close();
+
         }
     }
 
     public void updateContent(String id, String content) {
-        SQLiteDatabase db = this.getWritableDatabase();
-        ContentValues contentValues = new ContentValues();
-        contentValues.put(KEY_ID, id);
-        contentValues.put(KEY_NAME, content);
-        db.update(TABLE, contentValues, "id = ? ", new String[]{id});
-        System.out.println("updateContent done");
-
+        SQLiteDatabase db = null;
+        try {
+            db = this.getWritableDatabase();
+            ContentValues contentValues = new ContentValues();
+            contentValues.put(KEY_ID, id);
+            contentValues.put(KEY_NAME, content);
+            db.update(TABLE, contentValues, "id = ? ", new String[]{id});
+            System.out.println("updateContent done");
+        }finally {
+            if(db!= null){
+                db.close();
+            }
+        }
     }
 
     public Integer deleteContent(Integer id) {
-        SQLiteDatabase db = this.getWritableDatabase();
+        Integer temp_id = null;
+        SQLiteDatabase db = null;
+        try {
+            db = this.getWritableDatabase();
+            temp_id = db.delete(TABLE,
+                    "id = ? ",
+                    new String[]{Integer.toString(id)});
+        }finally {
+            if(db != null)
+            db.close();
+        }
         System.out.println("delete content done");
-        return db.delete(TABLE,
-                "id = ? ",
-                new String[]{Integer.toString(id)});
+        return temp_id;
 
     }
 
@@ -94,20 +117,29 @@ public class AssessmentDataHandler extends SQLiteOpenHelper {
 
 
     public List<AssessmentResultPojo> getAllContent() {
+        SQLiteDatabase db = null;
+        Cursor cursor = null;
         List<AssessmentResultPojo> assessmentResultPojos= new ArrayList<>();
         String selectQuery = "SELECT  * FROM " + TABLE;
-        SQLiteDatabase db = this.getWritableDatabase();
-        Cursor cursor = db.rawQuery(selectQuery, null);
-        if (cursor.moveToFirst()) {
-            do {
-                try {
-                    assessmentResultPojos.add(new Gson().fromJson(cursor.getString(1), AssessmentResultPojo.class));
-                }catch (JsonSyntaxException jse){
-                    jse.printStackTrace();
-                }catch (Exception e){
-                    e.printStackTrace();
-                }
-            } while (cursor.moveToNext());
+        try {
+            db = this.getWritableDatabase();
+            cursor = db.rawQuery(selectQuery, null);
+            if (cursor.moveToFirst()) {
+                do {
+                    try {
+                        assessmentResultPojos.add(new Gson().fromJson(cursor.getString(1), AssessmentResultPojo.class));
+                    } catch (JsonSyntaxException jse) {
+                        jse.printStackTrace();
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                } while (cursor.moveToNext());
+            }
+        }finally {
+            if (cursor != null && !cursor.isClosed())
+                cursor.close();
+            if(db != null)
+                db.close();
         }
         return assessmentResultPojos;
     }

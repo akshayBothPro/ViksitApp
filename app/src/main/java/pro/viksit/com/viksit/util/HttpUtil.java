@@ -1,7 +1,5 @@
 package pro.viksit.com.viksit.util;
 
-import android.widget.Switch;
-
 import com.google.gson.JsonSyntaxException;
 
 import org.apache.http.HttpEntity;
@@ -22,12 +20,9 @@ import org.apache.http.params.HttpParams;
 import org.apache.http.protocol.HTTP;
 import org.apache.http.util.EntityUtils;
 
-import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
-import java.net.URL;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -62,7 +57,10 @@ public class HttpUtil {
             if (httpResponse != null && httpResponse.getStatusLine().getStatusCode() == HttpURLConnection.HTTP_OK) {
                 HttpEntity httpEntity = httpResponse.getEntity();
                 jsonresponse = EntityUtils.toString(httpEntity);
-                System.out.println("res .... " + jsonresponse);
+                if(jsonresponse.equalsIgnoreCase("[]")){
+                    jsonresponse="";
+                }
+                System.out.println("HttpUtil Response is .... " + jsonresponse);
             } else {
                 return "null";
             }
@@ -137,6 +135,9 @@ public class HttpUtil {
                     httpPut.setHeader("Content-type", "application/json");
                 }
                 httpResponse = httpclient.execute(httpPut);
+                break;
+            default:
+                httpResponse = httpclient.execute(new HttpGet(url));
                 break;
         } }catch (MalformedURLException e) {
             e.printStackTrace();

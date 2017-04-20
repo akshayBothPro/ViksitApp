@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
+import android.graphics.Typeface;
 import android.net.ConnectivityManager;
 import android.os.Build;
 import android.os.Bundle;
@@ -18,14 +19,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import pro.viksit.com.viksit.R;
-import pro.viksit.com.viksit.challenge.activity.LeaderBoardActivity;
-import pro.viksit.com.viksit.dashboard.activity.DashboardActivity;
-import pro.viksit.com.viksit.dashboard.activity.NotificationActivity;
 import pro.viksit.com.viksit.recievers.NetworkChangeReceiver;
-import pro.viksit.com.viksit.role.activity.ModuleActivity;
-import pro.viksit.com.viksit.role.activity.RoleActivity;
-import pro.viksit.com.viksit.role.activity.RoleDepthActivity;
-import pro.viksit.com.viksit.role.activity.RoleDetailActivity;
 
 public class HomeActivity extends AppCompatActivity implements View.OnClickListener{
     private static final String TAG = HomeActivity.class.getSimpleName();
@@ -58,11 +52,11 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
         sharedpreferences = getSharedPreferences(getResources().getString(R.string.shared_preference_key), Context.MODE_PRIVATE);
         if(!sharedpreferences.getString(getResources().getString(R.string.user_profile),"").equalsIgnoreCase("")){
            Intent i = new Intent(HomeActivity.this,SplashScreenActivity.class);
-            startActivity(i);
+           startActivity(i);
         }
-        else
         implementListeners();
-
+        Typeface type = Typeface.createFromAsset(getAssets(),"fonts/AvenirLTStd-Heavy.otf");
+        talentify.setTypeface(type);
     }
 
     private void implementListeners(){

@@ -17,21 +17,6 @@ import android.widget.RelativeLayout;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
-import org.apache.http.HttpEntity;
-import org.apache.http.HttpResponse;
-import org.apache.http.NameValuePair;
-import org.apache.http.client.ClientProtocolException;
-import org.apache.http.client.HttpClient;
-import org.apache.http.client.entity.UrlEncodedFormEntity;
-import org.apache.http.client.methods.HttpGet;
-import org.apache.http.client.methods.HttpPost;
-import org.apache.http.impl.client.DefaultHttpClient;
-import org.apache.http.message.BasicNameValuePair;
-import org.apache.http.params.HttpConnectionParams;
-import org.apache.http.params.HttpParams;
-import org.apache.http.util.EntityUtils;
-
-import java.io.IOException;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
@@ -41,7 +26,7 @@ import pro.viksit.com.viksit.dashboard.activity.DashboardActivity;
 import pro.viksit.com.viksit.dashboard.activity.NoTaskActivity;
 import pro.viksit.com.viksit.dashboard.adapter.CardAdapter.CarouselPagerAdapter;
 import pro.viksit.com.viksit.dashboard.pojo.DashboardCard;
-import pro.viksit.com.viksit.dashboard.pojo.StudentProfile;
+import pro.viksit.com.viksit.util.HttpUtil;
 
 /**
  * Created by Feroz on 10-04-2017.
@@ -162,36 +147,11 @@ public class DashboardCardAsync extends AsyncTask<String, Integer, String> {
 
     private String postData(Context context,
                             FragmentManager fm, SharedPreferences sharedPreferences) {
-        HttpClient httpclient = new DefaultHttpClient();
-        System.out.println(context.getResources().getString(R.string.serverip) + (context.getResources().getString(R.string.dashboardcardurl).replaceAll("user_id", userid + "")));
-        HttpGet httppost = new HttpGet(context.getResources().getString(R.string.serverip) + (context.getResources().getString(R.string.dashboardcardurl).replaceAll("user_id", userid + "")));
-        int timeoutConnection = 20000;
-        final HttpParams httpParameters = httpclient.getParams();
-        HttpConnectionParams.setConnectionTimeout(httpParameters, timeoutConnection);
-        HttpConnectionParams.setSoTimeout(httpParameters, 20000);
 
-        String jsonresponse = "";
-        try {
-            // Add your data
-
-            // Execute HTTP Post Request
-            HttpResponse response = httpclient.execute(httppost);
-            HttpEntity httpEntity = response.getEntity();
-            jsonresponse = EntityUtils.toString(httpEntity);
-
-        } catch (ClientProtocolException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-            return "null";
-        } catch (IOException e) {
-            // TODO Auto-generated catch block
-
-            e.printStackTrace();
-            return "null";
-        } catch (Exception e) {
-            e.printStackTrace();
-            return "null";
-        }
+        HttpUtil httpUtil = new HttpUtil();
+        httpUtil.setUrl(context.getResources().getString(R.string.serverip) + (context.getResources().getString(R.string.dashboardcardurl).replaceAll("user_id", userid + "")));
+        httpUtil.setType("GET");
+        String jsonresponse = httpUtil.getStringResponse();
         return jsonresponse;
     }
 
