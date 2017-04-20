@@ -36,6 +36,7 @@ public class SplashScreenActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.splash_screen);
         sharedpreferences = getSharedPreferences(getResources().getString(R.string.shared_preference_key), Context.MODE_PRIVATE);
+        final SharedPreferences.Editor editor = sharedpreferences.edit();
 
         String profile_date= sharedpreferences.getString(getResources().getString(R.string.user_profile),"");
         Gson gson = new GsonBuilder().setDateFormat("yyyy-MM-dd HH:mm:ss").create();
@@ -47,11 +48,13 @@ public class SplashScreenActivity extends AppCompatActivity {
         ExecutorService executor = Executors.newFixedThreadPool(2);
         DashBoardCallable dashBoardCallable = new DashBoardCallable(SplashScreenActivity.this,studentProfile.getId());
         FutureTask<String> dashboardFuture = new FutureTask<String>(dashBoardCallable);
-        ThreadUtil assessmentThread = new ThreadUtil(SplashScreenActivity.this,sharedpreferences,3504,getResources().getString(R.string.serverip)+getResources().getString(R.string.allassessment),"Assessment");
-        ThreadUtil leaderBoardThread = new ThreadUtil(SplashScreenActivity.this,sharedpreferences,3504,getResources().getString(R.string.serverip)+getResources().getString(R.string.leaderboarddata).replaceAll("user_id",3504+""),"Leaderboard");
+        ThreadUtil assessmentThread = new ThreadUtil(editor,3504,getResources().getString(R.string.serverip)+getResources().getString(R.string.allassessment)+3504,"Assessment",getResources().getString(R.string.assessment));
+        ThreadUtil leaderBoardThread = new ThreadUtil(editor,3504,getResources().getString(R.string.serverip)+getResources().getString(R.string.leaderboarddata).replaceAll("user_id",3504+""),"Leaderboard",getResources().getString(R.string.leaderboard));
+        ThreadUtil courseThread = new ThreadUtil(editor,5209,getResources().getString(R.string.serverip)+getResources().getString(R.string.allcourse)+5209,"Course",getResources().getString(R.string.course));
         executor.execute(dashboardFuture);
         executor.execute(leaderBoardThread);
         executor.execute(assessmentThread);
+        executor.execute(courseThread);
                 try {
                     String response =dashboardFuture.get();
                     SharedPreferences.Editor editor = sharedpreferences.edit();

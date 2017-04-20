@@ -19,14 +19,7 @@ import android.widget.TextView;
 
 import pro.viksit.com.viksit.R;
 import pro.viksit.com.viksit.challenge.activity.LeaderBoardActivity;
-import pro.viksit.com.viksit.challenge.async.LeaderBoardAsync;
-import pro.viksit.com.viksit.dashboard.activity.DashboardActivity;
-import pro.viksit.com.viksit.dashboard.activity.NotificationActivity;
 import pro.viksit.com.viksit.recievers.NetworkChangeReceiver;
-import pro.viksit.com.viksit.role.activity.ModuleActivity;
-import pro.viksit.com.viksit.role.activity.RoleActivity;
-import pro.viksit.com.viksit.role.activity.RoleDepthActivity;
-import pro.viksit.com.viksit.role.activity.RoleDetailActivity;
 
 public class HomeActivity extends AppCompatActivity implements View.OnClickListener{
     private static final String TAG = HomeActivity.class.getSimpleName();
@@ -58,8 +51,11 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
         member = (Button) findViewById(R.id.btn_member);
         sharedpreferences = getSharedPreferences(getResources().getString(R.string.shared_preference_key), Context.MODE_PRIVATE);
         //
-        new LeaderBoardAsync(this).execute();
         //
+        SharedPreferences.Editor editor = sharedpreferences.edit();
+        editor.clear();
+        editor.commit();
+        editor.apply();
         if(!sharedpreferences.getString(getResources().getString(R.string.user_profile),"").equalsIgnoreCase("")){
            Intent i = new Intent(HomeActivity.this,SplashScreenActivity.class);
             startActivity(i);

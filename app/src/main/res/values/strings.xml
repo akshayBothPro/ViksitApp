@@ -42,7 +42,7 @@
     <string name="assessmenturl">assessments/user</string>
     <string name="allassessment">assessments/user/</string>
     <string name="leaderboarddata">courses/user/user_id/leaderboard</string>
-    <string name="allcourse">courses/user</string>
+    <string name="allcourse">courses/user/</string>
 
     <!-- end of URL For services -->
 
@@ -52,6 +52,7 @@
     <string name="dashboardcards">DASHBOARDCARDS</string>
     <string name="leaderboard">LEADERBOARD</string>
     <string name="assessment">Assessment_</string>
+    <string name="course">Course_</string>
 
     <!-- end of Stored/cached data- -->
 
