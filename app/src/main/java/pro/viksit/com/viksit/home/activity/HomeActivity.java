@@ -52,10 +52,7 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
         sharedpreferences = getSharedPreferences(getResources().getString(R.string.shared_preference_key), Context.MODE_PRIVATE);
         //
         //
-        SharedPreferences.Editor editor = sharedpreferences.edit();
-        editor.clear();
-        editor.commit();
-        editor.apply();
+
         if(!sharedpreferences.getString(getResources().getString(R.string.user_profile),"").equalsIgnoreCase("")){
            Intent i = new Intent(HomeActivity.this,SplashScreenActivity.class);
             startActivity(i);
