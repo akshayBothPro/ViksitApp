@@ -14,22 +14,30 @@
         android:layout_weight="2">
 
         <View
-            android:id="@+id/rl_hor_line"
+            android:id="@+id/rl_ver_line"
             android:layout_width="1dp"
             android:layout_height="match_parent"
             android:layout_centerInParent="true"
+            android:layout_above="@+id/rl_hor_line"
             android:background="@color/unselected_circle_color"
             />
         <View
-            android:id="@+id/rl_ver_line"
+            android:id="@+id/rl_hor_line"
             android:layout_width="match_parent"
             android:layout_height="1dp"
             android:layout_centerInParent="true"
-            android:layout_toRightOf="@+id/rl_hor_line"
-            android:layout_toEndOf="@+id/rl_hor_line"
+            android:layout_toRightOf="@+id/rl_ver_line"
+            android:layout_toEndOf="@+id/rl_ver_line"
             android:background="@color/unselected_circle_color"
             />
-
+        <View
+            android:id="@+id/rl_ver_line2"
+            android:layout_width="1dp"
+            android:layout_height="match_parent"
+            android:layout_centerInParent="true"
+            android:layout_below="@+id/rl_hor_line"
+            android:background="@color/unselected_circle_color"
+            />
     </RelativeLayout>
     <RelativeLayout
         android:layout_width="0dp"

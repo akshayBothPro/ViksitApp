@@ -31,7 +31,7 @@
         android:layout_marginBottom="@dimen/prac_header_bottom_margin"
         android:textSize="@dimen/p2"
         android:textColor="@color/gray"
-        android:text="You made gain in 3 skills"/>
+        android:text="You made gain in 3 childSkills"/>
     <view
         android:layout_width="match_parent"
         android:layout_height="1dp"

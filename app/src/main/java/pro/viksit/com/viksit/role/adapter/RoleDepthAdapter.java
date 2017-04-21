@@ -28,12 +28,6 @@ public class RoleDepthAdapter extends ExpandableRecyclerAdapter<RoleParent,RoleC
     private int screenWidth,screenHeight;
     private double diagonalInches;
 
-    public RoleDepthAdapter(Context context, @NonNull List<RoleParent> roleParents) {
-        super(roleParents);
-        this.roleParents = roleParents;
-        mInflater = LayoutInflater.from(context);
-        this.context = context;
-    }
 
     public RoleDepthAdapter(Context context, @NonNull List<RoleParent> roleParents, int screenWidth,int screenHeight, double diagonalInches) {
         super(roleParents);
@@ -73,8 +67,6 @@ public class RoleDepthAdapter extends ExpandableRecyclerAdapter<RoleParent,RoleC
     public void onBindChildViewHolder(@NonNull RoleNameViewHolder childViewHolder, int parentPosition, int childPosition, @NonNull RoleChild child) {
         childViewHolder.bind(child,parentPosition, childPosition, roleParents);
     }
-
-
 
 
 

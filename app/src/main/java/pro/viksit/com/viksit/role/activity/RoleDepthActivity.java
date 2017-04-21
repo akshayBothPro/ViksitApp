@@ -1,7 +1,8 @@
 package pro.viksit.com.viksit.role.activity;
 
+import android.content.Context;
 import android.content.Intent;
-import android.graphics.drawable.Drawable;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.UiThread;
@@ -19,35 +20,35 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bignerdranch.expandablerecyclerview.ExpandableRecyclerAdapter;
+import com.google.gson.Gson;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import pro.viksit.com.viksit.R;
 import pro.viksit.com.viksit.role.adapter.RoleDepthAdapter;
+import pro.viksit.com.viksit.role.pojo.AssessmentReport;
 import pro.viksit.com.viksit.role.pojo.RoleChild;
 import pro.viksit.com.viksit.role.pojo.RoleParent;
 
 public class RoleDepthActivity extends AppCompatActivity {
 
     private Toolbar toolbar;
-
-    private TextView attained;
-    private TextView outOf;
-    private TextView accuracyPercent;
-    private TextView avgPercent;
-    private TextView noOfStudentsAttempted;
+    private CollapsingToolbarLayout mCollapsingToolbarLayout;
+    private AppBarLayout appBarLayout;
+    private LinearLayout reportContainer;
+    private TextView attained, outOf, accuracyPercent, avgPercent, noOfStudentsAttempted;
+    private RecyclerView recyclerView;
     private ArrayList<RoleParent> roleParents;
     private RoleDepthAdapter roleDepthAdapter;
-    private Button repeatAssessment;
-    private Button reviewQuestions;
+    private Button repeatAssessment, reviewQuestions;
     private int lastExpandedPosition;
-    private CollapsingToolbarLayout mCollapsingToolbarLayout;
-    private LinearLayout reportContainer;
 
     private int screenWidth;
     private int screenHeight;
     private double diagonalInches;
-
+    private SharedPreferences sharedpreferences;
+    private AssessmentReport report;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -68,7 +69,7 @@ public class RoleDepthActivity extends AppCompatActivity {
         int screenheitght = d1.intValue();
 
         toolbar = (Toolbar) findViewById(R.id.toolbar);
-        final RecyclerView recyclerView = (RecyclerView) findViewById(R.id.rv_role_vertical);
+        recyclerView = (RecyclerView) findViewById(R.id.rv_role_vertical);
         attained = (TextView) findViewById(R.id.tv_attained_score);
         outOf = (TextView) findViewById(R.id.tv_total_score);
         accuracyPercent = (TextView) findViewById(R.id.tv_accuracy_percent);
@@ -77,75 +78,42 @@ public class RoleDepthActivity extends AppCompatActivity {
         repeatAssessment = (Button) findViewById(R.id.btn_repaeat_assessment);
         reviewQuestions = (Button) findViewById(R.id.btn_review_questions);
         reportContainer = (LinearLayout)findViewById(R.id.ll_report_container);
+        mCollapsingToolbarLayout = (CollapsingToolbarLayout) findViewById(R.id.collapsing_toolbar);
+        appBarLayout = (AppBarLayout) findViewById(R.id.appbar);
 
-        toolbar.setTitle("Mid-Assesment Report");
+        sharedpreferences = getSharedPreferences(getResources().getString(R.string.shared_preference_key), Context.MODE_PRIVATE);
+        String jsonresponse = sharedpreferences.getString(getResources().getString(R.string.assessment_report),"");
+        System.out.println("this is response" + jsonresponse);
+
+        Gson gson = new Gson();
+        report = (AssessmentReport) gson.fromJson(jsonresponse, AssessmentReport.class);
+
+        roleParents = new ArrayList<>();
+        if(report != null) {
+            roleParents = report.getSkillsReport();
+            for (RoleParent parent : roleParents) {
+                List<RoleChild> childList = parent.getChildList();
+                childList.get(childList.size() - 1).setLastItem(true);
+            }
+            implementActions();
+            if (diagonalInches >= 6.5) {
+                ViewGroup.LayoutParams params = appBarLayout.getLayoutParams();
+                params.height = screenHeight / 3;
+                appBarLayout.setLayoutParams(params);
+            }
+        }
+
+    }
+
+    public void implementActions(){
+        //setting toolbar
+        toolbar.setTitle(report.getName());
         toolbar.setTitleTextColor(getResources().getColor(R.color.white_color));
         toolbar.setNavigationIcon(R.drawable.ic_keyboard_backspace_white_24dp);
         setSupportActionBar(toolbar);
         lastExpandedPosition = -1;
-        roleParents = new ArrayList<>();
-        for(int i=0;i<15;i++){
-            RoleParent roleParent = new RoleParent();
-            roleParent.setProgress(40+i);
-            roleParent.setText("Risk Management "+i);
-            roleParent.setTitle("Risk "+i);
-            ArrayList<RoleChild> roleChildren = new ArrayList<>();
-            for(int j=0;j<3;j++){
-                RoleChild roleChild = new RoleChild();
-                roleChild.setText("identification of risk "+j);
-                roleChild.setProgress(30+j);
-                roleChildren.add(roleChild);
 
-            }
-            roleParent.setRoleChildren(roleChildren);
-            roleParents.add(roleParent);
-        }
-
-        roleDepthAdapter = new RoleDepthAdapter(this,roleParents, screenWidth,screenHeight,diagonalInches);
-        recyclerView.setAdapter(roleDepthAdapter);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        roleDepthAdapter.setExpandCollapseListener(new ExpandableRecyclerAdapter.ExpandCollapseListener() {
-            @UiThread
-            @Override
-            public void onParentExpanded(int parentPosition) {
-                RoleParent expandedRecipe = roleParents.get(parentPosition);
-
-                String toastMsg = "ee "+expandedRecipe.getTitle();
-                Toast.makeText(RoleDepthActivity.this,
-                        toastMsg,
-                        Toast.LENGTH_SHORT)
-                        .show();
-                if (lastExpandedPosition != -1
-                        && parentPosition != lastExpandedPosition) {
-                    roleDepthAdapter.collapseParent(lastExpandedPosition);
-                }
-                lastExpandedPosition = parentPosition;
-            }
-
-            @UiThread
-            @Override
-            public void onParentCollapsed(int parentPosition) {
-                RoleParent collapsedRecipe = roleParents.get(parentPosition);
-
-                String toastMsg = "cc "+collapsedRecipe.getTitle();
-                Toast.makeText(RoleDepthActivity.this,
-                        toastMsg,
-                        Toast.LENGTH_SHORT)
-                        .show();
-
-            }
-        });
-
-        //
-        mCollapsingToolbarLayout = (CollapsingToolbarLayout) findViewById(R.id.collapsing_toolbar);
-        AppBarLayout appBarLayout = (AppBarLayout) findViewById(R.id.appbar);
-
-        if (diagonalInches>=6.5){
-            ViewGroup.LayoutParams params = appBarLayout.getLayoutParams();
-            params.height = screenHeight/3;
-            appBarLayout.setLayoutParams(params);
-        }
-
+        //appbar layout fade toggle
         appBarLayout.addOnOffsetChangedListener(new AppBarLayout.OnOffsetChangedListener() {
             boolean isShow = false;
             int scrollRange = -1;
@@ -167,8 +135,49 @@ public class RoleDepthActivity extends AppCompatActivity {
                 }
             }
         });
-        //
 
+        //setting collapsing bar layout and details
+        attained.setText(Double.toString(report.getUserScore()));
+        outOf.setText("/" + Double.toString(report.getTotalScore()));
+        accuracyPercent.setText(Double.toString(report.getAccuracy()));
+        avgPercent.setText(Double.toString(report.getBatchAverage()));
+        noOfStudentsAttempted.setText(Integer.toString(report.getUsersAttemptedCount()) + " of " + Integer.toString(report.getTotalNumberOfUsersInBatch()) + " students have attempted this assessment");
+
+        //setting recycler view
+        roleDepthAdapter = new RoleDepthAdapter(this,roleParents, screenWidth,screenHeight,diagonalInches);
+        recyclerView.setAdapter(roleDepthAdapter);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        roleDepthAdapter.setExpandCollapseListener(new ExpandableRecyclerAdapter.ExpandCollapseListener() {
+            @UiThread
+            @Override
+            public void onParentExpanded(int parentPosition) {
+                RoleParent expandedRecipe = roleParents.get(parentPosition);
+
+                String toastMsg = "ee "+expandedRecipe.getName();
+                Toast.makeText(RoleDepthActivity.this,
+                        toastMsg,
+                        Toast.LENGTH_SHORT)
+                        .show();
+                if (lastExpandedPosition != -1
+                        && parentPosition != lastExpandedPosition) {
+                    roleDepthAdapter.collapseParent(lastExpandedPosition);
+                }
+                lastExpandedPosition = parentPosition;
+            }
+
+            @UiThread
+            @Override
+            public void onParentCollapsed(int parentPosition) {
+                RoleParent collapsedRecipe = roleParents.get(parentPosition);
+
+                String toastMsg = "cc "+collapsedRecipe.getName();
+                Toast.makeText(RoleDepthActivity.this,
+                        toastMsg,
+                        Toast.LENGTH_SHORT)
+                        .show();
+
+            }
+        });
     }
 
     @Override

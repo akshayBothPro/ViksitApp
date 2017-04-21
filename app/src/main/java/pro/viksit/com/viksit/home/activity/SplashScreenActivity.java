@@ -59,6 +59,7 @@ public class SplashScreenActivity extends AppCompatActivity implements SplashScr
         ThreadUtil assessmentThread = new ThreadUtil(editor,3504,getResources().getString(R.string.serverip)+getResources().getString(R.string.allassessment)+3504,"Assessment",getResources().getString(R.string.assessment));
         ThreadUtil leaderBoardThread = new ThreadUtil(editor,3504,getResources().getString(R.string.serverip)+getResources().getString(R.string.leaderboarddata).replaceAll("user_id",3504+""),"Leaderboard",getResources().getString(R.string.leaderboard));
         ThreadUtil courseThread = new ThreadUtil(editor,5209,getResources().getString(R.string.serverip)+getResources().getString(R.string.allcourse)+5209,"Course",getResources().getString(R.string.course));
+
         executor.execute(leaderBoardThread);
         executor.execute(assessmentThread);
         executor.execute(courseThread);

@@ -36,7 +36,6 @@ public class RoleSkillViewHolder extends ParentViewHolder {
     private int screenWidth,screenHeight;
     private double diagonalInches;
 
-
     public RoleSkillViewHolder(@NonNull View itemView,int screenWidth,int screenHeight,double diagonalInches) {
         super(itemView);
         this.screenWidth = screenWidth;
@@ -52,9 +51,9 @@ public class RoleSkillViewHolder extends ParentViewHolder {
     }
 
     public void bind(@NonNull RoleParent roleParent) {
-        title.setText(roleParent.getTitle());
-        desc.setText(roleParent.getText());
-        pb.setProgress(roleParent.getProgress());
+        title.setText(roleParent.getName());
+        desc.setText(Integer.toString(roleParent.getChildList().size()) + " subskill");
+        pb.setProgress(roleParent.getPercentage().intValue());
         pb.setProgressDrawable(itemView.getResources().getDrawable(R.drawable.role_depth_progress));
         mArrowExpandImageView.setImageResource(R.mipmap.ic_add_circle_outline_black_24dp);
         if (diagonalInches>=6.5) {
