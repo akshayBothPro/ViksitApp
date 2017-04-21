@@ -27,8 +27,7 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
 
     private ImageView icon;
     private TextView talentify;
-    private Button getStarted;
-    private Button member;
+    private Button getStarted, member;
     private SharedPreferences sharedpreferences;
     int PERMISSION_ALL = 1;
 
@@ -37,10 +36,12 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
             Manifest.permission.SET_ALARM, Manifest.permission.ACCESS_COARSE_LOCATION, Manifest.permission.ACCESS_FINE_LOCATION,
             Manifest.permission.SEND_SMS, Manifest.permission.VIBRATE, Manifest.permission.INTERNET,
             Manifest.permission.ACCESS_NETWORK_STATE, Manifest.permission.BROADCAST_STICKY};
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
+
         if (!hasPermissions(this, PERMISSIONS)) {
             ActivityCompat.requestPermissions(this, PERMISSIONS, PERMISSION_ALL);
         }
@@ -52,23 +53,20 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
         getStarted = (Button) findViewById(R.id.btn_get_started);
         member = (Button) findViewById(R.id.btn_member);
         sharedpreferences = getSharedPreferences(getResources().getString(R.string.shared_preference_key), Context.MODE_PRIVATE);
-        //
-        new AssessmentReportAsync(this).execute();
-        //
+        /*new AssessmentReportAsync(this).execute();*/
 
         if(!sharedpreferences.getString(getResources().getString(R.string.user_profile),"").equalsIgnoreCase("")){
-          Intent i = new Intent(HomeActivity.this,SplashScreenActivity.class);
+            Intent i = new Intent(HomeActivity.this,SplashScreenActivity.class);
             startActivity(i);
         }
-        else
-        implementListeners();
-
+        else {
+            implementListeners();
+        }
     }
 
     private void implementListeners(){
         getStarted.setOnClickListener(this);
         member.setOnClickListener(this);
-
 
     }
 
@@ -79,10 +77,11 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
             startActivity(new Intent(HomeActivity.this, SignupActivity.class));
         } else  if(v.getId() == R.id.btn_member){
             Log.i(TAG,"already a member clicked");
-            startActivity(new Intent(HomeActivity.this, RoleDepthActivity.class));
+            startActivity(new Intent(HomeActivity.this, LoginActivity.class));
         }
 
     }
+
     public static boolean hasPermissions(Context context, String... permissions) {
         if (android.os.Build.VERSION.SDK_INT >= Build.VERSION_CODES.M && context != null && permissions != null) {
             for (String permission : permissions) {

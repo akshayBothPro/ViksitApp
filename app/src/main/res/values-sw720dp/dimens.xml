@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!--signup activity dimensions-->
+    <dimen name="signup_con_horizontal_padding">30dp</dimen>
+    <dimen name="signup_header_horizontal_padding">10dp</dimen>
+    <dimen name="signup_header_bottom_margin">10dp</dimen>
+    <dimen name="signup_edittext_con_bottom_margin">5dp</dimen>
+    <dimen name="signup_edittext_con_bottom_margin_double">10dp</dimen>
+    <dimen name="signup_edittext_horizontal_padding">10dp</dimen>
+    <dimen name="signup_error_padding">10dp</dimen>
+    <dimen name="signup_btn_bottom_margin">5dp</dimen>
+    <dimen name="signup_or_con_bottom_margin">15dp</dimen>
+    <dimen name="signup_social_media_bottom_margin">2dp</dimen>
+    <dimen name="signup_social_media_con_padding">5dp</dimen>
+    <dimen name="signup_social_media_btn_horizontal_margin">8dp</dimen>
+    <dimen name="signup_social_media_btn_size">50dp</dimen>
+    <dimen name="signup_login_instead_btn_bottom_margin">5dp</dimen>
+
+
+</resources>

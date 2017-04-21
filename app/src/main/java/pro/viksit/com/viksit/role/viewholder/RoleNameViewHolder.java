@@ -38,6 +38,8 @@ public class RoleNameViewHolder extends ChildViewHolder {
         pb.setProgressDrawable(itemView.getResources().getDrawable(R.drawable.role_depth_progress));
         if(roleChild.getLastItem()){
             lastLine.setVisibility(View.GONE);
+        } else {
+            lastLine.setVisibility(View.VISIBLE);
         }
 
     }

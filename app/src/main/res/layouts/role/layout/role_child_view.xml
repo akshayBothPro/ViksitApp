@@ -37,6 +37,7 @@
             android:layout_centerInParent="true"
             android:layout_below="@+id/rl_hor_line"
             android:background="@color/unselected_circle_color"
+            android:visibility="visible"
             />
     </RelativeLayout>
     <RelativeLayout

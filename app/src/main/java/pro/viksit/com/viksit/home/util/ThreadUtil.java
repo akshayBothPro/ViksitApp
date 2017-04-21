@@ -19,10 +19,12 @@ import pro.viksit.com.viksit.util.HttpUtil;
  */
 
 public class ThreadUtil implements Runnable {
+
     private int user_id;
     private String url,type,stored_name;
     private SharedPreferences.Editor editor;
     private   HttpUtil httpUtil;
+
     public ThreadUtil( SharedPreferences.Editor editor, int user_id, String url, String type,String stored_name){
         this.editor = editor;
         this.user_id = user_id;
@@ -51,16 +53,12 @@ public class ThreadUtil implements Runnable {
             case "Task":
                 saveTask(jsonresponse,gson,editor);
                 break;
-
             case "Assessment_report":
                 saveAssessmentReport(jsonresponse,gson,editor);
                 break;
         }
 
-
     }
-
-
 
     private void saveTask(String jsonresponse, Gson gson, SharedPreferences.Editor editor) {
        int index = httpUtil.getUrl().lastIndexOf("/");
@@ -98,6 +96,7 @@ public class ThreadUtil implements Runnable {
 
         }
     }
+
     private void saveCourse(String jsonresponse, Gson gson,SharedPreferences.Editor editor) {
         if(!jsonresponse.equalsIgnoreCase("null")) {
             Type listType = new TypeToken<List<CoursePOJO>>() {}.getType();
@@ -112,7 +111,6 @@ public class ThreadUtil implements Runnable {
         }
     }
 
-
     private void saveAssessmentReport(String jsonresponse, Gson gson,SharedPreferences.Editor editor) {
         if(!jsonresponse.equalsIgnoreCase("null")){
             editor.putString(stored_name, jsonresponse);
@@ -120,6 +118,6 @@ public class ThreadUtil implements Runnable {
             editor.commit();
         }
 
-        System.out.println("json for assessment" + jsonresponse);
+        System.out.println("json for assessment report:      " + jsonresponse);
     }
 }
