@@ -28,7 +28,7 @@ public class SplashScreenTask extends AsyncTask<Void, Void, Void> {
     protected Void doInBackground (Void... params) {
         HttpUtil httpUtil = new HttpUtil();
 
-        httpUtil.setUrl(context.getResources().getString(R.string.serverip) + (context.getResources().getString(R.string.dashboardcardurl).replaceAll("user_id", user_id + "")));
+        httpUtil.setUrl(context.getResources().getString(R.string.serverip) + (context.getResources().getString(R.string.dashboardcardurl).replaceAll("user_id", 2632 + "")));
         httpUtil.setType("GET");
         editor.putString(context.getResources().getString(R.string.dashboardcards), httpUtil.getStringResponse());
         editor.apply();

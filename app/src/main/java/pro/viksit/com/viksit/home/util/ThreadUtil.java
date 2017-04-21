@@ -22,7 +22,7 @@ public class ThreadUtil implements Runnable {
     private int user_id;
     private String url,type,stored_name;
     private SharedPreferences.Editor editor;
-
+    private   HttpUtil httpUtil;
     public ThreadUtil( SharedPreferences.Editor editor, int user_id, String url, String type,String stored_name){
         this.editor = editor;
         this.user_id = user_id;
@@ -33,7 +33,7 @@ public class ThreadUtil implements Runnable {
 
     @Override
     public void run() {
-        HttpUtil httpUtil = new HttpUtil();
+        httpUtil = new HttpUtil();
         httpUtil.setUrl(url);
         httpUtil.setType("GET");
         String jsonresponse =httpUtil.getStringResponse();
@@ -48,12 +48,25 @@ public class ThreadUtil implements Runnable {
             case "Course":
                 saveCourse(jsonresponse,gson,editor);
                 break;
+            case "Task":
+                saveTask(jsonresponse,gson,editor);
+                break;
            /* case "Assessment_report":
                 saveCourse(jsonresponse,gson,editor);
                 break;*/
         }
 
 
+    }
+
+    private void saveTask(String jsonresponse, Gson gson, SharedPreferences.Editor editor) {
+       int index = httpUtil.getUrl().lastIndexOf("/");
+        String taskid = httpUtil.getUrl().substring(index+1,httpUtil.getUrl().length());
+        if(!jsonresponse.equalsIgnoreCase("null")){
+            editor.putString(stored_name+taskid, jsonresponse);
+            editor.apply();
+            editor.commit();
+        }
     }
 
     private void saveLeaderboard(String jsonresponse, Gson gson,SharedPreferences.Editor editor) {

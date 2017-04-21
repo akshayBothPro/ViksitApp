@@ -35,7 +35,7 @@
     <string name="socialloginurl">auth/login/social</string>
     <string name="loginurl">auth/login</string>
     <string name="signupurl">user/create</string>
-    <string name="dashboardcardurl">dashboard/user/user_id</string>
+    <string name="dashboardcardurl">tasks/user/user_id</string>
     <string name="forgotpassword">user/password/forgot</string>
     <string name="otpurl">user/user_id/mobile</string>
     <string name="reseturl">user/password/reset</string>
@@ -52,7 +52,7 @@
     <string name="leaderboard">LEADERBOARD</string>
     <string name="assessment">Assessment_</string>
     <string name="course">Course_</string>
-
+    <string name="task_store">TASK_</string>
     <string name="assessment_report">ASSESSMENTREPORT</string>
 
     <!-- end of Stored/cached data- -->

@@ -22,18 +22,23 @@ import android.widget.Toast;
 import com.github.siyamed.shapeimageview.HexagonImageView;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import com.google.gson.reflect.TypeToken;
 import com.squareup.picasso.Picasso;
+
+import java.lang.reflect.Type;
+import java.util.ArrayList;
+import java.util.List;
 
 import pro.viksit.com.viksit.R;
 import pro.viksit.com.viksit.challenge.activity.LeaderBoardActivity;
-import pro.viksit.com.viksit.util.DisplayUtil;
-import pro.viksit.com.viksit.util.ImageSaver;
-import pro.viksit.com.viksit.util.SaveImageAsync;
 import pro.viksit.com.viksit.dashboard.adapter.CardAdapter.CarouselPagerAdapter;
 import pro.viksit.com.viksit.dashboard.async.DashboardCardAsync;
 import pro.viksit.com.viksit.dashboard.pojo.DashboardCard;
 import pro.viksit.com.viksit.dashboard.pojo.StudentProfile;
 import pro.viksit.com.viksit.dashboard.util.BottomBarUtil;
+import pro.viksit.com.viksit.util.DisplayUtil;
+import pro.viksit.com.viksit.util.ImageSaver;
+import pro.viksit.com.viksit.util.SaveImageAsync;
 
 public class DashboardActivity extends AppCompatActivity implements View.OnClickListener{
     private Toolbar toolbar;
@@ -83,6 +88,47 @@ public class DashboardActivity extends AppCompatActivity implements View.OnClick
 
         if(storedResponse.equalsIgnoreCase("") || storedResponse.equalsIgnoreCase("null")){
             startActivity(new Intent(DashboardActivity.this,NoTaskActivity.class));
+        }else{
+            if(!storedResponse.equalsIgnoreCase("[]")){
+                System.out.println("jsonresponse " + storedResponse);
+                Type listType = new TypeToken<List<DashboardCard>>() {
+                }.getType();
+                ArrayList<DashboardCard> dashboardCards = (ArrayList<DashboardCard>) gson.fromJson(storedResponse, listType);
+
+
+                if (dashboardCards.size() < 7) {
+                    loop = dashboardCards.size();
+                } else {
+                    loop = 7;
+                    lastposition = (7 * (dashboardCards.size() / 7));
+                }
+                dots = new ImageView[dashboardCards.size()];
+                for (int i = 0; i < loop; i++) {
+                    dots[i] = new ImageView(this);
+                    dots[i].setImageDrawable(getResources().getDrawable(R.drawable.nonselecteditem_dot));
+                    LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(
+                            LinearLayout.LayoutParams.WRAP_CONTENT,
+                            LinearLayout.LayoutParams.WRAP_CONTENT
+                    );
+                    params.setMargins(4, 0, 4, 0);
+                    pager_indicator.addView(dots[i], params);
+                }
+                dots[0].setImageDrawable(getResources().getDrawable(R.drawable.selecteditem_dot));
+                CarouselPagerAdapter carouselPagerAdapter = new CarouselPagerAdapter(this, getSupportFragmentManager(), dashboardCards, loop);
+                DisplayMetrics metrics = new DisplayMetrics();
+                getWindowManager().getDefaultDisplay().getMetrics(metrics);
+                int pageMargin = ((metrics.widthPixels / 12));
+                System.out.println("pageMargin " + pageMargin);
+                pager.setClipToPadding(false);
+                pager.setPadding(pageMargin, pageMargin / 2, pageMargin, 0);
+                pager.setAdapter(carouselPagerAdapter);
+                carouselPagerAdapter.notifyDataSetChanged();
+                pager.addOnPageChangeListener(carouselPagerAdapter);
+                pager.setCurrentItem(1);
+                pager.setOffscreenPageLimit(3);
+
+
+            }
         }
         button_layout.setOnClickListener(new View.OnClickListener() {
             @Override
