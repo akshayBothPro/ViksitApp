@@ -1,35 +1,23 @@
-package pro.viksit.com.viksit.challenge.async;
+package pro.viksit.com.viksit.role.util;
 
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.AsyncTask;
-import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 
-import com.google.gson.Gson;
-import com.google.gson.reflect.TypeToken;
-
-import java.lang.reflect.Type;
-import java.util.ArrayList;
-import java.util.List;
-
 import pro.viksit.com.viksit.R;
-import pro.viksit.com.viksit.challenge.activity.LeaderBoardActivity;
-import pro.viksit.com.viksit.challenge.adapter.LeaderBoardRecyclerAdapter;
-import pro.viksit.com.viksit.challenge.pojo.LeaderBoardCourse;
 import pro.viksit.com.viksit.util.HttpUtil;
 
-
 /**
- * Created by Akshay on 17/04/2017.
+ * Created by Akshay on 20/04/2017.
  */
 
-public class LeaderBoardAsync extends AsyncTask<String, Integer, String> {
+public class AssessmentReportAsync extends AsyncTask<String, Integer, String> {
 
-    private static final String TAG = "LeaderBoardAsync";
+    private static final String TAG = "AssessmentReportAsync";
     private Context context;
 
-    public LeaderBoardAsync(Context context) {
+    public AssessmentReportAsync(Context context) {
         this.context = context;
     }
 
@@ -37,17 +25,17 @@ public class LeaderBoardAsync extends AsyncTask<String, Integer, String> {
     protected String doInBackground(String... params) {
 
         HttpUtil httpUtil = new HttpUtil();
-        httpUtil.setUrl(context.getResources().getString(R.string.serverip) + "courses/user/5209/leaderboard");
+        httpUtil.setUrl(context.getResources().getString(R.string.serverip) + "assessments/user/441/10157/report");
         httpUtil.setType("GET");
-        httpUtil.setConnectionTimeOut(5000);
-        httpUtil.setSocketTimeOut(5000);
+        httpUtil.setConnectionTimeOut(100000);
+        httpUtil.setSocketTimeOut(100000);
         String jsonresponse = httpUtil.getStringResponse();
        /* Gson gson = new Gson();*/
 
         if(!jsonresponse.equalsIgnoreCase("null")){
             SharedPreferences sharedPreferences = context.getSharedPreferences(context.getResources().getString(R.string.shared_preference_key), Context.MODE_PRIVATE);
             SharedPreferences.Editor editor = sharedPreferences.edit();
-            editor.putString(context.getResources().getString(R.string.leaderboard), jsonresponse);
+            editor.putString(context.getResources().getString(R.string.assessment_report), jsonresponse);
             editor.apply();
             editor.commit();
         }

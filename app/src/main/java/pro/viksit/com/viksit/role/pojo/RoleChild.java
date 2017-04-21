@@ -8,30 +8,59 @@ import java.io.Serializable;
 
 @SuppressWarnings("serial") //With this annotation we are going to hide compiler warnings
 public class RoleChild implements Serializable{
-    String text;
-    int progress;
 
-    public RoleChild() {
+    private Integer id;
+    private String name;
+    private Double totalPoints;
+    private Double userPoints;
+    private Double percentage;
+    private Boolean lastItem = false;
+
+    public Integer getId() {
+        return id;
     }
 
-    public RoleChild(String text, int progress) {
-        this.text = text;
-        this.progress = progress;
+    public void setId(Integer id) {
+        this.id = id;
     }
 
-    public String getText() {
-        return text;
+    public String getName() {
+        return name;
     }
 
-    public void setText(String text) {
-        this.text = text;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public int getProgress() {
-        return progress;
+    public Double getTotalPoints() {
+        return totalPoints;
     }
 
-    public void setProgress(int progress) {
-        this.progress = progress;
+    public void setTotalPoints(Double totalPoints) {
+        this.totalPoints = totalPoints;
+    }
+
+    public Double getUserPoints() {
+        return userPoints;
+    }
+
+    public void setUserPoints(Double userPoints) {
+        this.userPoints = userPoints;
+    }
+
+    public Double getPercentage() {
+        return percentage;
+    }
+
+    public void setPercentage(Double percentage) {
+        this.percentage = percentage;
+    }
+
+    public Boolean getLastItem() {
+        return lastItem;
+    }
+
+    public void setLastItem(Boolean lastItem) {
+        this.lastItem = lastItem;
     }
 }

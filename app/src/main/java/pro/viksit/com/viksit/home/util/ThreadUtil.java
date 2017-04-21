@@ -22,6 +22,7 @@ public class ThreadUtil implements Runnable {
     private int user_id;
     private String url,type,stored_name;
     private SharedPreferences.Editor editor;
+
     public ThreadUtil( SharedPreferences.Editor editor, int user_id, String url, String type,String stored_name){
         this.editor = editor;
         this.user_id = user_id;
@@ -47,6 +48,9 @@ public class ThreadUtil implements Runnable {
             case "Course":
                 saveCourse(jsonresponse,gson,editor);
                 break;
+           /* case "Assessment_report":
+                saveCourse(jsonresponse,gson,editor);
+                break;*/
         }
 
 

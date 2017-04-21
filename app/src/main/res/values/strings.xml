@@ -46,13 +46,14 @@
 
     <!-- end of URL For services -->
 
-
     <!--start Stored/cached data-->
     <string name="user_profile">USERPROFILE</string>
     <string name="dashboardcards">DASHBOARDCARDS</string>
     <string name="leaderboard">LEADERBOARD</string>
     <string name="assessment">Assessment_</string>
     <string name="course">Course_</string>
+
+    <string name="assessment_report">ASSESSMENTREPORT</string>
 
     <!-- end of Stored/cached data- -->
 

@@ -13,56 +13,67 @@ import java.util.List;
 @SuppressWarnings("serial") //With this annotation we are going to hide compiler warnings
 public class RoleParent implements Parent<RoleChild>,Serializable {
 
-    String title;
-    String text;
-    int progress;
-    ArrayList<RoleChild> roleChildren;
+    private Integer id;
+    private String name;
+    private Double totalPoints;
+    private Double userPoints;
+    private Double percentage;
+    private ArrayList<RoleChild> skills;
 
     public RoleParent() {
     }
 
-    public RoleParent(String title, String text, int progress, ArrayList<RoleChild> roleChildren) {
-        this.title = title;
-        this.text = text;
-        this.progress = progress;
-        this.roleChildren = roleChildren;
+    public Integer getId() {
+        return id;
     }
 
-    public String getTitle() {
-        return title;
+    public void setId(Integer id) {
+        this.id = id;
     }
 
-    public void setTitle(String title) {
-        this.title = title;
+    public String getName() {
+        return name;
     }
 
-    public String getText() {
-        return text;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public void setText(String text) {
-        this.text = text;
+    public Double getTotalPoints() {
+        return totalPoints;
     }
 
-    public int getProgress() {
-        return progress;
+    public void setTotalPoints(Double totalPoints) {
+        this.totalPoints = totalPoints;
     }
 
-    public void setProgress(int progress) {
-        this.progress = progress;
+    public Double getUserPoints() {
+        return userPoints;
     }
 
-    public ArrayList<RoleChild> getRoleChildren() {
-        return roleChildren;
+    public void setUserPoints(Double userPoints) {
+        this.userPoints = userPoints;
     }
 
-    public void setRoleChildren(ArrayList<RoleChild> roleChildren) {
-        this.roleChildren = roleChildren;
+    public Double getPercentage() {
+        return percentage;
+    }
+
+    public void setPercentage(Double percentage) {
+        this.percentage = percentage;
+    }
+
+    public ArrayList<RoleChild> getSkills() {
+        return skills;
+    }
+
+    public void setSkills(ArrayList<RoleChild> roleChildren) {
+        this.skills = roleChildren;
     }
 
     @Override
     public List<RoleChild> getChildList() {
-        return roleChildren;
+        return skills;
     }
 
     @Override
