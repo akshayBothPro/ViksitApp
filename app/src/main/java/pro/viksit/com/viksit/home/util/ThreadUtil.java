@@ -51,6 +51,7 @@ public class ThreadUtil implements Runnable {
             case "Task":
                 saveTask(jsonresponse,gson,editor);
                 break;
+
            /* case "Assessment_report":
                 saveCourse(jsonresponse,gson,editor);
                 break;*/
@@ -58,6 +59,8 @@ public class ThreadUtil implements Runnable {
 
 
     }
+
+
 
     private void saveTask(String jsonresponse, Gson gson, SharedPreferences.Editor editor) {
        int index = httpUtil.getUrl().lastIndexOf("/");

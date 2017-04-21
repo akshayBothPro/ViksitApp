@@ -64,7 +64,7 @@ public class SplashScreenActivity extends AppCompatActivity implements SplashScr
     public void OnSplashScreenTaskCompleted() {
         storedResponse = sharedpreferences.getString(getResources().getString(R.string.dashboardcards),"");
 
-        int totalnos = 3;
+        int totalnos = 5;
         ExecutorService executor = null;
         ArrayList<DashboardCard> dashboardCardslist = null;
         if(!storedResponse.equalsIgnoreCase("[]")) {
@@ -88,10 +88,18 @@ public class SplashScreenActivity extends AppCompatActivity implements SplashScr
         ThreadUtil assessmentThread = new ThreadUtil(editor,3504,getResources().getString(R.string.serverip)+getResources().getString(R.string.allassessment)+3504,"Assessment",getResources().getString(R.string.assessment));
         ThreadUtil leaderBoardThread = new ThreadUtil(editor,3504,getResources().getString(R.string.serverip)+getResources().getString(R.string.leaderboarddata).replaceAll("user_id",3504+""),"Leaderboard",getResources().getString(R.string.leaderboard));
         ThreadUtil courseThread = new ThreadUtil(editor,5209,getResources().getString(R.string.serverip)+getResources().getString(R.string.allcourse)+5209,"Course",getResources().getString(R.string.course));
+        ThreadUtil eventThread = new ThreadUtil(editor,3504,getResources().getString(R.string.serverip)+getResources().getString(R.string.allevents)+"444","Leaderboard",getResources().getString(R.string.events));
+        ThreadUtil skillMapThread = new ThreadUtil(editor,3504,getResources().getString(R.string.serverip)+getResources().getString(R.string.skillmapurl).replaceAll("user_id","444"),"Leaderboard",getResources().getString(R.string.skillmap));
+
+        // fetch lesson from session skills
+        //fetch all assesssment reports
+        //fetch notifications
 
         executor.execute(leaderBoardThread);
         executor.execute(assessmentThread);
         executor.execute(courseThread);
+        executor.execute(eventThread);
+        executor.execute(skillMapThread);
 
         startActivity(new Intent(SplashScreenActivity.this, DashboardActivity.class));
         executor.shutdown();

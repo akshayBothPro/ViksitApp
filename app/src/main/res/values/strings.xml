@@ -43,6 +43,8 @@
     <string name="allassessment">assessments/user/</string>
     <string name="leaderboarddata">courses/user/user_id/leaderboard</string>
     <string name="allcourse">courses/user/</string>
+    <string name="allevents">calendar/user/</string>
+    <string name="skillmapurl">user/user_id/skills</string>
 
     <!-- end of URL For services -->
 
@@ -54,6 +56,8 @@
     <string name="course">Course_</string>
     <string name="task_store">TASK_</string>
     <string name="assessment_report">ASSESSMENTREPORT</string>
+    <string name="events">ALLEVENTS</string>
+    <string name="skillmap">SKILLMAP</string>
 
     <!-- end of Stored/cached data- -->
 

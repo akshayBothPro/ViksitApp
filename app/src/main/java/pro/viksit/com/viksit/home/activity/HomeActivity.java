@@ -46,6 +46,7 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
         }
         registerReceiver(new NetworkChangeReceiver(),
                 new IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION));
+
         icon = (ImageView) findViewById(R.id.iv_app_icon);
         talentify = (TextView) findViewById(R.id.tv_talentify);
         getStarted = (Button) findViewById(R.id.btn_get_started);
