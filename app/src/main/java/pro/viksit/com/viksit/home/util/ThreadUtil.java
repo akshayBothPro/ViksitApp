@@ -52,9 +52,9 @@ public class ThreadUtil implements Runnable {
                 saveTask(jsonresponse,gson,editor);
                 break;
 
-           /* case "Assessment_report":
-                saveCourse(jsonresponse,gson,editor);
-                break;*/
+            case "Assessment_report":
+                saveAssessmentReport(jsonresponse,gson,editor);
+                break;
         }
 
 
@@ -110,5 +110,16 @@ public class ThreadUtil implements Runnable {
                 }
             }
         }
+    }
+
+
+    private void saveAssessmentReport(String jsonresponse, Gson gson,SharedPreferences.Editor editor) {
+        if(!jsonresponse.equalsIgnoreCase("null")){
+            editor.putString(stored_name, jsonresponse);
+            editor.apply();
+            editor.commit();
         }
+
+        System.out.println("json for assessment" + jsonresponse);
+    }
 }

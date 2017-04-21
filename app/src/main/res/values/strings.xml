@@ -45,6 +45,7 @@
     <string name="allcourse">courses/user/</string>
     <string name="allevents">calendar/user/</string>
     <string name="skillmapurl">user/user_id/skills</string>
+    <string name="assessmentreportdata">assessments/user/user_id/assessment_id/report</string>
 
     <!-- end of URL For services -->
 

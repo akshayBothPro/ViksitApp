@@ -85,7 +85,7 @@ public class RoleActivity extends AppCompatActivity implements View.OnClickListe
                 new RecyclerItemClickListener (getBaseContext(), verticalRecycler ,new RecyclerItemClickListener.OnItemClickListener() {
                     @Override public void onItemClick(View view, int position) {
                         System.out.println("Vposition: " + position);
-                        Intent intent = new Intent(RoleActivity.this, CheckoutActivity.class);
+                        Intent intent = new Intent(RoleActivity.this, RoleDepthActivity.class);
                        /* Bundle bundle = new Bundle();
                         bundle.putSerializable("role", roles.get(position));
                         intent.putExtras(bundle);*/
@@ -97,33 +97,9 @@ public class RoleActivity extends AppCompatActivity implements View.OnClickListe
                 })
         );
 
-
-        //
-        /*ArrayList<Role> recommendedList = new Role().getParticularSectionItems(roles,"Recommended");
-        ArrayList<Role> financeList = new Role().getParticularSectionItems(roles,"Finance");
-        ArrayList<Role> salesList = new Role().getParticularSectionItems(roles,"Sales and Marketing");*/
-
-        /*HorizontalSectionedRecyclerViewAdapter adapter = new HorizontalSectionedRecyclerViewAdapter(getBaseContext(),recommendedList, financeList, salesList, roles);
-        horizontalRecycler.setAdapter(adapter);*/
-
-
-        //to be done ...
-        //RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getBaseContext(), LinearLayoutManager.HORIZONTAL, false);
-        /*RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getBaseContext());
-
-        horizontalRecycler.setLayoutManager(mLayoutManager);*/
-
-
-        //
-
-
-
         horizontalRecycler.setHasFixedSize(true);
-
         RecyclerViewDataAdapter adapter = new RecyclerViewDataAdapter(this, allSampleData,screenWidth,screenHeight);
-
         horizontalRecycler.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
-
         horizontalRecycler.setAdapter(adapter);
 
     }

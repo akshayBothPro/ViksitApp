@@ -64,7 +64,7 @@ public class SplashScreenActivity extends AppCompatActivity implements SplashScr
     public void OnSplashScreenTaskCompleted() {
         storedResponse = sharedpreferences.getString(getResources().getString(R.string.dashboardcards),"");
 
-        int totalnos = 5;
+        int totalnos = 6;
         ExecutorService executor = null;
         ArrayList<DashboardCard> dashboardCardslist = null;
         if(!storedResponse.equalsIgnoreCase("[]")) {
@@ -90,7 +90,7 @@ public class SplashScreenActivity extends AppCompatActivity implements SplashScr
         ThreadUtil courseThread = new ThreadUtil(editor,5209,getResources().getString(R.string.serverip)+getResources().getString(R.string.allcourse)+5209,"Course",getResources().getString(R.string.course));
         ThreadUtil eventThread = new ThreadUtil(editor,3504,getResources().getString(R.string.serverip)+getResources().getString(R.string.allevents)+"444","Leaderboard",getResources().getString(R.string.events));
         ThreadUtil skillMapThread = new ThreadUtil(editor,3504,getResources().getString(R.string.serverip)+getResources().getString(R.string.skillmapurl).replaceAll("user_id","444"),"Leaderboard",getResources().getString(R.string.skillmap));
-
+        ThreadUtil assessmentReportThread = new ThreadUtil(editor,441,getResources().getString(R.string.serverip)+getResources().getString(R.string.assessmentreportdata).replaceAll("user_id",441+"").replaceAll("assessment_id",10157 + ""),"Assessment_report",getResources().getString(R.string.assessment_report));
         // fetch lesson from session skills
         //fetch all assesssment reports
         //fetch notifications
@@ -100,6 +100,7 @@ public class SplashScreenActivity extends AppCompatActivity implements SplashScr
         executor.execute(courseThread);
         executor.execute(eventThread);
         executor.execute(skillMapThread);
+        executor.execute(assessmentReportThread);
 
         startActivity(new Intent(SplashScreenActivity.this, DashboardActivity.class));
         executor.shutdown();
