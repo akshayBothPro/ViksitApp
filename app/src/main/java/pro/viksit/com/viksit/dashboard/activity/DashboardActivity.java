@@ -52,6 +52,7 @@ public class DashboardActivity extends AppCompatActivity implements View.OnClick
     private RelativeLayout error_layout;
     private Button button_layout;
     private StudentProfile studentProfile;
+    private String storedResponse;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -73,14 +74,16 @@ public class DashboardActivity extends AppCompatActivity implements View.OnClick
         new BottomBarUtil().setupBottomBar(bottomNavigationView,DashboardActivity.this,R.id.task);
 
         sharedpreferences = getSharedPreferences(getResources().getString(R.string.shared_preference_key), Context.MODE_PRIVATE);
+        storedResponse = sharedpreferences.getString(getResources().getString(R.string.dashboardcards),"");
         String profile_date= sharedpreferences.getString(getResources().getString(R.string.user_profile),"");
         Gson gson = new GsonBuilder().setDateFormat("yyyy-MM-dd HH:mm:ss").create();
         studentProfile = gson.fromJson(profile_date,StudentProfile.class);
         setSupportActionBar(toolbar);
         /*doforStatic();*/
 
-        if(sharedpreferences.getString(getResources().getString(R.string.dashboardcards),"").equalsIgnoreCase(""))
-        new DashboardCardAsync(this,getSupportFragmentManager(),studentProfile.getId(),sharedpreferences,pager_indicator,this,pager,loop,progress,error_layout).execute();
+        if(storedResponse.equalsIgnoreCase("") || storedResponse.equalsIgnoreCase("null")){
+            startActivity(new Intent(DashboardActivity.this,NoTaskActivity.class));
+        }
         button_layout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

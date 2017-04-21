@@ -18,6 +18,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import pro.viksit.com.viksit.R;
+import pro.viksit.com.viksit.assessment.activity.AssessmentResult;
 import pro.viksit.com.viksit.challenge.activity.LeaderBoardActivity;
 import pro.viksit.com.viksit.recievers.NetworkChangeReceiver;
 
@@ -54,7 +55,7 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
         //
 
         if(!sharedpreferences.getString(getResources().getString(R.string.user_profile),"").equalsIgnoreCase("")){
-           Intent i = new Intent(HomeActivity.this,SplashScreenActivity.class);
+          Intent i = new Intent(HomeActivity.this,AssessmentResult.class);
             startActivity(i);
         }
         else

@@ -1,4 +1,9 @@
 <resources>
+
+    <!-- New Screen dimens -->
+    <dimen name="logosize">120dp</dimen>
+    <!-- ENdn Screen dimens -->
+
     <!-- Default screen margins, per the Android Design guidelines. -->
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>

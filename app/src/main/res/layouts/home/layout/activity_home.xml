@@ -20,8 +20,8 @@
         android:layout_marginBottom="@dimen/home_icon_con_bottom_margin">
         <ImageView
             android:id="@+id/iv_app_icon"
-            android:layout_width="60dp"
-            android:layout_height="60dp"
+            android:layout_width="@dimen/logosize"
+            android:layout_height="@dimen/logosize"
             android:background="@mipmap/talentify_logo_red"
             android:layout_centerInParent="true"
             android:layout_marginBottom="@dimen/home_icon_bottom_margin"/>
