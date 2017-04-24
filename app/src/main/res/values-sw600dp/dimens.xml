@@ -62,7 +62,6 @@
     <dimen name="signup_social_media_btn_size">86dp</dimen>
     <dimen name="signup_login_instead_btn_bottom_margin">5dp</dimen>
 
-
     <!--forgot password activity dimensions-->
     <dimen name="forgot_pswrd_con_padding">40dp</dimen>
     <dimen name="forgot_pswrd_header_bottom_margin">16dp</dimen>
@@ -71,7 +70,6 @@
     <dimen name="forgot_pswrd_edittext_horizontal_padding">10dp</dimen>
     <dimen name="forgot_pswrd_error_padding">10dp</dimen>
     <dimen name="forgot_pswrd_btn_bottom_margin">5dp</dimen>
-
 
     <!--batch code activity dimensions-->
     <dimen name="batch_code_con_padding">40dp</dimen>
@@ -112,7 +110,6 @@
     <dimen name="fragment_image_header_bottom_margin">10dp</dimen>
     <dimen name="fragment_image_pic_margin">20dp</dimen>
 
-
     <!--Challenge Card dimensions-->
     <dimen name="challenge_card_hor_padding">20dp</dimen>
     <dimen name="challenge_header_bottom_margin">10dp</dimen>
@@ -130,11 +127,19 @@
     <dimen name="video_header_bottom_margin">5dp</dimen>
     <dimen name="video_pic_margin">20dp</dimen>
 
-
     <!--completed Task Dimension-->
     <dimen name="completed_task_hor_padding">20dp</dimen>
     <dimen name="completed_task_header_margin">5dp</dimen>
     <dimen name="completed_task_recycler_margin">10dp</dimen>
+
+    <!--task completion dimension-->
+    <dimen name="task_completion_padding">40dp</dimen>
+    <dimen name="task_completion_image_margin">32dp</dimen>
+
+    <!--empty tasks dimensions-->
+    <dimen name="empty_tasks_con_padding">40dp</dimen>
+    <dimen name="empty_tasks_image_size">130dp</dimen>
+    <dimen name="empty_tasks_image_margin">32dp</dimen>
 
     <!--Role Activity dimensions-->
     <dimen name="role_info_hor_padding">10dp</dimen>

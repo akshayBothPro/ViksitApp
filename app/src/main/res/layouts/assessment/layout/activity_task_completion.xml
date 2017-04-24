@@ -15,14 +15,13 @@
         android:layout_height="match_parent"
         android:orientation="vertical"
         android:gravity="center"
-        android:padding="30dp"
+        android:padding="@dimen/task_completion_padding"
         android:layout_below="@id/tl_common_toolbar"
         android:layout_above="@id/bottom_navigation">
         <TextView
             android:id="@+id/tv_task_completion_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="15dp"
             android:textAlignment="center"
             android:textColor="@color/desc_color"
             android:textSize="@dimen/h2"
@@ -31,14 +30,15 @@
             android:id="@+id/iv_task_completion_tick"
             android:layout_width="100dp"
             android:layout_height="100dp"
-            android:layout_marginBottom="15dp"
+            android:layout_marginTop="@dimen/task_completion_image_margin"
+            android:layout_marginBottom="@dimen/task_completion_image_margin"
             android:tint="@color/circle_tick"
             android:src="@drawable/ic_circle_tick_24dp"/>
         <TextView
             android:id="@+id/tv_task_completion_info"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="5dp"
+            android:layout_marginBottom="@dimen/task_completion_image_margin"
             android:textSize="@dimen/p3"
             android:textColor="@color/comment_reply_color"
             android:text="Ready for more?"/>

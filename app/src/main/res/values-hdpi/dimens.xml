@@ -145,6 +145,10 @@
     <dimen name="video_header_bottom_margin">5dp</dimen>
     <dimen name="video_pic_margin">10dp</dimen>
 
+    <!--task completion dimension-->
+    <dimen name="task_completion_padding">20dp</dimen>
+    <dimen name="task_completion_image_margin">10dp</dimen>
+
     <!--Role Activity dimensions-->
     <dimen name="role_info_hor_padding">10dp</dimen>
     <dimen name="role_item_hor_padding">10dp</dimen>

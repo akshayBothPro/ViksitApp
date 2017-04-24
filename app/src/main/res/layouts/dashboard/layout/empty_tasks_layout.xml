@@ -5,35 +5,38 @@
     android:layout_height="match_parent"
     android:background="#ffffff">
 
-    <include layout="@layout/custom_tool_bar"></include>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:gravity="center"
-    android:padding="30dp"
-    >
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="20dp"
-        android:textSize="@dimen/h2"
-        android:textAlignment="center"
-        android:textColor="@color/desc_color"
-        android:text="You dont have any tasks lined up for today"/>
-    <ImageView
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:layout_marginBottom="20dp"
-        android:src="@mipmap/ic_zzz"/>
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="@dimen/p2"
-        android:textColor="@color/hint_color"
-        android:text="Get out and have some fun"/>
+    <include
+        android:id="@+id/toolbar"
+        layout="@layout/custom_tool_bar"/>
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/toolbar"
+        android:layout_above="@+id/bottom_navigation"
+        android:gravity="center"
+        android:padding="@dimen/empty_tasks_con_padding"
+        >
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/h2"
+            android:textAlignment="center"
+            android:textColor="@color/desc_color"
+            android:text="You dont have any tasks lined up for today"/>
+        <ImageView
+            android:layout_width="@dimen/empty_tasks_image_size"
+            android:layout_height="@dimen/empty_tasks_image_size"
+            android:layout_margin="@dimen/empty_tasks_image_margin"
+            android:src="@mipmap/ic_zzz"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/p2"
+            android:textColor="@color/hint_color"
+            android:text="Get out and have some fun"/>
 
-</LinearLayout>
+    </LinearLayout>
     <android.support.design.widget.BottomNavigationView
         android:id="@+id/bottom_navigation"
         android:layout_width="match_parent"
