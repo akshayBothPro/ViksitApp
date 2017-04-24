@@ -66,6 +66,7 @@
     <dimen name="login_edittext_horizontal_padding">10dp</dimen>
     <dimen name="login_error_padding">10dp</dimen>
     <dimen name="circle_button_margin">10dp</dimen>
+    <dimen name="or_button_size">30dp</dimen>
 
 
     <!--signup activity dimensions-->
@@ -176,6 +177,8 @@
     <!--Role Detail Demensions-->
     <dimen name="role_detail_image_margin">10dp</dimen>
     <dimen name="role_detail_card_margin">5dp</dimen>
+    <dimen name="role_detail_image_size">100dp</dimen>
+    <dimen name="role_detail_inner_con_padding">3dp</dimen>
 
     <!--Role Depth Demensions-->
     <dimen name="role_depth_title_ver_padding">10dp</dimen>

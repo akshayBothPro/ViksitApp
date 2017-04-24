@@ -6,7 +6,7 @@
     android:background="#ffffff">
 
     <include
-        android:id="@+id/toolbar"
+        android:id="@+id/toolbarr"
         layout="@layout/custom_tool_bar"/>
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:orientation="vertical"

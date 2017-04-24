@@ -157,8 +157,8 @@
 
         <Button
             android:id="@+id/or"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
+            android:layout_width="@dimen/or_button_size"
+            android:layout_height="@dimen/or_button_size"
             android:layout_centerInParent="true"
             android:layout_margin="5dp"
             android:background="@drawable/or_shape"

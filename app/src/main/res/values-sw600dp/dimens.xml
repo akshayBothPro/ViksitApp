@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-
     <!-- Default screen margins, per the Android Design guidelines. -->
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
@@ -23,9 +22,9 @@
     <dimen name="p7">11sp</dimen>
 
 
+
     <!--Splash screen dimensions-->
     <dimen name="image_size">120dp</dimen>
-
 
     <!--home activity dimensions-->
     <dimen name="logosize">160dp</dimen>
@@ -44,21 +43,22 @@
     <dimen name="login_edittext_con_bottom_margin_double">20dp</dimen>
     <dimen name="login_edittext_horizontal_padding">20dp</dimen>
     <dimen name="login_error_padding">10dp</dimen>
-    <dimen name="circle_button_margin">30dp</dimen>
+    <dimen name="circle_button_margin">32dp</dimen>
+    <dimen name="or_button_size">40dp</dimen>
 
     <!--signup activity dimensions-->
-    <dimen name="signup_con_horizontal_padding">30dp</dimen>
+    <dimen name="signup_con_horizontal_padding">40dp</dimen>
     <dimen name="signup_header_horizontal_padding">10dp</dimen>
-    <dimen name="signup_header_bottom_margin">10dp</dimen>
-    <dimen name="signup_edittext_con_bottom_margin">5dp</dimen>
-    <dimen name="signup_edittext_con_bottom_margin_double">10dp</dimen>
-    <dimen name="signup_edittext_horizontal_padding">10dp</dimen>
+    <dimen name="signup_header_bottom_margin">35dp</dimen>
+    <dimen name="signup_edittext_con_bottom_margin">12dp</dimen>
+    <dimen name="signup_edittext_con_bottom_margin_double">20dp</dimen>
+    <dimen name="signup_edittext_horizontal_padding">20dp</dimen>
     <dimen name="signup_error_padding">10dp</dimen>
-    <dimen name="signup_btn_bottom_margin">50dp</dimen>
+    <dimen name="signup_btn_bottom_margin">32dp</dimen>
     <dimen name="signup_or_con_bottom_margin">15dp</dimen>
     <dimen name="signup_social_media_bottom_margin">2dp</dimen>
     <dimen name="signup_social_media_con_padding">5dp</dimen>
-    <dimen name="signup_social_media_btn_horizontal_margin">8dp</dimen>
+    <dimen name="signup_social_media_btn_horizontal_margin">32dp</dimen>
     <dimen name="signup_social_media_btn_size">86dp</dimen>
     <dimen name="signup_login_instead_btn_bottom_margin">5dp</dimen>
 
@@ -142,11 +142,26 @@
     <dimen name="empty_tasks_image_margin">32dp</dimen>
 
     <!--Role Activity dimensions-->
-    <dimen name="role_info_hor_padding">10dp</dimen>
+    <dimen name="role_info_hor_padding">20dp</dimen>
     <dimen name="role_item_hor_padding">10dp</dimen>
     <dimen name="role_ver_item_padding">5dp</dimen>
     <dimen name="card_item_bottom_margin">5dp</dimen>
-    <dimen name="module_header_margin">1dp</dimen>
-    <dimen name="module_progress_bard_bottom_margin">3dp</dimen>
+    <dimen name="module_header_margin">5dp</dimen>
+    <dimen name="module_progress_bard_bottom_margin">7dp</dimen>
+
+    <!--Role Detail Demensions-->
+    <dimen name="role_detail_image_margin">12dp</dimen>
+    <dimen name="role_detail_card_margin">10dp</dimen>
+    <dimen name="role_detail_image_size">100dp</dimen>
+    <dimen name="role_detail_inner_con_padding">5dp</dimen>
+
+    <!--Role Depth Demensions-->
+    <dimen name="role_depth_title_ver_padding">10dp</dimen>
+    <dimen name="role_depth_title_hor_padding">20dp</dimen>
+    <dimen name="role_depth_parent_margin_top">10dp</dimen>
+    <dimen name="role_depth_parent_image_size">30dp</dimen>
+    <dimen name="role_depth_parent_title_bottom_margin">5dp</dimen>
+    <dimen name="role_depth_child_title_left_pad">5dp</dimen>
+    <dimen name="role_depth_child_bottom_pad">5dp</dimen>
 
 </resources>
