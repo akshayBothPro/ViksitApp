@@ -51,50 +51,50 @@
 
         </RelativeLayout>
     </android.support.v7.widget.Toolbar>
-<RelativeLayout
-    android:layout_below="@+id/toolbar"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
-    <TextView
-        android:id="@+id/tv_checkout_order_summary"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:padding="@dimen/checkout_summary_padding"
-        android:textColor="@color/comment_reply_color"
-        android:textSize="@dimen/p2"
-        android:text="Order Summary"/>
-    <android.support.v7.widget.CardView
-        android:id="@+id/cv_checkout_info"
+    <RelativeLayout
+        android:layout_below="@+id/toolbar"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/tv_checkout_order_summary">
-        <LinearLayout
-            android:orientation="vertical"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-        <RelativeLayout
+        android:layout_height="match_parent">
+        <TextView
+            android:id="@+id/tv_checkout_order_summary"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/checkout_summary_padding"
+            android:textColor="@color/comment_reply_color"
+            android:textSize="@dimen/p2"
+            android:text="Order Summary"/>
+        <android.support.v7.widget.CardView
+            android:id="@+id/cv_checkout_info"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="@dimen/checkout_image_margin">
-            <ImageView
-                android:id="@+id/iv_checkout_image"
-                android:layout_width="100dp"
-                android:layout_height="100dp"
-                android:layout_marginRight="@dimen/checkout_image_margin"
-                android:layout_marginEnd="@dimen/checkout_image_margin"
-                android:src="@drawable/ic_1"/>
-            <TextView
-                android:id="@+id/tv_checkout_role_title"
-                android:layout_width="wrap_content"
+            android:layout_below="@id/tv_checkout_order_summary">
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+            <RelativeLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_toRightOf="@id/iv_checkout_image"
-                android:layout_toEndOf="@id/iv_checkout_image"
-                android:layout_centerVertical="true"
-                android:textSize="@dimen/h7"
-                android:textColor="@color/desc_color"
-                android:text="User Interface Developer"
-                />
-        </RelativeLayout>
+                android:padding="@dimen/checkout_image_margin">
+                <ImageView
+                    android:id="@+id/iv_checkout_image"
+                    android:layout_width="@dimen/checkout_image_size"
+                    android:layout_height="@dimen/checkout_image_size"
+                    android:layout_marginRight="@dimen/checkout_image_margin"
+                    android:layout_marginEnd="@dimen/checkout_image_margin"
+                    android:src="@drawable/ic_1"/>
+                <TextView
+                    android:id="@+id/tv_checkout_role_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toRightOf="@id/iv_checkout_image"
+                    android:layout_toEndOf="@id/iv_checkout_image"
+                    android:layout_centerVertical="true"
+                    android:textSize="@dimen/h7"
+                    android:textColor="@color/desc_color"
+                    android:text="User Interface Developer"
+                    />
+            </RelativeLayout>
             <View
                 android:background="@color/hint_color"
                 android:layout_width="match_parent"
@@ -126,30 +126,30 @@
         </LinearLayout>
 
     </android.support.v7.widget.CardView>
-    <TextView
-        android:id="@+id/tv_payment_method"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/cv_checkout_info"
-        android:padding="@dimen/checkout_summary_padding"
-        android:textSize="@dimen/p2"
-        android:textColor="@color/comment_reply_color"
-        android:text="Choose Payment Method"/>
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/rv_payment_option"
-        android:layout_below="@id/tv_payment_method"
+        <TextView
+            android:id="@+id/tv_payment_method"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/cv_checkout_info"
+            android:padding="@dimen/checkout_summary_padding"
+            android:textSize="@dimen/p2"
+            android:textColor="@color/comment_reply_color"
+            android:text="Choose Payment Method"/>
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/rv_payment_option"
+            android:layout_below="@id/tv_payment_method"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+    </RelativeLayout>
+    <Button
+        android:id="@+id/btn_pay"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
-</RelativeLayout>
-<Button
-    android:id="@+id/btn_pay"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:layout_margin="@dimen/checkout_btn_margin"
-    android:layout_alignParentBottom="true"
-    android:textSize="@dimen/p2"
-    android:textAllCaps="false"
-    android:textColor="@color/white_color"
-    android:text="Pay Rs 350"
-    android:background="@drawable/signup_btn_shape"/>
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/checkout_btn_margin"
+        android:layout_alignParentBottom="true"
+        android:textSize="@dimen/p2"
+        android:textAllCaps="false"
+        android:textColor="@color/white_color"
+        android:text="Pay Rs 350"
+        android:background="@drawable/signup_btn_shape"/>
 </RelativeLayout>

@@ -165,6 +165,25 @@
     <dimen name="role_depth_child_bottom_pad">10dp</dimen>
     <dimen name="role_detail_parent_progress_bottom_margin">16dp</dimen>
 
+    <!--Checkout Activity Dimension-->
+    <dimen name="checkout_back_btn_hor_margin">20dp</dimen>
+    <dimen name="checkout_toolbar_title_hor_margin">32dp</dimen>
+    <dimen name="checkout_summary_padding">16dp</dimen>
+    <dimen name="checkout_image_size">100dp</dimen>
+    <dimen name="checkout_image_margin">20dp</dimen>
+    <dimen name="checkout_btn_margin">20dp</dimen>
+    <dimen name="checkout_rbtn_margin">20dp</dimen>
+
+    <!--Question Activity Dimension-->
+    <dimen name="question_item_padding">20dp</dimen>
+
+    <!--Notification Activity Dimension-->
+    <dimen name="notification_hor_padding">20dp</dimen>
+    <dimen name="notification_back_btn_right_mrgin">32dp</dimen>
+    <dimen name="notification_item_bottom_mrgin">8dp</dimen>
+    <dimen name="notification_item_image_size">64dp</dimen>
+
+
     <!--test launch dimension-->
     <dimen name="test_launch_con_padding">40dp</dimen>
     <dimen name="test_launch_image_size">130dp</dimen>

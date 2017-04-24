@@ -36,12 +36,15 @@ public class PracticeCompletionActivity extends AppCompatActivity {
         verticalRecycler = (RecyclerView) findViewById(R.id.rv_practice_completed);
 
         list = setDummyData(list);
-
+        implementActions();
 
 
     }
 
     public void implementActions(){
+
+        //setting description
+        subtitle.setText("You made gains in "+Integer.toString(list.size()) +" skills");
 
         //setting vertical recyclerview
         verticalRecycler.setHasFixedSize(true);

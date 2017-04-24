@@ -194,6 +194,7 @@
     <dimen name="checkout_back_btn_hor_margin">10dp</dimen>
     <dimen name="checkout_toolbar_title_hor_margin">20dp</dimen>
     <dimen name="checkout_summary_padding">10dp</dimen>
+    <dimen name="checkout_image_size">70dp</dimen>
     <dimen name="checkout_image_margin">10dp</dimen>
     <dimen name="checkout_btn_margin">20dp</dimen>
     <dimen name="checkout_rbtn_margin">10dp</dimen>

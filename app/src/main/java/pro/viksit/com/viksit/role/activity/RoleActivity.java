@@ -84,7 +84,7 @@ public class RoleActivity extends AppCompatActivity implements View.OnClickListe
                 new RecyclerItemClickListener (getBaseContext(), verticalRecycler ,new RecyclerItemClickListener.OnItemClickListener() {
                     @Override public void onItemClick(View view, int position) {
                         System.out.println("Vposition: " + position);
-                        Intent intent = new Intent(RoleActivity.this, RoleDepthActivity.class);
+                        Intent intent = new Intent(RoleActivity.this, PracticeCompletionActivity.class);
                        /* Bundle bundle = new Bundle();
                         bundle.putSerializable("role", roles.get(position));
                         intent.putExtras(bundle);*/

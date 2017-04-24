@@ -31,12 +31,13 @@ public class TestSuccessActivity extends AppCompatActivity implements View.OnCli
 
     public void implementActions(){
         tapToContinue.setOnClickListener(this);
+
     }
 
     @Override
     public void onClick(View v) {
         if(v.getId() == tapToContinue.getId()){
-            //dp som,ething
+            //dp something
         }
     }
 }
