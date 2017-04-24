@@ -90,12 +90,58 @@
     <dimen name="otp_edittext_padding">20dp</dimen>
 
     <!--Reset Password activity dimensions-->
-    <dimen name="reset_pswrd_con_padding">30dp</dimen>
-    <dimen name="reset_pswrd_header_bottom_margin">10dp</dimen>
-    <dimen name="reset_pswrd_edittext_bottom_margin_double">15dp</dimen>
-    <dimen name="reset_pswrd_edittext_bottom_margin">10dp</dimen>
+    <dimen name="reset_pswrd_con_padding">40dp</dimen>
+    <dimen name="reset_pswrd_header_bottom_margin">16dp</dimen>
+    <dimen name="reset_pswrd_info_bottom_margin">20dp</dimen>
+    <dimen name="reset_pswrd_edittext_bottom_margin_double">20dp</dimen>
+    <dimen name="reset_pswrd_edittext_bottom_margin">12dp</dimen>
     <dimen name="reset_pswrd_edittext_padding">10dp</dimen>
 
+    <!--Changed Password activity dimensions-->
+    <dimen name="changed_pswrd_con_padding">40dp</dimen>
+    <dimen name="changed_pswrd_header_bottom_margin">16dp</dimen>
+    <dimen name="changed_pswrd_info_bottom_margin">32dp</dimen>
 
+    <!--Assessment Card dimensions-->
+    <dimen name="asses_card_header_hor_padding">20dp</dimen>
+    <dimen name="asses_card_header_bottom_margin">10dp</dimen>
+    <dimen name="asses_card_image_margin">20dp</dimen>
+
+    <!--Fragment image dimensions-->
+    <dimen name="fragment_image_hor_padding">20dp</dimen>
+    <dimen name="fragment_image_header_bottom_margin">10dp</dimen>
+    <dimen name="fragment_image_pic_margin">20dp</dimen>
+
+
+    <!--Challenge Card dimensions-->
+    <dimen name="challenge_card_hor_padding">20dp</dimen>
+    <dimen name="challenge_header_bottom_margin">10dp</dimen>
+    <dimen name="challenge_pic_margin">20dp</dimen>
+    <dimen name="challenge_bottom_margin">24dp</dimen>
+
+    <!--Presentation Card dimensions-->
+    <dimen name="presentation_card_hor_padding">20dp</dimen>
+    <dimen name="presentation_header_bottom_margin">10dp</dimen>
+    <dimen name="presentation_pic_margin">20dp</dimen>
+    <dimen name="presentation_bottom_margin">10dp</dimen>
+
+    <!--Video Card dimensions-->
+    <dimen name="video_hor_padding">20dp</dimen>
+    <dimen name="video_header_bottom_margin">5dp</dimen>
+    <dimen name="video_pic_margin">20dp</dimen>
+
+
+    <!--completed Task Dimension-->
+    <dimen name="completed_task_hor_padding">20dp</dimen>
+    <dimen name="completed_task_header_margin">5dp</dimen>
+    <dimen name="completed_task_recycler_margin">10dp</dimen>
+
+    <!--Role Activity dimensions-->
+    <dimen name="role_info_hor_padding">10dp</dimen>
+    <dimen name="role_item_hor_padding">10dp</dimen>
+    <dimen name="role_ver_item_padding">5dp</dimen>
+    <dimen name="card_item_bottom_margin">5dp</dimen>
+    <dimen name="module_header_margin">1dp</dimen>
+    <dimen name="module_progress_bard_bottom_margin">3dp</dimen>
 
 </resources>

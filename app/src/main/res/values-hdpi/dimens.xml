@@ -109,6 +109,7 @@
     <!--Reset Password activity dimensions-->
     <dimen name="reset_pswrd_con_padding">30dp</dimen>
     <dimen name="reset_pswrd_header_bottom_margin">15dp</dimen>
+    <dimen name="reset_pswrd_info_bottom_margin">16dp</dimen>
     <dimen name="reset_pswrd_edittext_bottom_margin_double">15dp</dimen>
     <dimen name="reset_pswrd_edittext_bottom_margin">10dp</dimen>
     <dimen name="reset_pswrd_edittext_padding">10dp</dimen>

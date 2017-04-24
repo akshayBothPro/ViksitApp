@@ -20,9 +20,7 @@
             card_view:cardUseCompatPadding="true"
             card_view:cardBackgroundColor="@color/white"
             android:translationZ="-1dp"
-
             >
-
 
             <RelativeLayout
                 android:id="@+id/gg"
