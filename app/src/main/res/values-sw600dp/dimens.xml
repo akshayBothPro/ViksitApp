@@ -171,4 +171,16 @@
     <dimen name="test_launch_image_margin">32dp</dimen>
     <dimen name="test_launch_btn_hor_margin">10dp</dimen>
 
+    <!--test failed dimension-->
+    <dimen name="test_failed_con_padding">40dp</dimen>
+    <dimen name="test_failed_image_size">130dp</dimen>
+    <dimen name="test_failed_image_margin">32dp</dimen>
+
+    <!--test success dimension-->
+    <dimen name="test_success_con_padding">40dp</dimen>
+    <dimen name="test_success_image_size">130dp</dimen>
+    <dimen name="test_success_image_margin">32dp</dimen>
+    <dimen name="test_success_desc_bottom_margin">16dp</dimen>
+
+
 </resources>

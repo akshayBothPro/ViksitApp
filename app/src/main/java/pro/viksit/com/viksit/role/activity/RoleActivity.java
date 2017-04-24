@@ -35,8 +35,7 @@ public class RoleActivity extends AppCompatActivity implements View.OnClickListe
     private Toolbar toolbar;
     private ImageView notification;
     private LinearLayout verticalContainer;
-    private RecyclerView horizontalRecycler;
-    private RecyclerView verticalRecycler;
+    private RecyclerView horizontalRecycler, verticalRecycler;
     private RoleVerticalRecyclerViewAdapter roleVerticalRecyclerViewAdapter;
     private RoleHorizontalRecyclerViewAdapter roleHorizontalRecyclerViewAdapter;
     private BottomNavigationView bottomNavigationView;
