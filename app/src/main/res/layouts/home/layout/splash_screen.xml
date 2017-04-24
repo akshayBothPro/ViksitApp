@@ -6,8 +6,8 @@
 
     <ImageView
         android:id="@+id/logo"
-        android:layout_width="60dp"
-        android:layout_height="60dp"
+        android:layout_width="@dimen/image_size"
+        android:layout_height="@dimen/image_size"
         android:layout_centerInParent="true"
         android:background="@mipmap/talentify_logo"
         android:layout_marginBottom="20dp"/>

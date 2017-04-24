@@ -12,12 +12,13 @@
     android:background="@android:color/white"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
-    <RelativeLayout
+    <LinearLayout
         android:id="@+id/rl_appicon_con"
         android:layout_above="@+id/btn_get_started"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginBottom="@dimen/home_icon_con_bottom_margin">
+        android:orientation="vertical"
+        android:gravity="center">
         <ImageView
             android:id="@+id/iv_app_icon"
             android:layout_width="@dimen/logosize"
@@ -36,7 +37,7 @@
             android:text="Talentify"
             android:textAllCaps="true"
             />
-    </RelativeLayout>
+    </LinearLayout>
     <Button
         android:id="@+id/btn_get_started"
         android:layout_above="@+id/btn_member"

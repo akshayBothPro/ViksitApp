@@ -9,6 +9,8 @@
     android:background="@color/white_color"
     android:gravity="center"
     android:orientation="vertical"
+    android:paddingTop="@dimen/login_con_ver_padding"
+    android:paddingBottom="@dimen/login_con_ver_padding"
     android:paddingLeft="@dimen/login_con_padding"
     android:paddingStart="@dimen/login_con_padding"
     android:paddingRight="@dimen/login_con_padding"

@@ -45,6 +45,9 @@
 
     <!--<dimen name="circle_button_signup">40dp</dimen>-->
 
+    <!--Splash screen dimensions-->
+    <dimen name="image_size">60dp</dimen>
+
     <!--home activity dimensions-->
     <dimen name="home_horizontal_padding">30dp</dimen>
     <dimen name="home_vertical_padding">10dp</dimen>
@@ -55,6 +58,7 @@
 
     <!--login activity dimensions-->
     <dimen name="login_con_padding">30dp</dimen>
+    <dimen name="login_con_ver_padding">30dp</dimen>
     <dimen name="login_header_horizontal_padding">10dp</dimen>
     <dimen name="login_header_bottom_margin">10dp</dimen>
     <dimen name="login_edittext_con_bottom_margin">5dp</dimen>

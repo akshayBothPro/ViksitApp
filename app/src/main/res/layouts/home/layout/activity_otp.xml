@@ -66,12 +66,16 @@
             android:orientation="vertical"
             android:id="@+id/main_layout"
             >
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginBottom="@dimen/otp_edittext_bottom_margin">
             <android.support.v7.widget.AppCompatEditText
                 android:id="@+id/apet_otp_input"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:padding="@dimen/otp_edittext_padding"
-                android:layout_marginBottom="@dimen/otp_edittext_bottom_margin"
                 android:layout_gravity="center_horizontal"
                 android:background="@drawable/input_shape"
                 android:textCursorDrawable="@null"
@@ -87,7 +91,8 @@
                 android:textColor="@color/error_text"
                 android:text="OTP invalid ! Please enter correct OTP."
                 android:textSize="@dimen/p4"
-                android:visibility="gone"/>
+                android:visibility="visible"/>
+                </LinearLayout>
 
             <Button
                 android:id="@+id/btn_submit_otp"
