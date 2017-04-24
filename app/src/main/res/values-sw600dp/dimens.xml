@@ -183,6 +183,31 @@
     <dimen name="notification_item_bottom_mrgin">8dp</dimen>
     <dimen name="notification_item_image_size">64dp</dimen>
 
+    <!--Session Activity Dimension-->
+    <dimen name="session_card_padding">25dp</dimen>
+    <dimen name="session_card_margin">8dp</dimen>
+    <dimen name="session_card_item_bottom_margin">15dp</dimen>
+
+    <!--Dashboard Activity Dimension-->
+    <dimen name="circle_indiactor_margin">120dp</dimen>
+
+    <!--Leader Board Activity Dimension-->
+    <dimen name="toolbar_hor_padding">10dp</dimen>
+    <dimen name="rank_btn_size">32dp</dimen>
+    <dimen name="second_rank_image_size">96dp</dimen>
+    <dimen name="first_rank_image_size">120dp</dimen>
+    <dimen name="third_rank_image_size">70dp</dimen>
+    <dimen name="first_rank_image_ver_margin">18dp</dimen>
+    <dimen name="first_rank_image_hor_margin">32dp</dimen>
+    <dimen name="xp_bottom_margin">16dp</dimen>
+    <dimen name="recyler_left_padding">20dp</dimen>
+    <dimen name="recyler_right_padding">20dp</dimen>
+    <dimen name="list_item_image_ver_margin">16dp</dimen>
+    <dimen name="list_item_image_size">48dp</dimen>
+    <dimen name="list_item_rank_right_margin">40dp</dimen>
+
+
+    <!--//-->
 
     <!--test launch dimension-->
     <dimen name="test_launch_con_padding">40dp</dimen>

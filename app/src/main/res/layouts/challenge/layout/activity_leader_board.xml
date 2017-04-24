@@ -260,26 +260,25 @@
 
     </android.support.design.widget.AppBarLayout>
 
-<RelativeLayout
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:paddingLeft="@dimen/recyler_left_padding"
-    android:paddingStart="@dimen/recyler_left_padding"
-    android:paddingRight="@dimen/recyler_right_padding"
-    android:paddingEnd="@dimen/recyler_right_padding"
-    app:layout_behavior="@string/appbar_scrolling_view_behavior">
-
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/rv_leaderboard"
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:layout_alignParentTop="true"
-        android:background="@color/hline"/>
-</RelativeLayout>
+        android:layout_height="wrap_content"
+        android:paddingLeft="@dimen/recyler_left_padding"
+        android:paddingStart="@dimen/recyler_left_padding"
+        android:paddingRight="@dimen/recyler_right_padding"
+        android:paddingEnd="@dimen/recyler_right_padding"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/rv_leaderboard"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_alignParentTop="true"
+            android:background="@color/hline"/>
+    </RelativeLayout>
 
 
 </android.support.design.widget.CoordinatorLayout>
