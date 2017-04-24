@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:padding="30dp"
+    tools:context="pro.viksit.com.viksit.role.activity.PurchaseFailedActivity">
+    <ImageView
+        android:id="@+id/iv_purchase_failed_image"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginBottom="15dp"
+        android:tint="@color/circle_tick"
+        android:src="@drawable/ic_circle_tick_24dp"/>
+    <TextView
+        android:id="@+id/tv_purchase_failed_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="15dp"
+        android:textAlignment="center"
+        android:textColor="@color/desc_color"
+        android:textSize="@dimen/h2"
+        android:text="Transaction Failed!"/>
+    <TextView
+        android:id="@+id/tv_purchase_failed_info"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAlignment="center"
+        android:layout_marginBottom="5dp"
+        android:textSize="@dimen/p1"
+        android:textColor="@color/color_success_purchase"
+        android:text="Check your internet connection or select another payment option."/>
+    <Button
+        android:id="@+id/btn_purchase_failed_tryagain"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:text="Try again"
+        android:textAllCaps="true"
+        android:textColor="@android:color/white"
+        android:background="@drawable/signup_btn_shape"/>
+</LinearLayout>
+
+
+

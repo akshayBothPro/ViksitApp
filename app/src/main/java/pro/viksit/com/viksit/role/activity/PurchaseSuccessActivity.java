@@ -2,13 +2,14 @@ package pro.viksit.com.viksit.role.activity;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import pro.viksit.com.viksit.R;
 
-public class PurchaseSuccessActivity extends AppCompatActivity {
+public class PurchaseSuccessActivity extends AppCompatActivity implements View.OnClickListener {
 
     private TextView title;
     private ImageView tick;
@@ -24,5 +25,20 @@ public class PurchaseSuccessActivity extends AppCompatActivity {
         tick = (ImageView) findViewById(R.id.iv_purchase_success_tick);
         info = (TextView) findViewById(R.id.tv_purchase_success_info);
         gotorole = (Button) findViewById(R.id.btn_purchase_success_gotorole);
+
+        implementActions();
+
+
+    }
+
+    public void implementActions(){
+        gotorole.setOnClickListener(this);
+    }
+
+    @Override
+    public void onClick(View v) {
+        if(v.getId() == gotorole.getId()){
+            //do something
+        }
     }
 }

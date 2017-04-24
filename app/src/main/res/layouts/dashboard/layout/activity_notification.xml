@@ -20,7 +20,6 @@
             android:paddingLeft="@dimen/notification_hor_padding"
             android:paddingStart="@dimen/notification_hor_padding">
 
-
             <ImageButton
                 android:id="@+id/btn_notfication_back"
                 android:layout_width="25dp"
