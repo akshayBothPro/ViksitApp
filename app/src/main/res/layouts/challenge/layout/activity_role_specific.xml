@@ -85,7 +85,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="@dimen/h6"
+            android:textSize="@dimen/p3"
             android:textColor="@color/hint_color"
             android:textAllCaps="true"
             android:text="Description"/>

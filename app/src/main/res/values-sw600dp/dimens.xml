@@ -156,12 +156,19 @@
     <dimen name="role_detail_inner_con_padding">5dp</dimen>
 
     <!--Role Depth Demensions-->
-    <dimen name="role_depth_title_ver_padding">10dp</dimen>
+    <dimen name="role_depth_title_ver_padding">20dp</dimen>
     <dimen name="role_depth_title_hor_padding">20dp</dimen>
     <dimen name="role_depth_parent_margin_top">10dp</dimen>
     <dimen name="role_depth_parent_image_size">30dp</dimen>
-    <dimen name="role_depth_parent_title_bottom_margin">5dp</dimen>
+    <dimen name="role_depth_parent_title_bottom_margin">10dp</dimen>
     <dimen name="role_depth_child_title_left_pad">5dp</dimen>
-    <dimen name="role_depth_child_bottom_pad">5dp</dimen>
+    <dimen name="role_depth_child_bottom_pad">10dp</dimen>
+    <dimen name="role_detail_parent_progress_bottom_margin">16dp</dimen>
+
+    <!--test launch dimension-->
+    <dimen name="test_launch_con_padding">40dp</dimen>
+    <dimen name="test_launch_image_size">130dp</dimen>
+    <dimen name="test_launch_image_margin">32dp</dimen>
+    <dimen name="test_launch_btn_hor_margin">10dp</dimen>
 
 </resources>

@@ -9,14 +9,13 @@
         android:id="@+id/ll_parent_container"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/role_depth_parent_margin_top"
         android:orientation="horizontal">
     <LinearLayout
         android:layout_width="0dp"
         android:layout_height="match_parent"
         android:orientation="vertical"
         android:gravity="center_horizontal"
-        android:layout_weight="2">
+        android:layout_weight="1">
         <ImageButton
             android:id="@+id/expanded"
             android:layout_width="@dimen/role_depth_parent_image_size"
@@ -39,7 +38,6 @@
         android:gravity="center_vertical"
         android:paddingRight="@dimen/role_depth_title_hor_padding"
         android:paddingEnd="@dimen/role_depth_title_hor_padding"
-        android:paddingBottom="@dimen/role_depth_title_ver_padding"
         android:layout_weight="10">
 
         <TextView
@@ -50,7 +48,7 @@
             android:layout_alignParentLeft="true"
             android:layout_toLeftOf="@+id/description"
             android:layout_marginBottom="@dimen/role_depth_parent_title_bottom_margin"
-            android:text="Risk Managnvfdbhbhjfjvbfhvbjhfvbjhfvbjfdvbjhvbjfdvbjvbjfdvbjfdbjement"
+            android:text="Risk Managn vf dbhb hjf jvbf vbjfdvb vbjfd vbjfd bje ment"
             android:textColor="@color/desc_color"
             android:textSize="@dimen/p1" />
 
@@ -60,6 +58,7 @@
             android:layout_width="match_parent"
             android:layout_height="5dp"
             android:layout_below="@+id/title"
+            android:layout_marginBottom="@dimen/role_detail_parent_progress_bottom_margin"
             android:max="100"
             android:progress="60" />
 
@@ -72,14 +71,15 @@
             android:layout_alignBottom="@+id/title"
             android:textSize="@dimen/p5"
             android:text="3 subskills" />
+        <View
+            android:id="@+id/bottom_line"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_below="@+id/progress"
+            android:background="@color/hint_color"/>
 
     </RelativeLayout>
 
 </LinearLayout>
-    <View
-        android:id="@+id/bottom_line"
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:layout_below="@id/ll_parent_container"
-        android:background="@color/hint_color"/>
+
 </RelativeLayout>

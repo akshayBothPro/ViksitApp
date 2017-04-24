@@ -71,6 +71,11 @@
             android:layout_below="@+id/tv_skill_breakdown"
             android:layout_above="@+id/btn_review_questions"
             />
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_below="@+id/rv_role_vertical"
+            android:background="@color/hint_color"/>
         <Button
             android:id="@+id/btn_repaeat_assessment"
             android:layout_width="match_parent"

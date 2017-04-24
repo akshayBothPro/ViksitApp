@@ -81,7 +81,9 @@
         </receiver>
 
         <activity android:name=".assessment.activity.AssessmentResult" />
-        <activity android:name=".role.activity.TestLaunchActivity"></activity>
+        <activity android:name=".role.activity.TestLaunchActivity" />
+        <activity android:name=".role.activity.TestFailedActivity" />
+        <activity android:name=".role.activity.TestSuccessActivity"></activity>
     </application>
 
 </manifest>

@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="pro.viksit.com.viksit.role.activity.TestSuccessActivity"
+    android:padding="30dp">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:gravity="center">
+        <TextView
+            android:id="@+id/test_success_header"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/desc_color"
+            android:textSize="@dimen/h3"
+            android:textAlignment="center"
+            android:text="Your shortcut was successful!"/>
+
+        <ImageView
+            android:id="@+id/test_success_image"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_margin="20dp"
+            />
+
+        <TextView
+            android:id="@+id/test_success_desc"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/hint_color"
+            android:textSize="@dimen/h7"
+            android:textAlignment="center"
+            android:text="You can skip the skill"/>
+        <TextView
+            android:id="@+id/test_success_footer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/desc_color"
+            android:textSize="@dimen/h5"
+            android:textAlignment="center"
+            android:text="Identification of risk"/>
+    </LinearLayout>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:background="#00000000"
+        android:textColor="@color/desc_color"
+        android:textAllCaps="false"
+        android:textSize="@dimen/h6"
+        android:text="Tap to continue"/>
+</RelativeLayout>
