@@ -13,22 +13,21 @@
         android:id="@+id/tv_practice_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="@dimen/prac_header_bottom_margin"
         android:textSize="@dimen/h4"
         android:textColor="@color/desc_color"
         android:text="Practice Session Completed"/>
     <ImageView
         android:id="@+id/iv_practice_tick"
-        android:layout_width="80dp"
-        android:layout_height="80dp"
+        android:layout_width="@dimen/prac_image_size"
+        android:layout_height="@dimen/prac_image_size"
         android:tint="@color/circle_tick"
-        android:layout_marginBottom="@dimen/prac_header_bottom_margin"
+        android:layout_margin="@dimen/prac_header_bottom_margin"
         android:src="@drawable/ic_tick_circle_1"/>
     <TextView
         android:id="@+id/tv_practice_subtitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="@dimen/prac_header_bottom_margin"
+        android:layout_marginBottom="@dimen/prac_info_bottom_margin"
         android:textSize="@dimen/p2"
         android:textColor="@color/gray"
         android:text="You made gain in 3 childSkills"/>
@@ -39,7 +38,7 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="@dimen/prac_con_padding">
+        android:padding="@dimen/prac_inner_con_padding">
         <android.support.v7.widget.RecyclerView
             android:id="@+id/rv_practice_completed"
             android:layout_width="match_parent"
@@ -49,7 +48,6 @@
             android:id="@+id/btn_review_questions"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/prac_button_bottom_margin"
             android:layout_marginBottom="@dimen/prac_button_bottom_margin"
             android:layout_above="@+id/btn_repaeat_assessment"
             android:background="@drawable/white_bg_button"

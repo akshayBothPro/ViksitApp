@@ -206,8 +206,15 @@
     <dimen name="list_item_image_size">48dp</dimen>
     <dimen name="list_item_rank_right_margin">40dp</dimen>
 
-
-    <!--//-->
+    <!--Practice Completion Activity Dimension-->
+    <dimen name="prac_con_padding">40dp</dimen>
+    <dimen name="prac_header_bottom_margin">32dp</dimen>
+    <dimen name="prac_line_bottom_margin">10dp</dimen>
+    <dimen name="prac_progress_bottom_margin">15dp</dimen>
+    <dimen name="prac_button_bottom_margin">12dp</dimen>
+    <dimen name="prac_image_size">130dp</dimen>
+    <dimen name="prac_info_bottom_margin">20dp</dimen>
+    <dimen name="prac_inner_con_padding">20dp</dimen>
 
     <!--test launch dimension-->
     <dimen name="test_launch_con_padding">40dp</dimen>

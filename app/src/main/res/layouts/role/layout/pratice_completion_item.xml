@@ -16,7 +16,7 @@
         android:id="@+id/pb_practice_item_progress"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="@dimen/prac_line_bottom_margin"
+        android:layout_marginBottom="@dimen/prac_progress_bottom_margin"
         android:progress="40"
         android:progressTint="@color/linkedIn_color"
         style="?android:attr/progressBarStyleHorizontal"/>
