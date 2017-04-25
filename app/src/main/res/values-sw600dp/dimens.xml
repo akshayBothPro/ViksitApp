@@ -233,5 +233,10 @@
     <dimen name="test_success_image_margin">32dp</dimen>
     <dimen name="test_success_desc_bottom_margin">16dp</dimen>
 
+    <!--assessment pass dimension-->
+    <dimen name="assess_pass_con_padding">20dp</dimen>
+    <dimen name="assess_pass_pb_margin">32dp</dimen>
+    <dimen name="assess_pass_btn_margin">12dp</dimen>
+    <dimen name="asess_prog_bar_size">100dp</dimen>
 
 </resources>
