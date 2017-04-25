@@ -237,6 +237,6 @@
     <dimen name="assess_pass_con_padding">20dp</dimen>
     <dimen name="assess_pass_pb_margin">32dp</dimen>
     <dimen name="assess_pass_btn_margin">12dp</dimen>
-    <dimen name="asess_prog_bar_size">100dp</dimen>
+    <dimen name="asess_prog_bar_size">140dp</dimen>
 
 </resources>

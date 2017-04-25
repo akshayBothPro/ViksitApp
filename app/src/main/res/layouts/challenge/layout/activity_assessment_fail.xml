@@ -37,8 +37,8 @@
                 android:layout_centerInParent="true"
                 android:layout_margin="@dimen/assess_pass_pb_margin"
                 android:indeterminate="false"
-                android:max="60"
-                android:progress="30"
+                android:max="100"
+                android:progress="89"
                 android:progressDrawable="@drawable/progress_bar_with_text_for_fail" />
             <TextView
                 android:id="@+id/tv_assess_fail_progress"

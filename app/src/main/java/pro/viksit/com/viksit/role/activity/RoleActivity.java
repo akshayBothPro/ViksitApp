@@ -17,6 +17,7 @@ import android.widget.LinearLayout;
 import java.util.ArrayList;
 
 import pro.viksit.com.viksit.R;
+import pro.viksit.com.viksit.assessment.activity.AssessmentFailActivity;
 import pro.viksit.com.viksit.assessment.activity.QuestionsActivity;
 import pro.viksit.com.viksit.dashboard.activity.DashboardActivity;
 import pro.viksit.com.viksit.dashboard.activity.NotificationActivity;
@@ -84,7 +85,7 @@ public class RoleActivity extends AppCompatActivity implements View.OnClickListe
                 new RecyclerItemClickListener (getBaseContext(), verticalRecycler ,new RecyclerItemClickListener.OnItemClickListener() {
                     @Override public void onItemClick(View view, int position) {
                         System.out.println("Vposition: " + position);
-                        Intent intent = new Intent(RoleActivity.this, PracticeCompletionActivity.class);
+                        Intent intent = new Intent(RoleActivity.this, AssessmentFailActivity.class);
                        /* Bundle bundle = new Bundle();
                         bundle.putSerializable("role", roles.get(position));
                         intent.putExtras(bundle);*/
@@ -180,9 +181,7 @@ public class RoleActivity extends AppCompatActivity implements View.OnClickListe
         }
     }
 
-    /**
-     * Get device screen width and height
-     */
+    //Get device screen width and height
     private void getWidthAndHeight() {
         DisplayMetrics displaymetrics = new DisplayMetrics();
         this.getWindowManager().getDefaultDisplay().getMetrics(displaymetrics);
