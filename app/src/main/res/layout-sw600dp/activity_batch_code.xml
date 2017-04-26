@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="@dimen/batch_code_con_padding"
+    tools:context="pro.viksit.com.viksit.home.activity.BatchCodeActivity"
+    android:background="@android:color/white">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:orientation="vertical"
+        android:gravity="center_horizontal">
+        <TextView
+            android:id="@+id/tv_batchcode_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:layout_marginBottom="@dimen/batch_code_header_bottom_margin"
+            android:textColor="@color/desc_color"
+            android:textSize="@dimen/h3"
+            android:text="Enter your batch code "/>
+        <TextView
+            android:id="@+id/tv_batchcode_info"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/batch_code_info_bottom_margin"
+            android:gravity="center"
+            android:text="Your batch code consists of a combination of letters and numbers. Eg: AA11"
+            android:textColor="@color/otp_info_color"
+            android:textSize="15sp" />
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingLeft="@dimen/batch_code_edittext_parent_con_horzontal_padding"
+            android:paddingRight="@dimen/batch_code_edittext_parent_con_horzontal_padding">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:background="@color/error_bg"
+                android:layout_marginBottom="@dimen/batch_code_edittext_con_bottom_margin"
+                >
+                <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+               android:orientation="horizontal"
+                android:weightSum="60">
+
+                <android.support.v7.widget.AppCompatEditText
+                    android:id="@+id/apet_bachcode_input1"
+                    android:layout_weight="15"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/batch_code_edittext_margin"
+                    android:background="@drawable/input_shape"
+                    android:maxLength="1"
+                    android:textCursorDrawable="@null"
+                    android:textColorHint="@color/hint_color"
+                    android:inputType="textEmailAddress"/>
+
+                <android.support.v7.widget.AppCompatEditText
+                    android:id="@+id/apet_bachcode_input2"
+                    android:layout_weight="15"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/batch_code_edittext_margin"
+                    android:background="@drawable/input_shape"
+                    android:maxLength="1"
+                    android:textCursorDrawable="@null"
+                    android:textColorHint="@color/hint_color"
+                    android:inputType="textPassword" />
+
+                <android.support.v7.widget.AppCompatEditText
+                    android:id="@+id/apet_bachcode_input3"
+                    android:layout_weight="15"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/batch_code_edittext_margin"
+                    android:background="@drawable/input_shape"
+                    android:maxLength="1"
+                    android:textCursorDrawable="@null"
+                    android:textColorHint="@color/hint_color"
+                    android:inputType="textPassword" />
+
+                <android.support.v7.widget.AppCompatEditText
+                    android:id="@+id/apet_bachcode_input4"
+                    android:layout_weight="15"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/batch_code_edittext_margin"
+                    android:background="@drawable/input_shape"
+                    android:maxLength="1"
+                    android:textCursorDrawable="@null"
+                    android:textColorHint="@color/hint_color"
+                    android:inputType="textPassword" />
+
+            </LinearLayout>
+                <TextView
+                    android:id="@+id/tv_show_error"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/batch_code_edittext_margin"
+                    android:layout_marginStart="@dimen/batch_code_edittext_margin"
+                    android:layout_marginRight="@dimen/batch_code_edittext_margin"
+                    android:layout_marginEnd="@dimen/batch_code_edittext_margin"
+                    android:layout_marginBottom="@dimen/batch_code_edittext_margin"
+                    android:textColor="@color/error_text"
+                    android:textSize="@dimen/p4"
+                    android:visibility="visible"
+                    android:text="Invalid Batch code. Please contact your school administrators"/>
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/btn_batchcode_submit"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:enabled="false"
+                android:text="Submit"
+                android:textAllCaps="true"
+                android:textColor="@android:color/white"
+                android:background="@drawable/signup_btn_shape"/>
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/btn_batchcode_signin_different"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentBottom="true"
+        android:background="#00000000"
+        android:textAllCaps="false"
+        android:textColor="@color/otp_info_color"
+        android:text="Sign in with a different account"/>
+
+</RelativeLayout>
