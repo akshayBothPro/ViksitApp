@@ -137,7 +137,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:minHeight="60dp"
-        android:layout_marginBottom="@dimen/signup_btn_bottom_margin"
+        android:layout_marginBottom="15dp"
         android:background="@drawable/signup_btn_shape"
         android:text="sign up"
         android:textColor="@android:color/white"
@@ -145,7 +145,8 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="15dp">
 
         <View
             android:layout_width="match_parent"
@@ -176,7 +177,6 @@
             android:layout_marginEnd="40dp"
             android:layout_marginRight="40dp"
             android:background="@color/hint_color" />
-
     </RelativeLayout>
     <Button
         android:id="@+id/tv_via_social"
@@ -184,7 +184,7 @@
         android:layout_height="wrap_content"
         android:background="#00000000"
         android:stateListAnimator="@null"
-        android:layout_marginBottom="@dimen/signup_btn_bottom_margin"
+        android:layout_marginBottom="10dp"
         android:textAllCaps="false"
         android:textSize="@dimen/p4"
         android:textColor="@color/title_color"
@@ -194,7 +194,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="@dimen/signup_btn_bottom_margin"
+        android:layout_marginBottom="10dp"
         android:orientation="horizontal"
         android:gravity="center">
         <Button
@@ -236,3 +236,5 @@
         android:textColor="@color/hint_color"/>
     </LinearLayout>
 </LinearLayout>
+
+

@@ -74,10 +74,10 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
     public void onClick(View v) {
         if(v.getId() == R.id.btn_get_started){
             Log.i(TAG,"get started clicked");
-            startActivity(new Intent(HomeActivity.this, SignupActivity.class));
+            startActivity(new Intent(HomeActivity.this, BatchCodeActivity.class));
         } else  if(v.getId() == R.id.btn_member){
             Log.i(TAG,"already a member clicked");
-            startActivity(new Intent(HomeActivity.this, LoginActivity.class));
+            startActivity(new Intent(HomeActivity.this, OTPActivity.class));
         }
 
     }
