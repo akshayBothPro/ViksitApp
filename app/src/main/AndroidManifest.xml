@@ -86,7 +86,8 @@
         <activity android:name=".role.activity.TestSuccessActivity" />
         <activity android:name=".role.activity.PurchaseFailedActivity" />
         <activity android:name=".assessment.activity.AssessmentPassActivity" />
-        <activity android:name=".assessment.activity.AssessmentFailActivity"></activity>
+        <activity android:name=".assessment.activity.AssessmentFailActivity" />
+        <activity android:name=".dummy.DummyActivity"></activity>
     </application>
 
 </manifest>

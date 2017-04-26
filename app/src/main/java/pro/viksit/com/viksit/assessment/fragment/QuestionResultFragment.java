@@ -115,7 +115,7 @@ public class QuestionResultFragment extends Fragment {
                                // ((AssessmentActivity)getActivity()).lockableViewPager.setCurrentItem(((AssessmentActivity)getActivity()).lockableViewPager.getCurrentItem()+1);
                                 ((AssessmentActivity)getActivity()).checkRecylclerIconChange(position,questionPOJO.getId());
                             }else{
-                                System.out.println("Assessment ENded here");
+                                System.out.println("AssessmentPOJO ENded here");
                                 ((AssessmentActivity)getActivity()).printResult();
 
                             }*//*

@@ -121,10 +121,10 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:minHeight="60dp"
-            android:background="@color/white"
+            android:background="#00000000"
             android:textAllCaps="false"
             android:textColor="@color/hint_color"
-            android:textSize="@dimen/h6"
+            android:textSize="@dimen/h7"
             android:text="Resend OTP"/>
     </LinearLayout>
     <Button
@@ -137,5 +137,5 @@
         android:text="Not Your number?"
         android:textAllCaps="false"
         android:textColor="@color/hint_color"
-        android:textSize="@dimen/h6"/>
+        android:textSize="@dimen/p1"/>
 </RelativeLayout>

@@ -1,5 +1,7 @@
 package pro.viksit.com.viksit.util;
 
+import android.util.Base64;
+
 import com.google.gson.JsonSyntaxException;
 
 import org.apache.http.HttpEntity;
@@ -23,9 +25,13 @@ import org.apache.http.util.EntityUtils;
 import java.io.IOException;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
+import java.security.Key;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+
+import javax.crypto.Cipher;
+import javax.crypto.spec.SecretKeySpec;
 
 /**
  * Created by Feroz on 18-04-2017.
@@ -38,6 +44,9 @@ public class HttpUtil {
     private String postrequest;
     public HttpUtil(){}
     private int socketTimeOut=0, connectionTimeOut=0;
+
+    private static final String ALGORITHM = "AES";
+    private static final byte[] PRIVATE_KEY = "OXY IS IN ISTAR ".getBytes();
 
     public HttpUtil(String url, String type, HashMap<String, String> param,String postrequest) {
         this.url = url;
@@ -57,6 +66,9 @@ public class HttpUtil {
             if (httpResponse != null && httpResponse.getStatusLine().getStatusCode() == HttpURLConnection.HTTP_OK) {
                 HttpEntity httpEntity = httpResponse.getEntity();
                 jsonresponse = EntityUtils.toString(httpEntity);
+
+                jsonresponse = decrypt(jsonresponse);// decrypting encrypted response
+
                 if(jsonresponse.equalsIgnoreCase("[]")){
                     jsonresponse="";
                 }
@@ -65,6 +77,8 @@ public class HttpUtil {
                 return "null";
             }
         } catch (IOException e) {
+            e.printStackTrace();
+        } catch (Exception e) {
             e.printStackTrace();
         }
 
@@ -119,10 +133,16 @@ public class HttpUtil {
                     for (String key : param.keySet()) {
                         nameValuePairs.add(new BasicNameValuePair(key, param.get(key)));
                     }
+
                 }
                 HttpPost httpPost = new HttpPost(url);
                 httpPost.setEntity(new UrlEncodedFormEntity(nameValuePairs));
+                httpPost.setHeader("Accept", "application/json");
+                httpPost.setHeader("Content-type", "application/json");
+                httpPost.setHeader("Authorization","" );
+
                 httpResponse = httpclient.execute(httpPost);
+
                 break;
             case "PUT":
                 HttpPut httpPut = new HttpPut(url);
@@ -133,7 +153,9 @@ public class HttpUtil {
                     httpPut.setEntity(se);
                     httpPut.setHeader("Accept", "application/json");
                     httpPut.setHeader("Content-type", "application/json");
+                    httpPut.setHeader("Authorization","" );
                 }
+
                 httpResponse = httpclient.execute(httpPut);
                 break;
             default:
@@ -160,8 +182,10 @@ public class HttpUtil {
         return postrequest;
     }
 
-    public void setPostrequest(String postrequest) {
-        this.postrequest = postrequest;
+    public void setPostrequest(String postrequest) throws Exception {
+
+        this.postrequest = encrypt(postrequest);
+        //this.postrequest = postrequest;
     }
 
     public int getSocketTimeOut() {
@@ -178,5 +202,34 @@ public class HttpUtil {
 
     public void setConnectionTimeOut(int connectionTimeOut) {
         this.connectionTimeOut = connectionTimeOut;
+    }
+
+    public String encrypt(String valueToEnc) throws Exception {
+
+        Key key = generateKey();
+        Cipher cipher = Cipher.getInstance(ALGORITHM);
+        cipher.init(Cipher.ENCRYPT_MODE, key);
+
+        byte[] encValue = cipher.doFinal(valueToEnc.getBytes());
+        byte[] encryptedBytes = Base64.encode(encValue, Base64.DEFAULT);
+        String encryptedValue = new String(encryptedBytes);
+
+        return encryptedValue;
+    }
+
+    public String decrypt(String encryptedValue) throws Exception {
+        Key key = generateKey();
+        Cipher cipher = Cipher.getInstance(ALGORITHM);
+        cipher.init(Cipher.DECRYPT_MODE, key);
+
+        byte[] decodedBytes = Base64.decode(encryptedValue.getBytes(), Base64.DEFAULT);
+        byte[] decryptedBytes = cipher.doFinal(decodedBytes);
+        String decryptedValue = new String(decryptedBytes);
+        return decryptedValue;
+    }
+
+    private Key generateKey() throws Exception {
+        Key key = new SecretKeySpec(PRIVATE_KEY, ALGORITHM);
+        return key;
     }
 }

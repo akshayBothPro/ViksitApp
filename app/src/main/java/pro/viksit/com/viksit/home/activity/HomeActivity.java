@@ -17,10 +17,9 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import pro.viksit.com.viksit.dummy.DummyActivity;
 import pro.viksit.com.viksit.R;
 import pro.viksit.com.viksit.recievers.NetworkChangeReceiver;
-import pro.viksit.com.viksit.role.activity.RoleDepthActivity;
-import pro.viksit.com.viksit.role.util.AssessmentReportAsync;
 
 public class HomeActivity extends AppCompatActivity implements View.OnClickListener{
     private static final String TAG = HomeActivity.class.getSimpleName();
@@ -74,10 +73,10 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
     public void onClick(View v) {
         if(v.getId() == R.id.btn_get_started){
             Log.i(TAG,"get started clicked");
-            startActivity(new Intent(HomeActivity.this, BatchCodeActivity.class));
+            startActivity(new Intent(HomeActivity.this, DummyActivity.class));
         } else  if(v.getId() == R.id.btn_member){
             Log.i(TAG,"already a member clicked");
-            startActivity(new Intent(HomeActivity.this, OTPActivity.class));
+            startActivity(new Intent(HomeActivity.this, ResetPasswordActivity.class));
         }
 
     }

@@ -39,7 +39,7 @@ public class AssessmentReportThread implements Runnable {
             editor.apply();
             editor.commit();
         }
-        System.out.println("Assessment Report:    " + jsonresponse );
+        System.out.println("AssessmentPOJO Report:    " + jsonresponse );
 
     }
 }

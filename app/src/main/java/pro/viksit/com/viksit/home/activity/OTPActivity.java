@@ -24,12 +24,9 @@ import pro.viksit.com.viksit.home.async.OTPAsync;
 public class OTPActivity extends AppCompatActivity implements  View.OnClickListener{
     private static final String TAG = OTPActivity.class.getSimpleName();
 
-    private TextView title;
-    private TextView info;
+    private TextView title, info, notNumber,tv_error_email,autoverify;
     private AppCompatEditText otpInput;
-    private Button enterOTP;
-    private Button resend;
-    private TextView notNumber,tv_error_email,autoverify;
+    private Button enterOTP, resend;
     private String otp,jsonresponse,phonenos;
     private ProgressBar progress;
     private LinearLayout main_layout;
@@ -136,7 +133,7 @@ public class OTPActivity extends AppCompatActivity implements  View.OnClickListe
                 resend.setBackground(getResources().getDrawable(R.drawable.signup_btn_shape));
             }},10000);
 
-        notNumber.setText(Html.fromHtml("<u>Not your number?</u>"));
+       /* notNumber.setText(Html.fromHtml("<u>Not your number?</u>"));*/
         notNumber.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

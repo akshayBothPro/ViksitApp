@@ -186,7 +186,7 @@ public class LeaderBoardActivity extends AppCompatActivity {
                 })
         );
 
-        if (diagonalInches >= 6.5) {
+        /*if (diagonalInches >= 6.5) {
             ViewGroup.LayoutParams params = first.getLayoutParams();
             params.height = screenHeight / 6;
             params.width = screenHeight / 6;
@@ -216,7 +216,7 @@ public class LeaderBoardActivity extends AppCompatActivity {
             params.height = 40;
             params.width = 40;
             thirdRank.setLayoutParams(params);
-        }
+        }*/
 
         // fade toggle appbar on collapse/expand
         appBarLayout.addOnOffsetChangedListener(new AppBarLayout.OnOffsetChangedListener() {

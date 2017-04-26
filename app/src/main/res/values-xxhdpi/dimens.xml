@@ -108,7 +108,7 @@
     <dimen name="changed_pswrd_info_bottom_margin">20dp</dimen>
 
 
-    <!--Assessment Card dimensions-->
+    <!--AssessmentPOJO Card dimensions-->
     <dimen name="asses_card_header_hor_padding">15dp</dimen>
     <dimen name="asses_card_header_bottom_margin">5dp</dimen>
     <dimen name="asses_card_image_margin">10dp</dimen>

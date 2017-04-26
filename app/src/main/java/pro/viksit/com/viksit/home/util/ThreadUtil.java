@@ -23,7 +23,7 @@ public class ThreadUtil implements Runnable {
     private int user_id;
     private String url,type,stored_name;
     private SharedPreferences.Editor editor;
-    private   HttpUtil httpUtil;
+    private HttpUtil httpUtil;
 
     public ThreadUtil( SharedPreferences.Editor editor, int user_id, String url, String type,String stored_name){
         this.editor = editor;
@@ -41,16 +41,16 @@ public class ThreadUtil implements Runnable {
         String jsonresponse =httpUtil.getStringResponse();
         Gson gson = new Gson();
         switch (type){
-            case "Assessment":
+            case "AssessmentPOJO":
                 saveAssessment(jsonresponse,gson,editor);
                 break;
             case "Leaderboard":
                 saveLeaderboard(jsonresponse,gson,editor);
                 break;
-            case "Course":
+            case "CoursePOJO":
                 saveCourse(jsonresponse,gson,editor);
                 break;
-            case "Task":
+            case "TaskPOJO":
                 saveTask(jsonresponse,gson,editor);
                 break;
             case "Assessment_report":

@@ -45,6 +45,7 @@ import pro.viksit.com.viksit.dashboard.util.FacebookUtil;
 import pro.viksit.com.viksit.dashboard.util.GoogleUtil;
 import pro.viksit.com.viksit.dashboard.util.LinkedInUtil;
 import pro.viksit.com.viksit.dashboard.async.LoginAsync;
+import pro.viksit.com.viksit.util.HttpUtil;
 
 public class LoginActivity extends AppCompatActivity implements View.OnClickListener, GoogleApiClient.OnConnectionFailedListener {
     private static final String TAG = LoginActivity.class.getSimpleName();
@@ -161,12 +162,13 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         String pasword = password.getText().toString();
         HashMap<String, String> params = new HashMap<String, String>();
         params.put(getResources().getString(R.string.email), emailid);
+       /* params.put(getResources().getString(R.string.password), new HttpUtil().encrypt(pasword));// password is encrypted*/
         params.put(getResources().getString(R.string.password), pasword);
         new LoginAsync(params, this, dialog, progressdialog, sharedpreferences).execute(getResources().getString(R.string.loginurl));
     }
 
 
-    public void login() {
+    public void login()  {
         if (!validate()) {
             return;
         }
@@ -207,7 +209,11 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         if (id == R.id.btn_login) {
             System.out.println("login clicked");
 
-            login();
+            try {
+                login();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
 //            LISessionManager.getInstance(getApplicationContext()).clearSession();
 
         } else if (id == R.id.btn_register_instead) {

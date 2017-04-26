@@ -83,6 +83,8 @@ public class SaveAssessmentData extends AsyncTask<String, Integer, String> {
             } catch (JsonSyntaxException e) {
                 e.printStackTrace();
                 saveAssessment(context);
+            } catch (Exception e) {
+                e.printStackTrace();
             }
 
         }else{

@@ -78,16 +78,16 @@ public class SplashScreenActivity extends AppCompatActivity implements SplashScr
         if(dashboardCardslist != null){
             executor = Executors.newFixedThreadPool(totalnos+dashboardCardslist.size());
             for(DashboardCard dashboardCards:dashboardCardslist) {
-                ThreadUtil threadUtil = new ThreadUtil(editor, 5239, getResources().getString(R.string.serverip) + (getResources().getString(R.string.dashboardcardurl).replaceAll("user_id", 2632 + "")) + "/" +dashboardCards.getId(),"Task",getResources().getString(R.string.task_store));
-            executor.execute(threadUtil);
+                ThreadUtil threadUtil = new ThreadUtil(editor, 5239, getResources().getString(R.string.serverip) + (getResources().getString(R.string.dashboardcardurl).replaceAll("user_id", 2632 + "")) + "/" +dashboardCards.getId(),"TaskPOJO",getResources().getString(R.string.task_store));
+                executor.execute(threadUtil);
             }
-            }else{
+        }else{
             executor = Executors.newFixedThreadPool(totalnos);
         }
 
-        ThreadUtil assessmentThread = new ThreadUtil(editor,3504,getResources().getString(R.string.serverip)+getResources().getString(R.string.allassessment)+3504,"Assessment",getResources().getString(R.string.assessment));
+        ThreadUtil assessmentThread = new ThreadUtil(editor,3504,getResources().getString(R.string.serverip)+getResources().getString(R.string.allassessment)+3504,"AssessmentPOJO",getResources().getString(R.string.assessment));
         ThreadUtil leaderBoardThread = new ThreadUtil(editor,3504,getResources().getString(R.string.serverip)+getResources().getString(R.string.leaderboarddata).replaceAll("user_id",3504+""),"Leaderboard",getResources().getString(R.string.leaderboard));
-        ThreadUtil courseThread = new ThreadUtil(editor,5209,getResources().getString(R.string.serverip)+getResources().getString(R.string.allcourse)+5209,"Course",getResources().getString(R.string.course));
+        ThreadUtil courseThread = new ThreadUtil(editor,5209,getResources().getString(R.string.serverip)+getResources().getString(R.string.allcourse)+5209,"CoursePOJO",getResources().getString(R.string.course));
         ThreadUtil eventThread = new ThreadUtil(editor,3504,getResources().getString(R.string.serverip)+getResources().getString(R.string.allevents)+"444","Leaderboard",getResources().getString(R.string.events));
         ThreadUtil skillMapThread = new ThreadUtil(editor,3504,getResources().getString(R.string.serverip)+getResources().getString(R.string.skillmapurl).replaceAll("user_id","444"),"Leaderboard",getResources().getString(R.string.skillmap));
         ThreadUtil assessmentReportThread = new ThreadUtil(editor,441,getResources().getString(R.string.serverip)+getResources().getString(R.string.assessmentreportdata).replaceAll("user_id",441+"").replaceAll("assessment_id",10157 + ""),"Assessment_report",getResources().getString(R.string.assessment_report));

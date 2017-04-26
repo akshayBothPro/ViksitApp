@@ -70,7 +70,7 @@ public class DashboardCard implements Serializable {
         this.challengerRank = challengerRank;
     }
 
-    //Assessment
+    //AssessmentPOJO
     public DashboardCard(Integer id, String header, String title, String description, String imageURL,
                          Integer numberOfQuestions, Integer duration, Integer itemExperience, Integer itemCoins, String itemType,
                          Integer itemId) {

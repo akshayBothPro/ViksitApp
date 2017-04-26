@@ -95,10 +95,10 @@ public class CalendarActivity extends AppCompatActivity {
         cals.add(Calendar.HOUR, -1);
         Date oneHourBack = cals.getTime();
 
-        CalendarData cal1 = new CalendarData(oneHourBack,"Sales Assessment at 6 Pm","ACTIVE","");
+        CalendarData cal1 = new CalendarData(oneHourBack,"Sales AssessmentPOJO at 6 Pm","ACTIVE","");
         calendarDataList.add(cal1);
 
-        CalendarData cal12 = new CalendarData(new Date(),"Current Assessment at 6 Pm","ACTIVE","");
+        CalendarData cal12 = new CalendarData(new Date(),"Current AssessmentPOJO at 6 Pm","ACTIVE","");
         calendarDataList.add(cal12);
 
         Calendar minusday = Calendar.getInstance();
