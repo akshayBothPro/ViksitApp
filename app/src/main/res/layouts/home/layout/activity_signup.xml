@@ -53,7 +53,7 @@
             android:textColorHint="@color/hint_color"
             android:textCursorDrawable="@null" />
 
-        <TextView
+        <!--<TextView
             android:id="@+id/tv_error_email"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -62,7 +62,7 @@
             android:textColor="@color/error_text"
             android:text="Enter a valid email ID."
             android:textSize="@dimen/p2"
-            android:visibility="gone"
+            android:visibility="gone"-->
             />
     </LinearLayout>
 

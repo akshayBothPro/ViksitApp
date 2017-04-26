@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/ll_input_con"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_alignParentTop="true"
+    android:background="@color/white_color"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:paddingTop="@dimen/login_con_ver_padding"
+    android:paddingBottom="@dimen/login_con_ver_padding"
+    android:paddingLeft="@dimen/login_con_padding"
+    android:paddingStart="@dimen/login_con_padding"
+    android:paddingRight="@dimen/login_con_padding"
+    android:paddingEnd="@dimen/login_con_padding">
+
+    <TextView
+        android:id="@+id/tv_login_welcome"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/login_header_bottom_margin"
+        android:paddingEnd="@dimen/login_header_horizontal_padding"
+        android:paddingLeft="@dimen/login_header_horizontal_padding"
+        android:paddingRight="@dimen/login_header_horizontal_padding"
+        android:paddingStart="@dimen/login_header_horizontal_padding"
+        android:gravity="center"
+        android:text="Welcome back! Ready to get some work done?"
+        android:textColor="@color/title_color"
+        android:textSize="@dimen/h4" />
+
+    <android.support.v7.widget.AppCompatEditText
+        android:id="@+id/apet_login_email"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/input_shape"
+        android:layout_marginBottom="@dimen/login_edittext_con_bottom_margin"
+        android:hint="Email ID"
+        android:inputType="textEmailAddress"
+        android:paddingLeft="@dimen/login_edittext_horizontal_padding"
+        android:paddingStart="@dimen/login_edittext_horizontal_padding"
+        android:textColorHint="@color/hint_color"
+        android:textCursorDrawable="@null" />
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/login_edittext_con_bottom_margin_double"
+        android:orientation="vertical">
+
+        <android.support.v7.widget.AppCompatEditText
+            android:id="@+id/apet_login_password"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/input_shape"
+            android:hint="Password"
+            android:inputType="textPassword"
+            android:paddingLeft="@dimen/login_edittext_horizontal_padding"
+            android:paddingStart="@dimen/login_edittext_horizontal_padding"
+            android:textColorHint="@color/hint_color"
+            android:textCursorDrawable="@null" />
+
+        <TextView
+            android:id="@+id/tv_error_password"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/error_bg"
+            android:padding="@dimen/login_error_padding"
+            android:text="Username or Password incorrect."
+            android:textColor="@color/error_text"
+            android:textSize="@dimen/p3"
+            android:visibility="visible" />
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/btn_login"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/signup_btn_shape"
+        android:text="LOG IN"
+        android:textColor="@android:color/white"
+        android:textSize="@dimen/p2" />
+
+    <Button
+        android:id="@+id/btn_forgot_password"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@color/white_color"
+        android:stateListAnimator="@null"
+        android:textAllCaps="false"
+        android:textColor="@color/hint_color"
+        android:textSize="@dimen/p3" />
+
+    <include
+        android:id="@+id/signup_options"
+        layout="@layout/signup_options"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <Button
+        android:id="@+id/btn_register_instead"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@color/white_color"
+        android:stateListAnimator="@null"
+        android:text="TALEJDJKDKJHFJJKD"
+        android:textAllCaps="false"
+        android:textColor="@color/hint_color"
+        android:textSize="@dimen/p3" />
+</LinearLayout>

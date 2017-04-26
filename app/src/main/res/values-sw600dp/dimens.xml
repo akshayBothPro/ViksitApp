@@ -27,11 +27,11 @@
     <dimen name="image_size">120dp</dimen>
 
     <!--home activity dimensions-->
-    <dimen name="logosize">160dp</dimen>
+    <dimen name="logosize">130dp</dimen>
     <dimen name="home_horizontal_padding">40dp</dimen>
     <dimen name="home_vertical_padding">16dp</dimen>
     <dimen name="home_icon_con_bottom_margin">50dp</dimen>
-    <dimen name="home_icon_bottom_margin">15dp</dimen>
+    <dimen name="home_icon_bottom_margin">25dp</dimen>
     <dimen name="home_start_btn_bottom_margin">12dp</dimen>
 
     <!--login activity dimensions-->
@@ -142,7 +142,7 @@
     <dimen name="empty_tasks_image_margin">32dp</dimen>
 
     <!--Role Activity dimensions-->
-    <dimen name="role_info_hor_padding">20dp</dimen>
+    <dimen name="role_info_hor_padding">15dp</dimen>
     <dimen name="role_item_hor_padding">10dp</dimen>
     <dimen name="role_ver_item_padding">5dp</dimen>
     <dimen name="card_item_bottom_margin">5dp</dimen>

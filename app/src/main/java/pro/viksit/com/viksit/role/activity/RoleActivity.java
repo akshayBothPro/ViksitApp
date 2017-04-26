@@ -70,6 +70,8 @@ public class RoleActivity extends AppCompatActivity implements View.OnClickListe
 
     private void implementActions(){
 
+        notification.setOnClickListener(this);
+
         ViewGroup.LayoutParams params = verticalRecycler.getLayoutParams();
         params.height = screenHeight/2;
         verticalRecycler.setLayoutParams(params);
@@ -85,7 +87,7 @@ public class RoleActivity extends AppCompatActivity implements View.OnClickListe
                 new RecyclerItemClickListener (getBaseContext(), verticalRecycler ,new RecyclerItemClickListener.OnItemClickListener() {
                     @Override public void onItemClick(View view, int position) {
                         System.out.println("Vposition: " + position);
-                        Intent intent = new Intent(RoleActivity.this, AssessmentFailActivity.class);
+                        Intent intent = new Intent(RoleActivity.this, ModuleActivity.class);
                        /* Bundle bundle = new Bundle();
                         bundle.putSerializable("role", roles.get(position));
                         intent.putExtras(bundle);*/
@@ -104,7 +106,8 @@ public class RoleActivity extends AppCompatActivity implements View.OnClickListe
 
     }
 
-    private void setHorizontalRecyclers(RecyclerView horizontalRecycle){
+
+    /*private void setHorizontalRecyclers(RecyclerView horizontalRecycle){
         //setting up horizontal recycler view
         roleHorizontalRecyclerViewAdapter = new RoleHorizontalRecyclerViewAdapter(recommendedRoles);
         RecyclerView.LayoutManager hLayoutManager = new LinearLayoutManager(getBaseContext(), LinearLayoutManager.HORIZONTAL, false);
@@ -124,7 +127,7 @@ public class RoleActivity extends AppCompatActivity implements View.OnClickListe
                     }
                 })
         );
-    }
+    }*/
 
     private void setRoleData(){
         roles = new ArrayList<>();
@@ -176,7 +179,7 @@ public class RoleActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     public void onClick(View v) {
 
-        if(v.getId() == R.id.notfication){
+        if(v.getId() == notification.getId()){
             startActivity(new Intent(RoleActivity.this, NotificationActivity.class));
         }
     }
