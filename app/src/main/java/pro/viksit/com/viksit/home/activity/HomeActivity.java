@@ -51,7 +51,7 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
         talentify = (TextView) findViewById(R.id.tv_talentify);
         getStarted = (Button) findViewById(R.id.btn_get_started);
         member = (Button) findViewById(R.id.btn_member);
-        sharedpreferences = getSharedPreferences(getResources().getString(R.string.shared_preference_key), Context.MODE_PRIVATE);
+        sharedpreferences = getSharedPreferences(getResources().getString(R.string.shared_preference_key), Context.MODE_APPEND);
         /*new AssessmentReportAsync(this).execute();*/
 
         if(!sharedpreferences.getString(getResources().getString(R.string.user_profile),"").equalsIgnoreCase("")){
