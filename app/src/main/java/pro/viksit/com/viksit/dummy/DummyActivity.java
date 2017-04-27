@@ -160,7 +160,7 @@ public class DummyActivity extends AppCompatActivity {
             imageSaver.deleteFile();
         }
         for(Map.Entry<String,?> entry : keys.entrySet()){
-            writeFile(entry.getValue().toString(),imageSaver);
+            writeFile(entry.getKey() + "\n" + entry.getValue().toString(),imageSaver);
             //writeFile("test",imageSaver);
         }
     }
