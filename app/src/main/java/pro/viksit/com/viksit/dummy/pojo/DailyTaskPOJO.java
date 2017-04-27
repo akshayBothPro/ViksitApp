@@ -13,9 +13,9 @@ public class DailyTaskPOJO implements Serializable {
     private Integer id;
     private String name;
     private String status;
-    private Timestamp startDate;
-    private Timestamp endDate;
-    private Timestamp completedAt;
+    private String startDate;
+    private String endDate;
+    private String completedAt;
 
     public Integer getId() {
         return id;
@@ -41,27 +41,27 @@ public class DailyTaskPOJO implements Serializable {
         this.status = status;
     }
 
-    public Timestamp getStartDate() {
+    public String getStartDate() {
         return startDate;
     }
 
-    public void setStartDate(Timestamp startDate) {
+    public void setStartDate(String startDate) {
         this.startDate = startDate;
     }
 
-    public Timestamp getEndDate() {
+    public String getEndDate() {
         return endDate;
     }
 
-    public void setEndDate(Timestamp endDate) {
+    public void setEndDate(String endDate) {
         this.endDate = endDate;
     }
 
-    public Timestamp getCompletedAt() {
+    public String getCompletedAt() {
         return completedAt;
     }
 
-    public void setCompletedAt(Timestamp completedAt) {
+    public void setCompletedAt(String completedAt) {
         this.completedAt = completedAt;
     }
 }
