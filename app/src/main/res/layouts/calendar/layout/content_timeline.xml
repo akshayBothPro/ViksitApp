@@ -15,12 +15,12 @@
         android:id="@+id/rr"
         android:padding="5dp"
         android:background="@color/white">
-    <com.jaredrummler.materialspinner.MaterialSpinner
-        android:id="@+id/spinner"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:minWidth="200dp"
-        />
+        <com.jaredrummler.materialspinner.MaterialSpinner
+            android:id="@+id/spinner"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:minWidth="200dp"
+            />
         <ImageButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

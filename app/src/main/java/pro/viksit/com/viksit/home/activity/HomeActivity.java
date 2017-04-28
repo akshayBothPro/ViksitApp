@@ -17,6 +17,8 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import pro.viksit.com.viksit.calendar.activity.CalendarActivity;
+import pro.viksit.com.viksit.calendar.util.CalenderAsync;
 import pro.viksit.com.viksit.dummy.DummyActivity;
 import pro.viksit.com.viksit.R;
 import pro.viksit.com.viksit.recievers.NetworkChangeReceiver;
@@ -52,7 +54,7 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
         getStarted = (Button) findViewById(R.id.btn_get_started);
         member = (Button) findViewById(R.id.btn_member);
         sharedpreferences = getSharedPreferences(getResources().getString(R.string.shared_preference_key), Context.MODE_APPEND);
-        /*new AssessmentReportAsync(this).execute();*/
+        new CalenderAsync(this).execute();
 
         if(!sharedpreferences.getString(getResources().getString(R.string.user_profile),"").equalsIgnoreCase("")){
             Intent i = new Intent(HomeActivity.this,SplashScreenActivity.class);
@@ -76,7 +78,7 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
             startActivity(new Intent(HomeActivity.this, DummyActivity.class));
         } else  if(v.getId() == R.id.btn_member){
             Log.i(TAG,"already a member clicked");
-            startActivity(new Intent(HomeActivity.this, ResetPasswordActivity.class));
+            startActivity(new Intent(HomeActivity.this, CalendarActivity.class));
         }
 
     }

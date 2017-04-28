@@ -61,7 +61,7 @@ public class DummyActivity extends AppCompatActivity {
         ComplexObject complexObject = new ComplexObject();
         complexObject = gson.fromJson(jsonresponse, ComplexObject.class);
 
-        gson = new Gson();
+        gson =new GsonBuilder().setDateFormat("yyyy-MM-dd HH:mm:ss").create();//"2016-09-13 12:15:00",
         setSharedpreferences("STUDENTPROFILE",gson.toJson(complexObject.getStudentProfile()));
 
 
@@ -76,7 +76,7 @@ public class DummyActivity extends AppCompatActivity {
         }
 
         //SkillReportPOJO
-        gson = new Gson();
+        gson = new GsonBuilder().setDateFormat("yyyy-MM-dd HH:mm:ss").create();//"2016-09-13 12:15:00",
         for(SkillReportPOJO skillReportPOJO : complexObject.getSkills()){
             //System.out.println("skillReportPOJO -> "+gson.toJson(skillReportPOJO));
             if(skillReportPOJO != null){
@@ -85,7 +85,7 @@ public class DummyActivity extends AppCompatActivity {
         }
 
         //TaskSummaryPOJO
-        gson = new Gson();
+        gson = new GsonBuilder().setDateFormat("yyyy-MM-dd HH:mm:ss").create();//"2016-09-13 12:15:00",
         for(TaskSummaryPOJO taskSummaryPOJO : complexObject.getTasks()){
             //System.out.println("TaskSummaryPOJO -> "+gson.toJson(taskSummaryPOJO));
             if(taskSummaryPOJO != null){
@@ -94,7 +94,7 @@ public class DummyActivity extends AppCompatActivity {
         }
 
         //AssessmentPOJO
-        gson = new Gson();
+        gson = new GsonBuilder().setDateFormat("yyyy-MM-dd HH:mm:ss").create();//"2016-09-13 12:15:00",
         for(AssessmentPOJO assessmentPOJO : complexObject.getAssessments()){
             //System.out.println("AssessmentPOJO -> "+gson.toJson(assessmentPOJO));
             if(assessmentPOJO != null){
@@ -103,7 +103,7 @@ public class DummyActivity extends AppCompatActivity {
         }
 
         //AssessmentReportPOJO
-        gson = new Gson();
+        gson = new GsonBuilder().setDateFormat("yyyy-MM-dd HH:mm:ss").create();//"2016-09-13 12:15:00",
         for(AssessmentReportPOJO assessmentReportPOJO : complexObject.getAssessmentReports()){
             //System.out.println("AssessmentReportPOJO -> "+gson.toJson(assessmentReportPOJO));
             if(assessmentReportPOJO != null){
@@ -112,7 +112,7 @@ public class DummyActivity extends AppCompatActivity {
         }
 
         //AssessmentResponsePOJO
-        gson = new Gson();
+        gson = new GsonBuilder().setDateFormat("yyyy-MM-dd HH:mm:ss").create();//"2016-09-13 12:15:00",
         for(AssessmentResponsePOJO assessmentResponsePOJO : complexObject.getAssessmentResponses()){
             //System.out.println("AssessmentResponsePOJO -> "+gson.toJson(assessmentResponsePOJO));
             if(assessmentResponsePOJO != null){
@@ -121,7 +121,7 @@ public class DummyActivity extends AppCompatActivity {
         }
 
         //CourseRankPOJO(leaderboard)
-        gson = new Gson();
+        gson = new GsonBuilder().setDateFormat("yyyy-MM-dd HH:mm:ss").create();//"2016-09-13 12:15:00",
         for(CourseRankPOJO courseRankPOJO : complexObject.getLeaderboards()){
             //System.out.println("CourseRankPOJO(leaderboard) -> "+gson.toJson(courseRankPOJO));
             if(courseRankPOJO != null){
@@ -130,7 +130,7 @@ public class DummyActivity extends AppCompatActivity {
         }
 
         //DailyTaskPOJO(events)
-        gson = new Gson();
+        gson = new GsonBuilder().setDateFormat("yyyy-MM-dd HH:mm:ss").create();//"2016-09-13 12:15:00",
         for(DailyTaskPOJO dailyTaskPOJO : complexObject.getEvents()){
             //System.out.println("DailyTaskPOJO(events) -> "+gson.toJson(dailyTaskPOJO));
             if(dailyTaskPOJO != null){
@@ -139,7 +139,7 @@ public class DummyActivity extends AppCompatActivity {
         }
 
         /*//NotificationPOJO(notifications)
-        gson = new Gson();
+        gson = new GsonBuilder().setDateFormat("yyyy-MM-dd HH:mm:ss").create();//"2016-09-13 12:15:00",
         for(NotificationPOJO notificationPOJO : complexObject.getNotifications()){
             System.out.println("NotificationPOJO(notifications) -> "+gson.toJson(notificationPOJO));
             if(notificationPOJO != null){
@@ -156,6 +156,7 @@ public class DummyActivity extends AppCompatActivity {
     public void storePrefenceInFile(String filename) throws FileNotFoundException {
         Map<String,?> keys = sharedpreferences.getAll();
         ImageSaver imageSaver=new ImageSaver(this).setDirectoryName(".viksit").setFileName(filename).setExternal(ImageSaver.isExternalStorageReadable());
+        //if file exists -> delete
         if(imageSaver.checkFile()){
             imageSaver.deleteFile();
         }

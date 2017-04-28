@@ -1,21 +1,18 @@
 package pro.viksit.com.viksit.dummy.pojo;
 
-import java.io.Serializable;
 import java.security.Timestamp;
 
 /**
  * Created by Akshay on 26/04/2017.
  */
 
-@SuppressWarnings("serial") //With this annotation we are going to hide compiler warnings
-public class DailyTaskPOJO implements Serializable {
-
+public class DailyTaskPOJO {
     private Integer id;
     private String name;
     private String status;
-    private String startDate;
-    private String endDate;
-    private String completedAt;
+    private Timestamp startDate;
+    private Timestamp endDate;
+    private Timestamp completedAt;
 
     public Integer getId() {
         return id;
@@ -41,27 +38,27 @@ public class DailyTaskPOJO implements Serializable {
         this.status = status;
     }
 
-    public String getStartDate() {
+    public Timestamp getStartDate() {
         return startDate;
     }
 
-    public void setStartDate(String startDate) {
+    public void setStartDate(Timestamp startDate) {
         this.startDate = startDate;
     }
 
-    public String getEndDate() {
+    public Timestamp getEndDate() {
         return endDate;
     }
 
-    public void setEndDate(String endDate) {
+    public void setEndDate(Timestamp endDate) {
         this.endDate = endDate;
     }
 
-    public String getCompletedAt() {
+    public Timestamp getCompletedAt() {
         return completedAt;
     }
 
-    public void setCompletedAt(String completedAt) {
+    public void setCompletedAt(Timestamp completedAt) {
         this.completedAt = completedAt;
     }
 }

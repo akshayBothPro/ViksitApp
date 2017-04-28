@@ -1,6 +1,8 @@
 package pro.viksit.com.viksit.calendar.activity;
 
 import android.app.DatePickerDialog;
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.design.widget.BottomNavigationView;
 import android.support.design.widget.Snackbar;
@@ -11,17 +13,25 @@ import android.view.View;
 import android.widget.DatePicker;
 import android.widget.ImageButton;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.reflect.TypeToken;
 import com.jaredrummler.materialspinner.MaterialSpinner;
 
+import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
+import java.util.Map;
 
 import pro.viksit.com.viksit.R;
+import pro.viksit.com.viksit.calendar.adapter.CalenderAdapter;
 import pro.viksit.com.viksit.calendar.adapter.TimeLineAdapter;
 import pro.viksit.com.viksit.calendar.pojo.CalendarData;
+import pro.viksit.com.viksit.challenge.pojo.LeaderBoardCourse;
 import pro.viksit.com.viksit.dashboard.util.BottomBarUtil;
+import pro.viksit.com.viksit.dummy.pojo.DailyTaskPOJO;
 
 public class CalendarActivity extends AppCompatActivity {
     private RecyclerView mRecyclerView;
@@ -30,23 +40,35 @@ public class CalendarActivity extends AppCompatActivity {
     private ImageButton imageButton;
     private int mYear, mMonth, mDay, mHour, mMinute;
 
+    private SharedPreferences sharedPreferences;
+    private CalenderAdapter calenderAdapter;
+    private List<DailyTaskPOJO> events;
+    private List <DailyTaskPOJO> thisDateEvents ;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_calendar);
         mRecyclerView = (RecyclerView) findViewById(R.id.recyclerView);
         imageButton = (ImageButton) findViewById(R.id.calendar);
-        BottomNavigationView bottomNavigationView = (BottomNavigationView)
-                findViewById(R.id.bottom_navigation);
+        BottomNavigationView bottomNavigationView = (BottomNavigationView) findViewById(R.id.bottom_navigation);
+        MaterialSpinner spinner = (MaterialSpinner) findViewById(R.id.spinner);
+
         new BottomBarUtil().setupBottomBar(bottomNavigationView,CalendarActivity.this,R.id.calendar);
         mRecyclerView.setLayoutManager( new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
         mRecyclerView.setHasFixedSize(true);
-        initView();
 
+        sharedPreferences = getSharedPreferences(getResources().getString(R.string.shared_preference_key), Context.MODE_PRIVATE);
+        Map<String,?> keys = sharedPreferences.getAll();
+        events = new ArrayList<>();
+        Gson gson = new GsonBuilder().setDateFormat("yyyy-MM-dd HH:mm:ss").create();//"2016-09-13 12:15:00",
+        for(Map.Entry<String,?> entry : keys.entrySet()){
+            if(entry.getKey().contains(getResources().getString(R.string.eventstore))){
+                events.add(gson.fromJson( entry.getValue().toString(),DailyTaskPOJO.class));
+            }
+        }
+        //initView();
 
-
-
-        MaterialSpinner spinner = (MaterialSpinner) findViewById(R.id.spinner);
         spinner.setItems("January", "February", "March", "April", "May","June","July","August","September","October","November","December");
         spinner.setOnItemSelectedListener(new MaterialSpinner.OnItemSelectedListener<String>() {
 
@@ -55,6 +77,7 @@ public class CalendarActivity extends AppCompatActivity {
                 setRecyclerMonthlydata(item,position);
             }
         });
+
         imageButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -66,20 +89,32 @@ public class CalendarActivity extends AppCompatActivity {
                         new DatePickerDialog.OnDateSetListener() {
 
                             @Override
-                            public void onDateSet(DatePicker view, int year,
-                                                  int monthOfYear, int dayOfMonth) {
-                                String date = dayOfMonth+"/"+monthOfYear+"/"+year;
+                            public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
+                                String date = Integer.toString(year) +"-" + Integer.toString(monthOfYear) + "-" + Integer.toString(dayOfMonth);
+                                thisDateEvents = new ArrayList<>();
+                                for(DailyTaskPOJO dailyTaskPOJO : events){
+                                    if(dailyTaskPOJO.getStartDate().toString().contains(date)){
+                                        thisDateEvents.add(dailyTaskPOJO);
+                                    }
+                                }
+                                //
+                                calenderAdapter = new CalenderAdapter(thisDateEvents,CalendarActivity.this);
+                                mRecyclerView.setAdapter(calenderAdapter);
+                                calenderAdapter.notifyDataSetChanged();
+                                //
+
                             }
                         }, mYear, mMonth, mDay);
                 datePickerDialog.show();
             }
         });
+
+        calenderAdapter = new CalenderAdapter(events,CalendarActivity.this);
+        mRecyclerView.setAdapter(calenderAdapter);
+        calenderAdapter.notifyDataSetChanged();
     }
 
-
-
-
-    private void initView() {
+    /*private void initView() {
         Calendar addday = Calendar.getInstance();
         addday.setTime(new Date());
         addday.add(Calendar.DATE, -1);
@@ -118,9 +153,9 @@ public class CalendarActivity extends AppCompatActivity {
         calendarDataList.add(cal9);
         timeLineAdapter = new TimeLineAdapter(calendarDataList,CalendarActivity.this);
         mRecyclerView.setAdapter(timeLineAdapter);
-    }
+    }*/
 
-    private void setRecyclerMonthlydata(String item, int position) {
+    /*private void setRecyclerMonthlydata(String item, int position) {
          List<CalendarData> monthlydata = new ArrayList<>();
         for(CalendarData calendarData:calendarDataList){
             calendarData.setEvent_name(item+" for "+calendarData.getEvent_name());
@@ -130,6 +165,21 @@ public class CalendarActivity extends AppCompatActivity {
         timeLineAdapter = new TimeLineAdapter(monthlydata,CalendarActivity.this);
         mRecyclerView.setAdapter(timeLineAdapter);
         timeLineAdapter.notifyDataSetChanged();
+
+    }*/
+
+    private void setRecyclerMonthlydata(String item, int position) {
+        List<DailyTaskPOJO> monthlydata = new ArrayList<>();
+        for(DailyTaskPOJO calendarData:events){
+            if(calendarData.getStartDate().getTimestamp().getMonth() == (position+1)){
+                calendarData.setName(item+" for "+calendarData.getName());
+                monthlydata.add(calendarData);
+            }
+        }
+
+        calenderAdapter = new CalenderAdapter(monthlydata,CalendarActivity.this);
+        mRecyclerView.setAdapter(calenderAdapter);
+        calenderAdapter.notifyDataSetChanged();
 
     }
 

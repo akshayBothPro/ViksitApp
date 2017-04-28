@@ -7,6 +7,7 @@ import java.util.Date;
  */
 
 public class CalendarData {
+
     private Date event_date;
     private String event_name;
     private String status;
