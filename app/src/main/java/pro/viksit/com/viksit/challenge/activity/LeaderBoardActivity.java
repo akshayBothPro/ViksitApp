@@ -47,7 +47,7 @@ import pro.viksit.com.viksit.util.HttpUtil;
 import pro.viksit.com.viksit.util.ImageSaver;
 import pro.viksit.com.viksit.util.SaveImageAsync;
 
-public class LeaderBoardActivity extends AppCompatActivity {
+public class LeaderBoardActivity extends AppCompatActivity implements View.OnClickListener{
 
     private CollapsingToolbarLayout mCollapsingToolbarLayout;
     private AppBarLayout appBarLayout;
@@ -320,4 +320,8 @@ public class LeaderBoardActivity extends AppCompatActivity {
         diagonalInches = Math.sqrt(xInches * xInches + yInches * yInches);
     }
 
+    @Override
+    public void onClick(View v) {
+
+    }
 }
