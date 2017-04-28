@@ -179,21 +179,7 @@ public class LeaderBoardActivity extends AppCompatActivity implements View.OnCli
                         /*Intent intent = new Intent(LeaderBoardActivity.this, CheckoutActivity.class);
                         startActivity(intent);*/
                         StudentRankPOJO  student = ranklist.get(position);
-                        final Dialog dialog = new Dialog(getBaseContext());
-                        dialog.setContentView(R.layout.leaderboard_dialog);
-
-                        // set the custom dialog components - text, image and button
-                        TextView rank = (TextView) findViewById(R.id.tv_rank);
-                        TextView xp = (TextView) findViewById(R.id.tv_points_xp);
-                        TextView name = (TextView) findViewById(R.id.tv_name);
-                        ImageView image = (ImageView) findViewById(R.id.iv_image);
-                        RecyclerView badgeRecycler = (RecyclerView) findViewById(R.id.rv_badges);
-                        Button challenge = (Button) findViewById(R.id.btn_challenge);
-
-                        rank.setText(Integer.toString(student.getBatchRank()));
-                        xp.setText(Integer.toString(student.getPoints()));
-                        name.setText(student.getName());
-
+                        setDialog(student);
                      }
 
                     @Override
@@ -203,6 +189,9 @@ public class LeaderBoardActivity extends AppCompatActivity implements View.OnCli
                 })
         );
 
+        first.setOnClickListener(this);
+        second.setOnClickListener(this);
+        third.setOnClickListener(this);
         /*if (diagonalInches >= 6.5) {
             ViewGroup.LayoutParams params = first.getLayoutParams();
             params.height = screenHeight / 6;
@@ -339,6 +328,51 @@ public class LeaderBoardActivity extends AppCompatActivity implements View.OnCli
 
     @Override
     public void onClick(View v) {
+        if(v.getId() == first.getId()) {
+            StudentRankPOJO  student = profileList.get(0);
+            setDialog(student);
+        } else if(v.getId() == second.getId()) {
+            StudentRankPOJO  student = profileList.get(1);
+            setDialog(student);
+        } else if(v.getId() == third.getId()) {
+            StudentRankPOJO  student = profileList.get(2);
+            setDialog(student);
+        }
+    }
 
+    public void setDialog(StudentRankPOJO  student){
+        final Dialog dialog = new Dialog(getBaseContext());
+        dialog.setContentView(R.layout.leaderboard_dialog);
+        // set the custom dialog components - text, image and button
+        TextView rank = (TextView) findViewById(R.id.tv_rank);
+        TextView xp = (TextView) findViewById(R.id.tv_points_xp);
+        TextView name = (TextView) findViewById(R.id.tv_name);
+        ImageView image = (ImageView) findViewById(R.id.iv_image);
+        //RecyclerView badgeRecycler = (RecyclerView) findViewById(R.id.rv_badges);//need to add adapter pass list of badges
+        Button challenge = (Button) findViewById(R.id.btn_challenge);
+
+        rank.setText(Integer.toString(student.getBatchRank()));
+        xp.setText(Integer.toString(student.getPoints()));
+        name.setText(student.getName());
+        String url = student.getImageURL();
+        int videoindex = url.lastIndexOf("/");
+        ImageSaver studentImage = new ImageSaver(getBaseContext()).
+                setParentDirectoryName("leaderboard").
+                setFileName(new DisplayUtil().getFileNameReplaced(url.substring(videoindex + 1, url.length()))).
+                setExternal(ImageSaver.isExternalStorageReadable());
+        picasso = Picasso.with(getBaseContext());
+        if (studentImage.checkFile()) {
+            picasso.load(studentImage.pathFile()).transform(new CircleTransform()).into(image);
+        } else {
+            picasso.load(url).transform(new CircleTransform()).into(image);//image
+            new SaveImageAsync(studentImage).execute(url);
+        }
+
+        challenge.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //do something
+            }
+        });
     }
 }
