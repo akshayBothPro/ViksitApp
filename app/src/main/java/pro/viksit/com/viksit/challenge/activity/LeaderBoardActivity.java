@@ -1,5 +1,6 @@
 package pro.viksit.com.viksit.challenge.activity;
 
+import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -162,7 +163,7 @@ public class LeaderBoardActivity extends AppCompatActivity implements View.OnCli
 
         // setting vertical recycler view
         verticalRecycler.setHasFixedSize(true);
-        ArrayList<StudentRankPOJO> ranklist = new ArrayList<>(profileList.subList(3, profileList.size()));
+        final ArrayList<StudentRankPOJO> ranklist = new ArrayList<>(profileList.subList(3, profileList.size()));
 
         adapter = new LeaderBoardRecyclerAdapter(ranklist, getBaseContext(), screenWidth, screenHeight, diagonalInches);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
@@ -175,9 +176,25 @@ public class LeaderBoardActivity extends AppCompatActivity implements View.OnCli
                     @Override
                     public void onItemClick(View view, int position) {
                         System.out.println("Vposition: " + position);
-                        Intent intent = new Intent(LeaderBoardActivity.this, CheckoutActivity.class);
-                        startActivity(intent);
-                    }
+                        /*Intent intent = new Intent(LeaderBoardActivity.this, CheckoutActivity.class);
+                        startActivity(intent);*/
+                        StudentRankPOJO  student = ranklist.get(position);
+                        final Dialog dialog = new Dialog(getBaseContext());
+                        dialog.setContentView(R.layout.leaderboard_dialog);
+
+                        // set the custom dialog components - text, image and button
+                        TextView rank = (TextView) findViewById(R.id.tv_rank);
+                        TextView xp = (TextView) findViewById(R.id.tv_points_xp);
+                        TextView name = (TextView) findViewById(R.id.tv_name);
+                        ImageView image = (ImageView) findViewById(R.id.iv_image);
+                        RecyclerView badgeRecycler = (RecyclerView) findViewById(R.id.rv_badges);
+                        Button challenge = (Button) findViewById(R.id.btn_challenge);
+
+                        rank.setText(Integer.toString(student.getBatchRank()));
+                        xp.setText(Integer.toString(student.getPoints()));
+                        name.setText(student.getName());
+
+                     }
 
                     @Override
                     public void onLongItemClick(View view, int position) {
