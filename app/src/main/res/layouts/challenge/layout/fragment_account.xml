@@ -1,0 +1,71 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingTop="16dp"
+    tools:context="pro.viksit.com.viksit.dashboard.fragment.profilefragments.AccountFragment">
+
+    <!-- TODO: Update blank fragment layout -->
+
+    <ImageView
+        android:id="@+id/iv_image"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginLeft="60dp"
+        android:layout_marginStart="60dp"
+        android:layout_marginRight="36dp"
+        android:layout_marginEnd="36dp"
+        android:src="@drawable/ic_disha"/>
+    <ImageButton
+        android:id="@+id/iv_change_photo"
+        android:layout_width="32dp"
+        android:layout_height="32dp"
+        android:layout_alignBottom="@+id/iv_image"
+        android:layout_alignRight="@+id/iv_image"
+        android:layout_alignEnd="@+id/iv_image"
+        android:src="@mipmap/ic_photo_camera_white_24dp"
+        android:background="@drawable/red_circle_cutton"/>
+
+    <ProgressBar
+        android:id="@+id/pb_account_progress"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_toRightOf="@+id/iv_image"
+        android:layout_toEndOf="@+id/iv_image"
+        android:indeterminate="false"
+        android:max="100"
+        android:progress="70"
+        android:progressDrawable="@drawable/account_progress" />
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:layout_margin="10dp"
+            android:layout_alignTop="@+id/pb_account_progress"
+            android:layout_alignBottom="@id/pb_account_progress"
+            android:layout_alignLeft="@id/pb_account_progress"
+            android:layout_alignStart="@id/pb_account_progress"
+            android:layout_alignRight="@id/pb_account_progress"
+            android:layout_alignEnd="@id/pb_account_progress">
+            <TextView
+                android:id="@+id/tv_account_progress"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/red_pink"
+                android:textSize="@dimen/p3"
+                android:text="100 %" />
+            <TextView
+                android:id="@+id/tv_account_profile_complete"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/section_header"
+                android:textSize="11sp"
+                android:textAlignment="center"
+                android:text="Profile Complete" />
+        </LinearLayout>
+
+
+
+</RelativeLayout>

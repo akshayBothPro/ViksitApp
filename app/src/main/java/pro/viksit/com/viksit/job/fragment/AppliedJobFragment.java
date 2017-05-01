@@ -39,11 +39,7 @@ public class AppliedJobFragment extends Fragment implements View.OnClickListener
     private RecyclerView recyclerView;
     private ArrayList<Applied> appliedJobs;
     private AppliedRecyclerViewAdapter mAdapter;
-    private TextView all;
-    private TextView pending;
-    private TextView test;
-    private TextView interview;
-    private TextView rejected;
+    private TextView all, pending, test, interview, rejected;
     private GradientDrawable circle;
     //
     public AppliedJobFragment() {
