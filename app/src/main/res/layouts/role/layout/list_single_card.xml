@@ -27,7 +27,7 @@
         android:maxLines="2"
         android:minLines="1"
         android:ellipsize="end"
-        android:text="hjbhjsdd hvbfhvb sdjbcsh"
+        android:text="hjbhjsdd hvbfhvb sdjb  nkfwnefjwkf wfjnwjecsh"
         android:textColor="@color/black"
         android:textSize="@dimen/p5"/>
 </RelativeLayout>

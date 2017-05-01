@@ -33,7 +33,6 @@ public class ModuleActivity extends AppCompatActivity {
     private RecyclerView horizontalRecycler;
     private RecyclerView verticalRecycler;
     private ModuleVerticalRecyclerViewAdapter moduleVerticalRecyclerViewAdapter;
-    private RoleHorizontalRecyclerViewAdapter roleHorizontalRecyclerViewAdapter;
     private BottomNavigationView bottomNavigationView;
 
     private ArrayList<Role> roles;

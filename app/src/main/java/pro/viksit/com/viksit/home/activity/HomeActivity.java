@@ -19,6 +19,7 @@ import android.widget.TextView;
 
 import pro.viksit.com.viksit.calendar.activity.CalendarActivity;
 import pro.viksit.com.viksit.calendar.util.CalenderAsync;
+import pro.viksit.com.viksit.dashboard.activity.MyProfileActivity;
 import pro.viksit.com.viksit.dummy.DummyActivity;
 import pro.viksit.com.viksit.R;
 import pro.viksit.com.viksit.recievers.NetworkChangeReceiver;
@@ -78,7 +79,7 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
             startActivity(new Intent(HomeActivity.this, DummyActivity.class));
         } else  if(v.getId() == R.id.btn_member){
             Log.i(TAG,"already a member clicked");
-            startActivity(new Intent(HomeActivity.this, CalendarActivity.class));
+            startActivity(new Intent(HomeActivity.this, MyProfileActivity.class));
         }
 
     }
