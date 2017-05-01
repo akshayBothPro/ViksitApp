@@ -67,11 +67,11 @@
         <android.support.v7.widget.RecyclerView
             android:id="@+id/rv_role_vertical"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:layout_below="@+id/tv_skill_breakdown"
-            android:layout_above="@+id/btn_review_questions"
             />
         <View
+            android:id="@+id/vline2"
             android:layout_width="match_parent"
             android:layout_height="1dp"
             android:layout_below="@+id/rv_role_vertical"
@@ -80,7 +80,7 @@
             android:id="@+id/btn_repaeat_assessment"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
+            android:layout_below="@+id/btn_review_questions"
             android:layout_marginLeft="@dimen/role_depth_title_hor_padding"
             android:layout_marginStart="@dimen/role_depth_title_hor_padding"
             android:layout_marginRight="@dimen/role_depth_title_hor_padding"
@@ -93,7 +93,7 @@
             android:id="@+id/btn_review_questions"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_above="@+id/btn_repaeat_assessment"
+            android:layout_below="@+id/vline2"
             android:layout_marginLeft="@dimen/role_depth_title_hor_padding"
             android:layout_marginStart="@dimen/role_depth_title_hor_padding"
             android:layout_marginRight="@dimen/role_depth_title_hor_padding"
