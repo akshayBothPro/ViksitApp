@@ -23,9 +23,7 @@ public class PerformanceVerExpandableAdapter extends ExpandableRecyclerAdapter<P
 
     List<ParentSkill> parents;
     private LayoutInflater mInflater;
-    private Context context;/*
-    private int screenWidth,screenHeight;
-    private double diagonalInches;*/
+    private Context context;
 
 
     public PerformanceVerExpandableAdapter(Context context, @NonNull List<ParentSkill> parents) {
@@ -39,7 +37,7 @@ public class PerformanceVerExpandableAdapter extends ExpandableRecyclerAdapter<P
     @Override
     public PerformanceParentHolder onCreateParentViewHolder(@NonNull ViewGroup parentViewGroup, int viewType) {
         View recipeView;
-        recipeView = mInflater.inflate(R.layout.role_parent_view, parentViewGroup, false);
+        recipeView = mInflater.inflate(R.layout.performance_parent_item, parentViewGroup, false);
 
         return new PerformanceParentHolder(recipeView);
     }

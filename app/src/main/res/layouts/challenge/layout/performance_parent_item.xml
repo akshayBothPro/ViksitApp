@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    >
+    <LinearLayout
+        android:id="@+id/ll_parent_container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="10dp"
+        android:orientation="horizontal">
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:gravity="center_horizontal"
+            android:layout_weight="1">
+            <ImageButton
+                android:id="@+id/expanded"
+                android:layout_width="@dimen/role_depth_parent_image_size"
+                android:layout_height="@dimen/role_depth_parent_image_size"
+                android:background="#00000000"
+                android:tint="@color/theme_color"
+                android:src="@mipmap/ic_add_circle_outline_black_24dp"
+                android:textStyle="bold"
+                />
+            <View
+                android:id="@+id/tv_role_parent_line"
+                android:layout_width="1dp"
+                android:layout_height="wrap_content"
+                android:background="@color/unselected_circle_color"
+                android:visibility="gone"/>
+        </LinearLayout>
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:paddingRight="@dimen/role_depth_title_hor_padding"
+            android:paddingEnd="@dimen/role_depth_title_hor_padding"
+            android:layout_weight="10">
+
+            <TextView
+                android:id="@+id/title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_marginBottom="8dp"
+                android:text="Risk Managn vf dbfd vbjfd bje ment"
+                android:textColor="@color/desc_color"
+                android:textSize="@dimen/p1" />
+
+            <ProgressBar
+                android:id="@+id/progress"
+                style="?android:attr/progressBarStyleHorizontal"
+                android:layout_width="match_parent"
+                android:layout_height="5dp"
+                android:layout_below="@+id/title"
+                android:layout_marginBottom="8dp"
+                android:max="100"
+                android:progress="80" />
+            <TextView
+                android:id="@+id/score"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/progress"
+                android:layout_marginRight="4dp"
+                android:layout_marginBottom="12dp"
+                android:textColor="@color/bottombarinactive"
+                android:textSize="@dimen/p5"
+                android:text="250/300 XP" />
+
+            <TextView
+                android:id="@+id/description"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/progress"
+                android:layout_toRightOf="@+id/score"
+                android:layout_toEndOf="@+id/score"
+                android:layout_marginBottom="12dp"
+                android:textSize="@dimen/p5"
+                android:textColor="@color/bottombarinactive"
+                android:text="3 subskills" />
+            
+            <View
+                android:id="@+id/bottom_line"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_below="@+id/description"
+                android:background="@color/hint_color"/>
+
+        </RelativeLayout>
+    </LinearLayout>
+</RelativeLayout>

@@ -22,7 +22,6 @@ public class PerformanceChildHolder extends ChildViewHolder {
     private ProgressBar pb;
     private View lastLine;
 
-
     public PerformanceChildHolder(@NonNull View itemView) {
         super(itemView);
         desc = (TextView) itemView.findViewById(R.id.title1);

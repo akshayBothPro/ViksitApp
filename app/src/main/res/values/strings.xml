@@ -69,4 +69,5 @@
 
     <string name="Rs">\u20B9</string><!--for rupee icon-->
     <string name="rs">\u20A8</string>
+    <string name="bullet">\u2022</string>
 </resources>

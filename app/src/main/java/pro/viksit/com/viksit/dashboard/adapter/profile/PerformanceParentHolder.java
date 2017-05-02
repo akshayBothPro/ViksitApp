@@ -25,7 +25,7 @@ public class PerformanceParentHolder extends ParentViewHolder {
 
     @NonNull
     private final ImageButton mArrowExpandImageView;
-    private TextView title,desc;
+    private TextView title,desc,score;
     private ProgressBar pb;
     private View vLine, lastLine;
     private Context context;
@@ -35,6 +35,7 @@ public class PerformanceParentHolder extends ParentViewHolder {
 
         title = (TextView) itemView.findViewById(R.id.title);
         desc = (TextView) itemView.findViewById(R.id.description);
+        score = (TextView) itemView.findViewById(R.id.score);
         pb = (ProgressBar) itemView.findViewById(R.id.progress);
         mArrowExpandImageView = (ImageButton) itemView.findViewById(R.id.expanded);
         vLine =  itemView.findViewById(R.id.tv_role_parent_line);
@@ -43,7 +44,8 @@ public class PerformanceParentHolder extends ParentViewHolder {
 
     public void bind(@NonNull ParentSkill parent) {
         title.setText(parent.getName());
-        desc.setText(Integer.toString(parent.getChildList().size()) + " subskill");
+        desc.setText( context.getResources().getString(R.string.bullet) + " " + Integer.toString(parent.getChildList().size()) + " subskills");
+        score.setText(Double.toString(parent.getUserPoints()) + "/" + Double.toString(parent.getTotalPoints()));
         pb.setProgress(parent.getPercentage().intValue());
         pb.setProgressDrawable(itemView.getResources().getDrawable(R.drawable.role_depth_progress));
         mArrowExpandImageView.setImageResource(R.mipmap.ic_add_circle_outline_black_24dp);
