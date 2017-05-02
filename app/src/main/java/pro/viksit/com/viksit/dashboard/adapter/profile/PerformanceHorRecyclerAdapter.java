@@ -12,8 +12,10 @@ import android.widget.Toast;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import pro.viksit.com.viksit.R;
+import pro.viksit.com.viksit.dashboard.pojo.ParentSkill;
 import pro.viksit.com.viksit.dummy.pojo.SkillReportPOJO;
 import pro.viksit.com.viksit.util.CircleTransform;
 import pro.viksit.com.viksit.util.DisplayUtil;
@@ -28,20 +30,17 @@ public class PerformanceHorRecyclerAdapter extends RecyclerView.Adapter<Performa
 
     private ArrayList<SkillReportPOJO> itemsList;
     private Context mContext;
-
-    private int screenWidth;
-    private int screenHeight;
+    private RecyclerView expandableRecycler;
 
     public PerformanceHorRecyclerAdapter(Context context, ArrayList<SkillReportPOJO> itemsList) {
         this.itemsList = itemsList;
         this.mContext = context;
     }
 
-    public PerformanceHorRecyclerAdapter(Context context, ArrayList<SkillReportPOJO> itemsList, int screenWidth, int screenHeight) {
+    public PerformanceHorRecyclerAdapter(Context context, ArrayList<SkillReportPOJO> itemsList, RecyclerView expandableRecycler) {
         this.itemsList = itemsList;
         this.mContext = context;
-        this.screenWidth = screenWidth;
-        this.screenHeight = screenHeight;
+        this.expandableRecycler = expandableRecycler;
     }
 
     @Override
@@ -52,9 +51,9 @@ public class PerformanceHorRecyclerAdapter extends RecyclerView.Adapter<Performa
     }
 
     @Override
-    public void onBindViewHolder(SingleItemRowHolder holder, int i) {
+    public void onBindViewHolder(SingleItemRowHolder holder, int position) {
 
-        SkillReportPOJO singleItem = itemsList.get(i);
+        SkillReportPOJO singleItem = itemsList.get(position);
         holder.tvTitle.setText(singleItem.getName());
         String url = singleItem.getImageURL();
 
@@ -95,6 +94,14 @@ public class PerformanceHorRecyclerAdapter extends RecyclerView.Adapter<Performa
                 @Override
                 public void onClick(View v) {
                     Toast.makeText(v.getContext(), tvTitle.getText(), Toast.LENGTH_SHORT).show();
+                    int position = getAdapterPosition();
+                    List<ParentSkill> parentSkills = new ArrayList<>();
+                    parentSkills = itemsList.get(position).getParentSkills();
+
+                    PerformanceVerExpandableAdapter adapter = new PerformanceVerExpandableAdapter(mContext, parentSkills);
+                    expandableRecycler.setAdapter(adapter);
+                    adapter.notifyDataSetChanged();
+
                 }
             });
 
