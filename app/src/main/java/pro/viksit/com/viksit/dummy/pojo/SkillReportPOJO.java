@@ -3,6 +3,8 @@ package pro.viksit.com.viksit.dummy.pojo;
 import java.io.Serializable;
 import java.util.List;
 
+import pro.viksit.com.viksit.dashboard.pojo.ParentSkill;
+
 /**
  * Created by Akshay on 26/04/2017.
  */
@@ -15,10 +17,19 @@ public class SkillReportPOJO implements Serializable {
     private String description;
     private String itemType;
     private Integer itemId;
+    private String imageURL;
     private Double totalPoints = 0.0;
     private Double userPoints = 0.0;
     private Double percentage = 0.0;
-    private List<SkillReportPOJO> skills;
+    private List<ParentSkill> parentskills;
+
+    public String getImageURL() {
+        return imageURL;
+    }
+
+    public void setImageURL(String imageURL) {
+        this.imageURL = imageURL;
+    }
 
     public Integer getId() {
         return id;
@@ -84,11 +95,11 @@ public class SkillReportPOJO implements Serializable {
         this.percentage = percentage;
     }
 
-    public List<SkillReportPOJO> getSkills() {
-        return skills;
+    public List<ParentSkill> getParentSkills() {
+        return parentskills;
     }
 
-    public void setSkills(List<SkillReportPOJO> skills) {
-        this.skills = skills;
+    public void setParentSkills(List<ParentSkill> parentskills) {
+        this.parentskills = parentskills;
     }
 }

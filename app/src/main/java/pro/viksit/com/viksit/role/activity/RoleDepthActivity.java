@@ -143,7 +143,7 @@ public class RoleDepthActivity extends AppCompatActivity {
         avgPercent.setText(Double.toString(report.getBatchAverage()));
         noOfStudentsAttempted.setText(Integer.toString(report.getUsersAttemptedCount()) + " of " + Integer.toString(report.getTotalNumberOfUsersInBatch()) + " students have attempted this assessment");
 
-        //setting recycler view
+        //setting expandable recycler view
         roleDepthAdapter = new RoleDepthAdapter(this,roleParents, screenWidth,screenHeight,diagonalInches);
         recyclerView.setAdapter(roleDepthAdapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));

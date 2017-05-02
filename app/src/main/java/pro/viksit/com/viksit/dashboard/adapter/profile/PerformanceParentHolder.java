@@ -5,12 +5,14 @@ import android.content.Context;
 import android.os.Build;
 import android.support.annotation.NonNull;
 import android.view.View;
+import android.widget.ImageButton;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.bignerdranch.expandablerecyclerview.ParentViewHolder;
 
 import pro.viksit.com.viksit.R;
-import pro.viksit.com.viksit.role.pojo.RoleParent;
+import pro.viksit.com.viksit.dashboard.pojo.ParentSkill;
 
 /**
  * Created by Akshay on 02/05/2017.
@@ -23,20 +25,13 @@ public class PerformanceParentHolder extends ParentViewHolder {
 
     @NonNull
     private final ImageButton mArrowExpandImageView;
-    private TextView title;
-    private TextView desc;
+    private TextView title,desc;
     private ProgressBar pb;
-    private View vLine;
-    private View lastLine;
+    private View vLine, lastLine;
     private Context context;
-    private int screenWidth,screenHeight;
-    private double diagonalInches;
 
-    public PerformanceParentHolder(@NonNull View itemView, int screenWidth, int screenHeight, double diagonalInches) {
+    public PerformanceParentHolder(@NonNull View itemView) {
         super(itemView);
-        this.screenWidth = screenWidth;
-        this.screenHeight = screenHeight;
-        this.diagonalInches = diagonalInches;
 
         title = (TextView) itemView.findViewById(R.id.title);
         desc = (TextView) itemView.findViewById(R.id.description);
@@ -46,10 +41,10 @@ public class PerformanceParentHolder extends ParentViewHolder {
         lastLine = itemView.findViewById(R.id.bottom_line);
     }
 
-    public void bind(@NonNull RoleParent roleParent) {
-        title.setText(roleParent.getName());
-        desc.setText(Integer.toString(roleParent.getChildList().size()) + " subskill");
-        pb.setProgress(roleParent.getPercentage().intValue());
+    public void bind(@NonNull ParentSkill parent) {
+        title.setText(parent.getName());
+        desc.setText(Integer.toString(parent.getChildList().size()) + " subskill");
+        pb.setProgress(parent.getPercentage().intValue());
         pb.setProgressDrawable(itemView.getResources().getDrawable(R.drawable.role_depth_progress));
         mArrowExpandImageView.setImageResource(R.mipmap.ic_add_circle_outline_black_24dp);
 

@@ -9,10 +9,16 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.squareup.picasso.Picasso;
+
 import java.util.ArrayList;
 
 import pro.viksit.com.viksit.R;
 import pro.viksit.com.viksit.dummy.pojo.SkillReportPOJO;
+import pro.viksit.com.viksit.util.CircleTransform;
+import pro.viksit.com.viksit.util.DisplayUtil;
+import pro.viksit.com.viksit.util.ImageSaver;
+import pro.viksit.com.viksit.util.SaveImageAsync;
 
 /**
  * Created by Akshay on 02/05/2017.
@@ -50,7 +56,22 @@ public class PerformanceHorRecyclerAdapter extends RecyclerView.Adapter<Performa
 
         SkillReportPOJO singleItem = itemsList.get(i);
         holder.tvTitle.setText(singleItem.getName());
-        /*holder.itemImage.setBackgroundResource(singleItem.get());*/
+        String url = singleItem.getImageURL();
+
+        if (!url.startsWith("http")) {
+            url += mContext.getResources().getString(R.string.resourceserverip) + url;
+        }
+        int index = url.lastIndexOf("/");
+        ImageSaver image = new ImageSaver(this.mContext).
+                setParentDirectoryName("skills").
+                setFileName(new DisplayUtil().getFileNameReplaced(url.substring(index + 1, url.length()))).
+                setExternal(ImageSaver.isExternalStorageReadable());
+        if (image.checkFile()) {
+            Picasso.with(mContext).load(image.pathFile()).transform(new CircleTransform()).into(holder.itemImage);
+        } else {
+            Picasso.with(mContext).load(url).transform(new CircleTransform()).into(holder.itemImage);//image
+            new SaveImageAsync(image).execute(url);
+        }
 
     }
 

@@ -60,6 +60,7 @@
     <string name="leaderboardstore">leaderboard_</string>
     <string name="eventstore">event_</string>
     <string name="notificationstore">notification_</string>
+    <string name="skillreportstore">SKILLREPORT_</string>
     <string name="assessment_report">ASSESSMENTREPORT</string>
     <string name="events">ALLEVENTS</string>
     <string name="skillmap">SKILLMAP</string>
