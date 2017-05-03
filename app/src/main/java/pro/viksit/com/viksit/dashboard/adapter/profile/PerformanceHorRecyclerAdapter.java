@@ -95,9 +95,9 @@ public class PerformanceHorRecyclerAdapter extends RecyclerView.Adapter<Performa
                 public void onClick(View v) {
                     Toast.makeText(v.getContext(), tvTitle.getText(), Toast.LENGTH_SHORT).show();
                     int position = getAdapterPosition();
+                    //changing expandable on selection of item
                     List<ParentSkill> parentSkills = new ArrayList<>();
                     parentSkills = itemsList.get(position).getParentSkills();
-
                     PerformanceVerExpandableAdapter adapter = new PerformanceVerExpandableAdapter(mContext, parentSkills);
                     expandableRecycler.setAdapter(adapter);
                     adapter.notifyDataSetChanged();

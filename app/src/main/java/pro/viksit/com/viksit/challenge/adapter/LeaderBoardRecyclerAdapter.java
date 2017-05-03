@@ -15,7 +15,6 @@ import java.util.ArrayList;
 import pro.viksit.com.viksit.R;
 import pro.viksit.com.viksit.challenge.pojo.StudentRankPOJO;
 import pro.viksit.com.viksit.util.CircleTransform;
-import pro.viksit.com.viksit.challenge.pojo.LeaderBoardCourse;
 import pro.viksit.com.viksit.util.DisplayUtil;
 import pro.viksit.com.viksit.util.ImageSaver;
 import pro.viksit.com.viksit.util.SaveImageAsync;
@@ -82,13 +81,13 @@ public class LeaderBoardRecyclerAdapter extends RecyclerView.Adapter<LeaderBoard
                 new SaveImageAsync(studentImage).execute(url);
             }
 
-            //for tablets
+            /*//for tablets
             if (diagonalInches >= 6.5) {
                 ViewGroup.LayoutParams params = holder.image.getLayoutParams();
                 params.height = screenHeight / 11;
                 params.width = screenHeight / 11;
                 holder.image.setLayoutParams(params);
-            }
+            }*/
         //}
     }
 
@@ -126,7 +125,7 @@ public class LeaderBoardRecyclerAdapter extends RecyclerView.Adapter<LeaderBoard
 
         @Override
         public void onClick(View view) {
-
+            int position = getAdapterPosition();
         }
 
     }
